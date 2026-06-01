@@ -1,0 +1,36 @@
+{
+  "_status": "DRAFT — NOT gate-ready, NOT in the build path (data/prospector/ is what the builder reads).",
+  "_what_this_is": "Real candidate clinics found by web research across the four seed neighborhoods. Clinic IDENTITIES are real; treatment lists are CLAIMED from search summaries (not verified against each clinic's live menu); addresses/phones are NOT yet verified; ratings are NULL because no permitted ratings API (Google Places) is available in this environment.",
+  "_blockers_before_this_can_build": [
+    "ratings: must come from a permitted API (e.g. Google Places). Not available here. rating/review_count/rating_source left null.",
+    "addresses + phones: need verification (one fetch per clinic site or a Places lookup).",
+    "treatments: need confirmation against each clinic's live service menu before asserting a clinic belongs on a given treatment page.",
+    "consent flags: has_before_after / before_after_consent must be set from real source records, not assumed."
+  ],
+  "_excluded_out_of_geo": [
+    "Ideal Image (Midtown Miami) — outside seed neighborhoods",
+    "SKINNEY Medspa (Bal Harbour) — outside seed neighborhoods",
+    "Monaco MedSpa (Midtown) — outside seed neighborhoods",
+    "MDW Aesthetics / brandmarketingdemos.com — appears to be a marketing demo site, not a verifiable clinic"
+  ],
+  "candidates": [
+    { "neighborhood": "brickell", "name": "Brickell Cosmetic Center", "website": "https://brickellcosmetic.com/", "claimed_treatments": ["botox", "lip-filler", "microneedling", "laser-hair-removal"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "brickell", "name": "BeautyFix MedSpa (Brickell)", "website": "https://www.beautyfixmedspa.com/pages/location-miami", "claimed_treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "brickell", "name": "Novaskin Med Spa", "website": "https://novaskinmedspa.com/", "claimed_treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "brickell", "name": "Miami Skin Spa (Brickell)", "website": "https://www.miamiskinspa.com/", "claimed_treatments": ["botox", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+
+    { "neighborhood": "coral-gables", "name": "The Aesthetics MD and Wellness", "website": "https://www.theaestheticsmd.com/", "claimed_treatments": ["botox", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "coral-gables", "name": "Facial Mania Med Spa (Coral Gables)", "website": "https://facialmaniamedspamiami.com/locations/coral-gables/", "claimed_treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "coral-gables", "name": "Med Aesthetics Miami (Coral Gables)", "website": "https://www.medaestheticsmiami.com/contact/coral-gables/", "claimed_treatments": ["laser-hair-removal", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "coral-gables", "name": "Only Med Glam", "website": "https://onlymedglam.com/", "claimed_treatments": ["botox", "lip-filler", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "coral-gables", "name": "Azala Skin Clinic", "website": "https://www.azalaskinclinic.com/", "claimed_treatments": ["botox", "lip-filler", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+
+    { "neighborhood": "south-beach", "name": "LaserAway (Miami - South Beach)", "website": "https://www.laseraway.com/locations/fl/miami-south-beach/", "claimed_treatments": ["laser-hair-removal", "botox", "coolsculpting", "lip-filler"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "south-beach", "name": "Aromas Med Spa", "website": "https://aromaslaser.com/", "claimed_treatments": ["laser-hair-removal", "microneedling", "botox", "lip-filler"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "south-beach", "name": "South Florida Face and Body", "website": "https://www.southfloridafaceandbody.com/", "claimed_treatments": ["botox", "lip-filler", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "south-beach", "name": "Deluxe MedSpa", "website": "https://deluxemedspabeauty.com/", "claimed_treatments": ["botox", "lip-filler", "laser-hair-removal"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+
+    { "neighborhood": "coconut-grove", "name": "Lavish Laser Med Spa (Coconut Grove)", "website": "https://lavishlasermedspa.com/", "claimed_treatments": ["botox", "lip-filler", "microneedling", "laser-hair-removal"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false },
+    { "neighborhood": "coconut-grove", "name": "ILU Collective", "website": "https://ilucollective.com/", "claimed_treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "address": null, "phone": null, "rating": null, "review_count": null, "rating_source": null, "_verified": false, "_note": "may be Coral Gables, not Coconut Grove — verify" }
+  ]
+}

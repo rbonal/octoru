@@ -23,9 +23,11 @@
         "Building the seed anyway would require inventing clinics or shipping near-duplicate template filler, which the quality gate explicitly prohibits. Per CLAUDE.md I must not invent a source."
       ],
       "what_i_need_to_proceed": {
-        "decided": "Source location + format are now settled: drop a flat JSON array of real clinic records into data/prospector/*.json per data/prospector/SCHEMA.md. fetch_pages() is written and tested against that contract.",
-        "remaining_choice": "Provide the real data one of two ways: (a) hand me a data/prospector/clinics.json of real Miami clinics for the seed scope (with rating_source + consent flags set honestly), OR (b) authorize me to run a Bonalta prospector skill to generate it (real names/addresses/ratings via Google Places), for your review before any page is built.",
-        "seed_confirmation": "Confirm the seed scope to build is exactly config/thresholds.json seed_scope: treatments [botox, lip-filler, coolsculpting, laser-hair-removal, microneedling] x neighborhoods [brickell, coral-gables, south-beach, coconut-grove] = up to 20 pages."
+        "decided": "Source location + format are settled: flat JSON array of real clinic records in data/prospector/*.json per data/prospector/SCHEMA.md. fetch_pages() is written and tested.",
+        "prospector_run_outcome": "Ran the prospector via web research (no Google Places tool in this environment). Found real candidate clinics for all four neighborhoods — see data/seed_candidates_DRAFT.json. Identities are real; treatments/addresses/phones are unverified and ratings are null.",
+        "HARD_BLOCKER_ratings_api": "The quality gate requires ratings from a PERMITTED API (Google Places). This environment has no places_search tool, and reading the Places API key from env is hard-gated for me. I will NOT scrape Google/Yelp ratings (prohibited). Therefore I cannot produce gate-passing pages — every page needs valid AggregateRating from a permitted source. THIS is the current wall.",
+        "decision_needed_ratings_source": "Choose how compliant ratings get supplied: (a) wire a Google Places API tool/MCP I can call (read-only), (b) have your existing prospector pipeline (which has Places access) emit a rated data/prospector/clinics.json, or (c) hand me a clinics.json that already includes rating + review_count + rating_source.",
+        "seed_confirmation": "Confirm seed scope = config/thresholds.json seed_scope: treatments [botox, lip-filler, coolsculpting, laser-hair-removal, microneedling] x neighborhoods [brickell, coral-gables, south-beach, coconut-grove] = up to 20 pages."
       },
       "note_on_publish_boundary": "Whenever the Vercel/Cloudflare publish does happen, that is the hard-gated deploy step and must be a human (or separately-permissioned) action. The builder only commits generated pages to the auto/build branch; it never deploys."
     }
