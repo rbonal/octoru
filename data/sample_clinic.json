@@ -1,0 +1,41 @@
+{
+  "_comment": "Shape of ONE page's data. Your prospector pipeline produces these. No placeholder names — use real clinics only.",
+
+  "treatment": { "slug": "lip-filler", "name": "Lip filler" },
+  "neighborhood": { "slug": "brickell", "name": "Brickell" },
+  "city": "Miami",
+  "last_updated": "2026-06-01",
+
+  "meta_description": "Compare lip filler providers in Brickell, Miami — ratings, starting prices, and languages spoken. Request a personalized quote.",
+  "intro": "Brickell has a dense cluster of med spas offering lip filler. Below are providers in the area, with verified ratings and starting prices, so you can compare before booking a consultation.",
+
+  "page_flags": {
+    "has_consent_form": true,
+    "has_schema_markup": true
+  },
+
+  "clinics": [
+    {
+      "slug": "example-real-clinic-slug",
+      "name": "Use the real clinic name here",
+      "neighborhood": "Brickell",
+      "address": "Real street address, Miami, FL",
+      "phone": "+13055550000",
+      "email": "contact@realclinic.example",
+      "booking_url": "https://realclinic.example/book",
+      "rating": 4.8,
+      "review_count": 212,
+      "rating_source": "google_places_api",
+      "starting_price_usd": 650,
+      "languages": ["English", "Spanish"],
+      "treatments": ["lip-filler", "botox"],
+      "featured_tier": 1,
+      "lead_routing_target": "crm:glowmap-injectables",
+
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "has_before_after": false,
+      "before_after_consent": false
+    }
+  ]
+}

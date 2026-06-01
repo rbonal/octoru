@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }} — GlowMap</title>
+<meta name="description" content="{{ meta_description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+
+<!-- schema.org: ItemList of MedicalClinic w/ AggregateRating (required by quality gate) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}",
+  "itemListElement": [
+    {%- for c in clinics %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "MedicalClinic",
+        "name": {{ c.name | tojson }},
+        "address": {{ c.address | tojson }},
+        "telephone": {{ c.phone | tojson }},
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ c.rating }}",
+          "reviewCount": "{{ c.review_count }}"
+        }
+      }
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div>
+      <div class="brandmark">GlowMap</div>
+      <div class="label">Miami med spa directory</div>
+    </div>
+    <span class="label blue">{{ neighborhood.name }}</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="label blue">{{ treatment.name }}</span>
+    <h1>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}</h1>
+    <p class="lead">{{ intro }}</p>
+  </section>
+
+  <!-- featured clinics first; featured_tier drives ordering + the blue edge -->
+  <section class="clinics">
+    {%- for c in clinics %}
+    <article class="clinic{{ ' featured' if c.featured_tier and c.featured_tier > 0 }}">
+      <div>
+        {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
+        <div class="name">{{ c.name }}</div>
+        <div class="meta">{{ c.neighborhood }} · {{ c.languages | join(", ") }}</div>
+        <div class="stats">
+          <span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>
+          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}</span></span>{% endif %}
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" data-clinic="{{ c.slug }}">Get a quote</button>
+        <a class="btn" href="tel:{{ c.phone }}">Call</a>
+        <a class="btn" href="mailto:{{ c.email }}">Email</a>
+      </div>
+    </article>
+    {%- endfor %}
+  </section>
+
+  <!-- lead capture: the consent line is REQUIRED by the quality gate -->
+  <section class="lead-form" id="quote">
+    <h2>Get a personalized quote</h2>
+    <p class="sub">Tell us what you're looking for and we'll connect you with the right {{ neighborhood.name }} provider.</p>
+    <div class="field">
+      <label for="lf-name">Name</label>
+      <input id="lf-name" type="text" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="lf-phone">Phone</label>
+      <input id="lf-phone" type="tel" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="lf-email">Email</label>
+      <input id="lf-email" type="email" autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="lf-treatment">Treatment</label>
+      <select id="lf-treatment"><option>{{ treatment.name }}</option></select>
+    </div>
+    <div class="consent">
+      <input id="lf-consent" type="checkbox">
+      <label for="lf-consent">I consent to being contacted about my inquiry and have read the
+        <a href="/privacy">privacy policy</a>. My information is used only to connect me with a provider.</label>
+    </div>
+    <button class="btn primary submit">Request quote</button>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Last updated {{ last_updated }}</div>
+  </div>
+</footer>
+
+</body>
+</html>

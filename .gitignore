@@ -1,0 +1,16 @@
+# secrets — NEVER commit
+.env
+*.key
+*-credentials.json
+service-account*.json
+
+# build output (regenerated each run)
+generated/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# os
+.DS_Store
