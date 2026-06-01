@@ -1,4 +1,33 @@
 {
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty = nothing waiting.",
-  "items": []
+  "items": [
+    {
+      "id": "prospector-data-source-unspecified",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": true,
+      "blocks": "Phase-1 seed build (builder/build.py fetch_pages + page generation)",
+      "summary": "The real prospector INPUT data source is not specified. Cannot build the seed without it, and CLAUDE.md forbids inventing a source or building pages from template filler.",
+      "detail": "fetch_pages() in builder/build.py is still the skeleton stub that returns data/sample_clinic.json (placeholder, e.g. 'Use the real clinic name here'). To build the Phase-1 seed I need the actual prospector output: real, specific clinics for the seed scope, with the fields the quality gate checks.",
+      "what_i_asked": [
+        "Where does the prospector output for the seed scope live, and how should fetch_pages() read it (local file/dir, local path outside repo, HTTP/API endpoint, or a prospector skill run)?",
+        "What is the shape of each record, so I can map it to the page/template contract (per-page JSON like sample_clinic.json, flat clinic list, CSV, or other)?"
+      ],
+      "answer_received": {
+        "location": "i'll published as directory at some point using vercel or cloudflare",
+        "format": "not sure"
+      },
+      "why_this_does_not_unblock": [
+        "The location answer describes the OUTPUT/publish side (a live directory site on Vercel/Cloudflare). Publishing is HARD-GATED and not the builder's job. It does not tell me where the prospector INPUT clinic data lives.",
+        "The format is unknown, so I cannot write a correct fetch_pages() mapping.",
+        "Building the seed anyway would require inventing clinics or shipping near-duplicate template filler, which the quality gate explicitly prohibits. Per CLAUDE.md I must not invent a source."
+      ],
+      "what_i_need_to_proceed": {
+        "1_source_access": "One of: (a) a concrete path/dir in or near this repo where prospector JSON/CSV lands, (b) an absolute local path, (c) an HTTP endpoint (note: any auth token must come from env and is hard-gated for me to read), or (d) the name of the prospector skill/command whose output I should consume.",
+        "2_record_shape": "The field schema of one prospector record. Critically, which fields carry the quality-gate signals: real-clinic-data flag, rating + rating SOURCE (must be a permitted API, not scraped review text), and before/after-image consent flag.",
+        "3_seed_confirmation": "Confirm the seed scope to build is exactly config/thresholds.json seed_scope: treatments [botox, lip-filler, coolsculpting, laser-hair-removal, microneedling] x neighborhoods [brickell, coral-gables, south-beach, coconut-grove] = up to 20 pages."
+      },
+      "note_on_publish_boundary": "Whenever the Vercel/Cloudflare publish does happen, that is the hard-gated deploy step and must be a human (or separately-permissioned) action. The builder only commits generated pages to the auto/build branch; it never deploys."
+    }
+  ]
 }
