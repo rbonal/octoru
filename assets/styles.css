@@ -241,7 +241,7 @@ body.home { font-size: 16px; }
 .home nav.bar-nav a:hover { color: var(--ink); }
 .home nav.bar-nav .region { color: var(--blue); }
 
-/* hero */
+/* hero — COMPACTED (search above the fold on a normal laptop viewport) */
 .home .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
 .home .hero::before { content: ""; position: absolute; inset: 0;
   background-image: linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);
@@ -250,11 +250,13 @@ body.home { font-size: 16px; }
   mask-image: radial-gradient(120% 90% at 78% -10%,#000 0%,transparent 62%); }
 .home .hero::after { content: ""; position: absolute; top: -220px; right: -120px; width: 620px; height: 620px;
   border-radius: 50%; background: radial-gradient(circle,var(--blue-tint) 0%,transparent 68%); pointer-events: none; }
-.home .hero .wrap { position: relative; padding: 96px 28px 84px; }
-.home .eyebrow { margin-bottom: 22px; }
-.home h1.head { font-weight: 800; letter-spacing: -.04em; line-height: .98; font-size: clamp(44px,7vw,84px); max-width: 14ch; }
+/* Tighter padding pulls the search bar above the fold. Do not increase top padding. */
+.home .hero .wrap { position: relative; padding: 56px 28px 60px; }
+.home .eyebrow { margin-bottom: 16px; }
+/* Smaller headline — clamp keeps it from growing back to the previous giant size */
+.home h1.head { font-weight: 800; letter-spacing: -.04em; line-height: 1.03; font-size: clamp(32px,4vw,48px); max-width: 18ch; }
 .home h1.head .accent { color: var(--blue); }
-.home .lead { margin-top: 26px; font-size: clamp(17px,1.6vw,21px); letter-spacing: -.015em; color: var(--ink-3); max-width: 54ch; line-height: 1.5; }
+.home .lead { margin-top: 20px; font-size: clamp(16px,1.4vw,19px); letter-spacing: -.015em; color: var(--ink-3); max-width: 50ch; line-height: 1.5; }
 
 /* two-column hero — content left, panel right */
 .home .hero-grid { display: grid; grid-template-columns: 1.45fr .9fr; gap: 56px; align-items: start; }
@@ -275,7 +277,7 @@ body.home { font-size: 16px; }
 .home .side-jump a:hover .ar { transform: translateX(3px); }
 
 /* search */
-.home .search { margin-top: 40px; max-width: 660px; display: flex; gap: 10px; background: var(--paper-pure);
+.home .search { margin-top: 28px; max-width: 660px; display: flex; gap: 10px; background: var(--paper-pure);
   border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 8px 8px 18px;
   box-shadow: 0 1px 2px rgba(10,10,20,.04); transition: border-color .15s,box-shadow .15s; }
 .home .search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }

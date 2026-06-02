@@ -29,6 +29,29 @@ RECOMMENDED_COMPLETENESS = {
     "min_page_requirements": {"min_listings": 3, "require_cost_block": True, "require_guidance": True},
 }
 
+# Monetization: flat placement only. Revenue is never tied to per-patient/per-inquiry
+# value. See data/monetization_policy.json for the full model.
+# Slot cap: max featured listings per page (prevents all-paid pages). Operator can set
+# completeness.max_featured_per_page in config; defaults to 3.
+MAX_FEATURED_PER_PAGE = int((COMPLETENESS or {}).get("max_featured_per_page", 3))
+
+# Place taxonomy: loaded from data/places.json (operator-owned).
+# Provides place type, parent_place for rollup, lat/lng for geolocation.
+_PLACES_PATH = ROOT / "data" / "places.json"
+try:
+    _PLACES_RAW = [p for p in json.loads(_PLACES_PATH.read_text()) if not p.get("_comment")]
+except Exception:
+    _PLACES_RAW = []
+PLACES_BY_SLUG = {p["slug"]: p for p in _PLACES_RAW}
+
+def _place_type(slug):
+    """Returns the type ('municipality'|'neighborhood'|'cdp') for a place slug, or None."""
+    return PLACES_BY_SLUG.get(slug, {}).get("type")
+
+def _parent_slug(slug):
+    """Returns the parent_place slug for a neighborhood/CDP, or None."""
+    return PLACES_BY_SLUG.get(slug, {}).get("parent_place")
+
 env = Environment(
     loader=FileSystemLoader(str(ROOT / "templates")),
     autoescape=select_autoescape(["html", "j2"]),
@@ -73,25 +96,12 @@ TREATMENT_DESC = {
     "microneedling": "Collagen-induction skin treatment, per session.",
 }
 
-# Public city centroids (geographic fact, not clinic data) — used ONLY for the homepage
-# "nearest covered city" geolocation. Cities without an entry are omitted from the
-# nearest-match set; the build never invents clinic data from these.
+# City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
+# Falls back to empty if places.json is absent; the build never invents clinic data from these.
 CITY_LATLNG = {
-    "aventura": (25.9565, -80.1390), "bal-harbour": (25.8920, -80.1265), "brickell": (25.7617, -80.1918),
-    "coconut-grove": (25.7282, -80.2436), "coral-gables": (25.7215, -80.2684), "doral": (25.8195, -80.3553),
-    "hialeah": (25.8576, -80.2781), "homestead": (25.4687, -80.4776), "kendall": (25.6793, -80.3173),
-    "key-biscayne": (25.6938, -80.1626), "miami-lakes": (25.9087, -80.3087), "miami-springs": (25.8220, -80.2895),
-    "midtown": (25.8076, -80.1934), "north-miami": (25.8901, -80.1867), "palmetto-bay": (25.6218, -80.3248),
-    "pinecrest": (25.6670, -80.3083), "south-beach": (25.7826, -80.1340), "sunny-isles-beach": (25.9501, -80.1223),
-    "surfside": (25.8787, -80.1257),
-    "coconut-creek": (26.2517, -80.1789), "cooper-city": (26.0573, -80.2717), "coral-springs": (26.2710, -80.2706),
-    "dania-beach": (26.0526, -80.1437), "davie": (26.0765, -80.2521), "deerfield-beach": (26.3184, -80.0998),
-    "fort-lauderdale": (26.1224, -80.1373), "hallandale-beach": (25.9812, -80.1484), "hollywood": (26.0112, -80.1495),
-    "lighthouse-point": (26.2756, -80.0875), "margate": (26.2445, -80.2064), "miramar": (25.9861, -80.3035),
-    "oakland-park": (26.1723, -80.1320), "parkland": (26.3098, -80.2370), "pembroke-pines": (26.0078, -80.2963),
-    "plantation": (26.1276, -80.2331), "pompano-beach": (26.2379, -80.1248), "sunrise": (26.1669, -80.2564),
-    "weston": (26.1004, -80.3998),
-    "boca-raton": (26.3683, -80.1289), "west-palm-beach": (26.7153, -80.0534),
+    p["slug"]: (p["lat"], p["lng"])
+    for p in _PLACES_RAW
+    if p.get("lat") and p.get("lng")
 }
 
 
@@ -306,8 +316,18 @@ def _clinic_for_page(clinic, treatment_slug):
         "starting_price_usd": _starting_price(clinic, treatment_slug),
         "price_unit": TREATMENT_UNITS.get(treatment_slug) if _starting_price(clinic, treatment_slug) is not None else None,
         "languages": clinic.get("languages", []),
+        # Flat-placement monetization fields (all operator-set, never builder-inferred).
+        # featured_tier > 0 = paid flat placement; never tied to per-patient value.
         "featured_tier": clinic.get("featured_tier", 0),
-        "lead_routing_target": clinic.get("lead_routing_target"),
+        # campaigns_prospect: flag routes to Bonalta Campaigns CRM pipeline (stub).
+        # Triggered by placement purchase, NOT lead count.
+        "campaigns_prospect": bool(clinic.get("campaigns_prospect", False)),
+        # placement_tier: null=organic; "standard"|"premium"=flat placement subscriber.
+        "placement_tier": clinic.get("placement_tier"),
+        # sponsored: True means all outbound links from this clinic must carry rel="sponsored".
+        "sponsored": bool(clinic.get("featured_tier", 0) or clinic.get("placement_tier")),
+        # Free inquiry routing: booking_url and phone are always free for patients.
+        # The lead form forwards inquiries to the clinic at no charge — see monetization_policy.json.
         "last_verified": clinic.get("last_verified"),
         "sources": clinic.get("sources"),
         "has_real_clinic_data": clinic.get("has_real_clinic_data", False),
@@ -323,6 +343,21 @@ def _assemble_page(treatment_slug, market, clinics):
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
     clinics = sorted(clinics, key=lambda c: (c.get("featured_tier", 0), c.get("rating") or 0), reverse=True)
+    # Slot cap: limit paid featured listings so pages never go all-paid. Any featured clinic
+    # beyond MAX_FEATURED_PER_PAGE is demoted to organic (featured_tier=0) on THIS page only —
+    # the source record is NOT changed.
+    featured_count = 0
+    capped = []
+    for c in clinics:
+        if c.get("featured_tier", 0) > 0:
+            if featured_count < MAX_FEATURED_PER_PAGE:
+                featured_count += 1
+                capped.append(c)
+            else:
+                capped.append({**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))})
+        else:
+            capped.append(c)
+    clinics = capped
     n = len(clinics)
     provider_word = "provider" if n == 1 else "providers"
 
@@ -401,48 +436,154 @@ def page_hold_reason(page, page_reqs):
 
 
 def fetch_pages(spec=None, enforce=False):
-    """Build treatment x city pages over the active geo tree, applying operator-owned
-    completeness thresholds. Returns (pages, report). Listing below min_listing_fields is
-    excluded; page below min_page_requirements is HELD. Dry-run (enforce=False) reports only."""
+    """Build treatment x place pages, applying completeness thresholds and place-taxonomy
+    rollup. Returns (pages, report).
+
+    Place taxonomy (data/places.json):
+    - A clinic appears at its MOST SPECIFIC qualifying place (neighborhood > CDP > municipality).
+    - De-duplication: once a clinic is assigned to a neighborhood/CDP page, it is NOT included
+      on the parent municipality page (prevents the same clinic appearing on both Brickell and
+      Miami pages).
+    - Rollup: if a neighborhood/CDP treatment page is below min_page_requirements AND the place
+      has a parent_place, its qualifying clinics are rolled up to the parent place. The thin
+      neighborhood page is NOT built; the parent page gains those clinics.
+
+    Listing below min_listing_fields is excluded; page below min_page_requirements is HELD
+    (unless rollup to parent is possible). Dry-run (enforce=False) reports only."""
     clinics = load_clinics()
-    report = {"excluded_listings": [], "held_pages": []}
+    report = {
+        "excluded_listings": [], "held_pages": [],
+        "rolled_up": [],   # {clinic, from_place, to_place, treatment}
+        "deduped": [],     # {clinic, kept_at, not_shown_at}
+    }
     if not clinics:
         print(f"[builder] no prospector data in {PROSPECTOR_DIR} — nothing to build.")
         return [], report
 
     req_fields = (spec or {}).get("min_listing_fields") or []
     page_reqs = (spec or {}).get("min_page_requirements") or {}
+    min_listings = page_reqs.get("min_listings", 0)
     treatments = CONFIG["seed_scope"]["treatments"]
 
+    # Step 1: qualify clinics per market (apply field exclusions).
+    def _qualify(matched, label):
+        ok, excl = [], []
+        for c in matched:
+            miss = listing_missing_fields(c, req_fields)
+            if miss:
+                report["excluded_listings"].append({"clinic": c.get("name"), "page": label, "missing": miss})
+                print(f"[builder] listing {'excluded' if enforce else 'would-exclude (dry-run)'} "
+                      f"(missing {miss}): {c.get('name')} on {label}")
+                excl.append(c)
+            else:
+                ok.append(c)
+        return ok if enforce else matched  # dry-run: use all
+
+    # Step 2: collect rollup pools keyed by (parent_slug, county, state, treatment).
+    rollup_pool = {}   # (parent_city, county, state, treatment) -> [clinics]
+    # Track which clinic slugs have been "claimed" by a specific place (for de-dup).
+    claimed = {}       # clinic_slug -> city_slug (the place that will show this clinic)
+
     pages = []
-    for market in active_markets():
+    markets = list(active_markets())
+
+    # First pass: process neighborhoods/CDPs to see what rolls up.
+    for market in markets:
+        city = market["city"]
+        place_type = _place_type(city)
+        parent = _parent_slug(city)
+        is_child = place_type in ("neighborhood", "cdp") and parent
+
         for t in treatments:
             matched = [c for c in clinics if _clinic_in_market(c, market) and t in (c.get("treatments") or [])]
             if not matched:
                 continue
-            label = f"{t}@{market['state']}/{market['county']}/{market['city']}"
-            qualifying = []
-            for c in matched:
-                miss = listing_missing_fields(c, req_fields)
-                if miss:
-                    report["excluded_listings"].append({"clinic": c.get("name"), "page": label, "missing": miss})
-                    print(f"[builder] listing {'excluded' if enforce else 'would-exclude (dry-run)'} (missing {miss}): {c.get('name')} on {label}")
-                    if enforce:
-                        continue
-                qualifying.append(c)
-            use = qualifying if enforce else matched
+            label = f"{t}@{market['state']}/{market['county']}/{city}"
+            use = _qualify(matched, label)
             if not use:
-                report["held_pages"].append({"page": label, "reason": "no qualifying listings"})
-                print(f"[builder] HELD {label}: no qualifying listings")
                 continue
             page = _assemble_page(t, market, use)
-            reason = page_hold_reason(page, page_reqs)
+            reason = page_hold_reason(page, page_reqs) if enforce else None
+            # For dry-run without enforce, only roll up if the page would be GENUINELY thin.
+            would_be_thin = len(use) < min_listings if min_listings else False
+
+            if is_child and (reason or would_be_thin):
+                # Roll up to parent instead of shipping a thin neighborhood page.
+                key = (parent, market["county"], market["state"], t)
+                rollup_pool.setdefault(key, []).extend(use)
+                for c in use:
+                    slug = c.get("slug") or c.get("name")
+                    report["rolled_up"].append({
+                        "clinic": c.get("name"), "from_place": city,
+                        "to_place": parent, "treatment": t
+                    })
+                    claimed[slug] = parent  # will appear on parent, not on city page
+                reason_str = reason or f"thin ({len(use)} < {min_listings})"
+                report["held_pages"].append({"page": label, "reason": f"rolled up to {parent}: {reason_str}"})
+                print(f"[builder] {'HOLD→rollup' if enforce else 'would-HOLD→rollup (dry-run)'} {label}: rolled to {parent}")
+            else:
+                if reason:
+                    report["held_pages"].append({"page": label, "reason": reason})
+                    print(f"[builder] {'HELD' if enforce else 'would-HOLD (dry-run)'} {label}: {reason}")
+                    if enforce:
+                        continue
+                # Claim these clinics at this specific place.
+                for c in use:
+                    slug = c.get("slug") or c.get("name")
+                    if slug not in claimed:
+                        claimed[slug] = city
+                pages.append(page)
+
+    # Second pass: municipality pages. Only include clinics NOT already claimed by a child place.
+    for market in markets:
+        city = market["city"]
+        place_type = _place_type(city)
+        is_parent = place_type == "municipality"
+        if not is_parent:
+            continue
+
+        for t in treatments:
+            # Base clinics: directly assigned to this municipality.
+            direct = [c for c in clinics if _clinic_in_market(c, market) and t in (c.get("treatments") or [])]
+            # Add any rolled-up clinics from child places.
+            rolled = rollup_pool.get((city, market["county"], market["state"], t), [])
+            for c in rolled:
+                slug = c.get("slug") or c.get("name")
+                report["rolled_up"]  # already recorded above
+
+            # De-dup: exclude direct clinics already claimed by a child place.
+            deduped_direct = []
+            for c in direct:
+                slug = c.get("slug") or c.get("name")
+                if claimed.get(slug, city) != city:
+                    # Claimed by a child neighborhood — skip from municipality page.
+                    report["deduped"].append({
+                        "clinic": c.get("name"), "kept_at": claimed[slug], "not_shown_at": city
+                    })
+                    print(f"[builder] dedup: {c.get('name')} kept at {claimed[slug]}, not shown at {city}")
+                else:
+                    deduped_direct.append(c)
+
+            all_clinics = deduped_direct + rolled
+            if not all_clinics:
+                continue
+            label = f"{t}@{market['state']}/{market['county']}/{city}"
+            use = _qualify(all_clinics, label)
+            if not use:
+                continue
+            page = _assemble_page(t, market, use)
+            reason = page_hold_reason(page, page_reqs) if enforce else None
             if reason:
                 report["held_pages"].append({"page": label, "reason": reason})
                 print(f"[builder] {'HELD' if enforce else 'would-HOLD (dry-run)'} {label}: {reason}")
                 if enforce:
                     continue
+            for c in use:
+                slug = c.get("slug") or c.get("name")
+                if slug not in claimed:
+                    claimed[slug] = city
             pages.append(page)
+
     return pages, report
 
 

@@ -2,14 +2,17 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 12,
+    "runs": 13,
     "pages_built": 148
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Synced homepage to updated design: two-column hero (hero-main left + hero-side panel right with stacked stats + jump-to-county quick-nav), mobile search-input fix (<600px input keeps its own border/bg/focus ring). Real data: side stats 312/40/3; jump-nav -> real counties (#miami-dade/#broward/#palm-beach); county->city grid real; treatment prices Botox $10-18/unit + 4x 'Varies'. NO placeholder $ shipped. CSS in shared styles.css, ONE :root, scoped under .home.",
-    "homepage_route": "/ (generated/index.html)",
+    "reason": "Part A: flat placement monetisation (no per-lead billing; contact=free/direct; sponsored links; slot cap 3; campaigns_prospect flag; places.json taxonomy with rollup). Part B: compacted hero (32-48px, 56px padding, search above fold). 262 pages built.",
+    "pages_built": 262,
+    "rollup_entries": "coconut-grove->miami[LHR,lip-filler], kendall->miami[all 5], midtown->miami[4], south-beach->miami-beach[coolsculpting]",
+    "deduped": 0,
+    "pages_held": 12,
     "placeholder_prices_shipped": 0
   }
 }
