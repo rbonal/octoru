@@ -20,6 +20,7 @@
         "Did NOT build or commit any listing page.",
         "Did NOT read .mcp.json (it holds the API key — hard-gated)."
       ],
+      "update_2": "Cowork swapped .mcp.json to a maintained server 'google-maps-mcp-server' (tools places_search_text, places_details; Places API New). Builder STILL cannot see those tools in-session (ToolSearch select: -> no match). Cause: .mcp.json does not hot-reload into a running session. ACTION: fully quit + reopen Claude Code AFTER the swap so the new server launches; approve/trust the project server if prompted; then re-send the resume prompt. If after a clean restart it still fails, run /mcp and read the maps server's status/error line.",
       "how_to_unblock": [
         "In Claude Code run /mcp — it lists each configured server and its status. Check whether 'google-places' shows Connected, Failed, or Needs-approval. If it asks to trust the project server, approve it.",
         "If /mcp shows a startup error: the @modelcontextprotocol/server-google-maps package is deprecated and may not run under current Node. Switch .mcp.json to a maintained Google Places MCP server you vet (keep env GOOGLE_MAPS_API_KEY or whatever that server expects), then restart.",

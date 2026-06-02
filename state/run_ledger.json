@@ -1,10 +1,10 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 2, "pages_built": 0 },
+  "2026-06": { "tokens": 0, "runs": 3, "pages_built": 0 },
   "last_run": {
     "at": "2026-06-01",
     "status": "blocked",
-    "reason": "After Claude Code restart, google-places MCP tools STILL not registered. Configured package @modelcontextprotocol/server-google-maps is deprecated/archived ('no longer supported') and/or the project .mcp.json server needs approval. No ratings pulled, no pages built. See state/needs_human.json -> places-mcp-not-visible-to-builder.",
+    "reason": "Cowork swapped .mcp.json to maintained google-maps-mcp-server (tools places_search_text, places_details, Places API New). But this running session still does not see those tools (ToolSearch select: -> no match). .mcp.json changes do not hot-reload; the session must be fully restarted AFTER the swap (and the project server approved). No ratings pulled, no pages built.",
     "pages_built": 0,
     "pages_skipped": 0,
     "_token_note": "Token usage not self-measured by the builder this run; cap enforcement reads the monthly 'tokens' field, which a metered runner should populate."
