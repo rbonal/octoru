@@ -2,23 +2,20 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 15,
-    "pages_built": 113
+    "runs": 16,
+    "pages_built": 216
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Full enforced build with 141 rated clinics (97 original + 44 new: 19 Palm Beach + 25 densification). 47 config neighborhoods. Fixed Palm Beach county routing (CITY_COUNTY map). 113 listing pages: Miami-Dade 47, Broward 43, Palm Beach 23. 100 held (still below min_listings=2). 0 compliance skips. 249 sitemap URLs.",
-    "listing_pages_built": 113,
+    "reason": "Fixed Soign\u00e9 Aesthetics phone in clinics.json -> RPB botox/lip-filler/microneedling now ship (3 new pages). Staged 5 new clinics for NPB (3) + RPB (2). North Palm Beach still held \u2014 new clinics need ratings pass. Total: 216 pages / 34 cities / 3 counties.",
+    "listing_pages_built": 216,
     "by_county": {
       "miami-dade": 47,
       "broward": 43,
-      "palm-beach": 23
+      "palm-beach": 29
     },
-    "cities_with_pages": 33,
-    "pages_held": 100,
-    "compliance_skips": 0,
-    "placeholder_prices_shipped": 0,
-    "sitemap_urls": 249
+    "pages_held": 94,
+    "new_pages_vs_previous": "+6 (3 RPB unlocked by Soign\u00e9 phone fix)"
   }
 }

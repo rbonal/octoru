@@ -246,27 +246,6 @@
       ]
     },
     {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "botox@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "lip-filler@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "microneedling@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Flawless Palm Beach",
       "page": "botox@fl/palm-beach/west-palm-beach",
       "missing": [
@@ -813,27 +792,6 @@
       ]
     },
     {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "botox@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "lip-filler@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Soign\u00e9 Aesthetics",
-      "page": "microneedling@fl/palm-beach/royal-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Flawless Palm Beach",
       "page": "botox@fl/palm-beach/west-palm-beach",
       "missing": [
@@ -1322,19 +1280,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "laser-hair-removal@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/palm-beach/royal-palm-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -1498,19 +1444,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "laser-hair-removal@fl/palm-beach/royal-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/palm-beach/royal-palm-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -1654,13 +1588,13 @@
   ],
   "deduped": [],
   "empty_fields": {
-    "unique_clinics": 104,
+    "unique_clinics": 106,
     "missing_phone": 0,
-    "missing_email": 102,
+    "missing_email": 104,
     "missing_address": 0,
     "missing_booking_url": 3,
-    "price_empty_state_listings": 575,
-    "price_total_listings": 580
+    "price_empty_state_listings": 587,
+    "price_total_listings": 592
   },
   "mode": "enforced",
   "thresholds_used": {

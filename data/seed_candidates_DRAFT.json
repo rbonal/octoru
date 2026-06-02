@@ -2944,8 +2944,8 @@
       "state": "fl",
       "name": "Soign\u00e9 Aesthetics",
       "website": "https://soigneaesthetics.com/",
-      "address": "9889 Lake Worth Rd, Suite 201, Royal Palm Beach, FL 33411",
-      "phone": null,
+      "address": "1017 N State Rd 7, Suite 104, Royal Palm Beach, FL 33411",
+      "phone": "+15616853626",
       "email": null,
       "booking_url": "https://soigneaesthetics.com/",
       "languages": [],
@@ -2980,6 +2980,111 @@
       "review_count": null,
       "rating_source": null,
       "_added": "Palm Beach expansion"
+    },
+    {
+      "neighborhood": "north-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "North Palm Beach Aesthetics",
+      "website": "https://northpalmbeachaesthetics.com/",
+      "address": "700 US Hwy 1, Suite D, North Palm Beach, FL 33408",
+      "phone": "+15612310193",
+      "email": null,
+      "booking_url": "https://northpalmbeachaesthetics.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "fill held pages"
+    },
+    {
+      "neighborhood": "north-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Body Details (North Palm Beach)",
+      "website": "https://bodydetails.com/",
+      "address": "4290 Professional Center Dr, Suite 301, North Palm Beach, FL 33410",
+      "phone": "+15613207868",
+      "email": null,
+      "booking_url": "https://bodydetails.com/",
+      "languages": [],
+      "treatments": [
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "fill held pages"
+    },
+    {
+      "neighborhood": "north-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Cosmetic Skin & Laser Center (NPB)",
+      "website": "https://cslcbeauty.com/",
+      "address": "11924 US Hwy 1, Suite 101, North Palm Beach, FL 33408",
+      "phone": "+15616247300",
+      "email": null,
+      "booking_url": "https://cslcbeauty.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "fill held pages"
+    },
+    {
+      "neighborhood": "royal-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Flawless Med Spa (Royal Palm Beach)",
+      "website": "https://flawlesspalmbeach.com/",
+      "address": "1112 Royal Palm Beach Blvd, Royal Palm Beach, FL 33411",
+      "phone": "+15614401112",
+      "email": null,
+      "booking_url": "https://flawlesspalmbeach.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "fill held pages"
+    },
+    {
+      "neighborhood": "royal-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Palm Beach Laser & Aesthetic (RPB)",
+      "website": "https://www.wpblaser.com/locations/royal-palm-beach-fl/",
+      "address": "10397 Southern Blvd, Royal Palm Beach, FL 33411",
+      "phone": "+17542532320",
+      "email": null,
+      "booking_url": "https://www.wpblaser.com/locations/royal-palm-beach-fl/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "fill held pages"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
