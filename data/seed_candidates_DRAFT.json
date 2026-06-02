@@ -1593,6 +1593,89 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "midtown",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Skin Local",
+      "website": "https://theskinlocal.com/",
+      "address": "3431 NE 1st Ave, Miami, FL 33137",
+      "phone": "+17867018106",
+      "email": null,
+      "booking_url": "https://theskinlocal.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "midtown",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Surface Level",
+      "website": "https://www.thesurfacelevel.com/",
+      "address": "127 NW 27th St, Suite 605, Miami, FL 33127",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.thesurfacelevel.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "key-biscayne",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Divina MedSpa",
+      "website": "https://medspadivina.com/",
+      "address": "328 Crandon Blvd, Suite 227, Key Biscayne, FL 33149",
+      "phone": "+13058124050",
+      "email": null,
+      "booking_url": "https://medspadivina.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "bal-harbour",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "SKINNEY Medspa",
+      "website": "https://skinneymedspa.com/miami/",
+      "address": "9700 Collins Ave, Saks Fifth Avenue, Bal Harbour, FL 33154",
+      "phone": "+13057177576",
+      "email": null,
+      "booking_url": "https://skinneymedspa.com/miami/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
