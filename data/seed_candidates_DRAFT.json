@@ -1,35 +1,374 @@
 {
-  "_status": "DRAFT — contact info VERIFIED from each clinic's own site/public listing. NOT gate-ready: ratings still null. NOT in the build path (data/prospector/ is what the builder reads).",
-  "_what_changed": "Addresses, phones, booking URLs, languages, and treatment menus verified via the clinics' own websites (public business info — compliant). Neighborhoods corrected. Out-of-geo and unverifiable entries dropped.",
+  "_status": "DRAFT \u2014 contact info VERIFIED from each clinic's own site/public listing. NOT gate-ready: ratings still null. NOT in the build path (data/prospector/ is what the builder reads).",
+  "_what_changed": "Addresses, phones, booking URLs, languages, and treatment menus verified via the clinics' own websites (public business info \u2014 compliant). Neighborhoods corrected. Out-of-geo and unverifiable entries dropped.",
   "_remaining_blocker": "ratings: rating + review_count + rating_source must come from a PERMITTED source (not scraped Google/Yelp). Human (Option A) will supply these. Until then no page can pass the gate.",
   "_open_gaps": [
-    "Brickell Cosmetic Center — phone not shown on site; needs a number.",
-    "The Aesthetics MD — no street address published on site; needs an address (or drop)."
+    "Brickell Cosmetic Center \u2014 phone not shown on site; needs a number.",
+    "The Aesthetics MD \u2014 no street address published on site; needs an address (or drop)."
   ],
-  "_neighborhood_policy": "Per human decision: keep each clinic in the neighborhood it lists itself under (self-reported). Resolved Only Med Glam -> coral-gables and Miami Beach Laser & Aesthetics -> south-beach. ONE EXCEPTION: Azala self-lists as Coral Gables but its printed address is in Coconut Grove (a different neighborhood, not just a ZIP-line nuance) — kept under coconut-grove for on-page address accuracy. Flip to coral-gables if the human prefers strict as-listed.",
+  "_neighborhood_policy": "Per human decision: keep each clinic in the neighborhood it lists itself under (self-reported). Resolved Only Med Glam -> coral-gables and Miami Beach Laser & Aesthetics -> south-beach. ONE EXCEPTION: Azala self-lists as Coral Gables but its printed address is in Coconut Grove (a different neighborhood, not just a ZIP-line nuance) \u2014 kept under coconut-grove for on-page address accuracy. Flip to coral-gables if the human prefers strict as-listed.",
   "_dropped": [
-    "Deluxe MedSpa — 30 SW 1st St is Downtown Miami, outside the four seed neighborhoods.",
-    "Aromas Med Spa — locations are Kendall/Doral/Weston; no South Beach presence.",
-    "Ideal Image (Midtown), SKINNEY (Bal Harbour), Monaco (Midtown) — outside seed neighborhoods.",
-    "MDW Aesthetics / brandmarketingdemos.com — marketing demo site, not a verifiable clinic."
+    "Deluxe MedSpa \u2014 30 SW 1st St is Downtown Miami, outside the four seed neighborhoods.",
+    "Aromas Med Spa \u2014 locations are Kendall/Doral/Weston; no South Beach presence.",
+    "Ideal Image (Midtown), SKINNEY (Bal Harbour), Monaco (Midtown) \u2014 outside seed neighborhoods.",
+    "MDW Aesthetics / brandmarketingdemos.com \u2014 marketing demo site, not a verifiable clinic."
   ],
   "candidates": [
-    { "neighborhood": "brickell", "name": "Brickell Cosmetic Center", "website": "https://brickellcosmetic.com/", "address": "2730 SW 3rd Ave Ste 100, Miami, FL 33129", "phone": null, "email": null, "booking_url": "https://brickellcosmetic.com/appointments", "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "phone missing" },
-    { "neighborhood": "brickell", "name": "BeautyFix MedSpa (Brickell)", "website": "https://www.beautyfixmedspa.com/pages/location-miami", "address": "25 SW 9th St, Suite 602, Miami, FL 33130", "phone": "+17867386768", "email": null, "booking_url": "https://www.beautyfixmedspa.com/pages/booking-tool", "languages": [], "treatments": ["botox", "lip-filler", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "CoolSculpting/LHR offered at other BeautyFix locations, not listed for Miami" },
-    { "neighborhood": "brickell", "name": "Novaskin Med Spa", "website": "https://novaskinmedspa.com/", "address": "175 SW 7th St, Ste 2006, Miami, FL 33130", "phone": "+19545992888", "email": "info.novamedspa@gmail.com", "booking_url": "https://www.vagaro.com/novaskinmedspamiami/book-now", "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null },
-    { "neighborhood": "brickell", "name": "Miami Skin Spa", "website": "https://www.miamiskinspa.com/", "address": "1501 S Miami Ave, #201, Miami, FL 33129", "phone": "+13055571615", "email": null, "booking_url": null, "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null },
-
-    { "neighborhood": "coral-gables", "name": "Facial Mania Med Spa (Coral Gables)", "website": "https://facialmaniamedspamiami.com/locations/coral-gables/", "address": "4015 Laguna St, Coral Gables, FL 33146", "phone": "+13053767261", "email": null, "booking_url": "https://facialmaniamedspamiami.com/locations/", "languages": [], "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "offers all five seed treatments" },
-    { "neighborhood": "coral-gables", "name": "Med Aesthetics Miami (Coral Gables)", "website": "https://www.medaestheticsmiami.com/contact/coral-gables/", "address": "2020 Ponce de Leon Blvd, Suite 106, Coral Gables, FL 33134", "phone": "+13053567402", "email": null, "booking_url": "https://www.medaestheticsmiami.com/appointments/", "languages": [], "treatments": ["laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null },
-    { "neighborhood": "coral-gables", "name": "Only Med Glam", "website": "https://onlymedglam.com/", "address": "3400 Coral Way, Suite 302, Miami, FL 33145", "phone": "+17863557770", "email": "onlymedglamteam@gmail.com", "booking_url": "https://www.joinblvd.com/b/onlymedglam/widget#/visit-type", "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "kept as coral-gables per clinic's own listing (ZIP 33145 is City of Miami)" },
-    { "neighborhood": "coral-gables", "name": "ILU Collective", "website": "https://ilucollective.com/", "address": "135 Madeira Ave, Coral Gables, FL 33134", "phone": "+17865393085", "email": null, "booking_url": "https://ilucollective.zenoti.com/webstoreNew/services/a9151e4b-b10e-417b-a414-b3d92af3b5ae", "languages": ["English", "Spanish"], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null },
-    { "neighborhood": "coral-gables", "name": "The Aesthetics MD and Wellness", "website": "https://www.theaestheticsmd.com/", "address": null, "phone": "+13055863242", "email": null, "booking_url": "https://www.vagaro.com/theaestheticsmd/book-now", "languages": [], "treatments": ["botox", "lip-filler", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "no street address published — needs one or drop" },
-
-    { "neighborhood": "south-beach", "name": "South Florida Face and Body", "website": "https://www.southfloridafaceandbody.com/", "address": "1000 5th St, Suite 414, Miami Beach, FL 33139", "phone": "+17865291860", "email": null, "booking_url": "https://www.southfloridafaceandbody.com/", "languages": [], "treatments": ["botox", "lip-filler", "microneedling"], "rating": null, "review_count": null, "rating_source": null },
-    { "neighborhood": "south-beach", "name": "LaserAway (Miami - South Beach)", "website": "https://www.laseraway.com/locations/fl/miami-south-beach/", "address": "1220 17th St, Suite 106, Miami Beach, FL 33139", "phone": "+13053678400", "email": null, "booking_url": "https://www.laseraway.com/locations/fl/miami-south-beach/", "languages": [], "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal"], "rating": null, "review_count": null, "rating_source": null, "_note": "national chain; treatments per typical LaserAway menu — verify CoolSculpting at this site" },
-    { "neighborhood": "south-beach", "name": "Miami Beach Laser & Aesthetics", "website": "https://miamibeachlaserandaesthetics.com/", "address": "4302 Alton Rd, Miami Beach, FL 33140", "phone": null, "email": null, "booking_url": null, "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal"], "rating": null, "review_count": null, "rating_source": null, "_note": "kept as south-beach per clinic's own listing (geographically Mid-Beach); phone/treatments still need verification" },
-
-    { "neighborhood": "coconut-grove", "name": "Lavish Laser Med Spa (Coconut Grove)", "website": "https://lavishlasermedspa.com/", "address": "3160 Florida Ave, Miami, FL 33133", "phone": "+13052046288", "email": null, "booking_url": "https://www.joinblvd.com/b/lavishlasermedspa/widget#/locations", "languages": [], "treatments": ["botox", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "lip filler not explicitly listed; truSculpt instead of CoolSculpting" },
-    { "neighborhood": "coconut-grove", "name": "Azala Skin Clinic", "website": "https://www.azalaskinclinic.com/", "address": "3444 Main Hwy, Unit 23, Coconut Grove, FL 33133", "phone": "+17869495512", "email": null, "booking_url": null, "languages": [], "treatments": ["botox", "lip-filler", "laser-hair-removal", "microneedling"], "rating": null, "review_count": null, "rating_source": null, "_note": "EXCEPTION to as-listed rule: self-describes as Coral Gables, but printed address (Main Hwy) is Coconut Grove. Kept under coconut-grove for address accuracy; flip if you want strict as-listed." }
-  ]
+    {
+      "neighborhood": "brickell",
+      "name": "Brickell Cosmetic Center",
+      "website": "https://brickellcosmetic.com/",
+      "address": "2730 SW 3rd Ave Ste 100, Miami, FL 33129",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://brickellcosmetic.com/appointments",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "phone missing",
+      "starting_prices_usd": {
+        "botox": 10
+      }
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "BeautyFix MedSpa (Brickell)",
+      "website": "https://www.beautyfixmedspa.com/pages/location-miami",
+      "address": "25 SW 9th St, Suite 602, Miami, FL 33130",
+      "phone": "+17867386768",
+      "email": null,
+      "booking_url": "https://www.beautyfixmedspa.com/pages/booking-tool",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "CoolSculpting/LHR offered at other BeautyFix locations, not listed for Miami"
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "Novaskin Med Spa",
+      "website": "https://novaskinmedspa.com/",
+      "address": "175 SW 7th St, Ste 2006, Miami, FL 33130",
+      "phone": "+19545992888",
+      "email": "info.novamedspa@gmail.com",
+      "booking_url": "https://www.vagaro.com/novaskinmedspamiami/book-now",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "Miami Skin Spa",
+      "website": "https://www.miamiskinspa.com/",
+      "address": "1501 S Miami Ave, #201, Miami, FL 33129",
+      "phone": "+13055571615",
+      "email": null,
+      "booking_url": null,
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "starting_prices_usd": {
+        "botox": 14
+      }
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "No Filter Medical Spa",
+      "website": "https://nofiltermedspa.com/",
+      "address": "829 SW 1st Ave, Suite 130, Miami, FL 33130",
+      "phone": "+13056192651",
+      "email": null,
+      "booking_url": "https://nofiltermedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification round; verified from clinic site"
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "Plump Cosmetics & Injectables",
+      "website": "https://getplump.com/locations/miami/",
+      "address": "900 S Miami Ave, Suite 135, Miami, FL 33130",
+      "phone": "+16463468809",
+      "email": null,
+      "booking_url": "https://getplump.com/locations/miami/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification round; verified from clinic site"
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "Skin Healthy Miami",
+      "website": "https://skinhealthymiami.com/",
+      "address": "630 S Miami Ave, Miami, FL 33130",
+      "phone": "+17864942201",
+      "email": null,
+      "booking_url": "https://skinhealthymiami.com/book-appointment/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "starting_prices_usd": {
+        "botox": 14
+      },
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification round; Botox $14/unit ($12 member) per site"
+    },
+    {
+      "neighborhood": "brickell",
+      "name": "Sisu Clinic (Brickell)",
+      "website": "https://www.sisuclinic.com/botox-brickell",
+      "address": "701 S Miami Ave, Level 3 East Block, Brickell City Centre, Miami, FL 33131",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.sisuclinic.com/botox-brickell",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification round; doctor-led; Botox/Dysport from $495 (package)"
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "Facial Mania Med Spa (Coral Gables)",
+      "website": "https://facialmaniamedspamiami.com/locations/coral-gables/",
+      "address": "4015 Laguna St, Coral Gables, FL 33146",
+      "phone": "+13053767261",
+      "email": null,
+      "booking_url": "https://facialmaniamedspamiami.com/locations/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "offers all five seed treatments"
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "Med Aesthetics Miami (Coral Gables)",
+      "website": "https://www.medaestheticsmiami.com/contact/coral-gables/",
+      "address": "2020 Ponce de Leon Blvd, Suite 106, Coral Gables, FL 33134",
+      "phone": "+13053567402",
+      "email": null,
+      "booking_url": "https://www.medaestheticsmiami.com/appointments/",
+      "languages": [],
+      "treatments": [
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "Only Med Glam",
+      "website": "https://onlymedglam.com/",
+      "address": "3400 Coral Way, Suite 302, Miami, FL 33145",
+      "phone": "+17863557770",
+      "email": "onlymedglamteam@gmail.com",
+      "booking_url": "https://www.joinblvd.com/b/onlymedglam/widget#/visit-type",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "kept as coral-gables per clinic's own listing (ZIP 33145 is City of Miami)"
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "ILU Collective",
+      "website": "https://ilucollective.com/",
+      "address": "135 Madeira Ave, Coral Gables, FL 33134",
+      "phone": "+17865393085",
+      "email": null,
+      "booking_url": "https://ilucollective.zenoti.com/webstoreNew/services/a9151e4b-b10e-417b-a414-b3d92af3b5ae",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "The Aesthetics MD and Wellness",
+      "website": "https://www.theaestheticsmd.com/",
+      "address": null,
+      "phone": "+13055863242",
+      "email": null,
+      "booking_url": "https://www.vagaro.com/theaestheticsmd/book-now",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "no street address published \u2014 needs one or drop"
+    },
+    {
+      "neighborhood": "south-beach",
+      "name": "South Florida Face and Body",
+      "website": "https://www.southfloridafaceandbody.com/",
+      "address": "1000 5th St, Suite 414, Miami Beach, FL 33139",
+      "phone": "+17865291860",
+      "email": null,
+      "booking_url": "https://www.southfloridafaceandbody.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null
+    },
+    {
+      "neighborhood": "south-beach",
+      "name": "LaserAway (Miami - South Beach)",
+      "website": "https://www.laseraway.com/locations/fl/miami-south-beach/",
+      "address": "1220 17th St, Suite 106, Miami Beach, FL 33139",
+      "phone": "+13053678400",
+      "email": null,
+      "booking_url": "https://www.laseraway.com/locations/fl/miami-south-beach/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "national chain; treatments per typical LaserAway menu \u2014 verify CoolSculpting at this site"
+    },
+    {
+      "neighborhood": "south-beach",
+      "name": "Miami Beach Laser & Aesthetics",
+      "website": "https://miamibeachlaserandaesthetics.com/",
+      "address": "4302 Alton Rd, Miami Beach, FL 33140",
+      "phone": null,
+      "email": null,
+      "booking_url": null,
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "kept as south-beach per clinic's own listing (geographically Mid-Beach); phone/treatments still need verification"
+    },
+    {
+      "neighborhood": "coconut-grove",
+      "name": "Lavish Laser Med Spa (Coconut Grove)",
+      "website": "https://lavishlasermedspa.com/",
+      "address": "3160 Florida Ave, Miami, FL 33133",
+      "phone": "+13052046288",
+      "email": null,
+      "booking_url": "https://www.joinblvd.com/b/lavishlasermedspa/widget#/locations",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "lip filler not explicitly listed; truSculpt instead of CoolSculpting"
+    },
+    {
+      "neighborhood": "coconut-grove",
+      "name": "Azala Skin Clinic",
+      "website": "https://www.azalaskinclinic.com/",
+      "address": "3444 Main Hwy, Unit 23, Coconut Grove, FL 33133",
+      "phone": "+17869495512",
+      "email": null,
+      "booking_url": null,
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_note": "EXCEPTION to as-listed rule: self-describes as Coral Gables, but printed address (Main Hwy) is Coconut Grove. Kept under coconut-grove for address accuracy; flip if you want strict as-listed."
+    }
+  ],
+  "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages."
 }
