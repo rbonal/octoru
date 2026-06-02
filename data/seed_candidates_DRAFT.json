@@ -1125,6 +1125,155 @@
       "review_count": null,
       "rating_source": null,
       "_added": "expansion"
+    },
+    {
+      "neighborhood": "coral-springs",
+      "county": "broward",
+      "state": "fl",
+      "name": "Coral Springs Med Spa",
+      "website": "https://coralspringsmedspa.com/",
+      "address": "993 N University Dr, Coral Springs, FL 33071",
+      "phone": "+15616648300",
+      "email": null,
+      "booking_url": "https://coralspringsmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "coral-springs",
+      "county": "broward",
+      "state": "fl",
+      "name": "Zen Luxe Medspa & IV Lounge",
+      "website": "https://zenluxemedspa.com/",
+      "address": "1881 N University Dr, Suite 206, Coral Springs, FL 33071",
+      "phone": "+19546886116",
+      "email": null,
+      "booking_url": "https://zenluxemedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "plantation",
+      "county": "broward",
+      "state": "fl",
+      "name": "Plantation Med Spa",
+      "website": "https://plantationmedspa.com/",
+      "address": "100 NW 82nd Ave, Ste 104, Plantation, FL 33324",
+      "phone": "+19545952607",
+      "email": null,
+      "booking_url": "https://plantationmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "plantation",
+      "county": "broward",
+      "state": "fl",
+      "name": "4Ever Young Plantation",
+      "website": "https://4everyoungantiaging.com/plantation/",
+      "address": "10105 Cleary Blvd, Plantation, FL 33324",
+      "phone": "+19546867544",
+      "email": null,
+      "booking_url": "https://4everyoungantiaging.com/plantation/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "plantation",
+      "county": "broward",
+      "state": "fl",
+      "name": "Sage Wellness and Medspa",
+      "website": "https://www.sagewellnessfl.com/",
+      "address": "6950 Cypress Rd, Suite 107, Plantation, FL 33317",
+      "phone": "+17542021000",
+      "email": null,
+      "booking_url": "https://www.sagewellnessfl.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "pompano-beach",
+      "county": "broward",
+      "state": "fl",
+      "name": "Palm Beach Laser & Aesthetic",
+      "website": "https://m.yelp.com/biz/palm-beach-laser-and-aesthetic-pompano-beach",
+      "address": "221 S Federal Hwy, Pompano Beach, FL 33062",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://m.yelp.com/biz/palm-beach-laser-and-aesthetic-pompano-beach",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "pompano-beach",
+      "county": "broward",
+      "state": "fl",
+      "name": "Davis Center",
+      "website": "https://rejuvenation.pompanodds.com/",
+      "address": "19 NE 22nd Ave, Pompano Beach, FL 33062",
+      "phone": "+19549413003",
+      "email": null,
+      "booking_url": "https://rejuvenation.pompanodds.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
