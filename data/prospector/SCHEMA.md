@@ -47,6 +47,7 @@ groups, and renders. A clinic appears on one page per (treatment it offers × it
 | `rating_source` | yes | **Must be a permitted API** (e.g. `google_places_api`). Never scraped Google/Yelp review text. |
 | `starting_prices_usd` | optional | Per-treatment map (preferred) **or** a flat `starting_price_usd` number. |
 | `languages`, `email`, `booking_url`, `featured_tier`, `lead_routing_target` | optional | `featured_tier > 0` sorts a clinic to the top and shows the "Featured" tag. |
+| `google_listing_url` | optional | "View on Google" link. If omitted, the builder auto-generates a no-API Google Maps **search** URL from `name` + `address`. When the Places API is wired, pass the exact place-based URL here and it takes priority. This is a link only — it carries no rating data and does not satisfy the `AggregateRating` requirement. |
 
 ## Quality-gate flags (the builder passes these through verbatim — set them honestly)
 

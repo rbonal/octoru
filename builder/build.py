@@ -9,7 +9,7 @@ Runnable skeleton. The only TODO is your real data source.
   pip install -r requirements.txt
   python builder/build.py
 """
-import json, sys, datetime
+import json, sys, datetime, urllib.parse
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -105,6 +105,20 @@ def _starting_price(clinic, treatment_slug):
     return clinic.get("starting_price_usd")
 
 
+def _google_listing_url(clinic):
+    """A 'View on Google' link for the clinic. If the source record carries an
+    explicit google_listing_url (e.g. a place_id-based URL from the Places API),
+    use it. Otherwise build a no-API Google Maps SEARCH url from name + address —
+    just a link, no scraping, no rating data."""
+    explicit = clinic.get("google_listing_url")
+    if explicit:
+        return explicit
+    query = " ".join(p for p in (clinic.get("name"), clinic.get("address")) if p)
+    if not query:
+        return None
+    return "https://www.google.com/maps/search/?api=1&query=" + urllib.parse.quote(query)
+
+
 def _clinic_for_page(clinic, treatment_slug):
     """Shape one clinic for the template + quality gate. The gate flags ride through
     from source VERBATIM — the builder never sets or infers them."""
@@ -117,6 +131,7 @@ def _clinic_for_page(clinic, treatment_slug):
         "phone": clinic.get("phone"),
         "email": clinic.get("email"),
         "booking_url": clinic.get("booking_url"),
+        "google_listing_url": _google_listing_url(clinic),
         "rating": clinic.get("rating"),
         "review_count": clinic.get("review_count"),
         "rating_source": clinic.get("rating_source"),
