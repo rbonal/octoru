@@ -1,14 +1,18 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 7, "pages_built": 18 },
+  "2026-06": {
+    "tokens": 0,
+    "runs": 8,
+    "pages_built": 18
+  },
   "last_run": {
     "at": "2026-06-01",
     "status": "success",
-    "reason": "Built national geo architecture: state>county>city>treatment hierarchy from operator-owned seed_scope.geo (back-compat maps current flat scope to fl/miami-dade). 18 listing pages under /{state}/{county}/{city}/{treatment}/ + state/county/city hubs + homepage + claim + sitemap.xml (26 URLs). Completeness gate dry-run unchanged.",
-    "pages_built": 18,
-    "hubs_built": "1 state + 1 county + 4 city",
-    "sitemap_urls": 26,
-    "completeness_mode": "dry-run",
-    "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field."
+    "reason": "Expansion round 1: prospected + staged Boca Raton (Palm Beach) and Fort Lauderdale (Broward) \u2014 7 new real clinics with county/state. National demo preview spans 3 counties / 6 cities / 27 pages. Staged only: ships after operator activates the markets in seed_scope.geo + a ratings pass.",
+    "staged_clinics_total": 35,
+    "new_markets": [
+      "boca-raton (palm-beach)",
+      "fort-lauderdale (broward)"
+    ]
   }
 }

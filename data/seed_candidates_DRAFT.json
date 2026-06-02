@@ -11,7 +11,8 @@
     "Deluxe MedSpa \u2014 30 SW 1st St is Downtown Miami, outside the four seed neighborhoods.",
     "Aromas Med Spa \u2014 locations are Kendall/Doral/Weston; no South Beach presence.",
     "Ideal Image (Midtown), SKINNEY (Bal Harbour), Monaco (Midtown) \u2014 outside seed neighborhoods.",
-    "MDW Aesthetics / brandmarketingdemos.com \u2014 marketing demo site, not a verifiable clinic."
+    "MDW Aesthetics / brandmarketingdemos.com \u2014 marketing demo site, not a verifiable clinic.",
+    "BeWell MedSpa \u2014 1699 E Oakland Park Blvd is Oakland Park, not Fort Lauderdale (future Oakland Park market)."
   ],
   "candidates": [
     {
@@ -568,8 +569,157 @@
       "review_count": 53,
       "rating_source": "google_places",
       "_added": "densification; verified from site"
+    },
+    {
+      "neighborhood": "boca-raton",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Cosmetica Med Spa",
+      "website": "https://www.medicalspalocator.com/med-spa/cosmetica-med-spa-boca-raton",
+      "address": "4400 N Federal Hwy, Ste 150, Boca Raton, FL 33431",
+      "phone": "+15617568368",
+      "email": null,
+      "booking_url": null,
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Boca Raton"
+    },
+    {
+      "neighborhood": "boca-raton",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Dr. G Med Spa",
+      "website": "https://www.drgmedspa.com/",
+      "address": "709 E Palmetto Park Rd, Boca Raton, FL 33432",
+      "phone": "+15617170400",
+      "email": null,
+      "booking_url": "https://www.drgmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Boca Raton"
+    },
+    {
+      "neighborhood": "boca-raton",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Pearl Med Spa (Boca Raton)",
+      "website": "https://www.pearllasercenter.com/",
+      "address": "9774 Glades Rd, A-7, Boca Raton, FL 33434",
+      "phone": "+15613342921",
+      "email": null,
+      "booking_url": "https://pearl.zenoti.com/webstoreNew/services",
+      "languages": [],
+      "treatments": [
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Boca Raton; only microneedling confirmed"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "Las Olas Med Spa",
+      "website": "https://www.topaesthetics.com/las-olas-medspa/",
+      "address": "888 E Las Olas Blvd, Fort Lauderdale, FL 33301",
+      "phone": null,
+      "email": null,
+      "booking_url": null,
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Fort Lauderdale; phone pending"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "Amaira Med Spa & Surgical",
+      "website": "https://amairamedspa.com/fort-lauderdale-location/",
+      "address": "1213 E Las Olas Blvd, Fort Lauderdale, FL 33301",
+      "phone": "+19549822841",
+      "email": null,
+      "booking_url": "https://amairamedspa.com/scheduling/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Fort Lauderdale"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "ProMD Health Fort Lauderdale",
+      "website": "https://promdhealth.com/location/fort-lauderdale/",
+      "address": "500 E Broward Blvd, Suite 122, Fort Lauderdale, FL 33394",
+      "phone": "+19543338682",
+      "email": null,
+      "booking_url": "http://book.nimblr.co/ProMDHealthFortLauderdale",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Fort Lauderdale"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "Ideal Image (Las Olas)",
+      "website": "https://www.idealimage.com/locations/florida/las-olas",
+      "address": null,
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.idealimage.com/locations/florida/las-olas",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Fort Lauderdale; chain, all 5 treatments; street address needs verification"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
-  "_growth_note": "Growth round: +Solea, +Dermacare(addr pending), +Miami Skin & Vein ($18/unit), +Pure Beauty, +JECT. Existing Places ratings merged in for preview. New clinics need a ratings pass to ship live."
+  "_growth_note": "Growth round: +Solea, +Dermacare(addr pending), +Miami Skin & Vein ($18/unit), +Pure Beauty, +JECT. Existing Places ratings merged in for preview. New clinics need a ratings pass to ship live.",
+  "_expansion_note": "Expansion round 1: staged Boca Raton (Palm Beach) + Fort Lauderdale (Broward) with county/state. Needs config geo activation + ratings pass to ship."
 }
