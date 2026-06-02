@@ -419,6 +419,21 @@ body.home { font-size: 16px; }
 }
 
 /* ============================================================
+   NAV ADVERTISE BUTTON — appears in every page header
+   ============================================================ */
+.home nav.bar-nav .nav-adv-btn,
+nav.bar-nav .nav-adv-btn {
+  display: inline-flex; align-items: center;
+  background: var(--blue); color: #fff !important;
+  border-radius: 999px; padding: 7px 16px;
+  font-size: 13px; font-weight: 600;
+  transition: background .15s ease;
+  white-space: nowrap;
+}
+.home nav.bar-nav .nav-adv-btn:hover,
+nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color: #fff !important; }
+
+/* ============================================================
    CRO ELEMENTS — shared across home + advertise pages
    ============================================================ */
 
