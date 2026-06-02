@@ -43,6 +43,104 @@
       ]
     },
     {
+      "clinic": "Beauty First Med-Spa",
+      "page": "botox@fl/miami-dade/homestead",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty First Med-Spa",
+      "page": "lip-filler@fl/miami-dade/homestead",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty First Med-Spa",
+      "page": "microneedling@fl/miami-dade/homestead",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Design Med Spa",
+      "page": "botox@fl/miami-dade/miami-springs",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Design Med Spa",
+      "page": "lip-filler@fl/miami-dade/miami-springs",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Design Med Spa",
+      "page": "microneedling@fl/miami-dade/miami-springs",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Surface Level",
+      "page": "botox@fl/miami-dade/midtown",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Surface Level",
+      "page": "microneedling@fl/miami-dade/midtown",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palmetto Bay Medspa",
+      "page": "botox@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Michelle Med Spa",
+      "page": "botox@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palmetto Bay Medspa",
+      "page": "lip-filler@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Michelle Med Spa",
+      "page": "lip-filler@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palmetto Bay Medspa",
+      "page": "laser-hair-removal@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Beauty By Michelle Med Spa",
+      "page": "microneedling@fl/miami-dade/palmetto-bay",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
       "clinic": "Miami Beach Laser & Aesthetics",
       "page": "botox@fl/miami-dade/south-beach",
       "missing": [
@@ -62,15 +160,385 @@
       "missing": [
         "phone"
       ]
+    },
+    {
+      "clinic": "Rejuvenation Medical Aesthetics & Spa",
+      "page": "botox@fl/miami-dade/sunny-isles-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Rejuvenation Medical Aesthetics & Spa",
+      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Rejuvenation Medical Aesthetics & Spa",
+      "page": "laser-hair-removal@fl/miami-dade/sunny-isles-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Rejuvenation Medical Aesthetics & Spa",
+      "page": "microneedling@fl/miami-dade/sunny-isles-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Flawless Palm Beach",
+      "page": "botox@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin & Beauty",
+      "page": "botox@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Flawless Palm Beach",
+      "page": "lip-filler@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin & Beauty",
+      "page": "lip-filler@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Flawless Palm Beach",
+      "page": "laser-hair-removal@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin & Beauty",
+      "page": "laser-hair-removal@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Flawless Palm Beach",
+      "page": "microneedling@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin & Beauty",
+      "page": "microneedling@fl/palm-beach/west-palm-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Aesthetics Care Med Spa",
+      "page": "botox@fl/broward/coconut-creek",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Aesthetics Care Med Spa",
+      "page": "laser-hair-removal@fl/broward/coconut-creek",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Dr. Ivy Med Spa (BodyBrite Cooper City)",
+      "page": "botox@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ageless Medical",
+      "page": "botox@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Divine Med Spa & Clinic",
+      "page": "botox@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Dr. Ivy Med Spa (BodyBrite Cooper City)",
+      "page": "lip-filler@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ageless Medical",
+      "page": "lip-filler@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Divine Med Spa & Clinic",
+      "page": "lip-filler@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Dr. Ivy Med Spa (BodyBrite Cooper City)",
+      "page": "laser-hair-removal@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ageless Medical",
+      "page": "laser-hair-removal@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Dr. Ivy Med Spa (BodyBrite Cooper City)",
+      "page": "microneedling@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Divine Med Spa & Clinic",
+      "page": "microneedling@fl/broward/cooper-city",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Las Olas Med Spa",
+      "page": "botox@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ideal Image (Las Olas)",
+      "page": "botox@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Natura Dermatology",
+      "page": "botox@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Las Olas Med Spa",
+      "page": "lip-filler@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ideal Image (Las Olas)",
+      "page": "lip-filler@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Natura Dermatology",
+      "page": "lip-filler@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ideal Image (Las Olas)",
+      "page": "coolsculpting@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Las Olas Med Spa",
+      "page": "laser-hair-removal@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ideal Image (Las Olas)",
+      "page": "laser-hair-removal@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Ideal Image (Las Olas)",
+      "page": "microneedling@fl/broward/fort-lauderdale",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Medical Advanced Skin Care",
+      "page": "botox@fl/broward/lighthouse-point",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin Aesthetics",
+      "page": "botox@fl/broward/lighthouse-point",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Medical Advanced Skin Care",
+      "page": "microneedling@fl/broward/lighthouse-point",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Elite Skin Aesthetics",
+      "page": "microneedling@fl/broward/lighthouse-point",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Lothus Aesthetic Center",
+      "page": "botox@fl/broward/margate",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Lothus Aesthetic Center",
+      "page": "lip-filler@fl/broward/margate",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Lothus Aesthetic Center",
+      "page": "microneedling@fl/broward/margate",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "NutriFlo Medspa & IV Lounge",
+      "page": "botox@fl/broward/parkland",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "NutriFlo Medspa & IV Lounge",
+      "page": "lip-filler@fl/broward/parkland",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "NutriFlo Medspa & IV Lounge",
+      "page": "microneedling@fl/broward/parkland",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palm Beach Laser & Aesthetic",
+      "page": "botox@fl/broward/pompano-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palm Beach Laser & Aesthetic",
+      "page": "laser-hair-removal@fl/broward/pompano-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Palm Beach Laser & Aesthetic",
+      "page": "microneedling@fl/broward/pompano-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Archetype Aesthetics",
+      "page": "botox@fl/broward/sunrise",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Archetype Aesthetics",
+      "page": "lip-filler@fl/broward/sunrise",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Archetype Aesthetics",
+      "page": "microneedling@fl/broward/sunrise",
+      "missing": [
+        "phone"
+      ]
     }
   ],
   "held_pages": [
     {
-      "page": "coolsculpting@fl/miami-dade/coral-gables",
+      "page": "botox@fl/miami-dade/aventura",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/aventura",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/aventura",
       "reason": "only 1 qualifying listing(s) (< 3)"
     },
     {
-      "page": "coolsculpting@fl/miami-dade/south-beach",
+      "page": "microneedling@fl/miami-dade/aventura",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/bal-harbour",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/bal-harbour",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/bal-harbour",
       "reason": "only 1 qualifying listing(s) (< 3)"
     },
     {
@@ -80,16 +548,448 @@
     {
       "page": "laser-hair-removal@fl/miami-dade/coconut-grove",
       "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/miami-dade/coral-gables",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/doral",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/miami-dade/doral",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/doral",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/hialeah",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/hialeah",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/hialeah",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/hialeah",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/homestead",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/homestead",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/homestead",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/kendall",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/kendall",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/miami-dade/kendall",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/kendall",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/kendall",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/key-biscayne",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/key-biscayne",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/miami-lakes",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/miami-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/miami-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/miami-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/midtown",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/midtown",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/midtown",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/midtown",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/north-miami",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/north-miami",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/palmetto-bay",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/palmetto-bay",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/palmetto-bay",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/palmetto-bay",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/pinecrest",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/pinecrest",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/pinecrest",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/pinecrest",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/miami-dade/south-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/sunny-isles-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/miami-dade/sunny-isles-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/sunny-isles-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/miami-dade/surfside",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/miami-dade/surfside",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/palm-beach/boca-raton",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/palm-beach/boca-raton",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/palm-beach/boca-raton",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/palm-beach/west-palm-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/palm-beach/west-palm-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/palm-beach/west-palm-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/palm-beach/west-palm-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/coconut-creek",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/coconut-creek",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/coconut-creek",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/coconut-creek",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/cooper-city",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/cooper-city",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/coral-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/coral-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/coral-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/coral-springs",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/dania-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/dania-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/davie",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/davie",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/davie",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/davie",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/deerfield-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/deerfield-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/deerfield-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/broward/fort-lauderdale",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/hallandale-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/hallandale-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/hollywood",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/hollywood",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/hollywood",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/lighthouse-point",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/lighthouse-point",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/margate",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/margate",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/margate",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/parkland",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/parkland",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/broward/parkland",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/parkland",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/pembroke-pines",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/pembroke-pines",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/pembroke-pines",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/pembroke-pines",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/plantation",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/plantation",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/pompano-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/pompano-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/pompano-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/pompano-beach",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "botox@fl/broward/sunrise",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/broward/sunrise",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "microneedling@fl/broward/sunrise",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/broward/weston",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal@fl/broward/weston",
+      "reason": "only 1 qualifying listing(s) (< 3)"
     }
   ],
   "empty_fields": {
-    "unique_clinics": 21,
-    "missing_phone": 3,
-    "missing_email": 19,
+    "unique_clinics": 97,
+    "missing_phone": 24,
+    "missing_email": 95,
     "missing_address": 0,
-    "missing_booking_url": 3,
-    "price_empty_state_listings": 66,
-    "price_total_listings": 70
+    "missing_booking_url": 5,
+    "price_empty_state_listings": 307,
+    "price_total_listings": 312
   },
   "mode": "dry-run (config 'completeness' absent)",
   "thresholds_used": {

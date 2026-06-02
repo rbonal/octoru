@@ -1,17 +1,13 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": {
-    "tokens": 0,
-    "runs": 9,
-    "pages_built": 18
-  },
+  "2026-06": { "tokens": 0, "runs": 10, "pages_built": 148 },
   "last_run": {
     "at": "2026-06-01",
     "status": "success",
-    "reason": "Expansion round 3: +Doral,+Kendall (Miami-Dade), +Hollywood,+Weston,+Pembroke Pines (Broward). 54 staged clinics / 14 cities / 3 counties. Completing Miami-Dade + Broward before ship.",
-    "staged_clinics_total": 54,
-    "cities": 14,
-    "miami_dade_cities": 8,
-    "broward_cities": 4
+    "reason": "First fully-rated national build. Operator expanded seed_scope.neighborhoods to 40; clinics.json now carries 97 clinics all rated via permitted Places (rating_source=google_places). Built 148 listing pages across 40 cities / 3 counties (FL: Miami-Dade, Broward, Palm Beach) + hubs + homepage + claim + sitemap. 0 compliance-gate skips (all pages have real rated data). Committed to auto/build; NOT deployed.",
+    "pages_built": 148,
+    "compliance_skips": 0,
+    "completeness_dry_run": "config 'completeness' absent -> not enforced. Under the recommended thresholds, 117 of 148 pages are THIN (1-2 clinics) and would be HELD. Operator owns whether to enforce.",
+    "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field."
   }
 }

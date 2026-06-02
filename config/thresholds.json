@@ -5,9 +5,9 @@
   "_token_cap_note": "Hard floor. Builder refuses to run once the month's ledger reaches this. Set to your real budget.",
 
   "seed_scope": {
-    "_note": "Phase 1: start narrow. Expand only as cohorts prove out (handled by evaluator raising scope).",
+    "_note": "Expansion: scope widened by human (Rolando) on 2026-06-02 from the original 4 Miami-core neighborhoods to all 40 neighborhoods present in data/prospector/clinics.json (Miami-Dade + Broward + Palm Beach). Many of the new neighborhoods have only 1-2 clinics — the quality gate may still cull thin treatment-x-neighborhood pages. Narrow back later if pages underperform.",
     "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"],
-    "neighborhoods": ["brickell", "coral-gables", "south-beach", "coconut-grove"]
+    "neighborhoods": ["aventura", "bal-harbour", "boca-raton", "brickell", "coconut-creek", "coconut-grove", "cooper-city", "coral-gables", "coral-springs", "dania-beach", "davie", "deerfield-beach", "doral", "fort-lauderdale", "hallandale-beach", "hialeah", "hollywood", "homestead", "kendall", "key-biscayne", "lighthouse-point", "margate", "miami-lakes", "miami-springs", "midtown", "miramar", "north-miami", "oakland-park", "palmetto-bay", "parkland", "pembroke-pines", "pinecrest", "plantation", "pompano-beach", "south-beach", "sunny-isles-beach", "sunrise", "surfside", "west-palm-beach", "weston"]
   },
 
   "state_thresholds": {

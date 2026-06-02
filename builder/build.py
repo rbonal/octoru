@@ -68,13 +68,41 @@ TREATMENT_GUIDANCE = {
 # ----------------------------------------------------------------------------------
 # Geographic hierarchy: state > county > city (OPERATOR-OWNED in config seed_scope.geo)
 # ----------------------------------------------------------------------------------
+# City -> county map (so a flat seed_scope.neighborhoods list still gets correct counties
+# when the operator hasn't supplied a full seed_scope.geo tree). Florida only for now.
+CITY_COUNTY = {
+    # Miami-Dade
+    "aventura": "miami-dade", "bal-harbour": "miami-dade", "brickell": "miami-dade",
+    "coconut-grove": "miami-dade", "coral-gables": "miami-dade", "doral": "miami-dade",
+    "hialeah": "miami-dade", "homestead": "miami-dade", "kendall": "miami-dade",
+    "key-biscayne": "miami-dade", "miami-lakes": "miami-dade", "miami-springs": "miami-dade",
+    "midtown": "miami-dade", "north-miami": "miami-dade", "palmetto-bay": "miami-dade",
+    "pinecrest": "miami-dade", "south-beach": "miami-dade", "sunny-isles-beach": "miami-dade",
+    "surfside": "miami-dade",
+    # Broward
+    "coconut-creek": "broward", "cooper-city": "broward", "coral-springs": "broward",
+    "dania-beach": "broward", "davie": "broward", "deerfield-beach": "broward",
+    "fort-lauderdale": "broward", "hallandale-beach": "broward", "hollywood": "broward",
+    "lighthouse-point": "broward", "margate": "broward", "miramar": "broward",
+    "oakland-park": "broward", "parkland": "broward", "pembroke-pines": "broward",
+    "plantation": "broward", "pompano-beach": "broward", "sunrise": "broward", "weston": "broward",
+    # Palm Beach
+    "boca-raton": "palm-beach", "west-palm-beach": "palm-beach",
+}
+COUNTY_NAMES = {"miami-dade": "Miami-Dade", "broward": "Broward", "palm-beach": "Palm Beach"}
+
+
 def _legacy_geo():
-    """Back-compat: no seed_scope.geo -> treat the flat 'neighborhoods' list as active
-    cities in Miami-Dade, Florida, so the existing build keeps working unchanged."""
-    cities = {c: {"name": NEIGHBORHOOD_NAMES.get(c, c.replace("-", " ").title()), "status": "active"}
-              for c in CONFIG["seed_scope"].get("neighborhoods", [])}
-    return {"fl": {"name": "Florida", "abbr": "FL", "status": "active",
-                   "counties": {"miami-dade": {"name": "Miami-Dade", "status": "active", "cities": cities}}}}
+    """No seed_scope.geo -> derive a CORRECT state/county/city tree from the flat
+    'neighborhoods' list using CITY_COUNTY (unknown cities default to Miami-Dade)."""
+    geo = {"fl": {"name": "Florida", "abbr": "FL", "status": "active", "counties": {}}}
+    for c in CONFIG["seed_scope"].get("neighborhoods", []):
+        county = CITY_COUNTY.get(c, "miami-dade")
+        cc = geo["fl"]["counties"].setdefault(
+            county, {"name": COUNTY_NAMES.get(county, county.replace("-", " ").title()),
+                     "status": "active", "cities": {}})
+        cc["cities"][c] = {"name": NEIGHBORHOOD_NAMES.get(c, c.replace("-", " ").title()), "status": "active"}
+    return geo
 
 
 GEO = CONFIG["seed_scope"].get("geo") or _legacy_geo()

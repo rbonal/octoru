@@ -2,62 +2,20 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
-      "id": "operator-add-geo-tree-to-config-to-expand",
+      "id": "thin-pages-completeness-decision",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
       "blocking": false,
-      "severity": "action-required-to-expand",
-      "summary": "National geo architecture is BUILT (state > county > city > treatment; /{state}/{county}/{city}/{treatment}/ URLs + state/county/city hubs + sitemap.xml). It reads an OPERATOR-OWNED geo tree at config/thresholds.json -> seed_scope.geo. With no geo tree, it back-compat-builds the current flat 'neighborhoods' as active cities in Miami-Dade, FL. To activate new counties/cities, the operator adds them to seed_scope.geo with status active|planned (builder builds only 'active'; never edits config).",
-      "config_shape_to_add": {
-        "seed_scope": {
-          "geo": {
-            "fl": { "name": "Florida", "abbr": "FL", "status": "active",
-              "counties": {
-                "miami-dade": { "name": "Miami-Dade", "status": "active",
-                  "cities": { "brickell": {"name":"Brickell","status":"active"}, "aventura": {"name":"Aventura","status":"planned"} } },
-                "broward": { "name": "Broward", "status": "planned", "cities": { "fort-lauderdale": {"name":"Fort Lauderdale","status":"planned"} } },
-                "palm-beach": { "name": "Palm Beach", "status": "planned", "cities": { "boca-raton": {"name":"Boca Raton","status":"planned"} } }
-              } }
-          }
-        }
-      },
-      "note": "Each new active city still needs a prospector + ratings pass (per the density/pricing playbook) before it has real listings. Plan: builder/PLAN_geo_expansion_south_florida.md. State stays out of URLs only if single-state; national keeps /{state}/ as designed.",
-      "data_fields": "Prospector clinic records may carry optional 'county' and 'state' slugs for disambiguation; 'neighborhood' is the city slug. addressRegion (state) belongs in schema."
-    },
-    {
-      "id": "operator-add-completeness-thresholds-to-config",
-      "opened_at": "2026-06-01",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "action-required-to-enforce",
-      "summary": "Information-gap handling is implemented, but the completeness thresholds are OPERATOR-OWNED and live in config/thresholds.json. The builder reads them and must never invent them — and cannot edit config/ (hard-gated). Until the operator adds the block, the new gate runs in DRY-RUN (reports only); it enforces nothing.",
-      "action": "Add this block to config/thresholds.json to switch the gate from dry-run to enforced:",
-      "config_block_to_add": {
+      "severity": "operator-decision",
+      "summary": "117 of 148 built pages are THIN (1-2 clinics) — many treatment x city combos in smaller municipalities have only one provider. They pass the COMPLIANCE quality gate (real, rated, unique, schema, consent), so per 'build what passes' they are built. But thin pages rank poorly.",
+      "decision": "To hold thin pages, add a 'completeness' block to config/thresholds.json (operator-owned; builder cannot edit config). With min_page_requirements.min_listings = 3, the builder would HOLD the 117 thin pages and ship only the ~31 robust ones. Builder runs DRY-RUN until that block exists.",
+      "recommended_config_block": {
         "completeness": {
           "min_listing_fields": ["name", "address", "phone", "rating", "treatments"],
           "min_page_requirements": { "min_listings": 3, "require_cost_block": true, "require_guidance": true }
         }
       },
-      "dry_run_findings_under_recommended_thresholds": {
-        "listings_that_would_be_excluded": 9,
-        "excluded_clinics_missing_phone": ["Brickell Cosmetic Center", "Sisu Clinic (Brickell)", "Miami Beach Laser & Aesthetics"],
-        "pages_that_would_be_held": [
-          "lip-filler-coconut-grove (2 listings < 3)",
-          "coolsculpting-coral-gables (1 < 3)",
-          "coolsculpting-south-beach (1 < 3)",
-          "laser-hair-removal-coconut-grove (2 < 3)"
-        ],
-        "empty_state_fields": "19/21 clinics have no email (Call-only), 3 have no phone, 66/70 listing-instances have no published price (-> 'request a quote')."
-      },
-      "note": "Once the block is added, re-run the build to ENFORCE (those listings excluded, those 4 pages held). Adjust min_listings etc. to taste — it's your call."
-    },
-    {
-      "id": "review-treatment-guidance-copy",
-      "opened_at": "2026-06-01",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "review-before-deploy",
-      "summary": "Each page now carries a short factual treatment-guidance blurb (builder/build.py -> TREATMENT_GUIDANCE), labeled 'general guidance only — not medical advice'. In a medical vertical this copy should get clinician/legal review before deploy."
+      "alternative": "Deepen the thin cities to >=3 real rated clinics each (more prospecting + a ratings pass) so they pass on their own merits rather than being held."
     },
     {
       "id": "ready-for-human-deploy-review",
@@ -65,12 +23,12 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "info",
-      "summary": "Seed is built and committed to auto/build (18 rated pages + homepage + claim intake). Deploy is the separate, human-gated step (Vercel/Cloudflare) — the builder does not deploy. Claim-listing form is intake-only (routes to CRM on a deploy-time integration); the builder sends no outreach."
+      "summary": "Fully-rated national directory (148 pages, 40 cities, 3 counties) is built and committed to auto/build. Deploy is the separate, human-gated step (Vercel/Cloudflare) — the builder does not deploy. After deploy: connect Search Console, submit /sitemap.xml, request indexing."
     }
   ],
   "_resolved": [
-    "prospector-data-source-unspecified — RESOLVED.",
-    "places-mcp-not-visible-to-builder — RESOLVED (Cowork produced clinics.json).",
-    "request-to-remove-rating-requirement-REFUSED — MOOT (shipped with real permitted-API ratings)."
+    "prospector-data-source / fetch_pages wiring — RESOLVED.",
+    "places-mcp-not-visible-to-builder — RESOLVED: ratings supplied via permitted Places API; clinics.json fully rated (97/97, rating_source=google_places).",
+    "operator-add-geo-tree — partial: operator expanded seed_scope.neighborhoods to 40; builder derives correct counties via CITY_COUNTY map (Miami-Dade/Broward/Palm Beach). A full seed_scope.geo tree with status flags is still the cleaner long-term control."
   ]
 }
