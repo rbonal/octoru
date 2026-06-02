@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowMap — Miami med spa treatment directory</title>
+<meta name="description" content="Find and compare Miami med spas by treatment and neighborhood — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified ratings and starting prices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div>
+      <div class="brandmark">GlowMap</div>
+      <div class="label">Miami med spa directory</div>
+    </div>
+    <span class="label blue">Miami</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="label blue">Miami</span>
+    <h1>Compare Miami med spas by treatment &amp; neighborhood</h1>
+    <p class="lead">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, and
+      microneedling — organized by neighborhood, with ratings and starting prices so you can compare
+      before you book.</p>
+  </section>
+
+  {%- for n in neighborhoods %}
+  <section class="clinics">
+    <h2>{{ n.name }}</h2>
+    {%- for p in n.pages %}
+    <article class="clinic">
+      <div>
+        <div class="name"><a href="/{{ p.slug }}.html">{{ p.treatment_name }} in {{ n.name }}</a></div>
+        <div class="meta">{{ p.n_clinics }} provider{{ "s" if p.n_clinics != 1 }} listed</div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="/{{ p.slug }}.html">View providers</a>
+      </div>
+    </article>
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Last updated {{ last_updated }}</div>
+  </div>
+</footer>
+
+</body>
+</html>

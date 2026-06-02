@@ -216,6 +216,28 @@ def render(page):
     return out
 
 
+def render_index(built_pages):
+    """Homepage linking the listing pages that actually built, grouped by
+    neighborhood (in seed order). Navigational only — it lists pages that already
+    passed the clinic quality gate, so it carries no rating data of its own."""
+    if not built_pages:
+        return None
+    groups = []
+    for n_slug in CONFIG["seed_scope"]["neighborhoods"]:
+        pages = [p for p in built_pages if p["neighborhood_slug"] == n_slug]
+        if pages:
+            groups.append({"name": pages[0]["neighborhood_name"], "pages": pages})
+    html = env.get_template("index.html.j2").render(
+        neighborhoods=groups,
+        page_count=len(built_pages),
+        last_updated=datetime.date.today().isoformat(),
+    )
+    out = GENERATED / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html)
+    return out
+
+
 def main():
     state = load_state()
     if state in ("paused", "halted", "halted_technical"):
@@ -225,17 +247,29 @@ def main():
 
     throttle = (state == "throttled")
     built, skipped = 0, 0
+    built_pages = []
     for page in fetch_pages():
         if throttle and built >= 10:
             break
         if quality_gate(page):
             out = render(page)
             built += 1
+            built_pages.append({
+                "slug": f"{page['treatment']['slug']}-{page['neighborhood']['slug']}",
+                "treatment_name": page["treatment"]["name"],
+                "neighborhood_slug": page["neighborhood"]["slug"],
+                "neighborhood_name": page["neighborhood"]["name"],
+                "n_clinics": len(page.get("clinics", [])),
+            })
             print(f"[builder] built {out.name}")
         else:
             skipped += 1
             print(f"[builder] skipped (failed quality gate): "
                   f"{page.get('treatment', {}).get('slug')}-{page.get('neighborhood', {}).get('slug')}")
+
+    idx = render_index(built_pages)
+    if idx:
+        print(f"[builder] built {idx.name} (homepage linking {built} pages)")
 
     # TODO (auto-approved): git add + commit to branch 'auto/build'
     # DO NOT merge to main. DO NOT deploy. (hard-gated in CLAUDE.md)
