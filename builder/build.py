@@ -791,6 +791,23 @@ def render_claim():
     return _write("claim.html", html)
 
 
+def render_advertise():
+    """Placement / advertise page. Intake only — no card data on site.
+    Checkout is Bonalta Payments hosted (gated). Routes interest to Campaigns CRM."""
+    policy = {}
+    try:
+        policy = json.loads((ROOT / "data" / "monetization_policy.json").read_text())
+    except Exception:
+        pass
+    slot_cap = (policy.get("placement_subscription") or {}).get("slot_cap_per_page", 3)
+    crm_pipeline = (policy.get("campaigns_upsell") or {}).get("crm_pipeline", "crm:glowmap-campaigns-prospect")
+    html = env.get_template("advertise.html.j2").render(
+        site_url=SITE_URL, slot_cap=slot_cap,
+        crm_pipeline=crm_pipeline,
+        last_updated=datetime.date.today().isoformat())
+    return _write("advertise.html", html)
+
+
 def render_sitemap(summaries):
     urls = ["/", "/claim.html"]
     seen_hubs = set()
@@ -840,8 +857,9 @@ def main():
     render_hubs(summaries)
     render_index(summaries)
     render_claim()
+    render_advertise()
     render_sitemap(summaries)
-    print(f"[builder] built hubs + homepage + claim + sitemap.xml")
+    print(f"[builder] built hubs + homepage + claim + advertise + sitemap.xml")
 
     report["empty_fields"] = compute_empty_fields(passed)
     report["mode"] = "enforced" if enforce else "dry-run (config 'completeness' absent)"

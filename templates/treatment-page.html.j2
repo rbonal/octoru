@@ -110,7 +110,12 @@
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
-        <div class="claim-line"><a href="/claim.html?clinic={{ c.slug | urlencode }}&amp;name={{ c.name | urlencode }}">Own this clinic? Claim or correct this listing →</a></div>
+        <div class="claim-line">
+          <a href="/claim.html?clinic={{ c.slug | urlencode }}&amp;name={{ c.name | urlencode }}">Own this clinic? Claim or correct this listing</a>
+          {%- if not (c.featured_tier and c.featured_tier > 0) %}
+          · <a href="/advertise.html?clinic={{ c.slug | urlencode }}&amp;city={{ neighborhood.slug | urlencode }}" class="featured-cta">Get featured →</a>
+          {%- endif %}
+        </div>
       </div>
       <div class="actions">
         {# Contact is FREE — routes direct to clinic. Never metered or billed per inquiry.
@@ -199,7 +204,7 @@
 <footer class="foot">
   <div class="wrap">
     GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
-    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <a href="/advertise.html">Advertise</a> · <a href="/claim.html">Claim listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
     <div class="label" style="margin-top:10px;">Last updated {{ last_updated }}</div>
   </div>
 </footer>

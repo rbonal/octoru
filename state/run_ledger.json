@@ -2,13 +2,13 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 17,
+    "runs": 18,
     "pages_built": 121
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "4/5 new clinics rated by Cowork. NPB: The Garden + North Palm Beach Aesthetics + Body Details -> all 4 treatment pages now ship. RPB: Soign\u00e9 + Palm Beach Anti-Aging + Flawless + PB Laser -> all 4 pages ship including LHR. 0 held pages for either city. 121 listing pages / 35 cities / 3 counties.",
+    "reason": "Added advertise.html + Get-featured CTAs on every organic clinic card + Advertise link in all navs/footers. Intake only (no card data); checkout routes to Bonalta Payments hosted; CRM flag campaigns_prospect. Slot cap (3) and flat-fee model clearly described.",
     "listing_pages_built": 121,
     "by_county": {
       "miami-dade": 47,
@@ -20,6 +20,7 @@
     "placeholder_prices_shipped": 0,
     "sitemap_urls": 267,
     "npb_held": 0,
-    "rpb_held": 0
+    "rpb_held": 0,
+    "new": "advertise.html placement page"
   }
 }

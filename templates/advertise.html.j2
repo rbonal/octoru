@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advertise on GlowMap — Featured placement for med spas</title>
+<meta name="description" content="Get your med spa listed as a Featured provider on GlowMap. Flat monthly placement — no per-lead fees, no contracts, no card data on site.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="home">
+
+<header class="bar">
+  <div class="wrap">
+    <a href="/"><span class="brand">GlowMap<span class="sub label">Med spa directory</span></span></a>
+    <nav class="bar-nav">
+      <a href="/">Directory</a>
+      <a href="/claim.html">Claim listing</a>
+      <a href="/fl/" class="region label blue">South Florida</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="max-width:860px">
+
+  <section class="hero" style="padding:64px 0 40px;border-bottom:1px solid var(--line)">
+    <div class="eyebrow label blue" style="margin-bottom:14px">For providers</div>
+    <h1 class="head" style="font-size:clamp(32px,4vw,52px);max-width:20ch">Get in front of patients searching for your treatments</h1>
+    <p class="lead" style="margin-top:18px;max-width:52ch">GlowMap is a verified treatment directory for South Florida med spas. A <strong>Featured placement</strong> pins your listing to the top of every treatment page in your city — seen by patients already comparing providers.</p>
+  </section>
+
+  <!-- What you get -->
+  <section style="padding:48px 0 40px;border-bottom:1px solid var(--line)">
+    <div class="label blue" style="margin-bottom:20px">What's included</div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="adv-num mono">01</div>
+        <h3>Pinned to the top</h3>
+        <p>Your listing appears above organic results on every treatment page in your city — Botox, lip filler, microneedling, and more.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num mono">02</div>
+        <h3>Featured label</h3>
+        <p>A blue "Featured" label on your card makes it immediately clear to patients that you're an established, active provider.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num mono">03</div>
+        <h3>Flat fee — no per-lead charges</h3>
+        <p>One flat monthly subscription. We never charge per patient or per inquiry. The "Book online" and contact buttons are always free for patients.</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-num mono">04</div>
+        <h3>Verified listing</h3>
+        <p>Your address, phone, booking link, treatments, and Google rating are shown on the page — already verified by our team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section style="padding:40px 0;border-bottom:1px solid var(--line)">
+    <div class="label blue" style="margin-bottom:20px">How placement works</div>
+    <ol class="adv-steps">
+      <li><strong>Submit your interest below.</strong> Tell us your clinic name, city, and which treatments you offer.</li>
+      <li><strong>We confirm availability.</strong> Each city-treatment page has a cap of {{ slot_cap }} featured spots so pages never go all-paid. We'll confirm whether a slot is open.</li>
+      <li><strong>Subscribe via Bonalta Payments.</strong> Checkout is hosted externally — no card data is entered on GlowMap pages.</li>
+      <li><strong>Your listing is promoted.</strong> We update your listing to Featured on the relevant pages, usually within one business day.</li>
+    </ol>
+  </section>
+
+  <!-- Transparency -->
+  <section style="padding:40px 0;border-bottom:1px solid var(--line)">
+    <div class="label blue" style="margin-bottom:16px">Our commitment to patients</div>
+    <p style="color:var(--ink-3);font-size:15px;line-height:1.7;max-width:60ch">
+      Featured placements are clearly labeled on every page. Patient inquiries via the contact form are always forwarded free of charge — we never sell or meter individual leads.
+      GlowMap is an independent directory; we do not take commissions on bookings and are not affiliated with any clinic.
+    </p>
+  </section>
+
+  <!-- Interest form (intake only — routes to Campaigns CRM) -->
+  <section class="lead-form" id="get-featured" style="margin-top:40px">
+    <h2>Express placement interest</h2>
+    <p class="sub">Tell us about your clinic and we'll get back to you with availability and pricing — no commitment required.</p>
+
+    <form id="adv-form" novalidate data-crm-flag="campaigns_prospect" data-route="{{ crm_pipeline }}">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px">
+        <div class="field">
+          <label for="af-clinic">Clinic name</label>
+          <input id="af-clinic" name="clinic" type="text" autocomplete="organization" placeholder="e.g. Skin Healthy Miami">
+        </div>
+        <div class="field">
+          <label for="af-city">City</label>
+          <input id="af-city" name="city" type="text" placeholder="e.g. Brickell">
+        </div>
+      </div>
+      <div class="field">
+        <label for="af-treatments">Treatments you offer</label>
+        <input id="af-treatments" name="treatments" type="text" placeholder="e.g. Botox, lip filler, microneedling">
+      </div>
+      <div class="field">
+        <label for="af-name">Your name</label>
+        <input id="af-name" name="contact_name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="af-email">Work email</label>
+        <input id="af-email" name="email" type="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="af-phone">Phone</label>
+        <input id="af-phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="consent">
+        <input id="af-consent" name="consent" type="checkbox">
+        <label for="af-consent">I'm authorised to represent this clinic and consent to being contacted about placement availability. I've read the <a href="/privacy">privacy policy</a>.</label>
+      </div>
+      <button class="btn primary submit" type="submit">Request availability</button>
+      <p id="adv-status" class="sub" style="display:none;margin-top:14px"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div class="disc">
+        <span class="brand" style="font-size:16px">GlowMap</span><br>
+        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+        <div class="label" style="margin-top:12px">Updated {{ last_updated }}</div>
+      </div>
+      <div class="links">
+        <a href="/">Directory</a>
+        <a href="/claim.html">Claim a listing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/about">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var form = document.getElementById('adv-form');
+  var status = document.getElementById('adv-status');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      // Intake only — the builder does not transmit data. A deploy-time integration
+      // POSTs this to the CRM pipeline ({{ crm_pipeline }}) with campaigns_prospect=true.
+      // Checkout is Bonalta Payments hosted; no card data is collected here.
+      status.style.display = 'block';
+      status.textContent = 'Thanks — we'll check availability for your city and treatments and get back to you within one business day.';
+      form.querySelector('.submit').disabled = true;
+    });
+  }
+</script>
+
+</body>
+</html>

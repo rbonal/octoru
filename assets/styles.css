@@ -390,3 +390,29 @@ body.home { font-size: 16px; }
   .home .search button { width: 100%; padding: 14px; }
   .home nav.bar-nav a:not(.region) { display: none; }
 }
+
+/* ============================================================
+   ADVERTISE PAGE (.home scoping inherits; these are page-specific)
+   ============================================================ */
+.adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.adv-card { background: var(--paper-pure); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 24px; }
+.adv-card h3 { font-size: 16px; font-weight: 600; letter-spacing: -.015em; margin: 10px 0 8px; }
+.adv-card p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.adv-num { font-size: 11px; color: var(--blue); letter-spacing: .06em; }
+.adv-steps { list-style: none; display: flex; flex-direction: column; gap: 16px; counter-reset: step; }
+.adv-steps li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; font-size: 15px;
+  color: var(--ink-2); line-height: 1.6; }
+.adv-steps li::before { content: counter(step); counter-increment: step;
+  font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; color: var(--blue);
+  background: var(--blue-tint); border-radius: 50%; width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+/* "Get featured" CTA on organic clinic cards */
+.featured-cta { color: var(--blue); font-weight: 500; }
+.featured-cta:hover { color: var(--blue-deep); }
+
+@media (max-width: 640px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .adv-steps li { grid-template-columns: 24px 1fr; }
+}
