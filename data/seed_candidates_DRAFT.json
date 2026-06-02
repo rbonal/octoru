@@ -1738,6 +1738,151 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "deerfield-beach",
+      "county": "broward",
+      "state": "fl",
+      "name": "Forever Essential Med Spa",
+      "website": "https://www.yelp.com/biz/forever-essential-med-spa-deerfield-beach",
+      "address": "829 SE 9th St, Deerfield Beach, FL 33441",
+      "phone": "+17866629849",
+      "email": null,
+      "booking_url": "https://www.yelp.com/biz/forever-essential-med-spa-deerfield-beach",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "lighthouse-point",
+      "county": "broward",
+      "state": "fl",
+      "name": "Medical Advanced Skin Care",
+      "website": "https://medicaladvancedskincare.com/",
+      "address": "4750 N Federal Hwy, Suite 23, Lighthouse Point, FL 33064",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://medicaladvancedskincare.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "lighthouse-point",
+      "county": "broward",
+      "state": "fl",
+      "name": "Elite Skin Aesthetics",
+      "website": "https://www.eliteskinaestheticsfl.com/",
+      "address": "4750 N Federal Hwy, Ste 10, Lighthouse Point, FL 33064",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.eliteskinaestheticsfl.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "margate",
+      "county": "broward",
+      "state": "fl",
+      "name": "Lothus Aesthetic Center",
+      "website": "https://www.portraitcare.com/directory/united-states/florida/margate/injectables/",
+      "address": "100 N State Rd 7, Suite 202, Margate, FL 33063",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.portraitcare.com/directory/united-states/florida/margate/injectables/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "homestead",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Beauty First Med-Spa",
+      "website": "https://beautyfirstmedspaservices.com/",
+      "address": "1239 NE 8th St, Homestead, FL 33033",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://beautyfirstmedspaservices.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "palmetto-bay",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Palmetto Bay Medspa",
+      "website": "https://www.palmettobaymedspa.com/",
+      "address": "9757 E Indigo St, Palmetto Bay, FL 33157",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.palmettobaymedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "palmetto-bay",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Beauty By Michelle Med Spa",
+      "website": "https://beautybymichellemedspa.com/",
+      "address": "15715 S Dixie Hwy, Suite 409, Palmetto Bay, FL 33157",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://beautybymichellemedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
