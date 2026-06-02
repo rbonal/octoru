@@ -68,7 +68,7 @@
         {% if c.address %}<div class="meta">{{ c.address }}</div>{% endif %}
         <div class="stats">
           {% if c.rating %}<span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>{% endif %}
-          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}</span></span>{% endif %}
+          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}{% if c.price_unit %} {{ c.price_unit }}{% endif %}</span></span>{% endif %}
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="meta">Treatments: {{ c.treatments_offered | join(" · ") }}</div>{% endif %}

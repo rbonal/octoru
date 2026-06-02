@@ -78,6 +78,15 @@ NEIGHBORHOOD_NAMES = {
     "coconut-grove": "Coconut Grove",
 }
 
+# Pricing unit per treatment — so "From $10" reads honestly as "$10 per unit", etc.
+TREATMENT_UNITS = {
+    "botox": "per unit",
+    "lip-filler": "per syringe",
+    "coolsculpting": "per session",
+    "laser-hair-removal": "per session",
+    "microneedling": "per session",
+}
+
 
 def load_clinics():
     """Read the flat clinic list the prospector writes into data/prospector/*.json.
@@ -153,6 +162,7 @@ def _clinic_for_page(clinic, treatment_slug):
         "review_count": clinic.get("review_count"),
         "rating_source": clinic.get("rating_source"),
         "starting_price_usd": _starting_price(clinic, treatment_slug),
+        "price_unit": TREATMENT_UNITS.get(treatment_slug) if _starting_price(clinic, treatment_slug) is not None else None,
         "languages": clinic.get("languages", []),
         "featured_tier": clinic.get("featured_tier", 0),
         "lead_routing_target": clinic.get("lead_routing_target"),
@@ -177,6 +187,28 @@ def _assemble_page(treatment_slug, neighborhood_slug, clinics):
     )
     n = len(clinics)
     provider_word = "provider" if n == 1 else "providers"
+
+    # real, per-page price context (unique content, not boilerplate)
+    prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
+    unit = TREATMENT_UNITS.get(treatment_slug, "")
+    price_sentence = ""
+    if prices:
+        rng = f"${prices[0]}" if prices[0] == prices[-1] else f"${prices[0]}–${prices[-1]}"
+        price_sentence = f" Among listed providers, {t_name.lower()} starts around {rng} {unit}.".rstrip() + "."
+        price_sentence = price_sentence.replace("..", ".")
+
+    langs = sorted({l for c in clinics for l in (c.get("languages") or [])})
+    lang_sentence = f" Several list staff who speak {' and '.join(langs)}." if langs else ""
+
+    intro = (
+        f"{n_name} has {n} {t_name.lower()} {provider_word} in our directory."
+        f"{price_sentence}{lang_sentence} Each listing below shows the clinic's address, contact "
+        f"details, treatments offered, and verified Google rating so you can compare before booking."
+    )
+    meta = (
+        f"Compare {n} {t_name.lower()} {provider_word} in {n_name}, Miami — addresses, phones, "
+        f"prices, verified Google ratings, and languages. Request a personalized quote."
+    )
     return {
         "treatment": {"slug": treatment_slug, "name": t_name},
         "neighborhood": {"slug": neighborhood_slug, "name": n_name},
@@ -184,15 +216,8 @@ def _assemble_page(treatment_slug, neighborhood_slug, clinics):
         # The consent form + schema.org markup are built into the template, so these
         # structural flags hold for every page this builder emits.
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
-        "meta_description": (
-            f"Compare {n} {t_name.lower()} {provider_word} in {n_name}, Miami — "
-            f"addresses, phone numbers, verified Google ratings, and languages spoken. Request a personalized quote."
-        ),
-        "intro": (
-            f"{n_name} has {n} {t_name.lower()} {provider_word} in our directory. "
-            f"Each listing below shows the clinic's address, contact details, treatments offered, "
-            f"and verified Google rating so you can compare before booking a consultation."
-        ),
+        "meta_description": meta,
+        "intro": intro,
         "clinics": [_clinic_for_page(c, treatment_slug) for c in clinics],
     }
 
