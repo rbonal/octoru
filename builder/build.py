@@ -18,6 +18,7 @@ CONFIG = json.loads((ROOT / "config" / "thresholds.json").read_text())
 STATE_PATH = ROOT / "state" / "build_state.json"
 LEDGER_PATH = ROOT / "state" / "run_ledger.json"
 GENERATED = ROOT / "generated"
+SITE_URL = "https://www.glowmapmiami.com"  # placeholder; the real domain is set at deploy
 
 env = Environment(
     loader=FileSystemLoader(str(ROOT / "templates")),
@@ -248,9 +249,42 @@ def fetch_pages():
     return pages
 
 
-def render(page):
-    page.setdefault("last_updated", datetime.date.today().isoformat())
-    html = env.get_template("treatment-page.html.j2").render(**page)
+def page_links(page, all_pages):
+    """Best-practice internal linking: breadcrumb trail + cross-links to related
+    canonical pages (same treatment in other neighborhoods; other treatments here).
+    Only links pages that actually exist in `all_pages` — no dead links."""
+    t, n = page["treatment"]["slug"], page["neighborhood"]["slug"]
+    t_name, n_name = page["treatment"]["name"], page["neighborhood"]["name"]
+    exists = {(p["treatment"]["slug"], p["neighborhood"]["slug"]) for p in all_pages}
+    n_names = {p["neighborhood"]["slug"]: p["neighborhood"]["name"] for p in all_pages}
+    t_names = {p["treatment"]["slug"]: p["treatment"]["name"] for p in all_pages}
+
+    same_treatment = [
+        {"name": n_names[nn], "slug": f"{t}-{nn}"}
+        for nn in CONFIG["seed_scope"]["neighborhoods"]
+        if nn != n and (t, nn) in exists
+    ]
+    other_treatments = [
+        {"name": t_names[tt], "slug": f"{tt}-{n}"}
+        for tt in CONFIG["seed_scope"]["treatments"]
+        if tt != t and (tt, n) in exists
+    ]
+    breadcrumb = [
+        {"name": "Home", "url": "/"},
+        {"name": n_name, "url": f"/#{n}"},
+        {"name": f"{t_name} in {n_name}", "url": f"/{t}-{n}.html"},
+    ]
+    return {"same_treatment": same_treatment, "other_treatments": other_treatments,
+            "breadcrumb": breadcrumb, "site_url": SITE_URL}
+
+
+def render(page, links=None):
+    ctx = dict(page)
+    if links:
+        ctx.update(links)
+    ctx.setdefault("last_updated", datetime.date.today().isoformat())
+    ctx.setdefault("site_url", SITE_URL)
+    html = env.get_template("treatment-page.html.j2").render(**ctx)
     slug = f"{page['treatment']['slug']}-{page['neighborhood']['slug']}"
     out = GENERATED / f"{slug}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -288,26 +322,31 @@ def main():
         stop(f"monthly token cap reached ({CONFIG['monthly_token_cap']}).")
 
     throttle = (state == "throttled")
-    built, skipped = 0, 0
-    built_pages = []
+    # pass 1: quality-gate every page (skip+log failures)
+    passed, skipped = [], 0
     for page in fetch_pages():
-        if throttle and built >= 10:
-            break
         if quality_gate(page):
-            out = render(page)
-            built += 1
-            built_pages.append({
-                "slug": f"{page['treatment']['slug']}-{page['neighborhood']['slug']}",
-                "treatment_name": page["treatment"]["name"],
-                "neighborhood_slug": page["neighborhood"]["slug"],
-                "neighborhood_name": page["neighborhood"]["name"],
-                "n_clinics": len(page.get("clinics", [])),
-            })
-            print(f"[builder] built {out.name}")
+            passed.append(page)
         else:
             skipped += 1
             print(f"[builder] skipped (failed quality gate): "
                   f"{page.get('treatment', {}).get('slug')}-{page.get('neighborhood', {}).get('slug')}")
+    if throttle:
+        passed = passed[:10]
+
+    # pass 2: render each, now that we know the full set (for cross-links)
+    built_pages = []
+    for page in passed:
+        out = render(page, page_links(page, passed))
+        built_pages.append({
+            "slug": f"{page['treatment']['slug']}-{page['neighborhood']['slug']}",
+            "treatment_name": page["treatment"]["name"],
+            "neighborhood_slug": page["neighborhood"]["slug"],
+            "neighborhood_name": page["neighborhood"]["name"],
+            "n_clinics": len(page.get("clinics", [])),
+        })
+        print(f"[builder] built {out.name}")
+    built = len(built_pages)
 
     idx = render_index(built_pages)
     if idx:

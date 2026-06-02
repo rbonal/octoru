@@ -31,11 +31,17 @@
       before you book.</p>
   </section>
 
+  <div class="dir-search">
+    <input id="dir-q" type="search" placeholder="Search a treatment or neighborhood — e.g. “botox brickell”"
+           aria-label="Filter the directory">
+  </div>
+
   {%- for n in neighborhoods %}
-  <section class="clinics">
+  <section class="clinics nbhd-group" id="{{ n.pages[0].neighborhood_slug if n.pages else '' }}"
+           data-search="{{ n.name | lower }}">
     <h2>{{ n.name }}</h2>
     {%- for p in n.pages %}
-    <article class="clinic">
+    <article class="clinic" data-search="{{ (p.treatment_name ~ ' ' ~ n.name) | lower }}">
       <div>
         <div class="name"><a href="/{{ p.slug }}.html">{{ p.treatment_name }} in {{ n.name }}</a></div>
         <div class="meta">{{ p.n_clinics }} provider{{ "s" if p.n_clinics != 1 }} listed</div>
@@ -47,6 +53,34 @@
     {%- endfor %}
   </section>
   {%- endfor %}
+
+  <p id="dir-empty" class="meta" style="display:none;padding:24px 0;">No pages match — try a treatment like “microneedling” or a neighborhood like “Coral Gables”.</p>
+
+  <script>
+    (function () {
+      var q = document.getElementById('dir-q');
+      var groups = Array.prototype.slice.call(document.querySelectorAll('.nbhd-group'));
+      var empty = document.getElementById('dir-empty');
+      if (!q) return;
+      q.addEventListener('input', function () {
+        var term = q.value.trim().toLowerCase();
+        var anyVisible = false;
+        groups.forEach(function (g) {
+          var cards = Array.prototype.slice.call(g.querySelectorAll('.clinic'));
+          var groupHit = false;
+          cards.forEach(function (c) {
+            var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1
+                      || g.getAttribute('data-search').indexOf(term) !== -1;
+            c.style.display = hit ? '' : 'none';
+            if (hit) groupHit = true;
+          });
+          g.classList.toggle('is-hidden', !groupHit);
+          if (groupHit) anyVisible = true;
+        });
+        empty.style.display = anyVisible ? 'none' : 'block';
+      });
+    })();
+  </script>
 </main>
 
 <footer class="foot">

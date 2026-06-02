@@ -37,20 +37,44 @@
   ]
 }
 </script>
+
+{%- if breadcrumb %}
+<!-- BreadcrumbList: hierarchy signal for search + 'near me' / city queries -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {%- for b in breadcrumb %}
+    { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ b.name | tojson }}, "item": "{{ site_url }}{{ b.url }}" }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
 </head>
 <body>
 
 <header class="topbar">
   <div class="wrap">
-    <div>
+    <a href="/" style="text-decoration:none">
       <div class="brandmark">GlowMap</div>
       <div class="label">Miami med spa directory</div>
-    </div>
+    </a>
     <span class="label blue">{{ neighborhood.name }}</span>
   </div>
 </header>
 
 <main class="wrap">
+  {%- if breadcrumb %}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    {%- for b in breadcrumb %}
+    {%- if not loop.last %}<a href="{{ b.url }}">{{ b.name }}</a><span class="sep">/</span>
+    {%- else %}<span aria-current="page">{{ b.name }}</span>{% endif %}
+    {%- endfor %}
+  </nav>
+  {%- endif %}
+
   <section class="hero">
     <span class="label blue">{{ treatment.name }}</span>
     <h1>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}</h1>
@@ -82,6 +106,33 @@
     </article>
     {%- endfor %}
   </section>
+
+  <!-- internal cross-links to related canonical pages (best-practice: keep every
+       page within ~2 clicks, route link equity between related intent pages) -->
+  {%- if same_treatment or other_treatments %}
+  <section class="crosslinks">
+    {%- if same_treatment %}
+    <div class="xl-group">
+      <span class="label">{{ treatment.name }} in other neighborhoods</span>
+      <ul>
+        {%- for p in same_treatment %}
+        <li><a href="/{{ p.slug }}.html">{{ treatment.name }} in {{ p.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+    {%- if other_treatments %}
+    <div class="xl-group">
+      <span class="label">Other treatments in {{ neighborhood.name }}</span>
+      <ul>
+        {%- for p in other_treatments %}
+        <li><a href="/{{ p.slug }}.html">{{ p.name }} in {{ neighborhood.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+  </section>
+  {%- endif %}
 
   <!-- lead capture: the consent line is REQUIRED by the quality gate -->
   <section class="lead-form" id="quote">
