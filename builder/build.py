@@ -599,7 +599,8 @@ def render_index(summaries):
         cities = [{"name": v["name"], "url": v["url"], "n_treatments": len(v["treats"]),
                    "data_treatments": " ".join(sorted(v["treats"]))}
                   for _, v in sorted(c["cities"].items(), key=lambda kv: kv[1]["name"])]
-        groups.append({"name": f'{c["name"]}, {c["state_name"]}', "n_cities": len(cities), "cities": cities})
+        groups.append({"slug": key[1], "short_name": c["name"],
+                       "name": f'{c["name"]}, {c["state_name"]}', "n_cities": len(cities), "cities": cities})
 
     stats = {
         "listings": sum(s["n_clinics"] for s in summaries),

@@ -54,6 +54,22 @@
   h1.head .accent{color:var(--blue)}
   .lead{margin-top:26px;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.015em;color:var(--ink-3);max-width:54ch;line-height:1.5}
 
+  /* two-column hero — content left, panel right */
+  .hero-grid{display:grid;grid-template-columns:1.45fr .9fr;gap:56px;align-items:start}
+  .hero-main{min-width:0}
+  .hero-side{background:var(--paper-pure);border:1px solid var(--line);border-radius:10px;padding:26px 24px;box-shadow:0 18px 44px -30px rgba(10,10,20,.28)}
+  .side-stats{display:flex;flex-direction:column;gap:15px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .side-stats .ss{display:flex;align-items:baseline;gap:11px}
+  .side-stats .ss .n{font-family:'Geist Mono',monospace;font-size:26px;font-weight:500;color:var(--ink);letter-spacing:-.01em;min-width:52px}
+  .side-stats .ss .t{font-size:14px;color:var(--ink-3)}
+  .side-stats .ss.verified{color:var(--green);font-size:14px;font-weight:500;gap:8px}
+  .side-jump{padding-top:20px}
+  .side-jump a{display:flex;align-items:center;justify-content:space-between;padding:11px 0;font-size:15px;font-weight:500;border-bottom:1px solid var(--line);transition:color .15s}
+  .side-jump a:last-child{border-bottom:0}
+  .side-jump a:hover{color:var(--blue)}
+  .side-jump a .ar{color:var(--blue);transition:transform .15s}
+  .side-jump a:hover .ar{transform:translateX(3px)}
+
   /* search */
   .search{margin-top:40px;max-width:660px;display:flex;gap:10px;background:var(--paper-pure);border:1px solid var(--line-strong);border-radius:8px;padding:8px 8px 8px 18px;box-shadow:0 1px 2px rgba(10,10,20,.04);transition:border-color .15s,box-shadow .15s}
   .search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
@@ -137,6 +153,7 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
     .treat-grid{grid-template-columns:repeat(2,1fr)}
     .city-grid{grid-template-columns:repeat(2,1fr)}
     .trust .wrap{grid-template-columns:1fr;gap:28px}
@@ -146,8 +163,11 @@
     .wrap{padding:0 20px}
     .treat-grid{grid-template-columns:1fr}
     .city-grid{grid-template-columns:1fr}
-    .search{flex-direction:column;padding:14px}
-    .search button{width:100%}
+    .search{flex-direction:column;padding:0;border:0;background:transparent;box-shadow:none;gap:10px}
+    .search:focus-within{box-shadow:none}
+    .search input{width:100%;border:1px solid var(--line-strong);background:var(--paper-pure);border-radius:8px;padding:14px 16px}
+    .search input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
+    .search button{width:100%;padding:14px}
     nav.bar-nav a:not(.region){display:none}
   }
 </style>
@@ -169,6 +189,8 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="wrap">
+   <div class="hero-grid">
+    <div class="hero-main">
     <div class="eyebrow label blue reveal d1">South Florida</div>
     <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
     <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
@@ -201,13 +223,23 @@
       <span class="pill">Laser hair removal</span>
       <span class="pill">Microneedling</span>
     </div>
+    </div><!-- /hero-main -->
 
-    <div class="stats reveal d4">
-      <span class="stat"><span class="n">312</span><span class="t">provider listings</span></span>
-      <span class="stat"><span class="n">40</span><span class="t">cities</span></span>
-      <span class="stat"><span class="n">3</span><span class="t">counties</span></span>
-      <span class="stat verified">✓ verified contact details</span>
-    </div>
+    <aside class="hero-side reveal d4">
+      <div class="side-stats">
+        <div class="ss"><span class="n">312</span><span class="t">provider listings</span></div>
+        <div class="ss"><span class="n">40</span><span class="t">cities</span></div>
+        <div class="ss"><span class="n">3</span><span class="t">counties</span></div>
+        <div class="ss verified">✓ verified contact details</div>
+      </div>
+      <div class="side-jump">
+        <div class="label" style="margin-bottom:8px">Jump to a county</div>
+        <a href="#areas">Miami-Dade <span class="ar">→</span></a>
+        <a href="#areas">Broward <span class="ar">→</span></a>
+        <a href="#areas">Palm Beach <span class="ar">→</span></a>
+      </div>
+    </aside>
+   </div><!-- /hero-grid -->
   </div>
 </section>
 

@@ -27,45 +27,57 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow label blue reveal d1">South Florida</div>
-    <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
-    <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
+   <div class="hero-grid">
+    <div class="hero-main">
+      <div class="eyebrow label blue reveal d1">South Florida</div>
+      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
+      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
 
-    <div class="geo-suggest reveal d3" id="geoSuggest">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
-      <a class="go" id="geoGo" href="#">See med spas there →</a>
-      <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
-    </div>
+      <div class="geo-suggest reveal d3" id="geoSuggest">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
+        <a class="go" id="geoGo" href="#">See med spas there →</a>
+        <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
+      </div>
 
-    <div class="search reveal d3">
-      <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
-      <button type="button">Search</button>
-    </div>
-    <div class="geo-row reveal d3">
-      <button class="geo-btn" id="useLoc" type="button">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Use my location
-      </button>
-      <span class="geo-note">Used only to find the nearest area — never stored.</span>
-    </div>
-    <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
+      <div class="search reveal d3">
+        <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
+        <button type="button">Search</button>
+      </div>
+      <div class="geo-row reveal d3">
+        <button class="geo-btn" id="useLoc" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Use my location
+        </button>
+        <span class="geo-note">Used only to find the nearest area — never stored.</span>
+      </div>
+      <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
 
-    <div class="pills reveal d3" id="pills">
-      <span class="pill active" data-treat="">All</span>
-      <span class="pill" data-treat="botox">Botox</span>
-      <span class="pill" data-treat="lip-filler">Lip filler</span>
-      <span class="pill" data-treat="coolsculpting">CoolSculpting</span>
-      <span class="pill" data-treat="laser-hair-removal">Laser hair removal</span>
-      <span class="pill" data-treat="microneedling">Microneedling</span>
-    </div>
+      <div class="pills reveal d3" id="pills">
+        <span class="pill active" data-treat="">All</span>
+        <span class="pill" data-treat="botox">Botox</span>
+        <span class="pill" data-treat="lip-filler">Lip filler</span>
+        <span class="pill" data-treat="coolsculpting">CoolSculpting</span>
+        <span class="pill" data-treat="laser-hair-removal">Laser hair removal</span>
+        <span class="pill" data-treat="microneedling">Microneedling</span>
+      </div>
+    </div><!-- /hero-main -->
 
-    <div class="stats reveal d4">
-      <span class="stat"><span class="n">312</span><span class="t">provider listings</span></span>
-      <span class="stat"><span class="n">40</span><span class="t">cities</span></span>
-      <span class="stat"><span class="n">3</span><span class="t">counties</span></span>
-      <span class="stat verified">✓ verified contact details</span>
-    </div>
+    <aside class="hero-side reveal d4">
+      <div class="side-stats">
+        <div class="ss"><span class="n">312</span><span class="t">provider listings</span></div>
+        <div class="ss"><span class="n">40</span><span class="t">cities</span></div>
+        <div class="ss"><span class="n">3</span><span class="t">counties</span></div>
+        <div class="ss verified">✓ verified contact details</div>
+      </div>
+      <div class="side-jump">
+        <div class="label" style="margin-bottom:8px">Jump to a county</div>
+        <a href="#miami-dade">Miami-Dade <span class="ar">→</span></a>
+        <a href="#broward">Broward <span class="ar">→</span></a>
+        <a href="#palm-beach">Palm Beach <span class="ar">→</span></a>
+      </div>
+    </aside>
+   </div><!-- /hero-grid -->
   </div>
 </section>
 
@@ -134,7 +146,7 @@
         <p>Every city links to treatment guides with local providers, prices and verified ratings.</p>
       </div>
     </div>
-    <div class="county" id="cities">
+    <div class="county" id="miami-dade">
       <div class="county-head"><h3>Miami-Dade, Florida</h3><span class="label">19 cities</span></div>
       <div class="city-grid">
         <a class="ccard" href="/fl/miami-dade/aventura/" data-search="aventura" data-treats="botox laser-hair-removal lip-filler microneedling">
@@ -215,7 +227,7 @@
         </a>
       </div>
     </div>
-    <div class="county">
+    <div class="county" id="broward">
       <div class="county-head"><h3>Broward, Florida</h3><span class="label">19 cities</span></div>
       <div class="city-grid">
         <a class="ccard" href="/fl/broward/coconut-creek/" data-search="coconut creek" data-treats="botox laser-hair-removal lip-filler microneedling">
@@ -296,7 +308,7 @@
         </a>
       </div>
     </div>
-    <div class="county">
+    <div class="county" id="palm-beach">
       <div class="county-head"><h3>Palm Beach, Florida</h3><span class="label">2 cities</span></div>
       <div class="city-grid">
         <a class="ccard" href="/fl/palm-beach/boca-raton/" data-search="boca raton" data-treats="botox laser-hair-removal lip-filler microneedling">

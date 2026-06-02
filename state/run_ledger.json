@@ -2,13 +2,13 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 11,
+    "runs": 12,
     "pages_built": 148
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Rebuilt homepage from design source (templates/home.html.j2 -> generated/index.html). Bound to real data: stats 312 listings/40 cities/3 counties; county->city grid (40 real cities, real treatment counts, real /fl/county/city/ routes); 5 treatment cards; geolocation set = 40 real covered cities w/ centroids + real URLs. Prices: Botox $10-18/unit (real) + 4 treatments 'Varies' (empty state). NO placeholder $ shipped. CSS consolidated into shared styles.css, ONE :root.",
+    "reason": "Synced homepage to updated design: two-column hero (hero-main left + hero-side panel right with stacked stats + jump-to-county quick-nav), mobile search-input fix (<600px input keeps its own border/bg/focus ring). Real data: side stats 312/40/3; jump-nav -> real counties (#miami-dade/#broward/#palm-beach); county->city grid real; treatment prices Botox $10-18/unit + 4x 'Varies'. NO placeholder $ shipped. CSS in shared styles.css, ONE :root, scoped under .home.",
     "homepage_route": "/ (generated/index.html)",
     "placeholder_prices_shipped": 0
   }

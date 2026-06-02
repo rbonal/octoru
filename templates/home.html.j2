@@ -27,43 +27,55 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow label blue reveal d1">South Florida</div>
-    <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
-    <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
+   <div class="hero-grid">
+    <div class="hero-main">
+      <div class="eyebrow label blue reveal d1">South Florida</div>
+      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
+      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
 
-    <div class="geo-suggest reveal d3" id="geoSuggest">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
-      <a class="go" id="geoGo" href="#">See med spas there →</a>
-      <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
-    </div>
+      <div class="geo-suggest reveal d3" id="geoSuggest">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
+        <a class="go" id="geoGo" href="#">See med spas there →</a>
+        <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
+      </div>
 
-    <div class="search reveal d3">
-      <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
-      <button type="button">Search</button>
-    </div>
-    <div class="geo-row reveal d3">
-      <button class="geo-btn" id="useLoc" type="button">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Use my location
-      </button>
-      <span class="geo-note">Used only to find the nearest area — never stored.</span>
-    </div>
-    <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
+      <div class="search reveal d3">
+        <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
+        <button type="button">Search</button>
+      </div>
+      <div class="geo-row reveal d3">
+        <button class="geo-btn" id="useLoc" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Use my location
+        </button>
+        <span class="geo-note">Used only to find the nearest area — never stored.</span>
+      </div>
+      <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
 
-    <div class="pills reveal d3" id="pills">
-      <span class="pill active" data-treat="">All</span>
-      {%- for t in treatments %}
-      <span class="pill" data-treat="{{ t.slug }}">{{ t.name }}</span>
-      {%- endfor %}
-    </div>
+      <div class="pills reveal d3" id="pills">
+        <span class="pill active" data-treat="">All</span>
+        {%- for t in treatments %}
+        <span class="pill" data-treat="{{ t.slug }}">{{ t.name }}</span>
+        {%- endfor %}
+      </div>
+    </div><!-- /hero-main -->
 
-    <div class="stats reveal d4">
-      <span class="stat"><span class="n">{{ stats.listings }}</span><span class="t">provider listings</span></span>
-      <span class="stat"><span class="n">{{ stats.cities }}</span><span class="t">cities</span></span>
-      <span class="stat"><span class="n">{{ stats.counties }}</span><span class="t">counties</span></span>
-      <span class="stat verified">✓ verified contact details</span>
-    </div>
+    <aside class="hero-side reveal d4">
+      <div class="side-stats">
+        <div class="ss"><span class="n">{{ stats.listings }}</span><span class="t">provider listings</span></div>
+        <div class="ss"><span class="n">{{ stats.cities }}</span><span class="t">cities</span></div>
+        <div class="ss"><span class="n">{{ stats.counties }}</span><span class="t">counties</span></div>
+        <div class="ss verified">✓ verified contact details</div>
+      </div>
+      <div class="side-jump">
+        <div class="label" style="margin-bottom:8px">Jump to a county</div>
+        {%- for g in groups %}
+        <a href="#{{ g.slug }}">{{ g.short_name }} <span class="ar">→</span></a>
+        {%- endfor %}
+      </div>
+    </aside>
+   </div><!-- /hero-grid -->
   </div>
 </section>
 
@@ -104,7 +116,7 @@
     </div>
 
     {%- for g in groups %}
-    <div class="county"{% if loop.first %} id="cities"{% endif %}>
+    <div class="county" id="{{ g.slug }}">
       <div class="county-head"><h3>{{ g.name }}</h3><span class="label">{{ g.n_cities }} cit{{ "y" if g.n_cities == 1 else "ies" }}</span></div>
       <div class="city-grid">
         {%- for c in g.cities %}
