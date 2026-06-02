@@ -534,6 +534,24 @@ def fetch_pages(spec=None, enforce=False):
                         claimed[slug] = city
                 pages.append(page)
 
+    # Ensure every parent place that received rolled-up clinics exists as a market.
+    # Parent places (e.g. "miami", "miami-beach") may not be in the config's neighborhoods
+    # list; we synthesise a market entry for them from places.json so rollup pages build.
+    existing_cities = {m["city"] for m in markets}
+    for (parent_city, county, state, _t) in rollup_pool:
+        if parent_city not in existing_cities:
+            p_data = PLACES_BY_SLUG.get(parent_city, {})
+            markets.append({
+                "state": state, "state_name": "Florida",
+                "state_abbr": state.upper() if len(state) <= 3 else "FL",
+                "county": county,
+                "county_name": COUNTY_NAMES.get(county, county.replace("-", " ").title()),
+                "city": parent_city,
+                "city_name": p_data.get("name", parent_city.replace("-", " ").title()),
+            })
+            existing_cities.add(parent_city)
+            print(f"[builder] activated rollup target: {parent_city} (received clinics from children)")
+
     # Second pass: municipality pages. Only include clinics NOT already claimed by a child place.
     for market in markets:
         city = market["city"]

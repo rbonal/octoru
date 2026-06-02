@@ -2,33 +2,29 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
-      "id": "thin-pages-completeness-decision",
-      "opened_at": "2026-06-01",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "operator-decision",
-      "summary": "117 of 148 built pages are THIN (1-2 clinics) — many treatment x city combos in smaller municipalities have only one provider. They pass the COMPLIANCE quality gate (real, rated, unique, schema, consent), so per 'build what passes' they are built. But thin pages rank poorly.",
-      "decision": "To hold thin pages, add a 'completeness' block to config/thresholds.json (operator-owned; builder cannot edit config). With min_page_requirements.min_listings = 3, the builder would HOLD the 117 thin pages and ship only the ~31 robust ones. Builder runs DRY-RUN until that block exists.",
-      "recommended_config_block": {
-        "completeness": {
-          "min_listing_fields": ["name", "address", "phone", "rating", "treatments"],
-          "min_page_requirements": { "min_listings": 3, "require_cost_block": true, "require_guidance": true }
-        }
-      },
-      "alternative": "Deepen the thin cities to >=3 real rated clinics each (more prospecting + a ratings pass) so they pass on their own merits rather than being held."
-    },
-    {
       "id": "ready-for-human-deploy-review",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
       "blocking": false,
       "severity": "info",
-      "summary": "Fully-rated national directory (148 pages, 40 cities, 3 counties) is built and committed to auto/build. Deploy is the separate, human-gated step (Vercel/Cloudflare) — the builder does not deploy. After deploy: connect Search Console, submit /sitemap.xml, request indexing."
+      "summary": "Enforced build complete: 94 listing pages built across 38 cities / 3 counties, all passed the quality gate. Deploy is the separate, human-gated step (Vercel/Cloudflare). After deploy: connect Search Console, submit /sitemap.xml, request indexing.",
+      "note_on_thin_cities": "28 places have at least one treatment page held at min_listings=2. To grow held pages into built pages: prospect more rated clinics per city (see PLAYBOOK_listing_density_and_pricing.md). Lower min_listings in config (not recommended — 2 is already the floor; single-clinic pages are too thin to rank)."
+    },
+    {
+      "id": "rollup-pages-still-thin",
+      "opened_at": "2026-06-02",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "info",
+      "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions — still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
+      "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has ≥2 qualifying clinics for a treatment, it builds its own page instead of rolling up."
     }
   ],
   "_resolved": [
+    "thin-pages-completeness-decision — RESOLVED: operator added completeness block to config/thresholds.json on 2026-06-02 (min_listings=2, max_featured_per_page=3, enforce=true). Mode flipped from DRY-RUN to ENFORCED.",
+    "operator-add-max_featured_per_page — RESOLVED: set to 3 in completeness block.",
     "prospector-data-source / fetch_pages wiring — RESOLVED.",
-    "places-mcp-not-visible-to-builder — RESOLVED: ratings supplied via permitted Places API; clinics.json fully rated (97/97, rating_source=google_places).",
-    "operator-add-geo-tree — partial: operator expanded seed_scope.neighborhoods to 40; builder derives correct counties via CITY_COUNTY map (Miami-Dade/Broward/Palm Beach). A full seed_scope.geo tree with status flags is still the cleaner long-term control."
+    "places-mcp-not-visible-to-builder — RESOLVED: ratings supplied via permitted Places API.",
+    "operator-add-geo-tree — partial: seed_scope.neighborhoods used; counties derived via CITY_COUNTY + places.json."
   ]
 }

@@ -2,17 +2,18 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 13,
-    "pages_built": 148
+    "runs": 14,
+    "pages_built": 94
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Part A: flat placement monetisation (no per-lead billing; contact=free/direct; sponsored links; slot cap 3; campaigns_prospect flag; places.json taxonomy with rollup). Part B: compacted hero (32-48px, 56px padding, search above fold). 262 pages built.",
-    "pages_built": 262,
-    "rollup_entries": "coconut-grove->miami[LHR,lip-filler], kendall->miami[all 5], midtown->miami[4], south-beach->miami-beach[coolsculpting]",
-    "deduped": 0,
-    "pages_held": 12,
-    "placeholder_prices_shipped": 0
+    "reason": "Enforced build after operator added completeness block (min_listings=2, max_featured=3, enforce=true). Rollup fix: parent places (miami, miami-beach) auto-activated when they receive rolled-up clinics. Built 94 listing pages, 132 held (28 cities with thin combos). Rollup targets (miami, miami-beach) also held \u2014 single-clinic rollups still below min_listings=2, gate correct. 0 compliance skips, 0 placeholder $ shipped.",
+    "pages_built": 94,
+    "pages_held": 132,
+    "listings_excluded": 135,
+    "rollups_attempted": "kendall\u2192miami[coolsculpting], midtown\u2192miami[4], south-beach\u2192miami-beach[coolsculpting]",
+    "rollup_pages_shipped": 0,
+    "rollup_pages_held_reason": "all rolled-up parent pages had only 1 qualifying clinic per treatment (still below min_listings=2) \u2014 gate correct"
   }
 }
