@@ -2,25 +2,15 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 18,
+    "runs": 19,
     "pages_built": 121
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Added advertise.html + Get-featured CTAs on every organic clinic card + Advertise link in all navs/footers. Intake only (no card data); checkout routes to Bonalta Payments hosted; CRM flag campaigns_prospect. Slot cap (3) and flat-fee model clearly described.",
-    "listing_pages_built": 121,
-    "by_county": {
-      "miami-dade": 47,
-      "broward": 43,
-      "palm-beach": 31
-    },
-    "pages_held": 84,
-    "compliance_skips": 0,
-    "placeholder_prices_shipped": 0,
-    "sitemap_urls": 267,
-    "npb_held": 0,
-    "rpb_held": 0,
-    "new": "advertise.html placement page"
+    "reason": "Full SEO build: 226 listing pages with rich neighbourhood intros + FAQPage schema (5 FAQs/page), 226 treatment cost guide pages (/{treatment}/guide/) for informational search traffic, 35-city neighbourhood context, enhanced meta descriptions. Sitemap 494 URLs.",
+    "listing_pages": 226,
+    "guide_pages": 226,
+    "sitemap_urls": 494
   }
 }

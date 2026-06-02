@@ -473,3 +473,45 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
   .price-anchor { flex-direction: column; gap: 4px; }
   .top-searches { gap: 6px; }
 }
+
+/* ============================================================
+   FAQ SECTION — treatment pages + guide pages
+   ============================================================ */
+.faq-section { border-top: 1px solid var(--line); padding: 32px 0 8px; margin-bottom: 8px; }
+.faq-section h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 20px; }
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q { list-style: none; cursor: pointer; padding: 16px 0; font-size: 15px; font-weight: 600;
+  color: var(--ink-2); display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; user-select: none; }
+.faq-q::after { content: "+"; font-family: 'Geist Mono', monospace; font-size: 18px;
+  color: var(--blue); flex-shrink: 0; transition: transform .2s ease; }
+.faq-item[open] .faq-q::after { transform: rotate(45deg); }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-a { padding: 0 0 18px; }
+.faq-a p { font-size: 14px; color: var(--ink-3); line-height: 1.7; max-width: 68ch; }
+.faq-guide-link { font-size: 13px; color: var(--mute); margin-top: 18px; }
+.faq-guide-link a { color: var(--blue); font-weight: 500; }
+
+/* ============================================================
+   GUIDE PAGES
+   ============================================================ */
+.guide-article { padding: 32px 0 64px; max-width: 720px; }
+.guide-hero { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+.guide-hero h1 { font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+  font-size: clamp(28px, 4vw, 42px); margin: 10px 0 20px; }
+.guide-price-callout { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  background: var(--blue-tint); border: 1px solid var(--blue-line); border-radius: 8px;
+  padding: 14px 18px; margin-bottom: 16px; }
+.guide-price-n { font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.02em; }
+.guide-price-note { font-size: 13px; color: var(--ink-3); }
+.guide-lead { font-size: 16px; color: var(--ink-3); line-height: 1.65; max-width: 60ch; }
+.guide-section { margin-bottom: 36px; }
+.guide-section h2 { font-size: 20px; font-weight: 600; letter-spacing: -.02em;
+  margin-bottom: 12px; }
+.guide-section p { font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 65ch; }
+.guide-cta { margin-top: 18px; display: inline-flex; }
+.guide-faq .faq-section { border: 0; padding-top: 0; }
+.guide-faq h2 { font-size: 20px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 14px; }

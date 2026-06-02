@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, FL? ({{ year }} price guide)</title>
+<meta name="description" content="Real {{ treatment.name | lower }} prices from {{ n_clinics }} verified providers in {{ neighborhood.name }}, Florida. Compare costs, what affects pricing, and how to choose a provider.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<link rel="canonical" href="{{ site_url }}{{ guide_url }}">
+
+{%- if faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in faqs %}
+    {
+      "@type": "Question",
+      "name": {{ f.q | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | tojson }} }
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},
+    {"@type":"ListItem","position":2,"name":"{{ geo.state_name }}","item":"{{ site_url }}/{{ geo.state }}/"},
+    {"@type":"ListItem","position":3,"name":"{{ geo.county_name }}","item":"{{ site_url }}/{{ geo.state }}/{{ geo.county }}/"},
+    {"@type":"ListItem","position":4,"name":"{{ neighborhood.name }}","item":"{{ site_url }}/{{ geo.state }}/{{ geo.county }}/{{ geo.city }}/"},
+    {"@type":"ListItem","position":5,"name":"{{ treatment.name }} providers","item":"{{ site_url }}{{ listing_url }}"},
+    {"@type":"ListItem","position":6,"name":"{{ treatment.name }} cost guide","item":"{{ site_url }}{{ guide_url }}"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" style="text-decoration:none">
+      <div class="brandmark">GlowMap</div>
+      <div class="label">Med spa directory</div>
+    </a>
+    <a href="/advertise.html" class="nav-adv-btn">Advertise with us</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/{{ geo.state }}/">{{ geo.state_name }}</a><span class="sep">/</span>
+    <a href="/{{ geo.state }}/{{ geo.county }}/">{{ geo.county_name }}</a><span class="sep">/</span>
+    <a href="/{{ geo.state }}/{{ geo.county }}/{{ geo.city }}/">{{ neighborhood.name }}</a><span class="sep">/</span>
+    <a href="{{ listing_url }}">{{ treatment.name }}</a><span class="sep">/</span>
+    <span aria-current="page">Cost guide</span>
+  </nav>
+
+  <article class="guide-article">
+    <header class="guide-hero">
+      <div class="label blue" style="margin-bottom:10px">{{ year }} price guide</div>
+      <h1>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, FL?</h1>
+      {%- if price_display %}
+      <div class="guide-price-callout">
+        <span class="guide-price-n">{{ price_display }}</span>
+        <span class="guide-price-note">from {{ n_clinics }} verified {{ neighborhood.name }} providers — see full list below</span>
+      </div>
+      {%- endif %}
+      {%- if neighborhood_context %}
+      <p class="guide-lead">{{ neighborhood_context }}</p>
+      {%- endif %}
+    </header>
+
+    {%- if cost and cost.has_prices %}
+    <section class="guide-section">
+      <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
+      <p>
+        Based on the {{ n_clinics }} verified providers in the GlowMap directory,
+        {{ treatment.name | lower }} in {{ neighborhood.name }} starts at
+        <strong>${{ cost.low }} {{ unit }}</strong>
+        {%- if cost.high and cost.high != cost.low %} and goes up to <strong>${{ cost.high }} {{ unit }}</strong>{% endif %}.
+        {{ cost.coverage_label | capitalize }}.
+      </p>
+      <p style="margin-top:12px">These are published starting prices — your final cost will depend on the treatment area, the number of units or sessions required, and the provider you choose. A consultation is the only way to get an accurate quote for your specific goals.</p>
+    </section>
+    {%- else %}
+    <section class="guide-section">
+      <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
+      <p>Most providers in {{ neighborhood.name }} do not publish pricing on their websites — this is common in the aesthetics industry, where cost depends on your individual treatment plan. The best way to understand what you will pay is to book a free consultation with one of the {{ n_clinics }} verified providers below.</p>
+    </section>
+    {%- endif %}
+
+    {%- if guidance %}
+    <section class="guide-section">
+      <h2>What to know about {{ treatment.name | lower }}</h2>
+      <p>{{ guidance }}</p>
+    </section>
+    {%- endif %}
+
+    <section class="guide-section">
+      <h2>{{ n_clinics }} verified {{ treatment.name | lower }} providers in {{ neighborhood.name }}</h2>
+      <p>Every provider below has a verified address, phone number, and real Google rating. Prices are shown where published.</p>
+      <a href="{{ listing_url }}" class="btn primary guide-cta">Compare all {{ n_clinics }} {{ neighborhood.name }} providers →</a>
+    </section>
+
+    {%- if faqs %}
+    <section class="guide-section guide-faq">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list">
+        {%- for f in faqs %}
+        <details class="faq-item">
+          <summary class="faq-q">{{ f.q }}</summary>
+          <div class="faq-a"><p>{{ f.a }}</p></div>
+        </details>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    <section class="guide-section" style="background:var(--blue-tint);border:1px solid var(--blue-line);border-radius:10px;padding:24px">
+      <div class="label blue" style="margin-bottom:8px">Ready to compare?</div>
+      <p style="font-size:16px;font-weight:600;margin-bottom:12px">See all verified {{ treatment.name | lower }} providers in {{ neighborhood.name }}, FL</p>
+      <a href="{{ listing_url }}" class="btn primary">View {{ n_clinics }} providers →</a>
+    </section>
+  </article>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    GlowMap is an independent directory. Prices are sourced from clinic websites and may change; always confirm directly with your provider.
+    <a href="{{ listing_url }}">Back to {{ neighborhood.name }} {{ treatment.name | lower }} listings</a> ·
+    <a href="/advertise.html">Advertise your clinic</a> ·
+    <a href="/privacy">Privacy</a>
+    <div class="label" style="margin-top:10px">Updated {{ last_updated }}</div>
+  </div>
+</footer>
+
+</body>
+</html>

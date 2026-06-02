@@ -10,6 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 
+{%- if faqs %}
+<!-- FAQPage schema — targets People Also Ask boxes in Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in faqs %}
+    {
+      "@type": "Question",
+      "name": {{ f.q | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | tojson }} }
+    }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+
 <!-- schema.org: ItemList of MedicalClinic w/ AggregateRating (required by quality gate) -->
 <script type="application/ld+json">
 {
@@ -140,6 +159,25 @@
     <h2>About {{ treatment.name | lower }}</h2>
     <p>{{ guidance }}</p>
     <p class="disclaimer">General guidance only — not medical advice. Confirm specifics with a licensed provider during your consultation.</p>
+  </section>
+  {%- endif %}
+
+  {%- if faqs %}
+  <!-- FAQ section — FAQPage schema above targets People Also Ask rich results -->
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions about {{ treatment.name | lower }} in {{ neighborhood.name }}</h2>
+    <div class="faq-list">
+      {%- for f in faqs %}
+      <details class="faq-item">
+        <summary class="faq-q">{{ f.q }}</summary>
+        <div class="faq-a"><p>{{ f.a }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+    <p class="faq-guide-link">
+      Looking for a full pricing breakdown?
+      <a href="{{ breadcrumb[-1].url if breadcrumb else '' }}guide/">Read the {{ neighborhood.name }} {{ treatment.name | lower }} cost guide →</a>
+    </p>
   </section>
   {%- endif %}
 

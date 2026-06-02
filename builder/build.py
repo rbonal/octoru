@@ -72,6 +72,270 @@ NEIGHBORHOOD_NAMES = {
     "south-beach": "South Beach",
     "coconut-grove": "Coconut Grove",
 }
+
+# One or two sentences of real local character per city. Used in page intros and guide pages
+# to make the content feel written by someone who knows the area, not templated.
+NEIGHBORHOOD_CONTEXT = {
+    # Miami-Dade
+    "aventura": "Aventura sits between Miami and Fort Lauderdale, built around one of Florida's largest malls and surrounded by high-rise towers of affluent residents.",
+    "bal-harbour": "Bal Harbour is a small ultra-wealthy enclave anchored by its luxury shopping village. Providers here cater to a discerning, image-conscious clientele.",
+    "brickell": "Brickell is Miami's financial district — a vertical neighborhood of glass towers packed with professionals who expect efficiency and quality.",
+    "coconut-grove": "Coconut Grove is Miami's oldest neighborhood, with a bohemian-meets-affluent character and tree-lined streets. Practices here tend to be boutique, with loyal local followings.",
+    "coral-gables": "Coral Gables is a planned Mediterranean-style city with strict architectural standards and a strong wellness culture. Some of South Florida's most established aesthetic practices are based here.",
+    "doral": "Doral is a fast-growing city with a large Latin American professional community. Providers here are often bilingual and competitively priced.",
+    "hialeah": "Hialeah has the highest proportion of Cuban-American residents of any major U.S. city. Spanish-speaking providers are the norm, and pricing tends to be accessible.",
+    "homestead": "Homestead sits at the southern edge of Miami-Dade, near the entrance to the Keys. It has fewer providers than northern parts of the county but serves a practical, price-conscious clientele.",
+    "kendall": "Kendall is a sprawling western suburb of Miami-Dade with a large middle-class and Latin American population. Providers here compete on value.",
+    "key-biscayne": "Key Biscayne is an island village minutes from downtown Miami with some of Florida's highest average household incomes. It has a small but selective provider market.",
+    "miami-lakes": "Miami Lakes is a master-planned community north of Hialeah with a stable, family-oriented demographic and solid mid-size med-spa coverage.",
+    "miami-springs": "Miami Springs is a quiet residential suburb adjacent to Miami International Airport, with a small selection of neighbourhood providers serving a primarily local clientele.",
+    "midtown": "Midtown encompasses the Wynwood and Design District area — a hub of art, hospitality, and creative industries. Practices here skew toward a younger, trend-forward demographic.",
+    "north-miami": "North Miami is a diverse working-class city north of Miami proper. Providers offer accessible pricing and serve a multicultural patient base.",
+    "palmetto-bay": "Palmetto Bay is an affluent suburban village in south Miami-Dade, popular with families and professionals seeking a quieter alternative to the city.",
+    "pinecrest": "Pinecrest is one of Miami-Dade's wealthiest communities — tree-lined, residential, and home to many South Florida physicians who also practice aesthetic medicine.",
+    "south-beach": "South Beach occupies the southern tip of Miami Beach — globally recognised, high-energy, and image-conscious. Providers serve a mix of year-round residents, seasonal tourists, and entertainment-industry clients.",
+    "sunny-isles-beach": "Sunny Isles Beach is an oceanfront city sometimes called 'Little Moscow' for its large Russian-speaking population. Russian, English, and Spanish are all commonly spoken in practices here.",
+    "surfside": "Surfside is a quiet oceanfront town of about 6,000 residents adjacent to Bal Harbour. It has very few providers, but those present serve a well-heeled and often seasonal clientele.",
+    # Broward
+    "coconut-creek": "Coconut Creek is a planned Broward suburb with a significant over-50 population and a correspondingly strong demand for anti-ageing treatments.",
+    "cooper-city": "Cooper City is a small, family-oriented suburb with consistently high school ratings and a stable middle-class demographic.",
+    "coral-springs": "Coral Springs is one of Broward's largest cities, widely regarded as well-run and well-planned, with a strong professional and family demographic.",
+    "dania-beach": "Dania Beach is one of Broward's oldest cities, situated between Fort Lauderdale and Hollywood. It has a growing aesthetic market as the neighbourhood continues to evolve.",
+    "davie": "Davie retains a ranch-town character despite its suburban density. Home to Nova Southeastern University, it serves a wide range of demographics.",
+    "deerfield-beach": "Deerfield Beach sits at the northern edge of Broward with Atlantic Ocean access, mixing retirees, young professionals, and beach-lifestyle residents.",
+    "fort-lauderdale": "Fort Lauderdale is Broward's largest and most cosmopolitan city, with a well-established LGBTQ+ community, international visitors, and a growing financial sector — and the county's deepest med-spa market.",
+    "hallandale-beach": "Hallandale Beach lies between Miami and Fort Lauderdale, known for its casino resorts and large snowbird population. Demand for aesthetic services runs year-round.",
+    "hollywood": "Hollywood, Florida has a long oceanfront boardwalk, a vibrant downtown, and a mix of long-time residents and seasonal visitors — larger and more cosmopolitan than visitors often expect.",
+    "lighthouse-point": "Lighthouse Point is an affluent waterfront enclave east of Pompano Beach with some of Broward's highest income levels.",
+    "margate": "Margate is an inland Broward suburb with a predominantly middle-income, older demographic and practical, accessibly priced providers.",
+    "miramar": "Miramar is one of Broward's fastest-growing cities, popular with Caribbean-American and Latino families, with an expanding aesthetic services market.",
+    "oakland-park": "Oakland Park borders Fort Lauderdale and has a strong arts and LGBTQ+ community. Independent boutique practices are the norm here.",
+    "parkland": "Parkland is consistently ranked among Florida's best cities to live — affluent, family-focused, and with high demand for non-surgical aesthetics.",
+    "pembroke-pines": "Pembroke Pines is one of Broward's largest cities with a significant Cuban-American and Caribbean population and a well-served suburban aesthetic market.",
+    "plantation": "Plantation is a mid-size Broward suburb with a strong professional class, convenient I-595 access, and a mix of larger practices and boutique providers.",
+    "pompano-beach": "Pompano Beach is an evolving coastal city with a strong fishing heritage and a growing arts scene, its med-spa market expanding alongside a gentrifying downtown.",
+    "sunrise": "Sunrise is best known as the home of Sawgrass Mills, one of America's largest outlet malls. Its dense residential base and highway accessibility make it a practical base for aesthetic providers.",
+    "weston": "Weston is consistently ranked among Florida's best places to live — a master-planned community with high household incomes and strong demand for wellness and aesthetics.",
+    # Palm Beach
+    "boca-raton": "Boca Raton is the cultural and commercial hub of southern Palm Beach County, with some of Florida's highest household incomes and a deeply rooted personal-wellness culture.",
+    "boynton-beach": "Boynton Beach is one of Palm Beach County's largest cities, with a diverse population — retirees, families, and young professionals — served across a range of price points.",
+    "delray-beach": "Delray Beach has transformed into one of Florida's most desirable small cities. Its walkable Atlantic Avenue, arts scene, and affluent demographic have attracted some of the county's most highly reviewed aesthetic providers.",
+    "jupiter": "Jupiter is an upscale coastal community at the northern edge of Palm Beach County, popular with professional athletes, retirees, and health-focused families.",
+    "north-palm-beach": "North Palm Beach is a waterfront village between Palm Beach Gardens and West Palm Beach, with strong boating culture and a small but well-curated selection of aesthetic providers.",
+    "palm-beach-gardens": "Palm Beach Gardens is the county's commercial centre — home to PGA National and a rapidly expanding professional population with corresponding demand for aesthetic services.",
+    "royal-palm-beach": "Royal Palm Beach is a large inland suburb with a young, family-oriented demographic. Providers here are practical, accessible, and competitively priced.",
+    "wellington": "Wellington is a globally recognised equestrian destination with a wealthy, health-focused population. Aesthetic practices here skew toward a performance-wellness clientele.",
+    "west-palm-beach": "West Palm Beach is the county seat and the most urban city in Palm Beach County, with a growing arts and wellness culture serving everyone from budget-conscious locals to Intracoastal residents.",
+}
+
+# Per-treatment FAQ templates. {city}, {n}, {price_range}, {county} are filled at build time.
+# Answers are written to sound human — no robotic patterns, varied sentence structures.
+TREATMENT_FAQS = {
+    "botox": [
+        {
+            "q": "How much does Botox cost in {city}?",
+            "a_prices": "Based on the {n} providers listed in our {city} directory, Botox starts around {price_range}. Most practices price by the unit, so the total depends on the treatment area — forehead lines typically need 10–20 units, crow's feet 10–15 units per side, and a full upper-face treatment 20–40 units. First-time patients are often advised to start conservatively and add units at a follow-up.",
+            "a_no_prices": "Botox in {city} is priced per unit at most practices. A typical forehead treatment runs $200–$400 depending on unit count and injector experience. Request a consultation to get a quote tailored to your specific goals — a reputable provider will assess what you need rather than upselling maximum units.",
+        },
+        {
+            "q": "How long does Botox last?",
+            "a": "Most patients enjoy results for three to four months, though this varies with your metabolism, the treatment area, and how regularly you have the treatment done. Muscles in heavily used areas — like the forehead — tend to bounce back faster. With consistent treatments over time, many patients find they need top-ups less frequently as the targeted muscles gradually weaken.",
+        },
+        {
+            "q": "What should I look for when choosing a Botox provider in {city}?",
+            "a": "Your injector's credentials and experience matter more than the price. Look for a licensed medical professional — physician, nurse practitioner, or physician assistant — who can show you a portfolio of natural-looking results. Ask whether a physician is supervising or performing the treatment, confirm they use FDA-approved product from an authorised distributor, and be wary of unusually low pricing, which can indicate diluted product or under-trained staff.",
+        },
+        {
+            "q": "What is the difference between Botox and Dysport?",
+            "a": "Both are botulinum toxin type A neurotoxins approved to soften dynamic wrinkles — Botox has been FDA-cleared since 2002, Dysport since 2009. Dysport tends to spread slightly more, which some injectors prefer for broader areas like the forehead. The units are not equivalent; roughly 2.5 Dysport units equal one Botox unit, so comparing prices requires knowing which product is being quoted. Results and safety profiles are comparable.",
+        },
+        {
+            "q": "Is Botox safe?",
+            "a": "Botox has one of the longest safety records of any cosmetic procedure. Side effects are typically minor — bruising at the injection site, a brief headache, or slight asymmetry — and resolve on their own within days. Serious complications are rare when the treatment is performed by a qualified injector using authentic product sourced from a licensed distributor. If a price seems too good to be true, ask where the product comes from.",
+        },
+    ],
+    "lip-filler": [
+        {
+            "q": "How much does lip filler cost in {city}?",
+            "a_prices": "{n} providers in our {city} directory offer lip filler. Most practices charge per syringe of hyaluronic acid filler — a single syringe is usually sufficient for a first treatment, with touch-ups possible at a follow-up. Ask whether the quoted price includes a complimentary two-week review, which many quality practices offer.",
+            "a_no_prices": "Lip filler in South Florida typically costs $500–$900 per syringe for hyaluronic acid products like Juvederm Volbella, Restylane Kysse, or RHA. Price reflects the specific product used, the injector's experience, and the clinic's location. Get a consultation before committing — a good injector will advise on how much filler actually serves your goals.",
+        },
+        {
+            "q": "How long does lip filler last?",
+            "a": "Results typically last six to twelve months, though the lips break down filler faster than less-mobile areas because of how frequently they move. The specific product, the amount placed, and your individual metabolism all play a role. Many patients schedule a top-up at around six months to maintain their result rather than waiting for it to fully fade.",
+        },
+        {
+            "q": "Is lip filler reversible?",
+            "a": "Yes — hyaluronic acid filler can be fully dissolved using hyaluronidase, an enzyme that is injected into the treated area. The effect is rapid, usually within hours. It is a useful safety net if results are uneven, overfilled, or simply not what you wanted. Ask your provider whether they stock hyaluronidase on-site; the answer tells you something important about how seriously they take patient safety.",
+        },
+        {
+            "q": "What should I look for when choosing a lip filler provider in {city}?",
+            "a": "Lips are technically demanding — they require a light hand and good aesthetic judgement, not just injection technique. Look for a provider who consistently shows natural-looking results in their portfolio and who recommends starting conservatively. You can always add more at a follow-up; overcorrection means dissolving the filler and starting over. Confirm that they stock hyaluronidase and that product is properly refrigerated.",
+        },
+        {
+            "q": "Does lip filler hurt?",
+            "a": "Most providers apply topical numbing cream before the treatment, and many fillers contain lidocaine which provides additional comfort during the injection itself. Patients typically describe it as mild pressure or a brief sting. Some swelling and tenderness for 24–48 hours afterward is completely normal — lips are highly vascular and swell readily. Results settle into their final shape within a week.",
+        },
+    ],
+    "coolsculpting": [
+        {
+            "q": "How much does CoolSculpting cost in {city}?",
+            "a_prices": "CoolSculpting is priced per treatment cycle, and total cost depends on how many areas you want to treat and which applicator sizes are used. Providers in {city} offer free consultations where they will map out a treatment plan and give you a personalised quote.",
+            "a_no_prices": "CoolSculpting is quoted per treatment cycle, and most patients treat more than one area. A single-area session typically runs $700–$1,500; treating both flanks or the abdomen plus flanks in one session commonly costs $2,000–$4,000. Providers regularly offer package pricing that reduces the per-session cost. A free consultation will get you an accurate number for your specific goals.",
+        },
+        {
+            "q": "How many CoolSculpting sessions will I need?",
+            "a": "Most patients see meaningful improvement after a single session per area. Those wanting more dramatic results typically schedule a second round six to twelve weeks after the first, once the body has finished processing the initial treatment. CoolSculpting permanently destroys fat cells, which do not regenerate — but weight gain can expand the remaining cells in surrounding areas, so maintaining results requires stable weight.",
+        },
+        {
+            "q": "When will I see CoolSculpting results?",
+            "a": "The body processes destroyed fat cells gradually through the lymphatic system, so results appear slowly. Most patients notice visible changes at four to six weeks, with the full outcome visible at two to three months. The gradual timeline is actually an advantage — results look natural rather than sudden.",
+        },
+        {
+            "q": "Is CoolSculpting safe?",
+            "a": "CoolSculpting received FDA clearance in 2010 and has a well-established safety record for non-surgical fat reduction. Common side effects — temporary numbness, redness, bruising, and sensitivity in the treated area — resolve on their own. Ask your provider about paradoxical adipose hyperplasia (PAH), a rare side effect in which the treated area enlarges rather than reduces. A qualified provider will explain the risk and discuss whether it applies to your treatment plan.",
+        },
+    ],
+    "laser-hair-removal": [
+        {
+            "q": "How much does laser hair removal cost in {city}?",
+            "a_prices": "Laser hair removal pricing varies by treatment area and session count. Providers in {city} often offer package pricing across multiple sessions, which is the most cost-effective approach since permanent reduction requires a course of treatments.",
+            "a_no_prices": "Pricing depends on the area being treated and whether you purchase individual sessions or a package. Small areas like the upper lip or underarms run roughly $75–$150 per session; larger areas like legs or the back cost $200–$400. Clinics typically offer six to eight-session packages that reduce the per-visit price considerably.",
+        },
+        {
+            "q": "How many sessions do I need for laser hair removal?",
+            "a": "Most patients need six to eight sessions spaced four to eight weeks apart to achieve significant permanent reduction. Laser targets follicles only in the active growth phase — hair grows in cycles, so multiple sessions are required to catch every follicle at the right stage. After the initial course, occasional maintenance sessions once or twice a year handle any regrowth.",
+        },
+        {
+            "q": "Does laser hair removal work on darker skin tones?",
+            "a": "Yes — technology has improved significantly over the years. The Nd:YAG laser (1064nm wavelength) is both safe and effective across Fitzpatrick skin types IV through VI, which covers most of South Florida's patient population. Older systems like some Alexandrite or Diode lasers are better suited to lighter skin. Ask your provider which laser they use and confirm it is appropriate for your skin tone before your first appointment.",
+        },
+        {
+            "q": "Is laser hair removal permanent?",
+            "a": "The FDA classifies it as 'permanent hair reduction' rather than complete removal, because a small percentage of follicles can regenerate over time — particularly with hormonal shifts. In practice, most patients experience 70–90% permanent reduction after a full treatment course and require minimal maintenance afterward. The results are dramatically better than waxing, shaving, or threading over any multi-year period.",
+        },
+    ],
+    "microneedling": [
+        {
+            "q": "How much does microneedling cost in {city}?",
+            "a_prices": "Microneedling prices vary by device, any add-ons (PRP, radiofrequency), and the provider's experience level. Standard sessions and more advanced RF microneedling treatments are both available from providers in our {city} directory — a consultation will clarify which approach suits your skin goals.",
+            "a_no_prices": "A standard microneedling session typically costs $200–$400. Advanced treatments — RF microneedling (Morpheus8, Scarlet SRF, Vivace) or sessions with PRP — run $400–$800 per visit due to equipment and add-on costs. Package pricing for multiple sessions is common and reduces the per-session cost meaningfully.",
+        },
+        {
+            "q": "How many microneedling sessions do I need?",
+            "a": "For texture improvement and mild scarring, most practitioners recommend three to six sessions spaced four to six weeks apart. More significant concerns — deep acne scars, pronounced laxity — may benefit from a longer course or from RF microneedling rather than standard needling. Results continue improving for months after the final session, because the collagen remodelling process unfolds gradually.",
+        },
+        {
+            "q": "What skin concerns does microneedling treat?",
+            "a": "Microneedling is most effective for improving skin texture, minimising enlarged pores, reducing acne and surgical scarring, and softening fine lines. RF microneedling adds a skin-tightening dimension that works well for mild laxity. It is generally less effective for deep static wrinkles or significant volume loss, where injectable treatments tend to deliver better results.",
+        },
+        {
+            "q": "What is the downtime after microneedling?",
+            "a": "Standard microneedling causes redness and mild sensitivity for 24–48 hours — similar to a sunburn. Most patients return to work the next day with light-coverage makeup. RF microneedling may involve two to three days of more noticeable redness and some swelling. Either way, sun protection is essential for at least two weeks following treatment.",
+        },
+    ],
+}
+
+
+def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county=None):
+    """Build a rich, human-sounding page intro from real data. Each city reads as if
+    written by someone who knows the area — not a template with a city name swapped in."""
+    t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
+    city = market["city"]
+    city_name = market["city_name"]
+    county_name = market["county_name"]
+    state_abbr = market["state_abbr"]
+    n = len(clinics)
+    unit = TREATMENT_UNITS.get(treatment_slug, "")
+    langs = sorted({l for c in clinics for l in (c.get("languages") or [])})
+
+    # Neighbourhood character sentence (if we have one)
+    ctx = NEIGHBORHOOD_CONTEXT.get(city, "")
+
+    # Price sentence — reference real data only
+    if prices:
+        rng = f"${prices[0]}" if prices[0] == prices[-1] else f"${prices[0]}–${prices[-1]}"
+        price_str = f"{t_name} starts at {rng} {unit} among listed providers".rstrip()
+    else:
+        price_str = None
+
+    # County comparison — compute county average price for this treatment from all clinics
+    county_prices = []
+    if all_clinics_for_county:
+        for c in all_clinics_for_county:
+            p = _starting_price(c, treatment_slug)
+            if p:
+                county_prices.append(p)
+    if county_prices and prices:
+        county_avg = sum(county_prices) / len(county_prices)
+        city_avg = sum(prices) / len(prices)
+        if city_avg < county_avg * 0.95:
+            comparison = f", which is below the {county_name} County average"
+        elif city_avg > county_avg * 1.05:
+            comparison = f", which is above the {county_name} County average"
+        else:
+            comparison = ", in line with the broader {county_name} market".format(county_name=county_name)
+    else:
+        comparison = ""
+
+    # Language sentence
+    if langs and len(langs) >= 2:
+        lang_str = f"Several listed providers offer consultations in {' and '.join(langs[:3])}."
+    elif langs and langs[0] != "English":
+        lang_str = f"A number of providers here offer consultations in {langs[0]}."
+    else:
+        lang_str = ""
+
+    # Assemble — aim for natural, flowing prose
+    provider_word = "provider" if n == 1 else "providers"
+    parts = []
+    if ctx:
+        parts.append(ctx)
+
+    if n == 1:
+        provider_sent = f"GlowMap has one verified {t_name.lower()} provider in {city_name}."
+    else:
+        provider_sent = f"GlowMap has {n} verified {t_name.lower()} {provider_word} in {city_name}."
+    parts.append(provider_sent)
+
+    if price_str:
+        price_full = f"{price_str}{comparison}." if comparison else f"{price_str}."
+        parts.append(price_full.capitalize())
+
+    if lang_str:
+        parts.append(lang_str)
+
+    parts.append(f"Each listing below shows the clinic's address, phone, treatments, and verified Google rating so you can compare before booking a consultation.")
+
+    return " ".join(parts)
+
+
+def _generate_faqs(treatment_slug, market, clinics, prices):
+    """Return a list of {{q, a}} dicts with real data filled in. Safe for FAQPage schema."""
+    templates = TREATMENT_FAQS.get(treatment_slug, [])
+    city_name = market["city_name"]
+    n = len(clinics)
+    unit = TREATMENT_UNITS.get(treatment_slug, "")
+    price_range = (
+        f"${prices[0]}–${prices[-1]} {unit}".strip()
+        if len(prices) >= 2
+        else (f"${prices[0]} {unit}".strip() if prices else None)
+    )
+
+    result = []
+    for tpl in templates:
+        q = tpl["q"].format(city=city_name, n=n, county=market["county_name"])
+        if "a_prices" in tpl and "a_no_prices" in tpl:
+            a_tpl = tpl["a_prices"] if price_range else tpl["a_no_prices"]
+        else:
+            a_tpl = tpl["a"]
+        a = a_tpl.format(
+            city=city_name, n=n,
+            price_range=price_range or "varies by provider",
+            county=market["county_name"]
+        )
+        result.append({"q": q, "a": a})
+    return result
 TREATMENT_UNITS = {
     "botox": "per unit",
     "lip-filler": "per syringe",
@@ -341,48 +605,37 @@ def _clinic_for_page(clinic, treatment_slug):
     }
 
 
-def _assemble_page(treatment_slug, market, clinics):
+def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     """Group real clinics into one treatment x city page. Differentiation comes from
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
     clinics = sorted(clinics, key=lambda c: (c.get("featured_tier", 0), c.get("rating") or 0), reverse=True)
-    # Slot cap: limit paid featured listings so pages never go all-paid. Any featured clinic
-    # beyond MAX_FEATURED_PER_PAGE is demoted to organic (featured_tier=0) on THIS page only —
-    # the source record is NOT changed.
+    # Slot cap: limit paid featured listings so pages never go all-paid.
     featured_count = 0
     capped = []
     for c in clinics:
         if c.get("featured_tier", 0) > 0:
             if featured_count < MAX_FEATURED_PER_PAGE:
-                featured_count += 1
-                capped.append(c)
+                featured_count += 1; capped.append(c)
             else:
                 capped.append({**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))})
         else:
             capped.append(c)
     clinics = capped
     n = len(clinics)
-    provider_word = "provider" if n == 1 else "providers"
-
-    prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
     unit = TREATMENT_UNITS.get(treatment_slug, "")
-    price_sentence = ""
-    if prices:
-        rng = f"${prices[0]}" if prices[0] == prices[-1] else f"${prices[0]}–${prices[-1]}"
-        price_sentence = f" Among listed providers, {t_name.lower()} starts around {rng} {unit}.".replace("..", ".")
+    prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
 
-    langs = sorted({l for c in clinics for l in (c.get("languages") or [])})
-    lang_sentence = f" Several list staff who speak {' and '.join(langs)}." if langs else ""
+    # Rich human-sounding intro with neighbourhood context and real data
+    intro = _build_intro(treatment_slug, market, clinics, prices, all_county_clinics)
 
-    intro = (
-        f"{city_name} ({market['county_name']}, {market['state_abbr']}) has {n} {t_name.lower()} "
-        f"{provider_word} in our directory.{price_sentence}{lang_sentence} Each listing below shows the "
-        f"clinic's address, contact details, treatments offered, and verified Google rating so you can compare before booking."
-    )
+    # Meta description optimised for SERP click-through
+    provider_word = "provider" if n == 1 else "providers"
+    price_hint = f" Botox from ${prices[0]}/{unit}" if treatment_slug == "botox" and prices else ""
     meta = (
-        f"Compare {n} {t_name.lower()} {provider_word} in {city_name}, {market['state_abbr']} — addresses, "
-        f"phones, prices, verified Google ratings, and languages. Request a personalized quote."
+        f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL.{price_hint} "
+        f"Compare addresses, real prices and Google ratings — and book direct."
     )
 
     priced_clinics = [c for c in clinics if _starting_price(c, treatment_slug) is not None]
@@ -398,10 +651,13 @@ def _assemble_page(treatment_slug, market, clinics):
     verified_dates = [c.get("last_verified") for c in clinics if c.get("last_verified")]
     updated = max(verified_dates) if verified_dates else datetime.date.today().isoformat()
 
+    # FAQs — generated from real data, safe for FAQPage schema
+    faqs = _generate_faqs(treatment_slug, market, clinics, prices)
+
     return {
         "treatment": {"slug": treatment_slug, "name": t_name},
-        "neighborhood": {"slug": market["city"], "name": city_name},   # template compat: city
-        "city": market["state_abbr"],                                  # trailing region in H1
+        "neighborhood": {"slug": market["city"], "name": city_name},
+        "city": market["state_abbr"],
         "geo": market,
         "path": page_path(market, treatment_slug),
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
@@ -409,6 +665,7 @@ def _assemble_page(treatment_slug, market, clinics):
         "intro": intro,
         "cost": cost,
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
+        "faqs": faqs,
         "updated": updated,
         "clinics": [_clinic_for_page(c, treatment_slug) for c in clinics],
     }
@@ -506,7 +763,8 @@ def fetch_pages(spec=None, enforce=False):
             use = _qualify(matched, label)
             if not use:
                 continue
-            page = _assemble_page(t, market, use)
+            county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
+            page = _assemble_page(t, market, use, all_county_clinics=county_clinics)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             # For dry-run without enforce, only roll up if the page would be GENUINELY thin.
             would_be_thin = len(use) < min_listings if min_listings else False
@@ -593,7 +851,8 @@ def fetch_pages(spec=None, enforce=False):
             use = _qualify(all_clinics, label)
             if not use:
                 continue
-            page = _assemble_page(t, market, use)
+            county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
+            page = _assemble_page(t, market, use, all_county_clinics=county_clinics)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             if reason:
                 report["held_pages"].append({"page": label, "reason": reason})
@@ -847,14 +1106,68 @@ def render_advertise(summaries=None):
     return _write("advertise.html", html)
 
 
-def render_sitemap(summaries):
-    urls = ["/", "/claim.html"]
+def render_guides(pages):
+    """Render a treatment cost guide page for every built listing page.
+    URL: /{state}/{county}/{city}/{treatment}/guide/
+    These pages target informational 'how much does X cost in Y' queries.
+    They link back to the listing page for provider browsing."""
+    guide_urls = []
+    for page in pages:
+        m = page["geo"]
+        t = page["treatment"]["slug"]
+        t_name = page["treatment"]["name"]
+        city_name = page["neighborhood"]["name"]
+        state_abbr = page["city"]
+        prices = []
+        if page.get("cost", {}).get("low") is not None:
+            prices = list({page["cost"]["low"], page["cost"]["high"]} - {None})
+            prices = sorted(set(prices))
+        unit = TREATMENT_UNITS.get(t, "")
+        price_display = (
+            f"${prices[0]}–${prices[-1]} {unit}".strip() if len(prices) >= 2
+            else (f"${prices[0]} {unit}".strip() if prices else None)
+        )
+        guide_path = f"{page['path']}/guide"
+        listing_url = page_url(m, t)
+        guide_url = f"/{guide_path}/"
+
+        faqs = page.get("faqs", _generate_faqs(t, m, [], prices))
+        ctx = NEIGHBORHOOD_CONTEXT.get(m["city"], "")
+
+        html = env.get_template("guide.html.j2").render(
+            treatment=page["treatment"],
+            neighborhood=page["neighborhood"],
+            city=state_abbr,
+            geo=m,
+            cost=page.get("cost", {}),
+            price_display=price_display,
+            unit=unit,
+            faqs=faqs,
+            guidance=TREATMENT_GUIDANCE.get(t, ""),
+            neighborhood_context=ctx,
+            listing_url=listing_url,
+            guide_url=guide_url,
+            n_clinics=len(page.get("clinics", [])),
+            site_url=SITE_URL,
+            last_updated=datetime.date.today().isoformat(),
+            year=datetime.date.today().year,
+        )
+        _write(f"{guide_path}/index.html", html)
+        guide_urls.append(guide_url)
+    print(f"[builder] built {len(guide_urls)} guide pages")
+    return guide_urls
+
+
+def render_sitemap(summaries, guide_urls=None):
+    urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
     for s in summaries:
         for hub in (f"/{s['state']}/", f"/{s['state']}/{s['county']}/", f"/{s['state']}/{s['county']}/{s['city']}/"):
             if hub not in seen_hubs:
                 seen_hubs.add(hub); urls.append(hub)
         urls.append(s["url"])
+    for gu in (guide_urls or []):
+        urls.append(gu)
     today = datetime.date.today().isoformat()
     body = "\n".join(
         f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls)
@@ -897,8 +1210,9 @@ def main():
     render_index(summaries)
     render_claim()
     render_advertise(summaries)
-    render_sitemap(summaries)
-    print(f"[builder] built hubs + homepage + claim + advertise + sitemap.xml")
+    guide_urls = render_guides(passed)
+    render_sitemap(summaries, guide_urls)
+    print(f"[builder] built hubs + homepage + claim + advertise + {len(guide_urls)} guides + sitemap.xml")
 
     report["empty_fields"] = compute_empty_fields(passed)
     report["mode"] = "enforced" if enforce else "dry-run (config 'completeness' absent)"
