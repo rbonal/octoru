@@ -146,6 +146,10 @@ CITY_COUNTY = {
     "plantation": "broward", "pompano-beach": "broward", "sunrise": "broward", "weston": "broward",
     # Palm Beach
     "boca-raton": "palm-beach", "west-palm-beach": "palm-beach",
+    "delray-beach": "palm-beach", "palm-beach-gardens": "palm-beach",
+    "jupiter": "palm-beach", "wellington": "palm-beach", "boynton-beach": "palm-beach",
+    "north-palm-beach": "palm-beach", "royal-palm-beach": "palm-beach",
+    "lake-worth-beach": "palm-beach", "greenacres": "palm-beach", "palm-beach": "palm-beach",
 }
 COUNTY_NAMES = {"miami-dade": "Miami-Dade", "broward": "Broward", "palm-beach": "Palm Beach"}
 

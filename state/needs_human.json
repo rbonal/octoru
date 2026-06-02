@@ -9,7 +9,10 @@
       "severity": "operator-action-to-activate",
       "summary": "7 new Palm Beach County cities staged with 19 real verified clinics, but they won't build until the operator adds them to config/thresholds.json seed_scope.neighborhoods (hard-gated for the builder). Also needs a Cowork ratings pass for all 19 new clinics.",
       "operator_action": "Add these 7 slugs to config/thresholds.json seed_scope.neighborhoods array: delray-beach, palm-beach-gardens, jupiter, wellington, boynton-beach, north-palm-beach, royal-palm-beach",
-      "then": "Run Cowork ratings pass (state/cowork_places_handoff.md) to rate all new staged clinics, then re-run the build."
+      "then": "Run Cowork ratings pass (state/cowork_places_handoff.md) to rate all new staged clinics, then re-run the build.",
+      "status": "RESOLVED",
+      "resolved_at": "2026-06-02",
+      "resolution": "Operator added 7 PB cities to config; Cowork rated 44 new clinics. Palm Beach now ships 23 pages across 6 cities."
     },
     {
       "id": "ready-for-human-deploy-review",
@@ -18,7 +21,7 @@
       "blocking": false,
       "severity": "info",
       "summary": "Enforced build complete: 94 listing pages built across 38 cities / 3 counties, all passed the quality gate. Deploy is the separate, human-gated step (Vercel/Cloudflare). After deploy: connect Search Console, submit /sitemap.xml, request indexing.",
-      "note_on_thin_cities": "28 places have at least one treatment page held at min_listings=2. To grow held pages into built pages: prospect more rated clinics per city (see PLAYBOOK_listing_density_and_pricing.md). Lower min_listings in config (not recommended — 2 is already the floor; single-clinic pages are too thin to rank)."
+      "note_on_thin_cities": "28 places have at least one treatment page held at min_listings=2. To grow held pages into built pages: prospect more rated clinics per city (see PLAYBOOK_listing_density_and_pricing.md). Lower min_listings in config (not recommended \u2014 2 is already the floor; single-clinic pages are too thin to rank)."
     },
     {
       "id": "rollup-pages-still-thin",
@@ -26,15 +29,16 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "info",
-      "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions — still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
-      "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has ≥2 qualifying clinics for a treatment, it builds its own page instead of rolling up."
+      "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions \u2014 still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
+      "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has \u22652 qualifying clinics for a treatment, it builds its own page instead of rolling up."
     }
   ],
   "_resolved": [
-    "thin-pages-completeness-decision — RESOLVED: operator added completeness block to config/thresholds.json on 2026-06-02 (min_listings=2, max_featured_per_page=3, enforce=true). Mode flipped from DRY-RUN to ENFORCED.",
-    "operator-add-max_featured_per_page — RESOLVED: set to 3 in completeness block.",
-    "prospector-data-source / fetch_pages wiring — RESOLVED.",
-    "places-mcp-not-visible-to-builder — RESOLVED: ratings supplied via permitted Places API.",
-    "operator-add-geo-tree — partial: seed_scope.neighborhoods used; counties derived via CITY_COUNTY + places.json."
+    "thin-pages-completeness-decision \u2014 RESOLVED: operator added completeness block to config/thresholds.json on 2026-06-02 (min_listings=2, max_featured_per_page=3, enforce=true). Mode flipped from DRY-RUN to ENFORCED.",
+    "operator-add-max_featured_per_page \u2014 RESOLVED: set to 3 in completeness block.",
+    "prospector-data-source / fetch_pages wiring \u2014 RESOLVED.",
+    "places-mcp-not-visible-to-builder \u2014 RESOLVED: ratings supplied via permitted Places API.",
+    "operator-add-geo-tree \u2014 partial: seed_scope.neighborhoods used; counties derived via CITY_COUNTY + places.json.",
+    "activate-palm-beach-expansion-in-config \u2014 RESOLVED: 7 PB cities activated, rated, built."
   ]
 }
