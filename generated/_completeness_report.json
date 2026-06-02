@@ -1260,27 +1260,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/palm-beach/palm-beach-gardens",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/palm-beach/royal-palm-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -1424,27 +1404,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/palm-beach/north-palm-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/palm-beach/palm-beach-gardens",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/palm-beach/royal-palm-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -1588,13 +1548,13 @@
   ],
   "deduped": [],
   "empty_fields": {
-    "unique_clinics": 106,
+    "unique_clinics": 111,
     "missing_phone": 0,
-    "missing_email": 104,
+    "missing_email": 109,
     "missing_address": 0,
-    "missing_booking_url": 3,
-    "price_empty_state_listings": 587,
-    "price_total_listings": 592
+    "missing_booking_url": 7,
+    "price_empty_state_listings": 623,
+    "price_total_listings": 628
   },
   "mode": "enforced",
   "thresholds_used": {

@@ -2,20 +2,24 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 16,
-    "pages_built": 216
+    "runs": 17,
+    "pages_built": 121
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Fixed Soign\u00e9 Aesthetics phone in clinics.json -> RPB botox/lip-filler/microneedling now ship (3 new pages). Staged 5 new clinics for NPB (3) + RPB (2). North Palm Beach still held \u2014 new clinics need ratings pass. Total: 216 pages / 34 cities / 3 counties.",
-    "listing_pages_built": 216,
+    "reason": "4/5 new clinics rated by Cowork. NPB: The Garden + North Palm Beach Aesthetics + Body Details -> all 4 treatment pages now ship. RPB: Soign\u00e9 + Palm Beach Anti-Aging + Flawless + PB Laser -> all 4 pages ship including LHR. 0 held pages for either city. 121 listing pages / 35 cities / 3 counties.",
+    "listing_pages_built": 121,
     "by_county": {
       "miami-dade": 47,
       "broward": 43,
-      "palm-beach": 29
+      "palm-beach": 31
     },
-    "pages_held": 94,
-    "new_pages_vs_previous": "+6 (3 RPB unlocked by Soign\u00e9 phone fix)"
+    "pages_held": 84,
+    "compliance_skips": 0,
+    "placeholder_prices_shipped": 0,
+    "sitemap_urls": 267,
+    "npb_held": 0,
+    "rpb_held": 0
   }
 }
