@@ -105,6 +105,18 @@ def _starting_price(clinic, treatment_slug):
     return clinic.get("starting_price_usd")
 
 
+def _format_phone(phone):
+    """Pretty US phone for display, e.g. +13055551234 -> (305) 555-1234."""
+    if not phone:
+        return None
+    digits = "".join(ch for ch in phone if ch.isdigit())
+    if len(digits) == 11 and digits.startswith("1"):
+        digits = digits[1:]
+    if len(digits) == 10:
+        return f"({digits[0:3]}) {digits[3:6]}-{digits[6:]}"
+    return phone
+
+
 def _google_listing_url(clinic):
     """A 'View on Google' link for the clinic. If the source record carries an
     explicit google_listing_url (e.g. a place_id-based URL from the Places API),
@@ -129,9 +141,14 @@ def _clinic_for_page(clinic, treatment_slug):
             or NEIGHBORHOOD_NAMES.get(clinic.get("neighborhood"), clinic.get("neighborhood")),
         "address": clinic.get("address"),
         "phone": clinic.get("phone"),
+        "phone_display": _format_phone(clinic.get("phone")),
         "email": clinic.get("email"),
         "booking_url": clinic.get("booking_url"),
         "google_listing_url": _google_listing_url(clinic),
+        "treatments_offered": [
+            TREATMENT_NAMES.get(t, t.replace("-", " ").title())
+            for t in (clinic.get("treatments") or [])
+        ],
         "rating": clinic.get("rating"),
         "review_count": clinic.get("review_count"),
         "rating_source": clinic.get("rating_source"),
@@ -169,12 +186,12 @@ def _assemble_page(treatment_slug, neighborhood_slug, clinics):
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
         "meta_description": (
             f"Compare {n} {t_name.lower()} {provider_word} in {n_name}, Miami — "
-            f"verified ratings, starting prices, and languages spoken. Request a personalized quote."
+            f"addresses, phone numbers, verified Google ratings, and languages spoken. Request a personalized quote."
         ),
         "intro": (
             f"{n_name} has {n} {t_name.lower()} {provider_word} in our directory. "
-            f"Each listing below shows verified ratings and starting prices so you can "
-            f"compare before booking a consultation."
+            f"Each listing below shows the clinic's address, contact details, treatments offered, "
+            f"and verified Google rating so you can compare before booking a consultation."
         ),
         "clinics": [_clinic_for_page(c, treatment_slug) for c in clinics],
     }

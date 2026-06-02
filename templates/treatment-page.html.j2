@@ -64,11 +64,14 @@
       <div>
         {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
         <div class="name">{{ c.name }}</div>
-        <div class="meta">{{ c.neighborhood }} · {{ c.languages | join(", ") }}</div>
+        <div class="meta">{{ c.neighborhood }}{% if c.languages %} · {{ c.languages | join(", ") }}{% endif %}</div>
+        {% if c.address %}<div class="meta">{{ c.address }}</div>{% endif %}
         <div class="stats">
           {% if c.rating %}<span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>{% endif %}
           {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}</span></span>{% endif %}
+          {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
+        {% if c.treatments_offered %}<div class="meta">Treatments: {{ c.treatments_offered | join(" · ") }}</div>{% endif %}
       </div>
       <div class="actions">
         <button class="btn primary" data-clinic="{{ c.slug }}">Get a quote</button>
