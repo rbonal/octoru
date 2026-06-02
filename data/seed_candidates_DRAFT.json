@@ -1274,6 +1274,113 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "davie",
+      "county": "broward",
+      "state": "fl",
+      "name": "Icon MD Medical Spa & Laser Center",
+      "website": "https://www.iconmd.com/med-spa-in-davie-fl/",
+      "address": "1849 S University Dr, Davie, FL 33324",
+      "phone": "+19547664094",
+      "email": null,
+      "booking_url": "https://www.iconmd.com/med-spa-in-davie-fl/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "davie",
+      "county": "broward",
+      "state": "fl",
+      "name": "Dives Med Spa",
+      "website": "https://divesmedspa.com/",
+      "address": "6370 Griffin Rd, C104, Davie, FL 33314",
+      "phone": "+19544407458",
+      "email": null,
+      "booking_url": "https://divesmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "miramar",
+      "county": "broward",
+      "state": "fl",
+      "name": "BloomHaus MedSpa",
+      "website": "https://bloomhausmedspa.com/",
+      "address": "2201 S Palm Ave, Suite 201, Miramar, FL 33025",
+      "phone": "+13054328757",
+      "email": null,
+      "booking_url": "https://bloomhausmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "coconut-creek",
+      "county": "broward",
+      "state": "fl",
+      "name": "Helios Med Spa",
+      "website": "https://www.fresha.com/lvp/helios-med-spa-west-sample-road-coconut-creek-W4k6w2",
+      "address": "5400 W Sample Rd, Ste 15, Coconut Creek, FL 33066",
+      "phone": "+19543608000",
+      "email": null,
+      "booking_url": "https://www.fresha.com/lvp/helios-med-spa-west-sample-road-coconut-creek-W4k6w2",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "coconut-creek",
+      "county": "broward",
+      "state": "fl",
+      "name": "Aesthetics Care Med Spa",
+      "website": "https://aestheticscaremedspa.com/",
+      "address": "5450 W Hillsboro Blvd, Ste 8, Coconut Creek, FL 33073",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://aestheticscaremedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
