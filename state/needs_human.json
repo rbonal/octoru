@@ -2,6 +2,29 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
+      "id": "operator-add-geo-tree-to-config-to-expand",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "action-required-to-expand",
+      "summary": "National geo architecture is BUILT (state > county > city > treatment; /{state}/{county}/{city}/{treatment}/ URLs + state/county/city hubs + sitemap.xml). It reads an OPERATOR-OWNED geo tree at config/thresholds.json -> seed_scope.geo. With no geo tree, it back-compat-builds the current flat 'neighborhoods' as active cities in Miami-Dade, FL. To activate new counties/cities, the operator adds them to seed_scope.geo with status active|planned (builder builds only 'active'; never edits config).",
+      "config_shape_to_add": {
+        "seed_scope": {
+          "geo": {
+            "fl": { "name": "Florida", "abbr": "FL", "status": "active",
+              "counties": {
+                "miami-dade": { "name": "Miami-Dade", "status": "active",
+                  "cities": { "brickell": {"name":"Brickell","status":"active"}, "aventura": {"name":"Aventura","status":"planned"} } },
+                "broward": { "name": "Broward", "status": "planned", "cities": { "fort-lauderdale": {"name":"Fort Lauderdale","status":"planned"} } },
+                "palm-beach": { "name": "Palm Beach", "status": "planned", "cities": { "boca-raton": {"name":"Boca Raton","status":"planned"} } }
+              } }
+          }
+        }
+      },
+      "note": "Each new active city still needs a prospector + ratings pass (per the density/pricing playbook) before it has real listings. Plan: builder/PLAN_geo_expansion_south_florida.md. State stays out of URLs only if single-state; national keeps /{state}/ as designed.",
+      "data_fields": "Prospector clinic records may carry optional 'county' and 'state' slugs for disambiguation; 'neighborhood' is the city slug. addressRegion (state) belongs in schema."
+    },
+    {
       "id": "operator-add-completeness-thresholds-to-config",
       "opened_at": "2026-06-01",
       "opened_by": "builder",

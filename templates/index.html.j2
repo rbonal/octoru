@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GlowMap — Miami med spa treatment directory</title>
-<meta name="description" content="Find and compare Miami med spas by treatment and neighborhood — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified providers, prices, and ratings.">
+<title>GlowMap — med spa treatment directory</title>
+<meta name="description" content="Find and compare med spas by treatment and city — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified providers, prices, and ratings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,55 +16,45 @@
   <div class="wrap">
     <a href="/" style="text-decoration:none">
       <div class="brandmark">GlowMap</div>
-      <div class="label">Miami med spa directory</div>
+      <div class="label">Med spa directory</div>
     </a>
-    <span class="label blue">Miami</span>
+    <span class="label blue">South Florida</span>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero home-hero">
-    <span class="label blue">Miami</span>
-    <h1>Find &amp; compare Miami med spas<br>by treatment and neighborhood</h1>
+    <span class="label blue">South Florida</span>
+    <h1>Find &amp; compare med spas<br>by treatment and city</h1>
     <p class="lead">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, and
-      microneedling — with addresses, prices, and ratings, so you can compare before you book.</p>
+      microneedling — by city, with addresses, prices, and ratings, so you can compare before you book.</p>
     {%- if stats %}
     <div class="statbar">
       <span><b>{{ stats.listings }}</b> provider listings</span>
-      <span><b>{{ stats.neighborhoods }}</b> neighborhoods</span>
-      <span><b>{{ stats.treatments }}</b> treatments</span>
+      <span><b>{{ stats.cities }}</b> cities</span>
+      <span><b>{{ stats.counties }}</b> counties</span>
       <span class="ok">✓ verified contact details</span>
     </div>
     {%- endif %}
   </section>
 
   <div class="dir-search">
-    <input id="dir-q" type="search" placeholder="Search a treatment or neighborhood — e.g. “botox brickell”"
+    <input id="dir-q" type="search" placeholder="Search a city or county — e.g. “coral gables” or “broward”"
            aria-label="Filter the directory">
-    {%- if treatments %}
-    <div class="pills" id="dir-pills">
-      <button class="pill is-active" data-term="">All</button>
-      {%- for t in treatments %}
-      <button class="pill" data-term="{{ t.name | lower }}">{{ t.name }}</button>
-      {%- endfor %}
-    </div>
-    {%- endif %}
   </div>
 
-  {%- for n in neighborhoods %}
-  <section class="nbhd-group" id="{{ n.slug }}" data-search="{{ n.name | lower }}">
-    <div class="nbhd-head"><h2>{{ n.name }}</h2><span class="label">{{ n.pages | length }} pages</span></div>
+  {%- for g in groups %}
+  <section class="nbhd-group" id="{{ g.slug }}" data-search="{{ g.name | lower }}">
+    <div class="nbhd-head"><h2>{{ g.name }}</h2><span class="label">{{ g.cities | length }} cit{{ "y" if g.cities|length == 1 else "ies" }}</span></div>
     <div class="card-grid">
-      {%- for p in n.pages %}
-      <a class="dcard" href="/{{ p.slug }}.html" data-search="{{ (p.treatment_name ~ ' ' ~ n.name) | lower }}">
+      {%- for c in g.cities %}
+      <a class="dcard" href="{{ c.url }}" data-search="{{ (c.name ~ ' ' ~ g.name) | lower }}">
         <div class="dcard-top">
-          <span class="dcard-title">{{ p.treatment_name }}</span>
+          <span class="dcard-title">{{ c.name }}</span>
           <span class="dcard-arrow" aria-hidden="true">→</span>
         </div>
-        <div class="dcard-sub">in {{ n.name }}</div>
         <div class="dcard-foot">
-          <span class="label">{{ p.n_clinics }} provider{{ "s" if p.n_clinics != 1 }}</span>
-          {%- if p.from_price %}<span class="chip">from ${{ p.from_price }}{% if p.price_unit %} {{ p.price_unit }}{% endif %}</span>{% endif %}
+          <span class="label">{{ c.n_pages }} treatment{{ "s" if c.n_pages != 1 }}</span>
         </div>
       </a>
       {%- endfor %}
@@ -72,40 +62,25 @@
   </section>
   {%- endfor %}
 
-  <p id="dir-empty" class="meta" style="display:none;padding:24px 0;">No pages match — try a treatment like “microneedling” or a neighborhood like “Coral Gables”.</p>
+  <p id="dir-empty" class="meta" style="display:none;padding:24px 0;">No cities match — try a county like “Broward” or a city like “Boca Raton”.</p>
 
   <script>
     (function () {
       var q = document.getElementById('dir-q');
       var groups = Array.prototype.slice.call(document.querySelectorAll('.nbhd-group'));
       var empty = document.getElementById('dir-empty');
-      var pills = Array.prototype.slice.call(document.querySelectorAll('.pill'));
       if (!q) return;
-      function apply(term) {
-        term = (term || '').trim().toLowerCase();
-        var anyVisible = false;
+      q.addEventListener('input', function () {
+        var term = q.value.trim().toLowerCase(); var any = false;
         groups.forEach(function (g) {
-          var cards = Array.prototype.slice.call(g.querySelectorAll('.dcard'));
-          var groupHit = false;
+          var cards = Array.prototype.slice.call(g.querySelectorAll('.dcard')); var hitGroup = false;
           cards.forEach(function (c) {
-            var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1
-                      || g.getAttribute('data-search').indexOf(term) !== -1;
-            c.style.display = hit ? '' : 'none';
-            if (hit) groupHit = true;
+            var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1 || g.getAttribute('data-search').indexOf(term) !== -1;
+            c.style.display = hit ? '' : 'none'; if (hit) hitGroup = true;
           });
-          g.classList.toggle('is-hidden', !groupHit);
-          if (groupHit) anyVisible = true;
+          g.classList.toggle('is-hidden', !hitGroup); if (hitGroup) any = true;
         });
-        empty.style.display = anyVisible ? 'none' : 'block';
-      }
-      q.addEventListener('input', function () { apply(q.value); });
-      pills.forEach(function (p) {
-        p.addEventListener('click', function () {
-          pills.forEach(function (x) { x.classList.remove('is-active'); });
-          p.classList.add('is-active');
-          q.value = p.getAttribute('data-term');
-          apply(q.value);
-        });
+        empty.style.display = any ? 'none' : 'block';
       });
     })();
   </script>
@@ -114,8 +89,8 @@
 <footer class="foot">
   <div class="wrap">
     GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
-    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
-    <div class="label" style="margin-top:10px;">Last updated {{ last_updated }}</div>
+    <a href="/claim.html">Claim a listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Updated {{ last_updated }}</div>
   </div>
 </footer>
 

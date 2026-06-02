@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — GlowMap</title>
+<meta name="description" content="{{ title }}. {{ subtitle }}. Compare med spas by treatment and city — verified providers, prices, and ratings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+{%- if breadcrumb %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    {%- for b in breadcrumb %}
+    { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ b.name | tojson }}, "item": "{{ site_url }}{{ b.url }}" }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" style="text-decoration:none">
+      <div class="brandmark">GlowMap</div>
+      <div class="label">Med spa directory</div>
+    </a>
+    <span class="label blue">South Florida</span>
+  </div>
+</header>
+
+<main class="wrap">
+  {%- if breadcrumb %}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    {%- for b in breadcrumb %}
+    {%- if not loop.last %}<a href="{{ b.url }}">{{ b.name }}</a><span class="sep">/</span>
+    {%- else %}<span aria-current="page">{{ b.name }}</span>{% endif %}
+    {%- endfor %}
+  </nav>
+  {%- endif %}
+
+  <section class="hero">
+    <h1>{{ title }}</h1>
+    {%- if subtitle %}<p class="lead">{{ subtitle }}.</p>{% endif %}
+    {%- if intro %}<p class="lead">{{ intro }}</p>{% endif %}
+  </section>
+
+  <div class="card-grid" style="margin-bottom:40px;">
+    {%- for c in cards %}
+    <a class="dcard" href="{{ c.url }}">
+      <div class="dcard-top">
+        <span class="dcard-title">{{ c.title }}</span>
+        <span class="dcard-arrow" aria-hidden="true">→</span>
+      </div>
+      {%- if c.sub %}<div class="dcard-sub">{{ c.sub }}</div>{% endif %}
+      {%- if c.chip %}<div class="dcard-foot"><span class="chip">{{ c.chip }}</span></div>{% endif %}
+    </a>
+    {%- endfor %}
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+    <a href="/claim.html">Claim a listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Updated {{ last_updated }}</div>
+  </div>
+</footer>
+
+</body>
+</html>

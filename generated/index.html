@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GlowMap — Miami med spa treatment directory</title>
-<meta name="description" content="Find and compare Miami med spas by treatment and neighborhood — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified providers, prices, and ratings.">
+<title>GlowMap — med spa treatment directory</title>
+<meta name="description" content="Find and compare med spas by treatment and city — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified providers, prices, and ratings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,273 +16,91 @@
   <div class="wrap">
     <a href="/" style="text-decoration:none">
       <div class="brandmark">GlowMap</div>
-      <div class="label">Miami med spa directory</div>
+      <div class="label">Med spa directory</div>
     </a>
-    <span class="label blue">Miami</span>
+    <span class="label blue">South Florida</span>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero home-hero">
-    <span class="label blue">Miami</span>
-    <h1>Find &amp; compare Miami med spas<br>by treatment and neighborhood</h1>
+    <span class="label blue">South Florida</span>
+    <h1>Find &amp; compare med spas<br>by treatment and city</h1>
     <p class="lead">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, and
-      microneedling — with addresses, prices, and ratings, so you can compare before you book.</p>
+      microneedling — by city, with addresses, prices, and ratings, so you can compare before you book.</p>
     <div class="statbar">
       <span><b>70</b> provider listings</span>
-      <span><b>4</b> neighborhoods</span>
-      <span><b>5</b> treatments</span>
+      <span><b>4</b> cities</span>
+      <span><b>1</b> counties</span>
       <span class="ok">✓ verified contact details</span>
     </div>
   </section>
 
   <div class="dir-search">
-    <input id="dir-q" type="search" placeholder="Search a treatment or neighborhood — e.g. “botox brickell”"
+    <input id="dir-q" type="search" placeholder="Search a city or county — e.g. “coral gables” or “broward”"
            aria-label="Filter the directory">
-    <div class="pills" id="dir-pills">
-      <button class="pill is-active" data-term="">All</button>
-      <button class="pill" data-term="botox">Botox</button>
-      <button class="pill" data-term="lip filler">Lip filler</button>
-      <button class="pill" data-term="coolsculpting">CoolSculpting</button>
-      <button class="pill" data-term="laser hair removal">Laser hair removal</button>
-      <button class="pill" data-term="microneedling">Microneedling</button>
-    </div>
   </div>
-  <section class="nbhd-group" id="brickell" data-search="brickell">
-    <div class="nbhd-head"><h2>Brickell</h2><span class="label">4 pages</span></div>
+  <section class="nbhd-group" id="fl-miami-dade" data-search="miami-dade, florida">
+    <div class="nbhd-head"><h2>Miami-Dade, Florida</h2><span class="label">4 cities</span></div>
     <div class="card-grid">
-      <a class="dcard" href="/botox-brickell.html" data-search="botox brickell">
+      <a class="dcard" href="/fl/miami-dade/brickell/" data-search="brickell miami-dade, florida">
         <div class="dcard-top">
-          <span class="dcard-title">Botox</span>
+          <span class="dcard-title">Brickell</span>
           <span class="dcard-arrow" aria-hidden="true">→</span>
         </div>
-        <div class="dcard-sub">in Brickell</div>
         <div class="dcard-foot">
-          <span class="label">8 providers</span><span class="chip">from $10 per unit</span>
+          <span class="label">4 treatments</span>
         </div>
       </a>
-      <a class="dcard" href="/lip-filler-brickell.html" data-search="lip filler brickell">
+      <a class="dcard" href="/fl/miami-dade/coconut-grove/" data-search="coconut grove miami-dade, florida">
         <div class="dcard-top">
-          <span class="dcard-title">Lip filler</span>
+          <span class="dcard-title">Coconut Grove</span>
           <span class="dcard-arrow" aria-hidden="true">→</span>
         </div>
-        <div class="dcard-sub">in Brickell</div>
         <div class="dcard-foot">
-          <span class="label">8 providers</span>
+          <span class="label">4 treatments</span>
         </div>
       </a>
-      <a class="dcard" href="/laser-hair-removal-brickell.html" data-search="laser hair removal brickell">
+      <a class="dcard" href="/fl/miami-dade/coral-gables/" data-search="coral gables miami-dade, florida">
         <div class="dcard-top">
-          <span class="dcard-title">Laser hair removal</span>
+          <span class="dcard-title">Coral Gables</span>
           <span class="dcard-arrow" aria-hidden="true">→</span>
         </div>
-        <div class="dcard-sub">in Brickell</div>
         <div class="dcard-foot">
-          <span class="label">3 providers</span>
+          <span class="label">5 treatments</span>
         </div>
       </a>
-      <a class="dcard" href="/microneedling-brickell.html" data-search="microneedling brickell">
+      <a class="dcard" href="/fl/miami-dade/south-beach/" data-search="south beach miami-dade, florida">
         <div class="dcard-top">
-          <span class="dcard-title">Microneedling</span>
+          <span class="dcard-title">South Beach</span>
           <span class="dcard-arrow" aria-hidden="true">→</span>
         </div>
-        <div class="dcard-sub">in Brickell</div>
         <div class="dcard-foot">
-          <span class="label">6 providers</span>
-        </div>
-      </a>
-    </div>
-  </section>
-  <section class="nbhd-group" id="coral-gables" data-search="coral gables">
-    <div class="nbhd-head"><h2>Coral Gables</h2><span class="label">5 pages</span></div>
-    <div class="card-grid">
-      <a class="dcard" href="/botox-coral-gables.html" data-search="botox coral gables">
-        <div class="dcard-top">
-          <span class="dcard-title">Botox</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coral Gables</div>
-        <div class="dcard-foot">
-          <span class="label">4 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/lip-filler-coral-gables.html" data-search="lip filler coral gables">
-        <div class="dcard-top">
-          <span class="dcard-title">Lip filler</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coral Gables</div>
-        <div class="dcard-foot">
-          <span class="label">4 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/coolsculpting-coral-gables.html" data-search="coolsculpting coral gables">
-        <div class="dcard-top">
-          <span class="dcard-title">CoolSculpting</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coral Gables</div>
-        <div class="dcard-foot">
-          <span class="label">1 provider</span>
-        </div>
-      </a>
-      <a class="dcard" href="/laser-hair-removal-coral-gables.html" data-search="laser hair removal coral gables">
-        <div class="dcard-top">
-          <span class="dcard-title">Laser hair removal</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coral Gables</div>
-        <div class="dcard-foot">
-          <span class="label">4 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/microneedling-coral-gables.html" data-search="microneedling coral gables">
-        <div class="dcard-top">
-          <span class="dcard-title">Microneedling</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coral Gables</div>
-        <div class="dcard-foot">
-          <span class="label">5 providers</span>
-        </div>
-      </a>
-    </div>
-  </section>
-  <section class="nbhd-group" id="south-beach" data-search="south beach">
-    <div class="nbhd-head"><h2>South Beach</h2><span class="label">5 pages</span></div>
-    <div class="card-grid">
-      <a class="dcard" href="/botox-south-beach.html" data-search="botox south beach">
-        <div class="dcard-top">
-          <span class="dcard-title">Botox</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in South Beach</div>
-        <div class="dcard-foot">
-          <span class="label">5 providers</span><span class="chip">from $11 per unit</span>
-        </div>
-      </a>
-      <a class="dcard" href="/lip-filler-south-beach.html" data-search="lip filler south beach">
-        <div class="dcard-top">
-          <span class="dcard-title">Lip filler</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in South Beach</div>
-        <div class="dcard-foot">
-          <span class="label">5 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/coolsculpting-south-beach.html" data-search="coolsculpting south beach">
-        <div class="dcard-top">
-          <span class="dcard-title">CoolSculpting</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in South Beach</div>
-        <div class="dcard-foot">
-          <span class="label">1 provider</span>
-        </div>
-      </a>
-      <a class="dcard" href="/laser-hair-removal-south-beach.html" data-search="laser hair removal south beach">
-        <div class="dcard-top">
-          <span class="dcard-title">Laser hair removal</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in South Beach</div>
-        <div class="dcard-foot">
-          <span class="label">3 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/microneedling-south-beach.html" data-search="microneedling south beach">
-        <div class="dcard-top">
-          <span class="dcard-title">Microneedling</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in South Beach</div>
-        <div class="dcard-foot">
-          <span class="label">3 providers</span>
-        </div>
-      </a>
-    </div>
-  </section>
-  <section class="nbhd-group" id="coconut-grove" data-search="coconut grove">
-    <div class="nbhd-head"><h2>Coconut Grove</h2><span class="label">4 pages</span></div>
-    <div class="card-grid">
-      <a class="dcard" href="/botox-coconut-grove.html" data-search="botox coconut grove">
-        <div class="dcard-top">
-          <span class="dcard-title">Botox</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coconut Grove</div>
-        <div class="dcard-foot">
-          <span class="label">3 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/lip-filler-coconut-grove.html" data-search="lip filler coconut grove">
-        <div class="dcard-top">
-          <span class="dcard-title">Lip filler</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coconut Grove</div>
-        <div class="dcard-foot">
-          <span class="label">2 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/laser-hair-removal-coconut-grove.html" data-search="laser hair removal coconut grove">
-        <div class="dcard-top">
-          <span class="dcard-title">Laser hair removal</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coconut Grove</div>
-        <div class="dcard-foot">
-          <span class="label">2 providers</span>
-        </div>
-      </a>
-      <a class="dcard" href="/microneedling-coconut-grove.html" data-search="microneedling coconut grove">
-        <div class="dcard-top">
-          <span class="dcard-title">Microneedling</span>
-          <span class="dcard-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="dcard-sub">in Coconut Grove</div>
-        <div class="dcard-foot">
-          <span class="label">3 providers</span>
+          <span class="label">5 treatments</span>
         </div>
       </a>
     </div>
   </section>
 
-  <p id="dir-empty" class="meta" style="display:none;padding:24px 0;">No pages match — try a treatment like “microneedling” or a neighborhood like “Coral Gables”.</p>
+  <p id="dir-empty" class="meta" style="display:none;padding:24px 0;">No cities match — try a county like “Broward” or a city like “Boca Raton”.</p>
 
   <script>
     (function () {
       var q = document.getElementById('dir-q');
       var groups = Array.prototype.slice.call(document.querySelectorAll('.nbhd-group'));
       var empty = document.getElementById('dir-empty');
-      var pills = Array.prototype.slice.call(document.querySelectorAll('.pill'));
       if (!q) return;
-      function apply(term) {
-        term = (term || '').trim().toLowerCase();
-        var anyVisible = false;
+      q.addEventListener('input', function () {
+        var term = q.value.trim().toLowerCase(); var any = false;
         groups.forEach(function (g) {
-          var cards = Array.prototype.slice.call(g.querySelectorAll('.dcard'));
-          var groupHit = false;
+          var cards = Array.prototype.slice.call(g.querySelectorAll('.dcard')); var hitGroup = false;
           cards.forEach(function (c) {
-            var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1
-                      || g.getAttribute('data-search').indexOf(term) !== -1;
-            c.style.display = hit ? '' : 'none';
-            if (hit) groupHit = true;
+            var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1 || g.getAttribute('data-search').indexOf(term) !== -1;
+            c.style.display = hit ? '' : 'none'; if (hit) hitGroup = true;
           });
-          g.classList.toggle('is-hidden', !groupHit);
-          if (groupHit) anyVisible = true;
+          g.classList.toggle('is-hidden', !hitGroup); if (hitGroup) any = true;
         });
-        empty.style.display = anyVisible ? 'none' : 'block';
-      }
-      q.addEventListener('input', function () { apply(q.value); });
-      pills.forEach(function (p) {
-        p.addEventListener('click', function () {
-          pills.forEach(function (x) { x.classList.remove('is-active'); });
-          p.classList.add('is-active');
-          q.value = p.getAttribute('data-term');
-          apply(q.value);
-        });
+        empty.style.display = any ? 'none' : 'block';
       });
     })();
   </script>
@@ -291,8 +109,8 @@
 <footer class="foot">
   <div class="wrap">
     GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
-    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
-    <div class="label" style="margin-top:10px;">Last updated 2026-06-02</div>
+    <a href="/claim.html">Claim a listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Updated 2026-06-02</div>
   </div>
 </footer>
 

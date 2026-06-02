@@ -2,63 +2,63 @@
   "excluded_listings": [
     {
       "clinic": "Brickell Cosmetic Center",
-      "page": "botox-brickell",
+      "page": "botox@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
     },
     {
       "clinic": "Sisu Clinic (Brickell)",
-      "page": "botox-brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Miami Beach Laser & Aesthetics",
-      "page": "botox-south-beach",
+      "page": "botox@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
     },
     {
       "clinic": "Brickell Cosmetic Center",
-      "page": "lip-filler-brickell",
+      "page": "lip-filler@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
     },
     {
       "clinic": "Sisu Clinic (Brickell)",
-      "page": "lip-filler-brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Miami Beach Laser & Aesthetics",
-      "page": "lip-filler-south-beach",
+      "page": "lip-filler@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
     },
     {
       "clinic": "Brickell Cosmetic Center",
-      "page": "laser-hair-removal-brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Miami Beach Laser & Aesthetics",
-      "page": "laser-hair-removal-south-beach",
+      "page": "laser-hair-removal@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
     },
     {
       "clinic": "Brickell Cosmetic Center",
-      "page": "microneedling-brickell",
+      "page": "microneedling@fl/miami-dade/brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "botox@fl/miami-dade/south-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "lip-filler@fl/miami-dade/south-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "laser-hair-removal@fl/miami-dade/south-beach",
       "missing": [
         "phone"
       ]
@@ -66,19 +66,19 @@
   ],
   "held_pages": [
     {
-      "page": "lip-filler-coconut-grove",
+      "page": "coolsculpting@fl/miami-dade/coral-gables",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting@fl/miami-dade/south-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "lip-filler@fl/miami-dade/coconut-grove",
       "reason": "only 2 qualifying listing(s) (< 3)"
     },
     {
-      "page": "coolsculpting-coral-gables",
-      "reason": "only 1 qualifying listing(s) (< 3)"
-    },
-    {
-      "page": "coolsculpting-south-beach",
-      "reason": "only 1 qualifying listing(s) (< 3)"
-    },
-    {
-      "page": "laser-hair-removal-coconut-grove",
+      "page": "laser-hair-removal@fl/miami-dade/coconut-grove",
       "reason": "only 2 qualifying listing(s) (< 3)"
     }
   ],

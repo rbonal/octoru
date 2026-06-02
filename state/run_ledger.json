@@ -1,16 +1,14 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 6, "pages_built": 18 },
+  "2026-06": { "tokens": 0, "runs": 7, "pages_built": 18 },
   "last_run": {
     "at": "2026-06-01",
     "status": "success",
-    "reason": "Implemented information-gap handling (completeness gate, sourcing-hierarchy labels, honest empty states, source/freshness, claim-listing intake). Built 18 listing pages + homepage + claim.html. Completeness gate is DRY-RUN (config 'completeness' not yet added by operator — builder cannot edit config).",
+    "reason": "Built national geo architecture: state>county>city>treatment hierarchy from operator-owned seed_scope.geo (back-compat maps current flat scope to fl/miami-dade). 18 listing pages under /{state}/{county}/{city}/{treatment}/ + state/county/city hubs + homepage + claim + sitemap.xml (26 URLs). Completeness gate dry-run unchanged.",
     "pages_built": 18,
-    "pages_skipped": 2,
+    "hubs_built": "1 state + 1 county + 4 city",
+    "sitemap_urls": 26,
     "completeness_mode": "dry-run",
-    "dry_run_would_exclude_listings": 9,
-    "dry_run_would_hold_pages": 4,
-    "empty_state_summary": "missing_email=19/21, missing_phone=3/21, missing_price=66/70 listing-instances, missing_address=0",
-    "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field for cap enforcement."
+    "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field."
   }
 }

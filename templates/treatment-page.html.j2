@@ -136,10 +136,10 @@
   <section class="crosslinks">
     {%- if same_treatment %}
     <div class="xl-group">
-      <span class="label">{{ treatment.name }} in other neighborhoods</span>
+      <span class="label">{{ treatment.name }} in nearby cities</span>
       <ul>
         {%- for p in same_treatment %}
-        <li><a href="/{{ p.slug }}.html">{{ treatment.name }} in {{ p.name }}</a></li>
+        <li><a href="{{ p.url }}">{{ treatment.name }} in {{ p.name }}</a></li>
         {%- endfor %}
       </ul>
     </div>
@@ -149,7 +149,7 @@
       <span class="label">Other treatments in {{ neighborhood.name }}</span>
       <ul>
         {%- for p in other_treatments %}
-        <li><a href="/{{ p.slug }}.html">{{ p.name }} in {{ neighborhood.name }}</a></li>
+        <li><a href="{{ p.url }}">{{ p.name }} in {{ neighborhood.name }}</a></li>
         {%- endfor %}
       </ul>
     </div>
