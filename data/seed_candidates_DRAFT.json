@@ -1467,6 +1467,132 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "hialeah",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "CoCo Medical Spa",
+      "website": "https://cocomedicalspa.com/",
+      "address": "3115 W 4th Ave, Hialeah, FL 33012",
+      "phone": "+13052317599",
+      "email": null,
+      "booking_url": "https://cocomedicalspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "hialeah",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Qway MedSpa",
+      "website": "https://qwaymedspa.com/",
+      "address": "1015 E 4th Ave, Hialeah, FL 33010",
+      "phone": "+13058840134",
+      "email": null,
+      "booking_url": "https://qwaymedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "pinecrest",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "DermaSpalogy",
+      "website": "https://www.dermaspalogy.com/",
+      "address": "8517 SW 136th St, Pinecrest, FL 33156",
+      "phone": "+13052534772",
+      "email": null,
+      "booking_url": "https://www.dermaspalogy.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "sunny-isles-beach",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Rejuvenation Medical Aesthetics & Spa",
+      "website": "https://rejumedaesthetics.com/",
+      "address": "323 Sunny Isles Blvd, Suite 106, Sunny Isles Beach, FL 33160",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://rejumedaesthetics.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "sunny-isles-beach",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "SOLEA Medical Spa",
+      "website": "https://soleabeautylounge.com/",
+      "address": "18140 Collins Ave, Sunny Isles Beach, FL 33160",
+      "phone": "+13059122155",
+      "email": null,
+      "booking_url": "https://soleabeautylounge.com/",
+      "languages": [],
+      "treatments": [
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "north-miami",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Youthful Glow",
+      "website": "https://youthful-glow.com/",
+      "address": "12550 Biscayne Blvd, Suite 812, North Miami, FL 33181",
+      "phone": "+13053324141",
+      "email": null,
+      "booking_url": "https://youthful-glow.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Miami-Dade)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
