@@ -1,4 +1,12 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 0, "pages_built": 0 }
+  "2026-06": { "tokens": 0, "runs": 1, "pages_built": 0 },
+  "last_run": {
+    "at": "2026-06-01",
+    "status": "blocked",
+    "reason": "google-places MCP tool not visible in builder session (likely needs Claude Code restart to load .mcp.json server). No ratings pulled, no pages built. See state/needs_human.json -> places-mcp-not-visible-to-builder.",
+    "pages_built": 0,
+    "pages_skipped": 0,
+    "_token_note": "Token usage not self-measured by the builder this run; cap enforcement reads the monthly 'tokens' field, which a metered runner should populate."
+  }
 }

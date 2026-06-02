@@ -2,6 +2,30 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty = nothing waiting.",
   "items": [
     {
+      "id": "places-mcp-not-visible-to-builder",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": true,
+      "severity": "blocker",
+      "summary": "Resume-build requested with 'Places is connected', but the google-places MCP tool is NOT visible in this builder session. Cannot pull permitted-API ratings; build halted before generating any page.",
+      "evidence": [
+        "ToolSearch 'google places maps search place details rating' -> no Places tool.",
+        "ToolSearch 'maps_search_places maps_place_details google-places geocode' -> No matching deferred tools found.",
+        "mcp-registry list_connectors for [places, maps, google] -> no installed connectors."
+      ],
+      "most_likely_cause": "MCP servers added to .mcp.json load into the agent's tool registry only after Claude Code is restarted. This session began before google-places was added, so its tools are absent. (The key/config look correct per the user.)",
+      "did_not_do": [
+        "Did NOT fabricate ratings.",
+        "Did NOT scrape Google/Yelp ratings via web (that is the prohibited non-permitted-API source).",
+        "Did NOT build or commit any listing page."
+      ],
+      "how_to_unblock": [
+        "Restart Claude Code (fully quit + reopen) so it loads the google-places server from .mcp.json; approve/trust the new server if prompted.",
+        "Sanity-check the server actually starts (npx -y @modelcontextprotocol/server-google-maps must resolve to a real package; verify the package name you vetted).",
+        "Re-run the resume-build prompt. On the next run I will first confirm the Places tool is visible (ToolSearch) before relying on it, then proceed: verify each clinic, pull rating + review_count (rating_source='google_places'), write data/prospector/clinics.json, build, gate, commit to auto/build."
+      ]
+    },
+    {
       "id": "request-to-remove-rating-requirement-REFUSED",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
