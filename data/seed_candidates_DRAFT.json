@@ -1883,6 +1883,152 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out"
+    },
+    {
+      "neighborhood": "cooper-city",
+      "county": "broward",
+      "state": "fl",
+      "name": "Dr. Ivy Med Spa (BodyBrite Cooper City)",
+      "website": "https://bodybritecoopercity.com/",
+      "address": "5542 S Flamingo Rd, Cooper City, FL 33330",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://bodybritecoopercity.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "cooper-city",
+      "county": "broward",
+      "state": "fl",
+      "name": "Ageless Medical",
+      "website": "https://www.agelessmed.com/",
+      "address": "10640 Griffin Rd, Ste 102, Cooper City, FL 33328",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.agelessmed.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "cooper-city",
+      "county": "broward",
+      "state": "fl",
+      "name": "Divine Med Spa & Clinic",
+      "website": "https://www.fresha.com/lvp/divine-med-spa-clinic-griffin-road-cooper-city-ylBy9W",
+      "address": "8684 Griffin Rd, Cooper City, FL 33328",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.fresha.com/lvp/divine-med-spa-clinic-griffin-road-cooper-city-ylBy9W",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "dania-beach",
+      "county": "broward",
+      "state": "fl",
+      "name": "AlluraMD Aesthetics + Wellness",
+      "website": "https://alluraaesthetics.com/dania-beach/",
+      "address": "Dania Pointe, Dania Beach, FL 33004",
+      "phone": "+19549470103",
+      "email": null,
+      "booking_url": "https://alluraaesthetics.com/dania-beach/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "surfside",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Lemel Medical Spa",
+      "website": "https://www.mindbodyonline.com/explore/locations/lemel-medical-spa",
+      "address": "9538 Harding Ave, Surfside, FL 33154",
+      "phone": "+17867178770",
+      "email": null,
+      "booking_url": "https://www.mindbodyonline.com/explore/locations/lemel-medical-spa",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "miami-springs",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "CIMA Med Spa",
+      "website": "https://www.yelp.com/biz/cima-med-spa-miami-springs",
+      "address": "175 Westward Dr, Miami Springs, FL 33166",
+      "phone": "+13058719636",
+      "email": null,
+      "booking_url": "https://www.yelp.com/biz/cima-med-spa-miami-springs",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
+    },
+    {
+      "neighborhood": "miami-springs",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Beauty By Design Med Spa",
+      "website": "https://www.beautybydesignmedspa.com/",
+      "address": "1 S Royal Poinciana Blvd, Miami Springs, FL 33166",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.beautybydesignmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
@@ -1892,6 +2038,13 @@
     "North Miami Beach",
     "South Miami",
     "Cutler Bay",
-    "Lauderdale-by-the-Sea (providers are in adjacent Fort Lauderdale)"
-  ]
+    "Lauderdale-by-the-Sea (providers are in adjacent Fort Lauderdale)",
+    "North Lauderdale",
+    "Miami Shores",
+    "Miami Gardens",
+    "Tamarac",
+    "Lauderhill",
+    "Wilton Manors (BeWell is Oakland Park)"
+  ],
+  "_tiny_towns_no_med_spa": "El Portal, Biscayne Park, Medley, Virginia Gardens, West Miami, Golden Beach, Indian Creek, Florida City, Hialeah Gardens, Opa-locka, North Bay Village, Sweetwater, Bay Harbor Islands (MD); Lazy Lake, Sea Ranch Lakes, Pembroke Park, West Park, Hillsboro Beach, Lauderdale Lakes, Southwest Ranches (Broward) \u2014 no real med spa -> no page."
 }
