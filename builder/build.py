@@ -1036,12 +1036,17 @@ def render_index(summaries):
     geo_cities = [{"name": city_name[c], "slug": c, "lat": lat, "lng": lng, "url": city_url[c]}
                   for c, (lat, lng) in CITY_LATLNG.items() if c in city_url]
 
-    # Top searches: real treatment x city combos ranked by clinic count
+    # Top searches: real treatment x city combos ranked by clinic count.
+    # Always resolve county via CITY_COUNTY (authoritative) before falling back to
+    # the clinic record — clinics.json may omit county for older records.
     all_clinics = load_clinics()
     from collections import defaultdict as _dd
     combos = _dd(list)
     for c in all_clinics:
-        nb = c.get("neighborhood",""); co = c.get("county","miami-dade"); st = c.get("state","fl") or "fl"
+        nb = c.get("neighborhood","")
+        # Authoritative county lookup: CITY_COUNTY > record field > "miami-dade"
+        co = CITY_COUNTY.get(nb) or c.get("county") or "miami-dade"
+        st = c.get("state","fl") or "fl"
         for t in (c.get("treatments") or []):
             combos[(st, co, nb, t)].append(1)
     top_searches = []
@@ -1220,6 +1225,34 @@ def main():
     print(f"[builder] completeness: mode={report['mode']} | listings_excluded={len(report['excluded_listings'])} | "
           f"pages_held={len(report['held_pages'])} | empty_fields={report['empty_fields']}")
     (GENERATED / "_completeness_report.json").write_text(json.dumps(report, indent=2))
+
+    # Link validation — catch wrong-county and dead internal links before commit.
+    import re as _re
+    _link_re = _re.compile(r'href="(/fl/[^"#?]+)"')
+    _built_paths = set()
+    for _f in GENERATED.rglob("index.html"):
+        _rel = "/" + str(_f.relative_to(GENERATED).parent).replace("\\","/") + "/"
+        _built_paths.add(_rel)
+    _broken, _wrong = [], []
+    for _f in GENERATED.rglob("index.html"):
+        _src = "/" + str(_f.relative_to(GENERATED).parent).replace("\\","/") + "/"
+        for _href in _link_re.findall(_f.read_text()):
+            _tgt = _href if _href.endswith("/") else _href + "/"
+            _parts = _tgt.strip("/").split("/")
+            if len(_parts) >= 3 and _parts[0] == "fl":
+                _exp_co = CITY_COUNTY.get(_parts[2])
+                if _exp_co and _parts[1] != _exp_co:
+                    _wrong.append(f"{_tgt} (from {_src})")
+            if _tgt not in _built_paths and not _tgt.startswith("/fl/") is False:
+                pass  # non-fl links are external
+            if _tgt.startswith("/fl/") and _tgt not in _built_paths:
+                _broken.append(f"{_tgt} (from {_src})")
+    if _wrong:
+        print(f"[builder] WARN: {len(_wrong)} wrong-county link(s): {_wrong[:5]}")
+    if _broken:
+        print(f"[builder] WARN: {len(_broken)} broken internal link(s): {_broken[:5]}")
+    if not _wrong and not _broken:
+        print(f"[builder] link check: all internal links valid")
 
     # DO NOT merge to main. DO NOT deploy. (hard-gated in CLAUDE.md)
     print(f"[builder] done. built={built} skipped={skipped} state={state}")
