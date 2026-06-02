@@ -2,6 +2,24 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty = nothing waiting.",
   "items": [
     {
+      "id": "request-to-remove-rating-requirement-REFUSED",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "hard-gated",
+      "summary": "Human asked me to remove the rating requirement and build the listing pages without ratings. I declined and did NOT build.",
+      "why_refused": [
+        "The AggregateRating requirement is part of the Quality Gate in CLAUDE.md (operating law): 'Never lower the gate to hit a count', and Hard Limits: 'not subject to your judgment. There is no override.'",
+        "Editing CLAUDE.md or the compliance logic is on the HARD-GATED list — the instruction is to stop and surface to a human, not to do it. Gutting quality_gate() or stripping the schema from the template are the same prohibited move.",
+        "Compliance risk: empty/fabricated AggregateRating in a medical vertical invites FTC scrutiny + Google manual actions; the evaluator treats manual_action_detected as instant 'halted'."
+      ],
+      "legitimate_paths": [
+        "PREFERRED: supply real ratings from a permitted source (wire Places MCP, or hand over a rated clinics.json). Builds immediately, fully compliant.",
+        "OWNER OVERRIDE: CLAUDE.md is human-owned. If the human wants ratings optional, the human edits CLAUDE.md themselves (the builder cannot). Clean approach = OMIT the AggregateRating block entirely when no permitted rating exists, rather than emit empty/fake markup. The builder will operate under whatever the revised law says. Note: this forfeits the rich-snippet ranking value the directory is built for."
+      ],
+      "state_when_logged": "Build remains PARKED. Pipe + template + 'View on Google' + 14 verified clinics staged on auto/build. No listing pages built."
+    },
+    {
       "id": "prospector-data-source-unspecified",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
