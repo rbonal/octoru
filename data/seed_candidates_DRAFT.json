@@ -331,6 +331,48 @@
       "_note": "kept as south-beach per clinic's own listing (geographically Mid-Beach); phone/treatments still need verification"
     },
     {
+      "neighborhood": "south-beach",
+      "name": "Skin Spa New York (Miami Beach)",
+      "website": "https://skinspanewyork.com/pages/miami-beach",
+      "address": "1212 Lincoln Road, #206, Miami Beach, FL 33139",
+      "phone": "+13053978484",
+      "email": null,
+      "booking_url": "https://skinspanewyork.com/pages/miami-beach",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification; Lincoln Road = South Beach; verified from site"
+    },
+    {
+      "neighborhood": "south-beach",
+      "name": "Diamond Med Spa",
+      "website": "https://www.diamondmedspa.net/",
+      "address": "960 W 41st St, #214, Miami Beach, FL 33140",
+      "phone": "+17864397427",
+      "email": null,
+      "booking_url": "https://www.diamondmedspa.net/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "starting_prices_usd": {
+        "botox": 11
+      },
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification; Botox $11/unit per site; 41st St is Mid-Beach, kept south-beach per as-listed policy"
+    },
+    {
       "neighborhood": "coconut-grove",
       "name": "Lavish Laser Med Spa (Coconut Grove)",
       "website": "https://lavishlasermedspa.com/",
@@ -368,6 +410,25 @@
       "review_count": null,
       "rating_source": null,
       "_note": "EXCEPTION to as-listed rule: self-describes as Coral Gables, but printed address (Main Hwy) is Coconut Grove. Kept under coconut-grove for address accuracy; flip if you want strict as-listed."
+    },
+    {
+      "neighborhood": "coconut-grove",
+      "name": "SkinCeuticals SkinLab Miami",
+      "website": "https://locations.skinceuticals.com/fl/coconut-grove/3015-grand-avenue-coco-walk-unit-212/skinc0000243015",
+      "address": "3015 Grand Ave, CocoWalk Unit 212, Coconut Grove, FL 33133",
+      "phone": "+13053963739",
+      "email": null,
+      "booking_url": "https://go.booker.com/location/BarbaSkinLab/service-menu",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification; verified from site"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages."
