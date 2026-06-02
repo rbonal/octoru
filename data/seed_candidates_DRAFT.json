@@ -274,6 +274,45 @@
       "_note": "no street address published \u2014 needs one or drop"
     },
     {
+      "neighborhood": "coral-gables",
+      "name": "ALEXIS LAUREN",
+      "website": "https://alexislauren.com/",
+      "address": "4203 Ponce de Leon Blvd, Coral Gables, FL 33146",
+      "phone": "+13056863393",
+      "email": null,
+      "booking_url": "https://alexislauren.zenoti.com/webstoreNew/services/f9232a40-5d0c-446d-8055-216dbae71f02",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification; verified from site"
+    },
+    {
+      "neighborhood": "coral-gables",
+      "name": "The Plump Room",
+      "website": "https://theplumproommiami.com/",
+      "address": "147 Alhambra Circle, Suite 205, Coral Gables, FL 33134",
+      "phone": "+17865900209",
+      "email": null,
+      "booking_url": "https://theplumproom.myaestheticrecord.com/online-booking/book-appointment",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "densification; verified from site"
+    },
+    {
       "neighborhood": "south-beach",
       "name": "South Florida Face and Body",
       "website": "https://www.southfloridafaceandbody.com/",
