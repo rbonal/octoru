@@ -1676,9 +1676,77 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Miami-Dade)"
+    },
+    {
+      "neighborhood": "sunrise",
+      "county": "broward",
+      "state": "fl",
+      "name": "Archetype Aesthetics",
+      "website": "https://archetypeaesthetics.com/",
+      "address": "1000 Sawgrass Corporate Pkwy, Suite 500A, Sunrise, FL 33323",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://archetypeaesthetics.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "Angel Aesthetics",
+      "website": "https://angelaesthetics.com/",
+      "address": "2992 N Federal Hwy, Fort Lauderdale, FL 33306",
+      "phone": "+19548268181",
+      "email": null,
+      "booking_url": "https://angelaesthetics.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "fort-lauderdale",
+      "county": "broward",
+      "state": "fl",
+      "name": "Natura Dermatology",
+      "website": "https://naturadermatology.com/",
+      "address": "1120 Bayview Dr, Fort Lauderdale, FL 33304",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://naturadermatology.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
   "_growth_note": "Growth round: +Solea, +Dermacare(addr pending), +Miami Skin & Vein ($18/unit), +Pure Beauty, +JECT. Existing Places ratings merged in for preview. New clinics need a ratings pass to ship live.",
-  "_expansion_note": "Round 3: +Doral, +Kendall (Miami-Dade), +Hollywood, +Weston, +Pembroke Pines (Broward). Completing MD + Broward before ship."
+  "_expansion_note": "Round 3: +Doral, +Kendall (Miami-Dade), +Hollywood, +Weston, +Pembroke Pines (Broward). Completing MD + Broward before ship.",
+  "_skipped_no_in_city_clinic": [
+    "North Miami Beach",
+    "South Miami",
+    "Cutler Bay",
+    "Lauderdale-by-the-Sea (providers are in adjacent Fort Lauderdale)"
+  ]
 }
