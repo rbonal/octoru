@@ -777,8 +777,39 @@ def render_index(summaries):
     geo_cities = [{"name": city_name[c], "slug": c, "lat": lat, "lng": lng, "url": city_url[c]}
                   for c, (lat, lng) in CITY_LATLNG.items() if c in city_url]
 
+    # Top searches: real treatment x city combos ranked by clinic count
+    all_clinics = load_clinics()
+    from collections import defaultdict as _dd
+    combos = _dd(list)
+    for c in all_clinics:
+        nb = c.get("neighborhood",""); co = c.get("county","miami-dade"); st = c.get("state","fl") or "fl"
+        for t in (c.get("treatments") or []):
+            combos[(st, co, nb, t)].append(1)
+    top_searches = []
+    for (st, co, nb, t), hits in sorted(combos.items(), key=lambda x: -len(x[1])):
+        if len(top_searches) >= 8: break
+        city_name = NEIGHBORHOOD_NAMES.get(nb, nb.replace("-"," ").title())
+        treat_name = TREATMENT_NAMES.get(t, t)
+        top_searches.append({"label": f"{treat_name} in {city_name}",
+                              "url": f"/{st}/{co}/{nb}/{t}/"})
+
+    # Treatment card links: best city for each treatment (most clinics)
+    treat_best = {}
+    for (st, co, nb, t), hits in sorted(combos.items(), key=lambda x: -len(x[1])):
+        if t not in treat_best:
+            treat_best[t] = f"/{st}/{co}/{nb}/{t}/"
+
+    tcard_list = treatment_cards(all_clinics)
+    for tc in tcard_list:
+        tc["url"] = treat_best.get(tc["slug"], "#areas")
+
+    # Avg rating for social proof
+    ratings = [c["rating"] for c in all_clinics if c.get("rating")]
+    avg_rating = round(sum(ratings)/len(ratings), 1) if ratings else None
+
     html = env.get_template("home.html.j2").render(
-        groups=groups, stats=stats, treatments=treatment_cards(load_clinics()),
+        groups=groups, stats=stats, treatments=tcard_list,
+        top_searches=top_searches, avg_rating=avg_rating,
         geo_cities_json=json.dumps(geo_cities),
         last_updated=datetime.date.today().isoformat(), site_url=SITE_URL)
     return _write("index.html", html)
@@ -791,7 +822,7 @@ def render_claim():
     return _write("claim.html", html)
 
 
-def render_advertise():
+def render_advertise(summaries=None):
     """Placement / advertise page. Intake only — no card data on site.
     Checkout is Bonalta Payments hosted (gated). Routes interest to Campaigns CRM."""
     policy = {}
@@ -799,11 +830,19 @@ def render_advertise():
         policy = json.loads((ROOT / "data" / "monetization_policy.json").read_text())
     except Exception:
         pass
-    slot_cap = (policy.get("placement_subscription") or {}).get("slot_cap_per_page", 3)
-    crm_pipeline = (policy.get("campaigns_upsell") or {}).get("crm_pipeline", "crm:glowmap-campaigns-prospect")
+    sub = policy.get("placement_subscription") or {}
+    clinics = load_clinics()
+    ratings = [c["rating"] for c in clinics if c.get("rating")]
+    avg_rating = round(sum(ratings)/len(ratings), 1) if ratings else None
     html = env.get_template("advertise.html.j2").render(
-        site_url=SITE_URL, slot_cap=slot_cap,
-        crm_pipeline=crm_pipeline,
+        site_url=SITE_URL,
+        slot_cap=sub.get("slot_cap_per_page", 3),
+        price_display=sub.get("price_display", "from $299 / month"),
+        price_cancel=sub.get("price_cancel", "cancel anytime"),
+        crm_pipeline=(policy.get("campaigns_upsell") or {}).get("crm_pipeline", "crm:glowmap-campaigns-prospect"),
+        total_clinics=len(clinics),
+        total_pages=len(summaries) if summaries else 0,
+        avg_rating=avg_rating,
         last_updated=datetime.date.today().isoformat())
     return _write("advertise.html", html)
 
@@ -857,7 +896,7 @@ def main():
     render_hubs(summaries)
     render_index(summaries)
     render_claim()
-    render_advertise()
+    render_advertise(summaries)
     render_sitemap(summaries)
     print(f"[builder] built hubs + homepage + claim + advertise + sitemap.xml")
 

@@ -32,18 +32,18 @@
     <div class="hero-main">
       <div class="eyebrow label blue reveal d1">South Florida</div>
       <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
-      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
+      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — average 4.9-star Google rating, real prices, so you can compare before you book.</p>
 
       <div class="geo-suggest reveal d3" id="geoSuggest">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
         <a class="go" id="geoGo" href="#">See med spas there →</a>
-        <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
+        <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">&#x2715;</button>
       </div>
 
       <div class="search reveal d3">
-        <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
-        <button type="button">Search</button>
+        <input id="q" type="text" placeholder="Search a city — e.g. Brickell, Coral Gables, Fort Lauderdale" aria-label="Search city or county">
+        <button type="button">Find providers</button>
       </div>
       <div class="geo-row reveal d3">
         <button class="geo-btn" id="useLoc" type="button">
@@ -53,6 +53,17 @@
         <span class="geo-note">Used only to find the nearest area — never stored.</span>
       </div>
       <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
+      <div class="top-searches reveal d3">
+        <span class="label">Top searches</span>
+        <a href="/fl/miami-dade/brickell/botox/" class="ts-pill">Botox in Brickell</a>
+        <a href="/fl/miami-dade/brickell/lip-filler/" class="ts-pill">Lip filler in Brickell</a>
+        <a href="/fl/miami-dade/brickell/microneedling/" class="ts-pill">Microneedling in Brickell</a>
+        <a href="/fl/miami-dade/coral-gables/microneedling/" class="ts-pill">Microneedling in Coral Gables</a>
+        <a href="/fl/miami-dade/coral-gables/botox/" class="ts-pill">Botox in Coral Gables</a>
+        <a href="/fl/miami-dade/coral-gables/lip-filler/" class="ts-pill">Lip filler in Coral Gables</a>
+        <a href="/fl/miami-dade/south-beach/botox/" class="ts-pill">Botox in South Beach</a>
+        <a href="/fl/miami-dade/south-beach/lip-filler/" class="ts-pill">Lip filler in South Beach</a>
+      </div>
 
       <div class="pills reveal d3" id="pills">
         <span class="pill active" data-treat="">All</span>
@@ -67,15 +78,19 @@
     <aside class="hero-side reveal d4">
       <div class="side-stats">
         <div class="ss"><span class="n">628</span><span class="t">provider listings</span></div>
-        <div class="ss"><span class="n">35</span><span class="t">cities</span></div>
-        <div class="ss"><span class="n">3</span><span class="t">counties</span></div>
-        <div class="ss verified">✓ verified contact details</div>
+        <div class="ss"><span class="n">35</span><span class="t">cities covered</span></div>
+        <div class="ss"><span class="n">4.9</span><span class="t">avg. Google rating</span></div>
+        <div class="ss verified">&#x2713; verified contact details</div>
       </div>
       <div class="side-jump">
         <div class="label" style="margin-bottom:8px">Jump to a county</div>
-        <a href="#miami-dade">Miami-Dade <span class="ar">→</span></a>
-        <a href="#broward">Broward <span class="ar">→</span></a>
-        <a href="#palm-beach">Palm Beach <span class="ar">→</span></a>
+        <a href="#miami-dade">Miami-Dade <span class="ar">&#x2192;</span></a>
+        <a href="#broward">Broward <span class="ar">&#x2192;</span></a>
+        <a href="#palm-beach">Palm Beach <span class="ar">&#x2192;</span></a>
+      </div>
+      <div class="side-clinic-cta">
+        <span>Own a clinic?</span>
+        <a href="/advertise.html">Get featured &#x2192;</a>
       </div>
     </aside>
    </div><!-- /hero-grid -->
@@ -89,48 +104,48 @@
       <div>
         <div class="label blue" style="margin-bottom:10px">Browse by treatment</div>
         <h2>Compare by what you're getting done</h2>
-        <p>Pick a treatment to see providers, prices and ratings across South Florida.</p>
+        <p>Pick a treatment to see providers, verified ratings and real prices across South Florida.</p>
       </div>
     </div>
     <div class="treat-grid">
-      <a class="tcard" href="#areas">
+      <a class="tcard" href="/fl/miami-dade/brickell/botox/">
         <div class="tname">Botox</div>
         <div class="tdesc">Wrinkle-relaxing injections, priced per unit.</div>
         <div class="tmeta">
           <span class="from"><span class="k">Typical from</span>$10–$18 per unit</span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="#areas">
+      <a class="tcard" href="/fl/miami-dade/brickell/lip-filler/">
         <div class="tname">Lip filler</div>
         <div class="tdesc">Hyaluronic-acid lip enhancement, priced per syringe.</div>
         <div class="tmeta">
           <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="#areas">
+      <a class="tcard" href="/fl/miami-dade/delray-beach/coolsculpting/">
         <div class="tname">CoolSculpting</div>
         <div class="tdesc">Non-invasive fat reduction, priced per area.</div>
         <div class="tmeta">
           <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="#areas">
+      <a class="tcard" href="/fl/miami-dade/brickell/laser-hair-removal/">
         <div class="tname">Laser hair removal</div>
         <div class="tdesc">Multi-session hair reduction, priced by area.</div>
         <div class="tmeta">
           <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="#areas">
+      <a class="tcard" href="/fl/miami-dade/brickell/microneedling/">
         <div class="tname">Microneedling</div>
         <div class="tdesc">Collagen-induction skin treatment, per session.</div>
         <div class="tmeta">
           <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </div>
       </a>
     </div>
@@ -144,7 +159,7 @@
       <div>
         <div class="label blue" style="margin-bottom:10px">Browse by area</div>
         <h2>Choose your city</h2>
-        <p>Every city links to treatment guides with local providers, prices and verified ratings.</p>
+        <p>Every city links to treatment guides with local providers, real prices and verified Google ratings.</p>
       </div>
     </div>
     <div class="county" id="miami-dade">
@@ -152,59 +167,59 @@
       <div class="city-grid">
         <a class="ccard" href="/fl/miami-dade/aventura/" data-search="aventura" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Aventura</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/brickell/" data-search="brickell" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Brickell</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/coconut-grove/" data-search="coconut grove" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Coconut Grove</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/coral-gables/" data-search="coral gables" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Coral Gables</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/doral/" data-search="doral" data-treats="botox laser-hair-removal microneedling">
           <span><span class="cname">Doral</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/hialeah/" data-search="hialeah" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Hialeah</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/kendall/" data-search="kendall" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Kendall</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/key-biscayne/" data-search="key biscayne" data-treats="botox microneedling">
           <span><span class="cname">Key Biscayne</span><span class="cmeta label">2 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/miami-lakes/" data-search="miami lakes" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Miami Lakes</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/north-miami/" data-search="north miami" data-treats="botox microneedling">
           <span><span class="cname">North Miami</span><span class="cmeta label">2 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/pinecrest/" data-search="pinecrest" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Pinecrest</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/south-beach/" data-search="south beach" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">South Beach</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/sunny-isles-beach/" data-search="sunny isles beach" data-treats="laser-hair-removal microneedling">
           <span><span class="cname">Sunny Isles Beach</span><span class="cmeta label">2 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/miami-dade/surfside/" data-search="surfside" data-treats="botox microneedling">
           <span><span class="cname">Surfside</span><span class="cmeta label">2 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
       </div>
     </div>
@@ -213,55 +228,55 @@
       <div class="city-grid">
         <a class="ccard" href="/fl/broward/coral-springs/" data-search="coral springs" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Coral Springs</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/davie/" data-search="davie" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Davie</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/deerfield-beach/" data-search="deerfield beach" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Deerfield Beach</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/fort-lauderdale/" data-search="fort lauderdale" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Fort Lauderdale</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/hallandale-beach/" data-search="hallandale beach" data-treats="botox lip-filler">
           <span><span class="cname">Hallandale Beach</span><span class="cmeta label">2 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/hollywood/" data-search="hollywood" data-treats="botox laser-hair-removal lip-filler">
           <span><span class="cname">Hollywood</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/miramar/" data-search="miramar" data-treats="botox laser-hair-removal microneedling">
           <span><span class="cname">Miramar</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/oakland-park/" data-search="oakland park" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Oakland Park</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/parkland/" data-search="parkland" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Parkland</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/pembroke-pines/" data-search="pembroke pines" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Pembroke Pines</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/plantation/" data-search="plantation" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Plantation</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/pompano-beach/" data-search="pompano beach" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Pompano Beach</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/broward/weston/" data-search="weston" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Weston</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
       </div>
     </div>
@@ -270,35 +285,35 @@
       <div class="city-grid">
         <a class="ccard" href="/fl/palm-beach/boca-raton/" data-search="boca raton" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Boca Raton</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/boynton-beach/" data-search="boynton beach" data-treats="botox lip-filler microneedling">
           <span><span class="cname">Boynton Beach</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/delray-beach/" data-search="delray beach" data-treats="botox coolsculpting laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Delray Beach</span><span class="cmeta label">5 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/jupiter/" data-search="jupiter" data-treats="botox coolsculpting laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Jupiter</span><span class="cmeta label">5 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/north-palm-beach/" data-search="north palm beach" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">North Palm Beach</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/palm-beach-gardens/" data-search="palm beach gardens" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Palm Beach Gardens</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/royal-palm-beach/" data-search="royal palm beach" data-treats="botox laser-hair-removal lip-filler microneedling">
           <span><span class="cname">Royal Palm Beach</span><span class="cmeta label">4 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
         <a class="ccard" href="/fl/palm-beach/wellington/" data-search="wellington" data-treats="botox coolsculpting lip-filler">
           <span><span class="cname">Wellington</span><span class="cmeta label">3 treatments</span></span>
-          <span class="arrow">→</span>
+          <span class="arrow">&#x2192;</span>
         </a>
       </div>
     </div>
@@ -311,17 +326,17 @@
     <div class="tr">
       <div class="num">01</div>
       <h4>Verified, not scraped</h4>
-      <p>Contact details and ratings are pulled from permitted sources and date-stamped, so what you see is current — not copied review text.</p>
+      <p>Ratings come from Google Places. Contact details are pulled from each clinic's own site and date-stamped — no copied review text, no made-up numbers.</p>
     </div>
     <div class="tr">
       <div class="num">02</div>
       <h4>Compare before you book</h4>
-      <p>Prices, ratings and treatments side by side for each city, so you can shortlist in minutes instead of opening ten tabs.</p>
+      <p>Prices, ratings and treatments side by side for every city — shortlist in minutes instead of opening ten tabs.</p>
     </div>
     <div class="tr">
       <div class="num">03</div>
       <h4>Independent</h4>
-      <p>GlowMap isn't owned by any clinic. Featured placements are clearly labeled; everything else is ranked on the merits.</p>
+      <p>GlowMap is not owned by any clinic. Featured placements are clearly labeled; everything else is ranked on rating and coverage.</p>
     </div>
   </div>
 </section>
@@ -332,7 +347,7 @@
     <div class="row">
       <div class="disc">
         <span class="brand" style="font-size:16px">GlowMap</span><br>
-        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
         <div class="label" style="margin-top:12px">Updated 2026-06-02</div>
       </div>
       <div class="links">
@@ -346,7 +361,6 @@
 </footer>
 
 <script>
-  // Treatment pills + search both filter the city cards (pills bind to filter on build).
   var pills = document.getElementById('pills');
   var q = document.getElementById('q');
   var activeTreat = '';
@@ -369,52 +383,23 @@
   });
   q.addEventListener('input', applyFilter);
 
-  // ============ GEOLOCATION ============
-  // Covered cities with real centroids + real city-page URLs, generated from the directory data.
   var CITIES = [{"name": "Coral Gables", "slug": "coral-gables", "lat": 25.7215, "lng": -80.2684, "url": "/fl/miami-dade/coral-gables/"}, {"name": "Aventura", "slug": "aventura", "lat": 25.9565, "lng": -80.139, "url": "/fl/miami-dade/aventura/"}, {"name": "Doral", "slug": "doral", "lat": 25.8195, "lng": -80.3553, "url": "/fl/miami-dade/doral/"}, {"name": "Hialeah", "slug": "hialeah", "lat": 25.8576, "lng": -80.2781, "url": "/fl/miami-dade/hialeah/"}, {"name": "Key Biscayne", "slug": "key-biscayne", "lat": 25.6938, "lng": -80.1626, "url": "/fl/miami-dade/key-biscayne/"}, {"name": "Miami Lakes", "slug": "miami-lakes", "lat": 25.9087, "lng": -80.3087, "url": "/fl/miami-dade/miami-lakes/"}, {"name": "North Miami", "slug": "north-miami", "lat": 25.8901, "lng": -80.1867, "url": "/fl/miami-dade/north-miami/"}, {"name": "Pinecrest", "slug": "pinecrest", "lat": 25.667, "lng": -80.3083, "url": "/fl/miami-dade/pinecrest/"}, {"name": "Sunny Isles Beach", "slug": "sunny-isles-beach", "lat": 25.9501, "lng": -80.1223, "url": "/fl/miami-dade/sunny-isles-beach/"}, {"name": "Surfside", "slug": "surfside", "lat": 25.8787, "lng": -80.1257, "url": "/fl/miami-dade/surfside/"}, {"name": "Brickell", "slug": "brickell", "lat": 25.7617, "lng": -80.1918, "url": "/fl/miami-dade/brickell/"}, {"name": "Coconut Grove", "slug": "coconut-grove", "lat": 25.7282, "lng": -80.2436, "url": "/fl/miami-dade/coconut-grove/"}, {"name": "South Beach", "slug": "south-beach", "lat": 25.7826, "lng": -80.134, "url": "/fl/miami-dade/south-beach/"}, {"name": "Kendall", "slug": "kendall", "lat": 25.6793, "lng": -80.3173, "url": "/fl/miami-dade/kendall/"}, {"name": "Fort Lauderdale", "slug": "fort-lauderdale", "lat": 26.1224, "lng": -80.1373, "url": "/fl/broward/fort-lauderdale/"}, {"name": "Hollywood", "slug": "hollywood", "lat": 26.0112, "lng": -80.1495, "url": "/fl/broward/hollywood/"}, {"name": "Pembroke Pines", "slug": "pembroke-pines", "lat": 26.0078, "lng": -80.2963, "url": "/fl/broward/pembroke-pines/"}, {"name": "Coral Springs", "slug": "coral-springs", "lat": 26.271, "lng": -80.2706, "url": "/fl/broward/coral-springs/"}, {"name": "Plantation", "slug": "plantation", "lat": 26.1276, "lng": -80.2331, "url": "/fl/broward/plantation/"}, {"name": "Pompano Beach", "slug": "pompano-beach", "lat": 26.2379, "lng": -80.1248, "url": "/fl/broward/pompano-beach/"}, {"name": "Davie", "slug": "davie", "lat": 26.0765, "lng": -80.2521, "url": "/fl/broward/davie/"}, {"name": "Miramar", "slug": "miramar", "lat": 25.9861, "lng": -80.3035, "url": "/fl/broward/miramar/"}, {"name": "Weston", "slug": "weston", "lat": 26.1004, "lng": -80.3998, "url": "/fl/broward/weston/"}, {"name": "Hallandale Beach", "slug": "hallandale-beach", "lat": 25.9812, "lng": -80.1484, "url": "/fl/broward/hallandale-beach/"}, {"name": "Deerfield Beach", "slug": "deerfield-beach", "lat": 26.3184, "lng": -80.0998, "url": "/fl/broward/deerfield-beach/"}, {"name": "Oakland Park", "slug": "oakland-park", "lat": 26.1723, "lng": -80.132, "url": "/fl/broward/oakland-park/"}, {"name": "Parkland", "slug": "parkland", "lat": 26.3098, "lng": -80.237, "url": "/fl/broward/parkland/"}, {"name": "Boca Raton", "slug": "boca-raton", "lat": 26.3683, "lng": -80.1289, "url": "/fl/palm-beach/boca-raton/"}, {"name": "Delray Beach", "slug": "delray-beach", "lat": 26.4615, "lng": -80.0728, "url": "/fl/palm-beach/delray-beach/"}, {"name": "Palm Beach Gardens", "slug": "palm-beach-gardens", "lat": 26.8237, "lng": -80.1345, "url": "/fl/palm-beach/palm-beach-gardens/"}, {"name": "Jupiter", "slug": "jupiter", "lat": 26.9342, "lng": -80.0942, "url": "/fl/palm-beach/jupiter/"}, {"name": "Wellington", "slug": "wellington", "lat": 26.659, "lng": -80.2683, "url": "/fl/palm-beach/wellington/"}, {"name": "Boynton Beach", "slug": "boynton-beach", "lat": 26.5317, "lng": -80.0905, "url": "/fl/palm-beach/boynton-beach/"}, {"name": "North Palm Beach", "slug": "north-palm-beach", "lat": 26.8176, "lng": -80.0623, "url": "/fl/palm-beach/north-palm-beach/"}, {"name": "Royal Palm Beach", "slug": "royal-palm-beach", "lat": 26.7104, "lng": -80.2317, "url": "/fl/palm-beach/royal-palm-beach/"}];
-  var MAX_MILES = 60;   // beyond this, don't force a city
-
-  function milesBetween(a, b, c, d){
-    var R = 3959, t = Math.PI/180;
-    var dLat = (c-a)*t, dLng = (d-b)*t;
-    var x = Math.sin(dLat/2)**2 + Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLng/2)**2;
-    return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
-  }
-  function nearestCity(lat, lng){
-    var best = null, bd = Infinity;
-    for(var i=0;i<CITIES.length;i++){ var dM = milesBetween(lat, lng, CITIES[i].lat, CITIES[i].lng); if(dM < bd){ bd = dM; best = CITIES[i]; } }
-    return {city: best, miles: bd};
-  }
-
-  // "Use my location" — fires the permission prompt ONLY on this explicit click,
-  // never on page load. Coordinates are used transiently to pick a city, then dropped.
-  var geoMsg = document.getElementById('geoMsg');
-  document.getElementById('useLoc').addEventListener('click', function(){
-    if(!navigator.geolocation){ geoMsg.textContent = 'Location isn’t available here — search by city above.'; return; }
-    geoMsg.textContent = 'Finding the nearest area…';
+  var MAX_MILES = 60;
+  function milesBetween(a,b,c,d){var R=3959,t=Math.PI/180,dLat=(c-a)*t,dLng=(d-b)*t,x=Math.sin(dLat/2)**2+Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLng/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
+  function nearestCity(lat,lng){var best=null,bd=Infinity;for(var i=0;i<CITIES.length;i++){var dM=milesBetween(lat,lng,CITIES[i].lat,CITIES[i].lng);if(dM<bd){bd=dM;best=CITIES[i];}}return{city:best,miles:bd};}
+  var geoMsg=document.getElementById('geoMsg');
+  document.getElementById('useLoc').addEventListener('click',function(){
+    if(!navigator.geolocation){geoMsg.textContent='Location not available - search by city above.';return;}
+    geoMsg.textContent='Finding the nearest area...';
     navigator.geolocation.getCurrentPosition(
-      function(pos){
-        var r = nearestCity(pos.coords.latitude, pos.coords.longitude);   // computed locally — no API, nothing sent
-        if(r.city && r.miles <= MAX_MILES){ window.location.href = r.city.url; }
-        else { geoMsg.textContent = 'We don’t cover your area yet — browse South Florida below.'; }
-      },
-      function(){ geoMsg.textContent = 'No problem — search by city above instead.'; },
-      {enableHighAccuracy:false, timeout:8000, maximumAge:600000}
+      function(pos){var r=nearestCity(pos.coords.latitude,pos.coords.longitude);if(r.city&&r.miles<=MAX_MILES){window.location.href=r.city.url;}else{geoMsg.textContent='We do not cover your area yet - browse South Florida below.';}},
+      function(){geoMsg.textContent='No problem - search by city above instead.';},
+      {enableHighAccuracy:false,timeout:8000,maximumAge:600000}
     );
   });
-
-  // Optional IP-based suggestion (NO permission prompt). In production, read the visitor's
-  // city from the CDN/edge geo header (Cloudflare cf-ipcity, Vercel x-vercel-ip-city),
-  // match it to a covered city in CITIES (by name), then call showSuggest(name, url).
-  // Dormant here: a static file has no server header. PLUG-IN POINT ↓
-  function showSuggest(cityName, url){
-    document.getElementById('geoCity').textContent = cityName;
-    document.getElementById('geoGo').href = url;
-    document.getElementById('geoSuggest').classList.add('show');
-  }
-  document.getElementById('geoDismiss').addEventListener('click', function(){
-    document.getElementById('geoSuggest').classList.remove('show');
-  });
+  function showSuggest(cityName,url){document.getElementById('geoCity').textContent=cityName;document.getElementById('geoGo').href=url;document.getElementById('geoSuggest').classList.add('show');}
+  document.getElementById('geoDismiss').addEventListener('click',function(){document.getElementById('geoSuggest').classList.remove('show');});
 </script>
+
 </body>
 </html>

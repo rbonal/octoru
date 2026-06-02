@@ -16,7 +16,10 @@
     "_checkout_note": "Checkout is hosted by Bonalta Payments (external, gated). No payment card data is collected on or processed by GlowMap pages.",
     "benefits": ["featured listing pinned to top of page", "Featured label displayed", "rel=sponsored on paid outbound links"],
     "slot_cap_per_page": 3,
-    "_slot_cap_note": "Maximum featured listings per page. Prevents pages going all-paid. Operator-configurable in config/thresholds.json completeness.max_featured_per_page."
+    "_slot_cap_note": "Maximum featured listings per page. Prevents pages going all-paid. Operator-configurable in config/thresholds.json completeness.max_featured_per_page.",
+    "price_display": "from $299 / month",
+    "_price_note": "OPERATOR-OWNED. Set this to the real price before launch. Shown on advertise.html to reduce friction. Cancel anytime.",
+    "price_cancel": "cancel anytime, no contract"
   },
 
   "campaigns_upsell": {

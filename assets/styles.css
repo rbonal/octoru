@@ -417,3 +417,44 @@ body.home { font-size: 16px; }
   .adv-grid { grid-template-columns: 1fr; }
   .adv-steps li { grid-template-columns: 24px 1fr; }
 }
+
+/* ============================================================
+   CRO ELEMENTS — shared across home + advertise pages
+   ============================================================ */
+
+/* Price anchor on advertise page */
+.price-anchor { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.price-n { font-family: 'Geist Mono', monospace; font-size: 32px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.02em; }
+.price-note { font-size: 14px; color: var(--mute); }
+
+/* Social proof bar */
+.proof-bar { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--ink-3); }
+.proof-bar span::before { content: "✓ "; color: var(--green); font-weight: 600; }
+
+/* Urgency note on forms */
+.urgency-note { display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+  background: rgba(255,200,0,.1); border: 1px solid rgba(200,160,0,.25);
+  border-radius: 6px; font-size: 13px; color: #7a5e00; font-weight: 500; margin-bottom: 4px; }
+.urgency-note svg { flex-shrink: 0; color: #b08000; }
+
+/* Top searches quick links below search */
+.top-searches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.top-searches .label { flex-shrink: 0; }
+.ts-pill { font-size: 13px; color: var(--blue); background: var(--blue-tint);
+  border: 1px solid var(--blue-line); border-radius: 999px; padding: 5px 12px;
+  transition: background .15s, border-color .15s; white-space: nowrap; }
+.ts-pill:hover { background: rgba(20,71,230,.14); border-color: var(--blue); }
+
+/* Clinic owner CTA at bottom of hero side panel */
+.side-clinic-cta { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.side-clinic-cta span { color: var(--mute); }
+.side-clinic-cta a { color: var(--blue); font-weight: 600; font-size: 13px; }
+.side-clinic-cta a:hover { color: var(--blue-deep); }
+
+@media (max-width: 600px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .price-anchor { flex-direction: column; gap: 4px; }
+  .top-searches { gap: 6px; }
+}

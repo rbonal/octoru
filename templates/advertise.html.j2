@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advertise on GlowMap — Featured placement for med spas</title>
-<meta name="description" content="Get your med spa listed as a Featured provider on GlowMap. Flat monthly placement — no per-lead fees, no contracts, no card data on site.">
+<title>Advertise on GlowMap — Featured placement for South Florida med spas</title>
+<meta name="description" content="Get your med spa featured at the top of GlowMap search results. Flat monthly placement — verified directory, no per-lead fees.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,67 +24,129 @@
   </div>
 </header>
 
-<main class="wrap" style="max-width:860px">
+<main style="max-width:860px;margin:0 auto;padding:0 28px 80px">
 
-  <section class="hero" style="padding:64px 0 40px;border-bottom:1px solid var(--line)">
+  <!-- ===== HERO + PRICE ===== -->
+  <section style="padding:60px 0 40px;border-bottom:1px solid var(--line)">
     <div class="eyebrow label blue" style="margin-bottom:14px">For providers</div>
-    <h1 class="head" style="font-size:clamp(32px,4vw,52px);max-width:20ch">Get in front of patients searching for your treatments</h1>
-    <p class="lead" style="margin-top:18px;max-width:52ch">GlowMap is a verified treatment directory for South Florida med spas. A <strong>Featured placement</strong> pins your listing to the top of every treatment page in your city — seen by patients already comparing providers.</p>
+    <h1 class="head" style="font-size:clamp(32px,4vw,52px);max-width:22ch;line-height:1.05">
+      Get in front of patients already searching for your treatments
+    </h1>
+    <p class="lead" style="margin-top:16px;max-width:52ch">
+      A <strong>Featured placement</strong> pins your listing to the top of every treatment page in your city — seen by patients comparing providers right now.
+    </p>
+
+    <!-- Price anchor: kills the #1 friction point -->
+    <div class="price-anchor" style="margin-top:28px">
+      <span class="price-n">{{ price_display }}</span>
+      <span class="price-note">flat rate &middot; {{ price_cancel }} &middot; no per-lead charges</span>
+    </div>
+
+    <!-- Social proof bar -->
+    <div class="proof-bar" style="margin-top:20px">
+      {%- if total_clinics %}<span>{{ total_clinics }} verified providers</span>{% endif %}
+      {%- if total_pages %}<span>{{ total_pages }} listing pages</span>{% endif %}
+      {%- if avg_rating %}<span>{{ avg_rating }} avg Google rating</span>{% endif %}
+      <span>{{ slot_cap }} featured slots max per page</span>
+    </div>
+
+    <!-- Hero CTA — anchors to form immediately -->
+    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <a href="#get-featured" class="btn primary" style="padding:14px 28px;font-size:16px;font-weight:700;border-radius:8px">Check availability &#x2192;</a>
+      <span style="font-size:13px;color:var(--mute)">We reply within one business day</span>
+    </div>
   </section>
 
-  <!-- What you get -->
-  <section style="padding:48px 0 40px;border-bottom:1px solid var(--line)">
+  <!-- ===== FEATURED LISTING PREVIEW ===== -->
+  <section style="padding:40px 0;border-bottom:1px solid var(--line)">
+    <div class="label blue" style="margin-bottom:20px">What a Featured listing looks like</div>
+    <p style="font-size:15px;color:var(--ink-3);margin-bottom:20px;max-width:56ch">Your listing appears at the top of the page, with the Featured badge and blue accent — patients see you first.</p>
+
+    <!-- Live-ish mockup using real site styles -->
+    <div style="border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:680px">
+      <div style="background:var(--pale);padding:10px 16px;font-size:12px;color:var(--mute);font-family:'Geist Mono',monospace;letter-spacing:.06em;text-transform:uppercase">Preview: Your listing on Botox in Brickell</div>
+      <div class="clinic featured" style="margin:0;border-radius:0;border:0;border-bottom:1px solid var(--line)">
+        <div>
+          <span class="featured-tag">Featured</span>
+          <div class="name" style="margin-top:4px">Your Clinic Name</div>
+          <div class="meta">Brickell &middot; English, Spanish</div>
+          <div class="meta">123 Brickell Ave, Miami, FL 33131</div>
+          <div class="stats" style="margin-top:10px">
+            <span class="stat"><span class="label">Rating</span><span class="v">4.9 (284)</span></span>
+            <span class="stat"><span class="label">From</span><span class="v">$12 per unit</span></span>
+          </div>
+          <div class="tags" style="margin-top:10px">
+            <span class="tag">Botox</span><span class="tag">Lip filler</span><span class="tag">Microneedling</span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#">Book online</a>
+          <a class="btn" href="#">Call</a>
+        </div>
+      </div>
+      <div style="padding:12px 24px;font-size:13px;color:var(--mute)">Organic listings appear below &#x2193;</div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT YOU GET ===== -->
+  <section style="padding:40px 0;border-bottom:1px solid var(--line)">
     <div class="label blue" style="margin-bottom:20px">What's included</div>
     <div class="adv-grid">
       <div class="adv-card">
         <div class="adv-num mono">01</div>
         <h3>Pinned to the top</h3>
-        <p>Your listing appears above organic results on every treatment page in your city — Botox, lip filler, microneedling, and more.</p>
+        <p>Your card appears above every organic result on all treatment pages for your city — Botox, lip filler, microneedling and more.</p>
       </div>
       <div class="adv-card">
         <div class="adv-num mono">02</div>
-        <h3>Featured label</h3>
-        <p>A blue "Featured" label on your card makes it immediately clear to patients that you're an established, active provider.</p>
+        <h3>Featured badge + blue accent</h3>
+        <p>The blue "Featured" label signals to patients that you are an established provider — not a directory placeholder.</p>
       </div>
       <div class="adv-card">
         <div class="adv-num mono">03</div>
-        <h3>Flat fee — no per-lead charges</h3>
-        <p>One flat monthly subscription. We never charge per patient or per inquiry. The "Book online" and contact buttons are always free for patients.</p>
+        <h3>Flat fee, no lead charges</h3>
+        <p>One flat monthly rate. Every patient contact via "Book online," Call, or the inquiry form is always free — we never charge per inquiry.</p>
       </div>
       <div class="adv-card">
         <div class="adv-num mono">04</div>
-        <h3>Verified listing</h3>
-        <p>Your address, phone, booking link, treatments, and Google rating are shown on the page — already verified by our team.</p>
+        <h3>Cancel anytime</h3>
+        <p>No contracts, no lock-in. If you want to pause or cancel your placement, you can do so at any time through Bonalta Payments.</p>
       </div>
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- ===== HOW IT WORKS ===== -->
   <section style="padding:40px 0;border-bottom:1px solid var(--line)">
-    <div class="label blue" style="margin-bottom:20px">How placement works</div>
+    <div class="label blue" style="margin-bottom:20px">How it works</div>
     <ol class="adv-steps">
-      <li><span class="step-n">1</span><span><strong>Submit your interest below.</strong> Tell us your clinic name, city, and which treatments you offer.</span></li>
-      <li><span class="step-n">2</span><span><strong>We confirm availability.</strong> Each city-treatment page has a cap of {{ slot_cap }} featured spots so pages never go all-paid. We will confirm whether a slot is open.</span></li>
-      <li><span class="step-n">3</span><span><strong>Subscribe via Bonalta Payments.</strong> Checkout is hosted externally — no card data is entered on GlowMap pages.</span></li>
-      <li><span class="step-n">4</span><span><strong>Your listing is promoted.</strong> We update your listing to Featured on the relevant pages, usually within one business day.</span></li>
+      <li><span class="step-n">1</span><span><strong>Submit interest below.</strong> Tell us your clinic name, city and treatments. We check whether a slot is open on your pages.</span></li>
+      <li><span class="step-n">2</span><span><strong>We confirm availability.</strong> Only {{ slot_cap }} featured spots per page — we reply within one business day to confirm yours or put you on the wait list.</span></li>
+      <li><span class="step-n">3</span><span><strong>Subscribe via Bonalta Payments.</strong> Checkout is hosted externally. No card data is entered on GlowMap pages.</span></li>
+      <li><span class="step-n">4</span><span><strong>Your listing is promoted.</strong> We update your card to Featured on the relevant pages, usually within one business day of payment.</span></li>
     </ol>
   </section>
 
-  <!-- Transparency -->
-  <section style="padding:40px 0;border-bottom:1px solid var(--line)">
-    <div class="label blue" style="margin-bottom:16px">Our commitment to patients</div>
+  <!-- ===== TRANSPARENCY ===== -->
+  <section style="padding:32px 0;border-bottom:1px solid var(--line)">
+    <div class="label blue" style="margin-bottom:14px">Our commitment to patients</div>
     <p style="color:var(--ink-3);font-size:15px;line-height:1.7;max-width:60ch">
-      Featured placements are clearly labeled on every page. Patient inquiries via the contact form are always forwarded free of charge — we never sell or meter individual leads.
+      Featured placements are clearly labeled on every page. Patient inquiries are always forwarded free of charge — we never sell or meter individual leads.
       GlowMap is an independent directory; we do not take commissions on bookings and are not affiliated with any clinic.
     </p>
   </section>
 
-  <!-- Interest form (intake only — routes to Campaigns CRM) -->
+  <!-- ===== INTEREST FORM ===== -->
   <section class="lead-form" id="get-featured" style="margin-top:40px">
-    <h2>Express placement interest</h2>
-    <p class="sub">Tell us about your clinic and we will get back to you with availability and pricing. No commitment required.</p>
+    <h2>Claim a featured spot</h2>
+    <p class="sub">Tell us your clinic and city — we will check whether a featured slot is open and send pricing. No commitment.</p>
 
-    <form id="adv-form" novalidate data-crm-flag="campaigns_prospect" data-route="{{ crm_pipeline }}">
+    <!-- Urgency signal -->
+    <div class="urgency-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Only {{ slot_cap }} featured slots per city page. Popular cities fill quickly.
+    </div>
+
+    <form id="adv-form" novalidate data-crm-flag="campaigns_prospect" data-route="{{ crm_pipeline }}" style="margin-top:20px">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px">
         <div class="field">
           <label for="af-clinic">Clinic name</label>
@@ -92,7 +154,7 @@
         </div>
         <div class="field">
           <label for="af-city">City</label>
-          <input id="af-city" name="city" type="text" placeholder="e.g. Brickell">
+          <input id="af-city" name="city" type="text" placeholder="e.g. Brickell, Delray Beach">
         </div>
       </div>
       <div class="field">
@@ -113,9 +175,9 @@
       </div>
       <div class="consent">
         <input id="af-consent" name="consent" type="checkbox">
-        <label for="af-consent">I'm authorised to represent this clinic and consent to being contacted about placement availability. I've read the <a href="/privacy">privacy policy</a>.</label>
+        <label for="af-consent">I am authorised to represent this clinic and consent to being contacted about placement availability. I have read the <a href="/privacy">privacy policy</a>.</label>
       </div>
-      <button class="btn primary submit" type="submit">Request availability</button>
+      <button class="btn primary submit" type="submit" style="font-size:16px;padding:14px 28px;border-radius:8px">Check availability &#x2192;</button>
       <p id="adv-status" class="sub" style="display:none;margin-top:14px"></p>
     </form>
   </section>
@@ -127,7 +189,7 @@
     <div class="row">
       <div class="disc">
         <span class="brand" style="font-size:16px">GlowMap</span><br>
-        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
         <div class="label" style="margin-top:12px">Updated {{ last_updated }}</div>
       </div>
       <div class="links">
@@ -146,9 +208,8 @@
   if (form) {
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      // Intake only — the builder does not transmit data. A deploy-time integration
-      // POSTs this to the CRM pipeline ({{ crm_pipeline }}) with campaigns_prospect=true.
-      // Checkout is Bonalta Payments hosted; no card data is collected here.
+      // Intake only: deploy-time integration POSTs to CRM pipeline ({{ crm_pipeline }})
+      // with campaigns_prospect=true. Checkout via Bonalta Payments hosted (gated).
       status.style.display = 'block';
       status.textContent = 'Thanks - we will check availability for your city and treatments and get back to you within one business day.';
       form.querySelector('.submit').disabled = true;
