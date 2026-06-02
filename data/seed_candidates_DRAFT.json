@@ -1381,6 +1381,92 @@
       "review_count": null,
       "rating_source": null,
       "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "hallandale-beach",
+      "county": "broward",
+      "state": "fl",
+      "name": "BeautyFi Medical Spa",
+      "website": "https://www.yelp.com/biz/beautyfi-hallandale-beach",
+      "address": "701 W Hallandale Beach Blvd, Ste 105, Hallandale Beach, FL 33009",
+      "phone": "+19544588007",
+      "email": null,
+      "booking_url": "https://www.yelp.com/biz/beautyfi-hallandale-beach",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "oakland-park",
+      "county": "broward",
+      "state": "fl",
+      "name": "BeWell MedSpa",
+      "website": "https://bewellmedspa.com/",
+      "address": "1699 E Oakland Park Blvd, Suite 160, Oakland Park, FL 33334",
+      "phone": "+19545305203",
+      "email": null,
+      "booking_url": "https://bewellmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "parkland",
+      "county": "broward",
+      "state": "fl",
+      "name": "NutriFlo Medspa & IV Lounge",
+      "website": "https://www.nutriflomedspa.com/",
+      "address": "5619 Coral Ridge Dr, Parkland, FL 33076",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.nutriflomedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
+    },
+    {
+      "neighborhood": "parkland",
+      "county": "broward",
+      "state": "fl",
+      "name": "4Ever Young Parkland",
+      "website": "https://4everyoungantiaging.com/parkland/",
+      "address": "5988 Coral Ridge Dr, Parkland, FL 33076",
+      "phone": "+19545004846",
+      "email": null,
+      "booking_url": "https://4everyoungantiaging.com/parkland/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "county build-out (Broward)"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
