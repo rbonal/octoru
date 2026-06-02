@@ -3,6 +3,7 @@
 *.key
 *-credentials.json
 service-account*.json
+.mcp.json
 
 # build output (regenerated each run)
 generated/

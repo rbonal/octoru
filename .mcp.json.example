@@ -1,0 +1,20 @@
+{
+  "_comment": "Template for wiring a read-only Google Places MCP server so the builder can pull COMPLIANT ratings (permitted API) + place-based 'View on Google' links. Copy this to .mcp.json and paste your key. The real .mcp.json is gitignored — your key never enters the repo, and the builder calls the tool without ever reading the key.",
+  "_setup": [
+    "1. Google Cloud Console -> create/select a project -> enable 'Places API' (and 'Places API (New)').",
+    "2. APIs & Services -> Credentials -> Create API key -> copy it.",
+    "3. cp .mcp.json.example .mcp.json  and paste the key below (replace REPLACE_WITH_YOUR_PLACES_API_KEY).",
+    "4. Restart Claude Code / reload Cowork so it loads the server.",
+    "5. Tell the builder: 'Places is connected.'"
+  ],
+  "_verify_note": "Confirm the server package before trusting it — treat any third-party MCP as code you run. @modelcontextprotocol/server-google-maps is the commonly used reference Google Maps/Places server; swap in whichever Places MCP you vet.",
+  "mcpServers": {
+    "google-places": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-maps"],
+      "env": {
+        "GOOGLE_MAPS_API_KEY": "REPLACE_WITH_YOUR_PLACES_API_KEY"
+      }
+    }
+  }
+}
