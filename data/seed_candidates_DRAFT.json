@@ -717,9 +717,161 @@
       "review_count": null,
       "rating_source": null,
       "_added": "expansion: Fort Lauderdale; chain, all 5 treatments; street address needs verification"
+    },
+    {
+      "neighborhood": "miami-lakes",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Miami Lakes Med Spa",
+      "website": "https://miamilakesmedspa.com/",
+      "address": "7980 NW 155th St, Miami Lakes, FL 33016",
+      "phone": "+13054180392",
+      "email": null,
+      "booking_url": "https://miamilakesmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Miami Lakes"
+    },
+    {
+      "neighborhood": "miami-lakes",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "L'Atelier Aesthetics",
+      "website": "https://latelier.skin/",
+      "address": "6625 Miami Lakes Dr, Suite 364, Miami Lakes, FL 33014",
+      "phone": "+17869777546",
+      "email": null,
+      "booking_url": "https://latelier.skin/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Miami Lakes"
+    },
+    {
+      "neighborhood": "miami-lakes",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "DRIP Health & MedSpa",
+      "website": "https://driphealthandmedspa.com/",
+      "address": "14575 NW 77th Ave, Suite 304, Miami Lakes, FL 33014",
+      "phone": "+17864744447",
+      "email": null,
+      "booking_url": "https://booking.mangomint.com/616645",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Miami Lakes"
+    },
+    {
+      "neighborhood": "aventura",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Med Aesthetics Miami (Aventura)",
+      "website": "https://www.medaestheticsmiami.com/contact/aventura/",
+      "address": "20200 W Dixie Hwy, Suite G-11, Aventura, FL 33180",
+      "phone": "+13053567402",
+      "email": null,
+      "booking_url": "https://www.medaestheticsmiami.com/appointments/aventura-center-appointments/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Aventura"
+    },
+    {
+      "neighborhood": "aventura",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "4Ever Young Aventura",
+      "website": "https://4everyoungantiaging.com/aventura/",
+      "address": "2875 NE 191st St, Suite 102, Aventura, FL 33180",
+      "phone": "+13054259590",
+      "email": null,
+      "booking_url": "https://4everyoung.zenoti.com/webstoreNew/services/654ea65b-921b-4f53-9db2-f24dffda043d",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: Aventura"
+    },
+    {
+      "neighborhood": "west-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Flawless Palm Beach",
+      "website": "https://flawlesspalmbeach.com/",
+      "address": "1962 S Military Trl, Suite C, West Palm Beach, FL 33415",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://flawlesspalmbeach.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: West Palm Beach; phone pending"
+    },
+    {
+      "neighborhood": "west-palm-beach",
+      "county": "palm-beach",
+      "state": "fl",
+      "name": "Elite Skin & Beauty",
+      "website": "https://www.eliteskinandbeauty.com/",
+      "address": "4512 N Flagler Dr, #205, West Palm Beach, FL 33407",
+      "phone": null,
+      "email": null,
+      "booking_url": "https://www.eliteskinandbeauty.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion: West Palm Beach; phone pending"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
   "_growth_note": "Growth round: +Solea, +Dermacare(addr pending), +Miami Skin & Vein ($18/unit), +Pure Beauty, +JECT. Existing Places ratings merged in for preview. New clinics need a ratings pass to ship live.",
-  "_expansion_note": "Expansion round 1: staged Boca Raton (Palm Beach) + Fort Lauderdale (Broward) with county/state. Needs config geo activation + ratings pass to ship."
+  "_expansion_note": "Expansion round 2: +Miami Lakes, +Aventura (Miami-Dade), +West Palm Beach (Palm Beach). Staged; needs config geo activation + ratings pass."
 }
