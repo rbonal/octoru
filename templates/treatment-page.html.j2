@@ -79,7 +79,21 @@
     <span class="label blue">{{ treatment.name }}</span>
     <h1>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}</h1>
     <p class="lead">{{ intro }}</p>
+    <div class="updated label">Updated {{ updated or last_updated }} · ratings via Google</div>
   </section>
+
+  {%- if cost %}
+  <section class="costblock">
+    {%- if cost.has_prices %}
+    <span class="label">Typical {{ treatment.name | lower }} cost in {{ neighborhood.name }}</span>
+    <div class="cost-figure">{% if cost.low == cost.high %}${{ cost.low }}{% else %}${{ cost.low }}–${{ cost.high }}{% endif %}<span class="cost-unit">{{ cost.unit }}</span></div>
+    <div class="cost-note">{{ cost.coverage_label }}. Providers that don't publish a price — <a href="#quote">request a quote</a>. Listed prices are starting points and may vary by plan.</div>
+    {%- else %}
+    <span class="label">{{ treatment.name }} pricing in {{ neighborhood.name }}</span>
+    <div class="cost-note">No provider here lists pricing yet — <a href="#quote">request a personalized quote</a> and we'll connect you with the right provider.</div>
+    {%- endif %}
+  </section>
+  {%- endif %}
 
   <!-- featured clinics first; featured_tier drives ordering + the blue edge -->
   <section class="clinics">
@@ -89,13 +103,14 @@
         {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
         <div class="name">{{ c.name }}</div>
         <div class="meta">{{ c.neighborhood }}{% if c.languages %} · {{ c.languages | join(", ") }}{% endif %}</div>
-        {% if c.address %}<div class="meta">{{ c.address }}</div>{% endif %}
+        {% if c.address %}<div class="meta">{{ c.address }}</div>{% else %}<div class="meta muted">Address not listed</div>{% endif %}
         <div class="stats">
           {% if c.rating %}<span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>{% endif %}
-          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}{% if c.price_unit %} {{ c.price_unit }}{% endif %}</span></span>{% endif %}
+          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}{% if c.price_unit %} {{ c.price_unit }}{% endif %}</span></span>{% else %}<span class="stat empty"><a href="#quote">Pricing not listed — request a quote</a></span>{% endif %}
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
+        <div class="claim-line"><a href="/claim.html?clinic={{ c.slug | urlencode }}&amp;name={{ c.name | urlencode }}">Own this clinic? Claim or correct this listing →</a></div>
       </div>
       <div class="actions">
         <button class="btn primary" data-clinic="{{ c.slug }}">Get a quote</button>
@@ -106,6 +121,14 @@
     </article>
     {%- endfor %}
   </section>
+
+  {%- if guidance %}
+  <section class="guidance">
+    <h2>About {{ treatment.name | lower }}</h2>
+    <p>{{ guidance }}</p>
+    <p class="disclaimer">General guidance only — not medical advice. Confirm specifics with a licensed provider during your consultation.</p>
+  </section>
+  {%- endif %}
 
   <!-- internal cross-links to related canonical pages (best-practice: keep every
        page within ~2 clicks, route link equity between related intent pages) -->

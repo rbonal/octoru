@@ -183,6 +183,32 @@ a:hover { color: var(--blue-deep); }
 .clinic .stats .stat { display: inline-flex; align-items: baseline; gap: 6px;
   background: var(--pale); border: 1px solid var(--line); border-radius: 999px;
   padding: 5px 11px; }
+.clinic .stats .stat.empty { background: transparent; border-style: dashed; }
+.clinic .stats .stat.empty a { color: var(--ink-3); font-size: 13px; }
+.clinic .stats .stat.empty a:hover { color: var(--blue); }
+.meta.muted { color: var(--mute); font-style: italic; }
+
+/* freshness line under the hero */
+.updated { margin-top: 14px; color: var(--mute); }
+
+/* cost block */
+.costblock { background: var(--blue-tint); border: 1px solid var(--blue-line);
+  border-radius: 12px; padding: 20px 24px; margin: 0 0 32px; }
+.cost-figure { font-family: 'Geist Mono', monospace; font-size: 30px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink); margin: 6px 0 8px; }
+.cost-figure .cost-unit { font-size: 15px; font-weight: 500; color: var(--ink-3); margin-left: 8px; }
+.cost-note { font-size: 14px; color: var(--ink-3); }
+
+/* treatment guidance */
+.guidance { border-top: 1px solid var(--line); padding: 28px 0 8px; margin-bottom: 8px; }
+.guidance h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+.guidance p { color: var(--ink-2); max-width: 68ch; }
+.guidance .disclaimer { margin-top: 10px; font-size: 12px; color: var(--mute); }
+
+/* claim-this-listing link on cards */
+.claim-line { margin-top: 12px; }
+.claim-line a { font-size: 13px; color: var(--ink-3); }
+.claim-line a:hover { color: var(--blue); }
 
 @media (max-width: 640px) {
   .clinic { grid-template-columns: 1fr; }

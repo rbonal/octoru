@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim your listing — GlowMap</title>
+<meta name="description" content="Own or manage a Miami med spa? Claim your GlowMap listing to submit or correct your clinic's information for verification.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" style="text-decoration:none">
+      <div class="brandmark">GlowMap</div>
+      <div class="label">Miami med spa directory</div>
+    </a>
+    <span class="label blue">Claim listing</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Claim your listing</span>
+  </nav>
+
+  <section class="hero">
+    <span class="label blue">For providers</span>
+    <h1>Claim or correct your listing</h1>
+    <p class="lead">Own or manage a clinic in this directory? Submit your details or fix what's
+      out of date. We verify every submission before any change goes live — nothing is published
+      automatically, and we never share your contact details.</p>
+  </section>
+
+  <!-- Intake only. On submit this routes to CRM (crm:glowmap-listing-claims) for human
+       verification. The builder does NOT send outreach and does NOT auto-publish changes. -->
+  <section class="lead-form" id="claim">
+    <h2>Your listing details</h2>
+    <p class="sub">Tell us what to add or correct — pricing, hours, treatments, contact info, anything.</p>
+
+    <form id="claim-form" data-route="crm:glowmap-listing-claims" novalidate>
+      <div class="field">
+        <label for="cf-clinic">Clinic name</label>
+        <input id="cf-clinic" name="clinic" type="text" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="cf-role">Your role</label>
+        <select id="cf-role" name="role">
+          <option>Owner</option><option>Manager</option><option>Marketing</option>
+          <option>Provider / injector</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cf-name">Your name</label>
+        <input id="cf-name" name="contact_name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="cf-email">Work email</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="cf-phone">Phone</label>
+        <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label for="cf-website">Website</label>
+        <input id="cf-website" name="website" type="url" placeholder="https://">
+      </div>
+      <div class="field">
+        <label for="cf-details">What should we add or correct?</label>
+        <textarea id="cf-details" name="details" rows="5"
+          placeholder="e.g. Botox is $12/unit, we also offer microneedling, new address, updated hours…"
+          style="padding:11px 12px;border:1px solid var(--line-strong);border-radius:4px;font-family:inherit;font-size:15px;"></textarea>
+      </div>
+      <div class="consent">
+        <input id="cf-consent" name="consent" type="checkbox">
+        <label for="cf-consent">I'm authorized to represent this clinic and consent to being contacted to
+          verify this submission. I've read the <a href="/privacy">privacy policy</a>.</label>
+      </div>
+      <button class="btn primary submit" type="submit">Submit for verification</button>
+      <p class="sub" id="claim-status" style="margin-top:14px;display:none;"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    GlowMap is an independent directory. Claimed details are verified by our team before any change is published.
+    <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <div class="label" style="margin-top:10px;">Updated 2026-06-02</div>
+  </div>
+</footer>
+
+<script>
+  // Prefill clinic/name from the listing link (?clinic=&name=). UI only.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    if (q.get('name')) { var c = document.getElementById('cf-clinic'); if (c && !c.value) c.value = q.get('name'); }
+    var form = document.getElementById('claim-form');
+    var status = document.getElementById('claim-status');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Intake only: the builder does not transmit anything. A deploy-time integration
+      // POSTs this to CRM (crm:glowmap-listing-claims) for human verification.
+      status.style.display = 'block';
+      status.textContent = 'Thanks — your submission is queued for verification. Our team will review before anything changes.';
+      form.querySelector('.submit').disabled = true;
+    });
+  })();
+</script>
+
+</body>
+</html>

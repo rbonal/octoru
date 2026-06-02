@@ -20,6 +20,16 @@ LEDGER_PATH = ROOT / "state" / "run_ledger.json"
 GENERATED = ROOT / "generated"
 SITE_URL = "https://www.glowmapmiami.com"  # placeholder; the real domain is set at deploy
 
+# Completeness thresholds are OPERATOR-OWNED and live in config/thresholds.json under
+# "completeness". The builder READS them; it must never invent them (and cannot edit
+# config/ — hard-gated). If absent, the builder runs the new gate in DRY-RUN only
+# (reports what WOULD be held using the recommendation below) and enforces nothing new.
+COMPLETENESS = CONFIG.get("completeness")  # None until the operator adds it to config
+RECOMMENDED_COMPLETENESS = {  # surfaced for the operator to adopt; NOT enforced unless copied to config
+    "min_listing_fields": ["name", "address", "phone", "rating", "treatments"],
+    "min_page_requirements": {"min_listings": 3, "require_cost_block": True, "require_guidance": True},
+}
+
 env = Environment(
     loader=FileSystemLoader(str(ROOT / "templates")),
     autoescape=select_autoescape(["html", "j2"]),
@@ -87,6 +97,34 @@ TREATMENT_UNITS = {
     "laser-hair-removal": "per session",
     "microneedling": "per session",
 }
+
+# Short, factual treatment guidance (NOT medical advice). Drafted by the builder and
+# flagged for clinician/legal review before deploy. Required on every page when the
+# operator sets min_page_requirements.require_guidance.
+TREATMENT_GUIDANCE = {
+    "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
+    "lip-filler": "Lip filler uses hyaluronic-acid dermal fillers to add volume and shape; it is usually priced per syringe. Results are not permanent and vary by product. Ask which filler is used and about reversibility.",
+    "coolsculpting": "CoolSculpting is a non-surgical fat-reduction treatment that cools targeted areas; it is typically priced per session or per area, and several sessions may be suggested. Ask how many cycles a provider recommends for your goal.",
+    "laser-hair-removal": "Laser hair removal reduces unwanted hair over a course of sessions; pricing is usually per session or per package and depends on the body area. Ask how many sessions are typical and which laser suits your skin type.",
+    "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
+}
+
+# Field presence helpers — what counts as a clinic "having" a field (operator-owned
+# min_listing_fields references these names). Never imputes a value; only checks presence.
+def _field_present(raw_clinic, field):
+    if field == "treatments":
+        return bool(raw_clinic.get("treatments"))
+    if field == "rating":
+        return raw_clinic.get("rating") is not None
+    if field == "price":
+        p = raw_clinic.get("starting_prices_usd") or raw_clinic.get("starting_price_usd")
+        return bool(p)
+    return bool(raw_clinic.get(field))
+
+
+def listing_missing_fields(raw_clinic, required_fields):
+    """Return the required fields this listing is missing (empty/None). No imputation."""
+    return [f for f in (required_fields or []) if not _field_present(raw_clinic, f)]
 
 
 def load_clinics():
@@ -167,6 +205,9 @@ def _clinic_for_page(clinic, treatment_slug):
         "languages": clinic.get("languages", []),
         "featured_tier": clinic.get("featured_tier", 0),
         "lead_routing_target": clinic.get("lead_routing_target"),
+        # source + freshness (per task item 4): surfaced when present; never invented
+        "last_verified": clinic.get("last_verified"),
+        "sources": clinic.get("sources"),
         # quality-gate signals — passed straight through, never fabricated by the builder
         "has_real_clinic_data": clinic.get("has_real_clinic_data", False),
         "uses_scraped_review_text": clinic.get("uses_scraped_review_text", False),
@@ -210,6 +251,22 @@ def _assemble_page(treatment_slug, neighborhood_slug, clinics):
         f"Compare {n} {t_name.lower()} {provider_word} in {n_name}, Miami — addresses, phones, "
         f"prices, verified Google ratings, and languages. Request a personalized quote."
     )
+
+    # cost block + coverage label (derive only from the reporting subset; never impute)
+    priced_clinics = [c for c in clinics if _starting_price(c, treatment_slug) is not None]
+    cost = {
+        "has_prices": bool(priced_clinics),
+        "low": prices[0] if prices else None,
+        "high": prices[-1] if prices else None,
+        "unit": unit,
+        "count_priced": len(priced_clinics),
+        "count_total": len(clinics),
+        "coverage_label": f"{len(priced_clinics)} of {len(clinics)} {'provider lists' if len(priced_clinics)==1 else 'providers list'} pricing",
+    }
+    # freshness — max per-listing last_verified if present, else today
+    verified_dates = [c.get("last_verified") for c in clinics if c.get("last_verified")]
+    updated = max(verified_dates) if verified_dates else datetime.date.today().isoformat()
+
     return {
         "treatment": {"slug": treatment_slug, "name": t_name},
         "neighborhood": {"slug": neighborhood_slug, "name": n_name},
@@ -219,34 +276,118 @@ def _assemble_page(treatment_slug, neighborhood_slug, clinics):
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
         "meta_description": meta,
         "intro": intro,
+        "cost": cost,
+        "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
+        "updated": updated,
         "clinics": [_clinic_for_page(c, treatment_slug) for c in clinics],
     }
 
 
-def fetch_pages():
-    """Build seed-scope pages from the prospector's flat clinic list.
-    For each treatment x neighborhood in config['seed_scope'], group the real
-    clinics offering that treatment in that neighborhood into one page. Pages with
-    no clinics are skipped and logged — never filled with placeholder. The quality
-    gate (in main) then decides which assembled pages may actually be written."""
+def page_hold_reason(page, page_reqs):
+    """Return why a page is below the operator's page requirements, or None if it passes."""
+    if not page_reqs:
+        return None
+    min_listings = page_reqs.get("min_listings", 0)
+    if len(page.get("clinics", [])) < min_listings:
+        return f"only {len(page['clinics'])} qualifying listing(s) (< {min_listings})"
+    if page_reqs.get("require_cost_block") and not page.get("cost"):
+        return "missing cost block"
+    if page_reqs.get("require_guidance") and not page.get("guidance"):
+        return "missing treatment guidance"
+    return None
+
+
+def fetch_pages(spec=None, enforce=False):
+    """Build seed-scope pages from the prospector's flat clinic list, applying the
+    operator-owned completeness thresholds in `spec`. Returns (pages, report).
+
+    - A listing missing any of spec.min_listing_fields is EXCLUDED (logged).
+    - A page below spec.min_page_requirements is HELD — not rendered (logged).
+    Better no page than a thin one. Never imputes a value to a clinic that didn't report it.
+
+    When enforce=False (operator hasn't set config 'completeness'), exclusions/holds are
+    only REPORTED (dry-run) and the page is still built, so the operator can see impact."""
     scope = CONFIG["seed_scope"]
     clinics = load_clinics()
+    report = {"excluded_listings": [], "held_pages": []}
     if not clinics:
         print(f"[builder] no prospector data in {PROSPECTOR_DIR} — nothing to build.")
-        return []
+        return [], report
+
+    req_fields = (spec or {}).get("min_listing_fields") or []
+    page_reqs = (spec or {}).get("min_page_requirements") or {}
 
     pages = []
     for t in scope["treatments"]:
         for n in scope["neighborhoods"]:
-            matched = [
-                c for c in clinics
-                if c.get("neighborhood") == n and t in (c.get("treatments") or [])
-            ]
+            matched = [c for c in clinics
+                       if c.get("neighborhood") == n and t in (c.get("treatments") or [])]
             if not matched:
                 print(f"[builder] no clinics for '{t}' in '{n}' — page skipped (no data).")
                 continue
-            pages.append(_assemble_page(t, n, matched))
-    return pages
+
+            qualifying = []
+            for c in matched:
+                miss = listing_missing_fields(c, req_fields)
+                if miss:
+                    report["excluded_listings"].append(
+                        {"clinic": c.get("name"), "page": f"{t}-{n}", "missing": miss})
+                    print(f"[builder] listing {'excluded' if enforce else 'would-exclude (dry-run)'} "
+                          f"(missing {miss}): {c.get('name')} on {t}-{n}")
+                    if enforce:
+                        continue
+                qualifying.append(c)
+
+            use = qualifying if enforce else matched
+            if not use:
+                report["held_pages"].append({"page": f"{t}-{n}", "reason": "no qualifying listings"})
+                print(f"[builder] HELD {t}-{n}: no qualifying listings")
+                continue
+
+            page = _assemble_page(t, n, use)
+            reason = page_hold_reason(page, page_reqs)
+            if reason:
+                report["held_pages"].append({"page": f"{t}-{n}", "reason": reason})
+                print(f"[builder] {'HELD' if enforce else 'would-HOLD (dry-run)'} {t}-{n}: {reason}")
+                if enforce:
+                    continue
+            pages.append(page)
+    return pages, report
+
+
+def compute_empty_fields(pages):
+    """Which fields fall back to honest empty states across the built pages."""
+    seen, price_missing, price_total = {}, 0, 0
+    for p in pages:
+        for c in p["clinics"]:
+            seen[c.get("name")] = c
+            price_total += 1
+            if not c.get("starting_price_usd"):
+                price_missing += 1
+    cl = list(seen.values())
+    return {
+        "unique_clinics": len(cl),
+        "missing_phone": sum(1 for c in cl if not c.get("phone")),
+        "missing_email": sum(1 for c in cl if not c.get("email")),
+        "missing_address": sum(1 for c in cl if not c.get("address")),
+        "missing_booking_url": sum(1 for c in cl if not c.get("booking_url")),
+        "price_empty_state_listings": price_missing,
+        "price_total_listings": price_total,
+    }
+
+
+def render_claim(passed):
+    """Render the 'Claim this listing' intake page (build only — NEVER sends outreach).
+    The form routes to CRM for verification when wired; this builds the intake UI only."""
+    html = env.get_template("claim.html.j2").render(
+        site_url=SITE_URL,
+        lead_routing_target="crm:glowmap-listing-claims",
+        last_updated=datetime.date.today().isoformat(),
+    )
+    out = GENERATED / "claim.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html)
+    return out
 
 
 def page_links(page, all_pages):
@@ -352,9 +493,21 @@ def main():
         stop(f"monthly token cap reached ({CONFIG['monthly_token_cap']}).")
 
     throttle = (state == "throttled")
-    # pass 1: quality-gate every page (skip+log failures)
+
+    # completeness thresholds are operator-owned (config). Read them; never invent.
+    spec = COMPLETENESS or RECOMMENDED_COMPLETENESS
+    enforce = COMPLETENESS is not None
+    if enforce:
+        print("[builder] completeness gate ENFORCED from config/thresholds.json -> completeness")
+    else:
+        print("[builder] completeness gate DRY-RUN only: config 'completeness' is absent. "
+              "The operator must add it to config/thresholds.json (the builder cannot edit config). "
+              "Reporting what WOULD be held under the recommended thresholds; enforcing nothing new.")
+
+    # pass 1: completeness filter/hold (exclude thin listings, hold thin pages), then quality gate
+    fetched, report = fetch_pages(spec, enforce)
     passed, skipped = [], 0
-    for page in fetch_pages():
+    for page in fetched:
         if quality_gate(page):
             passed.append(page)
         else:
@@ -375,6 +528,17 @@ def main():
     idx = render_index(built_pages)
     if idx:
         print(f"[builder] built {idx.name} (homepage linking {built} pages)")
+    claim = render_claim(passed)
+    print(f"[builder] built {claim.name} (claim-this-listing intake)")
+
+    # information-gap report
+    report["empty_fields"] = compute_empty_fields(passed)
+    report["mode"] = "enforced" if enforce else "dry-run (config 'completeness' absent)"
+    report["thresholds_used"] = spec
+    print(f"[builder] completeness: mode={report['mode']} | "
+          f"listings_excluded={len(report['excluded_listings'])} | "
+          f"pages_held={len(report['held_pages'])} | empty_fields={report['empty_fields']}")
+    (GENERATED / "_completeness_report.json").write_text(json.dumps(report, indent=2))
 
     # TODO (auto-approved): git add + commit to branch 'auto/build'
     # DO NOT merge to main. DO NOT deploy. (hard-gated in CLAUDE.md)

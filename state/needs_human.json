@@ -2,23 +2,52 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
+      "id": "operator-add-completeness-thresholds-to-config",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "action-required-to-enforce",
+      "summary": "Information-gap handling is implemented, but the completeness thresholds are OPERATOR-OWNED and live in config/thresholds.json. The builder reads them and must never invent them — and cannot edit config/ (hard-gated). Until the operator adds the block, the new gate runs in DRY-RUN (reports only); it enforces nothing.",
+      "action": "Add this block to config/thresholds.json to switch the gate from dry-run to enforced:",
+      "config_block_to_add": {
+        "completeness": {
+          "min_listing_fields": ["name", "address", "phone", "rating", "treatments"],
+          "min_page_requirements": { "min_listings": 3, "require_cost_block": true, "require_guidance": true }
+        }
+      },
+      "dry_run_findings_under_recommended_thresholds": {
+        "listings_that_would_be_excluded": 9,
+        "excluded_clinics_missing_phone": ["Brickell Cosmetic Center", "Sisu Clinic (Brickell)", "Miami Beach Laser & Aesthetics"],
+        "pages_that_would_be_held": [
+          "lip-filler-coconut-grove (2 listings < 3)",
+          "coolsculpting-coral-gables (1 < 3)",
+          "coolsculpting-south-beach (1 < 3)",
+          "laser-hair-removal-coconut-grove (2 < 3)"
+        ],
+        "empty_state_fields": "19/21 clinics have no email (Call-only), 3 have no phone, 66/70 listing-instances have no published price (-> 'request a quote')."
+      },
+      "note": "Once the block is added, re-run the build to ENFORCE (those listings excluded, those 4 pages held). Adjust min_listings etc. to taste — it's your call."
+    },
+    {
+      "id": "review-treatment-guidance-copy",
+      "opened_at": "2026-06-01",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "review-before-deploy",
+      "summary": "Each page now carries a short factual treatment-guidance blurb (builder/build.py -> TREATMENT_GUIDANCE), labeled 'general guidance only — not medical advice'. In a medical vertical this copy should get clinician/legal review before deploy."
+    },
+    {
       "id": "ready-for-human-deploy-review",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
       "blocking": false,
       "severity": "info",
-      "summary": "Phase-1 seed is BUILT and committed to auto/build (18 rated listing pages + homepage, all passed the quality gate). Next step is the human-gated deploy.",
-      "next_human_action": "Review auto/build, then deploy via the separate, explicitly-permissioned step (Vercel/Cloudflare). The builder does not deploy. After deploy: connect Search Console, submit sitemap, request indexing.",
-      "minor_enrichment_backlog_non_blocking": [
-        "2 newer Coral Gables clinics (ALEXIS LAUREN, The Plump Room) are in data/seed_candidates_DRAFT.json but not yet in the rated clinics.json — include in the next ratings pass to grow Coral Gables from 5 to 7.",
-        "Open data gaps: Brickell Cosmetic Center phone, a few clinics without published prices.",
-        "CoolSculpting in Brickell/Coconut Grove skipped (no real providers) — leave dropped per playbook (quality over count)."
-      ]
+      "summary": "Seed is built and committed to auto/build (18 rated pages + homepage + claim intake). Deploy is the separate, human-gated step (Vercel/Cloudflare) — the builder does not deploy. Claim-listing form is intake-only (routes to CRM on a deploy-time integration); the builder sends no outreach."
     }
   ],
   "_resolved": [
-    "prospector-data-source-unspecified — RESOLVED: data source + format settled (data/prospector/*.json), fetch_pages wired.",
-    "places-mcp-not-visible-to-builder — RESOLVED: Cowork ran the Places handoff and produced clinics.json; builder built standalone.",
-    "request-to-remove-rating-requirement-REFUSED — MOOT: shipped compliantly with real permitted-API ratings instead."
+    "prospector-data-source-unspecified — RESOLVED.",
+    "places-mcp-not-visible-to-builder — RESOLVED (Cowork produced clinics.json).",
+    "request-to-remove-rating-requirement-REFUSED — MOOT (shipped with real permitted-API ratings)."
   ]
 }

@@ -1,0 +1,109 @@
+{
+  "excluded_listings": [
+    {
+      "clinic": "Brickell Cosmetic Center",
+      "page": "botox-brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Sisu Clinic (Brickell)",
+      "page": "botox-brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "botox-south-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Brickell Cosmetic Center",
+      "page": "lip-filler-brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Sisu Clinic (Brickell)",
+      "page": "lip-filler-brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "lip-filler-south-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Brickell Cosmetic Center",
+      "page": "laser-hair-removal-brickell",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Miami Beach Laser & Aesthetics",
+      "page": "laser-hair-removal-south-beach",
+      "missing": [
+        "phone"
+      ]
+    },
+    {
+      "clinic": "Brickell Cosmetic Center",
+      "page": "microneedling-brickell",
+      "missing": [
+        "phone"
+      ]
+    }
+  ],
+  "held_pages": [
+    {
+      "page": "lip-filler-coconut-grove",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting-coral-gables",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "coolsculpting-south-beach",
+      "reason": "only 1 qualifying listing(s) (< 3)"
+    },
+    {
+      "page": "laser-hair-removal-coconut-grove",
+      "reason": "only 2 qualifying listing(s) (< 3)"
+    }
+  ],
+  "empty_fields": {
+    "unique_clinics": 21,
+    "missing_phone": 3,
+    "missing_email": 19,
+    "missing_address": 0,
+    "missing_booking_url": 3,
+    "price_empty_state_listings": 66,
+    "price_total_listings": 70
+  },
+  "mode": "dry-run (config 'completeness' absent)",
+  "thresholds_used": {
+    "min_listing_fields": [
+      "name",
+      "address",
+      "phone",
+      "rating",
+      "treatments"
+    ],
+    "min_page_requirements": {
+      "min_listings": 3,
+      "require_cost_block": true,
+      "require_guidance": true
+    }
+  }
+}

@@ -1,13 +1,16 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 5, "pages_built": 18 },
+  "2026-06": { "tokens": 0, "runs": 6, "pages_built": 18 },
   "last_run": {
     "at": "2026-06-01",
     "status": "success",
-    "reason": "Ratings supplied via permitted Places API (data/prospector/clinics.json, 21 clinics, rating_source=google_places). Built 18 listing pages + homepage; all passed the quality gate. 2 pages skipped (no providers): coolsculpting-brickell, coolsculpting-coconut-grove. Committed to auto/build. Not deployed (human-gated).",
+    "reason": "Implemented information-gap handling (completeness gate, sourcing-hierarchy labels, honest empty states, source/freshness, claim-listing intake). Built 18 listing pages + homepage + claim.html. Completeness gate is DRY-RUN (config 'completeness' not yet added by operator — builder cannot edit config).",
     "pages_built": 18,
     "pages_skipped": 2,
-    "skipped_pages": ["coolsculpting-brickell", "coolsculpting-coconut-grove"],
+    "completeness_mode": "dry-run",
+    "dry_run_would_exclude_listings": 9,
+    "dry_run_would_hold_pages": 4,
+    "empty_state_summary": "missing_email=19/21, missing_phone=3/21, missing_price=66/70 listing-instances, missing_address=0",
     "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field for cap enforcement."
   }
 }
