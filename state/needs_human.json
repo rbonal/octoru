@@ -2,6 +2,16 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
+      "id": "activate-palm-beach-expansion-in-config",
+      "opened_at": "2026-06-02",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-action-to-activate",
+      "summary": "7 new Palm Beach County cities staged with 19 real verified clinics, but they won't build until the operator adds them to config/thresholds.json seed_scope.neighborhoods (hard-gated for the builder). Also needs a Cowork ratings pass for all 19 new clinics.",
+      "operator_action": "Add these 7 slugs to config/thresholds.json seed_scope.neighborhoods array: delray-beach, palm-beach-gardens, jupiter, wellington, boynton-beach, north-palm-beach, royal-palm-beach",
+      "then": "Run Cowork ratings pass (state/cowork_places_handoff.md) to rate all new staged clinics, then re-run the build."
+    },
+    {
       "id": "ready-for-human-deploy-review",
       "opened_at": "2026-06-01",
       "opened_by": "builder",
