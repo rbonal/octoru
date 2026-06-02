@@ -68,6 +68,12 @@ Replace the flat `neighborhoods` list with a gated geo tree:
 - Per new market: one **prospector pass** (Places + clinic sites, per the density/pricing playbook) → real clinics with `county`/`market` → one **ratings pass** (permitted Places) → ship.
 - Only activate a market once it clears the completeness bar for the priority treatments (≥ min_listings real providers). **Don't create empty county sections.**
 - Boca Raton, Fort Lauderdale, Aventura, Miami Lakes are the densest near-term targets.
+- **Reality check: provider density is HIGH across South Florida for core injectables
+  (botox, lip filler, microneedling) — clinic supply is NOT the binding constraint.**
+  The limiters are (1) data-pipeline throughput (one prospector + one ratings pass per
+  market) and (2) freshness/accuracy at scale. Genuine scarcity is confined to specific
+  treatments (CoolSculpting, some laser-hair-removal) and tiny neighborhoods — the
+  completeness gate handles those at the margins; it will rarely hold a page in a dense market.
 
 ## 6. Phasing (gated rollout)
 1. **Phase 1 (now):** Miami-Dade seed (4 markets) — prove indexing + leads. *(in progress)*
@@ -78,7 +84,7 @@ Replace the flat `neighborhoods` list with a gated geo tree:
 Each phase gated by the evaluator before the next.
 
 ## 7. Risks & guardrails (bigger at scale)
-- **Thin/near-duplicate content** is the #1 risk when multiplying markets. Mitigate: completeness gate per page, unique per-page data (real providers + prices + local context), drop un-densifiable pages, never boilerplate.
+- **Near-duplicate SAMENESS** (not provider scarcity) is the #1 risk at scale: many "Botox in [affluent SoFla suburb]" pages that read alike. Density is high, so the danger is templated repetition, not empty pages. Mitigate: unique per-page data (real providers + market-specific prices + local context), market-specific guidance, completeness gate, never boilerplate.
 - **Index bloat / crawl budget:** sitemap, strong internal linking, don't generate empty combinations, noindex held/thin pages.
 - **Compliance scales too:** permitted-API ratings only, consent language, claim-flow verification — per market.
 - **Operational cadence:** each market = a prospector + ratings pass; plan the pipeline throughput before activating many at once.
