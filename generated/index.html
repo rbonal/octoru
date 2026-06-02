@@ -364,6 +364,61 @@
   var pills = document.getElementById('pills');
   var q = document.getElementById('q');
   var activeTreat = '';
+
+  // ── SEARCH NAVIGATION ──────────────────────────────────────────────────────
+  // All city cards carry data-search (city name, lowercase) + data-treats + href.
+  // On search: (1) try to find an exact/prefix city match and navigate there,
+  // (2) if no match, scroll to #areas and filter the city grid so the user can see
+  //     what's available. Enter key and the "Find providers" button both trigger this.
+  function doSearch() {
+    var raw = (q.value || '').trim();
+    if (!raw) { document.getElementById('areas').scrollIntoView({behavior:'smooth'}); return; }
+    var term = raw.toLowerCase();
+
+    // Try to find a matching city card (exact name or prefix match)
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.ccard'));
+    var match = null;
+    // 1) exact
+    for (var i = 0; i < cards.length; i++) {
+      if ((cards[i].getAttribute('data-search') || '') === term) { match = cards[i]; break; }
+    }
+    // 2) starts-with
+    if (!match) {
+      for (var i = 0; i < cards.length; i++) {
+        if ((cards[i].getAttribute('data-search') || '').indexOf(term) === 0) { match = cards[i]; break; }
+      }
+    }
+    // 3) contains
+    if (!match) {
+      for (var i = 0; i < cards.length; i++) {
+        if ((cards[i].getAttribute('data-search') || '').indexOf(term) !== -1) { match = cards[i]; break; }
+      }
+    }
+
+    if (match) {
+      // If a treatment pill is active, go straight to that treatment page in the matched city
+      if (activeTreat) {
+        var treats = (match.getAttribute('data-treats') || '').split(' ');
+        if (treats.indexOf(activeTreat) !== -1) {
+          var base = match.getAttribute('href') || '';
+          if (base) { window.location.href = base + activeTreat + '/'; return; }
+        }
+      }
+      // Otherwise navigate to the city hub page
+      var href = match.getAttribute('href');
+      if (href) { window.location.href = href; return; }
+    }
+
+    // No matching city — filter the grid and scroll down so the user sees results
+    applyFilter();
+    document.getElementById('areas').scrollIntoView({behavior:'smooth'});
+  }
+
+  // Wire: button click + Enter key
+  document.querySelector('.search button').addEventListener('click', doSearch);
+  q.addEventListener('keydown', function(e){ if (e.key === 'Enter') doSearch(); });
+
+  // Live filter (cosmetic, while typing)
   function applyFilter(){
     var term = (q.value || '').trim().toLowerCase();
     document.querySelectorAll('.ccard').forEach(function(c){
