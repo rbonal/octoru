@@ -16,6 +16,18 @@ South Florida = tri-county + optional Keys:
 - **Palm Beach**: **Boca Raton** (aesthetics-dense), Delray Beach, West Palm Beach, Palm Beach Gardens, Jupiter, Wellington.
 - **Monroe (Keys)**: later/optional — thin market.
 
+## 1b. State level? — carry in data, NOT in the URL (yet)
+Single-state operation → a `/florida/` segment disambiguates nothing and just adds depth
+(worse for the flat ≤3-clicks hierarchy). The Florida signal already lives in schema
+(`MedicalClinic → addressRegion: "FL"`). **Recommendation:** store `state: "FL"` on every
+clinic and attach counties to a state in the config tree now, so going multi-state later
+(`/{state}/{county}/{market}/{treatment}/`) is a non-breaking change — but keep state OUT
+of the URL until a second state is actually active (gated like everything else).
+
+**Branding flag:** expanding past Miami-Dade makes "GlowMap **Miami**" undersell Broward/
+Palm Beach. Decide positioning ("GlowMap Miami" vs "GlowMap South Florida") and the domain
+BEFORE publishing non-Miami counties, to avoid rebranding live URLs. Domain is operator-owned.
+
 ## 2. URL / information architecture (subdirectories by county)
 Clean, flat-ish hierarchy (every page ≤3 clicks; matches the breadcrumb/internal-link best practices already adopted):
 - **County hub:** `/{county}/` → e.g. `/broward/` (lists that county's markets + treatments)
