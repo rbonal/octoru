@@ -869,9 +869,265 @@
       "review_count": null,
       "rating_source": null,
       "_added": "expansion: West Palm Beach; phone pending"
+    },
+    {
+      "neighborhood": "doral",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "FaceBeauty Med Spa",
+      "website": "https://www.fbmedspa.com/",
+      "address": "10305 NW 41st St, Ste 203, Doral, FL 33178",
+      "phone": "+17867801180",
+      "email": null,
+      "booking_url": "https://www.fbmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "doral",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Facial Mania Med Spa (Doral)",
+      "website": "https://facialmaniamedspamiami.com/locations/doral/",
+      "address": "5645 NW 87th Ave, #117, Doral, FL 33178",
+      "phone": "+13055098241",
+      "email": null,
+      "booking_url": "https://facialmaniamedspamiami.com/locations/doral/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "doral",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Luminex Wellness & Aesthetics",
+      "website": "https://www.luminexwellness.com/",
+      "address": "9851 NW 58th St, Suite 125, Doral, FL 33178",
+      "phone": "+13054031035",
+      "email": null,
+      "booking_url": "https://www.luminexwellness.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "kendall",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "Facial Mania Med Spa (Kendall)",
+      "website": "https://facialmaniamedspamiami.com/locations/kendall/",
+      "address": "12038 SW 88th St, Miami, FL 33186",
+      "phone": "+13057055330",
+      "email": null,
+      "booking_url": "https://facialmaniamedspamiami.com/locations/kendall/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "kendall",
+      "county": "miami-dade",
+      "state": "fl",
+      "name": "C10 Wellness & Rejuvenation",
+      "website": "https://c10wellness.com/",
+      "address": "9045 S Dadeland Blvd, Miami, FL 33156",
+      "phone": "+13054567198",
+      "email": null,
+      "booking_url": "https://c10wellness.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "hollywood",
+      "county": "broward",
+      "state": "fl",
+      "name": "Hollywood Laser Med Spa",
+      "website": "https://www.instagram.com/hollywood_lasermedspa/",
+      "address": "3325 Hollywood Blvd, Ste 300, Hollywood, FL 33021",
+      "phone": "+19545895892",
+      "email": null,
+      "booking_url": "https://www.instagram.com/hollywood_lasermedspa/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "hollywood",
+      "county": "broward",
+      "state": "fl",
+      "name": "Laser Med Spa (Hollywood)",
+      "website": "https://www.yelp.com/biz/laser-med-spa-hollywood-3",
+      "address": "3475 Sheridan St, Hollywood, FL 33021",
+      "phone": "+17084353037",
+      "email": null,
+      "booking_url": "https://www.yelp.com/biz/laser-med-spa-hollywood-3",
+      "languages": [],
+      "treatments": [
+        "laser-hair-removal"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "weston",
+      "county": "broward",
+      "state": "fl",
+      "name": "Weston Med Spa",
+      "website": "https://www.westonmedspa.com/",
+      "address": "1601 Town Center Circle, Weston, FL 33326",
+      "phone": "+19545074494",
+      "email": null,
+      "booking_url": "https://www.westonmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "weston",
+      "county": "broward",
+      "state": "fl",
+      "name": "GreeneMD",
+      "website": "https://www.drryangreene.com/",
+      "address": "2731 Executive Park Dr, Suite 1, Weston, FL 33331",
+      "phone": "+19546516600",
+      "email": null,
+      "booking_url": "https://www.drryangreene.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "coolsculpting",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "weston",
+      "county": "broward",
+      "state": "fl",
+      "name": "4Ever Young Weston",
+      "website": "https://4everyoungantiaging.com/weston/",
+      "address": "4551 Weston Rd, Weston, FL 33331",
+      "phone": "+19543142000",
+      "email": null,
+      "booking_url": "https://4everyoungantiaging.com/weston/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "pembroke-pines",
+      "county": "broward",
+      "state": "fl",
+      "name": "Narotique MedSpa",
+      "website": "https://narotiquemedspa.com/",
+      "address": "8140 Pines Blvd, Pembroke Pines, FL 33024",
+      "phone": "+18887128476",
+      "email": null,
+      "booking_url": "https://narotiquemedspa.com/",
+      "languages": [],
+      "treatments": [
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
+    },
+    {
+      "neighborhood": "pembroke-pines",
+      "county": "broward",
+      "state": "fl",
+      "name": "Dr. Thrower's Dermatology & Medspa",
+      "website": "https://www.drthrowersmedspa.com/",
+      "address": "17901 NW 5th St, Suite 205, Pembroke Pines, FL 33029",
+      "phone": "+13057579797",
+      "email": null,
+      "booking_url": "https://www.drthrowersmedspa.com/",
+      "languages": [],
+      "treatments": [
+        "botox",
+        "lip-filler",
+        "laser-hair-removal",
+        "microneedling"
+      ],
+      "rating": null,
+      "review_count": null,
+      "rating_source": null,
+      "_added": "expansion"
     }
   ],
   "_densification_note": "Brickell expanded with 4 more real providers + Botox per-unit prices to combat thin pages. Same lever to be applied to the other treatment x neighborhood pages.",
   "_growth_note": "Growth round: +Solea, +Dermacare(addr pending), +Miami Skin & Vein ($18/unit), +Pure Beauty, +JECT. Existing Places ratings merged in for preview. New clinics need a ratings pass to ship live.",
-  "_expansion_note": "Expansion round 2: +Miami Lakes, +Aventura (Miami-Dade), +West Palm Beach (Palm Beach). Staged; needs config geo activation + ratings pass."
+  "_expansion_note": "Round 3: +Doral, +Kendall (Miami-Dade), +Hollywood, +Weston, +Pembroke Pines (Broward). Completing MD + Broward before ship."
 }
