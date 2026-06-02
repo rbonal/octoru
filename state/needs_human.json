@@ -13,16 +13,18 @@
         "ToolSearch 'maps_search_places maps_place_details google-places geocode' -> No matching deferred tools found.",
         "mcp-registry list_connectors for [places, maps, google] -> no installed connectors."
       ],
-      "most_likely_cause": "MCP servers added to .mcp.json load into the agent's tool registry only after Claude Code is restarted. This session began before google-places was added, so its tools are absent. (The key/config look correct per the user.)",
+      "most_likely_cause": "AFTER a full Claude Code restart the google-places tools STILL do not register (the restart reconnected computer-use but not google-places). .mcp.json exists. Root cause: the configured package @modelcontextprotocol/server-google-maps is DEPRECATED ('Package no longer supported', v0.6.2, archived) — a deprecated/archived stdio server commonly fails to start, and/or Claude Code will not auto-trust a project-scoped .mcp.json server without explicit approval. Either way its tools never load.",
       "did_not_do": [
         "Did NOT fabricate ratings.",
         "Did NOT scrape Google/Yelp ratings via web (that is the prohibited non-permitted-API source).",
-        "Did NOT build or commit any listing page."
+        "Did NOT build or commit any listing page.",
+        "Did NOT read .mcp.json (it holds the API key — hard-gated)."
       ],
       "how_to_unblock": [
-        "Restart Claude Code (fully quit + reopen) so it loads the google-places server from .mcp.json; approve/trust the new server if prompted.",
-        "Sanity-check the server actually starts (npx -y @modelcontextprotocol/server-google-maps must resolve to a real package; verify the package name you vetted).",
-        "Re-run the resume-build prompt. On the next run I will first confirm the Places tool is visible (ToolSearch) before relying on it, then proceed: verify each clinic, pull rating + review_count (rating_source='google_places'), write data/prospector/clinics.json, build, gate, commit to auto/build."
+        "In Claude Code run /mcp — it lists each configured server and its status. Check whether 'google-places' shows Connected, Failed, or Needs-approval. If it asks to trust the project server, approve it.",
+        "If /mcp shows a startup error: the @modelcontextprotocol/server-google-maps package is deprecated and may not run under current Node. Switch .mcp.json to a maintained Google Places MCP server you vet (keep env GOOGLE_MAPS_API_KEY or whatever that server expects), then restart.",
+        "Key scope: the legacy server uses the legacy 'Places API' (Text Search/Place Details) — make sure that legacy API (not only 'Places API (New)') is enabled on the key. User reports both are enabled.",
+        "Re-run the resume-build prompt. On the next run I will FIRST confirm the Places tool is actually callable (ToolSearch) before relying on it, then: verify each clinic, pull rating + review_count (rating_source='google_places'), write data/prospector/clinics.json, build, gate, commit to auto/build."
       ]
     },
     {
