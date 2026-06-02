@@ -1,13 +1,15 @@
 {
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
-  "2026-06": { "tokens": 0, "runs": 10, "pages_built": 148 },
+  "2026-06": {
+    "tokens": 0,
+    "runs": 11,
+    "pages_built": 148
+  },
   "last_run": {
-    "at": "2026-06-01",
+    "at": "2026-06-02",
     "status": "success",
-    "reason": "First fully-rated national build. Operator expanded seed_scope.neighborhoods to 40; clinics.json now carries 97 clinics all rated via permitted Places (rating_source=google_places). Built 148 listing pages across 40 cities / 3 counties (FL: Miami-Dade, Broward, Palm Beach) + hubs + homepage + claim + sitemap. 0 compliance-gate skips (all pages have real rated data). Committed to auto/build; NOT deployed.",
-    "pages_built": 148,
-    "compliance_skips": 0,
-    "completeness_dry_run": "config 'completeness' absent -> not enforced. Under the recommended thresholds, 117 of 148 pages are THIN (1-2 clinics) and would be HELD. Operator owns whether to enforce.",
-    "_token_note": "Token usage not self-measured by the builder; a metered runner should populate the monthly 'tokens' field."
+    "reason": "Rebuilt homepage from design source (templates/home.html.j2 -> generated/index.html). Bound to real data: stats 312 listings/40 cities/3 counties; county->city grid (40 real cities, real treatment counts, real /fl/county/city/ routes); 5 treatment cards; geolocation set = 40 real covered cities w/ centroids + real URLs. Prices: Botox $10-18/unit (real) + 4 treatments 'Varies' (empty state). NO placeholder $ shipped. CSS consolidated into shared styles.css, ONE :root.",
+    "homepage_route": "/ (generated/index.html)",
+    "placeholder_prices_shipped": 0
   }
 }

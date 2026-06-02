@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowMap — Find & compare med spas across South Florida</title>
+<meta name="description" content="Compare verified med spa providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1447E6; --blue-deep:#0B2FA8; --blue-tint:rgba(20,71,230,.08); --blue-line:rgba(20,71,230,.2);
+    --ink:#0A0A14; --ink-2:#1F2128; --ink-3:#4B5063;
+    --paper:#FAFAFB; --paper-pure:#FFFFFF;
+    --line:#E8EAEF; --line-strong:#D0D4DC; --mute:#6B7280; --pale:#F2F4F8; --green:#10A76C;
+    --r:6px; --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Geist',system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+    line-height:1.55; font-size:16px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .mono{font-family:'Geist Mono',monospace}
+  .label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+  .label.blue{color:var(--blue)}
+
+  /* ---------- header ---------- */
+  header.bar{position:sticky;top:0;z-index:60;background:rgba(250,250,251,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+  header.bar .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px}
+  .brand{font-weight:700;letter-spacing:-.025em;font-size:19px}
+  .brand .sub{display:block;margin-top:1px}
+  nav.bar-nav{display:flex;gap:28px;align-items:center}
+  nav.bar-nav a{font-size:14px;color:var(--ink-3);font-weight:500;transition:color .15s}
+  nav.bar-nav a:hover{color:var(--ink)}
+  nav.bar-nav .region{color:var(--blue)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);
+    background-size:44px 44px;opacity:.5;
+    -webkit-mask-image:radial-gradient(120% 90% at 78% -10%,#000 0%,transparent 62%);
+    mask-image:radial-gradient(120% 90% at 78% -10%,#000 0%,transparent 62%);}
+  .hero::after{content:"";position:absolute;top:-220px;right:-120px;width:620px;height:620px;border-radius:50%;
+    background:radial-gradient(circle,var(--blue-tint) 0%,transparent 68%);pointer-events:none}
+  .hero .wrap{position:relative;padding:96px 28px 84px}
+  .eyebrow{margin-bottom:22px}
+  h1.head{font-weight:800;letter-spacing:-.04em;line-height:.98;font-size:clamp(44px,7vw,84px);max-width:14ch}
+  h1.head .accent{color:var(--blue)}
+  .lead{margin-top:26px;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.015em;color:var(--ink-3);max-width:54ch;line-height:1.5}
+
+  /* search */
+  .search{margin-top:40px;max-width:660px;display:flex;gap:10px;background:var(--paper-pure);border:1px solid var(--line-strong);border-radius:8px;padding:8px 8px 8px 18px;box-shadow:0 1px 2px rgba(10,10,20,.04);transition:border-color .15s,box-shadow .15s}
+  .search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
+  .search input{flex:1;border:0;outline:0;font-family:inherit;font-size:16px;color:var(--ink);background:transparent}
+  .search input::placeholder{color:var(--mute)}
+  .search button{border:0;cursor:pointer;background:var(--blue);color:#fff;font-family:inherit;font-weight:600;font-size:15px;padding:12px 22px;border-radius:6px;transition:background .15s}
+  .search button:hover{background:var(--blue-deep)}
+  .pills{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .pill{font-size:13.5px;font-weight:500;color:var(--ink-2);background:var(--paper-pure);border:1px solid var(--line-strong);border-radius:999px;padding:8px 15px;cursor:pointer;transition:all .15s}
+  .pill:hover{border-color:var(--ink-3)}
+  .pill.active{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  /* geolocation */
+  .geo-suggest{display:none;align-items:center;gap:12px;max-width:660px;margin-top:28px;background:var(--blue-tint);border:1px solid var(--blue-line);border-radius:8px;padding:13px 16px;font-size:14px;color:var(--ink-2)}
+  .geo-suggest.show{display:flex}
+  .geo-suggest svg{color:var(--blue);flex-shrink:0}
+  .geo-suggest a.go{margin-left:auto;color:var(--blue);font-weight:600;white-space:nowrap}
+  .geo-suggest button.x{background:none;border:0;color:var(--mute);cursor:pointer;font-size:15px;line-height:1;padding:2px 4px}
+  .geo-row{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+  .geo-btn{display:inline-flex;align-items:center;gap:8px;background:var(--paper-pure);border:1px solid var(--line-strong);border-radius:999px;padding:9px 16px;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .15s,color .15s}
+  .geo-btn:hover{border-color:var(--blue);color:var(--blue)}
+  .geo-note{font-size:12px;color:var(--mute)}
+  .geo-msg{font-size:13px;color:var(--ink-3);margin-top:8px;min-height:1px}
+
+  .stats{margin-top:44px;display:flex;flex-wrap:wrap;gap:30px;align-items:baseline}
+  .stat .n{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+  .stat .t{font-size:14px;color:var(--mute);margin-left:7px}
+  .stat.verified{color:var(--green);font-size:14px;font-weight:500;display:flex;align-items:center;gap:7px}
+
+  /* ---------- section scaffolding ---------- */
+  section.block{padding:76px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .sec-head h2{font-weight:700;letter-spacing:-.03em;font-size:clamp(26px,3vw,34px);line-height:1.05}
+  .sec-head p{color:var(--ink-3);font-size:15px;margin-top:6px;max-width:48ch}
+
+  /* ---------- treatment cards ---------- */
+  .treat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .tcard{position:relative;background:var(--paper-pure);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px 20px;display:flex;flex-direction:column;min-height:188px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .tcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px -16px rgba(10,10,20,.22);border-color:var(--line-strong)}
+  .tcard .tname{font-size:18px;font-weight:600;letter-spacing:-.02em}
+  .tcard .tdesc{font-size:13px;color:var(--ink-3);margin-top:8px;line-height:1.5;flex:1}
+  .tcard .tmeta{display:flex;align-items:baseline;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .tcard .from{font-family:'Geist Mono',monospace;font-size:13px;font-weight:500;color:var(--ink)}
+  .tcard .from .k{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+  .tcard .arrow{color:var(--blue);font-size:18px;transition:transform .18s ease}
+  .tcard:hover .arrow{transform:translateX(4px)}
+
+  /* ---------- area grid ---------- */
+  .county{margin-top:14px}
+  .county:not(:first-child){margin-top:48px}
+  .county-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px}
+  .county-head h3{font-weight:700;letter-spacing:-.025em;font-size:24px}
+  .city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ccard{display:flex;align-items:center;justify-content:space-between;background:var(--paper-pure);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+  .ccard:hover{transform:translateY(-2px);box-shadow:0 10px 24px -16px rgba(10,10,20,.2);border-color:var(--line-strong)}
+  .ccard .cname{font-size:16.5px;font-weight:600;letter-spacing:-.015em}
+  .ccard .cmeta{display:block;margin-top:5px}
+  .ccard .arrow{color:var(--blue);font-size:17px;transition:transform .16s ease}
+  .ccard:hover .arrow{transform:translateX(4px)}
+
+  /* ---------- trust band ---------- */
+  .trust{background:var(--paper-pure);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{padding:64px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .tr h4{font-size:17px;font-weight:600;letter-spacing:-.02em;margin:14px 0 8px}
+  .tr p{font-size:14px;color:var(--ink-3);line-height:1.6}
+  .tr .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--blue);font-weight:500;letter-spacing:.04em}
+
+  /* ---------- footer ---------- */
+  footer.foot{padding:48px 0 72px;color:var(--mute);font-size:13px}
+  footer.foot .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;align-items:flex-end}
+  footer.foot a{color:var(--ink-3)}
+  footer.foot a:hover{color:var(--blue)}
+  footer.foot .disc{max-width:60ch;line-height:1.6}
+  footer.foot .links{display:flex;gap:18px}
+
+  /* ---------- load-in motion ---------- */
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}.d4{animation-delay:.29s}.d5{animation-delay:.37s}
+  @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}.tcard,.ccard{transition:none}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:920px){
+    .treat-grid{grid-template-columns:repeat(2,1fr)}
+    .city-grid{grid-template-columns:repeat(2,1fr)}
+    .trust .wrap{grid-template-columns:1fr;gap:28px}
+  }
+  @media (max-width:600px){
+    .hero .wrap{padding:64px 24px 56px}
+    .wrap{padding:0 20px}
+    .treat-grid{grid-template-columns:1fr}
+    .city-grid{grid-template-columns:1fr}
+    .search{flex-direction:column;padding:14px}
+    .search button{width:100%}
+    nav.bar-nav a:not(.region){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="/"><span class="brand">GlowMap<span class="sub label">Med spa directory</span></span></a>
+    <nav class="bar-nav">
+      <a href="#treatments">Treatments</a>
+      <a href="#areas">Areas</a>
+      <a href="#how">How it works</a>
+      <a href="/region" class="region label blue">South Florida</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow label blue reveal d1">South Florida</div>
+    <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
+    <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
+
+    <div class="geo-suggest reveal d3" id="geoSuggest">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
+      <a class="go" id="geoGo" href="#">See med spas there →</a>
+      <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">✕</button>
+    </div>
+
+    <div class="search reveal d3">
+      <input id="q" type="text" placeholder="Search a city or county — e.g. &ldquo;Coral Gables&rdquo; or &ldquo;Broward&rdquo;" aria-label="Search city or county">
+      <button type="button">Search</button>
+    </div>
+    <div class="geo-row reveal d3">
+      <button class="geo-btn" id="useLoc" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Use my location
+      </button>
+      <span class="geo-note">Used only to find the nearest area — never stored.</span>
+    </div>
+    <div class="geo-msg" id="geoMsg" aria-live="polite"></div>
+
+    <div class="pills reveal d3" id="pills">
+      <span class="pill active">All</span>
+      <span class="pill">Botox</span>
+      <span class="pill">Lip filler</span>
+      <span class="pill">CoolSculpting</span>
+      <span class="pill">Laser hair removal</span>
+      <span class="pill">Microneedling</span>
+    </div>
+
+    <div class="stats reveal d4">
+      <span class="stat"><span class="n">312</span><span class="t">provider listings</span></span>
+      <span class="stat"><span class="n">40</span><span class="t">cities</span></span>
+      <span class="stat"><span class="n">3</span><span class="t">counties</span></span>
+      <span class="stat verified">✓ verified contact details</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TREATMENTS ===================== -->
+<section class="block" id="treatments">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label blue" style="margin-bottom:10px">Browse by treatment</div>
+        <h2>Compare by what you're getting done</h2>
+        <p>Pick a treatment to see providers, prices and ratings across South Florida.</p>
+      </div>
+    </div>
+    <div class="treat-grid">
+      <a class="tcard" href="#"><div class="tname">Botox</div><div class="tdesc">Wrinkle-relaxing injections, priced per unit.</div><div class="tmeta"><span class="from"><span class="k">Typical from</span>$10–14 / unit</span><span class="arrow">→</span></div></a>
+      <a class="tcard" href="#"><div class="tname">Lip filler</div><div class="tdesc">Hyaluronic-acid lip enhancement, priced per syringe.</div><div class="tmeta"><span class="from"><span class="k">Typical from</span>$550 / syringe</span><span class="arrow">→</span></div></a>
+      <a class="tcard" href="#"><div class="tname">CoolSculpting</div><div class="tdesc">Non-invasive fat reduction, priced per area.</div><div class="tmeta"><span class="from"><span class="k">Typical from</span>$700 / area</span><span class="arrow">→</span></div></a>
+      <a class="tcard" href="#"><div class="tname">Laser hair removal</div><div class="tdesc">Multi-session hair reduction, priced by area.</div><div class="tmeta"><span class="from"><span class="k">Typical from</span>$120 / session</span><span class="arrow">→</span></div></a>
+      <a class="tcard" href="#"><div class="tname">Microneedling</div><div class="tdesc">Collagen-induction skin treatment, per session.</div><div class="tmeta"><span class="from"><span class="k">Typical from</span>$300 / session</span><span class="arrow">→</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AREAS ===================== -->
+<section class="block" id="areas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label blue" style="margin-bottom:10px">Browse by area</div>
+        <h2>Choose your city</h2>
+        <p>Every city links to treatment guides with local providers, prices and verified ratings.</p>
+      </div>
+    </div>
+
+    <div class="county" id="cities">
+      <div class="county-head"><h3>Miami-Dade, Florida</h3><span class="label">19 cities</span></div>
+      <div class="city-grid">
+        <a class="ccard" href="#"><span><span class="cname">Aventura</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Bal Harbour</span><span class="cmeta label">3 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Brickell</span><span class="cmeta label">5 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Coconut Grove</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Coral Gables</span><span class="cmeta label">5 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Kendall</span><span class="cmeta label">5 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Miami Lakes</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">South Beach</span><span class="cmeta label">5 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Sunny Isles Beach</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="county">
+      <div class="county-head"><h3>Broward, Florida</h3><span class="label">19 cities</span></div>
+      <div class="city-grid">
+        <a class="ccard" href="#"><span><span class="cname">Fort Lauderdale</span><span class="cmeta label">5 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Coral Springs</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Hallandale Beach</span><span class="cmeta label">2 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Cooper City</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Deerfield Beach</span><span class="cmeta label">3 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">Davie</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="county">
+      <div class="county-head"><h3>Palm Beach, Florida</h3><span class="label">2 cities</span></div>
+      <div class="city-grid">
+        <a class="ccard" href="#"><span><span class="cname">Boca Raton</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+        <a class="ccard" href="#"><span><span class="cname">West Palm Beach</span><span class="cmeta label">4 treatments</span></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST ===================== -->
+<section class="trust" id="how">
+  <div class="wrap">
+    <div class="tr">
+      <div class="num">01</div>
+      <h4>Verified, not scraped</h4>
+      <p>Contact details and ratings are pulled from permitted sources and date-stamped, so what you see is current — not copied review text.</p>
+    </div>
+    <div class="tr">
+      <div class="num">02</div>
+      <h4>Compare before you book</h4>
+      <p>Prices, ratings and treatments side by side for each city, so you can shortlist in minutes instead of opening ten tabs.</p>
+    </div>
+    <div class="tr">
+      <div class="num">03</div>
+      <h4>Independent</h4>
+      <p>GlowMap isn't owned by any clinic. Featured placements are clearly labeled; everything else is ranked on the merits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div class="disc">
+        <span class="brand" style="font-size:16px">GlowMap</span><br>
+        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
+        <div class="label" style="margin-top:12px">Updated 2026-06-02</div>
+      </div>
+      <div class="links">
+        <a href="/claim">Claim a listing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/about">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // treatment pills: active toggle (decorative on the landing; binds to filter on build)
+  const pills = document.getElementById('pills');
+  pills.addEventListener('click', e => {
+    if(!e.target.classList.contains('pill')) return;
+    pills.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+  // live filter of city cards by the search box
+  const q = document.getElementById('q');
+  q.addEventListener('input', () => {
+    const v = q.value.trim().toLowerCase();
+    document.querySelectorAll('#cities .ccard, #areas .ccard').forEach(c => {
+      const name = c.querySelector('.cname').textContent.toLowerCase();
+      c.style.display = (!v || name.includes(v)) ? '' : 'none';
+    });
+  });
+
+  // ============ GEOLOCATION ============
+  // Covered cities with coordinates. Add real lat/lng per covered city; the agent
+  // should keep this in sync with the directory's actual city set.
+  const CITIES = [
+    {name:'Brickell', slug:'brickell', lat:25.7617, lng:-80.1918},
+    {name:'Coral Gables', slug:'coral-gables', lat:25.7215, lng:-80.2684},
+    {name:'Aventura', slug:'aventura', lat:25.9565, lng:-80.1390},
+    {name:'South Beach', slug:'south-beach', lat:25.7826, lng:-80.1340},
+    {name:'Kendall', slug:'kendall', lat:25.6793, lng:-80.3173},
+    {name:'Coconut Grove', slug:'coconut-grove', lat:25.7282, lng:-80.2436},
+    {name:'Miami Lakes', slug:'miami-lakes', lat:25.9087, lng:-80.3087},
+    {name:'Sunny Isles Beach', slug:'sunny-isles-beach', lat:25.9501, lng:-80.1223},
+    {name:'Fort Lauderdale', slug:'fort-lauderdale', lat:26.1224, lng:-80.1373},
+    {name:'Coral Springs', slug:'coral-springs', lat:26.2710, lng:-80.2706},
+    {name:'Hallandale Beach', slug:'hallandale-beach', lat:25.9812, lng:-80.1484},
+    {name:'Cooper City', slug:'cooper-city', lat:26.0573, lng:-80.2717},
+    {name:'Deerfield Beach', slug:'deerfield-beach', lat:26.3184, lng:-80.0998},
+    {name:'Davie', slug:'davie', lat:26.0765, lng:-80.2521},
+    {name:'Boca Raton', slug:'boca-raton', lat:26.3683, lng:-80.1289},
+    {name:'West Palm Beach', slug:'west-palm-beach', lat:26.7153, lng:-80.0534}
+  ];
+  const MAX_MILES = 60;           // beyond this, don't force a city
+  const cityUrl = slug => '/city/' + slug;   // match this to the real city-page route
+
+  function milesBetween(a, b, c, d){
+    const R = 3959, t = Math.PI/180;
+    const dLat = (c-a)*t, dLng = (d-b)*t;
+    const x = Math.sin(dLat/2)**2 + Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLng/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
+  }
+  function nearestCity(lat, lng){
+    let best = null, bd = Infinity;
+    for(const c of CITIES){ const d = milesBetween(lat, lng, c.lat, c.lng); if(d < bd){ bd = d; best = c; } }
+    return {city: best, miles: bd};
+  }
+
+  // "Use my location" — fires the permission prompt ONLY on this explicit click,
+  // never on page load. Coordinates are used transiently to pick a city, then dropped.
+  const geoMsg = document.getElementById('geoMsg');
+  document.getElementById('useLoc').addEventListener('click', () => {
+    if(!navigator.geolocation){ geoMsg.textContent = 'Location isn\u2019t available here — search by city above.'; return; }
+    geoMsg.textContent = 'Finding the nearest area\u2026';
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const {latitude, longitude} = pos.coords;
+        const {city, miles} = nearestCity(latitude, longitude);   // computed locally — no API, nothing sent
+        if(city && miles <= MAX_MILES){ window.location.href = cityUrl(city.slug); }
+        else { geoMsg.textContent = 'We don\u2019t cover your area yet — browse South Florida below.'; }
+      },
+      () => { geoMsg.textContent = 'No problem — search by city above instead.'; },
+      {enableHighAccuracy:false, timeout:8000, maximumAge:600000}
+    );
+  });
+
+  // Optional IP-based suggestion (NO permission prompt). In production, read the
+  // visitor's city from your CDN/edge geo header (Cloudflare cf-ipcity, Vercel
+  // x-vercel-ip-city), match it to a covered city, then call showSuggest(name, slug).
+  // Left dormant here since a static file has no server header.
+  function showSuggest(cityName, slug){
+    document.getElementById('geoCity').textContent = cityName;
+    document.getElementById('geoGo').href = cityUrl(slug);
+    document.getElementById('geoSuggest').classList.add('show');
+  }
+  document.getElementById('geoDismiss').addEventListener('click', () =>
+    document.getElementById('geoSuggest').classList.remove('show'));
+</script>
+</body>
+</html>

@@ -64,6 +64,54 @@ TREATMENT_GUIDANCE = {
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
 }
 
+# Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
+TREATMENT_DESC = {
+    "botox": "Wrinkle-relaxing injections, priced per unit.",
+    "lip-filler": "Hyaluronic-acid lip enhancement, priced per syringe.",
+    "coolsculpting": "Non-invasive fat reduction, priced per area.",
+    "laser-hair-removal": "Multi-session hair reduction, priced by area.",
+    "microneedling": "Collagen-induction skin treatment, per session.",
+}
+
+# Public city centroids (geographic fact, not clinic data) — used ONLY for the homepage
+# "nearest covered city" geolocation. Cities without an entry are omitted from the
+# nearest-match set; the build never invents clinic data from these.
+CITY_LATLNG = {
+    "aventura": (25.9565, -80.1390), "bal-harbour": (25.8920, -80.1265), "brickell": (25.7617, -80.1918),
+    "coconut-grove": (25.7282, -80.2436), "coral-gables": (25.7215, -80.2684), "doral": (25.8195, -80.3553),
+    "hialeah": (25.8576, -80.2781), "homestead": (25.4687, -80.4776), "kendall": (25.6793, -80.3173),
+    "key-biscayne": (25.6938, -80.1626), "miami-lakes": (25.9087, -80.3087), "miami-springs": (25.8220, -80.2895),
+    "midtown": (25.8076, -80.1934), "north-miami": (25.8901, -80.1867), "palmetto-bay": (25.6218, -80.3248),
+    "pinecrest": (25.6670, -80.3083), "south-beach": (25.7826, -80.1340), "sunny-isles-beach": (25.9501, -80.1223),
+    "surfside": (25.8787, -80.1257),
+    "coconut-creek": (26.2517, -80.1789), "cooper-city": (26.0573, -80.2717), "coral-springs": (26.2710, -80.2706),
+    "dania-beach": (26.0526, -80.1437), "davie": (26.0765, -80.2521), "deerfield-beach": (26.3184, -80.0998),
+    "fort-lauderdale": (26.1224, -80.1373), "hallandale-beach": (25.9812, -80.1484), "hollywood": (26.0112, -80.1495),
+    "lighthouse-point": (26.2756, -80.0875), "margate": (26.2445, -80.2064), "miramar": (25.9861, -80.3035),
+    "oakland-park": (26.1723, -80.1320), "parkland": (26.3098, -80.2370), "pembroke-pines": (26.0078, -80.2963),
+    "plantation": (26.1276, -80.2331), "pompano-beach": (26.2379, -80.1248), "sunrise": (26.1669, -80.2564),
+    "weston": (26.1004, -80.3998),
+    "boca-raton": (26.3683, -80.1289), "west-palm-beach": (26.7153, -80.0534),
+}
+
+
+def treatment_cards(all_clinics):
+    """Homepage treatment cards. 'Typical from' price is computed from REAL listing prices;
+    treatments without enough real data get the honest empty state (no placeholder $)."""
+    cards = []
+    for t in CONFIG["seed_scope"]["treatments"]:
+        vals = sorted({p for c in all_clinics if (p := _starting_price(c, t)) is not None})
+        unit = TREATMENT_UNITS.get(t, "")
+        if len(vals) >= 2:
+            disp = f"${vals[0]}–${vals[-1]} {unit}".strip()
+        elif len(vals) == 1:
+            disp = f"from ${vals[0]} {unit}".strip()
+        else:
+            disp = None   # honest empty state -> template renders "Varies"
+        cards.append({"slug": t, "name": TREATMENT_NAMES.get(t, t),
+                      "desc": TREATMENT_DESC.get(t, ""), "from_display": disp})
+    return cards
+
 
 # ----------------------------------------------------------------------------------
 # Geographic hierarchy: state > county > city (OPERATOR-OWNED in config seed_scope.geo)
@@ -527,34 +575,48 @@ def render_hubs(summaries):
     return states
 
 
+COUNTY_ORDER = ["miami-dade", "broward", "palm-beach"]
+
+
 def render_index(summaries):
-    """Homepage: active states -> counties -> city cards (linking to city hubs)."""
+    """Homepage (design/landing): real stats, real county->city grid (with real treatment
+    counts), real treatment cards (real prices or honest 'varies'), and the geolocation
+    nearest-city set built from real covered cities. Renders templates/home.html.j2."""
     if not summaries:
         return None
-    states = {}
+    counties = {}  # (state, county) -> {name, state_name, cities}
     for s in summaries:
-        st = states.setdefault(s["state"], {"name": s["state_name"], "counties": {}})
-        co = st["counties"].setdefault(s["county"], {"name": s["county_name"], "cities": {}})
-        ci = co["cities"].setdefault(s["city"], {"name": s["city_name"], "n_pages": 0, "n_clinics": 0})
-        ci["n_pages"] += 1
-        ci["n_clinics"] = max(ci["n_clinics"], s["n_clinics"])
+        key = (s["state"], s["county"])
+        c = counties.setdefault(key, {"name": s["county_name"], "state_name": s["state_name"], "cities": {}})
+        ci = c["cities"].setdefault(s["city"], {
+            "name": s["city_name"], "url": f'/{s["state"]}/{s["county"]}/{s["city"]}/', "treats": set()})
+        ci["treats"].add(s["treatment_slug"])
 
-    groups = []  # one group per county (across active states)
-    for st_slug, st in states.items():
-        for co_slug, co in st["counties"].items():
-            cities = [{"name": c["name"], "url": f"/{st_slug}/{co_slug}/{ci_slug}/",
-                       "n_pages": c["n_pages"]} for ci_slug, c in sorted(co["cities"].items(), key=lambda kv: kv[1]["name"])]
-            groups.append({"slug": f"{st_slug}-{co_slug}", "name": f"{co['name']}, {st['name']}", "cities": cities})
+    order = sorted(counties, key=lambda k: (COUNTY_ORDER.index(k[1]) if k[1] in COUNTY_ORDER else 99, k[1]))
+    groups = []
+    for key in order:
+        c = counties[key]
+        cities = [{"name": v["name"], "url": v["url"], "n_treatments": len(v["treats"]),
+                   "data_treatments": " ".join(sorted(v["treats"]))}
+                  for _, v in sorted(c["cities"].items(), key=lambda kv: kv[1]["name"])]
+        groups.append({"name": f'{c["name"]}, {c["state_name"]}', "n_cities": len(cities), "cities": cities})
 
     stats = {
-        "pages": len(summaries),
-        "states": len(states),
-        "counties": sum(len(st["counties"]) for st in states.values()),
-        "cities": len({(s["state"], s["county"], s["city"]) for s in summaries}),
         "listings": sum(s["n_clinics"] for s in summaries),
+        "cities": len({(s["state"], s["county"], s["city"]) for s in summaries}),
+        "counties": len(counties),
     }
-    html = env.get_template("index.html.j2").render(
-        groups=groups, stats=stats, last_updated=datetime.date.today().isoformat())
+
+    # geolocation nearest-city set: covered cities that have a known centroid
+    city_url = {s["city"]: f'/{s["state"]}/{s["county"]}/{s["city"]}/' for s in summaries}
+    city_name = {s["city"]: s["city_name"] for s in summaries}
+    geo_cities = [{"name": city_name[c], "slug": c, "lat": lat, "lng": lng, "url": city_url[c]}
+                  for c, (lat, lng) in CITY_LATLNG.items() if c in city_url]
+
+    html = env.get_template("home.html.j2").render(
+        groups=groups, stats=stats, treatments=treatment_cards(load_clinics()),
+        geo_cities_json=json.dumps(geo_cities),
+        last_updated=datetime.date.today().isoformat(), site_url=SITE_URL)
     return _write("index.html", html)
 
 
