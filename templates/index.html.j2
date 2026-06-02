@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GlowMap — Miami med spa treatment directory</title>
-<meta name="description" content="Find and compare Miami med spas by treatment and neighborhood — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified ratings and starting prices.">
+<meta name="description" content="Find and compare Miami med spas by treatment and neighborhood — Botox, lip filler, CoolSculpting, laser hair removal, and microneedling. Verified providers, prices, and ratings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,43 +14,61 @@
 
 <header class="topbar">
   <div class="wrap">
-    <div>
+    <a href="/" style="text-decoration:none">
       <div class="brandmark">GlowMap</div>
       <div class="label">Miami med spa directory</div>
-    </div>
+    </a>
     <span class="label blue">Miami</span>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="hero">
+  <section class="hero home-hero">
     <span class="label blue">Miami</span>
-    <h1>Compare Miami med spas by treatment &amp; neighborhood</h1>
+    <h1>Find &amp; compare Miami med spas<br>by treatment and neighborhood</h1>
     <p class="lead">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, and
-      microneedling — organized by neighborhood, with ratings and starting prices so you can compare
-      before you book.</p>
+      microneedling — with addresses, prices, and ratings, so you can compare before you book.</p>
+    {%- if stats %}
+    <div class="statbar">
+      <span><b>{{ stats.listings }}</b> provider listings</span>
+      <span><b>{{ stats.neighborhoods }}</b> neighborhoods</span>
+      <span><b>{{ stats.treatments }}</b> treatments</span>
+      <span class="ok">✓ verified contact details</span>
+    </div>
+    {%- endif %}
   </section>
 
   <div class="dir-search">
     <input id="dir-q" type="search" placeholder="Search a treatment or neighborhood — e.g. “botox brickell”"
            aria-label="Filter the directory">
+    {%- if treatments %}
+    <div class="pills" id="dir-pills">
+      <button class="pill is-active" data-term="">All</button>
+      {%- for t in treatments %}
+      <button class="pill" data-term="{{ t.name | lower }}">{{ t.name }}</button>
+      {%- endfor %}
+    </div>
+    {%- endif %}
   </div>
 
   {%- for n in neighborhoods %}
-  <section class="clinics nbhd-group" id="{{ n.pages[0].neighborhood_slug if n.pages else '' }}"
-           data-search="{{ n.name | lower }}">
-    <h2>{{ n.name }}</h2>
-    {%- for p in n.pages %}
-    <article class="clinic" data-search="{{ (p.treatment_name ~ ' ' ~ n.name) | lower }}">
-      <div>
-        <div class="name"><a href="/{{ p.slug }}.html">{{ p.treatment_name }} in {{ n.name }}</a></div>
-        <div class="meta">{{ p.n_clinics }} provider{{ "s" if p.n_clinics != 1 }} listed</div>
-      </div>
-      <div class="actions">
-        <a class="btn" href="/{{ p.slug }}.html">View providers</a>
-      </div>
-    </article>
-    {%- endfor %}
+  <section class="nbhd-group" id="{{ n.slug }}" data-search="{{ n.name | lower }}">
+    <div class="nbhd-head"><h2>{{ n.name }}</h2><span class="label">{{ n.pages | length }} pages</span></div>
+    <div class="card-grid">
+      {%- for p in n.pages %}
+      <a class="dcard" href="/{{ p.slug }}.html" data-search="{{ (p.treatment_name ~ ' ' ~ n.name) | lower }}">
+        <div class="dcard-top">
+          <span class="dcard-title">{{ p.treatment_name }}</span>
+          <span class="dcard-arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="dcard-sub">in {{ n.name }}</div>
+        <div class="dcard-foot">
+          <span class="label">{{ p.n_clinics }} provider{{ "s" if p.n_clinics != 1 }}</span>
+          {%- if p.from_price %}<span class="chip">from ${{ p.from_price }}{% if p.price_unit %} {{ p.price_unit }}{% endif %}</span>{% endif %}
+        </div>
+      </a>
+      {%- endfor %}
+    </div>
   </section>
   {%- endfor %}
 
@@ -61,12 +79,13 @@
       var q = document.getElementById('dir-q');
       var groups = Array.prototype.slice.call(document.querySelectorAll('.nbhd-group'));
       var empty = document.getElementById('dir-empty');
+      var pills = Array.prototype.slice.call(document.querySelectorAll('.pill'));
       if (!q) return;
-      q.addEventListener('input', function () {
-        var term = q.value.trim().toLowerCase();
+      function apply(term) {
+        term = (term || '').trim().toLowerCase();
         var anyVisible = false;
         groups.forEach(function (g) {
-          var cards = Array.prototype.slice.call(g.querySelectorAll('.clinic'));
+          var cards = Array.prototype.slice.call(g.querySelectorAll('.dcard'));
           var groupHit = false;
           cards.forEach(function (c) {
             var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1
@@ -78,6 +97,15 @@
           if (groupHit) anyVisible = true;
         });
         empty.style.display = anyVisible ? 'none' : 'block';
+      }
+      q.addEventListener('input', function () { apply(q.value); });
+      pills.forEach(function (p) {
+        p.addEventListener('click', function () {
+          pills.forEach(function (x) { x.classList.remove('is-active'); });
+          p.classList.add('is-active');
+          q.value = p.getAttribute('data-term');
+          apply(q.value);
+        });
       });
     })();
   </script>

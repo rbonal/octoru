@@ -292,20 +292,50 @@ def render(page, links=None):
     return out
 
 
-def render_index(built_pages):
+def page_summary(page):
+    """Compact card data for the homepage: slug, names, provider count, and the
+    lowest listed starting price for this treatment (with its unit)."""
+    t = page["treatment"]["slug"]
+    prices = [c["starting_price_usd"] for c in page.get("clinics", []) if c.get("starting_price_usd")]
+    return {
+        "slug": f"{t}-{page['neighborhood']['slug']}",
+        "treatment_slug": t,
+        "treatment_name": page["treatment"]["name"],
+        "neighborhood_slug": page["neighborhood"]["slug"],
+        "neighborhood_name": page["neighborhood"]["name"],
+        "n_clinics": len(page.get("clinics", [])),
+        "from_price": min(prices) if prices else None,
+        "price_unit": TREATMENT_UNITS.get(t) if prices else None,
+    }
+
+
+def render_index(summaries):
     """Homepage linking the listing pages that actually built, grouped by
-    neighborhood (in seed order). Navigational only — it lists pages that already
+    neighborhood (in seed order). Navigational only — lists pages that already
     passed the clinic quality gate, so it carries no rating data of its own."""
-    if not built_pages:
+    if not summaries:
         return None
     groups = []
     for n_slug in CONFIG["seed_scope"]["neighborhoods"]:
-        pages = [p for p in built_pages if p["neighborhood_slug"] == n_slug]
+        pages = [p for p in summaries if p["neighborhood_slug"] == n_slug]
         if pages:
-            groups.append({"name": pages[0]["neighborhood_name"], "pages": pages})
+            groups.append({"slug": n_slug, "name": pages[0]["neighborhood_name"], "pages": pages})
+    # ordered list of treatments actually present, for the filter pills
+    present_treatments = [
+        {"slug": t, "name": TREATMENT_NAMES.get(t, t)}
+        for t in CONFIG["seed_scope"]["treatments"]
+        if any(p["treatment_slug"] == t for p in summaries)
+    ]
+    stats = {
+        "pages": len(summaries),
+        "neighborhoods": len(groups),
+        "treatments": len(present_treatments),
+        "listings": sum(p["n_clinics"] for p in summaries),
+    }
     html = env.get_template("index.html.j2").render(
         neighborhoods=groups,
-        page_count=len(built_pages),
+        treatments=present_treatments,
+        stats=stats,
         last_updated=datetime.date.today().isoformat(),
     )
     out = GENERATED / "index.html"
@@ -338,13 +368,7 @@ def main():
     built_pages = []
     for page in passed:
         out = render(page, page_links(page, passed))
-        built_pages.append({
-            "slug": f"{page['treatment']['slug']}-{page['neighborhood']['slug']}",
-            "treatment_name": page["treatment"]["name"],
-            "neighborhood_slug": page["neighborhood"]["slug"],
-            "neighborhood_name": page["neighborhood"]["name"],
-            "n_clinics": len(page.get("clinics", [])),
-        })
+        built_pages.append(page_summary(page))
         print(f"[builder] built {out.name}")
     built = len(built_pages)
 

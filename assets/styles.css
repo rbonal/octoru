@@ -129,17 +129,65 @@ a:hover { color: var(--blue-deep); }
   flex-direction: column; gap: 7px; }
 .crosslinks a { font-size: 14px; }
 
-/* homepage search filter */
-.dir-search { margin: 8px 0 28px; }
-.dir-search input { width: 100%; padding: 13px 16px; border: 1px solid var(--line-strong);
-  border-radius: 6px; font-family: inherit; font-size: 16px; background: var(--paper-pure); }
-.dir-search input:focus { outline: none; border-color: var(--blue); }
-.nbhd-group h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em;
-  margin: 32px 0 12px; }
+/* homepage hero stat bar */
+.home-hero { padding: 56px 0 24px; }
+.home-hero h1 { font-size: clamp(30px, 4.6vw, 46px); }
+.statbar { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px;
+  font-size: 14px; color: var(--ink-3); }
+.statbar b { font-family: 'Geist Mono', monospace; color: var(--ink); font-weight: 600; }
+.statbar .ok { color: var(--green); }
+
+/* search + filter pills */
+.dir-search { margin: 4px 0 32px; }
+.dir-search input { width: 100%; padding: 14px 18px; border: 1px solid var(--line-strong);
+  border-radius: 10px; font-family: inherit; font-size: 16px; background: var(--paper-pure);
+  transition: border-color .15s ease, box-shadow .15s ease; }
+.dir-search input:focus { outline: none; border-color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-tint); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pill { font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: var(--paper-pure); color: var(--ink-2); transition: all .15s ease; }
+.pill:hover { border-color: var(--ink-3); }
+.pill.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* neighborhood section + card grid */
+.nbhd-group { margin: 0 0 40px; }
 .nbhd-group.is-hidden { display: none; }
+.nbhd-head { display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; padding: 0 2px 12px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.nbhd-head h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.dcard { display: flex; flex-direction: column; gap: 5px; text-decoration: none;
+  background: var(--paper-pure); border: 1px solid var(--line); border-radius: 12px;
+  padding: 18px 20px; color: var(--ink);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.dcard:hover { border-color: var(--blue-line); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10,10,20,0.07); }
+.dcard-top { display: flex; align-items: center; justify-content: space-between; }
+.dcard-title { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.dcard-arrow { color: var(--blue); font-size: 18px; transition: transform .15s ease; }
+.dcard:hover .dcard-arrow { transform: translateX(3px); }
+.dcard-sub { color: var(--ink-3); font-size: 14px; }
+.dcard-foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+
+/* chips + tags (used on cards and clinic listings) */
+.chip { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 500;
+  color: var(--blue); background: var(--blue-tint); border: 1px solid var(--blue-line);
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tag { font-size: 12px; color: var(--ink-3); background: var(--pale);
+  border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; }
+
+/* clinic stat rows rendered as pills */
+.clinic .stats .stat { display: inline-flex; align-items: baseline; gap: 6px;
+  background: var(--pale); border: 1px solid var(--line); border-radius: 999px;
+  padding: 5px 11px; }
 
 @media (max-width: 640px) {
   .clinic { grid-template-columns: 1fr; }
-  .actions { flex-direction: row; flex-wrap: wrap; }
+  .actions { flex-direction: row; flex-wrap: wrap; min-width: 0; }
   .crosslinks { grid-template-columns: 1fr; gap: 20px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .home-hero h1 br { display: none; }
 }

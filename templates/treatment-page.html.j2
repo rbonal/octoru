@@ -95,7 +95,7 @@
           {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}{% if c.price_unit %} {{ c.price_unit }}{% endif %}</span></span>{% endif %}
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
-        {% if c.treatments_offered %}<div class="meta">Treatments: {{ c.treatments_offered | join(" · ") }}</div>{% endif %}
+        {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
       </div>
       <div class="actions">
         <button class="btn primary" data-clinic="{{ c.slug }}">Get a quote</button>
