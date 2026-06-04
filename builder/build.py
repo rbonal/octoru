@@ -605,25 +605,54 @@ def _clinic_for_page(clinic, treatment_slug):
     }
 
 
+# Bayesian weighted-rating ranking (IMDb-style). See _assemble_page for the rationale.
+BAYES_M = 50                       # credibility weight + the >=50-review tier cutoff
+_GLOBAL_C = None                   # global mean rating, computed once from live data
+
+def _global_mean_rating():
+    """Mean rating across every rated clinic in the directory (the Bayesian prior C)."""
+    global _GLOBAL_C
+    if _GLOBAL_C is None:
+        rated = [c.get("rating") for c in load_clinics() if c.get("rating")]
+        _GLOBAL_C = round(sum(rated) / len(rated), 3) if rated else 4.8
+    return _GLOBAL_C
+
+def _bayes_wr(c):
+    """Bayesian weighted rating: pulls low-volume ratings toward the global mean."""
+    R = c.get("rating") or 0
+    v = c.get("review_count") or 0
+    C = _global_mean_rating()
+    return (v / (v + BAYES_M)) * R + (BAYES_M / (v + BAYES_M)) * C
+
+
 def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     """Group real clinics into one treatment x city page. Differentiation comes from
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
-    # Ranking index — surface the best provider first. The index is
-    #   rating x review_count   (a 4.9 with 300 reviews beats a 5.0 with 2 reviews:
-    #   it rewards both quality AND proven track record / volume of feedback).
-    # Order: paid Featured placements pinned on top (labeled + slot-capped), then
-    # organic providers sorted by the index, highest first. Ties broken by raw rating.
-    # NOTE on distance: every clinic on a given page is in the SAME city, so per-provider
-    # distance is ~equal here — distance is applied at the city-selection step instead
-    # ("Use my location" -> nearest covered city on the homepage). So the page-level
-    # ranking is review-based, exactly as specified for the simple case.
-    def _rank_index(c):
-        return (c.get("rating") or 0) * (c.get("review_count") or 0)
+    # Ranking — Bayesian weighted rating (IMDb-style). Surfaces the genuinely BEST
+    # provider, not just the most-reviewed:
+    #   WR = (v/(v+m))*R + (m/(v+m))*C
+    #   R = clinic rating, v = review count, m = credibility weight (BAYES_M = 50),
+    #   C = global mean rating across the directory (computed live, ~4.86).
+    # Low-volume ratings are pulled toward the mean (a 5.0 with 3 reviews can't dominate);
+    # high-volume keeps its true rating. Quality stays primary — a 4.9 always beats a 4.4.
+    #
+    # Order within organic: a credibility TIER first — providers with >= BAYES_M reviews
+    # on top (Bayesian-ordered), then providers with < BAYES_M reviews BELOW them (also
+    # Bayesian-ordered). Nothing is dropped; thinly-reviewed providers just sit at the
+    # bottom. Paid Featured placements stay pinned above all organic (labeled, slot-capped).
+    #
+    # Distance: every clinic on a page is in the SAME city, so per-provider distance is
+    # ~equal here — distance is applied at the city-selection step ("Use my location" ->
+    # nearest covered city on the homepage). Page-level ranking is review-based.
     clinics = sorted(
         clinics,
-        key=lambda c: (c.get("featured_tier", 0), _rank_index(c), c.get("rating") or 0),
+        key=lambda c: (
+            c.get("featured_tier", 0),                              # paid placements first
+            1 if (c.get("review_count") or 0) >= BAYES_M else 0,    # >=50-review tier above <50
+            _bayes_wr(c),                                           # then Bayesian weighted rating
+        ),
         reverse=True,
     )
     # Slot cap: limit paid featured listings so pages never go all-paid.
@@ -639,13 +668,14 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
             capped.append(c)
     clinics = capped
 
-    # Identify the single best ORGANIC provider (top of the review index, with enough
-    # reviews to be trustworthy) to badge "Top rated". Paid Featured listings are
-    # excluded so the two signals stay distinct. Tracked by identity (NOT by mutating
-    # the shared clinic objects, which are reused across pages).
+    # Badge the single best ORGANIC provider in the credible tier (>= BAYES_M reviews,
+    # top of the Bayesian order) as "Top rated". If no provider on the page clears the
+    # review bar, no badge is shown — we don't over-claim "Top rated" on thin data.
+    # Paid Featured listings are excluded so the two signals stay distinct. Tracked by
+    # identity (NOT by mutating the shared clinic objects, which are reused across pages).
     top_ranked_id = None
     for c in clinics:
-        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= 10:
+        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= BAYES_M:
             top_ranked_id = c.get("slug") or c.get("name")
             break
 
