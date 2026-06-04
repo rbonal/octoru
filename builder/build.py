@@ -625,36 +625,40 @@ def _bayes_wr(c):
     return (v / (v + BAYES_M)) * R + (BAYES_M / (v + BAYES_M)) * C
 
 
+def rank_providers(clinics):
+    """THE canonical ordering for EVERY provider list in Octoru.
+
+    Any list of providers anywhere in the directory must be ordered through this
+    function — never re-sort a provider list elsewhere. Order:
+      1. Paid Featured placements first (featured_tier desc) — labeled + slot-capped.
+      2. Within organic: a credibility tier — providers with >= BAYES_M (50) reviews
+         on top, providers with < 50 reviews below them (NOT dropped).
+      3. Within each tier: Bayesian weighted rating (rating, discounted toward the
+         global mean for low-volume), highest first.
+
+    Returns a new sorted list; does not mutate the input or the clinic objects.
+    """
+    return sorted(
+        clinics,
+        key=lambda c: (
+            c.get("featured_tier", 0),
+            1 if (c.get("review_count") or 0) >= BAYES_M else 0,
+            _bayes_wr(c),
+        ),
+        reverse=True,
+    )
+
+
 def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     """Group real clinics into one treatment x city page. Differentiation comes from
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
-    # Ranking — Bayesian weighted rating (IMDb-style). Surfaces the genuinely BEST
-    # provider, not just the most-reviewed:
-    #   WR = (v/(v+m))*R + (m/(v+m))*C
-    #   R = clinic rating, v = review count, m = credibility weight (BAYES_M = 50),
-    #   C = global mean rating across the directory (computed live, ~4.86).
-    # Low-volume ratings are pulled toward the mean (a 5.0 with 3 reviews can't dominate);
-    # high-volume keeps its true rating. Quality stays primary — a 4.9 always beats a 4.4.
-    #
-    # Order within organic: a credibility TIER first — providers with >= BAYES_M reviews
-    # on top (Bayesian-ordered), then providers with < BAYES_M reviews BELOW them (also
-    # Bayesian-ordered). Nothing is dropped; thinly-reviewed providers just sit at the
-    # bottom. Paid Featured placements stay pinned above all organic (labeled, slot-capped).
-    #
-    # Distance: every clinic on a page is in the SAME city, so per-provider distance is
-    # ~equal here — distance is applied at the city-selection step ("Use my location" ->
-    # nearest covered city on the homepage). Page-level ranking is review-based.
-    clinics = sorted(
-        clinics,
-        key=lambda c: (
-            c.get("featured_tier", 0),                              # paid placements first
-            1 if (c.get("review_count") or 0) >= BAYES_M else 0,    # >=50-review tier above <50
-            _bayes_wr(c),                                           # then Bayesian weighted rating
-        ),
-        reverse=True,
-    )
+    # Order this provider list through the ONE canonical ranking (Bayesian weighted
+    # rating + >=50-review credibility tier; Featured pinned). See rank_providers().
+    # (Distance is applied at the city-selection step, not here — every provider on this
+    # page is in the same city, so per-provider distance is ~equal.)
+    clinics = rank_providers(clinics)
     # Slot cap: limit paid featured listings so pages never go all-paid.
     featured_count = 0
     capped = []
