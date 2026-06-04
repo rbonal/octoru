@@ -1,0 +1,539 @@
+/* ===========================================================
+   Octoru — built on the Bonalta brand system (manual v1.0)
+   Blue (#1447E6) is an ACCENT: primary action + links only.
+   Geist Mono is SEMANTIC: prices, ratings, data labels only.
+   Color ratio target: 60% paper / 30% ink / 10% blue.
+   =========================================================== */
+:root {
+  --blue: #1447E6;
+  --blue-deep: #0B2FA8;
+  --blue-tint: rgba(20, 71, 230, 0.08);
+  --blue-line: rgba(20, 71, 230, 0.2);
+  --ink: #0A0A14;
+  --ink-2: #1F2128;
+  --ink-3: #4B5063;
+  --paper: #FAFAFB;
+  --paper-pure: #FFFFFF;
+  --line: #E8EAEF;
+  --line-strong: #D0D4DC;
+  --mute: #6B7280;
+  --pale: #F2F4F8;
+  --green: #10A76C;
+  --r: 6px;
+  --maxw: 1120px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Geist', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  font-size: 15px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* data label — Geist Mono, used ONLY for technical/data labels */
+.label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--mute);
+}
+.label.blue { color: var(--blue); }
+.data { font-family: 'Geist Mono', monospace; font-weight: 500; letter-spacing: 0.01em; }
+
+/* header */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250,250,251,0.85);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.brandmark { font-weight: 700; letter-spacing: -0.02em; font-size: 18px; color: var(--ink); }
+.topbar .label { margin-top: 2px; }
+
+/* hero */
+.hero { padding: 64px 0 40px; }
+.hero h1 {
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
+  font-size: clamp(32px, 5vw, 48px); margin: 14px 0 16px;
+}
+.hero .lead { font-size: 18px; letter-spacing: -0.015em; color: var(--ink-3); max-width: 60ch; }
+
+/* clinic list */
+.clinics { display: flex; flex-direction: column; gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin: 16px 0 48px; }
+.clinic { background: var(--paper-pure); padding: 24px 28px;
+  display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; }
+.clinic.featured { box-shadow: inset 3px 0 0 var(--blue); }
+.clinic .name { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+.clinic .meta { color: var(--ink-3); font-size: 14px; margin-top: 4px; }
+.clinic .stats { display: flex; gap: 20px; margin-top: 12px; align-items: baseline; flex-wrap: wrap; }
+.stat .k { display: block; }
+.stat .v { font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; color: var(--ink); }
+.featured-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--blue); font-weight: 600; }
+
+/* actions */
+.actions { display: flex; flex-direction: column; gap: 8px; min-width: 150px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 16px; border-radius: 4px; font-size: 14px; font-weight: 500;
+  border: 1px solid var(--line-strong); background: var(--paper-pure); color: var(--ink);
+  cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+.btn:hover { border-color: var(--ink-3); }
+/* the ONE blue moment per card — the primary action */
+.btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.btn.primary:hover { background: var(--blue-deep); border-color: var(--blue-deep); }
+
+/* lead form */
+.lead-form { background: var(--paper-pure); border: 1px solid var(--line);
+  border-radius: 4px; padding: 32px; margin: 0 0 48px; }
+.lead-form h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.025em; margin-bottom: 6px; }
+.lead-form .sub { color: var(--ink-3); font-size: 14px; margin-bottom: 20px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.field label { font-size: 13px; color: var(--ink-2); font-weight: 500; }
+.field input, .field select {
+  padding: 11px 12px; border: 1px solid var(--line-strong); border-radius: 4px;
+  font-family: inherit; font-size: 15px; color: var(--ink); background: var(--paper-pure); }
+.field input:focus, .field select:focus { outline: none; border-color: var(--blue); }
+.consent { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0; }
+.consent input { margin-top: 3px; }
+.consent label { font-size: 12px; color: var(--mute); line-height: 1.5; }
+.lead-form .submit { width: 100%; }
+
+/* footer */
+.foot { border-top: 1px solid var(--line); padding: 32px 0 64px; color: var(--mute); font-size: 12px; }
+.foot a { color: var(--ink-3); }
+
+/* breadcrumb — horizontal-scroll on mobile (best practice: don't wrap/break) */
+.breadcrumb { display: flex; gap: 8px; align-items: center; white-space: nowrap;
+  overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 16px 0 0;
+  font-size: 13px; color: var(--ink-3); scrollbar-width: none; }
+.breadcrumb::-webkit-scrollbar { display: none; }
+.breadcrumb a { color: var(--ink-3); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb .sep { color: var(--line-strong); }
+.breadcrumb [aria-current="page"] { color: var(--mute); }
+
+/* internal cross-links */
+.crosslinks { display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  border-top: 1px solid var(--line); padding: 28px 0; margin-bottom: 16px; }
+.crosslinks ul { list-style: none; margin-top: 10px; display: flex;
+  flex-direction: column; gap: 7px; }
+.crosslinks a { font-size: 14px; }
+
+/* homepage hero stat bar */
+.home-hero { padding: 56px 0 24px; }
+.home-hero h1 { font-size: clamp(30px, 4.6vw, 46px); }
+.statbar { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px;
+  font-size: 14px; color: var(--ink-3); }
+.statbar b { font-family: 'Geist Mono', monospace; color: var(--ink); font-weight: 600; }
+.statbar .ok { color: var(--green); }
+
+/* search + filter pills */
+.dir-search { margin: 4px 0 32px; }
+.dir-search input { width: 100%; padding: 14px 18px; border: 1px solid var(--line-strong);
+  border-radius: 10px; font-family: inherit; font-size: 16px; background: var(--paper-pure);
+  transition: border-color .15s ease, box-shadow .15s ease; }
+.dir-search input:focus { outline: none; border-color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-tint); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pill { font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: var(--paper-pure); color: var(--ink-2); transition: all .15s ease; }
+.pill:hover { border-color: var(--ink-3); }
+.pill.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* neighborhood section + card grid */
+.nbhd-group { margin: 0 0 40px; }
+.nbhd-group.is-hidden { display: none; }
+.nbhd-head { display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; padding: 0 2px 12px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.nbhd-head h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.dcard { display: flex; flex-direction: column; gap: 5px; text-decoration: none;
+  background: var(--paper-pure); border: 1px solid var(--line); border-radius: 12px;
+  padding: 18px 20px; color: var(--ink);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.dcard:hover { border-color: var(--blue-line); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10,10,20,0.07); }
+.dcard-top { display: flex; align-items: center; justify-content: space-between; }
+.dcard-title { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.dcard-arrow { color: var(--blue); font-size: 18px; transition: transform .15s ease; }
+.dcard:hover .dcard-arrow { transform: translateX(3px); }
+.dcard-sub { color: var(--ink-3); font-size: 14px; }
+.dcard-foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+
+/* chips + tags (used on cards and clinic listings) */
+.chip { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 500;
+  color: var(--blue); background: var(--blue-tint); border: 1px solid var(--blue-line);
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tag { font-size: 12px; color: var(--ink-3); background: var(--pale);
+  border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; }
+
+/* clinic stat rows rendered as pills */
+.clinic .stats .stat { display: inline-flex; align-items: baseline; gap: 6px;
+  background: var(--pale); border: 1px solid var(--line); border-radius: 999px;
+  padding: 5px 11px; }
+.clinic .stats .stat.empty { background: transparent; border-style: dashed; }
+.clinic .stats .stat.empty a { color: var(--ink-3); font-size: 13px; }
+.clinic .stats .stat.empty a:hover { color: var(--blue); }
+.meta.muted { color: var(--mute); font-style: italic; }
+
+/* freshness line under the hero */
+.updated { margin-top: 14px; color: var(--mute); }
+
+/* cost block */
+.costblock { background: var(--blue-tint); border: 1px solid var(--blue-line);
+  border-radius: 12px; padding: 20px 24px; margin: 0 0 32px; }
+.cost-figure { font-family: 'Geist Mono', monospace; font-size: 30px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--ink); margin: 6px 0 8px; }
+.cost-figure .cost-unit { font-size: 15px; font-weight: 500; color: var(--ink-3); margin-left: 8px; }
+.cost-note { font-size: 14px; color: var(--ink-3); }
+
+/* treatment guidance */
+.guidance { border-top: 1px solid var(--line); padding: 28px 0 8px; margin-bottom: 8px; }
+.guidance h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+.guidance p { color: var(--ink-2); max-width: 68ch; }
+.guidance .disclaimer { margin-top: 10px; font-size: 12px; color: var(--mute); }
+
+/* claim-this-listing link on cards */
+.claim-line { margin-top: 12px; }
+.claim-line a { font-size: 13px; color: var(--ink-3); }
+.claim-line a:hover { color: var(--blue); }
+
+@media (max-width: 640px) {
+  .clinic { grid-template-columns: 1fr; }
+  .actions { flex-direction: row; flex-wrap: wrap; min-width: 0; }
+  .crosslinks { grid-template-columns: 1fr; gap: 20px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .home-hero h1 br { display: none; }
+}
+
+/* ============================================================
+   HOMEPAGE (design/landing) — all scoped under .home so it never
+   collides with the treatment/hub pages' .hero/.wrap/.foot/.pill.
+   Uses the SAME :root tokens (one block above).
+   ============================================================ */
+body.home { font-size: 16px; }
+.home a { color: inherit; text-decoration: none; }
+.home .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.home .mono { font-family: 'Geist Mono', monospace; }
+
+/* header */
+.home header.bar { position: sticky; top: 0; z-index: 60; background: rgba(250,250,251,.8);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); }
+.home header.bar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; }
+.home .brand { font-weight: 700; letter-spacing: -.025em; font-size: 19px; }
+.home .brand .sub { display: block; margin-top: 1px; }
+.home nav.bar-nav { display: flex; gap: 28px; align-items: center; }
+.home nav.bar-nav a { font-size: 14px; color: var(--ink-3); font-weight: 500; transition: color .15s; }
+.home nav.bar-nav a:hover { color: var(--ink); }
+.home nav.bar-nav .region { color: var(--blue); }
+
+/* hero — COMPACTED (search above the fold on a normal laptop viewport) */
+.home .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.home .hero::before { content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);
+  background-size: 44px 44px; opacity: .5;
+  -webkit-mask-image: radial-gradient(120% 90% at 78% -10%,#000 0%,transparent 62%);
+  mask-image: radial-gradient(120% 90% at 78% -10%,#000 0%,transparent 62%); }
+.home .hero::after { content: ""; position: absolute; top: -220px; right: -120px; width: 620px; height: 620px;
+  border-radius: 50%; background: radial-gradient(circle,var(--blue-tint) 0%,transparent 68%); pointer-events: none; }
+/* Tighter padding pulls the search bar above the fold. Do not increase top padding. */
+.home .hero .wrap { position: relative; padding: 56px 28px 60px; }
+.home .eyebrow { margin-bottom: 16px; }
+/* Smaller headline — clamp keeps it from growing back to the previous giant size */
+.home h1.head { font-weight: 800; letter-spacing: -.04em; line-height: 1.03; font-size: clamp(32px,4vw,48px); max-width: 18ch; }
+.home h1.head .accent { color: var(--blue); }
+.home .lead { margin-top: 20px; font-size: clamp(16px,1.4vw,19px); letter-spacing: -.015em; color: var(--ink-3); max-width: 50ch; line-height: 1.5; }
+
+/* two-column hero — content left, panel right */
+.home .hero-grid { display: grid; grid-template-columns: 1.45fr .9fr; gap: 56px; align-items: start; }
+.home .hero-main { min-width: 0; }
+.home .hero-side { background: var(--paper-pure); border: 1px solid var(--line); border-radius: 10px;
+  padding: 26px 24px; box-shadow: 0 18px 44px -30px rgba(10,10,20,.28); }
+.home .side-stats { display: flex; flex-direction: column; gap: 15px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.home .side-stats .ss { display: flex; align-items: baseline; gap: 11px; }
+.home .side-stats .ss .n { font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; min-width: 52px; }
+.home .side-stats .ss .t { font-size: 14px; color: var(--ink-3); }
+.home .side-stats .ss.verified { color: var(--green); font-size: 14px; font-weight: 500; gap: 8px; }
+.home .side-jump { padding-top: 20px; }
+.home .side-jump a { display: flex; align-items: center; justify-content: space-between; padding: 11px 0;
+  font-size: 15px; font-weight: 500; border-bottom: 1px solid var(--line); transition: color .15s; }
+.home .side-jump a:last-child { border-bottom: 0; }
+.home .side-jump a:hover { color: var(--blue); }
+.home .side-jump a .ar { color: var(--blue); transition: transform .15s; }
+.home .side-jump a:hover .ar { transform: translateX(3px); }
+
+/* search */
+.home .search { margin-top: 28px; max-width: 660px; display: flex; gap: 10px; background: var(--paper-pure);
+  border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 8px 8px 18px;
+  box-shadow: 0 1px 2px rgba(10,10,20,.04); transition: border-color .15s,box-shadow .15s; }
+.home .search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }
+.home .search input { flex: 1; border: 0; outline: 0; font-family: inherit; font-size: 16px; color: var(--ink); background: transparent; }
+.home .search input::placeholder { color: var(--mute); }
+.home .search button { border: 0; cursor: pointer; background: var(--blue); color: #fff; font-family: inherit;
+  font-weight: 600; font-size: 15px; padding: 12px 22px; border-radius: 6px; transition: background .15s; }
+.home .search button:hover { background: var(--blue-deep); }
+.home .pills { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.home .pill { font-size: 13.5px; font-weight: 500; color: var(--ink-2); background: var(--paper-pure);
+  border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 15px; cursor: pointer; transition: all .15s; }
+.home .pill:hover { border-color: var(--ink-3); }
+.home .pill.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* geolocation */
+.home .geo-suggest { display: none; align-items: center; gap: 12px; max-width: 660px; margin-top: 28px;
+  background: var(--blue-tint); border: 1px solid var(--blue-line); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: var(--ink-2); }
+.home .geo-suggest.show { display: flex; }
+.home .geo-suggest svg { color: var(--blue); flex-shrink: 0; }
+.home .geo-suggest a.go { margin-left: auto; color: var(--blue); font-weight: 600; white-space: nowrap; }
+.home .geo-suggest button.x { background: none; border: 0; color: var(--mute); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px 4px; }
+.home .geo-row { display: flex; align-items: center; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
+.home .geo-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--paper-pure);
+  border: 1px solid var(--line-strong); border-radius: 999px; padding: 9px 16px; font-family: inherit; font-size: 14px;
+  font-weight: 500; color: var(--ink); cursor: pointer; transition: border-color .15s,color .15s; }
+.home .geo-btn:hover { border-color: var(--blue); color: var(--blue); }
+.home .geo-note { font-size: 12px; color: var(--mute); }
+.home .geo-msg { font-size: 13px; color: var(--ink-3); margin-top: 8px; min-height: 1px; }
+
+/* stats */
+.home .stats { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 30px; align-items: baseline; }
+.home .stat .n { font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; }
+.home .stat .t { font-size: 14px; color: var(--mute); margin-left: 7px; }
+.home .stat.verified { color: var(--green); font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 7px; }
+
+/* section scaffolding */
+.home section.block { padding: 76px 0; }
+.home .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+  margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.home .sec-head h2 { font-weight: 700; letter-spacing: -.03em; font-size: clamp(26px,3vw,34px); line-height: 1.05; }
+.home .sec-head p { color: var(--ink-3); font-size: 15px; margin-top: 6px; max-width: 48ch; }
+
+/* treatment cards */
+.home .treat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+.home .tcard { position: relative; background: var(--paper-pure); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 22px 20px 20px; display: flex; flex-direction: column; min-height: 188px;
+  transition: transform .18s ease,box-shadow .18s ease,border-color .18s ease; }
+.home .tcard:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -16px rgba(10,10,20,.22); border-color: var(--line-strong); }
+.home .tcard .tname { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
+.home .tcard .tdesc { font-size: 13px; color: var(--ink-3); margin-top: 8px; line-height: 1.5; flex: 1; }
+.home .tcard .tmeta { display: flex; align-items: baseline; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.home .tcard .from { font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500; color: var(--ink); }
+.home .tcard .from .k { display: block; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 3px; }
+.home .tcard .arrow { color: var(--blue); font-size: 18px; transition: transform .18s ease; }
+.home .tcard:hover .arrow { transform: translateX(4px); }
+
+/* area grid */
+.home .county { margin-top: 14px; }
+.home .county:not(:first-child) { margin-top: 48px; }
+.home .county-head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px; }
+.home .county-head h3 { font-weight: 700; letter-spacing: -.025em; font-size: 24px; }
+.home .city-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.home .ccard { display: flex; align-items: center; justify-content: space-between; background: var(--paper-pure);
+  border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; transition: transform .16s ease,box-shadow .16s ease,border-color .16s ease; }
+.home .ccard:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -16px rgba(10,10,20,.2); border-color: var(--line-strong); }
+.home .ccard .cname { font-size: 16.5px; font-weight: 600; letter-spacing: -.015em; }
+.home .ccard .cmeta { display: block; margin-top: 5px; }
+.home .ccard .arrow { color: var(--blue); font-size: 17px; transition: transform .16s ease; }
+.home .ccard:hover .arrow { transform: translateX(4px); }
+
+/* trust band */
+.home .trust { background: var(--paper-pure); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.home .trust .wrap { padding: 64px 28px; display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+.home .tr h4 { font-size: 17px; font-weight: 600; letter-spacing: -.02em; margin: 14px 0 8px; }
+.home .tr p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.home .tr .num { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--blue); font-weight: 500; letter-spacing: .04em; }
+
+/* footer (homepage variant) */
+.home footer.foot { padding: 48px 0 72px; color: var(--mute); font-size: 13px; }
+.home footer.foot .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; align-items: flex-end; }
+.home footer.foot a { color: var(--ink-3); }
+.home footer.foot a:hover { color: var(--blue); }
+.home footer.foot .disc { max-width: 60ch; line-height: 1.6; }
+.home footer.foot .links { display: flex; gap: 18px; }
+
+/* load-in motion */
+.home .reveal { opacity: 0; transform: translateY(14px); animation: homeRise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes homeRise { to { opacity: 1; transform: none; } }
+.home .d1 { animation-delay: .05s; } .home .d2 { animation-delay: .13s; } .home .d3 { animation-delay: .21s; }
+.home .d4 { animation-delay: .29s; } .home .d5 { animation-delay: .37s; }
+@media (prefers-reduced-motion: reduce) { .home .reveal { animation: none; opacity: 1; transform: none; } .home .tcard, .home .ccard { transition: none; } }
+
+/* homepage responsive */
+@media (max-width: 920px) {
+  .home .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .home .treat-grid { grid-template-columns: repeat(2,1fr); }
+  .home .city-grid { grid-template-columns: repeat(2,1fr); }
+  .home .trust .wrap { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .home .hero .wrap { padding: 64px 24px 56px; }
+  .home .wrap { padding: 0 20px; }
+  .home .treat-grid { grid-template-columns: 1fr; }
+  .home .city-grid { grid-template-columns: 1fr; }
+  /* stacked search: container goes bare; the INPUT keeps its own border + bg + focus ring */
+  .home .search { flex-direction: column; padding: 0; border: 0; background: transparent; box-shadow: none; gap: 10px; }
+  .home .search:focus-within { box-shadow: none; }
+  .home .search input { width: 100%; border: 1px solid var(--line-strong); background: var(--paper-pure); border-radius: 8px; padding: 14px 16px; }
+  .home .search input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }
+  .home .search button { width: 100%; padding: 14px; }
+  .home nav.bar-nav a:not(.region) { display: none; }
+}
+
+/* ============================================================
+   ADVERTISE PAGE (.home scoping inherits; these are page-specific)
+   ============================================================ */
+.adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.adv-card { background: var(--paper-pure); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 24px; }
+.adv-card h3 { font-size: 16px; font-weight: 600; letter-spacing: -.015em; margin: 10px 0 8px; }
+.adv-card p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.adv-num { font-size: 11px; color: var(--blue); letter-spacing: .06em; }
+.adv-steps { list-style: none; display: flex; flex-direction: column; gap: 18px;
+  padding: 0; margin: 0; }
+.adv-steps li { display: flex; align-items: flex-start; gap: 14px; font-size: 15px;
+  color: var(--ink-2); line-height: 1.6; }
+.adv-steps li .step-n { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600;
+  color: var(--blue); background: var(--blue-tint); border-radius: 50%;
+  min-width: 26px; width: 26px; height: 26px; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; margin-top: 2px; }
+
+/* "Get featured" CTA on organic clinic cards */
+.featured-cta { color: var(--blue); font-weight: 500; }
+.featured-cta:hover { color: var(--blue-deep); }
+
+@media (max-width: 640px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .adv-steps li { grid-template-columns: 24px 1fr; }
+}
+
+/* ============================================================
+   NAV ADVERTISE BUTTON — appears in every page header
+   ============================================================ */
+.home nav.bar-nav .nav-adv-btn,
+nav.bar-nav .nav-adv-btn {
+  display: inline-flex; align-items: center;
+  background: var(--blue); color: #fff !important;
+  border-radius: 999px; padding: 7px 16px;
+  font-size: 13px; font-weight: 600;
+  transition: background .15s ease;
+  white-space: nowrap;
+}
+.home nav.bar-nav .nav-adv-btn:hover,
+nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color: #fff !important; }
+
+/* ============================================================
+   CRO ELEMENTS — shared across home + advertise pages
+   ============================================================ */
+
+/* Price anchor on advertise page */
+.price-anchor { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.price-n { font-family: 'Geist Mono', monospace; font-size: 32px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.02em; }
+.price-note { font-size: 14px; color: var(--mute); }
+
+/* Social proof bar */
+.proof-bar { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--ink-3); }
+.proof-bar span::before { content: "✓ "; color: var(--green); font-weight: 600; }
+
+/* Urgency note on forms */
+.urgency-note { display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+  background: rgba(255,200,0,.1); border: 1px solid rgba(200,160,0,.25);
+  border-radius: 6px; font-size: 13px; color: #7a5e00; font-weight: 500; margin-bottom: 4px; }
+.urgency-note svg { flex-shrink: 0; color: #b08000; }
+
+/* Top searches quick links below search */
+.top-searches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.top-searches .label { flex-shrink: 0; }
+.ts-pill { font-size: 13px; color: var(--blue); background: var(--blue-tint);
+  border: 1px solid var(--blue-line); border-radius: 999px; padding: 5px 12px;
+  transition: background .15s, border-color .15s; white-space: nowrap; }
+.ts-pill:hover { background: rgba(20,71,230,.14); border-color: var(--blue); }
+
+/* Clinic owner CTA at bottom of hero side panel */
+.side-clinic-cta { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.side-clinic-cta span { color: var(--mute); }
+.side-clinic-cta a { color: var(--blue); font-weight: 600; font-size: 13px; }
+.side-clinic-cta a:hover { color: var(--blue-deep); }
+
+@media (max-width: 600px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .price-anchor { flex-direction: column; gap: 4px; }
+  .top-searches { gap: 6px; }
+}
+
+/* ============================================================
+   FAQ SECTION — treatment pages + guide pages
+   ============================================================ */
+.faq-section { border-top: 1px solid var(--line); padding: 32px 0 8px; margin-bottom: 8px; }
+.faq-section h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 20px; }
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q { list-style: none; cursor: pointer; padding: 16px 0; font-size: 15px; font-weight: 600;
+  color: var(--ink-2); display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; user-select: none; }
+.faq-q::after { content: "+"; font-family: 'Geist Mono', monospace; font-size: 18px;
+  color: var(--blue); flex-shrink: 0; transition: transform .2s ease; }
+.faq-item[open] .faq-q::after { transform: rotate(45deg); }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-a { padding: 0 0 18px; }
+.faq-a p { font-size: 14px; color: var(--ink-3); line-height: 1.7; max-width: 68ch; }
+.faq-guide-link { font-size: 13px; color: var(--mute); margin-top: 18px; }
+.faq-guide-link a { color: var(--blue); font-weight: 500; }
+
+/* ============================================================
+   GUIDE PAGES
+   ============================================================ */
+.guide-article { padding: 32px 0 64px; max-width: 720px; }
+.guide-hero { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+.guide-hero h1 { font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+  font-size: clamp(28px, 4vw, 42px); margin: 10px 0 20px; }
+.guide-price-callout { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  background: var(--blue-tint); border: 1px solid var(--blue-line); border-radius: 8px;
+  padding: 14px 18px; margin-bottom: 16px; }
+.guide-price-n { font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.02em; }
+.guide-price-note { font-size: 13px; color: var(--ink-3); }
+.guide-lead { font-size: 16px; color: var(--ink-3); line-height: 1.65; max-width: 60ch; }
+.guide-section { margin-bottom: 36px; }
+.guide-section h2 { font-size: 20px; font-weight: 600; letter-spacing: -.02em;
+  margin-bottom: 12px; }
+.guide-section p { font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 65ch; }
+.guide-cta { margin-top: 18px; display: inline-flex; }
+.guide-faq .faq-section { border: 0; padding-top: 0; }
+.guide-faq h2 { font-size: 20px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 14px; }
+
+/* ============================================================
+   OCTORU BRAND LOCKUP — inline octagon mark + wordmark
+   Used in both the .bar header (home/advertise) and the
+   .topbar header (treatment/hub/guide/claim). Mark is inline
+   SVG — no external file dependency.
+   ============================================================ */
+.brand-lockup { display: inline-flex; align-items: center; gap: 8px; }
+.brand-mark { display: block; flex-shrink: 0; }
+.wordmark {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 23px;
+  color: var(--ink);          /* #0A0A14 */
+  letter-spacing: -2.5px;
+  line-height: 1;
+}
+.topbar .brand-lockup { margin-bottom: 1px; }
+
+/* "Top rated" tag — the best organic provider by review index (rating x reviews) */
+.top-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--green); font-weight: 600; }

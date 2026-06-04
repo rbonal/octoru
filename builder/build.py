@@ -10,7 +10,7 @@ config seed_scope.geo tree (builder reads, never invents, cannot edit config).
 Back-compat: if config has only the flat seed_scope.neighborhoods, those are treated
 as active cities in Miami-Dade, Florida.
 """
-import json, sys, datetime, urllib.parse
+import json, sys, datetime, urllib.parse, math
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -605,24 +605,28 @@ def _clinic_for_page(clinic, treatment_slug):
     }
 
 
-# Bayesian weighted-rating ranking (IMDb-style). See _assemble_page for the rationale.
-BAYES_M = 50                       # credibility weight + the >=50-review tier cutoff
-_GLOBAL_C = None                   # global mean rating, computed once from live data
+# Provider ranking — Wilson lower-bound score (Reddit's "best" sort). See rank_providers.
+MIN_CREDIBLE_REVIEWS = 50          # the >=50-review credibility tier cutoff
+WILSON_Z = 1.96                    # 95% confidence; higher z => review volume matters more
 
-def _global_mean_rating():
-    """Mean rating across every rated clinic in the directory (the Bayesian prior C)."""
-    global _GLOBAL_C
-    if _GLOBAL_C is None:
-        rated = [c.get("rating") for c in load_clinics() if c.get("rating")]
-        _GLOBAL_C = round(sum(rated) / len(rated), 3) if rated else 4.8
-    return _GLOBAL_C
+def _wilson_score(c):
+    """Wilson score lower bound (returned on a 0..5 scale).
 
-def _bayes_wr(c):
-    """Bayesian weighted rating: pulls low-volume ratings toward the global mean."""
+    The conservative best-estimate of a provider's TRUE quality: treat the average
+    rating as a proportion of 5 stars and take the lower bound of its confidence
+    interval. More reviews tighten the interval and raise the score, so a 4.9 with
+    588 reviews outranks a 5.0 with 88 — proven track record beats a smaller-sample
+    perfect score. (A 5.0 with few reviews gets a wide interval and sinks.)
+    """
     R = c.get("rating") or 0
     v = c.get("review_count") or 0
-    C = _global_mean_rating()
-    return (v / (v + BAYES_M)) * R + (BAYES_M / (v + BAYES_M)) * C
+    if v <= 0:
+        return 0.0
+    p = max(0.0, min(1.0, R / 5.0))           # rating as a proportion of 5
+    z = WILSON_Z; z2 = z * z
+    centre = p + z2 / (2 * v)
+    margin = z * math.sqrt((p * (1 - p) + z2 / (4 * v)) / v)
+    return ((centre - margin) / (1 + z2 / v)) * 5.0
 
 
 def rank_providers(clinics):
@@ -631,10 +635,10 @@ def rank_providers(clinics):
     Any list of providers anywhere in the directory must be ordered through this
     function — never re-sort a provider list elsewhere. Order:
       1. Paid Featured placements first (featured_tier desc) — labeled + slot-capped.
-      2. Within organic: a credibility tier — providers with >= BAYES_M (50) reviews
-         on top, providers with < 50 reviews below them (NOT dropped).
-      3. Within each tier: Bayesian weighted rating (rating, discounted toward the
-         global mean for low-volume), highest first.
+      2. Within organic: a credibility tier — providers with >= MIN_CREDIBLE_REVIEWS
+         (50) reviews on top, providers with < 50 reviews below them (NOT dropped).
+      3. Within each tier: Wilson lower-bound score (quality + review volume),
+         highest first.
 
     Returns a new sorted list; does not mutate the input or the clinic objects.
     """
@@ -642,8 +646,8 @@ def rank_providers(clinics):
         clinics,
         key=lambda c: (
             c.get("featured_tier", 0),
-            1 if (c.get("review_count") or 0) >= BAYES_M else 0,
-            _bayes_wr(c),
+            1 if (c.get("review_count") or 0) >= MIN_CREDIBLE_REVIEWS else 0,
+            _wilson_score(c),
         ),
         reverse=True,
     )
@@ -672,14 +676,14 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
             capped.append(c)
     clinics = capped
 
-    # Badge the single best ORGANIC provider in the credible tier (>= BAYES_M reviews,
-    # top of the Bayesian order) as "Top rated". If no provider on the page clears the
+    # Badge the single best ORGANIC provider in the credible tier (>= MIN_CREDIBLE_REVIEWS,
+    # top of the Wilson order) as "Top rated". If no provider on the page clears the
     # review bar, no badge is shown — we don't over-claim "Top rated" on thin data.
     # Paid Featured listings are excluded so the two signals stay distinct. Tracked by
     # identity (NOT by mutating the shared clinic objects, which are reused across pages).
     top_ranked_id = None
     for c in clinics:
-        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= BAYES_M:
+        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= MIN_CREDIBLE_REVIEWS:
             top_ranked_id = c.get("slug") or c.get("name")
             break
 
@@ -1288,6 +1292,17 @@ def main():
     print(f"[builder] completeness: mode={report['mode']} | listings_excluded={len(report['excluded_listings'])} | "
           f"pages_held={len(report['held_pages'])} | empty_fields={report['empty_fields']}")
     (GENERATED / "_completeness_report.json").write_text(json.dumps(report, indent=2))
+
+    # Copy static assets (CSS, images, favicons) into generated/ so deploys serve them.
+    # Without this, pages reference /assets/styles.css but the file isn't shipped.
+    _assets_src = ROOT / "assets"
+    if _assets_src.is_dir():
+        import shutil as _shutil
+        _assets_dst = GENERATED / "assets"
+        if _assets_dst.exists():
+            _shutil.rmtree(_assets_dst)
+        _shutil.copytree(_assets_src, _assets_dst)
+        print(f"[builder] copied assets/ -> generated/assets/ ({sum(1 for _ in _assets_dst.rglob('*') if _.is_file())} files)")
 
     # Link validation — catch wrong-county and dead internal links before commit.
     import re as _re
