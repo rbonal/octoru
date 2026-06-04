@@ -1,0 +1,13 @@
+# Cloudflare Workers config for the Octoru static directory.
+# Cloudflare runs the build, then serves /generated/ as static assets.
+name = "octoru"
+compatibility_date = "2026-06-04"
+
+# Static assets — everything in generated/ is served as-is.
+[assets]
+directory = "./generated"
+not_found_handling = "404-page"
+
+# Build command runs inside Cloudflare's container before deploy.
+[build]
+command = "python3 builder/build.py"
