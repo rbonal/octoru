@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-GlowMap evaluator routine. Runs on its own schedule (e.g. weekly), SEPARATE from the builder.
+Octoru evaluator routine. Runs on its own schedule (e.g. weekly), SEPARATE from the builder.
 Reads ground truth the builder can't fake, scores it, and sets build_state.
 
 It can set: active | throttled | paused | halted   (all reversible — stopping = stop spending tokens).

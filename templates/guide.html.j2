@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="{{ site_url }}{{ guide_url }}">
 
 {%- if faqs %}
@@ -49,8 +50,8 @@
 <header class="topbar">
   <div class="wrap">
     <a href="/" style="text-decoration:none">
-      <div class="brandmark">GlowMap</div>
-      <div class="label">Med spa directory</div>
+      <span class="brand-lockup"><svg class="brand-mark" width="28" height="28" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/><path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg><span class="wordmark" style="font-size:21px">octoru</span></span>
+      <div class="label">Health &amp; wellness directory</div>
     </a>
     <a href="/advertise.html" class="nav-adv-btn">Advertise with us</a>
   </div>
@@ -85,7 +86,7 @@
     <section class="guide-section">
       <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
       <p>
-        Based on the {{ n_clinics }} verified providers in the GlowMap directory,
+        Based on the {{ n_clinics }} verified providers in the Octoru directory,
         {{ treatment.name | lower }} in {{ neighborhood.name }} starts at
         <strong>${{ cost.low }} {{ unit }}</strong>
         {%- if cost.high and cost.high != cost.low %} and goes up to <strong>${{ cost.high }} {{ unit }}</strong>{% endif %}.
@@ -137,7 +138,7 @@
 
 <footer class="foot">
   <div class="wrap">
-    GlowMap is an independent directory. Prices are sourced from clinic websites and may change; always confirm directly with your provider.
+    Octoru is an independent health &amp; wellness directory. Prices are sourced from provider websites and may change; always confirm directly with your provider.
     <a href="{{ listing_url }}">Back to {{ neighborhood.name }} {{ treatment.name | lower }} listings</a> ·
     <a href="/advertise.html">Advertise your clinic</a> ·
     <a href="/privacy">Privacy</a>

@@ -2,7 +2,7 @@
 
 **When to use:** building or improving any treatment × neighborhood (or service × location)
 directory where thin, near-identical pages won't index or convert. Goal: make each page
-*dense, unique, accurate, and priced* — without padding or fabricating. Applies to GlowMap
+*dense, unique, accurate, and priced* — without padding or fabricating. Applies to Octoru
 and any "local providers by category × area" project.
 
 **Why it matters:** thin/near-duplicate pages are the #1 reason programmatic directory pages

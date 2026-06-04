@@ -24,8 +24,8 @@ clinic and attach counties to a state in the config tree now, so going multi-sta
 (`/{state}/{county}/{market}/{treatment}/`) is a non-breaking change — but keep state OUT
 of the URL until a second state is actually active (gated like everything else).
 
-**Branding flag:** expanding past Miami-Dade makes "GlowMap **Miami**" undersell Broward/
-Palm Beach. Decide positioning ("GlowMap Miami" vs "GlowMap South Florida") and the domain
+**Branding flag:** expanding past Miami-Dade makes "Octoru **Miami**" undersell Broward/
+Palm Beach. Decide positioning ("Octoru Miami" vs "Octoru South Florida") and the domain
 BEFORE publishing non-Miami counties, to avoid rebranding live URLs. Domain is operator-owned.
 
 ## 2. URL / information architecture (subdirectories by county)

@@ -1,4 +1,4 @@
-# GlowMap — Auto-Mode Runbook
+# Octoru — Auto-Mode Runbook
 
 How to run this as an autonomous Claude Code goal with auto-approved code, **without**
 auto mode becoming the thing that causes a mistake.

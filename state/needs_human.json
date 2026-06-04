@@ -2,6 +2,26 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
+      "id": "rebrand-claude-md-hard-gated",
+      "opened_at": "2026-06-02",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-action-required",
+      "summary": "Octoru rebrand sweep is complete across all templates, assets, build.py, data, docs and the design reference. CLAUDE.md still contains 2 'GlowMap' references but it is HARD-GATED (the autonomy boundary forbids the builder editing CLAUDE.md). Surfacing for the operator to apply by hand.",
+      "operator_action": "In CLAUDE.md, change the title 'GlowMap Miami — Autonomous Build Goal' -> 'Octoru — Autonomous Build Goal', and 'GlowMap Miami, a med-spa treatment directory' -> 'Octoru, a health & wellness provider directory'. (Optional: the loop still references 'Miami med-spa directory' framing — update to national health & wellness if desired.)",
+      "why_not_done": "CLAUDE.md is on the hard-gated list ('Edit CLAUDE.md, anything in config/'). The builder never edits it autonomously, even on explicit request."
+    },
+    {
+      "id": "favicon-and-og-image-bitmaps",
+      "opened_at": "2026-06-02",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "info",
+      "summary": "A vector SVG favicon (the Octoru octagon mark) is generated at /favicon.svg and linked from every page head. Modern browsers use it. Bitmap fallbacks still need a designer/tool to export (the builder does not generate bitmaps).",
+      "operator_action": "Export from the octagon mark: favicon.ico (32x32) + apple-touch-icon.png (180x180) for older browsers/iOS, and a 1200x630 og:image.png social card. Add <link rel='icon' sizes='32x32' href='/favicon.ico'>, <link rel='apple-touch-icon' href='/apple-touch-icon.png'>, and <meta property='og:image' ...> once the bitmaps exist.",
+      "mark_svg": "<svg viewBox='0 0 72 72'><polygon points='62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25' fill='#1447E6'/><path d='M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z' fill='#fff'/></svg>"
+    },
+    {
       "id": "activate-palm-beach-expansion-in-config",
       "opened_at": "2026-06-02",
       "opened_by": "builder",

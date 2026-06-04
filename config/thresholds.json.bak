@@ -1,0 +1,36 @@
+{
+  "_comment": "HUMAN-OWNED. The autonomous builder must NOT edit this file. Calibrate values to your unit economics.",
+
+  "monthly_token_cap": 5000000,
+  "_token_cap_note": "Hard floor. Builder refuses to run once the month's ledger reaches this. Set to your real budget.",
+
+  "seed_scope": {
+    "_note": "Phase 1: start narrow. Expand only as cohorts prove out (handled by evaluator raising scope).",
+    "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"],
+    "neighborhoods": ["brickell", "coral-gables", "south-beach", "coconut-grove"]
+  },
+
+  "state_thresholds": {
+    "_note": "Evaluator scores against these to set build_state. Months are since launch.",
+    "month_3": { "min_indexed_pages": 1, "min_impressions": 1, "else_state": "halted_technical" },
+    "month_6": { "min_impressions_growth_pct": 20, "min_leads": 1, "else_state": "throttled" },
+    "month_9": { "min_qualified_leads_per_month": 8, "must_rank_target_queries": true, "else_state": "paused" },
+    "ongoing": {
+      "manual_action_detected": "halted",
+      "compliance_check_failed": "halted",
+      "roi_below_breakeven_consecutive_weeks": { "weeks": 4, "state": "paused" },
+      "roi_marginal_consecutive_weeks": { "weeks": 2, "state": "throttled" }
+    }
+  },
+
+  "resume_policy": {
+    "_note": "Reversible. Evaluator may auto-resume paused/throttled when signals recover; human may resume anytime.",
+    "auto_resume_from_paused": true,
+    "auto_resume_requires_consecutive_recovery_weeks": 2
+  },
+
+  "alerts": {
+    "channel": "bonalta-connect",
+    "notify_on": ["throttled", "paused", "halted", "needs_human", "budget_80pct"]
+  }
+}

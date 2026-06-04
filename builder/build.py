@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-GlowMap builder routine.
+Octoru builder routine.
 Runs under Claude Code auto mode. Obeys build_state + token budget.
 Renders pages from data + template; builds to a branch; NEVER deploys.
 (Publish is hard-gated — see CLAUDE.md.)
@@ -19,7 +19,7 @@ CONFIG = json.loads((ROOT / "config" / "thresholds.json").read_text())
 STATE_PATH = ROOT / "state" / "build_state.json"
 LEDGER_PATH = ROOT / "state" / "run_ledger.json"
 GENERATED = ROOT / "generated"
-SITE_URL = "https://www.glowmapmiami.com"  # placeholder; the real domain is set at deploy
+SITE_URL = "https://octoru.com"  # production domain (Namecheap registrar, Cloudflare Pages host)
 
 # Completeness thresholds are OPERATOR-OWNED (config/thresholds.json -> "completeness").
 # Builder READS them; never invents them; cannot edit config (hard-gated). Absent -> DRY-RUN.
@@ -293,9 +293,9 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
         parts.append(ctx)
 
     if n == 1:
-        provider_sent = f"GlowMap has one verified {t_name.lower()} provider in {city_name}."
+        provider_sent = f"Octoru has one verified {t_name.lower()} provider in {city_name}."
     else:
-        provider_sent = f"GlowMap has {n} verified {t_name.lower()} {provider_word} in {city_name}."
+        provider_sent = f"Octoru has {n} verified {t_name.lower()} {provider_word} in {city_name}."
     parts.append(provider_sent)
 
     if price_str:
@@ -979,21 +979,21 @@ def render_hubs(summaries):
                 bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"},
                       {"name": cdata["name"], "url": f"/{st}/{co}/"},
                       {"name": cidata["name"], "url": f"/{st}/{co}/{ci}/"}]
-                render_hub(f"Med spas in {cidata['name']}, {sdata['name']}",
+                render_hub(f"Health & wellness in {cidata['name']}, {sdata['name']}",
                            f"{len(cidata['pages'])} treatment guides for {cidata['name']}", bc, cards, f"{st}/{co}/{ci}")
             # county hub
             ccards = [{"title": cidata["name"], "sub": f"{len(cidata['pages'])} treatment" + ("" if len(cidata['pages']) == 1 else "s"),
                        "url": f"/{st}/{co}/{ci}/", "chip": None}
                       for ci, cidata in sorted(cdata["cities"].items(), key=lambda kv: kv[1]["name"])]
             bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}, {"name": cdata["name"], "url": f"/{st}/{co}/"}]
-            render_hub(f"Med spas in {cdata['name']} County, {sdata['name']}",
+            render_hub(f"Health & wellness in {cdata['name']} County, {sdata['name']}",
                        f"{len(cdata['cities'])} cities", bc, ccards, f"{st}/{co}")
         # state hub
         scards = [{"title": cdata["name"] + " County", "sub": f"{len(cdata['cities'])} cities",
                    "url": f"/{st}/{co}/", "chip": None}
                   for co, cdata in sorted(sdata["counties"].items(), key=lambda kv: kv[1]["name"])]
         bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}]
-        render_hub(f"Med spa directory — {sdata['name']}", f"{len(sdata['counties'])} counties", bc, scards, st)
+        render_hub(f"Health & wellness directory — {sdata['name']}", f"{len(sdata['counties'])} counties", bc, scards, st)
     return states
 
 
@@ -1081,7 +1081,7 @@ def render_index(summaries):
 
 def render_claim():
     html = env.get_template("claim.html.j2").render(
-        site_url=SITE_URL, lead_routing_target="crm:glowmap-listing-claims",
+        site_url=SITE_URL, lead_routing_target="crm:octoru-listing-claims",
         last_updated=datetime.date.today().isoformat())
     return _write("claim.html", html)
 
@@ -1103,7 +1103,7 @@ def render_advertise(summaries=None):
         slot_cap=sub.get("slot_cap_per_page", 3),
         price_display=sub.get("price_display", "from $299 / month"),
         price_cancel=sub.get("price_cancel", "cancel anytime"),
-        crm_pipeline=(policy.get("campaigns_upsell") or {}).get("crm_pipeline", "crm:glowmap-campaigns-prospect"),
+        crm_pipeline=(policy.get("campaigns_upsell") or {}).get("crm_pipeline", "crm:octoru-campaigns-prospect"),
         total_clinics=len(clinics),
         total_pages=len(summaries) if summaries else 0,
         avg_rating=avg_rating,
@@ -1217,7 +1217,12 @@ def main():
     render_advertise(summaries)
     guide_urls = render_guides(passed)
     render_sitemap(summaries, guide_urls)
-    print(f"[builder] built hubs + homepage + claim + advertise + {len(guide_urls)} guides + sitemap.xml")
+    # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
+    _write("favicon.svg",
+           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
+           '<polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/>'
+           '<path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg>\n')
+    print(f"[builder] built hubs + homepage + claim + advertise + {len(guide_urls)} guides + favicon + sitemap.xml")
 
     report["empty_fields"] = compute_empty_fields(passed)
     report["mode"] = "enforced" if enforce else "dry-run (config 'completeness' absent)"

@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GlowMap — Find &amp; compare med spas across South Florida</title>
-<meta name="description" content="Compare verified med spa providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings.">
+<title>Octoru — Compare verified health &amp; wellness providers</title>
+<meta name="description" content="Octoru is a health &amp; wellness provider directory. Compare verified providers by treatment and city — real prices, Google ratings, and direct booking.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Octoru">
+<meta property="og:title" content="Octoru — Compare verified health &amp; wellness providers">
+<meta property="og:description" content="A national health &amp; wellness directory. Compare verified providers by treatment and city — real prices, Google ratings, direct booking.">
+<meta property="og:url" content="https://octoru.com/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,7 +21,10 @@
 
 <header class="bar">
   <div class="wrap">
-    <a href="/"><span class="brand">GlowMap<span class="sub label">Med spa directory</span></span></a>
+    <a href="/"><span class="brand">
+      <span class="brand-lockup"><svg class="brand-mark" width="30" height="30" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/><path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg><span class="wordmark">octoru</span></span>
+      <span class="sub label">Health &amp; wellness directory</span>
+    </span></a>
     <nav class="bar-nav">
       <a href="#treatments">Treatments</a>
       <a href="#areas">Areas</a>
@@ -31,7 +41,7 @@
    <div class="hero-grid">
     <div class="hero-main">
       <div class="eyebrow label blue reveal d1">South Florida</div>
-      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas by treatment and city</h1>
+      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> health &amp; wellness providers by treatment and city</h1>
       {%- if avg_rating %}
       <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — average {{ avg_rating }}-star Google rating, real prices, so you can compare before you book.</p>
       {%- else %}
@@ -41,7 +51,7 @@
       <div class="geo-suggest reveal d3" id="geoSuggest">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <span>Looks like you're near <strong id="geoCity">your area</strong>.</span>
-        <a class="go" id="geoGo" href="#">See med spas there →</a>
+        <a class="go" id="geoGo" href="#">See providers there →</a>
         <button class="x" id="geoDismiss" aria-label="Dismiss suggestion">&#x2715;</button>
       </div>
 
@@ -169,7 +179,7 @@
     <div class="tr">
       <div class="num">03</div>
       <h4>Independent</h4>
-      <p>GlowMap is not owned by any clinic. Featured placements are clearly labeled; everything else is ranked on rating and coverage.</p>
+      <p>Octoru is not owned by any provider. Featured placements are clearly labeled; everything else is ranked on rating and coverage.</p>
     </div>
   </div>
 </section>
@@ -179,8 +189,8 @@
   <div class="wrap">
     <div class="row">
       <div class="disc">
-        <span class="brand" style="font-size:16px">GlowMap</span><br>
-        GlowMap is an independent directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
+        <span class="brand" style="font-size:16px">Octoru</span><br>
+        Octoru is an independent health &amp; wellness directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
         <div class="label" style="margin-top:12px">Updated {{ last_updated }}</div>
       </div>
       <div class="links">

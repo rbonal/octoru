@@ -2,15 +2,15 @@
   "_comment": "Token + run ledger by month. Builder checks the current month against monthly_token_cap.",
   "2026-06": {
     "tokens": 0,
-    "runs": 19,
+    "runs": 20,
     "pages_built": 121
   },
   "last_run": {
     "at": "2026-06-02",
     "status": "success",
-    "reason": "Full SEO build: 226 listing pages with rich neighbourhood intros + FAQPage schema (5 FAQs/page), 226 treatment cost guide pages (/{treatment}/guide/) for informational search traffic, 35-city neighbourhood context, enhanced meta descriptions. Sitemap 494 URLs.",
-    "listing_pages": 226,
-    "guide_pages": 226,
-    "sitemap_urls": 494
+    "reason": "Full rebrand GlowMap -> Octoru (octoru.com): brand name, descriptor (Med spa directory -> Health & wellness directory), meta/title/og across all templates, build.py, data, docs, design reference. Inline octagon logo mark + 'octoru' wordmark in all headers. Vector favicon.svg generated. CLAUDE.md hard-gated -> flagged to needs_human. 226 listing + 226 guide pages rebuilt.",
+    "rebrand": "GlowMap->Octoru",
+    "logo": "inline SVG octagon + wordmark",
+    "favicon": "vector /favicon.svg"
   }
 }

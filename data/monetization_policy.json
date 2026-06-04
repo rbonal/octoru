@@ -1,11 +1,11 @@
 {
-  "_comment": "OPERATOR-OWNED. Documents GlowMap's revenue model and patient-contact policy. Builder reads this for context; never edits it.",
+  "_comment": "OPERATOR-OWNED. Documents Octoru's revenue model and patient-contact policy. Builder reads this for context; never edits it.",
 
   "revenue_model": "flat_placement_only",
-  "_revenue_note": "Revenue is earned exclusively from FLAT ADVERTISING PLACEMENT subscriptions sold to clinics. GlowMap never charges, meters, or receives any per-patient, per-inquiry, or per-lead fee. Per-patient referral fees raise Florida Patient Brokering Act / anti-kickback concerns; flat advertising placement does not.",
+  "_revenue_note": "Revenue is earned exclusively from FLAT ADVERTISING PLACEMENT subscriptions sold to clinics. Octoru never charges, meters, or receives any per-patient, per-inquiry, or per-lead fee. Per-patient referral fees raise Florida Patient Brokering Act / anti-kickback concerns; flat advertising placement does not.",
 
   "contact_form_policy": "free",
-  "_contact_note": "The 'Get a quote' / inquiry affordance is a FREE feature for patients and clinics. Patient inquiries are forwarded directly to the clinic (via booking_url, phone, or free CRM forwarding). GlowMap does not sell, meter, or monetize individual inquiries. No billable lead ledger exists.",
+  "_contact_note": "The 'Get a quote' / inquiry affordance is a FREE feature for patients and clinics. Patient inquiries are forwarded directly to the clinic (via booking_url, phone, or free CRM forwarding). Octoru does not sell, meter, or monetize individual inquiries. No billable lead ledger exists.",
 
   "inquiry_routing": "direct_to_clinic",
   "_routing_note": "Routing order: (1) booking_url if present, (2) phone, (3) free inquiry form forwarded to clinic. Never to a lead-billing intermediary.",
@@ -13,7 +13,7 @@
   "placement_subscription": {
     "model": "flat_monthly_subscription",
     "checkout": "payments_hosted",
-    "_checkout_note": "Checkout is hosted by Bonalta Payments (external, gated). No payment card data is collected on or processed by GlowMap pages.",
+    "_checkout_note": "Checkout is hosted by Bonalta Payments (external, gated). No payment card data is collected on or processed by Octoru pages.",
     "benefits": ["featured listing pinned to top of page", "Featured label displayed", "rel=sponsored on paid outbound links"],
     "slot_cap_per_page": 3,
     "_slot_cap_note": "Maximum featured listings per page. Prevents pages going all-paid. Operator-configurable in config/thresholds.json completeness.max_featured_per_page.",

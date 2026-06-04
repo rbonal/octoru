@@ -1,4 +1,4 @@
-# GlowMap — Integrations
+# Octoru — Integrations
 
 Two integration types. Use the right one per job:
 - **MCP connector** — agent uses it live during a run (research, opening PRs). Configure in Claude Code's MCP settings.

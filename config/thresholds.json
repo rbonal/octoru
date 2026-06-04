@@ -7,7 +7,14 @@
   "seed_scope": {
     "_note": "Expansion: scope widened by human (Rolando) on 2026-06-02 from the original 4 Miami-core neighborhoods to all 40 neighborhoods present in data/prospector/clinics.json (Miami-Dade + Broward + Palm Beach). Many of the new neighborhoods have only 1-2 clinics — the quality gate may still cull thin treatment-x-neighborhood pages. Narrow back later if pages underperform.",
     "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"],
-    "neighborhoods": ["aventura", "bal-harbour", "boca-raton", "brickell", "coconut-creek", "coconut-grove", "cooper-city", "coral-gables", "coral-springs", "dania-beach", "davie", "deerfield-beach", "doral", "fort-lauderdale", "hallandale-beach", "hialeah", "hollywood", "homestead", "kendall", "key-biscayne", "lighthouse-point", "margate", "miami-lakes", "miami-springs", "midtown", "miramar", "north-miami", "oakland-park", "palmetto-bay", "parkland", "pembroke-pines", "pinecrest", "plantation", "pompano-beach", "south-beach", "sunny-isles-beach", "sunrise", "surfside", "west-palm-beach", "weston"]
+    "neighborhoods": ["aventura", "bal-harbour", "boca-raton", "boynton-beach", "brickell", "coconut-creek", "coconut-grove", "cooper-city", "coral-gables", "coral-springs", "dania-beach", "davie", "deerfield-beach", "delray-beach", "doral", "fort-lauderdale", "hallandale-beach", "hialeah", "hollywood", "homestead", "jupiter", "kendall", "key-biscayne", "lighthouse-point", "margate", "miami-lakes", "miami-springs", "midtown", "miramar", "north-miami", "north-palm-beach", "oakland-park", "palm-beach-gardens", "palmetto-bay", "parkland", "pembroke-pines", "pinecrest", "plantation", "pompano-beach", "royal-palm-beach", "south-beach", "sunny-isles-beach", "sunrise", "surfside", "wellington", "west-palm-beach", "weston"]
+  },
+
+  "completeness": {
+    "_note": "Switches the builder from dry-run to ENFORCED. Set by human (Rolando) 2026-06-02. min_listings lowered from recommended 3 to 2 to keep more pages alive while still culling single-listing pages.",
+    "min_listing_fields": ["name", "address", "phone", "rating", "treatments"],
+    "min_page_requirements": {"min_listings": 2, "require_cost_block": true, "require_guidance": true},
+    "max_featured_per_page": 3
   },
 
   "state_thresholds": {

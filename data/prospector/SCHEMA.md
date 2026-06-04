@@ -26,7 +26,7 @@ groups, and renders. A clinic appears on one page per (treatment it offers × it
   "languages": ["English", "Spanish"],
   "treatments": ["lip-filler", "botox"],
   "featured_tier": 1,
-  "lead_routing_target": "crm:glowmap-injectables",
+  "lead_routing_target": "crm:octoru-injectables",
 
   "has_real_clinic_data": true,
   "uses_scraped_review_text": false,

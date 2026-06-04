@@ -1,5 +1,5 @@
 /* ===========================================================
-   GlowMap — built on the Bonalta brand system (manual v1.0)
+   Octoru — built on the Bonalta brand system (manual v1.0)
    Blue (#1447E6) is an ACCENT: primary action + links only.
    Geist Mono is SEMANTIC: prices, ratings, data labels only.
    Color ratio target: 60% paper / 30% ink / 10% blue.
@@ -515,3 +515,21 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 .guide-cta { margin-top: 18px; display: inline-flex; }
 .guide-faq .faq-section { border: 0; padding-top: 0; }
 .guide-faq h2 { font-size: 20px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 14px; }
+
+/* ============================================================
+   OCTORU BRAND LOCKUP — inline octagon mark + wordmark
+   Used in both the .bar header (home/advertise) and the
+   .topbar header (treatment/hub/guide/claim). Mark is inline
+   SVG — no external file dependency.
+   ============================================================ */
+.brand-lockup { display: inline-flex; align-items: center; gap: 8px; }
+.brand-mark { display: block; flex-shrink: 0; }
+.wordmark {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 23px;
+  color: var(--ink);          /* #0A0A14 */
+  letter-spacing: -2.5px;
+  line-height: 1;
+}
+.topbar .brand-lockup { margin-bottom: 1px; }
