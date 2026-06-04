@@ -124,7 +124,7 @@
     {%- for c in clinics %}
     <article class="clinic{{ ' featured' if c.featured_tier and c.featured_tier > 0 }}">
       <div>
-        {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
+        {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% elif c.top_ranked %}<span class="top-tag">★ Top rated</span>{% endif %}
         <div class="name">{{ c.name }}</div>
         <div class="meta">{{ c.neighborhood }}{% if c.languages %} · {{ c.languages | join(", ") }}{% endif %}</div>
         {% if c.address %}<div class="meta">{{ c.address }}</div>{% else %}<div class="meta muted">Address not listed</div>{% endif %}

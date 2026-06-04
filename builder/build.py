@@ -610,7 +610,22 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
-    clinics = sorted(clinics, key=lambda c: (c.get("featured_tier", 0), c.get("rating") or 0), reverse=True)
+    # Ranking index — surface the best provider first. The index is
+    #   rating x review_count   (a 4.9 with 300 reviews beats a 5.0 with 2 reviews:
+    #   it rewards both quality AND proven track record / volume of feedback).
+    # Order: paid Featured placements pinned on top (labeled + slot-capped), then
+    # organic providers sorted by the index, highest first. Ties broken by raw rating.
+    # NOTE on distance: every clinic on a given page is in the SAME city, so per-provider
+    # distance is ~equal here — distance is applied at the city-selection step instead
+    # ("Use my location" -> nearest covered city on the homepage). So the page-level
+    # ranking is review-based, exactly as specified for the simple case.
+    def _rank_index(c):
+        return (c.get("rating") or 0) * (c.get("review_count") or 0)
+    clinics = sorted(
+        clinics,
+        key=lambda c: (c.get("featured_tier", 0), _rank_index(c), c.get("rating") or 0),
+        reverse=True,
+    )
     # Slot cap: limit paid featured listings so pages never go all-paid.
     featured_count = 0
     capped = []
@@ -623,6 +638,17 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
         else:
             capped.append(c)
     clinics = capped
+
+    # Identify the single best ORGANIC provider (top of the review index, with enough
+    # reviews to be trustworthy) to badge "Top rated". Paid Featured listings are
+    # excluded so the two signals stay distinct. Tracked by identity (NOT by mutating
+    # the shared clinic objects, which are reused across pages).
+    top_ranked_id = None
+    for c in clinics:
+        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= 10:
+            top_ranked_id = c.get("slug") or c.get("name")
+            break
+
     n = len(clinics)
     unit = TREATMENT_UNITS.get(treatment_slug, "")
     prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
@@ -667,7 +693,11 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
         "faqs": faqs,
         "updated": updated,
-        "clinics": [_clinic_for_page(c, treatment_slug) for c in clinics],
+        "clinics": [
+            {**_clinic_for_page(c, treatment_slug),
+             "top_ranked": (c.get("slug") or c.get("name")) == top_ranked_id}
+            for c in clinics
+        ],
     }
 
 
@@ -1057,15 +1087,9 @@ def render_index(summaries):
         top_searches.append({"label": f"{treat_name} in {city_name}",
                               "url": f"/{st}/{co}/{nb}/{t}/"})
 
-    # Treatment card links: best city for each treatment (most clinics)
-    treat_best = {}
-    for (st, co, nb, t), hits in sorted(combos.items(), key=lambda x: -len(x[1])):
-        if t not in treat_best:
-            treat_best[t] = f"/{st}/{co}/{nb}/{t}/"
-
+    # Treatment cards no longer hard-link to a single "densest" city — clicking a card
+    # filters the city grid to the cities that offer that treatment (see home.html.j2 JS).
     tcard_list = treatment_cards(all_clinics)
-    for tc in tcard_list:
-        tc["url"] = treat_best.get(tc["slug"], "#areas")
 
     # Avg rating for social proof
     ratings = [c["rating"] for c in all_clinics if c.get("rating")]

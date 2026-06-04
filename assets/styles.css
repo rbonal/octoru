@@ -533,3 +533,7 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
   line-height: 1;
 }
 .topbar .brand-lockup { margin-bottom: 1px; }
+
+/* "Top rated" tag — the best organic provider by review index (rating x reviews) */
+.top-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--green); font-weight: 600; }
