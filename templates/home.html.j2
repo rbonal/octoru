@@ -123,7 +123,7 @@
     </div>
     <div class="treat-grid">
       {%- for t in treatments %}
-      <a class="tcard" href="{{ t.url }}">
+      <a class="tcard" href="#areas" data-treat="{{ t.slug }}">
         <div class="tname">{{ t.name }}</div>
         <div class="tdesc">{{ t.desc }}</div>
         <div class="tmeta">
@@ -272,14 +272,29 @@
       c.style.display = (okName && okTreat) ? '' : 'none';
     });
   }
+  // Sync the pill row to whatever treatment is active (used by both pills and treatment cards)
+  function setActiveTreat(slug){
+    activeTreat = slug || '';
+    pills.querySelectorAll('.pill').forEach(function(p){
+      p.classList.toggle('active', (p.getAttribute('data-treat') || '') === activeTreat);
+    });
+    applyFilter();
+  }
   pills.addEventListener('click', function(e){
     if(!e.target.classList.contains('pill')) return;
-    pills.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('active'); });
-    e.target.classList.add('active');
-    activeTreat = e.target.getAttribute('data-treat') || '';
-    applyFilter();
+    setActiveTreat(e.target.getAttribute('data-treat') || '');
   });
   q.addEventListener('input', applyFilter);
+
+  // Treatment cards: filter the city grid to cities offering that treatment, then scroll there.
+  // (Avoids dumping the user into one arbitrary "densest" city.)
+  document.querySelectorAll('.tcard[data-treat]').forEach(function(card){
+    card.addEventListener('click', function(e){
+      e.preventDefault();
+      setActiveTreat(card.getAttribute('data-treat') || '');
+      document.getElementById('areas').scrollIntoView({behavior:'smooth'});
+    });
+  });
 
   var CITIES = {{ geo_cities_json | safe }};
   var MAX_MILES = 60;

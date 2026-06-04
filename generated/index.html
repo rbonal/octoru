@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="treat-grid">
-      <a class="tcard" href="/fl/miami-dade/brickell/botox/">
+      <a class="tcard" href="#areas" data-treat="botox">
         <div class="tname">Botox</div>
         <div class="tdesc">Wrinkle-relaxing injections, priced per unit.</div>
         <div class="tmeta">
@@ -126,7 +126,7 @@
           <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="/fl/miami-dade/brickell/lip-filler/">
+      <a class="tcard" href="#areas" data-treat="lip-filler">
         <div class="tname">Lip filler</div>
         <div class="tdesc">Hyaluronic-acid lip enhancement, priced per syringe.</div>
         <div class="tmeta">
@@ -134,7 +134,7 @@
           <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="/fl/palm-beach/delray-beach/coolsculpting/">
+      <a class="tcard" href="#areas" data-treat="coolsculpting">
         <div class="tname">CoolSculpting</div>
         <div class="tdesc">Non-invasive fat reduction, priced per area.</div>
         <div class="tmeta">
@@ -142,7 +142,7 @@
           <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="/fl/miami-dade/brickell/laser-hair-removal/">
+      <a class="tcard" href="#areas" data-treat="laser-hair-removal">
         <div class="tname">Laser hair removal</div>
         <div class="tdesc">Multi-session hair reduction, priced by area.</div>
         <div class="tmeta">
@@ -150,7 +150,7 @@
           <span class="arrow">&#x2192;</span>
         </div>
       </a>
-      <a class="tcard" href="/fl/miami-dade/brickell/microneedling/">
+      <a class="tcard" href="#areas" data-treat="microneedling">
         <div class="tname">Microneedling</div>
         <div class="tdesc">Collagen-induction skin treatment, per session.</div>
         <div class="tmeta">
@@ -439,14 +439,29 @@
       c.style.display = (okName && okTreat) ? '' : 'none';
     });
   }
+  // Sync the pill row to whatever treatment is active (used by both pills and treatment cards)
+  function setActiveTreat(slug){
+    activeTreat = slug || '';
+    pills.querySelectorAll('.pill').forEach(function(p){
+      p.classList.toggle('active', (p.getAttribute('data-treat') || '') === activeTreat);
+    });
+    applyFilter();
+  }
   pills.addEventListener('click', function(e){
     if(!e.target.classList.contains('pill')) return;
-    pills.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('active'); });
-    e.target.classList.add('active');
-    activeTreat = e.target.getAttribute('data-treat') || '';
-    applyFilter();
+    setActiveTreat(e.target.getAttribute('data-treat') || '');
   });
   q.addEventListener('input', applyFilter);
+
+  // Treatment cards: filter the city grid to cities offering that treatment, then scroll there.
+  // (Avoids dumping the user into one arbitrary "densest" city.)
+  document.querySelectorAll('.tcard[data-treat]').forEach(function(card){
+    card.addEventListener('click', function(e){
+      e.preventDefault();
+      setActiveTreat(card.getAttribute('data-treat') || '');
+      document.getElementById('areas').scrollIntoView({behavior:'smooth'});
+    });
+  });
 
   var CITIES = [{"name": "Coral Gables", "slug": "coral-gables", "lat": 25.7215, "lng": -80.2684, "url": "/fl/miami-dade/coral-gables/"}, {"name": "Aventura", "slug": "aventura", "lat": 25.9565, "lng": -80.139, "url": "/fl/miami-dade/aventura/"}, {"name": "Doral", "slug": "doral", "lat": 25.8195, "lng": -80.3553, "url": "/fl/miami-dade/doral/"}, {"name": "Hialeah", "slug": "hialeah", "lat": 25.8576, "lng": -80.2781, "url": "/fl/miami-dade/hialeah/"}, {"name": "Key Biscayne", "slug": "key-biscayne", "lat": 25.6938, "lng": -80.1626, "url": "/fl/miami-dade/key-biscayne/"}, {"name": "Miami Lakes", "slug": "miami-lakes", "lat": 25.9087, "lng": -80.3087, "url": "/fl/miami-dade/miami-lakes/"}, {"name": "North Miami", "slug": "north-miami", "lat": 25.8901, "lng": -80.1867, "url": "/fl/miami-dade/north-miami/"}, {"name": "Pinecrest", "slug": "pinecrest", "lat": 25.667, "lng": -80.3083, "url": "/fl/miami-dade/pinecrest/"}, {"name": "Sunny Isles Beach", "slug": "sunny-isles-beach", "lat": 25.9501, "lng": -80.1223, "url": "/fl/miami-dade/sunny-isles-beach/"}, {"name": "Surfside", "slug": "surfside", "lat": 25.8787, "lng": -80.1257, "url": "/fl/miami-dade/surfside/"}, {"name": "Brickell", "slug": "brickell", "lat": 25.7617, "lng": -80.1918, "url": "/fl/miami-dade/brickell/"}, {"name": "Coconut Grove", "slug": "coconut-grove", "lat": 25.7282, "lng": -80.2436, "url": "/fl/miami-dade/coconut-grove/"}, {"name": "South Beach", "slug": "south-beach", "lat": 25.7826, "lng": -80.134, "url": "/fl/miami-dade/south-beach/"}, {"name": "Kendall", "slug": "kendall", "lat": 25.6793, "lng": -80.3173, "url": "/fl/miami-dade/kendall/"}, {"name": "Fort Lauderdale", "slug": "fort-lauderdale", "lat": 26.1224, "lng": -80.1373, "url": "/fl/broward/fort-lauderdale/"}, {"name": "Hollywood", "slug": "hollywood", "lat": 26.0112, "lng": -80.1495, "url": "/fl/broward/hollywood/"}, {"name": "Pembroke Pines", "slug": "pembroke-pines", "lat": 26.0078, "lng": -80.2963, "url": "/fl/broward/pembroke-pines/"}, {"name": "Coral Springs", "slug": "coral-springs", "lat": 26.271, "lng": -80.2706, "url": "/fl/broward/coral-springs/"}, {"name": "Plantation", "slug": "plantation", "lat": 26.1276, "lng": -80.2331, "url": "/fl/broward/plantation/"}, {"name": "Pompano Beach", "slug": "pompano-beach", "lat": 26.2379, "lng": -80.1248, "url": "/fl/broward/pompano-beach/"}, {"name": "Davie", "slug": "davie", "lat": 26.0765, "lng": -80.2521, "url": "/fl/broward/davie/"}, {"name": "Miramar", "slug": "miramar", "lat": 25.9861, "lng": -80.3035, "url": "/fl/broward/miramar/"}, {"name": "Weston", "slug": "weston", "lat": 26.1004, "lng": -80.3998, "url": "/fl/broward/weston/"}, {"name": "Hallandale Beach", "slug": "hallandale-beach", "lat": 25.9812, "lng": -80.1484, "url": "/fl/broward/hallandale-beach/"}, {"name": "Deerfield Beach", "slug": "deerfield-beach", "lat": 26.3184, "lng": -80.0998, "url": "/fl/broward/deerfield-beach/"}, {"name": "Oakland Park", "slug": "oakland-park", "lat": 26.1723, "lng": -80.132, "url": "/fl/broward/oakland-park/"}, {"name": "Parkland", "slug": "parkland", "lat": 26.3098, "lng": -80.237, "url": "/fl/broward/parkland/"}, {"name": "Boca Raton", "slug": "boca-raton", "lat": 26.3683, "lng": -80.1289, "url": "/fl/palm-beach/boca-raton/"}, {"name": "Delray Beach", "slug": "delray-beach", "lat": 26.4615, "lng": -80.0728, "url": "/fl/palm-beach/delray-beach/"}, {"name": "Palm Beach Gardens", "slug": "palm-beach-gardens", "lat": 26.8237, "lng": -80.1345, "url": "/fl/palm-beach/palm-beach-gardens/"}, {"name": "Jupiter", "slug": "jupiter", "lat": 26.9342, "lng": -80.0942, "url": "/fl/palm-beach/jupiter/"}, {"name": "Wellington", "slug": "wellington", "lat": 26.659, "lng": -80.2683, "url": "/fl/palm-beach/wellington/"}, {"name": "Boynton Beach", "slug": "boynton-beach", "lat": 26.5317, "lng": -80.0905, "url": "/fl/palm-beach/boynton-beach/"}, {"name": "North Palm Beach", "slug": "north-palm-beach", "lat": 26.8176, "lng": -80.0623, "url": "/fl/palm-beach/north-palm-beach/"}, {"name": "Royal Palm Beach", "slug": "royal-palm-beach", "lat": 26.7104, "lng": -80.2317, "url": "/fl/palm-beach/royal-palm-beach/"}];
   var MAX_MILES = 60;
