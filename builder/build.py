@@ -13,6 +13,7 @@ as active cities in Miami-Dade, Florida.
 import json, sys, datetime, urllib.parse, math
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from scipy.stats import beta as scipy_beta   # exact Beta quantile for provider ranking
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "config" / "thresholds.json").read_text())
@@ -605,51 +606,61 @@ def _clinic_for_page(clinic, treatment_slug):
     }
 
 
-# Provider ranking — Wilson lower-bound score (Reddit's "best" sort). See rank_providers.
-MIN_CREDIBLE_REVIEWS = 50          # the >=50-review credibility tier cutoff
-WILSON_Z = 1.96                    # 95% confidence; higher z => review volume matters more
-
-def _wilson_score(c):
-    """Wilson score lower bound (returned on a 0..5 scale).
-
-    The conservative best-estimate of a provider's TRUE quality: treat the average
-    rating as a proportion of 5 stars and take the lower bound of its confidence
-    interval. More reviews tighten the interval and raise the score, so a 4.9 with
-    588 reviews outranks a 5.0 with 88 — proven track record beats a smaller-sample
-    perfect score. (A 5.0 with few reviews gets a wide interval and sinks.)
-    """
-    R = c.get("rating") or 0
-    v = c.get("review_count") or 0
-    if v <= 0:
-        return 0.0
-    p = max(0.0, min(1.0, R / 5.0))           # rating as a proportion of 5
-    z = WILSON_Z; z2 = z * z
-    centre = p + z2 / (2 * v)
-    margin = z * math.sqrt((p * (1 - p) + z2 / (4 * v)) / v)
-    return ((centre - margin) / (1 + z2 / v)) * 5.0
+# ============================================================================
+# Provider ranking — Bayesian Beta-posterior lower bound (exact Beta quantile).
+#
+# We model each provider's "true quality" as a Beta posterior over p = rating/5,
+# with a skeptical prior, then rank by the lower bound of that posterior. This does
+# NOT collapse at perfect ratings the way a frequentist proportion does — a thin 5.0
+# is pulled toward the prior and loses to a proven 4.9. The prior is an EDITORIAL
+# skepticism dial; it is a fixed constant and is NEVER derived from the listing data
+# (which is 5.0-inflated — deriving the prior from it would defeat the purpose).
+# ----------------------------------------------------------------------------
+PRIOR_MEAN = 0.90              # = 4.5 stars. Skepticism dial. FIXED — never auto-computed.
+PRIOR_STRENGTH = 50           # prior pseudo-reviews
+CONF_LEVEL = 0.05             # lower-bound quantile (5th percentile of the posterior)
+MIN_REVIEWS_FOR_BADGE = 25    # "Top Rated" badge requires at least this many reviews
+a0 = PRIOR_STRENGTH * PRIOR_MEAN          # = 45
+b0 = PRIOR_STRENGTH * (1 - PRIOR_MEAN)    # = 5
 
 
-def rank_providers(clinics):
-    """THE canonical ordering for EVERY provider list in Octoru.
+def _provider_score(c):
+    """Bayesian Beta-posterior lower bound for a provider. Computed once and memoized
+    on the record (the score is intrinsic to rating+count, identical on every page).
 
-    Any list of providers anywhere in the directory must be ordered through this
-    function — never re-sort a provider list elsewhere. Order:
-      1. Paid Featured placements first (featured_tier desc) — labeled + slot-capped.
-      2. Within organic: a credibility tier — providers with >= MIN_CREDIBLE_REVIEWS
-         (50) reviews on top, providers with < 50 reviews below them (NOT dropped).
-      3. Within each tier: Wilson lower-bound score (quality + review volume),
-         highest first.
+    Unrated / missing -> -1.0 (sorts to the BOTTOM; never inherits the prior)."""
+    if "_rank_score" in c:
+        return c["_rank_score"]
+    r = c.get("rating")
+    n = c.get("review_count")
+    if n in (None, 0) or r is None:
+        c["_rank_score"] = -1.0
+        return -1.0
+    p = r / 5.0
+    a = a0 + n * p
+    b = b0 + n * (1.0 - p)
+    score = float(scipy_beta.ppf(CONF_LEVEL, a, b))   # exact Beta quantile — NOT a normal approx
+    c["_rank_score"] = score
+    return score
 
-    Returns a new sorted list; does not mutate the input or the clinic objects.
+
+def rank_providers(providers):
+    """THE canonical ordering for EVERY ORGANIC provider list in Octoru.
+
+    Orders the ORGANIC list only. It neither overrides nor is overridden by paid
+    placement — Featured/paid listings are pinned + labeled separately by the caller.
+    Never re-sort a provider list elsewhere; always order through this function.
+
+    Deterministic for SEO stability (pages must not reshuffle across rebuilds):
+      sort key = (score DESC, review_count DESC, slug/place-id ASC)
     """
     return sorted(
-        clinics,
+        providers,
         key=lambda c: (
-            c.get("featured_tier", 0),
-            1 if (c.get("review_count") or 0) >= MIN_CREDIBLE_REVIEWS else 0,
-            _wilson_score(c),
+            -_provider_score(c),
+            -(c.get("review_count") or 0),
+            (c.get("slug") or c.get("name") or "").lower(),
         ),
-        reverse=True,
     )
 
 
@@ -658,34 +669,28 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
-    # Order this provider list through the ONE canonical ranking (Bayesian weighted
-    # rating + >=50-review credibility tier; Featured pinned). See rank_providers().
-    # (Distance is applied at the city-selection step, not here — every provider on this
-    # page is in the same city, so per-provider distance is ~equal.)
-    clinics = rank_providers(clinics)
-    # Slot cap: limit paid featured listings so pages never go all-paid.
-    featured_count = 0
-    capped = []
-    for c in clinics:
-        if c.get("featured_tier", 0) > 0:
-            if featured_count < MAX_FEATURED_PER_PAGE:
-                featured_count += 1; capped.append(c)
-            else:
-                capped.append({**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))})
-        else:
-            capped.append(c)
-    clinics = capped
 
-    # Badge the single best ORGANIC provider in the credible tier (>= MIN_CREDIBLE_REVIEWS,
-    # top of the Wilson order) as "Top rated". If no provider on the page clears the
-    # review bar, no badge is shown — we don't over-claim "Top rated" on thin data.
-    # Paid Featured listings are excluded so the two signals stay distinct. Tracked by
-    # identity (NOT by mutating the shared clinic objects, which are reused across pages).
+    # Placement is handled SEPARATELY from organic ranking. Paid Featured listings are
+    # pinned on top (slot-capped, labeled "Featured"); overflow beyond the cap is demoted
+    # to organic. rank_providers() then orders the organic list by the Beta-posterior
+    # lower bound — it neither overrides nor is overridden by placement.
+    featured = [c for c in clinics if c.get("featured_tier", 0) > 0]
+    organic = [c for c in clinics if c.get("featured_tier", 0) == 0]
+    featured_pinned = featured[:MAX_FEATURED_PER_PAGE]
+    overflow = [{**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))}
+                for c in featured[MAX_FEATURED_PER_PAGE:]]
+    featured_pinned = rank_providers(featured_pinned)          # stable order among Featured
+    organic_ranked = rank_providers(organic + overflow)        # the canonical organic order
+    clinics = featured_pinned + organic_ranked
+
+    # "Top Rated" badge — the #1 ORGANIC provider ONLY, and only if it has at least
+    # MIN_REVIEWS_FOR_BADGE reviews. Earned by the formula; NEVER assigned to a paid
+    # listing. If the #1 organic has too few reviews, no badge is shown at all.
     top_ranked_id = None
-    for c in clinics:
-        if c.get("featured_tier", 0) == 0 and (c.get("review_count") or 0) >= MIN_CREDIBLE_REVIEWS:
-            top_ranked_id = c.get("slug") or c.get("name")
-            break
+    if organic_ranked:
+        top = organic_ranked[0]
+        if (top.get("review_count") or 0) >= MIN_REVIEWS_FOR_BADGE:
+            top_ranked_id = top.get("slug") or top.get("name")
 
     n = len(clinics)
     unit = TREATMENT_UNITS.get(treatment_slug, "")
@@ -1242,6 +1247,56 @@ def render_sitemap(summaries, guide_urls=None):
     return _write("sitemap.xml", xml)
 
 
+def integrity_scan():
+    """Rating-integrity guards tied to the #1 risk (inflated / synthetic ratings).
+
+    Per-row : any provider with rating >= 4.95 AND n >= 100 is flagged to
+              needs_human.json ("implausibly perfect at volume — verify source").
+    Corpus  : if the share of providers with rating >= 4.95 AND n >= 50 exceeds 20%,
+              write a HALT-level flag ("ratings distribution implausible — likely
+              synthetic, do not publish"). Uses >= 4.95 (never == 5.0) to avoid float misses.
+
+    Writes results into state/needs_human.json idempotently (replaces the prior
+    auto-generated integrity items). Returns (row_flags, corpus_share, halt)."""
+    providers = [c for c in load_clinics() if c.get("rating") is not None]
+    row_flags = [c for c in providers
+                 if (c.get("rating") or 0) >= 4.95 and (c.get("review_count") or 0) >= 100]
+    perfect_at_volume = [c for c in providers
+                         if (c.get("rating") or 0) >= 4.95 and (c.get("review_count") or 0) >= 50]
+    share = (len(perfect_at_volume) / len(providers)) if providers else 0.0
+    halt = share > 0.20
+
+    nh_path = ROOT / "state" / "needs_human.json"
+    try:
+        nh = json.loads(nh_path.read_text())
+    except Exception:
+        nh = {"items": [], "_resolved": []}
+    managed = {"integrity-implausible-perfect-providers", "integrity-corpus-perfect-share"}
+    nh["items"] = [it for it in nh.get("items", []) if it.get("id") not in managed]
+
+    if row_flags:
+        nh["items"].insert(0, {
+            "id": "integrity-implausible-perfect-providers",
+            "opened_at": datetime.date.today().isoformat(), "opened_by": "builder",
+            "blocking": False, "severity": "verify",
+            "summary": f"{len(row_flags)} provider(s) rated >= 4.95 with >= 100 reviews — "
+                       f"implausibly perfect at volume. Verify the source data.",
+            "providers": [f"{c.get('name')} — {c.get('rating')} ({c.get('review_count')}) "
+                          f"in {c.get('neighborhood')}" for c in row_flags],
+        })
+    if halt:
+        nh["items"].insert(0, {
+            "id": "integrity-corpus-perfect-share",
+            "opened_at": datetime.date.today().isoformat(), "opened_by": "builder",
+            "blocking": True, "severity": "halt",
+            "summary": "ratings distribution implausible — likely synthetic, do not publish.",
+            "detail": f"{share:.1%} of providers are rated >= 4.95 with >= 50 reviews "
+                      f"(threshold 20%). Investigate the ratings source before any deploy.",
+        })
+    nh_path.write_text(json.dumps(nh, indent=2))
+    return row_flags, share, halt
+
+
 def main():
     state = load_state()
     if state in ("paused", "halted", "halted_technical"):
@@ -1331,6 +1386,14 @@ def main():
         print(f"[builder] WARN: {len(_broken)} broken internal link(s): {_broken[:5]}")
     if not _wrong and not _broken:
         print(f"[builder] link check: all internal links valid")
+
+    # Rating-integrity guards (inflated / synthetic ratings)
+    _row_flags, _share, _halt = integrity_scan()
+    print(f"[builder] integrity: perfect-at-volume(>=4.95 & n>=50) share = {_share:.1%} "
+          f"(halt>20%: {'YES' if _halt else 'no'}) | row flags(>=4.95 & n>=100) = {len(_row_flags)}")
+    if _halt:
+        print("[builder] *** HALT FLAG written to needs_human.json: ratings distribution "
+              "implausible — likely synthetic, DO NOT PUBLISH. ***")
 
     # DO NOT merge to main. DO NOT deploy. (hard-gated in CLAUDE.md)
     print(f"[builder] done. built={built} skipped={skipped} state={state}")

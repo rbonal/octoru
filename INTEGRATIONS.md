@@ -10,6 +10,7 @@ Two integration types. Use the right one per job:
 | Live web research | **Exa** (web + code-docs search) | MCP connector | Yes |
 | Clinic enrichment | **Google Places API** | API call | Yes (read) |
 | Page design | none — pages are **code templates** (`templates/`) | — | n/a |
+| Provider ranking | **scipy** (Python lib) | `pip install scipy` | exact Beta-posterior quantile (`scipy.stats.beta.ppf`) for the canonical `rank_providers()`; do NOT substitute a normal approximation |
 | Build / version control | **GitHub** | MCP or git CLI | commit-to-branch only |
 | Hosting / deploy | **Vercel / Netlify / Cloudflare Pages** | CLI/API | **GATED** |
 | Ranking truth | **Google Search Console** | API (service account) | Yes (read) |
