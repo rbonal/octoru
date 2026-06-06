@@ -94,7 +94,11 @@
     ],
     "rating": 4.5,
     "review_count": 62,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "AAAASF"
+    ],
+    "accreditation_source": "https://aeris.co/"
   },
   {
     "slug": "marquis-plastic-surgery",
@@ -284,7 +288,11 @@
     ],
     "rating": 4.8,
     "review_count": 155,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "AAAASF"
+    ],
+    "accreditation_source": "https://sarragaplasticsurgery.com/about-us/artis-institute-for-plastic-surgery-in-aventura-fl/"
   },
   {
     "slug": "lewen-cosmetic-center",
@@ -340,7 +348,12 @@
     ],
     "rating": 5,
     "review_count": 5,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "AAAHC",
+      "State of Florida"
+    ],
+    "accreditation_source": "https://www.instituteofaestheticmedicine.com/about-the-institute/institute-of-aesthetic-medicine/our-facility/"
   },
   {
     "slug": "miami-plastic-surgery",
@@ -466,7 +479,11 @@
     ],
     "rating": 4.8,
     "review_count": 19,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "AAAASF"
+    ],
+    "accreditation_source": "https://www.miamibeachplasticsurgery.com/"
   },
   {
     "slug": "trends-plastic-surgery",
@@ -756,7 +773,11 @@
     ],
     "rating": 4.8,
     "review_count": 160,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "Florida Department of Health licensure"
+    ],
+    "accreditation_source": "https://takeshape.info/our-facility/"
   },
   {
     "slug": "weston-center-for-plastic-surgery",
@@ -786,7 +807,11 @@
     ],
     "rating": 4.9,
     "review_count": 264,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "QUAD A"
+    ],
+    "accreditation_source": "https://www.plasticsurgeryweston.com/"
   },
   {
     "slug": "suria-cosmetic-surgery-med-spa",
@@ -942,7 +967,13 @@
     ],
     "rating": 4.9,
     "review_count": 448,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "American Association for Accreditation of Ambulatory Surgery Facilities",
+      "State of Florida",
+      "Florida Board of Medicine"
+    ],
+    "accreditation_source": "https://www.spsboca.com/about/find-your-sanctuary/"
   },
   {
     "slug": "handal-plastic-surgery",
@@ -974,7 +1005,11 @@
     ],
     "rating": 4.9,
     "review_count": 216,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "State of Florida Agency for Healthcare Administration (AHCA) licensed ambulatory surgical center"
+    ],
+    "accreditation_source": "https://www.handalplasticsurgery.com/my-practice/our-facility.html"
   },
   {
     "slug": "mosca-plastic-surgery",
@@ -1072,7 +1107,11 @@
     ],
     "rating": 4.8,
     "review_count": 544,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "American Association of Accreditation of Ambulatory Surgery Facilities (AAAASF)"
+    ],
+    "accreditation_source": "https://inspireaesthetics.com/"
   },
   {
     "slug": "5th-avenue-plastic-surgery",
@@ -1225,7 +1264,11 @@
     ],
     "rating": 4.8,
     "review_count": 159,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "AAAASF"
+    ],
+    "accreditation_source": "https://aquaplasticsurgery.com/"
   },
   {
     "slug": "jason-cooper-md-plastic-surgery",
@@ -1257,7 +1300,11 @@
     ],
     "rating": 4.8,
     "review_count": 151,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "American Association for Accreditation of Ambulatory Surgery Facilities (AAAASF)"
+    ],
+    "accreditation_source": "https://jasoncoopermd.com/about-us/accredited-surgical-center/"
   },
   {
     "slug": "palms-wellington-plastic-surgery",
@@ -1288,7 +1335,12 @@
     ],
     "rating": 4.7,
     "review_count": 135,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "Florida State licensed surgical facility",
+      "AAAASF"
+    ],
+    "accreditation_source": "https://doctornir.com/about-us/prestige-surgery-center/"
   },
   {
     "slug": "plastic-surgery-of-palm-beach-pa",
@@ -1321,7 +1373,12 @@
     ],
     "rating": 4.7,
     "review_count": 123,
-    "rating_source": "google_places"
+    "rating_source": "google_places",
+    "accreditations": [
+      "Level 3 Florida Certified Surgery Facility",
+      "Quad A"
+    ],
+    "accreditation_source": "https://www.plasticsurgerypb.com/view-our-surgery-center/"
   },
   {
     "slug": "illusions-plastic-surgery",
