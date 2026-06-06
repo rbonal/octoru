@@ -85,6 +85,35 @@ def _parent_slug(slug):
     """Returns the parent_place slug for a neighborhood/CDP, or None."""
     return PLACES_BY_SLUG.get(slug, {}).get("parent_place")
 
+# Surgeon entities (plastic-surgery vertical): data/surgeons.json (operator/prospector-owned).
+# A surgeon's contact is their clinic; ranking inherits the clinic's score. Credentials are
+# displayed AS-STATED with a source link — never adjudicated, never negated. Absent file -> {}.
+_SURGEONS_PATH = ROOT / "data" / "surgeons.json"
+try:
+    _SURGEONS_RAW = [s for s in json.loads(_SURGEONS_PATH.read_text()) if not s.get("_comment")]
+except Exception:
+    _SURGEONS_RAW = []
+SURGEONS_BY_CLINIC = {}
+for _s in _SURGEONS_RAW:
+    SURGEONS_BY_CLINIC.setdefault(_s.get("clinic_slug"), []).append(_s)
+
+def _surgeons_for(clinic_slug, treatment_slug):
+    """Surgeons at this clinic who perform this procedure (or list no procedures = all).
+    Returns display dicts; the rating shown for the listing is the CLINIC's, never the
+    surgeon's — surgeons carry only their as-stated credentials + a source link."""
+    out = []
+    for s in SURGEONS_BY_CLINIC.get(clinic_slug, []):
+        procs = s.get("procedures") or []
+        if procs and treatment_slug not in procs:
+            continue
+        out.append({
+            "name": s.get("name"),
+            "credentials_text": s.get("credentials_text") or "",
+            "credentials_source": s.get("credentials_source") or "",
+            "independent": bool(s.get("independent")),
+        })
+    return out
+
 env = Environment(
     loader=FileSystemLoader(str(ROOT / "templates")),
     autoescape=select_autoescape(["html", "j2"]),
@@ -98,6 +127,14 @@ TREATMENT_NAMES = {
     "coolsculpting": "CoolSculpting",
     "laser-hair-removal": "Laser hair removal",
     "microneedling": "Microneedling",
+    # plastic-surgery vertical
+    "bbl": "Brazilian Butt Lift (BBL)",
+    "tummy-tuck": "Tummy Tuck",
+    "breast-augmentation": "Breast Augmentation",
+    "liposuction": "Liposuction",
+    "rhinoplasty": "Rhinoplasty",
+    "mommy-makeover": "Mommy Makeover",
+    "facelift": "Facelift",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -267,10 +304,117 @@ TREATMENT_FAQS = {
             "a": "Standard microneedling causes redness and mild sensitivity for 24–48 hours — similar to a sunburn. Most patients return to work the next day with light-coverage makeup. RF microneedling may involve two to three days of more noticeable redness and some swelling. Either way, sun protection is essential for at least two weeks following treatment.",
         },
     ],
+    # ---------- plastic-surgery vertical FAQs ----------
+    "bbl": [
+        {
+            "q": "How much does a BBL cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, Brazilian Butt Lift pricing starts around {price_range}. A BBL fee usually bundles the liposuction needed to harvest the fat plus the fat transfer itself; anesthesia and accredited-facility costs are typically quoted separately. Book a consultation for a quote based on your anatomy and goals.",
+            "a_no_prices": "A Brazilian Butt Lift in South Florida commonly runs $4,000–$12,000+ depending on the surgeon, how much liposuction is involved, and anesthesia and facility fees. Because BBL safety depends heavily on technique, prioritize a board-certified plastic surgeon over the lowest price — request a personalized quote at a consultation.",
+        },
+        {
+            "q": "Is a BBL safe?",
+            "a": "A BBL carries higher risk than most cosmetic procedures because fat injected too deeply can enter large veins. Modern safety guidelines — injecting only above the muscle, often with ultrasound guidance — have substantially reduced that risk. Choose a board-certified plastic surgeon operating in an accredited facility, and ask specifically how they avoid deep fat injection.",
+        },
+        {
+            "q": "What is BBL recovery like?",
+            "a": "Most patients avoid sitting directly on the buttocks for about two to three weeks, using a special pillow when seated, and wear a compression garment. Swelling settles over several weeks, and results refine over a few months as some transferred fat is reabsorbed. Your surgeon will give you a specific aftercare and activity timeline.",
+        },
+    ],
+    "tummy-tuck": [
+        {
+            "q": "How much does a tummy tuck cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, tummy tuck pricing starts around {price_range}. The fee usually reflects the surgeon's fee, with anesthesia and accredited-facility costs quoted separately, and varies between a full and a mini procedure. A consultation will give you an accurate number for your goals.",
+            "a_no_prices": "A tummy tuck in South Florida typically runs $6,000–$12,000+ depending on whether it is a full or mini abdominoplasty and on anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+        },
+        {
+            "q": "Full or mini tummy tuck — which do I need?",
+            "a": "A full tummy tuck addresses loose skin and muscle separation above and below the navel and is common after pregnancy or major weight loss; a mini tuck targets only the area below the navel for smaller concerns. A board-certified plastic surgeon will assess your skin, muscle separation, and goals to recommend the right option.",
+        },
+        {
+            "q": "What is tummy tuck recovery like?",
+            "a": "Expect roughly two weeks before returning to desk work and about six weeks before resuming vigorous exercise. You will wear a compression garment, and many patients have temporary drains. The final contour appears over several months as swelling resolves.",
+        },
+    ],
+    "breast-augmentation": [
+        {
+            "q": "How much does breast augmentation cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, breast augmentation starts around {price_range}. The price usually reflects the surgeon's fee plus implants, anesthesia, and facility costs. A consultation will clarify your implant options and a personalized quote.",
+            "a_no_prices": "Breast augmentation in South Florida commonly runs $5,000–$10,000+ depending on implant type, the surgeon, and anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+        },
+        {
+            "q": "Saline or silicone implants — what's the difference?",
+            "a": "Silicone implants tend to feel more like natural breast tissue and are popular, while saline implants are filled after placement and can require a smaller incision. Each has trade-offs in feel, rupture detection, and follow-up. Discuss implant type, size, and placement (over or under the muscle) with a board-certified plastic surgeon.",
+        },
+        {
+            "q": "How long do breast implants last?",
+            "a": "Implants are not necessarily lifetime devices; many people eventually have them replaced or removed, often after 10 or more years, due to changes, rupture, or preference. Routine follow-up — and, for silicone, periodic imaging — is recommended. Your surgeon will outline a monitoring plan.",
+        },
+    ],
+    "liposuction": [
+        {
+            "q": "How much does liposuction cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, liposuction starts around {price_range}. Cost depends on the number and size of areas treated, plus anesthesia and facility fees. A consultation will give you a quote for your specific areas.",
+            "a_no_prices": "Liposuction in South Florida typically runs $3,000–$8,000+ depending on the number of areas treated and on anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+        },
+        {
+            "q": "Is liposuction a weight-loss procedure?",
+            "a": "No. Liposuction contours specific areas of stubborn fat — it is not a treatment for obesity or a substitute for diet and exercise. The best candidates are near their goal weight with localized fat that resists lifestyle changes.",
+        },
+        {
+            "q": "What is liposuction recovery like?",
+            "a": "Most people return to desk work within a few days to a week and wear a compression garment for several weeks to manage swelling. Bruising and firmness are normal early on, and the final contour emerges over one to three months. Your surgeon will give you an activity timeline.",
+        },
+    ],
+    "rhinoplasty": [
+        {
+            "q": "How much does rhinoplasty cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, rhinoplasty starts around {price_range}. The fee reflects the surgeon's experience plus anesthesia and facility costs, and revision cases can differ. A consultation will give you a tailored quote.",
+            "a_no_prices": "Rhinoplasty in South Florida commonly runs $7,000–$15,000+ depending heavily on the surgeon's experience and on anesthesia and facility fees. Because results depend on surgical skill, prioritize an experienced board-certified surgeon — request a quote at a consultation.",
+        },
+        {
+            "q": "How do I choose a rhinoplasty surgeon?",
+            "a": "Rhinoplasty is one of the most technically demanding cosmetic surgeries, so the surgeon's experience matters more than price. Look for a board-certified plastic or facial plastic surgeon with a large portfolio of natural-looking noses similar to your goals, and confirm they operate in an accredited facility.",
+        },
+        {
+            "q": "What is rhinoplasty recovery like?",
+            "a": "An external splint is usually worn for about a week, with bruising and swelling around the eyes fading over two to three weeks. Subtle swelling at the tip can take up to a year to fully resolve, so the final result appears gradually. Your surgeon will guide you on aftercare.",
+        },
+    ],
+    "mommy-makeover": [
+        {
+            "q": "How much does a mommy makeover cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, mommy makeover pricing starts around {price_range}. Because it combines procedures — often a tummy tuck, breast surgery, and liposuction — the total is customized to your plan, with anesthesia and facility costs included. A consultation will produce a personalized quote.",
+            "a_no_prices": "A mommy makeover in South Florida commonly runs $10,000–$20,000+ because it bundles several procedures in one surgery. The exact figure depends on which procedures you combine plus anesthesia and facility fees — request a personalized quote at a consultation.",
+        },
+        {
+            "q": "What procedures are included in a mommy makeover?",
+            "a": "It is a customizable combination, most often a tummy tuck plus breast augmentation or lift, frequently with liposuction. The plan is tailored to the changes you want to address after pregnancy. A board-certified plastic surgeon will help you decide which procedures to combine safely in one operation.",
+        },
+        {
+            "q": "What is mommy makeover recovery like?",
+            "a": "Because it bundles multiple procedures, recovery is more involved than any single surgery — typically two to three weeks before returning to light work and about six weeks before vigorous activity. Planning help with childcare and household tasks is strongly advised. Your surgeon will provide a staged recovery plan.",
+        },
+    ],
+    "facelift": [
+        {
+            "q": "How much does a facelift cost in {city}?",
+            "a_prices": "Among the {n} providers in our {city} directory, facelift pricing starts around {price_range}. The fee reflects the technique and the surgeon's experience plus anesthesia and facility costs. A consultation will clarify which approach suits you and a personalized quote.",
+            "a_no_prices": "A facelift in South Florida commonly runs $8,000–$18,000+ depending on the technique (mini vs. deep-plane), the surgeon, and anesthesia and facility fees. Request a quote at a consultation with a board-certified surgeon.",
+        },
+        {
+            "q": "How long does a facelift last?",
+            "a": "A facelift turns the clock back rather than stopping it; results commonly last roughly 8 to 12 years, though aging continues naturally afterward. Skin quality, technique, and lifestyle all affect longevity. Many patients maintain results with non-surgical treatments over time.",
+        },
+        {
+            "q": "What is the difference between a mini and a deep-plane facelift?",
+            "a": "A mini facelift addresses early jowling with shorter incisions and a quicker recovery, while a deep-plane facelift repositions deeper tissue layers for more comprehensive, longer-lasting rejuvenation. The right choice depends on your anatomy and goals — a board-certified surgeon will recommend the appropriate technique at your consultation.",
+        },
+    ],
 }
 
 
-def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county=None):
+def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county=None,
+                 category=DEFAULT_CATEGORY, fallback=False):
     """Build a rich, human-sounding page intro from real data. Each city reads as if
     written by someone who knows the area — not a template with a city name swapped in."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
@@ -281,6 +425,26 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
     n = len(clinics)
     unit = TREATMENT_UNITS.get(treatment_slug, "")
     langs = sorted({l for c in clinics for l in (c.get("languages") or [])})
+
+    # Nearest-provider fallback page: be honest that there are NO local providers, then
+    # point to the nearest ones. Never claim these providers are located in this city.
+    if fallback:
+        near_cities = []
+        for c in clinics:
+            nm = c.get("_nearby_city_name") or c.get("neighborhood_name")
+            if nm and nm not in near_cities:
+                near_cities.append(nm)
+        if len(near_cities) > 1:
+            where = ", ".join(near_cities[:-1]) + f" and {near_cities[-1]}"
+        else:
+            where = near_cities[0] if near_cities else "nearby cities"
+        return (
+            f"There are no {t_name.lower()} providers listed in {city_name} yet. "
+            f"Below are the nearest board-certified options — in {where} — ordered by distance, "
+            f"so you can still compare and book a consultation. Each listing shows the practice's "
+            f"location, contact details, and verified Google rating; the rating shown is for the "
+            f"practice, not an individual surgeon."
+        )
 
     # Neighbourhood character sentence (if we have one)
     ctx = NEIGHBORHOOD_CONTEXT.get(city, "")
@@ -338,7 +502,14 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
     if lang_str:
         parts.append(lang_str)
 
-    parts.append(f"Each listing below shows the clinic's address, phone, treatments, and verified Google rating so you can compare before booking a consultation.")
+    if category == "plastic-surgery":
+        parts.append("Each listing below shows the practice's location, contact details, the "
+                     "procedures it offers, and its verified Google rating, plus the surgeons who "
+                     "perform this procedure with their credentials as stated on the provider's "
+                     "website. The rating shown is for the practice, not an individual surgeon — "
+                     "always confirm a surgeon's credentials and facility accreditation at your consultation.")
+    else:
+        parts.append("Each listing below shows the clinic's address, phone, treatments, and verified Google rating so you can compare before booking a consultation.")
 
     return " ".join(parts)
 
@@ -375,6 +546,14 @@ TREATMENT_UNITS = {
     "coolsculpting": "per session",
     "laser-hair-removal": "per session",
     "microneedling": "per session",
+    # plastic surgery is quoted as a single surgical fee, not per-unit — no unit suffix.
+    "bbl": "",
+    "tummy-tuck": "",
+    "breast-augmentation": "",
+    "liposuction": "",
+    "rhinoplasty": "",
+    "mommy-makeover": "",
+    "facelift": "",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -382,6 +561,14 @@ TREATMENT_GUIDANCE = {
     "coolsculpting": "CoolSculpting is a non-surgical fat-reduction treatment that cools targeted areas; it is typically priced per session or per area, and several sessions may be suggested. Ask how many cycles a provider recommends for your goal.",
     "laser-hair-removal": "Laser hair removal reduces unwanted hair over a course of sessions; pricing is usually per session or per package and depends on the body area. Ask how many sessions are typical and which laser suits your skin type.",
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
+    # plastic-surgery vertical — surgical procedures. Safety-forward, board-certification-aware.
+    "bbl": "A Brazilian Butt Lift (BBL) transfers your own fat — harvested by liposuction — to reshape and add volume to the buttocks. It is a surgical procedure performed under anesthesia and is among the higher-risk cosmetic surgeries, so it should be done only by a board-certified plastic surgeon in an accredited surgical facility. Pricing is usually a single surgical fee plus anesthesia and facility costs. Ask about the surgeon's fat-transfer technique, safety protocols, and recovery during your consultation.",
+    "tummy-tuck": "A tummy tuck (abdominoplasty) removes excess skin and fat from the lower abdomen and tightens the underlying muscles, often after pregnancy or major weight loss. It is performed surgically under anesthesia, with several weeks of recovery. Choose a board-certified plastic surgeon operating in an accredited facility, and ask whether a full or mini tummy tuck suits you. Pricing is typically a single surgical fee plus anesthesia and facility costs.",
+    "breast-augmentation": "Breast augmentation increases breast size or restores volume using saline or silicone implants, or in some cases fat transfer. It is a surgical procedure performed under anesthesia. Implant type, size, and placement are decisions to make with a board-certified plastic surgeon at a consultation. Pricing usually reflects a surgical fee plus implants, anesthesia, and facility costs. Ask about implant options, longevity, and follow-up care.",
+    "liposuction": "Liposuction removes localized fat through small cannulas to contour areas such as the abdomen, flanks, thighs, or chin. It is a surgical contouring procedure, not a weight-loss method, and works best for stubborn fat in people near their goal weight. Have it performed by a board-certified plastic surgeon in an accredited facility. Pricing depends on the number and size of areas; ask for a quote and recovery plan at your consultation.",
+    "rhinoplasty": "Rhinoplasty (a 'nose job') reshapes the nose for cosmetic balance or to improve breathing. It is technically demanding and results depend heavily on the surgeon's experience, so look for a board-certified plastic or facial plastic surgeon with a strong rhinoplasty portfolio. Pricing reflects a surgical fee plus anesthesia and facility costs, and may differ for revision cases. Discuss your goals and open vs. closed technique at your consultation.",
+    "mommy-makeover": "A mommy makeover combines procedures — commonly a tummy tuck, breast surgery, and liposuction — into one surgical plan addressing changes after pregnancy. Because it bundles multiple surgeries, it should be performed by a board-certified plastic surgeon in an accredited facility, with recovery planned accordingly. Pricing is customized to the combination chosen; request a personalized quote and staged recovery guidance at your consultation.",
+    "facelift": "A facelift (rhytidectomy) tightens and repositions facial and neck tissues to soften deep folds and jowls. It is a surgical procedure under anesthesia, and results look most natural with an experienced board-certified surgeon. Techniques range from mini to deep-plane lifts. Pricing reflects a surgical fee plus anesthesia and facility costs. Ask which technique suits your anatomy and what recovery to expect at your consultation.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -391,6 +578,14 @@ TREATMENT_DESC = {
     "coolsculpting": "Non-invasive fat reduction, priced per area.",
     "laser-hair-removal": "Multi-session hair reduction, priced by area.",
     "microneedling": "Collagen-induction skin treatment, per session.",
+    # plastic-surgery vertical
+    "bbl": "Fat-transfer buttock reshaping — surgical.",
+    "tummy-tuck": "Abdominal skin and muscle tightening — surgical.",
+    "breast-augmentation": "Implant or fat breast enhancement — surgical.",
+    "liposuction": "Targeted surgical fat removal and contouring.",
+    "rhinoplasty": "Surgical reshaping of the nose.",
+    "mommy-makeover": "Combined post-pregnancy surgical procedures.",
+    "facelift": "Surgical facial and neck rejuvenation.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
@@ -635,6 +830,12 @@ def _clinic_for_page(clinic, treatment_slug):
         "uses_scraped_review_text": clinic.get("uses_scraped_review_text", False),
         "has_before_after": clinic.get("has_before_after", False),
         "before_after_consent": clinic.get("before_after_consent", False),
+        # Plastic-surgery vertical: surgeons performing THIS procedure at this practice.
+        # The rating shown above is the CLINIC's; surgeons carry only as-stated credentials.
+        "surgeons": _surgeons_for(clinic.get("slug"), treatment_slug),
+        # Nearest-provider fallback (empty-city pages): the clinic's real home city + distance.
+        "nearby_city_name": clinic.get("_nearby_city_name"),
+        "nearby_distance_mi": clinic.get("_nearby_distance_mi"),
     }
 
 
@@ -696,48 +897,59 @@ def rank_providers(providers):
     )
 
 
-def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None, category=DEFAULT_CATEGORY):
+def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
+                   category=DEFAULT_CATEGORY, fallback=False):
     """Group real clinics into one treatment x city page. Differentiation comes from
-    the real clinics + market-specific context, not boilerplate."""
+    the real clinics + market-specific context, not boilerplate.
+
+    fallback=True builds a nearest-provider page for a city with NO local providers:
+    the caller's distance order is preserved (no Beta ranking, no Featured pinning, no
+    Top Rated badge — these providers are not located in this city)."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city_name = market["city_name"]
 
-    # Placement is handled SEPARATELY from organic ranking. Paid Featured listings are
-    # pinned on top (slot-capped, labeled "Featured"); overflow beyond the cap is demoted
-    # to organic. rank_providers() then orders the organic list by the Beta-posterior
-    # lower bound — it neither overrides nor is overridden by placement.
-    featured = [c for c in clinics if c.get("featured_tier", 0) > 0]
-    organic = [c for c in clinics if c.get("featured_tier", 0) == 0]
-    featured_pinned = featured[:MAX_FEATURED_PER_PAGE]
-    overflow = [{**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))}
-                for c in featured[MAX_FEATURED_PER_PAGE:]]
-    featured_pinned = rank_providers(featured_pinned)          # stable order among Featured
-    organic_ranked = rank_providers(organic + overflow)        # the canonical organic order
-    clinics = featured_pinned + organic_ranked
-
-    # "Top Rated" badge — the #1 ORGANIC provider ONLY, and only if it has at least
-    # MIN_REVIEWS_FOR_BADGE reviews. Earned by the formula; NEVER assigned to a paid
-    # listing. If the #1 organic has too few reviews, no badge is shown at all.
     top_ranked_id = None
-    if organic_ranked:
-        top = organic_ranked[0]
-        if (top.get("review_count") or 0) >= MIN_REVIEWS_FOR_BADGE:
-            top_ranked_id = top.get("slug") or top.get("name")
+    if not fallback:
+        # Placement is handled SEPARATELY from organic ranking. Paid Featured listings are
+        # pinned on top (slot-capped, labeled "Featured"); overflow beyond the cap is demoted
+        # to organic. rank_providers() then orders the organic list by the Beta-posterior
+        # lower bound — it neither overrides nor is overridden by placement.
+        featured = [c for c in clinics if c.get("featured_tier", 0) > 0]
+        organic = [c for c in clinics if c.get("featured_tier", 0) == 0]
+        featured_pinned = featured[:MAX_FEATURED_PER_PAGE]
+        overflow = [{**c, "featured_tier": 0, "sponsored": bool(c.get("placement_tier"))}
+                    for c in featured[MAX_FEATURED_PER_PAGE:]]
+        featured_pinned = rank_providers(featured_pinned)          # stable order among Featured
+        organic_ranked = rank_providers(organic + overflow)        # the canonical organic order
+        clinics = featured_pinned + organic_ranked
+
+        # "Top Rated" badge — the #1 ORGANIC provider ONLY, and only if it has at least
+        # MIN_REVIEWS_FOR_BADGE reviews. Earned by the formula; NEVER assigned to a paid
+        # listing. If the #1 organic has too few reviews, no badge is shown at all.
+        if organic_ranked:
+            top = organic_ranked[0]
+            if (top.get("review_count") or 0) >= MIN_REVIEWS_FOR_BADGE:
+                top_ranked_id = top.get("slug") or top.get("name")
 
     n = len(clinics)
     unit = TREATMENT_UNITS.get(treatment_slug, "")
     prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
 
     # Rich human-sounding intro with neighbourhood context and real data
-    intro = _build_intro(treatment_slug, market, clinics, prices, all_county_clinics)
+    intro = _build_intro(treatment_slug, market, clinics, prices, all_county_clinics,
+                         category=category, fallback=fallback)
 
     # Meta description optimised for SERP click-through
     provider_word = "provider" if n == 1 else "providers"
     price_hint = f" Botox from ${prices[0]}/{unit}" if treatment_slug == "botox" and prices else ""
-    meta = (
-        f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL.{price_hint} "
-        f"Compare addresses, real prices and Google ratings — and book direct."
-    )
+    if fallback:
+        meta = (f"No {t_name.lower()} providers in {city_name}, FL yet — compare the nearest "
+                f"board-certified options nearby by rating and distance, and book a consultation.")
+    else:
+        meta = (
+            f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL.{price_hint} "
+            f"Compare addresses, real prices and Google ratings — and book direct."
+        )
 
     priced_clinics = [c for c in clinics if _starting_price(c, treatment_slug) is not None]
     cost = {
@@ -757,6 +969,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None, cat
 
     return {
         "category": category,
+        "fallback": fallback,
         "treatment": {"slug": treatment_slug, "name": t_name},
         "neighborhood": {"slug": market["city"], "name": city_name},
         "city": market["state_abbr"],
@@ -802,6 +1015,90 @@ def page_hold_reason(page, page_reqs):
     return None
 
 
+def _haversine_mi(a, b):
+    """Great-circle distance in miles between two (lat, lng) pairs."""
+    lat1, lng1 = a
+    lat2, lng2 = b
+    R = 3958.8
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lng2 - lng1)
+    h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * R * math.asin(math.sqrt(h))
+
+
+def _nearest_fallback_pages(category, treatments, clinics, req_fields, page_reqs,
+                            built_keys, max_nearby=5, max_distance_mi=40):
+    """Demand-capture pages for cities with NO local provider for a procedure.
+
+    For each active city x treatment that did NOT build a real page AND has zero
+    qualifying LOCAL providers, build a page showing the nearest qualifying providers
+    from OTHER cities (ordered by distance, then Beta score), with an honest empty-state
+    note. Requires city centroids (data/places.json); cities without a centroid are
+    skipped. These nearby providers also appear on their own home-city pages — that's
+    intended (a referral), so they are NOT de-duplicated or claimed.
+
+    A distance cap (max_distance_mi) keeps these pages useful and limits near-duplication:
+    if the nearest qualifying provider is farther than the cap, no fallback page is built
+    (a provider an hour+ away is not a real local option, and a city pointed only at
+    far providers would just near-duplicate closer cities' pages)."""
+    pages = []
+    # Pre-qualify candidates once per treatment: real, rated, has a centroid.
+    cands_by_t = {}
+    for t in treatments:
+        cs = []
+        for c in clinics:
+            if t not in (c.get("treatments") or []):
+                continue
+            if listing_missing_fields(c, req_fields):
+                continue
+            nb = c.get("neighborhood")
+            if nb not in CITY_LATLNG:
+                continue
+            cs.append(c)
+        cands_by_t[t] = cs
+
+    for market in active_markets():
+        city = market["city"]
+        if city not in CITY_LATLNG:
+            continue
+        origin = CITY_LATLNG[city]
+        for t in treatments:
+            key = (market["state"], market["county"], city, t)
+            if key in built_keys:
+                continue
+            # Only fall back when there are ZERO qualifying LOCAL providers.
+            local = [c for c in clinics
+                     if _clinic_in_market(c, market) and t in (c.get("treatments") or [])
+                     and not listing_missing_fields(c, req_fields)]
+            if local:
+                continue
+            scored = []
+            for c in cands_by_t.get(t, []):
+                if c.get("neighborhood") == city:
+                    continue
+                d = _haversine_mi(origin, CITY_LATLNG[c["neighborhood"]])
+                if d > max_distance_mi:
+                    continue
+                scored.append((d, c))
+            if not scored:
+                continue
+            scored.sort(key=lambda dc: (dc[0], -_provider_score(dc[1])))
+            chosen = []
+            for d, c in scored[:max_nearby]:
+                cc = dict(c)
+                cc["_nearby_distance_mi"] = round(d)
+                cc["_nearby_city_name"] = c.get("neighborhood_name") \
+                    or NEIGHBORHOOD_NAMES.get(c.get("neighborhood"), (c.get("neighborhood") or "").replace("-", " ").title())
+                chosen.append(cc)
+            page = _assemble_page(t, market, chosen, all_county_clinics=None,
+                                  category=category, fallback=True)
+            if page_hold_reason(page, page_reqs):
+                continue
+            pages.append(page)
+    return pages
+
+
 def fetch_pages(spec=None, enforce=False):
     """Build pages for EVERY category in seed_scope.categories across the shared
     neighborhood scope, applying per-category completeness overrides. Returns
@@ -838,11 +1135,23 @@ def fetch_pages(spec=None, enforce=False):
             continue
         cat_pages = _fetch_category_pages(category, treatments, req_fields, page_reqs,
                                           enforce, cat_clinics, report)
+        # Nearest-provider fallback (plastic-surgery only): under-served cities with NO local
+        # provider still get a page showing the nearest board-certified options + honest note.
+        fb_pages = []
+        if category == "plastic-surgery" and enforce:
+            built_keys = {(p["geo"]["state"], p["geo"]["county"], p["geo"]["city"], p["treatment"]["slug"])
+                          for p in cat_pages}
+            fb_pages = _nearest_fallback_pages(category, treatments, cat_clinics, req_fields,
+                                               page_reqs, built_keys)
+            report.setdefault("nearest_fallback_pages", 0)
+            report["nearest_fallback_pages"] += len(fb_pages)
         report["categories_built"].append({"category": category, "pages": len(cat_pages),
-                                           "clinics": len(cat_clinics)})
+                                           "fallback_pages": len(fb_pages), "clinics": len(cat_clinics)})
         print(f"[builder] category '{category}': {len(cat_pages)} page(s) from "
-              f"{len(cat_clinics)} clinic(s), min_listings={page_reqs.get('min_listings', 0)}")
+              f"{len(cat_clinics)} clinic(s), min_listings={page_reqs.get('min_listings', 0)}"
+              + (f" (+{len(fb_pages)} nearest-provider fallback page(s))" if fb_pages else ""))
         pages.extend(cat_pages)
+        pages.extend(fb_pages)
     return pages, report
 
 

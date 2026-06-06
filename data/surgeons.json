@@ -1,0 +1,847 @@
+[
+  {
+    "_comment": "Plastic-surgery surgeon entities. Contact = their clinic (clinic_slug). Ranking inherits the clinic's Beta score. Credentials are shown AS-STATED from credentials_source and are NEVER adjudicated or negated. Generated from research; clinic_slug matches data/prospector/plastic_surgery_clinics.json slugs."
+  },
+  {
+    "slug": "jorge-de-la-pedraja-md",
+    "name": "Jorge de la Pedraja, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Bachelor of Science (BS) in biology and chemistry from University of Miami; Master of Science (MS) from Georgetown University; Medical Degree (MD) from University of Kansas; trained in general surgery and plastic/reconstructive surgery at University of Miami/Jackson Memorial Hospital; chief resident in both general and plastic/reconstructive surgery; fellowship training in aesthetic and breast surgery with Dr. Scott Spear at Georgetown University Hospital; board certified by American Board of Plastic Surgery; fellow of American College of Surgeons.",
+    "credentials_source": "https://www.gablesplasticsurgery.com/about/jorge-de-la-pedraja-md/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "gables-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "stephan-baker-md-facs",
+    "name": "Stephan Baker, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Bachelor of Arts, High Honors in Chemistry, Phi Beta Kappa (Oberlin College); Doctor of Medicine, New York University School of Medicine; Five-Year Residency/Chief Residency in General Surgery, Columbia University's St. Luke's Roosevelt Hospital Center; Four Year Residency/Chief Residency/Fellowship in Plastic and Reconstructive Surgery under Dr. D. Ralph Millard Jr. at University of Miami/Jackson Memorial Medical Center; Executive MBA in Health Administration, University of Miami School of Business Administration; American Board of Plastic Surgery, Maintenance of Certification 2005 and 2015; American Board of Surgery, 1990.",
+    "credentials_source": "https://www.drbaker.com/about/dr-baker/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "stephan-baker-md-facs",
+    "independent": true
+  },
+  {
+    "slug": "marcelo-ghersi-md",
+    "name": "Marcelo Ghersi, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Bachelor of Science from Florida Atlantic University, Honors Magna Cum Laude; Doctor of Medicine from George Washington University; General Surgery Residency at Mount Sinai Medical Center; Plastic and Reconstructive Surgery Residency at Cleveland Clinic in Weston; Fellowship in Advanced Aesthetic Plastic Surgery at Manhattan Eye, Ear, and Throat Hospital and Lenox Hill Hospital in New York; Certified by the American Board of Plastic Surgery.",
+    "credentials_source": "https://aeris.co/marcelo-ghersi-md/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "aeris-plastic-surgery-aesthetic-medicine",
+    "independent": true
+  },
+  {
+    "slug": "arthur-e-desrosiers-iii-md",
+    "name": "Arthur E. Desrosiers III, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "M.D., Columbia University College of Physicians & Surgeons, New York; B.A., Dartmouth College, Hanover NH, Cum Laude; General Surgery Residency, UMDNJ [Princeton Univ. & Robert Wood Johnson Univ. Hospital]; Plastic & Reconstructive Surgery Fellowship, University of Miami—Jackson Memorial Hospital; Craniofacial Plastic Surgery Fellowship [Mentor: S. Anthony Wolfe, MD, FACS]; Board-Certified Plastic Surgeon.",
+    "credentials_source": "https://arthurmd.com/home/dr-desrosiers/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "marquis-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "pat-pazmino-md-facs",
+    "name": "Pat Pazmino, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "MD, FACS; board-certified plastic surgeon; Harvard-educated; Board Certified by the American Board of Plastic Surgery; Member of the American Society of Plastic Surgeons and Fellow of the American College of Surgeons.",
+    "credentials_source": "https://miamiaesthetic.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "miami-aesthetic",
+    "independent": true
+  },
+  {
+    "slug": "benjamin-liliav-md-facs",
+    "name": "Benjamin Liliav, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double-Board-Certified Plastic Surgeon; Benjamin Liliav, MD, FACS.",
+    "credentials_source": "https://www.exceptionalplasticsurgery.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "exceptional-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "julio-f-gallo-md-facs",
+    "name": "Julio F. Gallo, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Julio F. Gallo, MD, FACS (Fellow, American College of Surgeons) is a board certified facial plastic surgeon, board certified in both facial plastic and reconstructive surgery; degree from the Pritzker School of Medicine at the University of Chicago; internship in general surgery at Jackson Memorial Hospital (University of Miami); residency in head and neck surgery; fellowship in facial plastic surgery under Robert L. Simons, MD, FACS.",
+    "credentials_source": "https://www.gallomd.com/about/",
+    "procedures": [
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "gallo-md",
+    "independent": true
+  },
+  {
+    "slug": "andres-g-sarraga-md-facs",
+    "name": "Andres G. Sarraga, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double-board certified and fellowship-trained plastic surgeon; medical school at the University of Puerto Rico (Alpha Omega Alpha honor society, top 10 percent of class); general surgery residency at the University of Puerto Rico; plastic surgery residency at the University of Massachusetts; Fellowship in Ophthalmic Plastic and Reconstructive Surgery with Dr. Pascale Perusse; Board Certified in General Surgery; Board Certified Plastic Surgeon.",
+    "credentials_source": "https://sarragaplasticsurgery.com/about-us/meet-dr-sarraga/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "the-artis-institute-for-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "alberto-s-gallerani-md",
+    "name": "Alberto S. Gallerani, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified by The American Board of Plastic and Reconstructive Surgery; rigorously trained in General Surgery, Trauma, Plastic and Reconstructive Surgery and Aesthetic Facial, Breast and Body Surgery.",
+    "credentials_source": "https://www.drgalleranimd.com/index.html",
+    "procedures": [
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "the-medici-institute",
+    "independent": true
+  },
+  {
+    "slug": "gregory-lewen-md",
+    "name": "Gregory Lewen, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double Board-Certified Ophthalmologist specializing in Oculofacial Plastic and Reconstructive Surgery.",
+    "credentials_source": "https://www.lewencosmetic.com/",
+    "procedures": [
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "lewen-cosmetic-center",
+    "independent": true
+  },
+  {
+    "slug": "james-m-stuzin-md",
+    "name": "James M. Stuzin, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certifications: American Board of Plastic Surgery; American Board of General Surgery. Bachelor of Arts, University of Florida, Gainesville, FL; M.D., University of Florida School of Medicine, Gainesville, FL; Internship and Residency in General Surgery, University of Washington Affiliated Hospitals, Seattle, WA; Fellowship in Plastic Surgery, New York University Hospitals, NY; Craniofacial Fellow, University of Miami Hospitals, Miami, FL; Craniofacial Fellow, UCLA, Los Angeles, CA.",
+    "credentials_source": "https://www.instituteofaestheticmedicine.com/about-the-institute/our-physicians/dr-james-m-stuzin/",
+    "procedures": [
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "institute-of-aesthetic-medicine",
+    "independent": true
+  },
+  {
+    "slug": "george-m-varkarakis-md-facs",
+    "name": "George M. Varkarakis, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board certified in Plastic Surgery and Craniofacial Surgery; MD, FACS (Fellow of the American College of Surgeons); over 18 years of practice and training.",
+    "credentials_source": "https://gvplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "gv-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-jason-altman",
+    "name": "Dr. Jason Altman",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified by both the American Board of Plastic Surgery and The American Board of Otolaryngology",
+    "credentials_source": "https://miamiplasticsurgery.com/surgeons/dr-jason-altman/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover"
+    ],
+    "clinic_slug": "miami-plastic-surgery",
+    "independent": false
+  },
+  {
+    "slug": "dr-carlos-wolf",
+    "name": "Dr. Carlos Wolf",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board certified by both the American Board of Facial Plastic and Reconstructive Surgery, the American Board of Otolaryngology",
+    "credentials_source": "https://miamiplasticsurgery.com/surgeons/dr-carlos-wolf/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover"
+    ],
+    "clinic_slug": "miami-plastic-surgery",
+    "independent": false
+  },
+  {
+    "slug": "dr-enrique-hanabergh-jr",
+    "name": "Dr. Enrique Hanabergh Jr.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "board-certified Diplomate of the American Board of Plastic Surgery and Fellow of the American College of Surgeons",
+    "credentials_source": "https://drhanabergh.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover"
+    ],
+    "clinic_slug": "enrique-hanabergh-md",
+    "independent": true
+  },
+  {
+    "slug": "dr-baruch-jacobs",
+    "name": "Dr. Baruch Jacobs",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified by both the American Board of Plastic Surgery and the American Board of Surgery; Fellow of the American College of Surgeons",
+    "credentials_source": "https://www.miamibeachplasticsurgery.com/about/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "miami-beach-cosmetic-plastic-surgery-center",
+    "independent": true
+  },
+  {
+    "slug": "dr-daniel-zeichner",
+    "name": "Dr. Daniel Zeichner",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified Plastic Surgeon",
+    "credentials_source": "https://www.thesecretplasticsurgery.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover"
+    ],
+    "clinic_slug": "the-secret-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "bernard-a-shuster-md-facs",
+    "name": "Bernard A. Shuster, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Diplomate of the American Board of Plastic Surgery; Fellow of the American College of Surgeons; member of the American Society of Plastic Surgeons. Medical degree from Cornell University Medical College; residency (Chief Resident) and fellowship in Plastic and Reconstructive Surgery at Stanford University Medical Center.",
+    "credentials_source": "https://www.drshuster.net/about/dr-bernard-shuster/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "shuster-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "yoav-barnavon-md-facs",
+    "name": "Yoav Barnavon, M.D., F.A.C.S.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-Certified Plastic Surgeon with more than three decades of experience in plastic and reconstructive surgery; world-leading expert in autologous breast augmentation.",
+    "credentials_source": "https://psssf.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "plastic-surgery-specialists-of-south-florida",
+    "independent": true
+  },
+  {
+    "slug": "christopher-j-low-md",
+    "name": "Christopher J. Low, M.D.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "board certified by the American Board of Plastic Surgery",
+    "credentials_source": "https://www.crsplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "cosmetic-and-reconstructive-specialists-of-florida",
+    "independent": false
+  },
+  {
+    "slug": "michael-c-cheung-md",
+    "name": "Michael C. Cheung, M.D.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "board certified by both The American Board of Surgery and by The American Board of Plastic Surgery",
+    "credentials_source": "https://www.crsplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "cosmetic-and-reconstructive-specialists-of-florida",
+    "independent": false
+  },
+  {
+    "slug": "lisa-j-learn-md",
+    "name": "Lisa J. Learn, M.D.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon",
+    "credentials_source": "https://www.fortlauderdaleplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "fort-lauderdale-plastic-surgery",
+    "independent": false
+  },
+  {
+    "slug": "jason-r-dudas-md",
+    "name": "Jason R. Dudas, M.D.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon",
+    "credentials_source": "https://www.fortlauderdaleplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "fort-lauderdale-plastic-surgery",
+    "independent": false
+  },
+  {
+    "slug": "george-dreszer-md-ms-facs",
+    "name": "George Dreszer, MD, MS, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified by the American Board of Plastic Surgery 11/16/2013, Certificate Number: 08364. Drexel University College of Medicine, Doctor of Medicine. Chief Resident in Plastic and Reconstructive Surgery, University of Minnesota; Fellow in Plastic and Reconstructive Surgery, University of Medicine and Dentistry, New Jersey.",
+    "credentials_source": "https://www.vapsfl.com/about/experience-training-publications",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "vanguard-aesthetic-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "rainer-e-sachse-md-facs",
+    "name": "Rainer E. Sachse, M.D., FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "board certified Plastic and Reconstructive surgeon; American Boards of Plastic Surgery, American Boards of Laser Surgery, German Boards of Oral and Maxillofacial Surgery and German Boards of Plastic Surgery",
+    "credentials_source": "http://www.drsachse.com/about.php",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "broward-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "russell-sassani-md",
+    "name": "Russell Sassani, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Certified by the American Board of Plastic Surgery",
+    "credentials_source": "https://takeshape.info/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "takeshape-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "nathan-eberle-md-dds-facs",
+    "name": "Nathan Eberle, M.D., D.D.S., F.A.C.S.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double Board-Certified Plastic Surgeon",
+    "credentials_source": "https://www.plasticsurgeryweston.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "facelift"
+    ],
+    "clinic_slug": "weston-center-for-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "shashi-kusuma-md",
+    "name": "Shashi Kusuma, MD",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double board certified in Plastic Surgery and Otolaryngology",
+    "credentials_source": "https://suriaplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "suria-cosmetic-surgery-med-spa",
+    "independent": true
+  },
+  {
+    "slug": "jon-f-harrell-do-facs",
+    "name": "Jon F. Harrell, DO, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Diplomate American Board of Plastic Surgery and American Board of Otolaryngology",
+    "credentials_source": "https://www.westonsurgery.com/dr-jon-harrell.html",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "the-weston-center-for-aesthetic-medicine-and-surgery",
+    "independent": true
+  },
+  {
+    "slug": "david-j-levens-md-facs",
+    "name": "David J. Levens, M.D., FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified Plastic Surgery (ABPS); member of American Society of Plastic Surgeons (ASPS) and American Society for Aesthetic Plastic Surgery (ASAPS)",
+    "credentials_source": "https://www.drlevens.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "david-j-levens-md-plastic-surgery-med-spa",
+    "independent": true
+  },
+  {
+    "slug": "ramiro-morales-jr-md-facs",
+    "name": "Ramiro Morales, Jr., M.D., F.A.C.S.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "American Board of Plastic Surgery Certification; received his medical degree with honors from University of South Florida College of Medicine; completed general and plastic surgery residencies at the University of Illinois at Chicago (UIC).",
+    "credentials_source": "https://www.moralesplasticsurgery.com/html/about.html",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "facelift"
+    ],
+    "clinic_slug": "the-plastic-surgery-practice-of-dr-ramiro-morales",
+    "independent": true
+  },
+  {
+    "slug": "rafael-c-cabrera-md-facs",
+    "name": "Rafael C. Cabrera, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon, FACS (Fellow of the American College of Surgeons). Education: Cornell University (undergraduate), NYU School of Medicine, Manhattan Eye, Ear & Throat Hospital.",
+    "credentials_source": "https://www.pssbocaraton.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "facelift"
+    ],
+    "clinic_slug": "plastic-surgery-specialists-of-boca-raton",
+    "independent": true
+  },
+  {
+    "slug": "dr-jason-pozner",
+    "name": "Dr. Jason Pozner",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "M.D. F.A.C.S. Certified by the American Board of Plastic Surgery. Graduated from the Mount Sinai School of Medicine in New York; five-year general surgery residency at Mount Sinai Medical Center; Microsurgery Fellowship at Montefiore Medical Center; Plastic Surgery residency at Downstate Medical Center in New York. Member of the American Society of Plastic Surgeons and the American Society of Aesthetic Plastic Surgery. Adjunct clinical faculty at Cleveland Clinic Florida Department of Plastic Surgery.",
+    "credentials_source": "https://www.spsboca.com/about/our-surgeons/dr-jason-pozner/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "sanctuary-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "arthur-g-handal-md-facs",
+    "name": "Arthur G. Handal, M.D., F.A.C.S.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board certified by the American Board of Plastic Surgery. Fellowship training in hand surgery (Hartford Hospital, Connecticut); fellowship training in aesthetic surgery (University of Miami association).",
+    "credentials_source": "https://www.handalplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "handal-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-kevin-mosca",
+    "name": "Dr. Kevin Mosca",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-Certified Plastic and Reconstructive Surgeon",
+    "credentials_source": "https://www.drbocaraton.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "mosca-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "scott-t-farber-md-facs",
+    "name": "Scott T. Farber, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified in plastic surgery; FACS (Fellow of the American College of Surgeons). MD, The George Washington University (2003).",
+    "credentials_source": "https://www.farberplasticsurgery.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "farber-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-daniel-crane",
+    "name": "Dr. Daniel Crane",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon. Member of the American Society of Plastic Surgeons (ASPS) and The American Society for Aesthetic Plastic Surgery (ASAPS). Medical degree from Tel Aviv University; surgical residency at the University of Buffalo; aesthetic plastic surgery specialization at the Medical University of South Carolina. Selected as one of only 30 plastic surgery residents nationwide for advanced aesthetic fellowship training endorsed by ASAPS.",
+    "credentials_source": "https://inspireaesthetics.com/about/dr-daniel-crane/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "inspire-aesthetics",
+    "independent": false
+  },
+  {
+    "slug": "dr-matthew-goodwin",
+    "name": "Dr. Matthew Goodwin",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon. Medical degree from Yale University School of Medicine; general surgery and plastic surgery residency at Washington University in St. Louis/Barnes-Jewish Hospital; fellowship in advanced breast reconstruction and cosmetic surgery. Clinical Assistant Professor at Florida International University. Undergraduate at Princeton University.",
+    "credentials_source": "https://inspireaesthetics.com/about/dr-matthew-goodwin/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "inspire-aesthetics",
+    "independent": false
+  },
+  {
+    "slug": "johanna-dagostino-md-facs",
+    "name": "Johanna D'Agostino, MD, FACS",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Double Board-Certified Plastic and Reconstructive Surgeon",
+    "credentials_source": "https://5thavenueplasticsurgery.com/about-us/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "5th-avenue-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-fredric-m-barr-md-facs",
+    "name": "Dr. Fredric M. Barr, M.D., F.A.C.S.",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-Certified Plastic Surgeon by the American Board of Plastic Surgery.",
+    "credentials_source": "https://palmbeachplasticsurgery.com/",
+    "procedures": [
+      "tummy-tuck",
+      "liposuction",
+      "facelift"
+    ],
+    "clinic_slug": "palm-beach-plastic-cosmetic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-david-lickstein",
+    "name": "Dr. David Lickstein",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certification: American Board of Plastic Surgery (2004-present). Doctor of Medicine, Northwestern University Medical School, Chicago, Illinois (1993). General Surgery Residency: Northwestern University McGaw Medical Center; Tufts University-New England Medical Center. Plastic and Reconstructive Surgery Residency: Albany Medical College. Fellowship in Hand and Microsurgery: Harvard Medical School-Massachusetts General Hospital. Fellow, The American College of Surgeons (2002-present).",
+    "credentials_source": "https://www.licksteinplasticsurgery.com/about-us/meet-dr-lickstein/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "lickstein-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-brian-hass",
+    "name": "Dr. Brian Hass",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified plastic surgeon. Member of the American Society of Plastic Surgeons.",
+    "credentials_source": "https://www.hassplasticsurgery.com/meet-our-staff/meet-our-doctors/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "hass-plastic-surgery-medispa",
+    "independent": true
+  },
+  {
+    "slug": "dr-david-rankin",
+    "name": "Dr. David Rankin",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board certification: American Board of Plastic Surgery. Member of the American Medical Association, American Society of Plastic Surgeons, Florida Medical Association, Palm Beach County Medical Society, and Palm Beach County Society of Plastic Surgeons. Chief of plastic surgery at St. Mary's Medical Center.",
+    "credentials_source": "https://aquaplasticsurgery.com/about/meet-dr-rankin/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "aqua-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-jason-cooper",
+    "name": "Dr. Jason Cooper",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board-certified, Harvard-trained plastic surgeon.",
+    "credentials_source": "https://jasoncoopermd.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "jason-cooper-md-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-itzhak-nir",
+    "name": "Dr. Itzhak Nir",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified Cosmetic and Reconstructive Plastic Surgeon specializing in Aesthetic Surgery of the Face, Body, and Breasts. Training from University of Miami / Jackson Memorial Hospital.",
+    "credentials_source": "https://doctornir.com/",
+    "procedures": [
+      "tummy-tuck",
+      "breast-augmentation",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "palms-wellington-plastic-surgery",
+    "independent": true
+  },
+  {
+    "slug": "dr-alan-pillersdorf",
+    "name": "Dr. Alan Pillersdorf",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified Plastic Surgeon",
+    "credentials_source": "https://www.plasticsurgerypb.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "plastic-surgery-of-palm-beach-pa",
+    "independent": false
+  },
+  {
+    "slug": "dr-dov-i-eidelman",
+    "name": "Dr. Dov I. Eidelman",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Board Certified Plastic Surgeon",
+    "credentials_source": "https://www.plasticsurgerypb.com/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "plastic-surgery-of-palm-beach-pa",
+    "independent": false
+  },
+  {
+    "slug": "dr-andrew-h-rosenthal",
+    "name": "Dr. Andrew H. Rosenthal",
+    "category": "plastic-surgery",
+    "type": "surgeon",
+    "credentials_text": "Nationally recognized, board-certified plastic surgeon (American Board of Plastic Surgery). Served as President of the Florida Society of Plastic Surgeons.",
+    "credentials_source": "https://www.rosenthal-md.com/about-us/dr-rosenthal/",
+    "procedures": [
+      "bbl",
+      "tummy-tuck",
+      "breast-augmentation",
+      "liposuction",
+      "rhinoplasty",
+      "mommy-makeover",
+      "facelift"
+    ],
+    "clinic_slug": "rosenthal-cosmetic-plastic-surgery",
+    "independent": true
+  }
+]

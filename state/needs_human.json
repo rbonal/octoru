@@ -8,7 +8,7 @@
       "blocking": false,
       "severity": "halt",
       "summary": "ratings distribution implausible \u2014 HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
-      "detail": "31.0% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
+      "detail": "24.9% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
       "human_override": {
         "at": "2026-06-06",
         "by": "Rolando (operator)",
@@ -22,7 +22,7 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "verify",
-      "summary": "35 provider(s) rated >= 4.95 with >= 100 reviews \u2014 implausibly perfect at volume. Verify the source data.",
+      "summary": "36 provider(s) rated >= 4.95 with >= 100 reviews \u2014 implausibly perfect at volume. Verify the source data.",
       "providers": [
         "Skin Healthy Miami \u2014 5 (180) in brickell",
         "Only Med Glam \u2014 5 (109) in coral-gables",
@@ -58,7 +58,8 @@
         "AlluraMD Aesthetics (Jupiter) \u2014 5 (145) in jupiter",
         "AlluraMD Aesthetics (Wellington) \u2014 5 (124) in wellington",
         "Wellington Rejuvenation Center \u2014 5 (343) in wellington",
-        "Palm Beach Anti-Aging (RPB) \u2014 5 (129) in royal-palm-beach"
+        "Palm Beach Anti-Aging (RPB) \u2014 5 (129) in royal-palm-beach",
+        "Miami Plastic Surgery \u2014 5 (404) in kendall"
       ]
     },
     {
@@ -111,15 +112,6 @@
       "severity": "info",
       "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions \u2014 still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
       "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has \u22652 qualifying clinics for a treatment, it builds its own page instead of rolling up."
-    },
-    {
-      "id": "vertical-empty-plastic-surgery",
-      "opened_at": "2026-06-06",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "operator-action-to-activate",
-      "summary": "Category 'plastic-surgery' is armed in config (seed_scope.categories.plastic-surgery) but data/prospector has 0 qualifying 'plastic-surgery' clinics \u2014 the builder built nothing for it. Other categories built normally.",
-      "operator_action": "Add real 'plastic-surgery' provider data to data/prospector/ (records with category=\"plastic-surgery\" and matching treatment slugs), then re-run the build. Do NOT fabricate providers."
     }
   ],
   "_resolved": [

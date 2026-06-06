@@ -537,3 +537,17 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 /* "Top rated" tag — the best organic provider by review index (rating x reviews) */
 .top-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--green); font-weight: 600; }
+
+/* plastic-surgery vertical: nearby fallback + surgeon credentials */
+.nearby-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3); font-weight: 600; display: inline-block; }
+.nearby-note { background: var(--blue-tint); border: 1px solid var(--blue-line);
+  border-radius: 6px; padding: 14px 18px; margin: 8px 0 20px; font-size: 15px; color: var(--ink-2); }
+.nearby-note strong { color: var(--ink); }
+.surgeons { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line-strong); }
+.surgeons > .label { display: block; margin-bottom: 8px; }
+.surgeon { margin-bottom: 12px; }
+.surgeon-name { display: block; font-weight: 600; font-size: 15px; color: var(--ink); }
+.surgeon-cred { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+.surgeon-src { display: inline-block; font-size: 12px; margin-top: 3px; }
+.surgeon-disclaimer { font-size: 12px; color: var(--ink-3); margin-top: 8px; font-style: italic; }

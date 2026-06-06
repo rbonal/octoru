@@ -127,12 +127,21 @@
   </section>
   {%- endif %}
 
+  {%- if fallback %}
+  <div class="nearby-note">
+    <strong>No {{ treatment.name | lower }} providers in {{ neighborhood.name }} yet.</strong>
+    These are the nearest board-certified options, ordered by distance. The rating shown on each
+    is for the practice, not an individual surgeon.
+  </div>
+  {%- endif %}
+
   <!-- featured clinics first; featured_tier drives ordering + the blue edge -->
   <section class="clinics">
     {%- for c in clinics %}
     <article class="clinic{{ ' featured' if c.featured_tier and c.featured_tier > 0 }}">
       <div>
         {% if c.featured_tier and c.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% elif c.top_ranked %}<span class="top-tag">★ Top rated</span>{% endif %}
+        {% if c.nearby_city_name %}<span class="nearby-tag">Nearby · ~{{ c.nearby_distance_mi }} mi · {{ c.nearby_city_name }}</span>{% endif %}
         <div class="name">{{ c.name }}</div>
         <div class="meta">{{ c.neighborhood }}{% if c.languages %} · {{ c.languages | join(", ") }}{% endif %}</div>
         {% if c.address %}<div class="meta">{{ c.address }}</div>{% else %}<div class="meta muted">Address not listed</div>{% endif %}
@@ -142,6 +151,19 @@
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
+        {%- if c.surgeons %}
+        <div class="surgeons">
+          <span class="label">Surgeon{{ "s" if c.surgeons | length > 1 }} performing {{ treatment.name | lower }} here</span>
+          {%- for s in c.surgeons %}
+          <div class="surgeon">
+            <span class="surgeon-name">{{ s.name }}</span>
+            {%- if s.credentials_text %}<span class="surgeon-cred">{{ s.credentials_text }}</span>{% endif %}
+            {%- if s.credentials_source %}<a class="surgeon-src" href="{{ s.credentials_source }}" target="_blank" rel="noopener nofollow">Credentials as listed on the provider's website ↗</a>{% endif %}
+          </div>
+          {%- endfor %}
+          <p class="surgeon-disclaimer">The rating above is for this practice, not an individual surgeon. Confirm each surgeon's credentials and facility accreditation at your consultation.</p>
+        </div>
+        {%- endif %}
         <div class="claim-line">
           <a href="/claim.html?clinic={{ c.slug | urlencode }}&amp;name={{ c.name | urlencode }}">Own this clinic? Claim or correct this listing</a>
           {%- if not (c.featured_tier and c.featured_tier > 0) %}

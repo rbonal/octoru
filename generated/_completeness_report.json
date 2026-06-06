@@ -857,24 +857,30 @@
     }
   ],
   "deduped": [],
-  "empty_categories": [
-    "plastic-surgery"
-  ],
+  "empty_categories": [],
   "categories_built": [
     {
       "category": "med-spa",
       "pages": 121,
+      "fallback_pages": 0,
       "clinics": 145
+    },
+    {
+      "category": "plastic-surgery",
+      "pages": 125,
+      "fallback_pages": 204,
+      "clinics": 44
     }
   ],
+  "nearest_fallback_pages": 204,
   "empty_fields": {
-    "unique_clinics": 111,
+    "unique_clinics": 155,
     "missing_phone": 0,
-    "missing_email": 109,
+    "missing_email": 153,
     "missing_address": 0,
-    "missing_booking_url": 7,
-    "price_empty_state_listings": 342,
-    "price_total_listings": 346
+    "missing_booking_url": 51,
+    "price_empty_state_listings": 1608,
+    "price_total_listings": 1612
   },
   "mode": "enforced",
   "thresholds_used": {
