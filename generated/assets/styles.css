@@ -320,8 +320,17 @@ body.home { font-size: 16px; }
 .home .sec-head h2 { font-weight: 700; letter-spacing: -.03em; font-size: clamp(26px,3vw,34px); line-height: 1.05; }
 .home .sec-head p { color: var(--ink-3); font-size: 15px; margin-top: 6px; max-width: 48ch; }
 
-/* treatment cards */
-.home .treat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+/* category blocks (one equal section per vertical; extensible to N categories) */
+.home .cat-block { margin-bottom: 40px; }
+.home .cat-block:last-child { margin-bottom: 0; }
+.home .cat-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.home .cat-head h3 { font-size: 21px; font-weight: 700; letter-spacing: -.025em; }
+.home .cat-head .label { display: block; margin-top: 4px; }
+.home .cat-stat { white-space: nowrap; }
+
+/* treatment cards — auto-fill so any category (5, 7, N treatments) lays out cleanly */
+.home .treat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
 .home .tcard { position: relative; background: var(--paper-pure); border: 1px solid var(--line); border-radius: var(--r);
   padding: 22px 20px 20px; display: flex; flex-direction: column; min-height: 188px;
   transition: transform .18s ease,box-shadow .18s ease,border-color .18s ease; }

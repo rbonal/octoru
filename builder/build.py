@@ -68,6 +68,32 @@ def _category_page_reqs(spec, category):
     base.update(override)
     return base
 
+# Human-facing labels for each category/vertical. Drives the homepage and any other
+# category-aware surface. UNKNOWN future categories degrade gracefully (name derived from
+# the slug, empty tagline) so a new vertical surfaces on the homepage with zero code changes —
+# add a row here only to give it a nicer label/tagline.
+CATEGORY_META = {
+    "med-spa": {
+        "name": "Med spa",
+        "tagline": "Non-surgical aesthetic & wellness treatments",
+        "noun": "treatment",
+    },
+    "plastic-surgery": {
+        "name": "Plastic surgery",
+        "tagline": "Board-certified surgical procedures",
+        "noun": "procedure",
+    },
+}
+
+def _category_name(category):
+    return (CATEGORY_META.get(category) or {}).get("name") or category.replace("-", " ").title()
+
+def _category_tagline(category):
+    return (CATEGORY_META.get(category) or {}).get("tagline") or ""
+
+def _category_noun(category):
+    return (CATEGORY_META.get(category) or {}).get("noun") or "treatment"
+
 # Place taxonomy: loaded from data/places.json (operator-owned).
 # Provides place type, parent_place for rollup, lat/lng for geolocation.
 _PLACES_PATH = ROOT / "data" / "places.json"
@@ -597,12 +623,13 @@ CITY_LATLNG = {
 }
 
 
-def treatment_cards(all_clinics):
-    """Homepage treatment cards. 'Typical from' price is computed from REAL listing prices;
-    treatments without enough real data get the honest empty state (no placeholder $)."""
+def treatment_cards(clinics, treatments):
+    """Homepage treatment cards for a given treatment list. 'Typical from' price is
+    computed from REAL listing prices in `clinics`; treatments without enough real data
+    get the honest empty state (no placeholder $)."""
     cards = []
-    for t in CONFIG["seed_scope"]["treatments"]:
-        vals = sorted({p for c in all_clinics if (p := _starting_price(c, t)) is not None})
+    for t in treatments:
+        vals = sorted({p for c in clinics if (p := _starting_price(c, t)) is not None})
         unit = TREATMENT_UNITS.get(t, "")
         if len(vals) >= 2:
             disp = f"${vals[0]}–${vals[-1]} {unit}".strip()
@@ -1349,6 +1376,8 @@ def page_summary(page):
         "county": m["county"], "county_name": m["county_name"],
         "city": m["city"], "city_name": m["city_name"],
         "url": page_url(m, t),
+        "category": page.get("category", DEFAULT_CATEGORY),
+        "fallback": bool(page.get("fallback")),
         "n_clinics": len(page.get("clinics", [])),
         "from_price": min(prices) if prices else None,
         "price_unit": TREATMENT_UNITS.get(t) if prices else None,
@@ -1459,33 +1488,41 @@ def render_index(summaries):
     nearest-city set built from real covered cities. Renders templates/home.html.j2."""
     if not summaries:
         return None
+    # Homepage aggregates use REAL coverage only (exclude nearest-provider fallback pages):
+    # fallback pages repeat the same nearby providers across many empty cities, so counting
+    # them would inflate "listings" and make every city look identical. Fallback pages still
+    # ship (sitemap, direct nav, city hubs) — they just don't drive the homepage grid/stats.
+    real = [s for s in summaries if not s.get("fallback")] or summaries
     counties = {}  # (state, county) -> {name, state_name, cities}
-    for s in summaries:
+    for s in real:
         key = (s["state"], s["county"])
         c = counties.setdefault(key, {"name": s["county_name"], "state_name": s["state_name"], "cities": {}})
         ci = c["cities"].setdefault(s["city"], {
-            "name": s["city_name"], "url": f'/{s["state"]}/{s["county"]}/{s["city"]}/', "treats": set()})
+            "name": s["city_name"], "url": f'/{s["state"]}/{s["county"]}/{s["city"]}/',
+            "treats": set(), "cats": set()})
         ci["treats"].add(s["treatment_slug"])
+        ci["cats"].add(s.get("category", DEFAULT_CATEGORY))
 
     order = sorted(counties, key=lambda k: (COUNTY_ORDER.index(k[1]) if k[1] in COUNTY_ORDER else 99, k[1]))
     groups = []
     for key in order:
         c = counties[key]
         cities = [{"name": v["name"], "url": v["url"], "n_treatments": len(v["treats"]),
-                   "data_treatments": " ".join(sorted(v["treats"]))}
+                   "data_treatments": " ".join(sorted(v["treats"])),
+                   "data_cats": " ".join(sorted(v["cats"]))}
                   for _, v in sorted(c["cities"].items(), key=lambda kv: kv[1]["name"])]
         groups.append({"slug": key[1], "short_name": c["name"],
                        "name": f'{c["name"]}, {c["state_name"]}', "n_cities": len(cities), "cities": cities})
 
     stats = {
-        "listings": sum(s["n_clinics"] for s in summaries),
-        "cities": len({(s["state"], s["county"], s["city"]) for s in summaries}),
+        "listings": sum(s["n_clinics"] for s in real),
+        "cities": len({(s["state"], s["county"], s["city"]) for s in real}),
         "counties": len(counties),
     }
 
     # geolocation nearest-city set: covered cities that have a known centroid
-    city_url = {s["city"]: f'/{s["state"]}/{s["county"]}/{s["city"]}/' for s in summaries}
-    city_name = {s["city"]: s["city_name"] for s in summaries}
+    city_url = {s["city"]: f'/{s["state"]}/{s["county"]}/{s["city"]}/' for s in real}
+    city_name = {s["city"]: s["city_name"] for s in real}
     geo_cities = [{"name": city_name[c], "slug": c, "lat": lat, "lng": lng, "url": city_url[c]}
                   for c, (lat, lng) in CITY_LATLNG.items() if c in city_url]
 
@@ -1510,16 +1547,37 @@ def render_index(summaries):
         top_searches.append({"label": f"{treat_name} in {city_name}",
                               "url": f"/{st}/{co}/{nb}/{t}/"})
 
-    # Treatment cards no longer hard-link to a single "densest" city — clicking a card
-    # filters the city grid to the cities that offer that treatment (see home.html.j2 JS).
-    tcard_list = treatment_cards(all_clinics)
+    # Category-driven treatment cards. Every config category with REAL built coverage gets
+    # an equal section; treatment cards link to #areas and filter the city grid (see home JS).
+    # New verticals added to config + data surface here automatically — no template change.
+    built_by_cat = {}
+    for s in real:
+        built_by_cat.setdefault(s.get("category", DEFAULT_CATEGORY), set()).add(s["treatment_slug"])
+    categories = []
+    for cat in _categories_config():
+        built = built_by_cat.get(cat, set())
+        treats = [t for t in _category_treatments(cat) if t in built]
+        if not treats:
+            continue
+        cat_clinics = [c for c in all_clinics if _clinic_category(c) == cat]
+        cat_real = [s for s in real if s.get("category", DEFAULT_CATEGORY) == cat]
+        categories.append({
+            "slug": cat,
+            "name": _category_name(cat),
+            "tagline": _category_tagline(cat),
+            "noun": _category_noun(cat),
+            "cards": treatment_cards(cat_clinics, treats),
+            "n_cities": len({(s["state"], s["county"], s["city"]) for s in cat_real}),
+            "n_listings": sum(s["n_clinics"] for s in cat_real),
+        })
+    category_names = [c["name"] for c in categories]
 
     # Avg rating for social proof
     ratings = [c["rating"] for c in all_clinics if c.get("rating")]
     avg_rating = round(sum(ratings)/len(ratings), 1) if ratings else None
 
     html = env.get_template("home.html.j2").render(
-        groups=groups, stats=stats, treatments=tcard_list,
+        groups=groups, stats=stats, categories=categories, category_names=category_names,
         top_searches=top_searches, avg_rating=avg_rating,
         geo_cities_json=json.dumps(geo_cities),
         last_updated=datetime.date.today().isoformat(), site_url=SITE_URL)
