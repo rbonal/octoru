@@ -1547,6 +1547,16 @@
     }
   ],
   "deduped": [],
+  "empty_categories": [
+    "plastic-surgery"
+  ],
+  "categories_built": [
+    {
+      "category": "med-spa",
+      "pages": 226,
+      "clinics": 145
+    }
+  ],
   "empty_fields": {
     "unique_clinics": 111,
     "missing_phone": 0,
@@ -1571,6 +1581,16 @@
       "require_cost_block": true,
       "require_guidance": true
     },
-    "max_featured_per_page": 3
+    "max_featured_per_page": 3,
+    "_by_category_note": "Per-vertical overrides layered on top of the defaults above. Plastic surgery lists even a single provider (under-served cities still need the page); med-spa keeps the 2-listing floor.",
+    "by_category": {
+      "plastic-surgery": {
+        "min_page_requirements": {
+          "min_listings": 1,
+          "require_cost_block": true,
+          "require_guidance": true
+        }
+      }
+    }
   }
 }

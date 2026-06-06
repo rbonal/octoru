@@ -36,6 +36,38 @@ RECOMMENDED_COMPLETENESS = {
 # completeness.max_featured_per_page in config; defaults to 3.
 MAX_FEATURED_PER_PAGE = int((COMPLETENESS or {}).get("max_featured_per_page", 3))
 
+
+# ----------------------------------------------------------------------------------
+# Verticals / categories (OPERATOR-OWNED in config seed_scope.categories).
+# Each category carries its own treatment slugs and may override completeness via
+# completeness.by_category.<cat>. The builder READS these; never invents them; cannot
+# edit config (hard-gated). A clinic's category defaults to "med-spa" when the record
+# omits it (back-compat: the original prospector data predates the category field).
+# ----------------------------------------------------------------------------------
+DEFAULT_CATEGORY = "med-spa"
+
+def _categories_config():
+    """Map of category -> {"treatments": [...]}. Falls back to a single med-spa
+    category built from the legacy flat seed_scope.treatments when no categories block."""
+    cats = (CONFIG.get("seed_scope") or {}).get("categories")
+    if cats:
+        return cats
+    return {DEFAULT_CATEGORY: {"treatments": (CONFIG.get("seed_scope") or {}).get("treatments", [])}}
+
+def _category_treatments(category):
+    return list(((_categories_config().get(category)) or {}).get("treatments", []))
+
+def _clinic_category(clinic):
+    return clinic.get("category") or DEFAULT_CATEGORY
+
+def _category_page_reqs(spec, category):
+    """Per-category page requirements: the global completeness.min_page_requirements
+    with completeness.by_category.<cat>.min_page_requirements layered on top."""
+    base = dict((spec or {}).get("min_page_requirements") or {})
+    override = ((((spec or {}).get("by_category") or {}).get(category)) or {}).get("min_page_requirements") or {}
+    base.update(override)
+    return base
+
 # Place taxonomy: loaded from data/places.json (operator-owned).
 # Provides place type, parent_place for rollup, lat/lng for geolocation.
 _PLACES_PATH = ROOT / "data" / "places.json"
@@ -664,7 +696,7 @@ def rank_providers(providers):
     )
 
 
-def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
+def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None, category=DEFAULT_CATEGORY):
     """Group real clinics into one treatment x city page. Differentiation comes from
     the real clinics + market-specific context, not boilerplate."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
@@ -724,6 +756,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
     faqs = _generate_faqs(treatment_slug, market, clinics, prices)
 
     return {
+        "category": category,
         "treatment": {"slug": treatment_slug, "name": t_name},
         "neighborhood": {"slug": market["city"], "name": city_name},
         "city": market["state_abbr"],
@@ -770,8 +803,52 @@ def page_hold_reason(page, page_reqs):
 
 
 def fetch_pages(spec=None, enforce=False):
-    """Build treatment x place pages, applying completeness thresholds and place-taxonomy
-    rollup. Returns (pages, report).
+    """Build pages for EVERY category in seed_scope.categories across the shared
+    neighborhood scope, applying per-category completeness overrides. Returns
+    (pages, report). Each category is independent (disjoint treatment slugs + clinic
+    sets), so categories are processed separately and their pages concatenated.
+
+    A category with no qualifying clinics builds nothing and is recorded in
+    report["empty_categories"] (surfaced to needs_human.json by main()). The builder
+    NEVER fabricates providers to fill an empty category."""
+    all_clinics = load_clinics()
+    report = {
+        "excluded_listings": [], "held_pages": [],
+        "rolled_up": [],   # {clinic, from_place, to_place, treatment}
+        "deduped": [],     # {clinic, kept_at, not_shown_at}
+        "empty_categories": [],
+        "categories_built": [],
+    }
+    if not all_clinics:
+        print(f"[builder] no prospector data in {PROSPECTOR_DIR} — nothing to build.")
+        return [], report
+
+    req_fields = (spec or {}).get("min_listing_fields") or []
+    pages = []
+    for category in _categories_config():
+        treatments = _category_treatments(category)
+        page_reqs = _category_page_reqs(spec, category)
+        cat_clinics = [c for c in all_clinics if _clinic_category(c) == category]
+        has_match = any(t in (c.get("treatments") or []) for c in cat_clinics for t in treatments)
+        if not treatments or not cat_clinics or not has_match:
+            report["empty_categories"].append(category)
+            print(f"[builder] category '{category}': no qualifying clinics in data/prospector "
+                  f"(clinics={len(cat_clinics)}, treatments={len(treatments)}) — building nothing, "
+                  f"surfacing to needs_human.")
+            continue
+        cat_pages = _fetch_category_pages(category, treatments, req_fields, page_reqs,
+                                          enforce, cat_clinics, report)
+        report["categories_built"].append({"category": category, "pages": len(cat_pages),
+                                           "clinics": len(cat_clinics)})
+        print(f"[builder] category '{category}': {len(cat_pages)} page(s) from "
+              f"{len(cat_clinics)} clinic(s), min_listings={page_reqs.get('min_listings', 0)}")
+        pages.extend(cat_pages)
+    return pages, report
+
+
+def _fetch_category_pages(category, treatments, req_fields, page_reqs, enforce, clinics, report):
+    """Core builder for ONE category: treatment x place pages with completeness gating
+    and place-taxonomy rollup/de-dup.
 
     Place taxonomy (data/places.json):
     - A clinic appears at its MOST SPECIFIC qualifying place (neighborhood > CDP > municipality).
@@ -783,21 +860,9 @@ def fetch_pages(spec=None, enforce=False):
       neighborhood page is NOT built; the parent page gains those clinics.
 
     Listing below min_listing_fields is excluded; page below min_page_requirements is HELD
-    (unless rollup to parent is possible). Dry-run (enforce=False) reports only."""
-    clinics = load_clinics()
-    report = {
-        "excluded_listings": [], "held_pages": [],
-        "rolled_up": [],   # {clinic, from_place, to_place, treatment}
-        "deduped": [],     # {clinic, kept_at, not_shown_at}
-    }
-    if not clinics:
-        print(f"[builder] no prospector data in {PROSPECTOR_DIR} — nothing to build.")
-        return [], report
-
-    req_fields = (spec or {}).get("min_listing_fields") or []
-    page_reqs = (spec or {}).get("min_page_requirements") or {}
+    (unless rollup to parent is possible). Dry-run (enforce=False) reports only.
+    rollup_pool/claimed are category-local (clinic sets are disjoint across categories)."""
     min_listings = page_reqs.get("min_listings", 0)
-    treatments = CONFIG["seed_scope"]["treatments"]
 
     # Step 1: qualify clinics per market (apply field exclusions).
     def _qualify(matched, label):
@@ -837,7 +902,7 @@ def fetch_pages(spec=None, enforce=False):
             if not use:
                 continue
             county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
-            page = _assemble_page(t, market, use, all_county_clinics=county_clinics)
+            page = _assemble_page(t, market, use, all_county_clinics=county_clinics, category=category)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             # For dry-run without enforce, only roll up if the page would be GENUINELY thin.
             would_be_thin = len(use) < min_listings if min_listings else False
@@ -925,7 +990,7 @@ def fetch_pages(spec=None, enforce=False):
             if not use:
                 continue
             county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
-            page = _assemble_page(t, market, use, all_county_clinics=county_clinics)
+            page = _assemble_page(t, market, use, all_county_clinics=county_clinics, category=category)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             if reason:
                 report["held_pages"].append({"page": label, "reason": reason})
@@ -938,7 +1003,7 @@ def fetch_pages(spec=None, enforce=False):
                     claimed[slug] = city
             pages.append(page)
 
-    return pages, report
+    return pages
 
 
 def compute_empty_fields(pages):
@@ -992,7 +1057,9 @@ def page_links(page, all_pages):
         if tr == t and co == m["county"] and ci != m["city"]:
             same_treatment.append({"name": cnames[(st, co, ci)], "url": f"/{st}/{co}/{ci}/{tr}/"})
     other_treatments = []
-    for tr in CONFIG["seed_scope"]["treatments"]:
+    # Cross-link only within the same vertical (a surgery page links other surgery
+    # procedures in this city; a med-spa page links other med-spa treatments).
+    for tr in _category_treatments(page.get("category", DEFAULT_CATEGORY)):
         if tr != t and (m["state"], m["county"], m["city"], tr) in exists:
             other_treatments.append({"name": tnames[tr], "url": f"/{m['state']}/{m['county']}/{m['city']}/{tr}/"})
 
@@ -1272,6 +1339,14 @@ def integrity_scan():
     except Exception:
         nh = {"items": [], "_resolved": []}
     managed = {"integrity-implausible-perfect-providers", "integrity-corpus-perfect-share"}
+    # Preserve a human override across rebuilds. integrity_scan regenerates the corpus
+    # item every run; without this, an operator's recorded decision to ship despite the
+    # halt would be silently overwritten back to blocking on the next build.
+    prior_override = next(
+        (it.get("human_override") for it in nh.get("items", [])
+         if it.get("id") == "integrity-corpus-perfect-share" and it.get("human_override")),
+        None,
+    )
     nh["items"] = [it for it in nh.get("items", []) if it.get("id") not in managed]
 
     if row_flags:
@@ -1285,16 +1360,52 @@ def integrity_scan():
                           f"in {c.get('neighborhood')}" for c in row_flags],
         })
     if halt:
-        nh["items"].insert(0, {
+        item = {
             "id": "integrity-corpus-perfect-share",
             "opened_at": datetime.date.today().isoformat(), "opened_by": "builder",
             "blocking": True, "severity": "halt",
             "summary": "ratings distribution implausible — likely synthetic, do not publish.",
             "detail": f"{share:.1%} of providers are rated >= 4.95 with >= 50 reviews "
                       f"(threshold 20%). Investigate the ratings source before any deploy.",
+        }
+        if prior_override:
+            # A human explicitly accepted this risk. Keep the flag visible for the audit
+            # trail but stop it blocking, and carry the override forward verbatim.
+            item["blocking"] = False
+            item["summary"] = ("ratings distribution implausible — HUMAN OVERRIDE on file: "
+                               "operator chose to ship anyway (see human_override).")
+            item["human_override"] = prior_override
+        nh["items"].insert(0, item)
+    nh_path.write_text(json.dumps(nh, indent=2))
+    return row_flags, share, halt, bool(prior_override)
+
+
+def surface_category_gaps(empty_categories):
+    """Record categories that are armed in config (seed_scope.categories) but have no
+    qualifying clinics in data/prospector, so the operator knows the builder built
+    nothing for them. Idempotent: manages 'vertical-empty-<cat>' items, clearing any
+    that now have data. The builder NEVER fabricates providers to fill a gap."""
+    nh_path = ROOT / "state" / "needs_human.json"
+    try:
+        nh = json.loads(nh_path.read_text())
+    except Exception:
+        nh = {"items": [], "_resolved": []}
+    nh["items"] = [it for it in nh.get("items", [])
+                   if not str(it.get("id", "")).startswith("vertical-empty-")]
+    for cat in empty_categories:
+        nh["items"].append({
+            "id": f"vertical-empty-{cat}",
+            "opened_at": datetime.date.today().isoformat(), "opened_by": "builder",
+            "blocking": False, "severity": "operator-action-to-activate",
+            "summary": f"Category '{cat}' is armed in config (seed_scope.categories.{cat}) "
+                       f"but data/prospector has 0 qualifying '{cat}' clinics — the builder "
+                       f"built nothing for it. Other categories built normally.",
+            "operator_action": f"Add real '{cat}' provider data to data/prospector/ "
+                               f"(records with category=\"{cat}\" and matching treatment slugs), "
+                               f"then re-run the build. Do NOT fabricate providers.",
         })
     nh_path.write_text(json.dumps(nh, indent=2))
-    return row_flags, share, halt
+    return empty_categories
 
 
 def main():
@@ -1311,6 +1422,13 @@ def main():
           f"{'ENFORCED from config' if enforce else 'DRY-RUN (config completeness absent; cannot edit config)'}")
 
     fetched, report = fetch_pages(spec, enforce)
+    # Surface any armed-but-empty category (e.g. plastic-surgery with no prospector data)
+    # to needs_human.json. Building proceeds for categories that DO have data.
+    empty_cats = report.get("empty_categories", [])
+    surface_category_gaps(empty_cats)
+    if empty_cats:
+        print(f"[builder] empty categories surfaced to needs_human: {empty_cats}")
+
     passed, skipped = [], 0
     for page in fetched:
         if quality_gate(page):
@@ -1388,12 +1506,16 @@ def main():
         print(f"[builder] link check: all internal links valid")
 
     # Rating-integrity guards (inflated / synthetic ratings)
-    _row_flags, _share, _halt = integrity_scan()
+    _row_flags, _share, _halt, _overridden = integrity_scan()
     print(f"[builder] integrity: perfect-at-volume(>=4.95 & n>=50) share = {_share:.1%} "
           f"(halt>20%: {'YES' if _halt else 'no'}) | row flags(>=4.95 & n>=100) = {len(_row_flags)}")
-    if _halt:
+    if _halt and not _overridden:
         print("[builder] *** HALT FLAG written to needs_human.json: ratings distribution "
               "implausible — likely synthetic, DO NOT PUBLISH. ***")
+    elif _halt and _overridden:
+        print("[builder] integrity halt is on file but a HUMAN OVERRIDE is recorded "
+              "(operator chose to ship Google data as-is); flag is non-blocking. "
+              "Publish remains a separate human-gated step.")
 
     # DO NOT merge to main. DO NOT deploy. (hard-gated in CLAUDE.md)
     print(f"[builder] done. built={built} skipped={skipped} state={state}")
