@@ -1622,6 +1622,7 @@ def render_guides(pages):
     These pages target informational 'how much does X cost in Y' queries.
     They link back to the listing page for provider browsing."""
     guide_urls = []
+    written = set()
     for page in pages:
         m = page["geo"]
         t = page["treatment"]["slug"]
@@ -1663,8 +1664,19 @@ def render_guides(pages):
             year=datetime.date.today().year,
         )
         _write(f"{guide_path}/index.html", html)
+        written.add(guide_path)
         guide_urls.append(guide_url)
-    print(f"[builder] built {len(guide_urls)} guide pages")
+
+    # Prune stale guide pages from prior builds (e.g. fallback-city guides we no longer
+    # generate). Guides are fully derived each run, so anything not written this run is dead.
+    import shutil as _shutil
+    pruned = 0
+    for f in GENERATED.rglob("guide/index.html"):
+        rel = str(f.parent.relative_to(GENERATED)).replace("\\", "/")
+        if rel not in written:
+            _shutil.rmtree(f.parent)
+            pruned += 1
+    print(f"[builder] built {len(guide_urls)} guide pages" + (f"; pruned {pruned} stale" if pruned else ""))
     return guide_urls
 
 
@@ -1672,10 +1684,14 @@ def render_sitemap(summaries, guide_urls=None):
     urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
     for s in summaries:
+        # Hubs stay in the sitemap (they're indexable and keep navigation resolvable),
+        # but nearest-provider FALLBACK listing pages are excluded — they carry noindex,
+        # so advertising them for indexing would be contradictory.
         for hub in (f"/{s['state']}/", f"/{s['state']}/{s['county']}/", f"/{s['state']}/{s['county']}/{s['city']}/"):
             if hub not in seen_hubs:
                 seen_hubs.add(hub); urls.append(hub)
-        urls.append(s["url"])
+        if not s.get("fallback"):
+            urls.append(s["url"])
     for gu in (guide_urls or []):
         urls.append(gu)
     today = datetime.date.today().isoformat()
@@ -1821,7 +1837,9 @@ def main():
     render_index(summaries)
     render_claim()
     render_advertise(summaries)
-    guide_urls = render_guides(passed)
+    # Cost guides are only for pages with REAL local providers — a "cost guide" for a city
+    # with no providers (a fallback page) would be a thin near-duplicate, so skip those.
+    guide_urls = render_guides([p for p in passed if not p.get("fallback")])
     render_sitemap(summaries, guide_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",

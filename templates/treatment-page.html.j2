@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }} — Octoru</title>
 <meta name="description" content="{{ meta_description }}">
+{%- if fallback %}
+<!-- Nearest-provider fallback page (no local providers): noindex but follow, so it serves
+     users who land here and passes link equity to the real provider pages, without
+     competing in search as a near-duplicate. -->
+<meta name="robots" content="noindex, follow">
+{%- endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Octoru">
@@ -50,6 +56,13 @@
         "name": {{ c.name | tojson }},
         "address": {{ c.address | tojson }},
         "telephone": {{ c.phone | tojson }},
+        {%- if c.surgeons %}
+        "employee": [
+          {%- for s in c.surgeons %}
+          { "@type": "Physician", "name": {{ s.name | tojson }} }{{ "," if not loop.last }}
+          {%- endfor %}
+        ],
+        {%- endif %}
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "{{ c.rating }}",
@@ -209,10 +222,12 @@
       </details>
       {%- endfor %}
     </div>
+    {%- if not fallback %}
     <p class="faq-guide-link">
       Looking for a full pricing breakdown?
       <a href="{{ breadcrumb[-1].url if breadcrumb else '' }}guide/">Read the {{ neighborhood.name }} {{ treatment.name | lower }} cost guide →</a>
     </p>
+    {%- endif %}
   </section>
   {%- endif %}
 
