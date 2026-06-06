@@ -887,9 +887,13 @@ def _fetch_category_pages(category, treatments, req_fields, page_reqs, enforce, 
     markets = list(active_markets())
 
     # First pass: process neighborhoods/CDPs to see what rolls up.
+    # Municipalities are owned exclusively by the second pass — skip them here, or
+    # they would be appended twice (duplicate sitemap URLs, double-counted hubs).
     for market in markets:
         city = market["city"]
         place_type = _place_type(city)
+        if place_type == "municipality":
+            continue
         parent = _parent_slug(city)
         is_child = place_type in ("neighborhood", "cdp") and parent
 
