@@ -145,22 +145,6 @@
     "independent": true
   },
   {
-    "slug": "alberto-s-gallerani-md",
-    "name": "Alberto S. Gallerani, MD",
-    "category": "plastic-surgery",
-    "type": "surgeon",
-    "credentials_text": "Board Certified by The American Board of Plastic and Reconstructive Surgery; rigorously trained in General Surgery, Trauma, Plastic and Reconstructive Surgery and Aesthetic Facial, Breast and Body Surgery.",
-    "credentials_source": "https://www.drgalleranimd.com/index.html",
-    "procedures": [
-      "breast-augmentation",
-      "liposuction",
-      "rhinoplasty",
-      "facelift"
-    ],
-    "clinic_slug": "the-medici-institute",
-    "independent": true
-  },
-  {
     "slug": "gregory-lewen-md",
     "name": "Gregory Lewen, MD",
     "category": "plastic-surgery",
@@ -186,23 +170,6 @@
       "facelift"
     ],
     "clinic_slug": "institute-of-aesthetic-medicine",
-    "independent": true
-  },
-  {
-    "slug": "george-m-varkarakis-md-facs",
-    "name": "George M. Varkarakis, MD, FACS",
-    "category": "plastic-surgery",
-    "type": "surgeon",
-    "credentials_text": "Board certified in Plastic Surgery and Craniofacial Surgery; MD, FACS (Fellow of the American College of Surgeons); over 18 years of practice and training.",
-    "credentials_source": "https://gvplasticsurgery.com/",
-    "procedures": [
-      "tummy-tuck",
-      "breast-augmentation",
-      "liposuction",
-      "rhinoplasty",
-      "facelift"
-    ],
-    "clinic_slug": "gv-plastic-surgery",
     "independent": true
   },
   {
@@ -486,25 +453,6 @@
       "facelift"
     ],
     "clinic_slug": "suria-cosmetic-surgery-med-spa",
-    "independent": true
-  },
-  {
-    "slug": "jon-f-harrell-do-facs",
-    "name": "Jon F. Harrell, DO, FACS",
-    "category": "plastic-surgery",
-    "type": "surgeon",
-    "credentials_text": "Diplomate American Board of Plastic Surgery and American Board of Otolaryngology",
-    "credentials_source": "https://www.westonsurgery.com/dr-jon-harrell.html",
-    "procedures": [
-      "bbl",
-      "tummy-tuck",
-      "breast-augmentation",
-      "liposuction",
-      "rhinoplasty",
-      "mommy-makeover",
-      "facelift"
-    ],
-    "clinic_slug": "the-weston-center-for-aesthetic-medicine-and-surgery",
     "independent": true
   },
   {
