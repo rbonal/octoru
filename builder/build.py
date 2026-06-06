@@ -816,6 +816,30 @@ def _google_listing_url(clinic):
     return "https://www.google.com/maps/search/?api=1&query=" + urllib.parse.quote(query)
 
 
+# Facility-accreditation display normalization (plastic-surgery vertical). Providers state
+# the same body many ways (AAAASF == QUAD A == its full name; several FL-licensure variants).
+# We collapse to a clean badge label for display ONLY — the exact as-stated strings are kept
+# verbatim in a tooltip and the source link is always shown, so nothing is misrepresented and
+# no accreditation is ever asserted that the provider didn't publish.
+_ACCRED_NORMALIZE = [
+    (("aaaasf", "quad a", "american association for accreditation of ambulatory surgery",
+      "american association of accreditation of ambulatory surgery"), "AAAASF (QUAD A)"),
+    (("aaahc", "accreditation association for ambulatory health care"), "AAAHC"),
+    (("joint commission", "jcaho"), "Joint Commission"),
+    (("ahca", "florida", "fl state", "state of florida", "level 3 florida"), "Florida-licensed facility"),
+]
+
+def _accreditation_labels(raw):
+    """Map as-stated accreditation strings to clean, deduped display labels."""
+    out = []
+    for item in (raw or []):
+        low = (item or "").lower()
+        label = next((disp for keys, disp in _ACCRED_NORMALIZE if any(k in low for k in keys)), item)
+        if label and label not in out:
+            out.append(label)
+    return out
+
+
 def _clinic_for_page(clinic, treatment_slug):
     """Shape one clinic for the template + quality gate. Gate flags ride through verbatim."""
     return {
@@ -860,6 +884,11 @@ def _clinic_for_page(clinic, treatment_slug):
         # Plastic-surgery vertical: surgeons performing THIS procedure at this practice.
         # The rating shown above is the CLINIC's; surgeons carry only as-stated credentials.
         "surgeons": _surgeons_for(clinic.get("slug"), treatment_slug),
+        # Facility accreditation (as-stated, source-attributed). Display labels normalized;
+        # exact published wording kept in `accreditation_stated` for a transparency tooltip.
+        "accreditations": _accreditation_labels(clinic.get("accreditations")),
+        "accreditation_stated": "; ".join(clinic.get("accreditations") or []),
+        "accreditation_source": clinic.get("accreditation_source"),
         # Nearest-provider fallback (empty-city pages): the clinic's real home city + distance.
         "nearby_city_name": clinic.get("_nearby_city_name"),
         "nearby_distance_mi": clinic.get("_nearby_distance_mi"),

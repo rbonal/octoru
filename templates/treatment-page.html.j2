@@ -164,6 +164,13 @@
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
+        {%- if c.accreditations %}
+        <div class="accred" title="As listed on the provider's website: {{ c.accreditation_stated }}">
+          <span class="accred-k">✓ Accredited facility</span>
+          {%- for a in c.accreditations %}<span class="accred-badge">{{ a }}</span>{% endfor %}
+          {%- if c.accreditation_source %}<a class="accred-src" href="{{ c.accreditation_source }}" target="_blank" rel="noopener nofollow">source ↗</a>{% endif %}
+        </div>
+        {%- endif %}
         {%- if c.surgeons %}
         <div class="surgeons">
           <span class="label">Surgeon{{ "s" if c.surgeons | length > 1 }} performing {{ treatment.name | lower }} here</span>

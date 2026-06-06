@@ -570,3 +570,11 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 .surgeon-cred { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
 .surgeon-src { display: inline-block; font-size: 12px; margin-top: 3px; }
 .surgeon-disclaimer { font-size: 12px; color: var(--ink-3); margin-top: 8px; font-style: italic; }
+
+/* facility accreditation (as-stated, source-attributed) */
+.accred { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.accred-k { font-size: 12px; font-weight: 600; color: var(--green); letter-spacing: .01em; }
+.accred-badge { font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500;
+  color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 2px 8px; }
+.accred-src { font-size: 11px; color: var(--ink-3); }
