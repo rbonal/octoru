@@ -1463,6 +1463,71 @@ def render(page, links=None):
     return _write(f"{page['path']}/index.html", html)
 
 
+# County character sentences — used in county/state hub intros so those pages read as
+# real local content, not an empty directory shell (SEO + user value).
+COUNTY_CONTEXT = {
+    "miami-dade": "Miami-Dade is South Florida's largest and most diverse county — spanning Miami's urban core, the beaches and affluent suburbs — and the deepest aesthetic and surgical market in the region.",
+    "broward": "Broward County reaches from Fort Lauderdale's coast to fast-growing inland suburbs, with a well-established, competitive market for med spas and plastic surgery.",
+    "palm-beach": "Palm Beach County runs from Boca Raton up to Jupiter, blending affluent coastal communities with a health-focused population and a growing roster of accredited providers.",
+}
+
+
+def _hub_city_intro(city_slug, city_name, pages):
+    """Unique, data-backed intro for a city hub: real local character + what's actually
+    covered. Fallback (no-local-provider) pages don't count toward coverage claims."""
+    parts = []
+    ctx = NEIGHBORHOOD_CONTEXT.get(city_slug)
+    if ctx:
+        parts.append(ctx)
+    real = [p for p in pages if not p.get("fallback")]
+    if real:
+        cats = sorted({p.get("category", DEFAULT_CATEGORY) for p in real},
+                      key=lambda c: 0 if c == DEFAULT_CATEGORY else 1)
+        cat_phrase = " and ".join(_category_name(c).lower() for c in cats)
+        treats = sorted({p["treatment_name"] for p in real})
+        treat_list = ", ".join(treats) if len(treats) <= 4 else ", ".join(treats[:4]) + f" and {len(treats) - 4} more"
+        parts.append(f"Octoru lists verified {cat_phrase} providers in {city_name} across "
+                     f"{len(treats)} treatment{'s' if len(treats) != 1 else ''} — {treat_list}.")
+        if "plastic-surgery" in cats:
+            parts.append("Plastic-surgery listings name the surgeons who perform each procedure, with "
+                         "credentials and facility accreditation shown as published by the provider.")
+        parts.append(f"Every listing shows the provider's address, verified Google rating and real "
+                     f"pricing where available, so you can compare {city_name} options and book a "
+                     f"consultation directly.")
+    else:
+        parts.append(f"Octoru is expanding coverage in {city_name} — browse the nearest verified providers below.")
+    return " ".join(parts)
+
+
+def _hub_county_intro(county_slug, county_name, cities):
+    """Unique intro for a county hub: county character + real coverage breadth."""
+    parts = []
+    ctx = COUNTY_CONTEXT.get(county_slug)
+    if ctx:
+        parts.append(ctx)
+    names = sorted(d["name"] for d in cities.values())
+    n = len(names)
+    sample = ", ".join(names[:5]) + (f" and {n - 5} more" if n > 5 else "")
+    cats = sorted({p.get("category", DEFAULT_CATEGORY) for d in cities.values()
+                   for p in d["pages"] if not p.get("fallback")},
+                  key=lambda c: 0 if c == DEFAULT_CATEGORY else 1)
+    cat_phrase = " and ".join(_category_name(c).lower() for c in cats) if cats else "health & wellness"
+    parts.append(f"Octoru covers {n} cit{'y' if n == 1 else 'ies'} across {county_name} County — including {sample}.")
+    parts.append(f"Compare verified {cat_phrase} providers by treatment and city, with real Google ratings and prices.")
+    return " ".join(parts)
+
+
+def _hub_state_intro(state_name, counties):
+    """Unique intro for the state hub."""
+    names = sorted(d["name"] + " County" for d in counties.values())
+    n = len(names)
+    joined = (" and ".join([", ".join(names[:-1]), names[-1]]) if n > 1 else (names[0] if names else ""))
+    return (f"Octoru is a verified health & wellness directory for South Florida, covering "
+            f"{n} count{'y' if n == 1 else 'ies'} — {joined}. Compare med-spa and plastic-surgery "
+            f"providers by treatment and city, with verified Google ratings, real prices and "
+            f"board-certified surgeon credentials, and book a consultation directly.")
+
+
 def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None):
     html = env.get_template("hub.html.j2").render(
         title=title, subtitle=subtitle, breadcrumb=breadcrumb, cards=cards, intro=intro,
@@ -1491,20 +1556,23 @@ def render_hubs(summaries):
                       {"name": cdata["name"], "url": f"/{st}/{co}/"},
                       {"name": cidata["name"], "url": f"/{st}/{co}/{ci}/"}]
                 render_hub(f"Health & wellness in {cidata['name']}, {sdata['name']}",
-                           f"{len(cidata['pages'])} treatment guides for {cidata['name']}", bc, cards, f"{st}/{co}/{ci}")
+                           f"{len(cidata['pages'])} treatment guides for {cidata['name']}", bc, cards, f"{st}/{co}/{ci}",
+                           intro=_hub_city_intro(ci, cidata["name"], cidata["pages"]))
             # county hub
             ccards = [{"title": cidata["name"], "sub": f"{len(cidata['pages'])} treatment" + ("" if len(cidata['pages']) == 1 else "s"),
                        "url": f"/{st}/{co}/{ci}/", "chip": None}
                       for ci, cidata in sorted(cdata["cities"].items(), key=lambda kv: kv[1]["name"])]
             bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}, {"name": cdata["name"], "url": f"/{st}/{co}/"}]
             render_hub(f"Health & wellness in {cdata['name']} County, {sdata['name']}",
-                       f"{len(cdata['cities'])} cities", bc, ccards, f"{st}/{co}")
+                       f"{len(cdata['cities'])} cities", bc, ccards, f"{st}/{co}",
+                       intro=_hub_county_intro(co, cdata["name"], cdata["cities"]))
         # state hub
         scards = [{"title": cdata["name"] + " County", "sub": f"{len(cdata['cities'])} cities",
                    "url": f"/{st}/{co}/", "chip": None}
                   for co, cdata in sorted(sdata["counties"].items(), key=lambda kv: kv[1]["name"])]
         bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}]
-        render_hub(f"Health & wellness directory — {sdata['name']}", f"{len(sdata['counties'])} counties", bc, scards, st)
+        render_hub(f"Health & wellness directory — {sdata['name']}", f"{len(sdata['counties'])} counties", bc, scards, st,
+                   intro=_hub_state_intro(sdata["name"], sdata["counties"]))
     return states
 
 

@@ -73,7 +73,7 @@
       "why_not_done": "CLAUDE.md is on the hard-gated list ('Edit CLAUDE.md, anything in config/'). The builder never edits it autonomously, even on explicit request.",
       "status": "RESOLVED",
       "resolved_at": "2026-06-06",
-      "resolution": "Operator (via Cowork) rebranded CLAUDE.md in c05af49 — 3 text-only edits (title, descriptor, goal framing); all rules, gates and limits untouched."
+      "resolution": "Operator (via Cowork) rebranded CLAUDE.md in c05af49 \u2014 3 text-only edits (title, descriptor, goal framing); all rules, gates and limits untouched."
     },
     {
       "id": "favicon-and-og-image-bitmaps",
