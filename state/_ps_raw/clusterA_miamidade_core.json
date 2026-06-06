@@ -1,0 +1,217 @@
+[
+  {
+    "name": "Gables Plastic Surgery",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "address": "167 Majorca Ave., Coral Gables, FL 33134",
+    "phone": "(305) 441-9144",
+    "website": "https://www.gablesplasticsurgery.com/",
+    "source_url": "https://www.gablesplasticsurgery.com/about/jorge-de-la-pedraja-md/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Jorge de la Pedraja, MD",
+        "credentials_text": "Bachelor of Science (BS) in biology and chemistry from University of Miami; Master of Science (MS) from Georgetown University; Medical Degree (MD) from University of Kansas; trained in general surgery and plastic/reconstructive surgery at University of Miami/Jackson Memorial Hospital; chief resident in both general and plastic/reconstructive surgery; fellowship training in aesthetic and breast surgery with Dr. Scott Spear at Georgetown University Hospital; board certified by American Board of Plastic Surgery; fellow of American College of Surgeons.",
+        "credentials_source": "https://www.gablesplasticsurgery.com/about/jorge-de-la-pedraja-md/"
+      }
+    ]
+  },
+  {
+    "name": "Stephan Baker MD FACS",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "address": "3850 Bird Rd, Suite 702, Miami, FL 33146",
+    "phone": "(305) 381-8837",
+    "website": "https://www.drbaker.com/",
+    "source_url": "https://www.drbaker.com/about/dr-baker/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Stephan Baker, MD, FACS",
+        "credentials_text": "Bachelor of Arts, High Honors in Chemistry, Phi Beta Kappa (Oberlin College); Doctor of Medicine, New York University School of Medicine; Five-Year Residency/Chief Residency in General Surgery, Columbia University's St. Luke's Roosevelt Hospital Center; Four Year Residency/Chief Residency/Fellowship in Plastic and Reconstructive Surgery under Dr. D. Ralph Millard Jr. at University of Miami/Jackson Memorial Medical Center; Executive MBA in Health Administration, University of Miami School of Business Administration; American Board of Plastic Surgery, Maintenance of Certification 2005 and 2015; American Board of Surgery, 1990.",
+        "credentials_source": "https://www.drbaker.com/about/dr-baker/"
+      }
+    ]
+  },
+  {
+    "name": "Aeris Plastic Surgery & Aesthetic Medicine",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "address": "1537 San Remo Ave, Coral Gables, FL 33146",
+    "phone": "(305) 280-2947",
+    "website": "https://aeris.co/",
+    "source_url": "https://aeris.co/marcelo-ghersi-md/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Marcelo Ghersi, MD",
+        "credentials_text": "Bachelor of Science from Florida Atlantic University, Honors Magna Cum Laude; Doctor of Medicine from George Washington University; General Surgery Residency at Mount Sinai Medical Center; Plastic and Reconstructive Surgery Residency at Cleveland Clinic in Weston; Fellowship in Advanced Aesthetic Plastic Surgery at Manhattan Eye, Ear, and Throat Hospital and Lenox Hill Hospital in New York; Certified by the American Board of Plastic Surgery.",
+        "credentials_source": "https://aeris.co/marcelo-ghersi-md/"
+      }
+    ]
+  },
+  {
+    "name": "Marquis Plastic Surgery",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "address": "6705 Red Road, Suite #516, Miami, FL 33143",
+    "phone": "(305) 403-2922",
+    "website": "https://arthurmd.com/",
+    "source_url": "https://arthurmd.com/home/dr-desrosiers/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Arthur E. Desrosiers III, MD",
+        "credentials_text": "M.D., Columbia University College of Physicians & Surgeons, New York; B.A., Dartmouth College, Hanover NH, Cum Laude; General Surgery Residency, UMDNJ [Princeton Univ. & Robert Wood Johnson Univ. Hospital]; Plastic & Reconstructive Surgery Fellowship, University of Miami—Jackson Memorial Hospital; Craniofacial Plastic Surgery Fellowship [Mentor: S. Anthony Wolfe, MD, FACS]; Board-Certified Plastic Surgeon.",
+        "credentials_source": "https://arthurmd.com/home/dr-desrosiers/"
+      }
+    ]
+  },
+  {
+    "name": "CG Cosmetic Surgery",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "address": "2601 SW 37th Ave #100, Coral Gables, FL 33133",
+    "phone": "(305) 446-7277",
+    "website": "https://www.cgcosmetic.com/",
+    "source_url": "https://www.cgcosmetic.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": []
+  },
+  {
+    "name": "Miami Aesthetic",
+    "neighborhood": "brickell",
+    "neighborhood_name": "Brickell",
+    "address": "848 Brickell Ave, Suite 820, Miami, FL 33131",
+    "phone": "(305) 576-3443",
+    "website": "https://miamiaesthetic.com/",
+    "source_url": "https://miamiaesthetic.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Pat Pazmino, MD, FACS",
+        "credentials_text": "MD, FACS; board-certified plastic surgeon; Harvard-educated; Board Certified by the American Board of Plastic Surgery; Member of the American Society of Plastic Surgeons and Fellow of the American College of Surgeons.",
+        "credentials_source": "https://miamiaesthetic.com/"
+      }
+    ]
+  },
+  {
+    "name": "Exceptional Plastic Surgery",
+    "neighborhood": "brickell",
+    "neighborhood_name": "Brickell",
+    "address": "825 Brickell Bay Drive, Suite 1845, Miami, FL 33131",
+    "phone": "(305) 456-3666",
+    "website": "https://www.exceptionalplasticsurgery.com/",
+    "source_url": "https://www.exceptionalplasticsurgery.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Benjamin Liliav, MD, FACS",
+        "credentials_text": "Double-Board-Certified Plastic Surgeon; Benjamin Liliav, MD, FACS.",
+        "credentials_source": "https://www.exceptionalplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Gallo MD",
+    "neighborhood": "midtown",
+    "neighborhood_name": "Midtown",
+    "address": "115 NE 32nd Street, Suite 102-A, Miami, FL 33137",
+    "phone": "(305) 614-7107",
+    "website": "https://www.gallomd.com/",
+    "source_url": "https://www.gallomd.com/about/",
+    "treatments": ["rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Julio F. Gallo, MD, FACS",
+        "credentials_text": "Julio F. Gallo, MD, FACS (Fellow, American College of Surgeons) is a board certified facial plastic surgeon, board certified in both facial plastic and reconstructive surgery; degree from the Pritzker School of Medicine at the University of Chicago; internship in general surgery at Jackson Memorial Hospital (University of Miami); residency in head and neck surgery; fellowship in facial plastic surgery under Robert L. Simons, MD, FACS.",
+        "credentials_source": "https://www.gallomd.com/about/"
+      }
+    ]
+  },
+  {
+    "name": "The ARTIS Institute for Plastic Surgery",
+    "neighborhood": "aventura",
+    "neighborhood_name": "Aventura",
+    "address": "21110 Biscayne Blvd Ste 103, Aventura, FL 33180",
+    "phone": "(305) 932-3200",
+    "website": "https://sarragaplasticsurgery.com/",
+    "source_url": "https://sarragaplasticsurgery.com/about-us/meet-dr-sarraga/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Andres G. Sarraga, MD, FACS",
+        "credentials_text": "Double-board certified and fellowship-trained plastic surgeon; medical school at the University of Puerto Rico (Alpha Omega Alpha honor society, top 10 percent of class); general surgery residency at the University of Puerto Rico; plastic surgery residency at the University of Massachusetts; Fellowship in Ophthalmic Plastic and Reconstructive Surgery with Dr. Pascale Perusse; Board Certified in General Surgery; Board Certified Plastic Surgeon.",
+        "credentials_source": "https://sarragaplasticsurgery.com/about-us/meet-dr-sarraga/"
+      }
+    ]
+  },
+  {
+    "name": "The Medici Institute",
+    "neighborhood": "aventura",
+    "neighborhood_name": "Aventura",
+    "address": "20950 NE 27th Court, Aventura, FL 33180",
+    "phone": "(305) 933-6545",
+    "website": "https://www.drgalleranimd.com/",
+    "source_url": "https://www.drgalleranimd.com/index.html",
+    "treatments": ["breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Alberto S. Gallerani, MD",
+        "credentials_text": "Board Certified by The American Board of Plastic and Reconstructive Surgery; rigorously trained in General Surgery, Trauma, Plastic and Reconstructive Surgery and Aesthetic Facial, Breast and Body Surgery.",
+        "credentials_source": "https://www.drgalleranimd.com/index.html"
+      }
+    ]
+  },
+  {
+    "name": "Lewen Cosmetic Center",
+    "neighborhood": "aventura",
+    "neighborhood_name": "Aventura",
+    "address": "20803 Biscayne Blvd., #110, Aventura, FL 33180",
+    "phone": "(305) 514-0631",
+    "website": "https://www.lewencosmetic.com/",
+    "source_url": "https://www.lewencosmetic.com/",
+    "treatments": ["rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Gregory Lewen, MD",
+        "credentials_text": "Double Board-Certified Ophthalmologist specializing in Oculofacial Plastic and Reconstructive Surgery.",
+        "credentials_source": "https://www.lewencosmetic.com/"
+      }
+    ]
+  },
+  {
+    "name": "Institute of Aesthetic Medicine",
+    "neighborhood": "coconut-grove",
+    "neighborhood_name": "Coconut Grove",
+    "address": "3225 Aviation Ave, Suite 100, Miami, FL 33133",
+    "phone": "(305) 854-8828",
+    "website": "https://www.instituteofaestheticmedicine.com/",
+    "source_url": "https://www.instituteofaestheticmedicine.com/about-the-institute/our-physicians/dr-james-m-stuzin/",
+    "treatments": ["rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "James M. Stuzin, MD",
+        "credentials_text": "Board Certifications: American Board of Plastic Surgery; American Board of General Surgery. Bachelor of Arts, University of Florida, Gainesville, FL; M.D., University of Florida School of Medicine, Gainesville, FL; Internship and Residency in General Surgery, University of Washington Affiliated Hospitals, Seattle, WA; Fellowship in Plastic Surgery, New York University Hospitals, NY; Craniofacial Fellow, University of Miami Hospitals, Miami, FL; Craniofacial Fellow, UCLA, Los Angeles, CA.",
+        "credentials_source": "https://www.instituteofaestheticmedicine.com/about-the-institute/our-physicians/dr-james-m-stuzin/"
+      }
+    ]
+  },
+  {
+    "name": "GV Plastic Surgery",
+    "neighborhood": "coconut-grove",
+    "neighborhood_name": "Coconut Grove",
+    "address": "3661 South Miami Avenue, Suite 903, Miami, FL 33133",
+    "phone": "(305) 853-8333",
+    "website": "https://gvplasticsurgery.com/",
+    "source_url": "https://gvplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "George M. Varkarakis, MD, FACS",
+        "credentials_text": "Board certified in Plastic Surgery and Craniofacial Surgery; MD, FACS (Fellow of the American College of Surgeons); over 18 years of practice and training.",
+        "credentials_source": "https://gvplasticsurgery.com/"
+      }
+    ]
+  }
+]

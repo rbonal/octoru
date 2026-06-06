@@ -1,0 +1,216 @@
+[
+  {
+    "name": "Shuster Plastic Surgery",
+    "neighborhood": "hollywood",
+    "neighborhood_name": "Hollywood",
+    "address": "4001 Hollywood Blvd, Hollywood, FL 33021",
+    "phone": "954-961-5500",
+    "website": "https://www.drshuster.net/",
+    "source_url": "https://www.drshuster.net/about/dr-bernard-shuster/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Bernard A. Shuster, MD, FACS",
+        "credentials_text": "Diplomate of the American Board of Plastic Surgery; Fellow of the American College of Surgeons; member of the American Society of Plastic Surgeons. Medical degree from Cornell University Medical College; residency (Chief Resident) and fellowship in Plastic and Reconstructive Surgery at Stanford University Medical Center.",
+        "credentials_source": "https://www.drshuster.net/about/dr-bernard-shuster/"
+      }
+    ]
+  },
+  {
+    "name": "Plastic Surgery Specialists of South Florida",
+    "neighborhood": "hollywood",
+    "neighborhood_name": "Hollywood",
+    "address": "1201 N 35th Ave, Ste 200, Hollywood, FL 33021",
+    "phone": "954-987-8100",
+    "website": "https://psssf.com/",
+    "source_url": "https://psssf.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Yoav Barnavon, M.D., F.A.C.S.",
+        "credentials_text": "Board-Certified Plastic Surgeon with more than three decades of experience in plastic and reconstructive surgery; world-leading expert in autologous breast augmentation.",
+        "credentials_source": "https://psssf.com/"
+      }
+    ]
+  },
+  {
+    "name": "Cosmetic and Reconstructive Specialists of Florida",
+    "neighborhood": "fort-lauderdale",
+    "neighborhood_name": "Fort Lauderdale",
+    "address": "910 NE 26 Avenue, Fort Lauderdale, FL 33304",
+    "phone": "954-533-8029",
+    "website": "https://www.crsplasticsurgery.com/",
+    "source_url": "https://www.crsplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Christopher J. Low, M.D.",
+        "credentials_text": "board certified by the American Board of Plastic Surgery",
+        "credentials_source": "https://www.crsplasticsurgery.com/"
+      },
+      {
+        "name": "Michael C. Cheung, M.D.",
+        "credentials_text": "board certified by both The American Board of Surgery and by The American Board of Plastic Surgery",
+        "credentials_source": "https://www.crsplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Fort Lauderdale Plastic Surgery",
+    "neighborhood": "fort-lauderdale",
+    "neighborhood_name": "Fort Lauderdale",
+    "address": "3536 North Federal Highway, Suite 100, Fort Lauderdale, FL 33308",
+    "phone": "954-393-0254",
+    "website": "https://www.fortlauderdaleplasticsurgery.com/",
+    "source_url": "https://www.fortlauderdaleplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Lisa J. Learn, M.D.",
+        "credentials_text": "Board-certified plastic surgeon",
+        "credentials_source": "https://www.fortlauderdaleplasticsurgery.com/"
+      },
+      {
+        "name": "Jason R. Dudas, M.D.",
+        "credentials_text": "Board-certified plastic surgeon",
+        "credentials_source": "https://www.fortlauderdaleplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Vanguard Aesthetic Plastic Surgery",
+    "neighborhood": "fort-lauderdale",
+    "neighborhood_name": "Fort Lauderdale",
+    "address": "2320 NE 9th St, Suite 300, Fort Lauderdale, FL 33304",
+    "phone": "954-563-4500",
+    "website": "https://www.vapsfl.com/",
+    "source_url": "https://www.vapsfl.com/about/experience-training-publications",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "George Dreszer, MD, MS, FACS",
+        "credentials_text": "Board Certified by the American Board of Plastic Surgery 11/16/2013, Certificate Number: 08364. Drexel University College of Medicine, Doctor of Medicine. Chief Resident in Plastic and Reconstructive Surgery, University of Minnesota; Fellow in Plastic and Reconstructive Surgery, University of Medicine and Dentistry, New Jersey.",
+        "credentials_source": "https://www.vapsfl.com/about/experience-training-publications"
+      }
+    ]
+  },
+  {
+    "name": "Broward Plastic Surgery",
+    "neighborhood": "fort-lauderdale",
+    "neighborhood_name": "Fort Lauderdale",
+    "address": "2818 E Oakland Park Blvd, Fort Lauderdale, FL 33306",
+    "phone": "954-202-9898",
+    "website": "https://drsachse.com/",
+    "source_url": "http://www.drsachse.com/about.php",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Rainer E. Sachse, M.D., FACS",
+        "credentials_text": "board certified Plastic and Reconstructive surgeon; American Boards of Plastic Surgery, American Boards of Laser Surgery, German Boards of Oral and Maxillofacial Surgery and German Boards of Plastic Surgery",
+        "credentials_source": "http://www.drsachse.com/about.php"
+      }
+    ]
+  },
+  {
+    "name": "TakeShape Plastic Surgery",
+    "neighborhood": "plantation",
+    "neighborhood_name": "Plantation",
+    "address": "4161 NW 5th St, Plantation, FL 33317",
+    "phone": "954-585-3800",
+    "website": "https://takeshape.info/",
+    "source_url": "https://takeshape.info/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Russell Sassani, MD",
+        "credentials_text": "Certified by the American Board of Plastic Surgery",
+        "credentials_source": "https://takeshape.info/"
+      }
+    ]
+  },
+  {
+    "name": "Weston Center for Plastic Surgery",
+    "neighborhood": "weston",
+    "neighborhood_name": "Weston",
+    "address": "17160 Royal Palm Blvd #4, Weston, FL 33326",
+    "phone": "954-507-4540",
+    "website": "https://www.plasticsurgeryweston.com/",
+    "source_url": "https://www.plasticsurgeryweston.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "facelift"],
+    "surgeons": [
+      {
+        "name": "Nathan Eberle, M.D., D.D.S., F.A.C.S.",
+        "credentials_text": "Double Board-Certified Plastic Surgeon",
+        "credentials_source": "https://www.plasticsurgeryweston.com/"
+      }
+    ]
+  },
+  {
+    "name": "SURIA Cosmetic Surgery & Med Spa",
+    "neighborhood": "weston",
+    "neighborhood_name": "Weston",
+    "address": "2235 N. Commerce Pkwy, Suite 2, Weston, FL 33326",
+    "phone": "954-472-8355",
+    "website": "https://suriaplasticsurgery.com/",
+    "source_url": "https://suriaplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Shashi Kusuma, MD",
+        "credentials_text": "Double board certified in Plastic Surgery and Otolaryngology",
+        "credentials_source": "https://suriaplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "The Weston Center for Aesthetic Medicine and Surgery",
+    "neighborhood": "weston",
+    "neighborhood_name": "Weston",
+    "address": "2133 N Commerce Pkwy, Weston, FL 33326",
+    "phone": "954-526-0066",
+    "website": "https://www.westonsurgery.com/",
+    "source_url": "https://www.westonsurgery.com/dr-jon-harrell.html",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Jon F. Harrell, DO, FACS",
+        "credentials_text": "Diplomate American Board of Plastic Surgery and American Board of Otolaryngology",
+        "credentials_source": "https://www.westonsurgery.com/dr-jon-harrell.html"
+      }
+    ]
+  },
+  {
+    "name": "David J. Levens, M.D. Plastic Surgery & Med Spa",
+    "neighborhood": "coral-springs",
+    "neighborhood_name": "Coral Springs",
+    "address": "2855 N. University Dr, Suite 400, Coral Springs, FL 33065",
+    "phone": "954-752-1020",
+    "website": "https://www.drlevens.com/",
+    "source_url": "https://www.drlevens.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "David J. Levens, M.D., FACS",
+        "credentials_text": "Board Certified Plastic Surgery (ABPS); member of American Society of Plastic Surgeons (ASPS) and American Society for Aesthetic Plastic Surgery (ASAPS)",
+        "credentials_source": "https://www.drlevens.com/"
+      }
+    ]
+  },
+  {
+    "name": "The Plastic Surgery Practice of Dr. Ramiro Morales",
+    "neighborhood": "miramar",
+    "neighborhood_name": "Miramar",
+    "address": "12600 Pembroke Road, Suite 306, Miramar, FL 33027",
+    "phone": "954-450-6594",
+    "website": "https://www.moralesplasticsurgery.com/",
+    "source_url": "https://www.moralesplasticsurgery.com/html/about.html",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "facelift"],
+    "surgeons": [
+      {
+        "name": "Ramiro Morales, Jr., M.D., F.A.C.S.",
+        "credentials_text": "American Board of Plastic Surgery Certification; received his medical degree with honors from University of South Florida College of Medicine; completed general and plastic surgery residencies at the University of Illinois at Chicago (UIC).",
+        "credentials_source": "https://www.moralesplasticsurgery.com/html/about.html"
+      }
+    ]
+  }
+]

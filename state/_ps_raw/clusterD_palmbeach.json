@@ -1,0 +1,278 @@
+[
+  {
+    "name": "Plastic Surgery Specialists of Boca Raton",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "address": "951 NW 13th Street, Suite 4-A, Boca Raton, FL 33486",
+    "phone": "561-203-0377",
+    "website": "https://www.pssbocaraton.com/",
+    "source_url": "https://www.pssbocaraton.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Rafael C. Cabrera, MD, FACS",
+        "credentials_text": "Board-certified plastic surgeon, FACS (Fellow of the American College of Surgeons). Education: Cornell University (undergraduate), NYU School of Medicine, Manhattan Eye, Ear & Throat Hospital.",
+        "credentials_source": "https://www.pssbocaraton.com/"
+      }
+    ]
+  },
+  {
+    "name": "Sanctuary Plastic Surgery",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "address": "4800 N Federal Hwy, Suite C101, Boca Raton, FL 33431",
+    "phone": "561-475-1861",
+    "website": "https://www.spsboca.com/",
+    "source_url": "https://www.spsboca.com/about/our-surgeons/dr-jason-pozner/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Jason Pozner",
+        "credentials_text": "M.D. F.A.C.S. Certified by the American Board of Plastic Surgery. Graduated from the Mount Sinai School of Medicine in New York; five-year general surgery residency at Mount Sinai Medical Center; Microsurgery Fellowship at Montefiore Medical Center; Plastic Surgery residency at Downstate Medical Center in New York. Member of the American Society of Plastic Surgeons and the American Society of Aesthetic Plastic Surgery. Adjunct clinical faculty at Cleveland Clinic Florida Department of Plastic Surgery.",
+        "credentials_source": "https://www.spsboca.com/about/our-surgeons/dr-jason-pozner/"
+      }
+    ]
+  },
+  {
+    "name": "Handal Plastic Surgery",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "address": "5503 North Federal Highway, Boca Raton, FL 33487",
+    "phone": "561-220-6360",
+    "website": "https://www.handalplasticsurgery.com/",
+    "source_url": "https://www.handalplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Arthur G. Handal, M.D., F.A.C.S.",
+        "credentials_text": "Board certified by the American Board of Plastic Surgery. Fellowship training in hand surgery (Hartford Hospital, Connecticut); fellowship training in aesthetic surgery (University of Miami association).",
+        "credentials_source": "https://www.handalplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Mosca Plastic Surgery",
+    "neighborhood": "delray-beach",
+    "neighborhood_name": "Delray Beach",
+    "address": "1010 South Federal Hwy, Ste 101, Delray Beach, FL 33483",
+    "phone": "561-213-9693",
+    "website": "https://www.drbocaraton.com/",
+    "source_url": "https://www.drbocaraton.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Kevin Mosca",
+        "credentials_text": "Board-Certified Plastic and Reconstructive Surgeon",
+        "credentials_source": "https://www.drbocaraton.com/"
+      }
+    ]
+  },
+  {
+    "name": "Farber Plastic Surgery",
+    "neighborhood": "delray-beach",
+    "neighborhood_name": "Delray Beach",
+    "address": "526 SE 5th Avenue, Delray Beach, FL 33483",
+    "phone": "561-503-2700",
+    "website": "https://www.farberplasticsurgery.com/",
+    "source_url": "https://www.farberplasticsurgery.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Scott T. Farber, MD, FACS",
+        "credentials_text": "Board-certified in plastic surgery; FACS (Fellow of the American College of Surgeons). MD, The George Washington University (2003).",
+        "credentials_source": "https://www.farberplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Inspire Aesthetics",
+    "neighborhood": "delray-beach",
+    "neighborhood_name": "Delray Beach",
+    "address": "1010 South Federal Hwy, Ste 1010, Delray Beach, FL 33483",
+    "phone": "561-331-6959",
+    "website": "https://inspireaesthetics.com/",
+    "source_url": "https://inspireaesthetics.com/about/dr-daniel-crane/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Daniel Crane",
+        "credentials_text": "Board-certified plastic surgeon. Member of the American Society of Plastic Surgeons (ASPS) and The American Society for Aesthetic Plastic Surgery (ASAPS). Medical degree from Tel Aviv University; surgical residency at the University of Buffalo; aesthetic plastic surgery specialization at the Medical University of South Carolina. Selected as one of only 30 plastic surgery residents nationwide for advanced aesthetic fellowship training endorsed by ASAPS.",
+        "credentials_source": "https://inspireaesthetics.com/about/dr-daniel-crane/"
+      },
+      {
+        "name": "Dr. Matthew Goodwin",
+        "credentials_text": "Board-certified plastic surgeon. Medical degree from Yale University School of Medicine; general surgery and plastic surgery residency at Washington University in St. Louis/Barnes-Jewish Hospital; fellowship in advanced breast reconstruction and cosmetic surgery. Clinical Assistant Professor at Florida International University. Undergraduate at Princeton University.",
+        "credentials_source": "https://inspireaesthetics.com/about/dr-matthew-goodwin/"
+      }
+    ]
+  },
+  {
+    "name": "5th Avenue Plastic Surgery",
+    "neighborhood": "delray-beach",
+    "neighborhood_name": "Delray Beach",
+    "address": "526 SE 5th Avenue, Delray Beach, FL 33483",
+    "phone": "561-330-9500",
+    "website": "https://5thavenueplasticsurgery.com/",
+    "source_url": "https://5thavenueplasticsurgery.com/about-us/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Johanna D'Agostino, MD, FACS",
+        "credentials_text": "Double Board-Certified Plastic and Reconstructive Surgeon",
+        "credentials_source": "https://5thavenueplasticsurgery.com/about-us/"
+      }
+    ]
+  },
+  {
+    "name": "Palm Beach Plastic & Cosmetic Surgery",
+    "neighborhood": "palm-beach-gardens",
+    "neighborhood_name": "Palm Beach Gardens",
+    "address": "1411 N. Flagler Dr., Suite 5800, Palm Beach Gardens, FL 33418",
+    "phone": "561-833-4122",
+    "website": "https://palmbeachplasticsurgery.com/",
+    "source_url": "https://palmbeachplasticsurgery.com/",
+    "treatments": ["tummy-tuck", "liposuction", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Fredric M. Barr, M.D., F.A.C.S.",
+        "credentials_text": "Board-Certified Plastic Surgeon by the American Board of Plastic Surgery.",
+        "credentials_source": "https://palmbeachplasticsurgery.com/"
+      }
+    ]
+  },
+  {
+    "name": "Lickstein Plastic Surgery",
+    "neighborhood": "palm-beach-gardens",
+    "neighborhood_name": "Palm Beach Gardens",
+    "address": "5540 PGA Boulevard, Suite 200, Palm Beach Gardens, FL 33418",
+    "phone": "561-571-4000",
+    "website": "https://www.licksteinplasticsurgery.com/",
+    "source_url": "https://www.licksteinplasticsurgery.com/about-us/meet-dr-lickstein/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. David Lickstein",
+        "credentials_text": "Board Certification: American Board of Plastic Surgery (2004-present). Doctor of Medicine, Northwestern University Medical School, Chicago, Illinois (1993). General Surgery Residency: Northwestern University McGaw Medical Center; Tufts University-New England Medical Center. Plastic and Reconstructive Surgery Residency: Albany Medical College. Fellowship in Hand and Microsurgery: Harvard Medical School-Massachusetts General Hospital. Fellow, The American College of Surgeons (2002-present).",
+        "credentials_source": "https://www.licksteinplasticsurgery.com/about-us/meet-dr-lickstein/"
+      }
+    ]
+  },
+  {
+    "name": "Hass Plastic Surgery & MediSpa",
+    "neighborhood": "palm-beach-gardens",
+    "neighborhood_name": "Palm Beach Gardens",
+    "address": "2401 PGA Blvd., Suite 150, Palm Beach Gardens, FL 33410",
+    "phone": "561-624-7777",
+    "website": "https://www.hassplasticsurgery.com/",
+    "source_url": "https://www.hassplasticsurgery.com/meet-our-staff/meet-our-doctors/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Brian Hass",
+        "credentials_text": "Board-certified plastic surgeon. Member of the American Society of Plastic Surgeons.",
+        "credentials_source": "https://www.hassplasticsurgery.com/meet-our-staff/meet-our-doctors/"
+      }
+    ]
+  },
+  {
+    "name": "Aqua Plastic Surgery",
+    "neighborhood": "jupiter",
+    "neighborhood_name": "Jupiter",
+    "address": "641 University Blvd #103, Jupiter, FL 33458",
+    "phone": "561-776-2830",
+    "website": "https://aquaplasticsurgery.com/",
+    "source_url": "https://aquaplasticsurgery.com/about/meet-dr-rankin/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. David Rankin",
+        "credentials_text": "Board certification: American Board of Plastic Surgery. Member of the American Medical Association, American Society of Plastic Surgeons, Florida Medical Association, Palm Beach County Medical Society, and Palm Beach County Society of Plastic Surgeons. Chief of plastic surgery at St. Mary's Medical Center.",
+        "credentials_source": "https://aquaplasticsurgery.com/about/meet-dr-rankin/"
+      }
+    ]
+  },
+  {
+    "name": "Jason Cooper, MD Plastic Surgery",
+    "neighborhood": "jupiter",
+    "neighborhood_name": "Jupiter",
+    "address": "3535 Military Trail, Suite #204, Jupiter, FL 33458",
+    "phone": "561-406-6574",
+    "website": "https://jasoncoopermd.com/",
+    "source_url": "https://jasoncoopermd.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Jason Cooper",
+        "credentials_text": "Board-certified, Harvard-trained plastic surgeon.",
+        "credentials_source": "https://jasoncoopermd.com/"
+      }
+    ]
+  },
+  {
+    "name": "Palms Wellington Plastic Surgery",
+    "neighborhood": "wellington",
+    "neighborhood_name": "Wellington",
+    "address": "13005 Southern Blvd, Suite 232, Wellington, FL 33470",
+    "phone": "561-753-3331",
+    "website": "https://doctornir.com/",
+    "source_url": "https://doctornir.com/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Itzhak Nir",
+        "credentials_text": "Board Certified Cosmetic and Reconstructive Plastic Surgeon specializing in Aesthetic Surgery of the Face, Body, and Breasts. Training from University of Miami / Jackson Memorial Hospital.",
+        "credentials_source": "https://doctornir.com/"
+      }
+    ]
+  },
+  {
+    "name": "Plastic Surgery of Palm Beach, P.A.",
+    "neighborhood": "west-palm-beach",
+    "neighborhood_name": "West Palm Beach",
+    "address": "4700 North Congress Ave, Suite 103, West Palm Beach, FL 33407",
+    "phone": "561-877-5939",
+    "website": "https://www.plasticsurgerypb.com/",
+    "source_url": "https://www.plasticsurgerypb.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Alan Pillersdorf",
+        "credentials_text": "Board Certified Plastic Surgeon",
+        "credentials_source": "https://www.plasticsurgerypb.com/"
+      },
+      {
+        "name": "Dr. Dov I. Eidelman",
+        "credentials_text": "Board Certified Plastic Surgeon",
+        "credentials_source": "https://www.plasticsurgerypb.com/"
+      }
+    ]
+  },
+  {
+    "name": "Illusions Plastic Surgery",
+    "neighborhood": "west-palm-beach",
+    "neighborhood_name": "West Palm Beach",
+    "address": "2005 Palm Beach Lakes Blvd, West Palm Beach, FL 33409",
+    "phone": "561-331-3191",
+    "website": "https://illusionsplasticsurgery.com/",
+    "source_url": "https://illusionsplasticsurgery.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": []
+  },
+  {
+    "name": "Rosenthal Cosmetic & Plastic Surgery",
+    "neighborhood": "boynton-beach",
+    "neighborhood_name": "Boynton Beach",
+    "address": "9868 S State Road 7, Suite 330, Boynton Beach, FL 33472",
+    "phone": "561-880-8866",
+    "website": "https://www.rosenthal-md.com/",
+    "source_url": "https://www.rosenthal-md.com/about-us/dr-rosenthal/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Andrew H. Rosenthal",
+        "credentials_text": "Nationally recognized, board-certified plastic surgeon (American Board of Plastic Surgery). Served as President of the Florida Society of Plastic Surgeons.",
+        "credentials_source": "https://www.rosenthal-md.com/about-us/dr-rosenthal/"
+      }
+    ]
+  }
+]
