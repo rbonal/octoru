@@ -1231,6 +1231,14 @@ def render_guides(pages):
     return guide_urls
 
 
+def render_learn():
+    urls = []
+    for t in json.loads((ROOT / "data" / "learn_topics.json").read_text()):
+        _write(f"learn/{t['slug']}/index.html", env.get_template("learn.html.j2").render(topic=t, site_url=SITE_URL, last_updated=datetime.date.today().isoformat(), year=datetime.date.today().year))
+        urls.append(f"/learn/{t['slug']}/")
+    return urls
+
+
 def render_sitemap(summaries, guide_urls=None):
     urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
@@ -1334,7 +1342,8 @@ def main():
     render_claim()
     render_advertise(summaries)
     guide_urls = render_guides(passed)
-    render_sitemap(summaries, guide_urls)
+    learn_urls = render_learn()
+    render_sitemap(summaries, guide_urls + learn_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
