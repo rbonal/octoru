@@ -731,6 +731,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None):
         "path": page_path(market, treatment_slug),
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
         "meta_description": meta,
+        "canonical_url": SITE_URL + page_url(market, treatment_slug),
         "intro": intro,
         "cost": cost,
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
@@ -1028,7 +1029,7 @@ def render(page, links=None):
 def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None):
     html = env.get_template("hub.html.j2").render(
         title=title, subtitle=subtitle, breadcrumb=breadcrumb, cards=cards, intro=intro,
-        site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
+        rel_path=rel_path, site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
     return _write(f"{rel_path}/index.html" if rel_path else "index_hub.html", html)
 
 
@@ -1052,21 +1053,21 @@ def render_hubs(summaries):
                 bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"},
                       {"name": cdata["name"], "url": f"/{st}/{co}/"},
                       {"name": cidata["name"], "url": f"/{st}/{co}/{ci}/"}]
-                render_hub(f"Health & wellness in {cidata['name']}, {sdata['name']}",
-                           f"{len(cidata['pages'])} treatment guides for {cidata['name']}", bc, cards, f"{st}/{co}/{ci}")
+                render_hub(f"Best Med Spas in {cidata['name']}, {sdata['name']}",
+                           f"Compare {len(cidata['pages'])} treatments and top-rated providers in {cidata['name']} — Botox, lip filler, laser hair removal & microneedling.", bc, cards, f"{st}/{co}/{ci}")
             # county hub
             ccards = [{"title": cidata["name"], "sub": f"{len(cidata['pages'])} treatment" + ("" if len(cidata['pages']) == 1 else "s"),
                        "url": f"/{st}/{co}/{ci}/", "chip": None}
                       for ci, cidata in sorted(cdata["cities"].items(), key=lambda kv: kv[1]["name"])]
             bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}, {"name": cdata["name"], "url": f"/{st}/{co}/"}]
-            render_hub(f"Health & wellness in {cdata['name']} County, {sdata['name']}",
+            render_hub(f"Best Med Spas in {cdata['name']} County, {sdata['name']} — Botox, Filler & Laser",
                        f"{len(cdata['cities'])} cities", bc, ccards, f"{st}/{co}")
         # state hub
         scards = [{"title": cdata["name"] + " County", "sub": f"{len(cdata['cities'])} cities",
                    "url": f"/{st}/{co}/", "chip": None}
                   for co, cdata in sorted(sdata["counties"].items(), key=lambda kv: kv[1]["name"])]
         bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"}]
-        render_hub(f"Health & wellness directory — {sdata['name']}", f"{len(sdata['counties'])} counties", bc, scards, st)
+        render_hub(f"Med Spas in {sdata['name']} — Botox, Filler & Laser by City", f"{len(sdata['counties'])} counties", bc, scards, st)
     return states
 
 
