@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }} — Octoru</title>
+<title>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}: {{ clinics|length }} Top-Rated Clinic{{ 's' if clinics|length != 1 else '' }} & Prices ({{ updated[:4] }})</title>
 <meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Octoru">
-<meta property="og:title" content="{{ treatment.name }} in {{ neighborhood.name }}, {{ city }} — Octoru">
+<meta property="og:title" content="{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}: {{ clinics|length }} Top-Rated Clinic{{ 's' if clinics|length != 1 else '' }} & Prices ({{ updated[:4] }})">
 <meta property="og:description" content="{{ meta_description }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
