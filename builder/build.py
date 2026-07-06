@@ -1254,9 +1254,15 @@ def render_metros(summaries):
             if len(rows) < 2 or providers < 3:
                 continue
             priced = [r["from_price"] for r in rows if r["from_price"]]
-            html = env.get_template("metro.html.j2").render(metro=metro, treatment_slug=t_slug, treatment_name=names[t_slug], rows=rows, unit=rows[0]["price_unit"], low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+            html = env.get_template("metro.html.j2").render(has_es=t_slug in ("botox", "lip-filler"), metro=metro, treatment_slug=t_slug, treatment_name=names[t_slug], rows=rows, unit=rows[0]["price_unit"], low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
             _write(f"fl/{metro['slug']}/{t_slug}/guide/index.html", html)
             urls.append(f"/fl/{metro['slug']}/{t_slug}/guide/")
+            if t_slug in ("botox", "lip-filler"):
+                es_names = {"botox": "Botox", "lip-filler": "Relleno de labios"}
+                es_units = {"per unit": "por unidad", "per syringe": "por jeringa", "per session": "por sesion"}
+                es_html = env.get_template("metro-es.html.j2").render(metro=metro, treatment_slug=t_slug, treatment_name=es_names[t_slug], rows=rows, unit=es_units.get(rows[0]["price_unit"], ""), low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+                _write(f"es/fl/{metro['slug']}/{t_slug}/guide/index.html", es_html)
+                urls.append(f"/es/fl/{metro['slug']}/{t_slug}/guide/")
     print(f"[builder] built {len(urls)} metro pages")
     return urls
 
