@@ -1277,7 +1277,7 @@ def render_metro_hubs(summaries):
             if len(rows) < 2 or providers < 3:
                 continue
             priced = [r["from_price"] for r in rows if r["from_price"]]
-            items.append({"treatment_slug": t_slug, "treatment_name": names[t_slug], "n_areas": len(rows), "providers": providers, "low": (min(priced) if priced else None), "unit": rows[0]["price_unit"]})
+            items.append({"treatment_slug": t_slug, "treatment_name": names[t_slug], "n_areas": len(rows), "providers": providers, "low": (min(priced) if priced else None), "unit": next((r["price_unit"] for r in rows if r.get("price_unit")), "")})
         if not items:
             continue
         html = env.get_template("metro-hub.html.j2").render(metro=metro, items=items, site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
