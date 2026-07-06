@@ -1258,8 +1258,8 @@ def render_metros(summaries):
             _write(f"fl/{metro['slug']}/{t_slug}/guide/index.html", html)
             urls.append(f"/fl/{metro['slug']}/{t_slug}/guide/")
             if t_slug in ("botox", "lip-filler", "laser-hair-removal", "microneedling", "coolsculpting"):
-                es_names = {"botox": "Botox", "lip-filler": "Relleno de labios", "laser-hair-removal": "Depilaci&oacute;n l&aacute;ser", "microneedling": "Microneedling", "coolsculpting": "CoolSculpting"}
-                es_units = {"per unit": "por unidad", "per syringe": "por jeringa", "per session": "por sesi&oacute;n"}
+                es_names = {"botox": "Botox", "lip-filler": "Relleno de labios", "laser-hair-removal": "Depilación láser", "microneedling": "Microneedling", "coolsculpting": "CoolSculpting"}
+                es_units = {"per unit": "por unidad", "per syringe": "por jeringa", "per session": "por sesión"}
                 es_html = env.get_template("metro-es.html.j2").render(metro=metro, treatment_slug=t_slug, treatment_name=es_names[t_slug], art=("la" if t_slug == "laser-hair-removal" else "el"), contr=("de la" if t_slug == "laser-hair-removal" else "del"), rows=rows, unit=es_units.get(rows[0]["price_unit"], ""), low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
                 _write(f"es/fl/{metro['slug']}/{t_slug}/guide/index.html", es_html)
                 urls.append(f"/es/fl/{metro['slug']}/{t_slug}/guide/")
