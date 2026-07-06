@@ -7,7 +7,7 @@
 <link rel="canonical" href="{{ site_url }}/fl/{{ metro.slug }}/">
 <link rel="stylesheet" href="/assets/styles.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>.metro-guides{list-style:none;padding:0;margin:8px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}.metro-guides a{display:block;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;text-decoration:none;color:var(--ink)}.metro-guides a:hover{border-color:var(--blue);background:var(--blue-tint)}.metro-guides .mg-t{font-weight:600;font-size:16px}.metro-guides .mg-m{color:var(--mute);font-size:14px;margin-top:4px}</style>
+<style>.metro-guides{list-style:none;padding:0;margin:8px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}.metro-guides a{display:block;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;text-decoration:none;color:var(--ink)}.metro-guides a:hover{border-color:var(--blue);background:var(--blue-tint)}.metro-guides .mg-t{display:block;font-weight:600;font-size:16px}.metro-guides .mg-m{display:block;color:var(--mute);font-size:14px;margin-top:4px}</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Florida","item":"{{ site_url }}/fl/"},{"@type":"ListItem","position":3,"name":"{{ metro.name }}"}]}
 </script>
@@ -19,7 +19,7 @@
 <header class="guide-hero"><div class="label blue" style="margin-bottom:10px">{{ year }} price index</div><h1>{{ metro.name }} aesthetic treatment prices</h1>
 <p class="guide-lead">Compare starting prices for aesthetic treatments across {{ metro.name }} neighborhoods and cities. Select a treatment to see the full price comparison by area.</p></header>
 <section class="guide-section"><ul class="metro-guides">
-{% for it in items %}<li><a href="/fl/{{ metro.slug }}/{{ it.treatment_slug }}/guide/"><span class="mg-t">{{ it.treatment_name }} prices</span><span class="mg-m">{% if it.low %}from ${{ it.low }} {{ it.unit }} &middot; {% endif %}{{ it.n_areas }} areas &middot; {{ it.providers }} providers</span></a></li>{% endfor %}
+{% for it in items %}<li><a href="/fl/{{ metro.slug }}/{{ it.treatment_slug }}/guide/"><span class="mg-t">{{ it.treatment_name }} prices</span><span class="mg-m">{% if it.low %}from ${{ it.low }}{% if it.unit %} {{ it.unit }}{% endif %} &middot; {% endif %}{{ it.n_areas }} areas &middot; {{ it.providers }} providers</span></a></li>{% endfor %}
 </ul></section>
 </article>
 </main>
