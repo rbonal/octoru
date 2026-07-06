@@ -1248,6 +1248,8 @@ def render_metros(summaries):
     for metro in metros:
         for t_slug in sorted(names):
             rows = sorted([s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug], key=lambda r: (r["from_price"] is None, r["from_price"] or 0, r["city_name"]))
+            _seen = set()
+            rows = [r for r in rows if not (r["url"] in _seen or _seen.add(r["url"]))]
             providers = sum(r["n_clinics"] for r in rows)
             if len(rows) < 2 or providers < 3:
                 continue
