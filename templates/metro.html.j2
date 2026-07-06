@@ -1,0 +1,30 @@
+<!doctype html>
+  <html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ treatment_name }} Cost in {{ metro.name }} ({{ year }}) - Price Comparison | Octoru</title>
+  <meta name="description" content="Compare {{ treatment_name|lower }} prices across {{ n_areas }} {{ metro.name }}-area locations{% if low %}, from ${{ low }} {{ unit }}{% endif %}. Starting prices from {{ providers }} providers, side by side.">
+  <link rel="canonical" href="{{ site_url }}/fl/{{ metro.slug }}/{{ treatment_slug }}/guide/">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Florida","item":"{{ site_url }}/fl/"},{"@type":"ListItem","position":3,"name":"{{ metro.name }} {{ treatment_name }} cost"}]}
+</script>
+  </head><body>
+  <header class="topbar"><div class="wrap"><a href="/" style="text-decoration:none"><span class="wordmark" style="font-size:21px">octoru</span></a></div></header>
+  <main class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/fl/">Florida</a><span class="sep">/</span><span aria-current="page">{{ metro.name }} {{ treatment_name }} cost</span></nav>
+  <article class="guide-article">
+  <header class="guide-hero"><div class="label blue" style="margin-bottom:10px">{{ year }} price index</div><h1>How much does {{ treatment_name|lower }} cost in {{ metro.name }}?</h1>
+  {% if low %}<div class="guide-price-callout"><span class="guide-price-n">${{ low }}{% if high and high != low %} to ${{ high }}{% endif %} {{ unit }}</span><span class="guide-price-note">starting prices across {{ n_areas }} {{ metro.name }}-area locations</span></div>{% endif %}
+  <p class="guide-lead">Aesthetic-treatment pricing varies widely across {{ metro.name }}. This index compares starting {{ treatment_name|lower }} prices from providers in {{ n_areas }} {{ metro.name }} neighborhoods and cities, so you can see the real local range before booking a consultation.{% if priced_count %} {{ priced_count }} of {{ n_areas }} areas have published pricing;{% endif %} final cost depends on the provider and your treatment plan.</p></header>
+<section class="guide-section"><h2>{{ treatment_name }} prices by {{ metro.name }} area</h2>
+  <table><thead><tr><th>Area</th><th>Starting price</th><th>Providers</th><th></th></tr></thead><tbody>
+  {% for r in rows %}<tr><td>{{ r.city_name }}</td><td>{% if r.from_price %}${{ r.from_price }} {{ unit }}{% else %}Request a quote{% endif %}</td><td>{{ r.n_clinics }}</td><td><a href="{{ r.url }}">Compare</a></td></tr>{% endfor %}
+  </tbody></table>
+  <p style="margin-top:12px">Prices shown are starting rates sourced from provider listings; final cost depends on the treatment area, the units or sessions required, and the specific provider. Always confirm at a consultation.</p></section>
+  <section class="guide-section" style="background:var(--blue-tint);border:1px solid var(--blue-line);border-radius:10px;padding:24px"><div class="label blue" style="margin-bottom:8px">Compare providers by area</div><ul>{% for r in rows %}<li><a href="{{ r.url }}">{{ r.city_name }} {{ treatment_name|lower }} providers</a></li>{% endfor %}</ul></section>
+  </article>
+  </main>
+  <footer class="foot"><div class="wrap">Octoru is an independent health &amp; wellness price directory. Prices are sourced from provider listings and may change; always confirm directly with your provider.<div class="label" style="margin-top:10px">Updated {{ last_updated }}</div></div></footer>
+  </body></html>
