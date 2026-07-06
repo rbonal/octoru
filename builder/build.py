@@ -1261,6 +1261,32 @@ def render_metros(summaries):
     return urls
 
 
+def render_metro_hubs(summaries):
+    metros = [{"slug": "miami", "name": "Miami", "county": "miami-dade"}, {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"}, {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"}]
+    names = {}
+    for s in summaries:
+        names.setdefault(s["treatment_slug"], s["treatment_name"])
+    urls = []
+    for metro in metros:
+        items = []
+        for t_slug in sorted(names):
+            rows = [s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug]
+            seen = set()
+            rows = [r for r in rows if not (r["url"] in seen or seen.add(r["url"]))]
+            providers = sum(r["n_clinics"] for r in rows)
+            if len(rows) < 2 or providers < 3:
+                continue
+            priced = [r["from_price"] for r in rows if r["from_price"]]
+            items.append({"treatment_slug": t_slug, "treatment_name": names[t_slug], "n_areas": len(rows), "providers": providers, "low": (min(priced) if priced else None), "unit": next((r["price_unit"] for r in rows if r.get("price_unit")), "")})
+        if not items:
+            continue
+        html = env.get_template("metro-hub.html.j2").render(metro=metro, items=items, site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+        _write(f"fl/{metro['slug']}/index.html", html)
+        urls.append(f"/fl/{metro['slug']}/")
+    print(f"[builder] built {len(urls)} metro hubs")
+    return urls
+
+
 def render_sitemap(summaries, guide_urls=None):
     urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
@@ -1366,7 +1392,8 @@ def main():
     guide_urls = render_guides(passed)
     learn_urls = render_learn()
     metro_urls = render_metros(summaries)
-    render_sitemap(summaries, guide_urls + learn_urls + metro_urls)
+    metro_hub_urls = render_metro_hubs(summaries)
+    render_sitemap(summaries, guide_urls + learn_urls + metro_urls + metro_hub_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
