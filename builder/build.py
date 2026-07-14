@@ -1040,7 +1040,8 @@ def render_hubs(summaries):
         states.setdefault(s["state"], {"name": s["state_name"], "counties": {}})
         co = states[s["state"]]["counties"].setdefault(s["county"], {"name": s["county_name"], "cities": {}})
         ci = co["cities"].setdefault(s["city"], {"name": s["city_name"], "pages": []})
-        ci["pages"].append(s)
+        if not any(p["url"] == s["url"] for p in ci["pages"]):
+            ci["pages"].append(s)
 
     for st, sdata in states.items():
         # city hubs
@@ -1296,11 +1297,13 @@ def render_metro_hubs(summaries):
 def render_sitemap(summaries, guide_urls=None):
     urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
+    seen_pages = set()
     for s in summaries:
         for hub in (f"/{s['state']}/", f"/{s['state']}/{s['county']}/", f"/{s['state']}/{s['county']}/{s['city']}/"):
             if hub not in seen_hubs:
                 seen_hubs.add(hub); urls.append(hub)
-        urls.append(s["url"])
+        if s["url"] not in seen_pages:
+            seen_pages.add(s["url"]); urls.append(s["url"])
     for gu in (guide_urls or []):
         urls.append(gu)
     today = datetime.date.today().isoformat()
@@ -1399,7 +1402,7 @@ def main():
     learn_urls = render_learn()
     metro_urls = render_metros(summaries)
     metro_hub_urls = render_metro_hubs(summaries)
-    render_sitemap(summaries, guide_urls + learn_urls + metro_urls + metro_hub_urls)
+    render_sitemap(summaries, learn_urls + metro_urls + metro_hub_urls)  # guides are noindexed -> keep out of sitemap
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
