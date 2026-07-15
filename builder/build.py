@@ -66,6 +66,7 @@ TREATMENT_NAMES = {
     "coolsculpting": "CoolSculpting",
     "laser-hair-removal": "Laser hair removal",
     "microneedling": "Microneedling",
+    "hydrafacial": "HydraFacial",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -235,6 +236,25 @@ TREATMENT_FAQS = {
             "a": "Standard microneedling causes redness and mild sensitivity for 24–48 hours — similar to a sunburn. Most patients return to work the next day with light-coverage makeup. RF microneedling may involve two to three days of more noticeable redness and some swelling. Either way, sun protection is essential for at least two weeks following treatment.",
         },
     ],
+    "hydrafacial": [
+        {
+            "q": "How much does a HydraFacial cost in {city}?",
+            "a_prices": "HydraFacial prices vary by tier (signature, deluxe, platinum) and any serum booster add-ons. Providers in our {city} directory list their starting prices above \u2014 a consultation will confirm which tier fits your skin goals.",
+            "a_no_prices": "Published Florida med spa prices for a HydraFacial most commonly run $150\u2013$350 per session. Signature (basic) sessions are typically $150\u2013$200, deluxe versions with boosters $200\u2013$300, and platinum tiers $275\u2013$350. Packages and memberships usually reduce the per-session cost.",
+        },
+        {
+            "q": "How often should you get a HydraFacial?",
+            "a": "Every four to six weeks is the standard recommendation, matching the skin's roughly 28-day cell-turnover cycle. Acne-prone or congested skin sometimes starts with sessions every two to three weeks before stretching to monthly maintenance. Going more often than every two weeks is generally discouraged, because the built-in exfoliation can over-stress the skin barrier.",
+        },
+        {
+            "q": "What does a HydraFacial treat?",
+            "a": "It is best for surface-level concerns: dullness, dehydration, congested pores and blackheads, uneven tone and mild texture. The treatment is gentle enough for all skin types, including sensitive skin. For deeper concerns such as pitted acne scars or skin laxity, collagen-building treatments like microneedling tend to deliver better results.",
+        },
+        {
+            "q": "Is there any downtime after a HydraFacial?",
+            "a": "No \u2014 that is one of its main draws. Most people leave with an immediate glow and return to their day right away; some notice mild redness for a few hours. Makeup can usually be applied the same day, and daily sun protection helps preserve the result.",
+        },
+    ],
 }
 
 
@@ -343,6 +363,7 @@ TREATMENT_UNITS = {
     "coolsculpting": "per session",
     "laser-hair-removal": "per session",
     "microneedling": "per session",
+    "hydrafacial": "per session",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -350,6 +371,7 @@ TREATMENT_GUIDANCE = {
     "coolsculpting": "CoolSculpting is a non-surgical fat-reduction treatment that cools targeted areas; it is typically priced per session or per area, and several sessions may be suggested. Ask how many cycles a provider recommends for your goal.",
     "laser-hair-removal": "Laser hair removal reduces unwanted hair over a course of sessions; pricing is usually per session or per package and depends on the body area. Ask how many sessions are typical and which laser suits your skin type.",
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
+    "hydrafacial": "A HydraFacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts and hydrates the skin with serums in one visit; it is usually priced per session, with tiered versions (signature, deluxe, platinum) and booster add-ons raising the price. There is no downtime. Ask which tier and boosters a provider recommends for your skin.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -359,6 +381,7 @@ TREATMENT_DESC = {
     "coolsculpting": "Non-invasive fat reduction, priced per area.",
     "laser-hair-removal": "Multi-session hair reduction, priced by area.",
     "microneedling": "Collagen-induction skin treatment, per session.",
+    "hydrafacial": "Hydradermabrasion facial with serum infusion, per session.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
