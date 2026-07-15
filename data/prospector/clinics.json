@@ -13,7 +13,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.6,
     "review_count": 447,
@@ -112,7 +113,8 @@
     "languages": [],
     "treatments": [
       "botox",
-      "lip-filler"
+      "lip-filler",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 200,
@@ -158,7 +160,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 180,
@@ -230,7 +233,8 @@
     "languages": [],
     "treatments": [
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.8,
     "review_count": 433,
@@ -398,7 +402,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.7,
     "review_count": 69,
@@ -406,7 +411,10 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "starting_prices_usd": {
+      "hydrafacial": 200
+    }
   },
   {
     "slug": "diamond-med-spa",
@@ -421,7 +429,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.7,
     "review_count": 15,
@@ -431,7 +440,8 @@
     "has_before_after": false,
     "before_after_consent": false,
     "starting_prices_usd": {
-      "botox": 11
+      "botox": 11,
+      "hydrafacial": 150
     }
   },
   {
@@ -612,7 +622,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.7,
     "review_count": 442,
@@ -775,7 +786,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 348,
@@ -918,7 +930,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.8,
     "review_count": 198,
@@ -941,7 +954,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 588,
@@ -1918,7 +1932,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 145,
@@ -2884,7 +2899,8 @@
       "lip-filler",
       "coolsculpting",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 244,
@@ -2907,7 +2923,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 14,
