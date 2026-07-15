@@ -33,6 +33,8 @@
       <span class="brand-lockup"><svg class="brand-mark" width="30" height="30" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/><path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg><span class="wordmark">octoru</span></span>
       <span class="sub label">Med spa &amp; aesthetics directory</span>
     </span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu" role="button"><span></span><span></span><span></span></label>
     <nav class="bar-nav">
       <a href="#treatments">Treatments</a>
       <a href="#areas">Areas</a>
@@ -51,9 +53,9 @@
       <div class="eyebrow label blue reveal d1">South Florida</div>
       <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas &amp; aesthetic providers by treatment and city</h1>
       {%- if avg_rating %}
-      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — average {{ avg_rating }}-star Google rating, real prices, so you can compare before you book.</p>
+      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, microneedling and HydraFacial — average {{ avg_rating }}-star Google rating, real prices, so you can compare before you book.</p>
       {%- else %}
-      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — by city, with prices and ratings, so you can compare before you book.</p>
+      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal, microneedling and HydraFacial — by city, with prices and ratings, so you can compare before you book.</p>
       {%- endif %}
 
       <div class="geo-suggest reveal d3" id="geoSuggest">
