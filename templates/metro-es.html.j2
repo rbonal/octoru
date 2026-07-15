@@ -26,7 +26,7 @@
 <p class="guide-lead">Los precios de los tratamientos est&eacute;ticos var&iacute;an mucho en {{ metro.name }}. Este &iacute;ndice compara los precios iniciales de {{ treatment_name|lower }} de proveedores en {{ n_areas }} barrios y ciudades de {{ metro.name }}, para que veas el rango real antes de reservar una consulta.{% if priced_count %} {{ priced_count }} de {{ n_areas }} zonas tienen precios publicados;{% endif %} el costo final depende del proveedor y de tu plan de tratamiento.</p></header>
 <section class="guide-section"><h2>Precios de {{ treatment_name|lower }} por zona en {{ metro.name }}</h2>
 <div class="table-wrap"><table class="price-table"><thead><tr><th>Zona</th><th>Precio inicial</th><th>Proveedores</th></tr></thead><tbody>
-{% for r in rows %}<tr><td class="area"><a href="{{ r.url }}">{{ r.city_name }}</a></td><td class="price{% if not r.from_price %} na{% endif %}">{% if r.from_price %}${{ r.from_price }} {{ unit }}{% else %}Consultar precio{% endif %}</td><td class="prov">{{ r.n_clinics }}</td></tr>{% endfor %}
+{% for r in rows %}<tr><td class="area"><a href="{{ r.url }}">{{ r.city_name }}</a></td><td class="price{% if not r.from_price %} na{% endif %}">{% if r.from_price %}${{ r.from_price }} {{ unit }}{% elif ref_price %}~${{ ref_price }} {{ unit }} (ref. zona){% else %}Consultar precio{% endif %}</td><td class="prov">{{ r.n_clinics }}</td></tr>{% endfor %}
 </tbody></table></div>
 <p style="margin-top:14px">Los precios mostrados son tarifas iniciales tomadas de listados de proveedores; el costo final depende de la zona a tratar, las unidades o sesiones necesarias y el proveedor. Confirma siempre en una consulta.</p></section>
 </article>
