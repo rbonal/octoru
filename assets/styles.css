@@ -388,14 +388,34 @@ body.home { font-size: 16px; }
   .home .search input { width: 100%; border: 1px solid var(--line-strong); background: var(--paper-pure); border-radius: 8px; padding: 14px 16px; }
   .home .search input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }
   .home .search button { width: 100%; padding: 14px; }
-  /* Mobile nav fix (2026-07-15): keep ALL nav links visible on phones —
-     the old rule hid everything but the region link, which removed the
-     Advertise with us CTA and all anchors with no hamburger fallback.
-     The header now wraps: brand row on top, full-width scrollable nav below. */
-  .home header.bar .wrap { flex-wrap: wrap; row-gap: 8px; padding: 12px 20px; }
-  .home nav.bar-nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 18px; scrollbar-width: none; }
-  .home nav.bar-nav::-webkit-scrollbar { display: none; }
-  .home nav.bar-nav a { white-space: nowrap; font-size: 13px; }
+}
+
+/* ============================================================
+   COLLAPSIBLE MOBILE NAV (2026-07-15) — hamburger accordion.
+   Collapses EARLY (≤920px) so nav links never word-wrap.
+   CSS-only: hidden checkbox + label, no JS.
+   ============================================================ */
+.nav-toggle { display: none; }
+.nav-burger { display: none; }
+.home nav.bar-nav a { white-space: nowrap; }
+@media (max-width: 920px) {
+  .home header.bar .wrap { flex-wrap: wrap; padding: 12px 20px; }
+  .nav-burger { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 5px; width: 42px; height: 40px; cursor: pointer;
+    border: 1px solid var(--line-strong); border-radius: 8px; background: var(--paper-pure); }
+  .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink);
+    border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .home nav.bar-nav { display: none; }
+  .nav-toggle:checked ~ nav.bar-nav { display: flex; width: 100%; flex-direction: column;
+    align-items: stretch; gap: 0; padding: 6px 0 14px; }
+  .nav-toggle:checked ~ nav.bar-nav a { padding: 12px 2px; font-size: 15px;
+    border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .nav-toggle:checked ~ nav.bar-nav a:last-child { border-bottom: 0; }
+  .nav-toggle:checked ~ nav.bar-nav .nav-adv-btn { margin-top: 10px; justify-content: center;
+    padding: 11px 16px; border-bottom: 0; border-radius: 999px; }
 }
 
 /* ============================================================
