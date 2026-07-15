@@ -321,7 +321,7 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
 
     if price_str:
         price_full = f"{price_str}{comparison}." if comparison else f"{price_str}."
-        parts.append(price_full.capitalize())
+        parts.append(price_full[0].upper() + price_full[1:])
 
     if lang_str:
         parts.append(lang_str)
