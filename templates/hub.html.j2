@@ -61,7 +61,10 @@
   </section>
 
   <div class="card-grid" style="margin-bottom:40px;">
+    {%- set seen_urls = [] %}
     {%- for c in cards %}
+    {%- if c.url not in seen_urls %}
+    {%- set _ = seen_urls.append(c.url) %}
     <a class="dcard" href="{{ c.url }}">
       <div class="dcard-top">
         <span class="dcard-title">{{ c.title }}</span>
@@ -70,6 +73,7 @@
       {%- if c.sub %}<div class="dcard-sub">{{ c.sub }}</div>{% endif %}
       {%- if c.chip %}<div class="dcard-foot"><span class="chip">{{ c.chip }}</span></div>{% endif %}
     </a>
+    {%- endif %}
     {%- endfor %}
   </div>
 </main>
