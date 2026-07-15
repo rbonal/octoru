@@ -388,7 +388,14 @@ body.home { font-size: 16px; }
   .home .search input { width: 100%; border: 1px solid var(--line-strong); background: var(--paper-pure); border-radius: 8px; padding: 14px 16px; }
   .home .search input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }
   .home .search button { width: 100%; padding: 14px; }
-  .home nav.bar-nav a:not(.region) { display: none; }
+  /* Mobile nav fix (2026-07-15): keep ALL nav links visible on phones —
+     the old rule hid everything but the region link, which removed the
+     Advertise with us CTA and all anchors with no hamburger fallback.
+     The header now wraps: brand row on top, full-width scrollable nav below. */
+  .home header.bar .wrap { flex-wrap: wrap; row-gap: 8px; padding: 12px 20px; }
+  .home nav.bar-nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 18px; scrollbar-width: none; }
+  .home nav.bar-nav::-webkit-scrollbar { display: none; }
+  .home nav.bar-nav a { white-space: nowrap; font-size: 13px; }
 }
 
 /* ============================================================
