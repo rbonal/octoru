@@ -70,6 +70,7 @@ TREATMENT_NAMES = {
     "chemical-peel": "Chemical peel",
     "dermal-fillers": "Dermal fillers",
     "iv-therapy": "IV therapy",
+    "morpheus8": "Morpheus8",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -315,6 +316,25 @@ TREATMENT_FAQS = {
             "a": "For healthy adults, IV therapy given by a licensed professional is generally considered low-risk, but it is not without side effects. The most common are discomfort, bruising or, rarely, infection at the insertion site, plus a warm or flushed sensation. People with heart, kidney or certain other conditions, and anyone on medications, should check with a doctor first, because high-dose vitamins and extra fluid are not appropriate for everyone.",
         },
     ],
+    "morpheus8": [
+        {
+            "q": "How much does Morpheus8 cost in {city}?",
+            "a_prices": "Morpheus8 is priced per session and by the area treated \u2014 a small facial area costs less than face-and-neck or a body area. Providers in our {city} directory list their starting prices above; a consultation confirms the plan and session count for your goal.",
+            "a_no_prices": "Published prices for a single Morpheus8 session most commonly run about $600 to $1,800 for the face, with the neck or body areas costing more. Because a full result usually takes a series of about three sessions, many clinics sell discounted packages \u2014 ask for both the per-session price and package pricing.",
+        },
+        {
+            "q": "What does Morpheus8 treat?",
+            "a": "Morpheus8 uses radiofrequency energy delivered through microneedles to remodel the deeper layers of skin. It is used to firm mild skin laxity, soften lines and wrinkles, improve rough texture and large pores, and reduce acne scarring on the face, neck, jawline and body. Because it works deeper than standard microneedling, it is often chosen when surface treatments have not gone far enough, short of surgery.",
+        },
+        {
+            "q": "How many Morpheus8 sessions will I need, and is there downtime?",
+            "a": "Most providers recommend a series of about three sessions spaced roughly four to six weeks apart, though a single session can give a visible refresh. Downtime is modest: redness and a sandpaper-like texture for a few days, sometimes mild swelling. Results build over the following weeks to months as new collagen forms, so the full effect is not immediate.",
+        },
+        {
+            "q": "Is Morpheus8 better than regular microneedling?",
+            "a": "They are related but not the same. Standard microneedling creates tiny channels in the skin's surface to boost collagen; Morpheus8 adds radiofrequency heat and longer needles to reach deeper and add a tightening effect. Morpheus8 tends to do more for laxity and deeper concerns, while classic microneedling is gentler, cheaper and well suited to surface texture and tone. A provider can advise which fits your skin and budget.",
+        },
+    ],
 }
 
 
@@ -427,6 +447,7 @@ TREATMENT_UNITS = {
     "chemical-peel": "per session",
     "dermal-fillers": "per syringe",
     "iv-therapy": "per session",
+    "morpheus8": "per session",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -438,6 +459,7 @@ TREATMENT_GUIDANCE = {
     "chemical-peel": "A chemical peel applies an acid solution \u2014 light peels use alpha- or beta-hydroxy acids like glycolic or salicylic, medium peels use TCA \u2014 to exfoliate the skin and improve tone, texture and mild discoloration; it is usually priced per session, and deeper peels or a series of sessions cost more. Downtime rises with the depth of the peel, from little to none for light peels to a week or more for deep ones. Ask which peel depth and how many sessions a provider recommends for your skin.",
     "dermal-fillers": "Dermal fillers are injectable gels \u2014 most commonly hyaluronic acid (Juvederm, Restylane), sometimes calcium hydroxylapatite (Radiesse) or poly-L-lactic acid (Sculptra) \u2014 used to restore volume and smooth folds in the cheeks, jawline, chin, lips and under-eye area; they are usually priced per syringe, and the number of syringes depends on the area and goal. Most results are immediate and last from several months to over a year depending on the product and placement. Ask which filler and how many syringes a provider recommends for your goal.",
     "iv-therapy": "IV therapy delivers fluids, electrolytes, vitamins and minerals directly into the bloodstream through a drip, usually over 30 to 60 minutes; it is priced per session, with specialty formulas such as NAD+ or higher-dose blends costing more. Providers market it for hydration, energy, immune support and hangover recovery, though robust clinical evidence for many of these specific benefits is limited. It should be given by a licensed medical professional \u2014 ask which formula fits your goal and whether it is appropriate for you.",
+    "morpheus8": "Morpheus8 is a radiofrequency (RF) microneedling device that combines fine microneedles with heat to remodel the deeper layers of skin, tightening and smoothing the face, neck and body; it is usually priced per session, and most people need a series of about three sessions. Because it reaches deeper than standard microneedling, it targets mild laxity, texture and acne scarring, with a little more downtime. Ask which areas and how many sessions a provider recommends for your skin.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -451,6 +473,7 @@ TREATMENT_DESC = {
     "chemical-peel": "Acid-based skin resurfacing peel, priced per session.",
     "dermal-fillers": "Hyaluronic-acid facial volume restoration, priced per syringe.",
     "iv-therapy": "IV vitamin and hydration drip therapy, priced per session.",
+    "morpheus8": "RF microneedling for skin tightening and resurfacing, priced per session.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
