@@ -68,6 +68,7 @@ TREATMENT_NAMES = {
     "microneedling": "Microneedling",
     "hydrafacial": "HydraFacial",
     "chemical-peel": "Chemical peel",
+    "dermal-fillers": "Dermal fillers",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -275,6 +276,25 @@ TREATMENT_FAQS = {
             "a": "It depends on the depth. Light peels usually involve little to no downtime \u2014 mild flaking and redness for a day or two. Medium peels can cause several days of visible peeling and redness, and deep peels may need a week or more of recovery. Diligent sun protection afterward is essential, because freshly resurfaced skin is more sensitive to the sun.",
         },
     ],
+    "dermal-fillers": [
+        {
+            "q": "How much do dermal fillers cost in {city}?",
+            "a_prices": "Dermal filler pricing is per syringe and depends on the filler type and how many syringes your treatment needs. Providers in our {city} directory list their starting prices above; a consultation confirms the right filler and syringe count for your goal.",
+            "a_no_prices": "Published prices for dermal fillers most commonly run about $600 to $1,200 per syringe. Hyaluronic-acid fillers such as Juvederm and Restylane tend to sit near the middle of that range, while thicker or longer-lasting fillers cost more. Most areas need one to two syringes, so the total depends on how many areas you treat \u2014 ask for a per-syringe quote and an estimate of syringes.",
+        },
+        {
+            "q": "What do dermal fillers treat?",
+            "a": "Dermal fillers restore volume and smooth lines rather than freezing muscles. They are commonly used for cheek and midface volume, jawline and chin definition, nasolabial folds and marionette lines, lips, and under-eye hollows. For wrinkles caused by muscle movement \u2014 like forehead lines and crow's feet \u2014 a neuromodulator such as Botox is usually the better tool, and many people combine the two.",
+        },
+        {
+            "q": "How long do dermal fillers last?",
+            "a": "It depends on the product and where it is placed. Most hyaluronic-acid fillers last roughly 6 to 18 months, with thinner lip fillers on the shorter end and firmer cheek or jawline fillers lasting longer. Calcium-hydroxylapatite and poly-L-lactic-acid fillers can last a year or more. Areas with a lot of movement break filler down faster, so periodic touch-ups keep results consistent.",
+        },
+        {
+            "q": "Is there downtime after dermal fillers?",
+            "a": "Downtime is usually minimal. Most people return to normal activities the same day, though mild swelling, redness or bruising at the injection sites is common for a few days \u2014 under-eye and lip areas tend to swell most. Providers generally advise avoiding strenuous exercise, alcohol and blood-thinning medications for about 24 hours to limit bruising.",
+        },
+    ],
 }
 
 
@@ -385,6 +405,7 @@ TREATMENT_UNITS = {
     "microneedling": "per session",
     "hydrafacial": "per session",
     "chemical-peel": "per session",
+    "dermal-fillers": "per syringe",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -394,6 +415,7 @@ TREATMENT_GUIDANCE = {
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
     "hydrafacial": "A HydraFacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts and hydrates the skin with serums in one visit; it is usually priced per session, with tiered versions (signature, deluxe, platinum) and booster add-ons raising the price. There is no downtime. Ask which tier and boosters a provider recommends for your skin.",
     "chemical-peel": "A chemical peel applies an acid solution \u2014 light peels use alpha- or beta-hydroxy acids like glycolic or salicylic, medium peels use TCA \u2014 to exfoliate the skin and improve tone, texture and mild discoloration; it is usually priced per session, and deeper peels or a series of sessions cost more. Downtime rises with the depth of the peel, from little to none for light peels to a week or more for deep ones. Ask which peel depth and how many sessions a provider recommends for your skin.",
+    "dermal-fillers": "Dermal fillers are injectable gels \u2014 most commonly hyaluronic acid (Juvederm, Restylane), sometimes calcium hydroxylapatite (Radiesse) or poly-L-lactic acid (Sculptra) \u2014 used to restore volume and smooth folds in the cheeks, jawline, chin, lips and under-eye area; they are usually priced per syringe, and the number of syringes depends on the area and goal. Most results are immediate and last from several months to over a year depending on the product and placement. Ask which filler and how many syringes a provider recommends for your goal.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -405,6 +427,7 @@ TREATMENT_DESC = {
     "microneedling": "Collagen-induction skin treatment, per session.",
     "hydrafacial": "Hydradermabrasion facial with serum infusion, per session.",
     "chemical-peel": "Acid-based skin resurfacing peel, priced per session.",
+    "dermal-fillers": "Hyaluronic-acid facial volume restoration, priced per syringe.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
