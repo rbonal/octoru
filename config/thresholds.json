@@ -6,7 +6,7 @@
 
   "seed_scope": {
     "_note": "Expansion: scope widened by human (Rolando) on 2026-06-02 from the original 4 Miami-core neighborhoods to all 40 neighborhoods present in data/prospector/clinics.json (Miami-Dade + Broward + Palm Beach). Many of the new neighborhoods have only 1-2 clinics — the quality gate may still cull thin treatment-x-neighborhood pages. Narrow back later if pages underperform.",
-    "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling", "hydrafacial", "chemical-peel", "dermal-fillers", "iv-therapy"],
+    "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling", "hydrafacial", "chemical-peel", "dermal-fillers", "iv-therapy", "morpheus8"],
     "neighborhoods": ["aventura", "bal-harbour", "boca-raton", "boynton-beach", "brickell", "coconut-creek", "coconut-grove", "cooper-city", "coral-gables", "coral-springs", "dania-beach", "davie", "deerfield-beach", "delray-beach", "doral", "fort-lauderdale", "hallandale-beach", "hialeah", "hollywood", "homestead", "jupiter", "kendall", "key-biscayne", "lighthouse-point", "margate", "miami-lakes", "miami-springs", "midtown", "miramar", "north-miami", "north-palm-beach", "oakland-park", "palm-beach-gardens", "palmetto-bay", "parkland", "pembroke-pines", "pinecrest", "plantation", "pompano-beach", "royal-palm-beach", "south-beach", "sunny-isles-beach", "sunrise", "surfside", "wellington", "west-palm-beach", "weston"]
   },
 
