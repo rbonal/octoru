@@ -15,7 +15,8 @@
       "laser-hair-removal",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 4.6,
     "review_count": 447,
@@ -41,7 +42,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "dermal-fillers"
     ],
     "rating": 4.6,
     "review_count": 56,
@@ -214,7 +216,8 @@
       "coolsculpting",
       "laser-hair-removal",
       "microneedling",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 4.7,
     "review_count": 343,
@@ -435,7 +438,8 @@
       "lip-filler",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 4.7,
     "review_count": 15,
@@ -628,7 +632,8 @@
       "botox",
       "lip-filler",
       "microneedling",
-      "hydrafacial"
+      "hydrafacial",
+      "dermal-fillers"
     ],
     "rating": 4.7,
     "review_count": 442,
@@ -678,7 +683,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "dermal-fillers"
     ],
     "rating": 4.9,
     "review_count": 77,
@@ -794,7 +800,8 @@
       "lip-filler",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 4.9,
     "review_count": 348,
@@ -1943,7 +1950,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "hydrafacial"
+      "hydrafacial",
+      "dermal-fillers"
     ],
     "rating": 5,
     "review_count": 145,
@@ -2885,7 +2893,8 @@
       "coolsculpting",
       "laser-hair-removal",
       "microneedling",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 4.9,
     "review_count": 729,
@@ -2937,7 +2946,8 @@
       "lip-filler",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "dermal-fillers"
     ],
     "rating": 5,
     "review_count": 14,
