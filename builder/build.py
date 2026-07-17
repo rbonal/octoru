@@ -69,6 +69,7 @@ TREATMENT_NAMES = {
     "hydrafacial": "HydraFacial",
     "chemical-peel": "Chemical peel",
     "dermal-fillers": "Dermal fillers",
+    "iv-therapy": "IV therapy",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -295,6 +296,25 @@ TREATMENT_FAQS = {
             "a": "Downtime is usually minimal. Most people return to normal activities the same day, though mild swelling, redness or bruising at the injection sites is common for a few days \u2014 under-eye and lip areas tend to swell most. Providers generally advise avoiding strenuous exercise, alcohol and blood-thinning medications for about 24 hours to limit bruising.",
         },
     ],
+    "iv-therapy": [
+        {
+            "q": "How much does IV therapy cost in {city}?",
+            "a_prices": "IV therapy is priced per session and varies with the formula \u2014 basic hydration drips cost less than vitamin blends or specialty infusions like NAD+. Providers in our {city} directory list their starting prices above; a consultation confirms which drip fits your goal.",
+            "a_no_prices": "Published prices for a single IV therapy session most commonly run about $100 to $400. Basic hydration and simple vitamin drips sit at the lower end, classic blends like a Myers' cocktail in the middle, and specialty or high-dose infusions such as NAD+ cost more. Many clinics offer membership or package pricing that lowers the per-session cost.",
+        },
+        {
+            "q": "What is IV therapy used for?",
+            "a": "IV therapy delivers fluids, electrolytes, vitamins and minerals straight into the bloodstream, bypassing digestion. Med spas and IV lounges market it for hydration, an energy boost, immune support, recovery after exercise or travel, and hangover relief. It is worth knowing that rigorous clinical evidence for many of these specific benefits is limited, so it is best approached as a wellness service rather than a proven medical treatment. A licensed provider can advise whether it makes sense for you.",
+        },
+        {
+            "q": "How long does an IV therapy session take, and how often can you get it?",
+            "a": "A typical drip takes about 30 to 60 minutes while you sit comfortably. Frequency depends on the formula and your goal \u2014 some people get a drip occasionally for recovery or before an event, while others follow a regular schedule such as monthly. There is no universal rule; a provider will recommend a cadence based on your needs and health.",
+        },
+        {
+            "q": "Is IV therapy safe, and are there side effects?",
+            "a": "For healthy adults, IV therapy given by a licensed professional is generally considered low-risk, but it is not without side effects. The most common are discomfort, bruising or, rarely, infection at the insertion site, plus a warm or flushed sensation. People with heart, kidney or certain other conditions, and anyone on medications, should check with a doctor first, because high-dose vitamins and extra fluid are not appropriate for everyone.",
+        },
+    ],
 }
 
 
@@ -406,6 +426,7 @@ TREATMENT_UNITS = {
     "hydrafacial": "per session",
     "chemical-peel": "per session",
     "dermal-fillers": "per syringe",
+    "iv-therapy": "per session",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -416,6 +437,7 @@ TREATMENT_GUIDANCE = {
     "hydrafacial": "A HydraFacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts and hydrates the skin with serums in one visit; it is usually priced per session, with tiered versions (signature, deluxe, platinum) and booster add-ons raising the price. There is no downtime. Ask which tier and boosters a provider recommends for your skin.",
     "chemical-peel": "A chemical peel applies an acid solution \u2014 light peels use alpha- or beta-hydroxy acids like glycolic or salicylic, medium peels use TCA \u2014 to exfoliate the skin and improve tone, texture and mild discoloration; it is usually priced per session, and deeper peels or a series of sessions cost more. Downtime rises with the depth of the peel, from little to none for light peels to a week or more for deep ones. Ask which peel depth and how many sessions a provider recommends for your skin.",
     "dermal-fillers": "Dermal fillers are injectable gels \u2014 most commonly hyaluronic acid (Juvederm, Restylane), sometimes calcium hydroxylapatite (Radiesse) or poly-L-lactic acid (Sculptra) \u2014 used to restore volume and smooth folds in the cheeks, jawline, chin, lips and under-eye area; they are usually priced per syringe, and the number of syringes depends on the area and goal. Most results are immediate and last from several months to over a year depending on the product and placement. Ask which filler and how many syringes a provider recommends for your goal.",
+    "iv-therapy": "IV therapy delivers fluids, electrolytes, vitamins and minerals directly into the bloodstream through a drip, usually over 30 to 60 minutes; it is priced per session, with specialty formulas such as NAD+ or higher-dose blends costing more. Providers market it for hydration, energy, immune support and hangover recovery, though robust clinical evidence for many of these specific benefits is limited. It should be given by a licensed medical professional \u2014 ask which formula fits your goal and whether it is appropriate for you.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -428,6 +450,7 @@ TREATMENT_DESC = {
     "hydrafacial": "Hydradermabrasion facial with serum infusion, per session.",
     "chemical-peel": "Acid-based skin resurfacing peel, priced per session.",
     "dermal-fillers": "Hyaluronic-acid facial volume restoration, priced per syringe.",
+    "iv-therapy": "IV vitamin and hydration drip therapy, priced per session.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
