@@ -67,6 +67,7 @@ TREATMENT_NAMES = {
     "laser-hair-removal": "Laser hair removal",
     "microneedling": "Microneedling",
     "hydrafacial": "HydraFacial",
+    "chemical-peel": "Chemical peel",
 }
 NEIGHBORHOOD_NAMES = {
     "brickell": "Brickell",
@@ -255,6 +256,25 @@ TREATMENT_FAQS = {
             "a": "No \u2014 that is one of its main draws. Most people leave with an immediate glow and return to their day right away; some notice mild redness for a few hours. Makeup can usually be applied the same day, and daily sun protection helps preserve the result.",
         },
     ],
+    "chemical-peel": [
+        {
+            "q": "How much does a chemical peel cost in {city}?",
+            "a_prices": "Chemical peel prices depend on the peel depth \u2014 light, medium or deep \u2014 and how many sessions your plan includes. Providers in our {city} directory list their starting prices above; a consultation confirms which peel fits your skin and budget.",
+            "a_no_prices": "Published prices for a professional chemical peel most commonly run about $150 to $800 per session, with light superficial peels at the lower end and medium-depth peels higher; deep peels cost more and are performed far less often. Clinics frequently sell light and medium peels as a series of three to six sessions, so ask about package pricing.",
+        },
+        {
+            "q": "What does a chemical peel treat?",
+            "a": "Chemical peels resurface the skin to improve dullness, uneven tone, sun spots, melasma, post-acne discoloration, rough texture and fine lines. Lighter peels handle surface concerns with little downtime; deeper peels reach further to address more stubborn pigmentation and lines. For pitted acne scars or skin laxity, collagen-building treatments like microneedling are often a better fit.",
+        },
+        {
+            "q": "How many chemical peel sessions will I need?",
+            "a": "Light and medium peels rarely reach their full result in one visit, so providers commonly recommend a series of three to six sessions spaced about four to six weeks apart, followed by occasional maintenance. Deeper peels can produce a bigger change in a single treatment but need more recovery and are done far less often. A provider tailors the number of sessions to your skin concern.",
+        },
+        {
+            "q": "Is there downtime after a chemical peel?",
+            "a": "It depends on the depth. Light peels usually involve little to no downtime \u2014 mild flaking and redness for a day or two. Medium peels can cause several days of visible peeling and redness, and deep peels may need a week or more of recovery. Diligent sun protection afterward is essential, because freshly resurfaced skin is more sensitive to the sun.",
+        },
+    ],
 }
 
 
@@ -364,6 +384,7 @@ TREATMENT_UNITS = {
     "laser-hair-removal": "per session",
     "microneedling": "per session",
     "hydrafacial": "per session",
+    "chemical-peel": "per session",
 }
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
@@ -372,6 +393,7 @@ TREATMENT_GUIDANCE = {
     "laser-hair-removal": "Laser hair removal reduces unwanted hair over a course of sessions; pricing is usually per session or per package and depends on the body area. Ask how many sessions are typical and which laser suits your skin type.",
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
     "hydrafacial": "A HydraFacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts and hydrates the skin with serums in one visit; it is usually priced per session, with tiered versions (signature, deluxe, platinum) and booster add-ons raising the price. There is no downtime. Ask which tier and boosters a provider recommends for your skin.",
+    "chemical-peel": "A chemical peel applies an acid solution \u2014 light peels use alpha- or beta-hydroxy acids like glycolic or salicylic, medium peels use TCA \u2014 to exfoliate the skin and improve tone, texture and mild discoloration; it is usually priced per session, and deeper peels or a series of sessions cost more. Downtime rises with the depth of the peel, from little to none for light peels to a week or more for deep ones. Ask which peel depth and how many sessions a provider recommends for your skin.",
 }
 
 # Short factual treatment blurbs for the homepage cards (not pricing — pricing is real-data only).
@@ -382,6 +404,7 @@ TREATMENT_DESC = {
     "laser-hair-removal": "Multi-session hair reduction, priced by area.",
     "microneedling": "Collagen-induction skin treatment, per session.",
     "hydrafacial": "Hydradermabrasion facial with serum infusion, per session.",
+    "chemical-peel": "Acid-based skin resurfacing peel, priced per session.",
 }
 
 # City centroids for geolocation — sourced from data/places.json (operator-owned taxonomy).
