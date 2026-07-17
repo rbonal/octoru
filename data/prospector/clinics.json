@@ -16,7 +16,8 @@
       "microneedling",
       "hydrafacial",
       "chemical-peel",
-      "dermal-fillers"
+      "dermal-fillers",
+      "morpheus8"
     ],
     "rating": 4.6,
     "review_count": 447,
@@ -241,7 +242,8 @@
       "laser-hair-removal",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "morpheus8"
     ],
     "rating": 4.8,
     "review_count": 433,
@@ -561,7 +563,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "morpheus8"
     ],
     "rating": 4.6,
     "review_count": 87,
@@ -801,7 +804,8 @@
       "microneedling",
       "hydrafacial",
       "chemical-peel",
-      "dermal-fillers"
+      "dermal-fillers",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 348,
@@ -949,7 +953,8 @@
       "laser-hair-removal",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "morpheus8"
     ],
     "rating": 4.8,
     "review_count": 198,
@@ -974,7 +979,8 @@
       "lip-filler",
       "microneedling",
       "hydrafacial",
-      "chemical-peel"
+      "chemical-peel",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 588,
@@ -1258,7 +1264,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "morpheus8"
     ],
     "rating": 4.8,
     "review_count": 187,
@@ -1399,7 +1406,8 @@
       "botox",
       "lip-filler",
       "microneedling",
-      "iv-therapy"
+      "iv-therapy",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 541,
@@ -1682,7 +1690,8 @@
       "lip-filler",
       "coolsculpting",
       "microneedling",
-      "iv-therapy"
+      "iv-therapy",
+      "morpheus8"
     ],
     "rating": 4.8,
     "review_count": 302,
@@ -2687,7 +2696,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 294,
@@ -2955,7 +2965,8 @@
       "microneedling",
       "hydrafacial",
       "chemical-peel",
-      "dermal-fillers"
+      "dermal-fillers",
+      "morpheus8"
     ],
     "rating": 5,
     "review_count": 14,
@@ -2979,7 +2990,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 216,
@@ -3074,7 +3086,8 @@
       "lip-filler",
       "coolsculpting",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "morpheus8"
     ],
     "rating": 4.9,
     "review_count": 202,
