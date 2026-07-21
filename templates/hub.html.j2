@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }} — Octoru</title>
-<meta name="description" content="{{ title }}. {{ subtitle }}. Compare med spas &amp; aesthetic providers by treatment and city — verified providers, prices, and ratings.">
+<meta name="description" content="{{ title }}. {{ subtitle.rstrip('.') }}. Verified providers, real prices and Google ratings.">
 <link rel="canonical" href="https://octoru.com/{{ rel_path }}/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,7 @@
 
   <section class="hero">
     <h1>{{ title }}</h1>
-    {%- if subtitle %}<p class="lead">{{ subtitle }}.</p>{% endif %}
+    {%- if subtitle %}<p class="lead">{{ subtitle.rstrip('.') }}.</p>{% endif %}
     {%- if intro %}<p class="lead">{{ intro }}</p>{% endif %}
   </section>
 

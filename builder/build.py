@@ -1517,7 +1517,7 @@ def main():
     learn_urls = render_learn()
     metro_urls = render_metros(summaries)
     metro_hub_urls = render_metro_hubs(summaries)
-    render_sitemap(summaries, learn_urls + metro_urls + metro_hub_urls)  # guides are noindexed -> keep out of sitemap
+    render_sitemap(summaries, learn_urls + metro_urls + metro_hub_urls + guide_urls)  # city cost guides indexable again (2026-07-21)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
