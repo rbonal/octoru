@@ -1,0 +1,30 @@
+<!doctype html>
+  <html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ topic.title }} - Octoru</title>
+  <meta name="description" content="{{ topic.lede|truncate(155) }}">
+  <link rel="canonical" href="{{ site_url }}/learn/{{ topic.slug }}/">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  {%- if topic.faqs %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for q,a in topic.faqs %}{"@type":"Question","name":{{ q|tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ a|tojson }}}}{{ "," if not loop.last }}{% endfor %}]}
+  </script>
+  {%- endif %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":{{ topic.title|tojson }},"datePublished":"{{ last_updated }}","dateModified":"{{ last_updated }}","author":{"@type":"Organization","name":"Octoru"}}
+</script>
+  </head><body>
+  <header class="topbar"><div class="wrap"><a href="/" style="text-decoration:none"><span class="wordmark" style="font-size:21px">octoru</span></a></div></header>
+  <main class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Learn</span><span class="sep">/</span><span aria-current="page">{{ topic.h1 }}</span></nav>
+  <article class="guide-article">
+  <header class="guide-hero"><div class="label blue" style="margin-bottom:10px">Guide</div><h1>{{ topic.h1 }}</h1><p class="guide-lead">{{ topic.lede }}</p></header>
+  {% for heading, body in topic.sections %}<section class="guide-section"><h2>{{ heading }}</h2><p>{{ body }}</p></section>{% endfor %}
+{%- if topic.faqs %}<section class="guide-section guide-faq"><h2>Frequently asked questions</h2><div class="faq-list">{% for q,a in topic.faqs %}<details class="faq-item"><summary class="faq-q">{{ q }}</summary><div class="faq-a"><p>{{ a }}</p></div></details>{% endfor %}</div></section>{%- endif %}
+  <section class="guide-section" style="background:var(--blue-tint);border:1px solid var(--blue-line);border-radius:10px;padding:24px"><div class="label blue" style="margin-bottom:8px">Compare providers</div><ul>{% for label, href in topic.links %}<li><a href="{{ href }}">{{ label }}</a></li>{% endfor %}</ul></section>
+  </article>
+  </main>
+  <footer class="foot"><div class="wrap">Octoru is an independent med spa &amp; aesthetics directory. Educational only; always confirm details with a provider.<div class="label" style="margin-top:10px">Updated {{ last_updated }}</div></div></footer>
+  </body></html>

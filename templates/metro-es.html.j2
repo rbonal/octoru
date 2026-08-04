@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precio {{ contr }} {{ treatment_name }} en {{ metro.name }} ({{ year }}) - Comparaci&oacute;n de precios | Octoru</title>
+<meta name="description" content="Compara precios de {{ treatment_name|lower }} en {{ n_areas }} zonas de {{ metro.name }}{% if low %}, desde ${{ low }} {{ unit }}{% endif %}. Precios iniciales de {{ providers }} proveedores.">
+<link rel="canonical" href="{{ site_url }}/es/fl/{{ metro.slug }}/{{ treatment_slug }}/guide/">
+<link rel="alternate" hreflang="en" href="{{ site_url }}/fl/{{ metro.slug }}/{{ treatment_slug }}/guide/">
+<link rel="alternate" hreflang="es" href="{{ site_url }}/es/fl/{{ metro.slug }}/{{ treatment_slug }}/guide/">
+<link rel="alternate" hreflang="x-default" href="{{ site_url }}/fl/{{ metro.slug }}/{{ treatment_slug }}/guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>.table-wrap{overflow-x:auto;margin:6px 0 2px;border:1px solid var(--line);border-radius:var(--r)}.price-table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}.price-table th,.price-table td{padding:12px 18px;text-align:left;border-bottom:1px solid var(--line)}.price-table thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);background:var(--pale);font-weight:600}.price-table thead th:last-child{text-align:center}.price-table tbody tr:last-child td{border-bottom:0}.price-table tbody tr:hover{background:var(--blue-tint)}.price-table td.area{font-weight:600;color:var(--ink)}.price-table td.price{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink-2)}.price-table td.price.na{color:var(--mute)}.price-table td.prov{text-align:center;color:var(--ink-3)}.price-table td.area a{color:var(--blue);text-decoration:none}.price-table td.area a:hover{text-decoration:underline}</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Florida","item":"{{ site_url }}/fl/"},{"@type":"ListItem","position":3,"name":"{{ metro.name }}","item":"{{ site_url }}/fl/{{ metro.slug }}/"},{"@type":"ListItem","position":4,"name":"precio {{ contr }} {{ treatment_name }}"}]}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-382MGP656E"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-382MGP656E');</script>
+</head><body>
+<header class="topbar"><div class="wrap"><a href="/" style="text-decoration:none"><span class="brand-lockup"><svg class="brand-mark" width="28" height="28" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/><path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg><span class="wordmark" style="font-size:21px">octoru</span></span><div class="label">Directorio de med spas y estética</div></a><span class="label blue">Sur de Florida</span></div></header>
+<main class="wrap">
+<nav class="breadcrumb" aria-label="Ruta"><a href="/">Inicio</a><span class="sep">/</span><a href="/fl/">Florida</a><span class="sep">/</span><a href="/fl/{{ metro.slug }}/">{{ metro.name }}</a><span class="sep">/</span><span aria-current="page">precio {{ contr }} {{ treatment_name|lower }}</span></nav>
+<article class="guide-article">
+<header class="guide-hero"><div class="label blue" style="margin-bottom:10px">&iacute;ndice de precios {{ year }}</div><h1>&iquest;Cu&aacute;nto cuesta {{ art }} {{ treatment_name|lower }} en {{ metro.name }}?</h1>
+{% if low %}<div class="guide-price-callout"><span class="guide-price-n">${{ low }}{% if high and high != low %} a ${{ high }}{% endif %} {{ unit }}</span><span class="guide-price-note">precios iniciales en {{ n_areas }} zonas de {{ metro.name }}</span></div>{% endif %}
+<p class="guide-lead">Los precios de los tratamientos est&eacute;ticos var&iacute;an mucho en {{ metro.name }}. Este &iacute;ndice compara los precios iniciales de {{ treatment_name|lower }} de proveedores en {{ n_areas }} barrios y ciudades de {{ metro.name }}, para que veas el rango real antes de reservar una consulta.{% if priced_count %} {{ priced_count }} de {{ n_areas }} zonas tienen precios publicados;{% endif %} el costo final depende del proveedor y de tu plan de tratamiento.</p></header>
+<section class="guide-section"><h2>Precios de {{ treatment_name|lower }} por zona en {{ metro.name }}</h2>
+<div class="table-wrap"><table class="price-table"><thead><tr><th>Zona</th><th>Precio inicial</th><th>Proveedores</th></tr></thead><tbody>
+{% for r in rows %}<tr><td class="area"><a href="{{ r.url }}">{{ r.city_name }}</a></td><td class="price{% if not r.from_price %} na{% endif %}">{% if r.from_price %}${{ r.from_price }} {{ unit }}{% elif ref_price %}~${{ ref_price }} {{ unit }} (ref. zona){% else %}Consultar precio{% endif %}</td><td class="prov">{{ r.n_clinics }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p style="margin-top:14px">Los precios mostrados son tarifas iniciales tomadas de listados de proveedores; el costo final depende de la zona a tratar, las unidades o sesiones necesarias y el proveedor. Confirma siempre en una consulta.</p></section>
+</article>
+</main>
+<footer class="foot"><div class="wrap">Octoru es un directorio independiente de med spas y estética. Los precios provienen de listados de proveedores y pueden cambiar; confirma siempre directamente con tu proveedor. <a href="/advertise.html">Anuncia tu cl&iacute;nica</a> &middot; <a href="/claim.html">Reclama un listado</a> &middot; <a href="/privacy">Privacidad</a> &middot; <a href="/about">Acerca de</a><div class="label" style="margin-top:10px">Actualizado {{ last_updated }}</div></div></footer>
+</body></html>

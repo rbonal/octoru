@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Octoru — Compare verified health &amp; wellness providers</title>
-<meta name="description" content="Octoru is a health &amp; wellness provider directory. Compare verified providers by treatment and city — real prices, Google ratings, and direct booking.">
+<title>Octoru — Compare Verified Med Spas &amp; Aesthetic Providers</title>
+<meta name="description" content="Octoru is a med spa &amp; aesthetics directory. Compare verified providers by treatment and city — real prices, Google ratings, and direct booking.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" sizes="any" href="/assets/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
@@ -14,8 +14,8 @@
 <meta name="twitter:image" content="https://octoru.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Octoru">
-<meta property="og:title" content="Octoru — Compare verified health &amp; wellness providers">
-<meta property="og:description" content="A national health &amp; wellness directory. Compare verified providers by treatment and city — real prices, Google ratings, direct booking.">
+<meta property="og:title" content="Octoru — Compare Verified Med Spas &amp; Aesthetic Providers">
+<meta property="og:description" content="A national med spa &amp; aesthetics directory. Compare verified providers by treatment and city — real prices, Google ratings, direct booking.">
 <meta property="og:url" content="https://octoru.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,8 +37,10 @@
   <div class="wrap">
     <a href="/"><span class="brand">
       <span class="brand-lockup"><svg class="brand-mark" width="30" height="30" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><polygon points="62,47 47,62 25,62 10,47 10,25 25,10 47,10 62,25" fill="#1447E6"/><path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg><span class="wordmark">octoru</span></span>
-      <span class="sub label">Health &amp; wellness directory</span>
+      <span class="sub label">Med spa &amp; aesthetics directory</span>
     </span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Toggle menu" role="button"><span></span><span></span><span></span></label>
     <nav class="bar-nav">
       <a href="#treatments">Treatments</a>
       <a href="#areas">Areas</a>
@@ -55,7 +57,7 @@
    <div class="hero-grid">
     <div class="hero-main">
       <div class="eyebrow label blue reveal d1">South Florida</div>
-      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> health &amp; wellness providers by treatment and city</h1>
+      <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas &amp; aesthetic providers by treatment and city</h1>
       {%- if avg_rating %}
       <p class="lead reveal d2">Compare verified {{ category_names | join(" and ") | lower }} providers across South Florida — average {{ avg_rating }}-star Google rating, real prices and credentials, so you can decide before you book.</p>
       {%- else %}
@@ -216,7 +218,7 @@
     <div class="row">
       <div class="disc">
         <span class="brand" style="font-size:16px">Octoru</span><br>
-        Octoru is an independent health &amp; wellness directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
+        Octoru is an independent med spa &amp; aesthetics directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
         <div class="label" style="margin-top:12px">Updated {{ last_updated }}</div>
       </div>
       <div class="links">

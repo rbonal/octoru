@@ -523,7 +523,7 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
 
     if price_str:
         price_full = f"{price_str}{comparison}." if comparison else f"{price_str}."
-        parts.append(price_full.capitalize())
+        parts.append(price_full[0].upper() + price_full[1:])
 
     if lang_str:
         parts.append(lang_str)
@@ -1033,6 +1033,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
         "path": page_path(market, treatment_slug),
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
         "meta_description": meta,
+        "canonical_url": SITE_URL + page_url(market, treatment_slug),
         "intro": intro,
         "cost": cost,
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
@@ -1531,7 +1532,7 @@ def _hub_state_intro(state_name, counties):
 def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None):
     html = env.get_template("hub.html.j2").render(
         title=title, subtitle=subtitle, breadcrumb=breadcrumb, cards=cards, intro=intro,
-        site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
+        rel_path=rel_path, site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
     return _write(f"{rel_path}/index.html" if rel_path else "index_hub.html", html)
 
 
@@ -1542,7 +1543,8 @@ def render_hubs(summaries):
         states.setdefault(s["state"], {"name": s["state_name"], "counties": {}})
         co = states[s["state"]]["counties"].setdefault(s["county"], {"name": s["county_name"], "cities": {}})
         ci = co["cities"].setdefault(s["city"], {"name": s["city_name"], "pages": []})
-        ci["pages"].append(s)
+        if not any(p["url"] == s["url"] for p in ci["pages"]):
+            ci["pages"].append(s)
 
     for st, sdata in states.items():
         # city hubs
@@ -1777,9 +1779,72 @@ def render_guides(pages):
     return guide_urls
 
 
+def render_learn():
+    urls = []
+    for t in json.loads((ROOT / "data" / "learn_topics.json").read_text()):
+        _write(f"learn/{t['slug']}/index.html", env.get_template("learn.html.j2").render(topic=t, site_url=SITE_URL, last_updated=datetime.date.today().isoformat(), year=datetime.date.today().year))
+        urls.append(f"/learn/{t['slug']}/")
+    return urls
+
+
+def render_metros(summaries):
+    metros = [{"slug": "miami", "name": "Miami", "county": "miami-dade"}, {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"}, {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"}]
+    names = {}
+    for s in summaries:
+        names.setdefault(s["treatment_slug"], s["treatment_name"])
+    urls = []
+    for metro in metros:
+        for t_slug in sorted(names):
+            rows = sorted([s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug], key=lambda r: (r["from_price"] is None, r["from_price"] or 0, r["city_name"]))
+            _seen = set()
+            rows = [r for r in rows if not (r["url"] in _seen or _seen.add(r["url"]))]
+            providers = sum(r["n_clinics"] for r in rows)
+            if len(rows) < 2 or providers < 3:
+                continue
+            priced = [r["from_price"] for r in rows if r["from_price"]]
+            html = env.get_template("metro.html.j2").render(ref_price=(sorted(priced)[len(priced)//2] if priced else None), has_es=t_slug in ("botox", "lip-filler", "laser-hair-removal", "microneedling", "coolsculpting"), metro=metro, treatment_slug=t_slug, treatment_name=names[t_slug], rows=rows, unit=rows[0]["price_unit"], low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+            _write(f"fl/{metro['slug']}/{t_slug}/guide/index.html", html)
+            urls.append(f"/fl/{metro['slug']}/{t_slug}/guide/")
+            if t_slug in ("botox", "lip-filler", "laser-hair-removal", "microneedling", "coolsculpting"):
+                es_names = {"botox": "Botox", "lip-filler": "Relleno de labios", "laser-hair-removal": "Depilación láser", "microneedling": "Microneedling", "coolsculpting": "CoolSculpting"}
+                es_units = {"per unit": "por unidad", "per syringe": "por jeringa", "per session": "por sesión"}
+                es_html = env.get_template("metro-es.html.j2").render(ref_price=(sorted(priced)[len(priced)//2] if priced else None), metro=metro, treatment_slug=t_slug, treatment_name=es_names[t_slug], art=("la" if t_slug == "laser-hair-removal" else "el"), contr=("de la" if t_slug == "laser-hair-removal" else "del"), rows=rows, unit=es_units.get(rows[0]["price_unit"], ""), low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+                _write(f"es/fl/{metro['slug']}/{t_slug}/guide/index.html", es_html)
+                urls.append(f"/es/fl/{metro['slug']}/{t_slug}/guide/")
+    print(f"[builder] built {len(urls)} metro pages")
+    return urls
+
+
+def render_metro_hubs(summaries):
+    metros = [{"slug": "miami", "name": "Miami", "county": "miami-dade"}, {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"}, {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"}]
+    names = {}
+    for s in summaries:
+        names.setdefault(s["treatment_slug"], s["treatment_name"])
+    urls = []
+    for metro in metros:
+        items = []
+        for t_slug in sorted(names):
+            rows = [s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug]
+            seen = set()
+            rows = [r for r in rows if not (r["url"] in seen or seen.add(r["url"]))]
+            providers = sum(r["n_clinics"] for r in rows)
+            if len(rows) < 2 or providers < 3:
+                continue
+            priced = [r["from_price"] for r in rows if r["from_price"]]
+            items.append({"treatment_slug": t_slug, "treatment_name": names[t_slug], "n_areas": len(rows), "providers": providers, "low": (min(priced) if priced else None), "unit": next((r["price_unit"] for r in rows if r.get("price_unit")), "")})
+        if not items:
+            continue
+        html = env.get_template("metro-hub.html.j2").render(metro=metro, items=items, site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
+        _write(f"fl/{metro['slug']}/index.html", html)
+        urls.append(f"/fl/{metro['slug']}/")
+    print(f"[builder] built {len(urls)} metro hubs")
+    return urls
+
+
 def render_sitemap(summaries, guide_urls=None):
     urls = ["/", "/claim.html", "/advertise.html"]
     seen_hubs = set()
+    seen_pages = set()
     for s in summaries:
         # Hubs stay in the sitemap (they're indexable and keep navigation resolvable),
         # but nearest-provider FALLBACK listing pages are excluded — they carry noindex,
