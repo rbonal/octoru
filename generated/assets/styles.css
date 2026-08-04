@@ -233,11 +233,12 @@ body.home { font-size: 16px; }
 /* header */
 .home header.bar { position: sticky; top: 0; z-index: 60; background: rgba(250,250,251,.8);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); }
-.home header.bar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; }
+.home header.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 28px; }
 .home .brand { font-weight: 700; letter-spacing: -.025em; font-size: 19px; }
 .home .brand .sub { display: block; margin-top: 1px; }
-.home nav.bar-nav { display: flex; gap: 28px; align-items: center; }
-.home nav.bar-nav a { font-size: 14px; color: var(--ink-3); font-weight: 500; transition: color .15s; }
+.home header.bar > .wrap > a:first-child { flex-shrink: 0; }
+.home nav.bar-nav { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; }
+.home nav.bar-nav a { font-size: 14px; color: var(--ink-3); font-weight: 500; transition: color .15s; white-space: nowrap; }
 .home nav.bar-nav a:hover { color: var(--ink); }
 .home nav.bar-nav .region { color: var(--blue); }
 
@@ -320,8 +321,17 @@ body.home { font-size: 16px; }
 .home .sec-head h2 { font-weight: 700; letter-spacing: -.03em; font-size: clamp(26px,3vw,34px); line-height: 1.05; }
 .home .sec-head p { color: var(--ink-3); font-size: 15px; margin-top: 6px; max-width: 48ch; }
 
-/* treatment cards */
-.home .treat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+/* category blocks (one equal section per vertical; extensible to N categories) */
+.home .cat-block { margin-bottom: 40px; }
+.home .cat-block:last-child { margin-bottom: 0; }
+.home .cat-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.home .cat-head h3 { font-size: 21px; font-weight: 700; letter-spacing: -.025em; }
+.home .cat-head .label { display: block; margin-top: 4px; }
+.home .cat-stat { white-space: nowrap; }
+
+/* treatment cards — auto-fill so any category (5, 7, N treatments) lays out cleanly */
+.home .treat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
 .home .tcard { position: relative; background: var(--paper-pure); border: 1px solid var(--line); border-radius: var(--r);
   padding: 22px 20px 20px; display: flex; flex-direction: column; min-height: 188px;
   transition: transform .18s ease,box-shadow .18s ease,border-color .18s ease; }
@@ -371,16 +381,25 @@ body.home { font-size: 16px; }
 @media (prefers-reduced-motion: reduce) { .home .reveal { animation: none; opacity: 1; transform: none; } .home .tcard, .home .ccard { transition: none; } }
 
 /* homepage responsive */
+/* tablet / medium: collapse the secondary nav links (keep the Advertise CTA + region)
+   so the header never crams; let card grids reflow. */
+@media (max-width: 960px) {
+  .home nav.bar-nav { gap: 16px; }
+  .home nav.bar-nav a:not(.region):not(.nav-adv-btn) { display: none; }
+}
 @media (max-width: 920px) {
   .home .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .home .treat-grid { grid-template-columns: repeat(2,1fr); }
+  .home .treat-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .home .city-grid { grid-template-columns: repeat(2,1fr); }
   .home .trust .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .home .cat-head { flex-wrap: wrap; gap: 6px 16px; }
 }
 @media (max-width: 600px) {
   .home .hero .wrap { padding: 64px 24px 56px; }
   .home .wrap { padding: 0 20px; }
-  .home .treat-grid { grid-template-columns: 1fr; }
+  .home .brand .sub { display: none; }
+  .home nav.bar-nav .region { display: none; }
+  .home .treat-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .home .city-grid { grid-template-columns: 1fr; }
   /* stacked search: container goes bare; the INPUT keeps its own border + bg + focus ring */
   .home .search { flex-direction: column; padding: 0; border: 0; background: transparent; box-shadow: none; gap: 10px; }
@@ -388,7 +407,7 @@ body.home { font-size: 16px; }
   .home .search input { width: 100%; border: 1px solid var(--line-strong); background: var(--paper-pure); border-radius: 8px; padding: 14px 16px; }
   .home .search input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-tint); }
   .home .search button { width: 100%; padding: 14px; }
-  .home nav.bar-nav a:not(.region) { display: none; }
+  /* secondary links already hidden at 960; keep the Advertise CTA visible on mobile */
 }
 
 /* ============================================================
@@ -537,3 +556,25 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 /* "Top rated" tag — the best organic provider by review index (rating x reviews) */
 .top-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--green); font-weight: 600; }
+
+/* plastic-surgery vertical: nearby fallback + surgeon credentials */
+.nearby-tag { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3); font-weight: 600; display: inline-block; }
+.nearby-note { background: var(--blue-tint); border: 1px solid var(--blue-line);
+  border-radius: 6px; padding: 14px 18px; margin: 8px 0 20px; font-size: 15px; color: var(--ink-2); }
+.nearby-note strong { color: var(--ink); }
+.surgeons { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line-strong); }
+.surgeons > .label { display: block; margin-bottom: 8px; }
+.surgeon { margin-bottom: 12px; }
+.surgeon-name { display: block; font-weight: 600; font-size: 15px; color: var(--ink); }
+.surgeon-cred { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+.surgeon-src { display: inline-block; font-size: 12px; margin-top: 3px; }
+.surgeon-disclaimer { font-size: 12px; color: var(--ink-3); margin-top: 8px; font-style: italic; }
+
+/* facility accreditation (as-stated, source-attributed) */
+.accred { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.accred-k { font-size: 12px; font-weight: 600; color: var(--green); letter-spacing: .01em; }
+.accred-badge { font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500;
+  color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 2px 8px; }
+.accred-src { font-size: 11px; color: var(--ink-3); }

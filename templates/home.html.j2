@@ -6,12 +6,18 @@
 <title>Octoru — Compare Verified Med Spas &amp; Aesthetic Providers</title>
 <meta name="description" content="Octoru is a med spa &amp; aesthetics directory. Compare verified providers by treatment and city — real prices, Google ratings, and direct booking.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" sizes="any" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:image" content="https://octoru.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://octoru.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Octoru">
 <meta property="og:title" content="Octoru — Compare Verified Med Spas &amp; Aesthetic Providers">
 <meta property="og:description" content="A national med spa &amp; aesthetics directory. Compare verified providers by treatment and city — real prices, Google ratings, direct booking.">
 <meta property="og:url" content="https://octoru.com/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -53,9 +59,9 @@
       <div class="eyebrow label blue reveal d1">South Florida</div>
       <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> med spas &amp; aesthetic providers by treatment and city</h1>
       {%- if avg_rating %}
-      <p class="lead reveal d2">Verified providers for Botox, dermal fillers, HydraFacial, chemical peels, laser hair removal, microneedling, Morpheus8 and IV therapy — average {{ avg_rating }}-star Google rating, real prices, so you can compare before you book.</p>
+      <p class="lead reveal d2">Compare verified {{ category_names | join(" and ") | lower }} providers across South Florida — average {{ avg_rating }}-star Google rating, real prices and credentials, so you can decide before you book.</p>
       {%- else %}
-      <p class="lead reveal d2">Verified providers for Botox, dermal fillers, HydraFacial, chemical peels, laser hair removal, microneedling, Morpheus8 and IV therapy — by city, with prices and ratings, so you can compare before you book.</p>
+      <p class="lead reveal d2">Compare verified {{ category_names | join(" and ") | lower }} providers across South Florida — by city, with prices, ratings and credentials, so you can decide before you book.</p>
       {%- endif %}
 
       <div class="geo-suggest reveal d3" id="geoSuggest">
@@ -88,9 +94,9 @@
       {%- endif %}
 
       <div class="pills reveal d3" id="pills">
-        <span class="pill active" data-treat="">All</span>
-        {%- for t in treatments %}
-        <span class="pill" data-treat="{{ t.slug }}">{{ t.name }}</span>
+        <span class="pill active" data-cat="">All categories</span>
+        {%- for c in categories %}
+        <span class="pill" data-cat="{{ c.slug }}">{{ c.name }}</span>
         {%- endfor %}
       </div>
     </div><!-- /hero-main -->
@@ -121,28 +127,40 @@
   </div>
 </section>
 
-<!-- ===================== TREATMENTS ===================== -->
+<!-- ===================== CATEGORIES / TREATMENTS ===================== -->
 <section class="block" id="treatments">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="label blue" style="margin-bottom:10px">Browse by treatment</div>
+        <div class="label blue" style="margin-bottom:10px">Browse by category</div>
         <h2>Compare by what you're getting done</h2>
-        <p>Pick a treatment to see providers, verified ratings and real prices across South Florida.</p>
+        <p>Each health &amp; wellness category gets equal billing. Pick a treatment to see providers, verified ratings and real prices across South Florida — more categories and areas are added as coverage grows.</p>
       </div>
     </div>
-    <div class="treat-grid">
-      {%- for t in treatments %}
-      <a class="tcard" href="#areas" data-treat="{{ t.slug }}">
-        <div class="tname">{{ t.name }}</div>
-        <div class="tdesc">{{ t.desc }}</div>
-        <div class="tmeta">
-          <span class="from">{% if t.from_display %}<span class="k">Typical from</span>{{ t.from_display }}{% else %}<span class="k">Pricing</span>Varies{% endif %}</span>
-          <span class="arrow">&#x2192;</span>
+
+    {%- for cat in categories %}
+    <div class="cat-block" data-cat="{{ cat.slug }}">
+      <div class="cat-head">
+        <div>
+          <h3>{{ cat.name }}</h3>
+          {%- if cat.tagline %}<span class="label">{{ cat.tagline }}</span>{% endif %}
         </div>
-      </a>
-      {%- endfor %}
+        <span class="cat-stat label">{{ cat.n_listings }} provider{{ "s" if cat.n_listings != 1 }} · {{ cat.n_cities }} cit{{ "y" if cat.n_cities == 1 else "ies" }}</span>
+      </div>
+      <div class="treat-grid">
+        {%- for t in cat.cards %}
+        <a class="tcard" href="#areas" data-treat="{{ t.slug }}" data-cat="{{ cat.slug }}">
+          <div class="tname">{{ t.name }}</div>
+          <div class="tdesc">{{ t.desc }}</div>
+          <div class="tmeta">
+            <span class="from">{% if t.from_display %}<span class="k">Typical from</span>{{ t.from_display }}{% else %}<span class="k">Pricing</span>Request a quote{% endif %}</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        {%- endfor %}
+      </div>
     </div>
+    {%- endfor %}
   </div>
 </section>
 
@@ -162,7 +180,7 @@
       <div class="county-head"><h3>{{ g.name }}</h3><span class="label">{{ g.n_cities }} cit{{ "y" if g.n_cities == 1 else "ies" }}</span></div>
       <div class="city-grid">
         {%- for c in g.cities %}
-        <a class="ccard" href="{{ c.url }}" data-search="{{ c.name | lower }}" data-treats="{{ c.data_treatments }}">
+        <a class="ccard" href="{{ c.url }}" data-search="{{ c.name | lower }}" data-treats="{{ c.data_treatments }}" data-cats="{{ c.data_cats }}">
           <span><span class="cname">{{ c.name }}</span><span class="cmeta label">{{ c.n_treatments }} treatment{{ "s" if c.n_treatments != 1 }}</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
@@ -217,6 +235,7 @@
   var pills = document.getElementById('pills');
   var q = document.getElementById('q');
   var activeTreat = '';
+  var activeCat = '';
 
   // ── SEARCH NAVIGATION ──────────────────────────────────────────────────────
   // All city cards carry data-search (city name, lowercase) + data-treats + href.
@@ -271,28 +290,36 @@
   document.querySelector('.search button').addEventListener('click', doSearch);
   q.addEventListener('keydown', function(e){ if (e.key === 'Enter') doSearch(); });
 
-  // Live filter (cosmetic, while typing)
+  // Live filter: a city card shows when it matches the search term AND (if a category is
+  // active) offers that category AND (if a treatment is active) offers that treatment.
   function applyFilter(){
     var term = (q.value || '').trim().toLowerCase();
     document.querySelectorAll('.ccard').forEach(function(c){
       var name = c.getAttribute('data-search') || '';
       var treats = (c.getAttribute('data-treats') || '').split(' ');
+      var cats = (c.getAttribute('data-cats') || '').split(' ');
       var okName = !term || name.indexOf(term) !== -1;
       var okTreat = !activeTreat || treats.indexOf(activeTreat) !== -1;
-      c.style.display = (okName && okTreat) ? '' : 'none';
+      var okCat = !activeCat || cats.indexOf(activeCat) !== -1;
+      c.style.display = (okName && okTreat && okCat) ? '' : 'none';
     });
   }
-  // Sync the pill row to whatever treatment is active (used by both pills and treatment cards)
-  function setActiveTreat(slug){
-    activeTreat = slug || '';
+  // Category pills filter BOTH the category blocks (show only that vertical's treatments)
+  // and the city grid. Selecting a category clears any active single-treatment filter.
+  function setActiveCat(slug){
+    activeCat = slug || '';
+    activeTreat = '';
     pills.querySelectorAll('.pill').forEach(function(p){
-      p.classList.toggle('active', (p.getAttribute('data-treat') || '') === activeTreat);
+      p.classList.toggle('active', (p.getAttribute('data-cat') || '') === activeCat);
+    });
+    document.querySelectorAll('.cat-block').forEach(function(b){
+      b.style.display = (!activeCat || b.getAttribute('data-cat') === activeCat) ? '' : 'none';
     });
     applyFilter();
   }
   pills.addEventListener('click', function(e){
     if(!e.target.classList.contains('pill')) return;
-    setActiveTreat(e.target.getAttribute('data-treat') || '');
+    setActiveCat(e.target.getAttribute('data-cat') || '');
   });
   q.addEventListener('input', applyFilter);
 
@@ -301,7 +328,8 @@
   document.querySelectorAll('.tcard[data-treat]').forEach(function(card){
     card.addEventListener('click', function(e){
       e.preventDefault();
-      setActiveTreat(card.getAttribute('data-treat') || '');
+      activeTreat = card.getAttribute('data-treat') || '';
+      applyFilter();
       document.getElementById('areas').scrollIntoView({behavior:'smooth'});
     });
   });

@@ -6,12 +6,18 @@
 <title>Octoru — Compare verified health &amp; wellness providers</title>
 <meta name="description" content="Octoru is a health &amp; wellness provider directory. Compare verified providers by treatment and city — real prices, Google ratings, and direct booking.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" sizes="any" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:image" content="https://octoru.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://octoru.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Octoru">
 <meta property="og:title" content="Octoru — Compare verified health &amp; wellness providers">
 <meta property="og:description" content="A national health &amp; wellness directory. Compare verified providers by treatment and city — real prices, Google ratings, direct booking.">
 <meta property="og:url" content="https://octoru.com/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -50,7 +56,7 @@
     <div class="hero-main">
       <div class="eyebrow label blue reveal d1">South Florida</div>
       <h1 class="head reveal d1">Find &amp; <span class="accent">compare</span> health &amp; wellness providers by treatment and city</h1>
-      <p class="lead reveal d2">Verified providers for Botox, lip filler, CoolSculpting, laser hair removal and microneedling — average 4.9-star Google rating, real prices, so you can compare before you book.</p>
+      <p class="lead reveal d2">Compare verified med spa and plastic surgery providers across South Florida — average 4.8-star Google rating, real prices and credentials, so you can decide before you book.</p>
 
       <div class="geo-suggest reveal d3" id="geoSuggest">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -84,20 +90,17 @@
       </div>
 
       <div class="pills reveal d3" id="pills">
-        <span class="pill active" data-treat="">All</span>
-        <span class="pill" data-treat="botox">Botox</span>
-        <span class="pill" data-treat="lip-filler">Lip filler</span>
-        <span class="pill" data-treat="coolsculpting">CoolSculpting</span>
-        <span class="pill" data-treat="laser-hair-removal">Laser hair removal</span>
-        <span class="pill" data-treat="microneedling">Microneedling</span>
+        <span class="pill active" data-cat="">All categories</span>
+        <span class="pill" data-cat="med-spa">Med spa</span>
+        <span class="pill" data-cat="plastic-surgery">Plastic surgery</span>
       </div>
     </div><!-- /hero-main -->
 
     <aside class="hero-side reveal d4">
       <div class="side-stats">
-        <div class="ss"><span class="n">628</span><span class="t">provider listings</span></div>
-        <div class="ss"><span class="n">35</span><span class="t">cities covered</span></div>
-        <div class="ss"><span class="n">4.9</span><span class="t">avg. Google rating</span></div>
+        <div class="ss"><span class="n">592</span><span class="t">provider listings</span></div>
+        <div class="ss"><span class="n">37</span><span class="t">cities covered</span></div>
+        <div class="ss"><span class="n">4.8</span><span class="t">avg. Google rating</span></div>
         <div class="ss verified">&#x2713; verified contact details</div>
       </div>
       <div class="side-jump">
@@ -115,57 +118,131 @@
   </div>
 </section>
 
-<!-- ===================== TREATMENTS ===================== -->
+<!-- ===================== CATEGORIES / TREATMENTS ===================== -->
 <section class="block" id="treatments">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="label blue" style="margin-bottom:10px">Browse by treatment</div>
+        <div class="label blue" style="margin-bottom:10px">Browse by category</div>
         <h2>Compare by what you're getting done</h2>
-        <p>Pick a treatment to see providers, verified ratings and real prices across South Florida.</p>
+        <p>Each health &amp; wellness category gets equal billing. Pick a treatment to see providers, verified ratings and real prices across South Florida — more categories and areas are added as coverage grows.</p>
       </div>
     </div>
-    <div class="treat-grid">
-      <a class="tcard" href="#areas" data-treat="botox">
-        <div class="tname">Botox</div>
-        <div class="tdesc">Wrinkle-relaxing injections, priced per unit.</div>
-        <div class="tmeta">
-          <span class="from"><span class="k">Typical from</span>$10–$18 per unit</span>
-          <span class="arrow">&#x2192;</span>
+    <div class="cat-block" data-cat="med-spa">
+      <div class="cat-head">
+        <div>
+          <h3>Med spa</h3><span class="label">Non-surgical aesthetic &amp; wellness treatments</span>
         </div>
-      </a>
-      <a class="tcard" href="#areas" data-treat="lip-filler">
-        <div class="tname">Lip filler</div>
-        <div class="tdesc">Hyaluronic-acid lip enhancement, priced per syringe.</div>
-        <div class="tmeta">
-          <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">&#x2192;</span>
+        <span class="cat-stat label">346 providers · 35 cities</span>
+      </div>
+      <div class="treat-grid">
+        <a class="tcard" href="#areas" data-treat="botox" data-cat="med-spa">
+          <div class="tname">Botox</div>
+          <div class="tdesc">Wrinkle-relaxing injections, priced per unit.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Typical from</span>$10–$18 per unit</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="lip-filler" data-cat="med-spa">
+          <div class="tname">Lip filler</div>
+          <div class="tdesc">Hyaluronic-acid lip enhancement, priced per syringe.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="coolsculpting" data-cat="med-spa">
+          <div class="tname">CoolSculpting</div>
+          <div class="tdesc">Non-invasive fat reduction, priced per area.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="laser-hair-removal" data-cat="med-spa">
+          <div class="tname">Laser hair removal</div>
+          <div class="tdesc">Multi-session hair reduction, priced by area.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="microneedling" data-cat="med-spa">
+          <div class="tname">Microneedling</div>
+          <div class="tdesc">Collagen-induction skin treatment, per session.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="cat-block" data-cat="plastic-surgery">
+      <div class="cat-head">
+        <div>
+          <h3>Plastic surgery</h3><span class="label">Board-certified surgical procedures</span>
         </div>
-      </a>
-      <a class="tcard" href="#areas" data-treat="coolsculpting">
-        <div class="tname">CoolSculpting</div>
-        <div class="tdesc">Non-invasive fat reduction, priced per area.</div>
-        <div class="tmeta">
-          <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">&#x2192;</span>
-        </div>
-      </a>
-      <a class="tcard" href="#areas" data-treat="laser-hair-removal">
-        <div class="tname">Laser hair removal</div>
-        <div class="tdesc">Multi-session hair reduction, priced by area.</div>
-        <div class="tmeta">
-          <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">&#x2192;</span>
-        </div>
-      </a>
-      <a class="tcard" href="#areas" data-treat="microneedling">
-        <div class="tname">Microneedling</div>
-        <div class="tdesc">Collagen-induction skin treatment, per session.</div>
-        <div class="tmeta">
-          <span class="from"><span class="k">Pricing</span>Varies</span>
-          <span class="arrow">&#x2192;</span>
-        </div>
-      </a>
+        <span class="cat-stat label">246 providers · 22 cities</span>
+      </div>
+      <div class="treat-grid">
+        <a class="tcard" href="#areas" data-treat="bbl" data-cat="plastic-surgery">
+          <div class="tname">Brazilian Butt Lift (BBL)</div>
+          <div class="tdesc">Fat-transfer buttock reshaping — surgical.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="tummy-tuck" data-cat="plastic-surgery">
+          <div class="tname">Tummy Tuck</div>
+          <div class="tdesc">Abdominal skin and muscle tightening — surgical.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="breast-augmentation" data-cat="plastic-surgery">
+          <div class="tname">Breast Augmentation</div>
+          <div class="tdesc">Implant or fat breast enhancement — surgical.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="liposuction" data-cat="plastic-surgery">
+          <div class="tname">Liposuction</div>
+          <div class="tdesc">Targeted surgical fat removal and contouring.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="rhinoplasty" data-cat="plastic-surgery">
+          <div class="tname">Rhinoplasty</div>
+          <div class="tdesc">Surgical reshaping of the nose.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="mommy-makeover" data-cat="plastic-surgery">
+          <div class="tname">Mommy Makeover</div>
+          <div class="tdesc">Combined post-pregnancy surgical procedures.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+        <a class="tcard" href="#areas" data-treat="facelift" data-cat="plastic-surgery">
+          <div class="tname">Facelift</div>
+          <div class="tdesc">Surgical facial and neck rejuvenation.</div>
+          <div class="tmeta">
+            <span class="from"><span class="k">Pricing</span>Request a quote</span>
+            <span class="arrow">&#x2192;</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -181,61 +258,65 @@
       </div>
     </div>
     <div class="county" id="miami-dade">
-      <div class="county-head"><h3>Miami-Dade, Florida</h3><span class="label">14 cities</span></div>
+      <div class="county-head"><h3>Miami-Dade, Florida</h3><span class="label">15 cities</span></div>
       <div class="city-grid">
-        <a class="ccard" href="/fl/miami-dade/aventura/" data-search="aventura" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Aventura</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/aventura/" data-search="aventura" data-treats="bbl botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Aventura</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/brickell/" data-search="brickell" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Brickell</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/brickell/" data-search="brickell" data-treats="bbl botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Brickell</span><span class="cmeta label">11 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/coconut-grove/" data-search="coconut grove" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Coconut Grove</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/coconut-grove/" data-search="coconut grove" data-treats="botox facelift laser-hair-removal lip-filler microneedling rhinoplasty" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Coconut Grove</span><span class="cmeta label">6 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/coral-gables/" data-search="coral gables" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Coral Gables</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/coral-gables/" data-search="coral gables" data-treats="bbl botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Coral Gables</span><span class="cmeta label">11 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/doral/" data-search="doral" data-treats="botox laser-hair-removal microneedling">
-          <span><span class="cname">Doral</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/doral/" data-search="doral" data-treats="bbl botox breast-augmentation facelift laser-hair-removal liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Doral</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/hialeah/" data-search="hialeah" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/miami-dade/hialeah/" data-search="hialeah" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Hialeah</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/kendall/" data-search="kendall" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Kendall</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/kendall/" data-search="kendall" data-treats="botox breast-augmentation laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Kendall</span><span class="cmeta label">9 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/key-biscayne/" data-search="key biscayne" data-treats="botox microneedling">
+        <a class="ccard" href="/fl/miami-dade/key-biscayne/" data-search="key biscayne" data-treats="botox microneedling" data-cats="med-spa">
           <span><span class="cname">Key Biscayne</span><span class="cmeta label">2 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/miami-lakes/" data-search="miami lakes" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Miami Lakes</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/miami-lakes/" data-search="miami lakes" data-treats="bbl botox breast-augmentation laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Miami Lakes</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/north-miami/" data-search="north miami" data-treats="botox microneedling">
+        <a class="ccard" href="/fl/miami-dade/midtown/" data-search="midtown" data-treats="facelift rhinoplasty" data-cats="plastic-surgery">
+          <span><span class="cname">Midtown</span><span class="cmeta label">2 treatments</span></span>
+          <span class="arrow">&#x2192;</span>
+        </a>
+        <a class="ccard" href="/fl/miami-dade/north-miami/" data-search="north miami" data-treats="botox microneedling" data-cats="med-spa">
           <span><span class="cname">North Miami</span><span class="cmeta label">2 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/pinecrest/" data-search="pinecrest" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/miami-dade/pinecrest/" data-search="pinecrest" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Pinecrest</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/south-beach/" data-search="south beach" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">South Beach</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/miami-dade/south-beach/" data-search="south beach" data-treats="botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">South Beach</span><span class="cmeta label">9 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/sunny-isles-beach/" data-search="sunny isles beach" data-treats="laser-hair-removal microneedling">
+        <a class="ccard" href="/fl/miami-dade/sunny-isles-beach/" data-search="sunny isles beach" data-treats="laser-hair-removal microneedling" data-cats="med-spa">
           <span><span class="cname">Sunny Isles Beach</span><span class="cmeta label">2 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/miami-dade/surfside/" data-search="surfside" data-treats="botox microneedling">
+        <a class="ccard" href="/fl/miami-dade/surfside/" data-search="surfside" data-treats="botox microneedling" data-cats="med-spa">
           <span><span class="cname">Surfside</span><span class="cmeta label">2 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
@@ -244,93 +325,97 @@
     <div class="county" id="broward">
       <div class="county-head"><h3>Broward, Florida</h3><span class="label">13 cities</span></div>
       <div class="city-grid">
-        <a class="ccard" href="/fl/broward/coral-springs/" data-search="coral springs" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Coral Springs</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/broward/coral-springs/" data-search="coral springs" data-treats="botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Coral Springs</span><span class="cmeta label">9 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/davie/" data-search="davie" data-treats="botox lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/davie/" data-search="davie" data-treats="botox lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Davie</span><span class="cmeta label">3 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/deerfield-beach/" data-search="deerfield beach" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/deerfield-beach/" data-search="deerfield beach" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Deerfield Beach</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/fort-lauderdale/" data-search="fort lauderdale" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Fort Lauderdale</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/broward/fort-lauderdale/" data-search="fort lauderdale" data-treats="bbl botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Fort Lauderdale</span><span class="cmeta label">11 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/hallandale-beach/" data-search="hallandale beach" data-treats="botox lip-filler">
+        <a class="ccard" href="/fl/broward/hallandale-beach/" data-search="hallandale beach" data-treats="botox lip-filler" data-cats="med-spa">
           <span><span class="cname">Hallandale Beach</span><span class="cmeta label">2 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/hollywood/" data-search="hollywood" data-treats="botox laser-hair-removal lip-filler">
-          <span><span class="cname">Hollywood</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/broward/hollywood/" data-search="hollywood" data-treats="bbl botox breast-augmentation facelift laser-hair-removal lip-filler liposuction mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Hollywood</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/miramar/" data-search="miramar" data-treats="botox laser-hair-removal microneedling">
-          <span><span class="cname">Miramar</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/broward/miramar/" data-search="miramar" data-treats="botox breast-augmentation facelift laser-hair-removal liposuction microneedling tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Miramar</span><span class="cmeta label">7 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/oakland-park/" data-search="oakland park" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/oakland-park/" data-search="oakland park" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Oakland Park</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/parkland/" data-search="parkland" data-treats="botox lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/parkland/" data-search="parkland" data-treats="botox lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Parkland</span><span class="cmeta label">3 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/pembroke-pines/" data-search="pembroke pines" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/pembroke-pines/" data-search="pembroke pines" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Pembroke Pines</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/plantation/" data-search="plantation" data-treats="botox lip-filler microneedling">
-          <span><span class="cname">Plantation</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/broward/plantation/" data-search="plantation" data-treats="bbl botox breast-augmentation facelift lip-filler liposuction microneedling mommy-makeover tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Plantation</span><span class="cmeta label">9 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/pompano-beach/" data-search="pompano beach" data-treats="botox lip-filler microneedling">
+        <a class="ccard" href="/fl/broward/pompano-beach/" data-search="pompano beach" data-treats="botox lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Pompano Beach</span><span class="cmeta label">3 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/broward/weston/" data-search="weston" data-treats="botox lip-filler microneedling">
-          <span><span class="cname">Weston</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/broward/weston/" data-search="weston" data-treats="botox breast-augmentation facelift lip-filler liposuction microneedling rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Weston</span><span class="cmeta label">8 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
       </div>
     </div>
     <div class="county" id="palm-beach">
-      <div class="county-head"><h3>Palm Beach, Florida</h3><span class="label">8 cities</span></div>
+      <div class="county-head"><h3>Palm Beach, Florida</h3><span class="label">9 cities</span></div>
       <div class="city-grid">
-        <a class="ccard" href="/fl/palm-beach/boca-raton/" data-search="boca raton" data-treats="botox lip-filler microneedling">
-          <span><span class="cname">Boca Raton</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/boca-raton/" data-search="boca raton" data-treats="bbl botox breast-augmentation facelift lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Boca Raton</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/boynton-beach/" data-search="boynton beach" data-treats="botox lip-filler microneedling">
-          <span><span class="cname">Boynton Beach</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/boynton-beach/" data-search="boynton beach" data-treats="bbl botox breast-augmentation facelift lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Boynton Beach</span><span class="cmeta label">10 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/delray-beach/" data-search="delray beach" data-treats="botox coolsculpting laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Delray Beach</span><span class="cmeta label">5 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/delray-beach/" data-search="delray beach" data-treats="bbl botox breast-augmentation coolsculpting facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Delray Beach</span><span class="cmeta label">12 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/jupiter/" data-search="jupiter" data-treats="botox coolsculpting laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Jupiter</span><span class="cmeta label">5 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/jupiter/" data-search="jupiter" data-treats="botox breast-augmentation coolsculpting facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Jupiter</span><span class="cmeta label">11 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/north-palm-beach/" data-search="north palm beach" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/palm-beach/north-palm-beach/" data-search="north palm beach" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">North Palm Beach</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/palm-beach-gardens/" data-search="palm beach gardens" data-treats="botox laser-hair-removal lip-filler microneedling">
-          <span><span class="cname">Palm Beach Gardens</span><span class="cmeta label">4 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/palm-beach-gardens/" data-search="palm beach gardens" data-treats="botox breast-augmentation facelift laser-hair-removal lip-filler liposuction microneedling mommy-makeover tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Palm Beach Gardens</span><span class="cmeta label">9 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/royal-palm-beach/" data-search="royal palm beach" data-treats="botox laser-hair-removal lip-filler microneedling">
+        <a class="ccard" href="/fl/palm-beach/royal-palm-beach/" data-search="royal palm beach" data-treats="botox laser-hair-removal lip-filler microneedling" data-cats="med-spa">
           <span><span class="cname">Royal Palm Beach</span><span class="cmeta label">4 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
-        <a class="ccard" href="/fl/palm-beach/wellington/" data-search="wellington" data-treats="botox coolsculpting lip-filler">
-          <span><span class="cname">Wellington</span><span class="cmeta label">3 treatments</span></span>
+        <a class="ccard" href="/fl/palm-beach/wellington/" data-search="wellington" data-treats="botox breast-augmentation coolsculpting facelift lip-filler mommy-makeover rhinoplasty tummy-tuck" data-cats="med-spa plastic-surgery">
+          <span><span class="cname">Wellington</span><span class="cmeta label">8 treatments</span></span>
+          <span class="arrow">&#x2192;</span>
+        </a>
+        <a class="ccard" href="/fl/palm-beach/west-palm-beach/" data-search="west palm beach" data-treats="bbl breast-augmentation facelift liposuction mommy-makeover rhinoplasty tummy-tuck" data-cats="plastic-surgery">
+          <span><span class="cname">West Palm Beach</span><span class="cmeta label">7 treatments</span></span>
           <span class="arrow">&#x2192;</span>
         </a>
       </div>
@@ -366,7 +451,7 @@
       <div class="disc">
         <span class="brand" style="font-size:16px">Octoru</span><br>
         Octoru is an independent health &amp; wellness directory. Listings reflect publicly available information; ratings are sourced via Google Places API.
-        <div class="label" style="margin-top:12px">Updated 2026-06-04</div>
+        <div class="label" style="margin-top:12px">Updated 2026-06-06</div>
       </div>
       <div class="links">
         <a href="/advertise.html">Advertise your clinic</a>
@@ -382,6 +467,7 @@
   var pills = document.getElementById('pills');
   var q = document.getElementById('q');
   var activeTreat = '';
+  var activeCat = '';
 
   // ── SEARCH NAVIGATION ──────────────────────────────────────────────────────
   // All city cards carry data-search (city name, lowercase) + data-treats + href.
@@ -436,28 +522,36 @@
   document.querySelector('.search button').addEventListener('click', doSearch);
   q.addEventListener('keydown', function(e){ if (e.key === 'Enter') doSearch(); });
 
-  // Live filter (cosmetic, while typing)
+  // Live filter: a city card shows when it matches the search term AND (if a category is
+  // active) offers that category AND (if a treatment is active) offers that treatment.
   function applyFilter(){
     var term = (q.value || '').trim().toLowerCase();
     document.querySelectorAll('.ccard').forEach(function(c){
       var name = c.getAttribute('data-search') || '';
       var treats = (c.getAttribute('data-treats') || '').split(' ');
+      var cats = (c.getAttribute('data-cats') || '').split(' ');
       var okName = !term || name.indexOf(term) !== -1;
       var okTreat = !activeTreat || treats.indexOf(activeTreat) !== -1;
-      c.style.display = (okName && okTreat) ? '' : 'none';
+      var okCat = !activeCat || cats.indexOf(activeCat) !== -1;
+      c.style.display = (okName && okTreat && okCat) ? '' : 'none';
     });
   }
-  // Sync the pill row to whatever treatment is active (used by both pills and treatment cards)
-  function setActiveTreat(slug){
-    activeTreat = slug || '';
+  // Category pills filter BOTH the category blocks (show only that vertical's treatments)
+  // and the city grid. Selecting a category clears any active single-treatment filter.
+  function setActiveCat(slug){
+    activeCat = slug || '';
+    activeTreat = '';
     pills.querySelectorAll('.pill').forEach(function(p){
-      p.classList.toggle('active', (p.getAttribute('data-treat') || '') === activeTreat);
+      p.classList.toggle('active', (p.getAttribute('data-cat') || '') === activeCat);
+    });
+    document.querySelectorAll('.cat-block').forEach(function(b){
+      b.style.display = (!activeCat || b.getAttribute('data-cat') === activeCat) ? '' : 'none';
     });
     applyFilter();
   }
   pills.addEventListener('click', function(e){
     if(!e.target.classList.contains('pill')) return;
-    setActiveTreat(e.target.getAttribute('data-treat') || '');
+    setActiveCat(e.target.getAttribute('data-cat') || '');
   });
   q.addEventListener('input', applyFilter);
 
@@ -466,12 +560,13 @@
   document.querySelectorAll('.tcard[data-treat]').forEach(function(card){
     card.addEventListener('click', function(e){
       e.preventDefault();
-      setActiveTreat(card.getAttribute('data-treat') || '');
+      activeTreat = card.getAttribute('data-treat') || '';
+      applyFilter();
       document.getElementById('areas').scrollIntoView({behavior:'smooth'});
     });
   });
 
-  var CITIES = [{"name": "Coral Gables", "slug": "coral-gables", "lat": 25.7215, "lng": -80.2684, "url": "/fl/miami-dade/coral-gables/"}, {"name": "Aventura", "slug": "aventura", "lat": 25.9565, "lng": -80.139, "url": "/fl/miami-dade/aventura/"}, {"name": "Doral", "slug": "doral", "lat": 25.8195, "lng": -80.3553, "url": "/fl/miami-dade/doral/"}, {"name": "Hialeah", "slug": "hialeah", "lat": 25.8576, "lng": -80.2781, "url": "/fl/miami-dade/hialeah/"}, {"name": "Key Biscayne", "slug": "key-biscayne", "lat": 25.6938, "lng": -80.1626, "url": "/fl/miami-dade/key-biscayne/"}, {"name": "Miami Lakes", "slug": "miami-lakes", "lat": 25.9087, "lng": -80.3087, "url": "/fl/miami-dade/miami-lakes/"}, {"name": "North Miami", "slug": "north-miami", "lat": 25.8901, "lng": -80.1867, "url": "/fl/miami-dade/north-miami/"}, {"name": "Pinecrest", "slug": "pinecrest", "lat": 25.667, "lng": -80.3083, "url": "/fl/miami-dade/pinecrest/"}, {"name": "Sunny Isles Beach", "slug": "sunny-isles-beach", "lat": 25.9501, "lng": -80.1223, "url": "/fl/miami-dade/sunny-isles-beach/"}, {"name": "Surfside", "slug": "surfside", "lat": 25.8787, "lng": -80.1257, "url": "/fl/miami-dade/surfside/"}, {"name": "Brickell", "slug": "brickell", "lat": 25.7617, "lng": -80.1918, "url": "/fl/miami-dade/brickell/"}, {"name": "Coconut Grove", "slug": "coconut-grove", "lat": 25.7282, "lng": -80.2436, "url": "/fl/miami-dade/coconut-grove/"}, {"name": "South Beach", "slug": "south-beach", "lat": 25.7826, "lng": -80.134, "url": "/fl/miami-dade/south-beach/"}, {"name": "Kendall", "slug": "kendall", "lat": 25.6793, "lng": -80.3173, "url": "/fl/miami-dade/kendall/"}, {"name": "Fort Lauderdale", "slug": "fort-lauderdale", "lat": 26.1224, "lng": -80.1373, "url": "/fl/broward/fort-lauderdale/"}, {"name": "Hollywood", "slug": "hollywood", "lat": 26.0112, "lng": -80.1495, "url": "/fl/broward/hollywood/"}, {"name": "Pembroke Pines", "slug": "pembroke-pines", "lat": 26.0078, "lng": -80.2963, "url": "/fl/broward/pembroke-pines/"}, {"name": "Coral Springs", "slug": "coral-springs", "lat": 26.271, "lng": -80.2706, "url": "/fl/broward/coral-springs/"}, {"name": "Plantation", "slug": "plantation", "lat": 26.1276, "lng": -80.2331, "url": "/fl/broward/plantation/"}, {"name": "Pompano Beach", "slug": "pompano-beach", "lat": 26.2379, "lng": -80.1248, "url": "/fl/broward/pompano-beach/"}, {"name": "Davie", "slug": "davie", "lat": 26.0765, "lng": -80.2521, "url": "/fl/broward/davie/"}, {"name": "Miramar", "slug": "miramar", "lat": 25.9861, "lng": -80.3035, "url": "/fl/broward/miramar/"}, {"name": "Weston", "slug": "weston", "lat": 26.1004, "lng": -80.3998, "url": "/fl/broward/weston/"}, {"name": "Hallandale Beach", "slug": "hallandale-beach", "lat": 25.9812, "lng": -80.1484, "url": "/fl/broward/hallandale-beach/"}, {"name": "Deerfield Beach", "slug": "deerfield-beach", "lat": 26.3184, "lng": -80.0998, "url": "/fl/broward/deerfield-beach/"}, {"name": "Oakland Park", "slug": "oakland-park", "lat": 26.1723, "lng": -80.132, "url": "/fl/broward/oakland-park/"}, {"name": "Parkland", "slug": "parkland", "lat": 26.3098, "lng": -80.237, "url": "/fl/broward/parkland/"}, {"name": "Boca Raton", "slug": "boca-raton", "lat": 26.3683, "lng": -80.1289, "url": "/fl/palm-beach/boca-raton/"}, {"name": "Delray Beach", "slug": "delray-beach", "lat": 26.4615, "lng": -80.0728, "url": "/fl/palm-beach/delray-beach/"}, {"name": "Palm Beach Gardens", "slug": "palm-beach-gardens", "lat": 26.8237, "lng": -80.1345, "url": "/fl/palm-beach/palm-beach-gardens/"}, {"name": "Jupiter", "slug": "jupiter", "lat": 26.9342, "lng": -80.0942, "url": "/fl/palm-beach/jupiter/"}, {"name": "Wellington", "slug": "wellington", "lat": 26.659, "lng": -80.2683, "url": "/fl/palm-beach/wellington/"}, {"name": "Boynton Beach", "slug": "boynton-beach", "lat": 26.5317, "lng": -80.0905, "url": "/fl/palm-beach/boynton-beach/"}, {"name": "North Palm Beach", "slug": "north-palm-beach", "lat": 26.8176, "lng": -80.0623, "url": "/fl/palm-beach/north-palm-beach/"}, {"name": "Royal Palm Beach", "slug": "royal-palm-beach", "lat": 26.7104, "lng": -80.2317, "url": "/fl/palm-beach/royal-palm-beach/"}];
+  var CITIES = [{"name": "Coral Gables", "slug": "coral-gables", "lat": 25.7215, "lng": -80.2684, "url": "/fl/miami-dade/coral-gables/"}, {"name": "Aventura", "slug": "aventura", "lat": 25.9565, "lng": -80.139, "url": "/fl/miami-dade/aventura/"}, {"name": "Doral", "slug": "doral", "lat": 25.8195, "lng": -80.3553, "url": "/fl/miami-dade/doral/"}, {"name": "Hialeah", "slug": "hialeah", "lat": 25.8576, "lng": -80.2781, "url": "/fl/miami-dade/hialeah/"}, {"name": "Key Biscayne", "slug": "key-biscayne", "lat": 25.6938, "lng": -80.1626, "url": "/fl/miami-dade/key-biscayne/"}, {"name": "Miami Lakes", "slug": "miami-lakes", "lat": 25.9087, "lng": -80.3087, "url": "/fl/miami-dade/miami-lakes/"}, {"name": "North Miami", "slug": "north-miami", "lat": 25.8901, "lng": -80.1867, "url": "/fl/miami-dade/north-miami/"}, {"name": "Pinecrest", "slug": "pinecrest", "lat": 25.667, "lng": -80.3083, "url": "/fl/miami-dade/pinecrest/"}, {"name": "Sunny Isles Beach", "slug": "sunny-isles-beach", "lat": 25.9501, "lng": -80.1223, "url": "/fl/miami-dade/sunny-isles-beach/"}, {"name": "Surfside", "slug": "surfside", "lat": 25.8787, "lng": -80.1257, "url": "/fl/miami-dade/surfside/"}, {"name": "Brickell", "slug": "brickell", "lat": 25.7617, "lng": -80.1918, "url": "/fl/miami-dade/brickell/"}, {"name": "Coconut Grove", "slug": "coconut-grove", "lat": 25.7282, "lng": -80.2436, "url": "/fl/miami-dade/coconut-grove/"}, {"name": "Midtown", "slug": "midtown", "lat": 25.8076, "lng": -80.1934, "url": "/fl/miami-dade/midtown/"}, {"name": "South Beach", "slug": "south-beach", "lat": 25.7826, "lng": -80.134, "url": "/fl/miami-dade/south-beach/"}, {"name": "Kendall", "slug": "kendall", "lat": 25.6793, "lng": -80.3173, "url": "/fl/miami-dade/kendall/"}, {"name": "Fort Lauderdale", "slug": "fort-lauderdale", "lat": 26.1224, "lng": -80.1373, "url": "/fl/broward/fort-lauderdale/"}, {"name": "Hollywood", "slug": "hollywood", "lat": 26.0112, "lng": -80.1495, "url": "/fl/broward/hollywood/"}, {"name": "Pembroke Pines", "slug": "pembroke-pines", "lat": 26.0078, "lng": -80.2963, "url": "/fl/broward/pembroke-pines/"}, {"name": "Coral Springs", "slug": "coral-springs", "lat": 26.271, "lng": -80.2706, "url": "/fl/broward/coral-springs/"}, {"name": "Plantation", "slug": "plantation", "lat": 26.1276, "lng": -80.2331, "url": "/fl/broward/plantation/"}, {"name": "Pompano Beach", "slug": "pompano-beach", "lat": 26.2379, "lng": -80.1248, "url": "/fl/broward/pompano-beach/"}, {"name": "Davie", "slug": "davie", "lat": 26.0765, "lng": -80.2521, "url": "/fl/broward/davie/"}, {"name": "Miramar", "slug": "miramar", "lat": 25.9861, "lng": -80.3035, "url": "/fl/broward/miramar/"}, {"name": "Weston", "slug": "weston", "lat": 26.1004, "lng": -80.3998, "url": "/fl/broward/weston/"}, {"name": "Hallandale Beach", "slug": "hallandale-beach", "lat": 25.9812, "lng": -80.1484, "url": "/fl/broward/hallandale-beach/"}, {"name": "Deerfield Beach", "slug": "deerfield-beach", "lat": 26.3184, "lng": -80.0998, "url": "/fl/broward/deerfield-beach/"}, {"name": "Oakland Park", "slug": "oakland-park", "lat": 26.1723, "lng": -80.132, "url": "/fl/broward/oakland-park/"}, {"name": "Parkland", "slug": "parkland", "lat": 26.3098, "lng": -80.237, "url": "/fl/broward/parkland/"}, {"name": "Boca Raton", "slug": "boca-raton", "lat": 26.3683, "lng": -80.1289, "url": "/fl/palm-beach/boca-raton/"}, {"name": "West Palm Beach", "slug": "west-palm-beach", "lat": 26.7153, "lng": -80.0534, "url": "/fl/palm-beach/west-palm-beach/"}, {"name": "Delray Beach", "slug": "delray-beach", "lat": 26.4615, "lng": -80.0728, "url": "/fl/palm-beach/delray-beach/"}, {"name": "Palm Beach Gardens", "slug": "palm-beach-gardens", "lat": 26.8237, "lng": -80.1345, "url": "/fl/palm-beach/palm-beach-gardens/"}, {"name": "Jupiter", "slug": "jupiter", "lat": 26.9342, "lng": -80.0942, "url": "/fl/palm-beach/jupiter/"}, {"name": "Wellington", "slug": "wellington", "lat": 26.659, "lng": -80.2683, "url": "/fl/palm-beach/wellington/"}, {"name": "Boynton Beach", "slug": "boynton-beach", "lat": 26.5317, "lng": -80.0905, "url": "/fl/palm-beach/boynton-beach/"}, {"name": "North Palm Beach", "slug": "north-palm-beach", "lat": 26.8176, "lng": -80.0623, "url": "/fl/palm-beach/north-palm-beach/"}, {"name": "Royal Palm Beach", "slug": "royal-palm-beach", "lat": 26.7104, "lng": -80.2317, "url": "/fl/palm-beach/royal-palm-beach/"}];
   var MAX_MILES = 60;
   function milesBetween(a,b,c,d){var R=3959,t=Math.PI/180,dLat=(c-a)*t,dLng=(d-b)*t,x=Math.sin(dLat/2)**2+Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLng/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
   function nearestCity(lat,lng){var best=null,bd=Infinity;for(var i=0;i<CITIES.length;i++){var dM=milesBetween(lat,lng,CITIES[i].lat,CITIES[i].lng);if(dM<bd){bd=dM;best=CITIES[i];}}return{city:best,miles:bd};}

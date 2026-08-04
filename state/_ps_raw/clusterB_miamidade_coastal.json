@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Miami Plastic Surgery",
+    "neighborhood": "kendall",
+    "neighborhood_name": "Kendall",
+    "address": "9408 SW 87th Avenue, Suite 301, Miami, FL 33176",
+    "phone": "305-595-2969",
+    "website": "https://miamiplasticsurgery.com/",
+    "source_url": "https://miamiplasticsurgery.com/contact/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover"],
+    "surgeons": [
+      {
+        "name": "Dr. Jason Altman",
+        "credentials_text": "Board Certified by both the American Board of Plastic Surgery and The American Board of Otolaryngology",
+        "credentials_source": "https://miamiplasticsurgery.com/surgeons/dr-jason-altman/"
+      },
+      {
+        "name": "Dr. Carlos Wolf",
+        "credentials_text": "Board certified by both the American Board of Facial Plastic and Reconstructive Surgery, the American Board of Otolaryngology",
+        "credentials_source": "https://miamiplasticsurgery.com/surgeons/dr-carlos-wolf/"
+      }
+    ]
+  },
+  {
+    "name": "DiGeronimo MD Advanced Plastic Surgery",
+    "neighborhood": "doral",
+    "neighborhood_name": "Doral",
+    "address": "10305 NW 58th St, Doral, FL 33178",
+    "phone": "305-376-0378",
+    "website": "https://www.digeronimomd.com/",
+    "source_url": "https://www.digeronimomd.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": []
+  },
+  {
+    "name": "Enrique Hanabergh, MD",
+    "neighborhood": "miami-lakes",
+    "neighborhood_name": "Miami Lakes",
+    "address": "7975 NW 154th St, Suite 400, Miami Lakes, FL 33016",
+    "phone": "305-501-2451",
+    "website": "https://drhanabergh.com/",
+    "source_url": "https://drhanabergh.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover"],
+    "surgeons": [
+      {
+        "name": "Dr. Enrique Hanabergh Jr.",
+        "credentials_text": "board-certified Diplomate of the American Board of Plastic Surgery and Fellow of the American College of Surgeons",
+        "credentials_source": "https://drhanabergh.com/"
+      }
+    ]
+  },
+  {
+    "name": "Miami Beach Cosmetic & Plastic Surgery Center",
+    "neighborhood": "south-beach",
+    "neighborhood_name": "South Beach",
+    "address": "400 Arthur Godfrey Road, Suite 305, Miami Beach, FL 33140",
+    "phone": "305-674-8586",
+    "website": "https://www.miamibeachplasticsurgery.com/",
+    "source_url": "https://www.miamibeachplasticsurgery.com/about/",
+    "treatments": ["tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "facelift"],
+    "surgeons": [
+      {
+        "name": "Dr. Baruch Jacobs",
+        "credentials_text": "Board Certified by both the American Board of Plastic Surgery and the American Board of Surgery; Fellow of the American College of Surgeons",
+        "credentials_source": "https://www.miamibeachplasticsurgery.com/about/"
+      }
+    ]
+  },
+  {
+    "name": "Trends Plastic Surgery",
+    "neighborhood": "doral",
+    "neighborhood_name": "Doral",
+    "address": "3905 NW 107th Ave, #401, Doral, FL 33178",
+    "phone": "786-542-5358",
+    "website": "https://trendsplasticsurgery.com/",
+    "source_url": "https://trendsplasticsurgery.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"],
+    "surgeons": []
+  },
+  {
+    "name": "The Secret Plastic Surgery",
+    "neighborhood": "doral",
+    "neighborhood_name": "Doral",
+    "address": "2500 NW 79th Ave, Suite 270, Doral, FL 33122",
+    "phone": "786-901-7788",
+    "website": "https://www.thesecretplasticsurgery.com/",
+    "source_url": "https://www.thesecretplasticsurgery.com/",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover"],
+    "surgeons": [
+      {
+        "name": "Dr. Daniel Zeichner",
+        "credentials_text": "Board Certified Plastic Surgeon",
+        "credentials_source": "https://www.thesecretplasticsurgery.com/"
+      }
+    ]
+  }
+]
