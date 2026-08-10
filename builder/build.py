@@ -890,6 +890,57 @@ def load_clinics():
             print(f"[builder] WARN: could not parse {f.name}: {e}")
             continue
         clinics.extend(data if isinstance(data, list) else [data])
+    return _overlay_published_prices(clinics)
+
+
+# Per-clinic published prices live in their own file (data/prices_published.json) rather
+# than inside the prospector records, so each number keeps its provenance — the basis it
+# was published on, the URL, the quoted text, the date checked — and stays auditable
+# independently of whatever the prospector writes next.
+PUBLISHED_PRICES_PATH = ROOT / "data" / "prices_published.json"
+
+
+def _overlay_published_prices(clinics):
+    """Merge published per-clinic prices onto clinic records.
+
+    NEVER overwrites a price already present in the prospector data — operator/prospector
+    data wins. Only prices carrying BOTH a value and a basis are applied: a bare number
+    with no basis ("$15" — per unit? per area? per session?) would mislead, so it drops.
+    """
+    if not PUBLISHED_PRICES_PATH.exists():
+        return clinics
+    try:
+        book = (json.loads(PUBLISHED_PRICES_PATH.read_text()) or {}).get("prices") or {}
+    except Exception as e:
+        print(f"[builder] WARN: could not parse prices_published.json: {e}")
+        return clinics
+
+    applied = skipped = 0
+    for c in clinics:
+        entry = book.get(c.get("slug"))
+        if not entry:
+            continue
+        prices = dict(c.get("starting_prices_usd") or {})
+        meta = dict(c.get("price_meta") or {})
+        for t, d in entry.items():
+            if not isinstance(d, dict):
+                continue
+            v, basis = d.get("value"), d.get("basis")
+            if not isinstance(v, int) or v <= 0 or not basis:
+                skipped += 1
+                continue
+            if t in prices:            # prospector / operator price wins
+                continue
+            prices[t] = v
+            meta[t] = {"basis": basis, "source_url": d.get("source_url"),
+                       "quote": d.get("quote"), "checked": d.get("checked")}
+            applied += 1
+        if prices:
+            c["starting_prices_usd"] = prices
+        if meta:
+            c["price_meta"] = meta
+    print(f"[builder] published prices overlaid: {applied} price point(s)"
+          + (f"; {skipped} skipped (missing value or basis)" if skipped else ""))
     return clinics
 
 
