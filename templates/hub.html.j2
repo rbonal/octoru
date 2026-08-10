@@ -31,7 +31,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }} — Octoru</title>
-<meta name="description" content="{{ title }}. {{ subtitle.rstrip('.') }}. Verified providers, real prices and Google ratings.">
+<meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ title }}. {{ subtitle.rstrip('.') }}. Verified providers, real prices and Google ratings.{% endif %}">
 <link rel="canonical" href="https://octoru.com/{{ rel_path }}/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" sizes="any" href="/assets/favicon.ico">
@@ -110,6 +110,50 @@
     {%- if subtitle %}<p class="lead">{{ subtitle.rstrip('.') }}.</p>{% endif %}
     {%- if intro %}<p class="lead">{{ intro }}</p>{% endif %}
   </section>
+
+  {%- if providers %}
+  {#- Side-by-side provider comparison — the thing a generic review site doesn't give you:
+      every provider in the city once, ranked by the same Beta-posterior law used on the
+      listing pages, with verified Google ratings and only prices they actually publish. -#}
+  <section class="compare" id="compare">
+    <h2>Compare every verified provider in this city</h2>
+    <p class="compare-note">Ranked by rating strength (a proven 4.9 outranks a thin 5.0). Ratings via permitted Google APIs — we don't republish review text. Prices are shown only where the provider publishes them; “Request price” means they don't list one publicly.</p>
+    <div class="compare-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th scope="col">Provider</th><th scope="col">Rating</th><th scope="col">Treatments</th><th scope="col">Published price</th><th scope="col">Contact</th></tr>
+        </thead>
+        <tbody>
+          {%- for p in providers %}
+          <tr{% if p.featured_tier and p.featured_tier > 0 %} class="is-featured"{% endif %}>
+            <th scope="row">
+              <span class="cmp-name">{{ p.name }}</span>
+              {%- if p.featured_tier and p.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
+              {%- if p.accreditations %}<span class="cmp-accred">✓ Accredited facility</span>{% endif %}
+              {%- if p.address %}<span class="cmp-addr">{{ p.address }}</span>{% endif %}
+            </th>
+            <td>{% if p.rating %}<strong>{{ p.rating }}</strong> <span class="cmp-rc">({{ p.review_count }})</span>{% else %}<span class="muted">Not rated</span>{% endif %}</td>
+            <td class="cmp-treatments">
+              {%- for t in p.treatments %}<a href="{{ t.url }}">{{ t.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+            </td>
+            <td>
+              {%- if p.from_price %}
+              <strong>${{ "{:,}".format(p.from_price.value) }}</strong>{% if p.from_price.basis %} <span class="price-basis">{{ p.from_price.basis }}</span>{% endif %}
+              <span class="cmp-pricefor">{{ p.from_price.treatment }}</span>
+              {%- if p.from_price.source_url %}<a class="price-src" href="{{ p.from_price.source_url }}" target="_blank" rel="noopener nofollow">source ↗</a>{% endif %}
+              {%- else %}<span class="muted">Request price</span>{% endif %}
+            </td>
+            <td>
+              {%- if p.phone_display %}<span class="cmp-phone">{{ p.phone_display }}</span>{% endif %}
+              {%- if p.booking_url %}<a href="{{ p.booking_url }}" target="_blank" rel="noopener nofollow{{ ' sponsored' if p.sponsored }}">Book ↗</a>{% endif %}
+            </td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {%- endif %}
 
   <div class="card-grid" style="margin-bottom:40px;">
     {%- set seen_urls = [] %}

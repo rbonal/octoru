@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ treatment.name }} in {{ neighborhood.name }}, {{ city }}: {{ clinics|length }} Top-Rated Clinic{{ 's' if clinics|length != 1 else '' }} & Prices ({{ updated[:4] }})</title>
+<title>{{ title }}</title>
 <meta name="description" content="{{ meta_description }}">
 {%- if fallback %}
 <!-- Nearest-provider fallback page (no local providers): noindex but follow, so it serves
      users who land here and passes link equity to the real provider pages, without
      competing in search as a near-duplicate. -->
+<meta name="robots" content="noindex, follow">
+{%- elif near_duplicate %}
+<!-- Near-duplicate guard: this page's content is {{ (near_duplicate_overlap * 100) | round | int }}% shared with the closest
+     same-treatment page, i.e. it is mostly boilerplate with too little local substance to
+     stand on its own. It still serves visitors and passes link equity, but it is kept out
+     of the index and the sitemap until it has more real local data. -->
 <meta name="robots" content="noindex, follow">
 {%- endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -135,14 +141,48 @@
   </section>
 
   {%- if cost %}
+  {#- Three-tier pricing. (a) referential market range, always labeled and sourced;
+      (b) what providers on this page actually publish; (c) an honest ask for the rest.
+      No tier ever borrows a number from another. -#}
   <section class="costblock">
-    {%- if cost.has_prices %}
-    <span class="label">Typical {{ treatment.name | lower }} cost in {{ neighborhood.name }}</span>
-    <div class="cost-figure">{% if cost.low == cost.high %}${{ cost.low }}{% else %}${{ cost.low }}–${{ cost.high }}{% endif %}<span class="cost-unit">{{ cost.unit }}</span></div>
-    <div class="cost-note">{{ cost.coverage_label }}. Providers that don't publish a price — <a href="#quote">request a quote</a>. Listed prices are starting points and may vary by plan.</div>
+    {%- if cost.reference and cost.reference.available %}
+    <span class="label">Typical {{ treatment.name | lower }} cost — market reference</span>
+    <div class="cost-figure">{{ cost.reference.national.display }}<span class="cost-unit">{{ cost.reference.national.basis }}</span></div>
+    <div class="cost-ref-meta">
+      <span class="ref-tag">Referential range</span>
+      Published U.S. figure from
+      <a href="{{ cost.reference.national.source_url }}" target="_blank" rel="noopener nofollow">{{ cost.reference.national.source_name }}</a>{% if cost.reference.national.year %}, {{ cost.reference.national.year }}{% endif %}.
+      {%- if cost.reference.national_alt %}
+      {{ cost.reference.national_alt.source_name }} reports {{ cost.reference.national_alt.display }} {{ cost.reference.national_alt.basis }}.
+      {%- endif %}
+      {%- if cost.reference.metro %}
+      For the Miami metro specifically, {{ cost.reference.metro.source_name }} reports an average of
+      <strong>{{ cost.reference.metro.display }}</strong> ({{ cost.reference.metro.basis }}{% if cost.reference.metro.year %}, {{ cost.reference.metro.year }}{% endif %}).
+      {%- elif cost.reference.metro_absent_reason %}
+      No Miami-specific published average exists for this treatment, so the national figure is shown instead.
+      {%- endif %}
+      {%- if cost.reference.excludes_anesthesia_facility %}
+      This is a <strong>surgeon's fee only</strong> — anesthesia and facility costs are billed separately and are not included.
+      {%- endif %}
+      <strong>This is a market reference, not a quote — each clinic sets its own rate.</strong>
+    </div>
     {%- else %}
     <span class="label">{{ treatment.name }} pricing in {{ neighborhood.name }}</span>
-    <div class="cost-note">No provider here lists pricing yet — <a href="#quote">request a personalized quote</a> and we'll connect you with the right provider.</div>
+    <div class="cost-ref-meta">No independent body publishes an average cost for {{ treatment.name | lower }},
+      so we don't show a range we can't source. Prices are set per provider —
+      <a href="#quote">request current pricing</a> and we'll get it for you.</div>
+    {%- endif %}
+
+    {%- if cost.has_prices %}
+    <div class="cost-observed">
+      <span class="label">Published by providers on this page</span>
+      <span class="cost-observed-figure">{% if cost.low == cost.high %}${{ "{:,}".format(cost.low) }}{% else %}${{ "{:,}".format(cost.low) }}–${{ "{:,}".format(cost.high) }}{% endif %}</span>
+      <span class="cost-observed-note">{{ cost.coverage_label }}. Each figure below links to where that provider published it. Starting prices — your final cost depends on your treatment plan.</span>
+    </div>
+    {%- else %}
+    <div class="cost-observed">
+      <span class="cost-observed-note">{{ cost.coverage_label }}.</span>
+    </div>
     {%- endif %}
   </section>
   {%- endif %}
@@ -167,7 +207,13 @@
         {% if c.address %}<div class="meta">{{ c.address }}</div>{% else %}<div class="meta muted">Address not listed</div>{% endif %}
         <div class="stats">
           {% if c.rating %}<span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>{% endif %}
-          {% if c.starting_price_usd %}<span class="stat"><span class="label">From</span><span class="v">${{ c.starting_price_usd }}{% if c.price_unit %} {{ c.price_unit }}{% endif %}</span></span>{% else %}<span class="stat empty"><a href="#quote">Pricing not listed — request a quote</a></span>{% endif %}
+          {%- if c.starting_price_usd %}
+          {#- Tier (b): shown ONLY with the basis the provider published it on, and linked
+              to where we read it. A bare number without its basis would mislead. -#}
+          <span class="stat"><span class="label">From</span><span class="v">${{ "{:,}".format(c.starting_price_usd) }}{% if c.price_basis %} <span class="price-basis">{{ c.price_basis }}</span>{% elif c.price_unit %} {{ c.price_unit }}{% endif %}</span>{% if c.price_source_url %} <a class="price-src" href="{{ c.price_source_url }}" target="_blank" rel="noopener nofollow" title="Published by this provider{% if c.price_checked %}, checked {{ c.price_checked }}{% endif %}">source ↗</a>{% endif %}</span>
+          {%- else %}
+          <span class="stat empty"><a href="#quote">Request current price</a></span>
+          {%- endif %}
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
