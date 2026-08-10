@@ -1189,9 +1189,12 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
         "unit": unit,
         "count_priced": len(priced_clinics),
         "count_total": len(clinics),
+        # Plural agrees with the TOTAL (the noun), the verb with the priced count:
+        # "1 of 7 providers publishes a price" / "3 of 9 providers publish a price".
         "coverage_label": (
             f"{len(priced_clinics)} of {len(clinics)} "
-            f"{'provider publishes' if len(priced_clinics) == 1 else 'providers publish'} a price"
+            f"{'provider' if len(clinics) == 1 else 'providers'} "
+            f"{'publishes' if len(priced_clinics) == 1 else 'publish'} a price"
             if priced_clinics else
             f"None of the {len(clinics)} providers here publishes a rate online — "
             f"request a current price and we'll get it for you"
@@ -1822,9 +1825,12 @@ def _hub_state_intro(state_name, counties):
 
 
 def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None,
-               providers=None, meta_description=None):
+               providers=None, meta_description=None, h1=None):
+    # title = the <title> tag (SERP-facing, may carry count/year).
+    # h1    = the on-page heading; defaults to title when they're the same thing.
     html = env.get_template("hub.html.j2").render(
-        title=title, subtitle=subtitle, breadcrumb=breadcrumb, cards=cards, intro=intro,
+        title=title, h1=h1 or title, subtitle=subtitle, breadcrumb=breadcrumb,
+        cards=cards, intro=intro,
         providers=providers or [], meta_description=meta_description,
         rel_path=rel_path, site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
     return _write(f"{rel_path}/index.html" if rel_path else "index_hub.html", html)
@@ -1875,7 +1881,12 @@ def _city_providers(city_slug, pages):
 
 def _city_directory_title(city_name, state_name, providers, pages, city_slug):
     """Name the page for what the city actually has. A city with only surgical practices
-    must not be titled 'Best Med Spas' — that would be a promise the page doesn't keep."""
+    must not be titled 'Best Med Spas' — that would be a promise the page doesn't keep.
+
+    Returns (seo_title, h1, noun). The SEO title carries the count and year for the SERP;
+    the H1 stays short, because a heading that restates the whole title reads as spam and
+    wraps to five lines on a phone.
+    """
     cats = {p.get("category", DEFAULT_CATEGORY) for p in pages
             if p["neighborhood"]["slug"] == city_slug and not p.get("fallback")}
     n = len(providers)
@@ -1886,8 +1897,10 @@ def _city_directory_title(city_name, state_name, providers, pages, city_slug):
     else:
         noun = "Med Spas"
     year = datetime.date.today().year
-    return (f"Best {noun} in {city_name}, FL — {n} Verified "
-            f"{'Provider' if n == 1 else 'Providers'} Compared ({year})"), noun
+    h1 = f"Best {noun} in {city_name}, FL"
+    seo_title = (f"{h1} — {n} Verified {'Provider' if n == 1 else 'Providers'} "
+                 f"Compared ({year})")
+    return seo_title, h1, noun
 
 
 def render_hubs(summaries, pages=None):
@@ -1916,22 +1929,22 @@ def render_hubs(summaries, pages=None):
                 # they publish — the side-by-side comparison Yelp doesn't give.
                 provs = _city_providers(ci, pages or [])
                 if provs:
-                    ctitle, cnoun = _city_directory_title(cidata["name"], sdata["name"],
-                                                          provs, pages or [], ci)
+                    ctitle, ch1, cnoun = _city_directory_title(
+                        cidata["name"], sdata["name"], provs, pages or [], ci)
                     n_priced = sum(1 for p in provs if p.get("from_price"))
-                    csub = (f"{len(provs)} verified {cnoun.lower()} in {cidata['name']} compared "
-                            f"on Google rating, treatments offered and published pricing")
+                    csub = (f"{len(provs)} verified {cnoun.lower()} compared on Google rating, "
+                            f"treatments offered and published pricing")
                     cmeta = (f"Compare {len(provs)} verified {cnoun.lower()} in {cidata['name']}, FL "
                              f"side by side — Google ratings, review counts, treatments offered"
                              + (f" and published prices from {n_priced} of them." if n_priced
                                 else " and direct pricing requests."))
                 else:
-                    ctitle = f"Health & wellness in {cidata['name']}, {sdata['name']}"
+                    ctitle = ch1 = f"Health & wellness in {cidata['name']}, {sdata['name']}"
                     csub = f"{len(cidata['pages'])} treatment guides for {cidata['name']}"
                     cmeta = None
                 render_hub(ctitle, csub, bc, cards, f"{st}/{co}/{ci}",
                            intro=_hub_city_intro(ci, cidata["name"], cidata["pages"]),
-                           providers=provs, meta_description=cmeta)
+                           providers=provs, meta_description=cmeta, h1=ch1)
             # county hub
             ccards = [{"title": cidata["name"], "sub": f"{len(cidata['pages'])} treatment" + ("" if len(cidata['pages']) == 1 else "s"),
                        "url": f"/{st}/{co}/{ci}/", "chip": None}
