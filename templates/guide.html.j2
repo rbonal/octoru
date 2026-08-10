@@ -98,8 +98,11 @@
       <div class="guide-price-callout">
         <span class="guide-price-n">{% if reference.metro %}{{ reference.metro.display }}{% else %}{{ reference.national.display }}{% endif %}</span>
         <span class="guide-price-note">
-          {%- if reference.metro %}Miami-metro average, {{ reference.metro.basis }} ({{ reference.metro.source_name }}){% else %}{{ reference.national.basis }}, U.S. average ({{ reference.national.source_name }}{% if reference.national.year %} {{ reference.national.year }}{% endif %}){% endif %}
-          — referential, not a quote
+          {#- metro.basis already names the geography ("per treatment, Miami metro average"),
+              so don't prefix it with "Miami-metro average" as well. -#}
+          {%- if reference.metro %}{{ reference.metro.basis }} — {{ reference.metro.source_name }}{% if reference.metro.year %}, {{ reference.metro.year }}{% endif %}
+          {%- else %}{{ reference.national.basis }}, U.S. average — {{ reference.national.source_name }}{% if reference.national.year %}, {{ reference.national.year }}{% endif %}{% endif %}
+          · referential, not a quote
         </span>
       </div>
       {%- endif %}

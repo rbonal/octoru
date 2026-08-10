@@ -106,7 +106,7 @@
   {%- endif %}
 
   <section class="hero">
-    <h1>{{ title }}</h1>
+    <h1>{{ h1 | default(title, true) }}</h1>
     {%- if subtitle %}<p class="lead">{{ subtitle.rstrip('.') }}.</p>{% endif %}
     {%- if intro %}<p class="lead">{{ intro }}</p>{% endif %}
   </section>
@@ -118,6 +118,9 @@
   <section class="compare" id="compare">
     <h2>Compare every verified provider in this city</h2>
     <p class="compare-note">Ranked by rating strength (a proven 4.9 outranks a thin 5.0). Ratings via permitted Google APIs — we don't republish review text. Prices are shown only where the provider publishes them; “Request price” means they don't list one publicly.</p>
+    {#- On a phone the table scrolls sideways and the price column starts off-screen,
+        so say so — otherwise the most useful column is invisible. -#}
+    <p class="compare-swipe" aria-hidden="true">Swipe the table sideways to see pricing and contact details →</p>
     <div class="compare-scroll">
       <table class="compare-table">
         <thead>
