@@ -1,0 +1,538 @@
+{
+ "_comment": "Per-clinic PUBLISHED prices harvested from each provider's own website. Kept separate from the prospector's clinic records so every number stays auditable: value, the basis it was published on, the URL it was read from, the exact quoted text, and when it was checked. builder/build.py overlays this onto clinic records at load time and NEVER overwrites a price already present in the prospector data.",
+ "_rules": [
+  "Only prices a provider publishes itself. Never a market average, never another clinic's price, never an estimate.",
+  "A price without a basis is meaningless — basis is required.",
+  "quote is the audit trail: the text as published. If it can't be quoted, it doesn't ship."
+ ],
+ "_checked": "2026-08-10",
+ "prices": {
+  "aeris-plastic-surgery-aesthetic-medicine": {
+   "bbl": {
+    "value": 7900,
+    "basis": "starting at",
+    "source_url": "https://aeris.co/about/specials/",
+    "quote": "Brazilian Butt Lift Starting at $7,900",
+    "checked": "2026-08-10"
+   },
+   "liposuction": {
+    "value": 6900,
+    "basis": "starting at, Lipo 360",
+    "source_url": "https://aeris.co/about/specials/",
+    "quote": "Lipo 360 Starting at $6,900",
+    "checked": "2026-08-10"
+   },
+   "mommy-makeover": {
+    "value": 11900,
+    "basis": "starting at",
+    "source_url": "https://aeris.co/about/specials/",
+    "quote": "Mommy Makeover Starting at $11,900",
+    "checked": "2026-08-10"
+   },
+   "tummy-tuck": {
+    "value": 7900,
+    "basis": "starting at",
+    "source_url": "https://aeris.co/about/specials/",
+    "quote": "Tummy Tuck Starting at $7,900",
+    "checked": "2026-08-10"
+   }
+  },
+  "alluramd-aesthetics-boynton-beach": {
+   "coolsculpting": {
+    "value": 2999,
+    "basis": "package, starting at (single-area package)",
+    "source_url": "https://alluraaesthetics.com/specials/",
+    "quote": "SINGLE-AREA PACKAGE STARTING AT $2,999",
+    "checked": "2026-08-10"
+   }
+  },
+  "alluramd-aesthetics-jupiter": {
+   "coolsculpting": {
+    "value": 2999,
+    "basis": "package, starting at (single-area package)",
+    "source_url": "https://alluraaesthetics.com/specials/",
+    "quote": "SINGLE-AREA PACKAGE STARTING AT $2,999",
+    "checked": "2026-08-10"
+   }
+  },
+  "alluramd-aesthetics-wellington": {
+   "coolsculpting": {
+    "value": 2999,
+    "basis": "package, starting at (single-area package)",
+    "source_url": "https://alluraaesthetics.com/specials/",
+    "quote": "SINGLE-AREA PACKAGE STARTING AT $2,999",
+    "checked": "2026-08-10"
+   }
+  },
+  "alluramd-aesthetics-wellness": {
+   "coolsculpting": {
+    "value": 2999,
+    "basis": "starting at, single-area package",
+    "source_url": "https://alluraaesthetics.com/specials/",
+    "quote": "SINGLE-AREA PACKAGE STARTING AT $2,999",
+    "checked": "2026-08-10"
+   }
+  },
+  "beach-body-medspa": {
+   "botox": {
+    "value": 300,
+    "basis": "starting at, flat fee per treatment",
+    "source_url": "https://beachbodymedspa.com/",
+    "quote": "starting at $300",
+    "checked": "2026-08-10"
+   },
+   "dermal-fillers": {
+    "value": 400,
+    "basis": "starting at, flat fee per treatment",
+    "source_url": "https://beachbodymedspa.com/",
+    "quote": "Starting at $400",
+    "checked": "2026-08-10"
+   }
+  },
+  "cg-cosmetic-surgery": {
+   "bbl": {
+    "value": 3500,
+    "basis": "starting at",
+    "source_url": "https://www.cgcosmetic.com/",
+    "quote": "Brazilian Butt Lift Starts at $3,500",
+    "checked": "2026-08-10"
+   },
+   "breast-augmentation": {
+    "value": 2500,
+    "basis": "starting at",
+    "source_url": "https://www.cgcosmetic.com/",
+    "quote": "Breast Augmentation Starts at $2,500",
+    "checked": "2026-08-10"
+   },
+   "tummy-tuck": {
+    "value": 3500,
+    "basis": "starting at",
+    "source_url": "https://www.cgcosmetic.com/",
+    "quote": "Tummy Tuck Starts at $3,500",
+    "checked": "2026-08-10"
+   }
+  },
+  "danik-medspa": {
+   "botox": {
+    "value": 15,
+    "basis": "per unit (new patient price)",
+    "source_url": "https://danikmedspa.com/botox-in-pembroke-pines/",
+    "quote": "$15 Per Unit",
+    "checked": "2026-08-10"
+   }
+  },
+  "diamond-med-spa": {
+   "botox": {
+    "value": 12,
+    "basis": "per unit",
+    "source_url": "https://www.diamondmedspa.net/",
+    "quote": "Botox: $12 Per Unit",
+    "checked": "2026-08-10"
+   },
+   "hydrafacial": {
+    "value": 150,
+    "basis": "starting at",
+    "source_url": "https://www.diamondmedspa.net/",
+    "quote": "Starts $150",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 650,
+    "basis": "per syringe",
+    "source_url": "https://www.diamondmedspa.net/",
+    "quote": "Lip Fillers: $650 Per Syringe",
+    "checked": "2026-08-10"
+   }
+  },
+  "enrique-hanabergh-md": {
+   "bbl": {
+    "value": 7000,
+    "basis": "starting at",
+    "source_url": "https://drhanabergh.com/",
+    "quote": "BRAZILIAN BUTT LIFT Starting at $7000.00",
+    "checked": "2026-08-10"
+   },
+   "breast-augmentation": {
+    "value": 4500,
+    "basis": "starting at",
+    "source_url": "https://drhanabergh.com/",
+    "quote": "BREAST AUGMENTATION Starting at $4500.00",
+    "checked": "2026-08-10"
+   },
+   "liposuction": {
+    "value": 4500,
+    "basis": "starting at",
+    "source_url": "https://drhanabergh.com/",
+    "quote": "LIPOSUCTION Starting at $4500.00",
+    "checked": "2026-08-10"
+   },
+   "tummy-tuck": {
+    "value": 5750,
+    "basis": "starting at",
+    "source_url": "https://drhanabergh.com/",
+    "quote": "TUMMY TUCK WITH LIPOSUCTION OF THE WAIST Starting at $5750.00",
+    "checked": "2026-08-10"
+   }
+  },
+  "four-seasons-laser-center": {
+   "laser-hair-removal": {
+    "value": 99,
+    "basis": "flat fee, promotional, 3 areas",
+    "source_url": "https://fourseasonslasercenter.com/",
+    "quote": "Only $99 For Laser Hair Removal (3 areas)",
+    "checked": "2026-08-10"
+   },
+   "microneedling": {
+    "value": 750,
+    "basis": "per session",
+    "source_url": "https://fourseasonslasercenter.com/offers/",
+    "quote": "Fractional Micro-Needling - $750",
+    "checked": "2026-08-10"
+   }
+  },
+  "greenemd": {
+   "morpheus8": {
+    "value": 600,
+    "basis": "flat fee, per session (full face)",
+    "source_url": "https://www.drryangreene.com/specials-promotions/",
+    "quote": "Full Face Morpheus8 Skin Treatment - $600",
+    "checked": "2026-08-10"
+   }
+  },
+  "kami-aesthetics": {
+   "laser-hair-removal": {
+    "value": 149,
+    "basis": "package, new clients, 3 areas (bikini line, underarms, half legs)",
+    "source_url": "https://kamiaesthetics.com/",
+    "quote": "$149 Laser Package — Bikini + Underarms + Half Legs",
+    "checked": "2026-08-10"
+   }
+  },
+  "laseraway-miami-south-beach": {
+   "botox": {
+    "value": 12,
+    "basis": "per unit, Xeomin (with banks available)",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "Xeomin: $12 per unit (with banks available)",
+    "checked": "2026-08-10"
+   },
+   "coolsculpting": {
+    "value": 550,
+    "basis": "per treatment",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "$550 per treatment",
+    "checked": "2026-08-10"
+   },
+   "hydrafacial": {
+    "value": 200,
+    "basis": "per session",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "Hydrafacial: $200 per session",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 450,
+    "basis": "per full syringe, Juvéderm, lips",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "$450 per full syringe for lips",
+    "checked": "2026-08-10"
+   },
+   "microneedling": {
+    "value": 400,
+    "basis": "per session, SkinPen (plain microneedling)",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "SkinPen: $400 per session",
+    "checked": "2026-08-10"
+   },
+   "morpheus8": {
+    "value": 900,
+    "basis": "per session, Potenza RF Microneedling",
+    "source_url": "https://www.laseraway.com/pricing/",
+    "quote": "Potenza RF Microneedling: $900 per session",
+    "checked": "2026-08-10"
+   }
+  },
+  "medical-advanced-skin-care": {
+   "hydrafacial": {
+    "value": 157,
+    "basis": "per session, promotional/special price",
+    "source_url": "https://medicaladvancedskincare.com/specials/",
+    "quote": "Now Only $157 (Regular Price $225)",
+    "checked": "2026-08-10"
+   }
+  },
+  "miami-lakes-med-spa": {
+   "botox": {
+    "value": 595,
+    "basis": "flat fee, upper face (unlimited units)",
+    "source_url": "https://miamilakesmedspa.com/pricing/",
+    "quote": "Botox — Upper Face (Unlimited Units) $595",
+    "checked": "2026-08-10"
+   },
+   "iv-therapy": {
+    "value": 150,
+    "basis": "flat fee, per session",
+    "source_url": "https://miamilakesmedspa.com/pricing/",
+    "quote": "Myers' Cocktail $150",
+    "checked": "2026-08-10"
+   },
+   "laser-hair-removal": {
+    "value": 50,
+    "basis": "per session, small area",
+    "source_url": "https://miamilakesmedspa.com/pricing/",
+    "quote": "Small Area $50 session $250 package",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 495,
+    "basis": "flat fee, half lips",
+    "source_url": "https://miamilakesmedspa.com/pricing/",
+    "quote": "Lips $495 half $695 full",
+    "checked": "2026-08-10"
+   },
+   "microneedling": {
+    "value": 395,
+    "basis": "flat fee, face",
+    "source_url": "https://miamilakesmedspa.com/pricing/",
+    "quote": "Face $395",
+    "checked": "2026-08-10"
+   }
+  },
+  "miami-skin-vein": {
+   "botox": {
+    "value": 18,
+    "basis": "per unit",
+    "source_url": "https://www.miamiskinandvein.com/pricing/",
+    "quote": "BOTOX Cosmetic $18.00 per unit",
+    "checked": "2026-08-10"
+   },
+   "dermal-fillers": {
+    "value": 950,
+    "basis": "per syringe, Restylane (all variants)",
+    "source_url": "https://www.miamiskinandvein.com/pricing/",
+    "quote": "Restylane (all variants) $950 per syringe",
+    "checked": "2026-08-10"
+   },
+   "hydrafacial": {
+    "value": 300,
+    "basis": "per session",
+    "source_url": "https://www.miamiskinandvein.com/pricing/",
+    "quote": "Hydrafacial $300 per session",
+    "checked": "2026-08-10"
+   },
+   "microneedling": {
+    "value": 900,
+    "basis": "per session",
+    "source_url": "https://www.miamiskinandvein.com/pricing/",
+    "quote": "Microneedling $900 per session",
+    "checked": "2026-08-10"
+   }
+  },
+  "palm-beach-anti-aging-rpb": {
+   "botox": {
+    "value": 10,
+    "basis": "per unit, promo price for a 60-unit purchase (regular price $12/unit)",
+    "source_url": "https://pbantiaging.com/packages-promotions/",
+    "quote": "Botox just $10/unit for 60 units (regularly $12 a unit)",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 540,
+    "basis": "flat fee, promo price (regularly $700)",
+    "source_url": "https://pbantiaging.com/packages-promotions/",
+    "quote": "Revanesse Lip Filler now just $540 (regularly $700)",
+    "checked": "2026-08-10"
+   }
+  },
+  "plantation-med-spa": {
+   "botox": {
+    "value": 12,
+    "basis": "per unit",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Botox: $12/U",
+    "checked": "2026-08-10"
+   },
+   "chemical-peel": {
+    "value": 400,
+    "basis": "flat fee, per session",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Perfect Derma Peel: $400",
+    "checked": "2026-08-10"
+   },
+   "dermal-fillers": {
+    "value": 700,
+    "basis": "per syringe, starting at",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Restylane: $700/SYRINGE",
+    "checked": "2026-08-10"
+   },
+   "hydrafacial": {
+    "value": 150,
+    "basis": "flat fee, per session",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Hydrafacial: $150",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 600,
+    "basis": "per syringe",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Versa | Versa Lips: $600/SYRINGE",
+    "checked": "2026-08-10"
+   },
+   "microneedling": {
+    "value": 200,
+    "basis": "per session, starting at",
+    "source_url": "https://plantationmedspa.com/price-list/",
+    "quote": "Microneedling: $200",
+    "checked": "2026-08-10"
+   }
+  },
+  "r-r-skin-and-aesthetics": {
+   "botox": {
+    "value": 15,
+    "basis": "per unit",
+    "source_url": "https://rrskin.com/botox-treatments-in-pinecrest-fl/",
+    "quote": "$15 per unit",
+    "checked": "2026-08-10"
+   }
+  },
+  "rosenthal-cosmetic-plastic-surgery": {
+   "breast-augmentation": {
+    "value": 6900,
+    "basis": "flat fee",
+    "source_url": "https://www.rosenthal-md.com/patient-resources/pricing/",
+    "quote": "Breast Augmentation: $6,900 (flat fee)",
+    "checked": "2026-08-10"
+   },
+   "facelift": {
+    "value": 16750,
+    "basis": "flat fee, starting at (range $16,750–$22,500, Lower Facelift & Neck Lift)",
+    "source_url": "https://www.rosenthal-md.com/patient-resources/pricing/",
+    "quote": "Lower Facelift & Neck Lift: $16,750–$22,500 (flat fee)",
+    "checked": "2026-08-10"
+   },
+   "liposuction": {
+    "value": 5800,
+    "basis": "flat fee, first hour (additional hours $4,800 each)",
+    "source_url": "https://www.rosenthal-md.com/patient-resources/pricing/",
+    "quote": "Liposuction: $5,800 first hour, $4,800 each additional hour",
+    "checked": "2026-08-10"
+   },
+   "rhinoplasty": {
+    "value": 9450,
+    "basis": "flat fee, starting at (range $9,450–$17,500)",
+    "source_url": "https://www.rosenthal-md.com/patient-resources/pricing/",
+    "quote": "Rhinoplasty: $9,450–$17,500 (flat fee)",
+    "checked": "2026-08-10"
+   },
+   "tummy-tuck": {
+    "value": 8600,
+    "basis": "flat fee, starting at (range $8,600–$9,700)",
+    "source_url": "https://www.rosenthal-md.com/patient-resources/pricing/",
+    "quote": "Tummy Tuck: $8,600–$9,700 (flat fee)",
+    "checked": "2026-08-10"
+   }
+  },
+  "sisu-clinic-brickell": {
+   "botox": {
+    "value": 525,
+    "basis": "flat fee, three FDA-approved areas (forehead, glabella, crow's feet) plus a complimentary fourth area",
+    "source_url": "https://www.sisuclinic.com/botox-brickell",
+    "quote": "$525 flat fee — Three FDA-approved areas: forehead, glabella, crow's feet ... This is an all-in price — no per-unit pricing, no upsells, no consultation fee.",
+    "checked": "2026-08-10"
+   }
+  },
+  "skin-plus-beauty": {
+   "botox": {
+    "value": 490,
+    "basis": "starting at",
+    "source_url": "https://skinplusbeauty.com/shop/",
+    "quote": "From $490.00",
+    "checked": "2026-08-10"
+   },
+   "lip-filler": {
+    "value": 500,
+    "basis": "starting at",
+    "source_url": "https://skinplusbeauty.com/shop/",
+    "quote": "From $500.00",
+    "checked": "2026-08-10"
+   }
+  },
+  "skin-spa-new-york-miami-beach": {
+   "dermal-fillers": {
+    "value": 800,
+    "basis": "starting at, per syringe (Restylane, Juvederm, Radiesse — not lip-specific)",
+    "source_url": "https://skinspanewyork.com/collections/cosmetic-injectables",
+    "quote": "Cosmetic Fillers (Restylane, Juvederm, Radiesse): From $800 USD",
+    "checked": "2026-08-10"
+   }
+  },
+  "south-florida-face-and-body": {
+   "botox": {
+    "value": 13,
+    "basis": "per unit, published range $13–$18 per unit",
+    "source_url": "https://www.southfloridafaceandbody.com/miami-beach/botox/",
+    "quote": "$13–$18 per unit",
+    "checked": "2026-08-10"
+   }
+  },
+  "the-garden-medical-spa": {
+   "botox": {
+    "value": 9,
+    "basis": "per unit (event promotional pricing)",
+    "source_url": "https://thegardenmedspa.com/specials/",
+    "quote": "$9/unit (Red, White & Botox event, July 2)",
+    "checked": "2026-08-10"
+   }
+  },
+  "the-secret-plastic-surgery": {
+   "botox": {
+    "value": 450,
+    "basis": "flat fee, per treatment",
+    "source_url": "https://www.thesecretplasticsurgery.com/plastic-surgery-specials/",
+    "quote": "Botox $450",
+    "checked": "2026-08-10"
+   }
+  },
+  "tighter-lines-aesthetics": {
+   "chemical-peel": {
+    "value": 275,
+    "basis": "flat fee, per treatment (second treatment discounted separately)",
+    "source_url": "https://www.tighterlinesaesthetics.com/specials",
+    "quote": "IMAGE Premium MD Power-C Peel $275; second for just $137.50",
+    "checked": "2026-08-10"
+   }
+  },
+  "youthful-glow": {
+   "botox": {
+    "value": 7,
+    "basis": "per unit (Dysport, lowest-priced neurotoxin listed; Botox itself listed at $14/unit)",
+    "source_url": "https://youthful-glow.com/menu/",
+    "quote": "Dysport®: $7 per unit",
+    "checked": "2026-08-10"
+   },
+   "chemical-peel": {
+    "value": 349,
+    "basis": "per treatment",
+    "source_url": "https://youthful-glow.com/menu/",
+    "quote": "VI Chemical Peel: $349 per treatment",
+    "checked": "2026-08-10"
+   },
+   "dermal-fillers": {
+    "value": 649,
+    "basis": "per syringe",
+    "source_url": "https://youthful-glow.com/menu/",
+    "quote": "Dermal Fillers: $649 per syringe",
+    "checked": "2026-08-10"
+   },
+   "morpheus8": {
+    "value": 549,
+    "basis": "per treatment (RF Microneedling)",
+    "source_url": "https://youthful-glow.com/menu/",
+    "quote": "RF Microneedling: $549 per treatment",
+    "checked": "2026-08-10"
+   }
+  }
+ }
+}

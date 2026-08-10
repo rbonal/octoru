@@ -578,3 +578,42 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
   color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-strong);
   border-radius: 4px; padding: 2px 8px; }
 .accred-src { font-size: 11px; color: var(--ink-3); }
+
+/* ── Referential pricing (three-tier) ─────────────────────────────────────────
+   (a) referential market range, (b) provider-published price, (c) request price.
+   The tiers must stay visually distinct so a market reference is never mistaken
+   for a clinic's own rate. */
+.cost-ref-meta { font-size: 13px; line-height: 1.6; color: var(--ink-2); margin-top: 8px; }
+.cost-ref-meta a { color: var(--ink-2); }
+.ref-tag { display: inline-block; font-family: 'Geist Mono', monospace; font-size: 10px;
+  font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);
+  background: var(--paper); border: 1px solid var(--line-strong); border-radius: 4px;
+  padding: 2px 7px; margin-right: 6px; vertical-align: 1px; }
+.cost-observed { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.cost-observed-figure { display: block; font-size: 22px; font-weight: 600; margin: 4px 0 6px; }
+.cost-observed-note { display: block; font-size: 12.5px; line-height: 1.6; color: var(--ink-3); }
+.price-basis { font-weight: 400; font-size: 12px; color: var(--ink-3); }
+.price-src { font-size: 11px; color: var(--ink-3); margin-left: 6px; white-space: nowrap; }
+.guide-price-observed { background: var(--paper); }
+
+/* ── City directory comparison table ───────────────────────────────────────── */
+.compare { margin: 8px 0 40px; }
+.compare h2 { margin-bottom: 6px; }
+.compare-note { font-size: 13px; line-height: 1.6; color: var(--ink-3); margin-bottom: 16px; max-width: 70ch; }
+.compare-scroll { overflow-x: auto; border: 1px solid var(--line-strong); border-radius: 10px; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720px; }
+.compare-table th, .compare-table td { text-align: left; padding: 14px 16px; vertical-align: top;
+  border-bottom: 1px solid var(--line); }
+.compare-table thead th { font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); background: var(--paper);
+  white-space: nowrap; }
+.compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: 0; }
+.compare-table tr.is-featured { background: var(--blue-tint); }
+.compare-table tbody th { font-weight: 600; max-width: 260px; }
+.cmp-name { display: block; }
+.cmp-addr, .cmp-accred, .cmp-pricefor, .cmp-rc, .cmp-phone { display: block; font-weight: 400;
+  font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.cmp-rc { display: inline; }
+.cmp-accred { color: var(--green); font-weight: 600; }
+.cmp-treatments { max-width: 260px; font-size: 13px; line-height: 1.7; }
+@media (max-width: 700px) { .compare-table { font-size: 13px; } }

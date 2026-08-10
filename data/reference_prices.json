@@ -1,0 +1,127 @@
+{
+  "_comment": "REFERENTIAL market price data. Every figure below is quoted from a named, dated, published third-party source and is NOT derived from Octoru's own listings. The builder renders these as a clearly-labeled REFERENTIAL range ('each clinic sets its own rate'), never as a quote and never as a clinic's own price. Nothing here may be invented, blended across sources, or extrapolated from national to local. A treatment with no credible published figure carries reference:null and renders an honest empty state.",
+  "_rules": [
+    "national.* = a figure published for the United States as a whole.",
+    "metro.* = a figure published specifically for the Miami metro area. Absent where the source did not publish one. NEVER synthesize a metro figure from a national one.",
+    "Surgical ASPS figures are SURGEON FEE ONLY and exclude anesthesia and facility fees — excludes_anesthesia_facility must stay true so the page says so.",
+    "RealSelf figures are patient self-reported and must be labeled as such on the page."
+  ],
+  "_last_reviewed": "2026-08-10",
+
+  "botox": {
+    "national": {"low": 10, "high": 15, "basis": "per unit", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/botox/cost", "year": 2024,
+      "quote": "One unit of Botox costs $10 to $15 at most practices in the U.S., though some charge as much as $25 or more per unit."},
+    "national_alt": {"value": 435, "basis": "per treatment, average physician fee", "source_name": "American Society of Plastic Surgeons", "source_url": "https://www.plasticsurgery.org/cosmetic-procedures/botulinum-toxin/cost",
+      "quote": "The average cost of botulinum toxin injections is $435, according to the latest statistics from the American Society of Plastic Surgeons."},
+    "metro": {"value": 675, "basis": "per treatment, Miami metro average", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/botox/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  },
+
+  "lip-filler": {
+    "national": {"low": 500, "high": 1400, "basis": "per syringe (Juvéderm Ultra or Volbella)", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/lip-filler/cost", "year": 2024,
+      "quote": "Juvéderm Ultra or Volbella can cost anywhere from $500 to $1,400 for 1 syringe."},
+    "metro": {"value": 700, "basis": "per treatment, Miami metro average", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/lip-filler/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  },
+
+  "dermal-fillers": {
+    "national": {"low": 715, "high": 901, "basis": "average physician fee — $715 hyaluronic-acid fillers, $901 non-hyaluronic-acid", "source_name": "American Society of Plastic Surgeons", "source_url": "https://www.plasticsurgery.org/cosmetic-procedures/dermal-fillers/cost",
+      "quote": "The average cost of hyaluronic acid dermal fillers is $715 ... the average cost of non-hyaluronic acid dermal fillers is $901, according to the latest statistics from the American Society of Plastic Surgeons."},
+    "metro": null,
+    "metro_absent_reason": "RealSelf's dermal-filler metro table does not list Miami — no Miami-specific published figure exists in any source checked.",
+    "excludes_anesthesia_facility": false
+  },
+
+  "coolsculpting": {
+    "national": {"low": 650, "high": 6835, "basis": "single session on one area, up to a full multi-area series", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/coolsculpting/cost", "year": 2024,
+      "quote": "Prices can range from an average of $650 for a single CoolSculpting treatment session for one targeted area to as much as $6,835 for a full treatment series on multiple body areas."},
+    "metro": {"value": 2871, "basis": "Miami metro average", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/coolsculpting/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  },
+
+  "laser-hair-removal": {
+    "national": {"low": 250, "high": 600, "basis": "per session — about $250 for a small area (upper lip, chin), upwards of $600 for a large area (full legs, back)", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/laser-hair-removal/cost", "year": 2023,
+      "quote": "small areas (upper lip/chin): approximately $250 per [treatment] ... Large areas (full legs/back): upwards of $600 per treatment"},
+    "metro": null,
+    "metro_absent_reason": "No Miami-specific figure published; RealSelf lists Florida state average $540 and West Palm Beach $425 only.",
+    "excludes_anesthesia_facility": false
+  },
+
+  "microneedling": {
+    "national": {"low": 200, "high": 800, "basis": "per single session", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/microneedling/cost", "year": 2023,
+      "quote": "A single microneedling treatment performed by a dermatologist or aesthetician can range in price from just $200 to as much as $800."},
+    "metro": {"value": 493, "basis": "Miami metro average", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/microneedling/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  },
+
+  "morpheus8": {
+    "national": {"low": 549, "high": 4000, "basis": "single session on one small area, up to a full treatment series", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/morpheus8/cost", "year": 2024,
+      "quote": "Prices start at $549 for a single treatment session on one small area ... A full treatment series can cost upwards of $4,000."},
+    "metro": {"value": 3115, "basis": "Miami metro average", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/morpheus8/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  },
+
+  "hydrafacial": {
+    "national": {"low": 209, "high": 320, "basis": "per session — $209 average, up to about $320 for advanced protocols", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/hydrafacial/cost", "year": 2023},
+    "metro": null,
+    "metro_absent_reason": "Miami is not listed in RealSelf's HydraFacial metro table (Florida state average $194).",
+    "excludes_anesthesia_facility": false
+  },
+
+  "chemical-peel": {
+    "national": {"low": 200, "high": 3500, "basis": "per session, by peel depth — light TCA peels at the low end, deep phenol peels at the high end", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/nonsurgical/chemical-peel/cost", "year": 2023},
+    "national_alt": {"value": 1829, "basis": "average physician fee, all peel depths", "source_name": "American Society of Plastic Surgeons", "source_url": "https://www.plasticsurgery.org/cosmetic-procedures/chemical-peel/cost"},
+    "metro": null,
+    "metro_absent_reason": "No Miami-specific chemical peel figure published (Florida state average $400).",
+    "excludes_anesthesia_facility": false
+  },
+
+  "iv-therapy": {
+    "national": null,
+    "metro": null,
+    "reference_absent_reason": "No credible published average exists for IV therapy at ASPS, ASDS, AmSpa or RealSelf — the procedure falls outside all four sources' cost reporting. Pages render an honest empty state rather than a guessed range.",
+    "excludes_anesthesia_facility": false
+  },
+
+  "bbl": {
+    "national": {"low": 7000, "high": 11500, "basis": "average surgeon fee (buttock augmentation with fat grafting)", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 6471, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/brazilian-butt-lift/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "tummy-tuck": {
+    "national": {"low": 8000, "high": 13500, "basis": "average surgeon fee (abdominoplasty)", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 8000, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/tummy-tuck/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "breast-augmentation": {
+    "national": {"low": 4575, "high": 8000, "basis": "average surgeon fee", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 5450, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/breast-augmentation/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "liposuction": {
+    "national": {"low": 4300, "high": 7500, "basis": "average surgeon fee", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 5500, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/liposuction/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "rhinoplasty": {
+    "national": {"low": 7500, "high": 12500, "basis": "average surgeon fee", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 10540, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/rhinoplasty/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "facelift": {
+    "national": {"low": 12000, "high": 19000, "basis": "average surgeon fee", "source_name": "American Society of Plastic Surgeons, 2024 Statistics Report", "source_url": "https://www.plasticsurgery.org/documents/news/statistics/2024/plastic-surgery-statistics-report-2024.pdf", "year": 2024},
+    "metro": {"value": 12365, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/facelift/cost", "year": 2023},
+    "excludes_anesthesia_facility": true
+  },
+
+  "mommy-makeover": {
+    "national": {"low": 10458, "high": 11479, "basis": "total patient-paid — Florida state average $10,458, Miami metro $11,479; ASPS publishes no figure because the procedure is a bundle", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/mommy-makeover/cost", "year": 2023},
+    "metro": {"value": 11479, "basis": "Miami metro average, total patient-paid", "source_name": "RealSelf (patient-reported)", "source_url": "https://www.realself.com/surgical/mommy-makeover/cost", "year": 2023},
+    "excludes_anesthesia_facility": false
+  }
+}
