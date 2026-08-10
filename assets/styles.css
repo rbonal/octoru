@@ -579,7 +579,7 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
   border-radius: 4px; padding: 2px 8px; }
 .accred-src { font-size: 11px; color: var(--ink-3); }
 
-/* ── Referential pricing (three-tier) ─────────────────────────────
+/* ── Referential pricing (three-tier) ─────────────────────────────────────────
    (a) referential market range, (b) provider-published price, (c) request price.
    The tiers must stay visually distinct so a market reference is never mistaken
    for a clinic's own rate. */
@@ -596,7 +596,7 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 .price-src { font-size: 11px; color: var(--ink-3); margin-left: 6px; white-space: nowrap; }
 .guide-price-observed { background: var(--paper); }
 
-/* ── City directory comparison table ──────────────────────────────── */
+/* ── City directory comparison table ───────────────────────────────────────── */
 .compare { margin: 8px 0 40px; }
 .compare h2 { margin-bottom: 6px; }
 .compare-note { font-size: 13px; line-height: 1.6; color: var(--ink-3); margin-bottom: 16px; max-width: 70ch; }
