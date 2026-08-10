@@ -617,3 +617,44 @@ nav.bar-nav .nav-adv-btn:hover { background: var(--blue-deep) !important; color:
 .cmp-accred { color: var(--green); font-weight: 600; }
 .cmp-treatments { max-width: 260px; font-size: 13px; line-height: 1.7; }
 @media (max-width: 700px) { .compare-table { font-size: 13px; } }
+
+/* ── Comparison table: mobile scroll affordance ────────────────────────────── */
+.compare-swipe { display: none; font-size: 12.5px; color: var(--ink-3); margin: 0 0 10px; }
+@media (max-width: 860px) { .compare-swipe { display: block; } }
+
+/* ── Header responsive collapse ────────────────────────────────────────────
+   .topbar is the header on every page except the homepage, and it had no
+   breakpoints at all — only the homepage's `nav.bar-nav` collapsed. The brand
+   block sizes to its widest child, which is the "Med spa & aesthetics directory"
+   tagline, so approaching mobile that block held its full width and pushed the
+   right-hand item (the city label, or the Advertise CTA) past the right edge,
+   where it was clipped. Collapse the header instead of letting it overflow. */
+.topbar .wrap { gap: 12px; }
+.topbar .wrap > a { min-width: 0; }                    /* brand may shrink */
+.topbar .wrap > a .label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar .wrap > .label, .topbar .wrap > .nav-adv-btn { flex: 0 0 auto; }
+
+/* The Advertise CTA is only styled as a pill under `nav.bar-nav` (homepage), so
+   in .topbar it was rendering as bare link text. Same treatment here. */
+.topbar .nav-adv-btn {
+  display: inline-flex; align-items: center;
+  background: var(--blue); color: #fff !important;
+  border-radius: 999px; padding: 7px 16px;
+  font-size: 13px; font-weight: 600; white-space: nowrap;
+  transition: background .15s ease;
+}
+.topbar .nav-adv-btn:hover { background: var(--blue-deep); color: #fff !important; }
+
+@media (max-width: 760px) {
+  /* First thing to go is the tagline — the mark and wordmark still carry identity,
+     and this is what frees the width the right-hand item needs. */
+  .topbar .wrap > a .label { display: none; }
+}
+@media (max-width: 480px) {
+  .topbar { padding: 10px 0; }
+  .topbar .wrap { padding: 0 16px; }
+  .topbar .brand-mark { width: 24px; height: 24px; }
+  .topbar .wrap .wordmark { font-size: 18px !important; }
+  .topbar .nav-adv-btn { padding: 6px 12px; font-size: 12px; }
+  .topbar .wrap > .label { font-size: 11px; }
+}
