@@ -2,14 +2,23 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
-      "id": "aviva-midtown-vs-design-district-geo",
+      "id": "prospecting-2026-08-18-spot-checks",
       "opened_at": "2026-08-18",
       "opened_by": "builder",
       "blocking": false,
       "severity": "verify",
-      "summary": "Aviva Medical Spa (88 NE 39th St, 33137) self-describes as 'Miami Design District' but is filed under midtown.",
-      "detail": "The directory's place taxonomy has no design-district entry. Aviva sits ~0.5 km from the midtown centroid, same ZIP as the existing midtown listing Skin Local (3431 NE 1st Ave). Filed as midtown so the pages could build. If you'd rather be strict, either add a design-district place to data/places.json (it would then be a 1-clinic city and hold) or leave as is.",
-      "affects": "5 of the 6 midtown med-spa pages include Aviva."
+      "summary": "11 clinics added 2026-08-18. Four carry caveats worth a human spot-check before deploy.",
+      "items": [
+        "Injection Lab (dania-beach) — 5.0 on only 9 reviews. Real and API-sourced but statistically thin; the Beta-posterior ranking places it below higher-volume providers. Consider a minimum-review floor in config.",
+        "Biomedex and Wellness (wellington) — 5.0 at 102 reviews; trips the >=4.95 & n>=100 row flag and adds to the open ratings-distribution item.",
+        "Well Labs+ (coconut-creek) — three different phone numbers exist (site local, site toll-free, Google). Used the site's local number; verify.",
+        "ProMD Health Wellington — the site publishes only a corporate number; the local number came from the permitted API."
+      ],
+      "omitted_on_purpose": [
+        "Refresh - Aesthetics & Wellness (hallandale-beach) — its own site does not list a Hallandale Beach location, so the GBP address could not be corroborated.",
+        "Advanced Dermatology (weston) — location page is JS-rendered; no service menu could be verified.",
+        "Several Doral/Weston contouring clinics — they run Emsculpt/Cryoslim/VenSculpt/Lipofreez, not CoolSculpting, and were not mapped to the coolsculpting slug."
+      ]
     },
     {
       "id": "integrity-corpus-perfect-share",
@@ -18,7 +27,7 @@
       "blocking": false,
       "severity": "halt",
       "summary": "ratings distribution implausible — HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
-      "detail": "24.6% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
+      "detail": "23.8% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
       "human_override": {
         "at": "2026-06-06",
         "by": "Rolando (operator)",
@@ -32,7 +41,7 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "verify",
-      "summary": "36 provider(s) rated >= 4.95 with >= 100 reviews — implausibly perfect at volume. Verify the source data.",
+      "summary": "37 provider(s) rated >= 4.95 with >= 100 reviews — implausibly perfect at volume. Verify the source data.",
       "providers": [
         "Skin Healthy Miami — 5 (180) in brickell",
         "Only Med Glam — 5 (109) in coral-gables",
@@ -69,8 +78,19 @@
         "AlluraMD Aesthetics (Wellington) — 5 (124) in wellington",
         "Wellington Rejuvenation Center — 5 (343) in wellington",
         "Palm Beach Anti-Aging (RPB) — 5 (129) in royal-palm-beach",
+        "Biomedex and Wellness — 5.0 (102) in wellington",
         "Miami Plastic Surgery — 5 (404) in kendall"
       ]
+    },
+    {
+      "id": "aviva-midtown-vs-design-district-geo",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "Aviva Medical Spa (88 NE 39th St, 33137) self-describes as 'Miami Design District' but is filed under midtown.",
+      "detail": "The directory's place taxonomy has no design-district entry. Aviva sits ~0.5 km from the midtown centroid, same ZIP as the existing midtown listing Skin Local (3431 NE 1st Ave). Filed as midtown so the pages could build. If you'd rather be strict, either add a design-district place to data/places.json (it would then be a 1-clinic city and hold) or leave as is.",
+      "affects": "5 of the 6 midtown med-spa pages include Aviva."
     },
     {
       "id": "merge-cb2a815-reverted-july-treatment-expansion",

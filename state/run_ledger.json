@@ -8,32 +8,32 @@
   "last_run": {
     "at": "2026-08-18",
     "status": "success",
-    "reason": "Prospecting pass on midtown — the highest-leverage city in state/proposed/WORKLIST_unlock_and_pricing.md. Added 2 verified clinics; midtown went from 1 med-spa page to 6.",
-    "pages_built": 480,
+    "reason": "Job A prospecting continued across the six 2-page cities in state/proposed/WORKLIST_unlock_and_pricing.md, run as three parallel research agents.",
+    "pages_built": 491,
     "skipped": 0,
-    "delta": "+7 pages vs the previous run (473)",
-    "clinics_added": [
-      "4Ever Young Med Spa & Wellness Center (Miami Midtown)",
-      "Aviva Medical Spa"
-    ],
-    "sourcing": "ratings + review counts from DataForSEO Business Listings (permitted API, Google Maps source); contact details, booking URLs and the full treatment list read from each clinic's OWN website; prices only where the clinic publishes them (1 found: Aviva morpheus8 $825/session). No fabricated fields.",
-    "midtown_unlocked": [
-      "botox",
-      "laser-hair-removal",
-      "microneedling"
-    ],
-    "midtown_new": [
-      "hydrafacial",
-      "chemical-peel"
-    ],
-    "quality_gate_note": "First build attempt skipped 5 midtown pages: Aviva was entered with has_before_after=true because their own site hosts a gallery. Per SCHEMA.md that flag describes imagery carried IN the listing, not on the clinic's site — corrected to false. The gate caught the error before anything shipped.",
+    "pages_held": 27,
+    "delta": "+11 pages vs 480; held 39 -> 27",
+    "clinics_added": 11,
+    "clinics_total": 158,
+    "cities": {
+      "dania-beach": "botox unlocked; lip-filler still short (neither new clinic offers it)",
+      "doral": "lip-filler + laser-hair-removal + microneedling unlocked; coolsculpting still short",
+      "coconut-creek": "lip-filler + microneedling unlocked; chemical-peel is new",
+      "weston": "laser-hair-removal + lip-filler + microneedling unlocked; coolsculpting still short",
+      "hallandale-beach": "laser-hair-removal + microneedling + lip-filler unlocked",
+      "wellington": "laser-hair-removal + microneedling unlocked; chemical-peel new"
+    },
+    "sourcing": "ratings/review counts from DataForSEO Business Listings (permitted API, Google Maps source); contact details, booking URLs and full treatment menus read from each clinic's OWN website; prices only where published. Nothing imputed.",
+    "prices_found": "7 real published prices added (Aromas chemical-peel $150, dermal-fillers/lip-filler $700; Aesthetemed microneedling $383, hydrafacial $363, dermal-fillers $839, morpheus8 $716)",
+    "integrity": "perfect-at-volume share improved 24.6% -> 23.8% (high-volume non-perfect ratings dilute the corpus); row flags 36 -> 37 (Biomedex 5.0 at 102 reviews)",
+    "coolsculpting_finding": "No clinic in Doral, Weston or Coconut Creek names CoolSculpting on its own site — competitors run Emsculpt/Cryoslim/VenSculpt/Lipofreez instead. Those were NOT mapped to the coolsculpting slug. CoolSculpting may simply be the wrong treatment to carry in these markets.",
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
     "not_done": "No merge to main, no deploy."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 3,
-    "pages_built": 480
+    "runs": 4,
+    "pages_built": 491
   }
 }
