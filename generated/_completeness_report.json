@@ -469,15 +469,11 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/miami-dade/key-biscayne",
+      "page": "chemical-peel@fl/miami-dade/key-biscayne",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/miami-dade/north-miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
+      "page": "hydrafacial@fl/miami-dade/sunny-isles-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -485,7 +481,11 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/palm-beach/boca-raton",
+      "page": "hydrafacial@fl/palm-beach/boca-raton",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "chemical-peel@fl/palm-beach/boca-raton",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -505,7 +505,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/davie",
+      "page": "hydrafacial@fl/broward/davie",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -517,7 +517,15 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "lip-filler@fl/broward/miramar",
+      "page": "coolsculpting@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "hydrafacial@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "chemical-peel@fl/broward/miramar",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -533,7 +541,15 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/plantation",
+      "page": "coolsculpting@fl/broward/plantation",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "hydrafacial@fl/broward/plantation",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "chemical-peel@fl/broward/plantation",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -570,9 +586,9 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 162,
+      "pages": 170,
       "fallback_pages": 0,
-      "clinics": 158
+      "clinics": 169
     },
     {
       "category": "plastic-surgery",
@@ -583,13 +599,13 @@
   ],
   "nearest_fallback_pages": 204,
   "empty_fields": {
-    "unique_clinics": 181,
+    "unique_clinics": 192,
     "missing_phone": 0,
-    "missing_email": 172,
+    "missing_email": 177,
     "missing_address": 0,
-    "missing_booking_url": 53,
-    "price_empty_state_listings": 1726,
-    "price_total_listings": 1735
+    "missing_booking_url": 56,
+    "price_empty_state_listings": 1765,
+    "price_total_listings": 1775
   },
   "mode": "enforced",
   "thresholds_used": {

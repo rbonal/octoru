@@ -2,23 +2,16 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
-      "id": "prospecting-2026-08-18-spot-checks",
+      "id": "coolsculpting-market-fit",
       "opened_at": "2026-08-18",
       "opened_by": "builder",
       "blocking": false,
-      "severity": "verify",
-      "summary": "11 clinics added 2026-08-18. Four carry caveats worth a human spot-check before deploy.",
-      "items": [
-        "Injection Lab (dania-beach) — 5.0 on only 9 reviews. Real and API-sourced but statistically thin; the Beta-posterior ranking places it below higher-volume providers. Consider a minimum-review floor in config.",
-        "Biomedex and Wellness (wellington) — 5.0 at 102 reviews; trips the >=4.95 & n>=100 row flag and adds to the open ratings-distribution item.",
-        "Well Labs+ (coconut-creek) — three different phone numbers exist (site local, site toll-free, Google). Used the site's local number; verify.",
-        "ProMD Health Wellington — the site publishes only a corporate number; the local number came from the permitted API."
-      ],
-      "omitted_on_purpose": [
-        "Refresh - Aesthetics & Wellness (hallandale-beach) — its own site does not list a Hallandale Beach location, so the GBP address could not be corroborated.",
-        "Advanced Dermatology (weston) — location page is JS-rendered; no service menu could be verified.",
-        "Several Doral/Weston contouring clinics — they run Emsculpt/Cryoslim/VenSculpt/Lipofreez, not CoolSculpting, and were not mapped to the coolsculpting slug."
-      ]
+      "severity": "operator-decision-recommended",
+      "summary": "CoolSculpting is one of five original active treatments but accounts for 13 of the 30 remaining one-short pages. Field study says the brand has been displaced in independent med spas.",
+      "evidence": "Across south-beach, coral-gables, kendall and pembroke-pines, only 1-3 of ~10 clinics per city name CoolSculpting on their own website. Independents have re-tooled to Emsculpt/Emsculpt Neo, Morpheus8, Evolve, VelaShape and GLP-1 injectables. CoolSculpting now sits mainly with dermatology practices and national chains (Ideal Image, LaserAway).",
+      "consequence": "Most coolsculpting city pages will stay one short no matter how much prospecting is done. This is a market fact, not a data gap.",
+      "recommendation": "Swap coolsculpting for morpheus8 in config/thresholds.json seed_scope.categories['med-spa'].treatments. morpheus8 definitions are already restored in build.py and it appeared at clinics in all four tested cities. HARD-GATED — operator only.",
+      "counter_argument": "CoolSculpting still has real search demand even where supply is thin; keeping it costs nothing except pages that never build. Dropping it removes an honest empty category. Your call."
     },
     {
       "id": "integrity-corpus-perfect-share",
@@ -27,7 +20,7 @@
       "blocking": false,
       "severity": "halt",
       "summary": "ratings distribution implausible — HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
-      "detail": "23.8% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
+      "detail": "23.5% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
       "human_override": {
         "at": "2026-06-06",
         "by": "Rolando (operator)",
@@ -41,7 +34,7 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "verify",
-      "summary": "37 provider(s) rated >= 4.95 with >= 100 reviews — implausibly perfect at volume. Verify the source data.",
+      "summary": "38 provider(s) rated >= 4.95 with >= 100 reviews — implausibly perfect at volume. Verify the source data.",
       "providers": [
         "Skin Healthy Miami — 5 (180) in brickell",
         "Only Med Glam — 5 (109) in coral-gables",
@@ -79,7 +72,27 @@
         "Wellington Rejuvenation Center — 5 (343) in wellington",
         "Palm Beach Anti-Aging (RPB) — 5 (129) in royal-palm-beach",
         "Biomedex and Wellness — 5.0 (102) in wellington",
+        "Aestheta — 5.0 (114) in davie",
         "Miami Plastic Surgery — 5 (404) in kendall"
+      ]
+    },
+    {
+      "id": "prospecting-2026-08-18-spot-checks",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "11 clinics added 2026-08-18. Four carry caveats worth a human spot-check before deploy.",
+      "items": [
+        "Injection Lab (dania-beach) — 5.0 on only 9 reviews. Real and API-sourced but statistically thin; the Beta-posterior ranking places it below higher-volume providers. Consider a minimum-review floor in config.",
+        "Biomedex and Wellness (wellington) — 5.0 at 102 reviews; trips the >=4.95 & n>=100 row flag and adds to the open ratings-distribution item.",
+        "Well Labs+ (coconut-creek) — three different phone numbers exist (site local, site toll-free, Google). Used the site's local number; verify.",
+        "ProMD Health Wellington — the site publishes only a corporate number; the local number came from the permitted API."
+      ],
+      "omitted_on_purpose": [
+        "Refresh - Aesthetics & Wellness (hallandale-beach) — its own site does not list a Hallandale Beach location, so the GBP address could not be corroborated.",
+        "Advanced Dermatology (weston) — location page is JS-rendered; no service menu could be verified.",
+        "Several Doral/Weston contouring clinics — they run Emsculpt/Cryoslim/VenSculpt/Lipofreez, not CoolSculpting, and were not mapped to the coolsculpting slug."
       ]
     },
     {

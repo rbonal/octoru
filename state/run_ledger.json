@@ -8,32 +8,39 @@
   "last_run": {
     "at": "2026-08-18",
     "status": "success",
-    "reason": "Job A prospecting continued across the six 2-page cities in state/proposed/WORKLIST_unlock_and_pricing.md, run as three parallel research agents.",
-    "pages_built": 491,
+    "reason": "Job A round 3 — laser-hair-removal, lip-filler and microneedling cities, plus a market-structure study on coolsculpting. Four parallel agents (one died mid-run to an API error; its cities were not covered).",
+    "pages_built": 499,
     "skipped": 0,
-    "pages_held": 27,
-    "delta": "+11 pages vs 480; held 39 -> 27",
+    "pages_held": 31,
+    "delta": "+8 pages vs 491",
     "clinics_added": 11,
-    "clinics_total": 158,
-    "cities": {
-      "dania-beach": "botox unlocked; lip-filler still short (neither new clinic offers it)",
-      "doral": "lip-filler + laser-hair-removal + microneedling unlocked; coolsculpting still short",
-      "coconut-creek": "lip-filler + microneedling unlocked; chemical-peel is new",
-      "weston": "laser-hair-removal + lip-filler + microneedling unlocked; coolsculpting still short",
-      "hallandale-beach": "laser-hair-removal + microneedling + lip-filler unlocked",
-      "wellington": "laser-hair-removal + microneedling unlocked; chemical-peel new"
+    "clinics_total": 169,
+    "integrity": "perfect-at-volume share 23.8% -> 23.5%; row flags 37 -> 38 (Aestheta 5.0 at 114)",
+    "prices_found": "3 more real published prices (Elixir dermal-fillers $750 / microneedling $400; Health & Beauty Family dermal-fillers $400)",
+    "coolsculpting_study": {
+      "verdict": "structurally thin — CoolSculpting survives mainly in dermatology practices and national chains, not independent med spas, which have re-tooled to Emsculpt/Emsculpt Neo, Morpheus8, Evolve, VelaShape and GLP-1s.",
+      "hit_rate": "south-beach 1/10, coral-gables 1/9, kendall 2/10, pembroke-pines 3/10 clinics name CoolSculpting on their own site",
+      "confirmed_providers": [
+        "Dr. Jhonny A. Salomon (Coral Gables/S Miami) 4.7/527",
+        "Miami Center for Dermatology (Kendall) 4.8/1344",
+        "Sunset Dermatology (S Miami/Kendall) 4.8/456",
+        "Danik MedSpa (Pembroke Pines, already listed) 4.6/276"
+      ],
+      "recommendation": "demote coolsculpting, promote morpheus8 — morpheus8 appeared at clinics in all four tested cities and clears the buildable threshold where coolsculpting does not. Config change is HARD-GATED; operator decision."
     },
-    "sourcing": "ratings/review counts from DataForSEO Business Listings (permitted API, Google Maps source); contact details, booking URLs and full treatment menus read from each clinic's OWN website; prices only where published. Nothing imputed.",
-    "prices_found": "7 real published prices added (Aromas chemical-peel $150, dermal-fillers/lip-filler $700; Aesthetemed microneedling $383, hydrafacial $363, dermal-fillers $839, morpheus8 $716)",
-    "integrity": "perfect-at-volume share improved 24.6% -> 23.8% (high-volume non-perfect ratings dilute the corpus); row flags 36 -> 37 (Biomedex 5.0 at 102 reviews)",
-    "coolsculpting_finding": "No clinic in Doral, Weston or Coconut Creek names CoolSculpting on its own site — competitors run Emsculpt/Cryoslim/VenSculpt/Lipofreez instead. Those were NOT mapped to the coolsculpting slug. CoolSculpting may simply be the wrong treatment to carry in these markets.",
+    "dead_ends": {
+      "dania-beach lip-filler": "exhausted — only 3 aesthetic businesses exist in the city and all are already listed",
+      "bal-harbour microneedling": "exhausted — only 3 businesses have a Bal Harbour address; one is a hair salon, one is permanently closed, one is already listed",
+      "surfside laser-hair-removal": "no in-city candidate; qualifying clinics sit in Bay Harbor Islands under the same 33154 ZIP"
+    },
+    "note_on_counts": "one-short total rose 26 -> 30 because new clinics introduced hydrafacial/chemical-peel into cities that previously had none. Those are new opportunities, not regressions.",
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
-    "not_done": "No merge to main, no deploy."
+    "not_done": "No merge to main, no deploy. One agent (hydrafacial/chemical-peel for doral, hallandale-beach, wellington) failed mid-run; those cities were not prospected."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 4,
-    "pages_built": 491
+    "runs": 5,
+    "pages_built": 499
   }
 }
