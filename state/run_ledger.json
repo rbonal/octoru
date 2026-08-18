@@ -29,7 +29,13 @@
     ],
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
-    "not_done": "No merge to main, no deploy."
+    "not_done": "No merge to main, no deploy.",
+    "publish_check_2026-08-18": {
+      "asked": "operator asked the builder to merge and publish everything",
+      "result": "DECLINED — hard-gated. Nothing merged, nothing pushed, nothing deployed.",
+      "findings": "no main branch exists on origin; 10 local commits unpushed; origin/auto/build has diverged with 22 commits including today's parallel session; octoru.com is live but serves an earlier build.",
+      "clinics_decision": "operator elected to keep all currently listed clinics, including the borderline beauty-salon cases."
+    }
   },
   "2026-08": {
     "tokens": 0,
