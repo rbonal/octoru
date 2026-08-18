@@ -1,13 +1,6 @@
 {
   "excluded_listings": [
     {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "botox@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Sisu Clinic (Brickell)",
       "page": "botox@fl/miami-dade/brickell",
       "missing": [
@@ -15,29 +8,8 @@
       ]
     },
     {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "lip-filler@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Sisu Clinic (Brickell)",
       "page": "lip-filler@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "laser-hair-removal@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "microneedling@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
@@ -78,34 +50,6 @@
       ]
     },
     {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "botox@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "lip-filler@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "laser-hair-removal@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "microneedling@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Beauty First Med-Spa",
       "page": "botox@fl/miami-dade/homestead",
       "missing": [
@@ -122,27 +66,6 @@
     {
       "clinic": "Beauty First Med-Spa",
       "page": "microneedling@fl/miami-dade/homestead",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "botox@fl/miami-dade/miami-springs",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "lip-filler@fl/miami-dade/miami-springs",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "microneedling@fl/miami-dade/miami-springs",
       "missing": [
         "phone"
       ]
@@ -190,62 +113,6 @@
       ]
     },
     {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "botox@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "laser-hair-removal@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "microneedling@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "botox@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "lip-filler@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "laser-hair-removal@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "microneedling@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Flawless Palm Beach",
       "page": "botox@fl/palm-beach/west-palm-beach",
       "missing": [
@@ -297,13 +164,6 @@
     {
       "clinic": "Elite Skin & Beauty",
       "page": "microneedling@fl/palm-beach/west-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Aesthetics Care Med Spa",
-      "page": "botox@fl/broward/coconut-creek",
       "missing": [
         "phone"
       ]
@@ -318,13 +178,6 @@
     {
       "clinic": "Aspire Medical Aesthetics",
       "page": "lip-filler@fl/broward/coconut-creek",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Aesthetics Care Med Spa",
-      "page": "laser-hair-removal@fl/broward/coconut-creek",
       "missing": [
         "phone"
       ]
@@ -561,48 +414,6 @@
       ]
     },
     {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "botox@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "lip-filler@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "microneedling@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "botox@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "laser-hair-removal@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "microneedling@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Archetype Aesthetics",
       "page": "botox@fl/broward/sunrise",
       "missing": [
@@ -650,15 +461,7 @@
       "reason": "rolled up to miami-beach: only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/bal-harbour",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/bal-harbour",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/bal-harbour",
+      "page": "microneedling@fl/miami-dade/bal-harbour",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -678,23 +481,11 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/miami-springs",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/miami-springs",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/miami-springs",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "laser-hair-removal@fl/miami-dade/north-miami",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/sunny-isles-beach",
+      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -710,10 +501,6 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/palm-beach/boynton-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/palm-beach/palm-beach-gardens",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
@@ -726,15 +513,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "lip-filler@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/broward/coconut-creek",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -779,10 +558,6 @@
     },
     {
       "page": "laser-hair-removal@fl/broward/plantation",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/broward/pompano-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -861,7 +636,7 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 121,
+      "pages": 144,
       "fallback_pages": 0,
       "clinics": 145
     },
@@ -874,13 +649,13 @@
   ],
   "nearest_fallback_pages": 204,
   "empty_fields": {
-    "unique_clinics": 155,
+    "unique_clinics": 166,
     "missing_phone": 0,
-    "missing_email": 153,
+    "missing_email": 164,
     "missing_address": 0,
     "missing_booking_url": 51,
-    "price_empty_state_listings": 1608,
-    "price_total_listings": 1612
+    "price_empty_state_listings": 1667,
+    "price_total_listings": 1674
   },
   "mode": "enforced",
   "thresholds_used": {

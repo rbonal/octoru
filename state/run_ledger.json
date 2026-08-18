@@ -7,17 +7,22 @@
   },
   "last_run": {
     "at": "2026-08-18",
-    "status": "partial — builder restored, build held",
-    "reason": "Recovery run. Merge cb2a815 (2026-08-04) had silently reverted builder/build.py to the June lineage, dropping five already-merged med-spa treatments (hydrafacial, chemical-peel, dermal-fillers, iv-therapy, morpheus8). Restored all five dict definitions in 36c2495, verified byte-identical to 3dce59c by AST diff.",
-    "pages_built": 0,
-    "held": "generated/ NOT rebuilt (stale since 2026-06-06; a clean rebuild touches 752 files). Held per operator instruction until config is settled.",
-    "hard_gated_blocker": "config/thresholds.json seed_scope still missing the five slugs — builder cannot edit config. See state/needs_human.json item merge-cb2a815-reverted-july-treatment-expansion.",
+    "status": "success",
+    "reason": "Operator applied state/proposed/activate-staged.patch (hydrafacial + chemical-peel). Full rebuild — first since 2026-06-06. Also restored <link rel=canonical> to templates/treatment-page.html.j2, stripped by the same merge cb2a815.",
+    "pages_built": 473,
+    "pages_held": 39,
+    "skipped": 0,
+    "new_pages": "12 hydrafacial/chemical-peel + 11 unlocked by the July phone-fill data (f7ebb03)",
+    "canonical_coverage": "473/473 treatment pages (was 0)",
+    "link_check": "all internal links valid",
+    "integrity": "perfect-at-volume share 24.9% (>20% halt threshold) — human override on file, non-blocking",
     "build_state_read": "active",
-    "budget": "2026-08 under monthly_token_cap (5,000,000)"
+    "budget": "2026-08 under monthly_token_cap (5,000,000)",
+    "not_done": "No merge to main, no deploy. dermal-fillers / iv-therapy / morpheus8 still inactive in config."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 1,
-    "pages_built": 0
+    "runs": 2,
+    "pages_built": 473
   }
 }
