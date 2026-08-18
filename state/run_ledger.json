@@ -6,12 +6,18 @@
     "pages_built": 121
   },
   "last_run": {
-    "at": "2026-06-04",
-    "status": "success",
-    "reason": "Ranking -> Bayesian Beta-posterior lower bound (exact scipy.stats.beta.ppf). Editorial prior (PRIOR_MEAN=0.90/4.5\u2605, strength 50, conf 0.05) \u2014 fixed, never data-derived. rank_providers() orders organic only; Featured pinned separately. Top Rated badge = #1 organic with >=25 reviews, never paid. Integrity guards: per-row flag (>=4.95 & n>=100) + corpus HALT (>=4.95 & n>=50 share >20%).",
-    "ranking": "beta_posterior_lower_bound",
-    "integrity_corpus_perfect_share": "31.0% -> HALT flag",
-    "integrity_row_flags": 35,
-    "jupiter_fix": "Begin Anew 4.9(399) now #1 over AlluraMD 5.0(145)"
+    "at": "2026-08-18",
+    "status": "partial — builder restored, build held",
+    "reason": "Recovery run. Merge cb2a815 (2026-08-04) had silently reverted builder/build.py to the June lineage, dropping five already-merged med-spa treatments (hydrafacial, chemical-peel, dermal-fillers, iv-therapy, morpheus8). Restored all five dict definitions in 36c2495, verified byte-identical to 3dce59c by AST diff.",
+    "pages_built": 0,
+    "held": "generated/ NOT rebuilt (stale since 2026-06-06; a clean rebuild touches 752 files). Held per operator instruction until config is settled.",
+    "hard_gated_blocker": "config/thresholds.json seed_scope still missing the five slugs — builder cannot edit config. See state/needs_human.json item merge-cb2a815-reverted-july-treatment-expansion.",
+    "build_state_read": "active",
+    "budget": "2026-08 under monthly_token_cap (5,000,000)"
+  },
+  "2026-08": {
+    "tokens": 0,
+    "runs": 1,
+    "pages_built": 0
   }
 }
