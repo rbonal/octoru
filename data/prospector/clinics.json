@@ -4309,5 +4309,205 @@
       "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
       "prices": "$400 filler price printed on their own dermal-fillers page"
     }
+  },
+  {
+    "slug": "the-herschthal-practice-boca-raton",
+    "name": "The Herschthal Practice",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "address": "7280 W Palmetto Park Rd #210, Boca Raton, FL 33433",
+    "phone": "+15613919200",
+    "email": null,
+    "booking_url": "https://www.mypatientvisit.com/onlinescheduling/#/scheduler/schedule?practiceid=EUQLOZ",
+    "languages": [],
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "dermal-fillers",
+      "laser-hair-removal",
+      "microneedling",
+      "hydrafacial",
+      "chemical-peel"
+    ],
+    "rating": 4.9,
+    "review_count": 685,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {},
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site drherschthal.com (Treatments Overview read directly)",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "none published on site — honest empty state"
+    }
+  },
+  {
+    "slug": "4ever-young-boca-raton",
+    "name": "4Ever Young Med Spa & Wellness Center (Boca Raton)",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "address": "5458 Town Center Rd Ste 21, Boca Raton, FL 33486",
+    "phone": "+15613204699",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "treatments": [
+      "botox",
+      "laser-hair-removal",
+      "microneedling",
+      "morpheus8",
+      "hydrafacial",
+      "chemical-peel",
+      "iv-therapy"
+    ],
+    "rating": 4.9,
+    "review_count": 1603,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {},
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site 4everyoungantiaging.com — dedicated per-service pages read directly",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "none published on site — honest empty state"
+    }
+  },
+  {
+    "slug": "skin-lounge-miramar",
+    "name": "Skin Lounge",
+    "neighborhood": "miramar",
+    "neighborhood_name": "Miramar",
+    "address": "2501 Palm Ave Ste 209, Miramar, FL 33025",
+    "phone": "+19549930943",
+    "email": null,
+    "booking_url": "https://skinlounge.as.me/schedule.php",
+    "languages": [],
+    "treatments": [
+      "chemical-peel",
+      "microneedling"
+    ],
+    "rating": 5.0,
+    "review_count": 127,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {},
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site myskinlounge.com (/services read directly). HydraFacial NOT recorded — menu says 'FACIALS' generically.",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "none published on site — honest empty state",
+      "integrity_note": "5.0 at 127 reviews — trips the >=4.95 & n>=100 row flag."
+    }
+  },
+  {
+    "slug": "nefertiti-spa-plantation",
+    "name": "Nefertiti Spa",
+    "neighborhood": "plantation",
+    "neighborhood_name": "Plantation",
+    "address": "1091 S University Dr, Plantation, FL 33324",
+    "phone": "+13052824619",
+    "email": "nefertitispa305@gmail.com",
+    "booking_url": "https://book.squareup.com/appointments/f7xe5w1aw3cvr8/location/LA89EVX6Q9FFE/services",
+    "languages": [],
+    "treatments": [
+      "chemical-peel",
+      "microneedling"
+    ],
+    "rating": 5.0,
+    "review_count": 545,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {
+      "chemical-peel": 150,
+      "microneedling": 200
+    },
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site nefertitispaplantation.zoca.com (service menu read directly)",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "published on their own site — Sesderma chemical peel $150, plasma microneedling $200",
+      "integrity_note": "5.0 at 545 reviews — the single most implausible row in the corpus. Real API data, but flag for the operator."
+    }
+  },
+  {
+    "slug": "absolute-aesthetics-plantation",
+    "name": "Absolute Aesthetics Rejuvenation and Laser Center",
+    "neighborhood": "plantation",
+    "neighborhood_name": "Plantation",
+    "address": "150 NW 70th Ave #5, Plantation, FL 33317",
+    "phone": "+19545004526",
+    "email": null,
+    "booking_url": "https://theabsoluteaesthetics.com/contact/",
+    "languages": [],
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "laser-hair-removal"
+    ],
+    "rating": 4.8,
+    "review_count": 202,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {},
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site theabsoluteaesthetics.com (service menu read directly)",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "none published on site — honest empty state"
+    }
+  },
+  {
+    "slug": "pink-beauty-lounge-sunny-isles",
+    "name": "Pink Beauty Lounge & Beauty Room Miami",
+    "neighborhood": "sunny-isles-beach",
+    "neighborhood_name": "Sunny Isles Beach",
+    "address": "17395 N Bay Rd Suite 100, Sunny Isles Beach, FL 33160",
+    "phone": "+13059740310",
+    "email": null,
+    "booking_url": "https://booking.cojilio.com/3062",
+    "languages": [],
+    "treatments": [
+      "hydrafacial",
+      "laser-hair-removal"
+    ],
+    "rating": 4.9,
+    "review_count": 270,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {
+      "hydrafacial": 149,
+      "laser-hair-removal": 199
+    },
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site beautyroommiami.com — dedicated 'Hydrafacial MD' page and Laser Hair Removal read directly. Injectables NOT recorded: listed on Google but absent from their own menu.",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "published on their own site — HydraFacial $149, laser hair removal (full body) $199",
+      "scope_note": "also offers hair, nails, lashes and brows. Borderline for a med-spa directory — see the XO Salon precedent, which was dropped for the same reason. Flagged for the operator."
+    }
   }
 ]

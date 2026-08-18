@@ -7,40 +7,33 @@
   },
   "last_run": {
     "at": "2026-08-18",
-    "status": "success",
-    "reason": "Job A round 3 — laser-hair-removal, lip-filler and microneedling cities, plus a market-structure study on coolsculpting. Four parallel agents (one died mid-run to an API error; its cities were not covered).",
-    "pages_built": 499,
+    "status": "partial success",
+    "reason": "Job A round 4 — hydrafacial/chemical-peel sweep. 2 of 3 agents completed.",
+    "pages_built": 504,
     "skipped": 0,
-    "pages_held": 31,
-    "delta": "+8 pages vs 491",
-    "clinics_added": 11,
-    "clinics_total": 169,
-    "integrity": "perfect-at-volume share 23.8% -> 23.5%; row flags 37 -> 38 (Aestheta 5.0 at 114)",
-    "prices_found": "3 more real published prices (Elixir dermal-fillers $750 / microneedling $400; Health & Beauty Family dermal-fillers $400)",
-    "coolsculpting_study": {
-      "verdict": "structurally thin — CoolSculpting survives mainly in dermatology practices and national chains, not independent med spas, which have re-tooled to Emsculpt/Emsculpt Neo, Morpheus8, Evolve, VelaShape and GLP-1s.",
-      "hit_rate": "south-beach 1/10, coral-gables 1/9, kendall 2/10, pembroke-pines 3/10 clinics name CoolSculpting on their own site",
-      "confirmed_providers": [
-        "Dr. Jhonny A. Salomon (Coral Gables/S Miami) 4.7/527",
-        "Miami Center for Dermatology (Kendall) 4.8/1344",
-        "Sunset Dermatology (S Miami/Kendall) 4.8/456",
-        "Danik MedSpa (Pembroke Pines, already listed) 4.6/276"
-      ],
-      "recommendation": "demote coolsculpting, promote morpheus8 — morpheus8 appeared at clinics in all four tested cities and clears the buildable threshold where coolsculpting does not. Config change is HARD-GATED; operator decision."
-    },
-    "dead_ends": {
-      "dania-beach lip-filler": "exhausted — only 3 aesthetic businesses exist in the city and all are already listed",
-      "bal-harbour microneedling": "exhausted — only 3 businesses have a Bal Harbour address; one is a hair salon, one is permanently closed, one is already listed",
-      "surfside laser-hair-removal": "no in-city candidate; qualifying clinics sit in Bay Harbor Islands under the same 33154 ZIP"
-    },
-    "note_on_counts": "one-short total rose 26 -> 30 because new clinics introduced hydrafacial/chemical-peel into cities that previously had none. Those are new opportunities, not regressions.",
+    "pages_held": 26,
+    "delta": "+5 pages vs 499",
+    "clinics_added": 6,
+    "clinics_total": 175,
+    "prices_found": "6 more real published prices (Nefertiti chemical-peel $150 / microneedling $200; Pink Beauty hydrafacial $149 / laser-hair-removal $199)",
+    "integrity": "perfect-at-volume share 23.5% -> 23.7%; row flags 38 -> 40. Two new implausible rows: Nefertiti Spa 5.0/545 and Skin Lounge 5.0/127.",
+    "agent_failure": "The doral/hallandale-beach/wellington hydrafacial+chemical-peel task died to an API error mid-run for the SECOND consecutive attempt. Those three cities remain unprospected for those two treatments. Recommend running them one city at a time.",
+    "exhausted_markets": [
+      "dania-beach lip-filler",
+      "bal-harbour microneedling",
+      "surfside laser-hair-removal",
+      "key-biscayne chemical-peel",
+      "plantation hydrafacial (4 clinics read, none names HydraFacial)",
+      "davie hydrafacial (no verifiable candidate — 2 have no website, 1 domain expired)",
+      "miramar hydrafacial (Skin Lounge menu says 'facials' generically — does not qualify)"
+    ],
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
-    "not_done": "No merge to main, no deploy. One agent (hydrafacial/chemical-peel for doral, hallandale-beach, wellington) failed mid-run; those cities were not prospected."
+    "not_done": "No merge to main, no deploy."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 5,
-    "pages_built": 499
+    "runs": 6,
+    "pages_built": 504
   }
 }
