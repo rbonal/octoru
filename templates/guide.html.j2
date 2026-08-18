@@ -17,6 +17,11 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://octoru.com/assets/og-image.png">
+{%- if near_duplicate %}
+<!-- Near-duplicate guard: derived from a listing page with too little local substance to
+     stand alone in the index. Reachable and link-passing, but not indexed. -->
+<meta name="robots" content="noindex, follow">
+{%- endif %}
 <link rel="canonical" href="{{ site_url }}{{ guide_url }}">
 
 {%- if faqs %}
@@ -86,10 +91,25 @@
     <header class="guide-hero">
       <div class="label blue" style="margin-bottom:10px">{{ year }} price guide</div>
       <h1>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, FL?</h1>
-      {%- if price_display %}
+      {#- Lead with the referential market figure — it's the answer the query asks for and
+          it exists for every treatment we can source. The observed local figure, when we
+          have one, sits underneath it and is labeled as what providers here publish. -#}
+      {%- if reference and reference.available %}
       <div class="guide-price-callout">
+        <span class="guide-price-n">{% if reference.metro %}{{ reference.metro.display }}{% else %}{{ reference.national.display }}{% endif %}</span>
+        <span class="guide-price-note">
+          {#- metro.basis already names the geography ("per treatment, Miami metro average"),
+              so don't prefix it with "Miami-metro average" as well. -#}
+          {%- if reference.metro %}{{ reference.metro.basis }} — {{ reference.metro.source_name }}{% if reference.metro.year %}, {{ reference.metro.year }}{% endif %}
+          {%- else %}{{ reference.national.basis }}, U.S. average — {{ reference.national.source_name }}{% if reference.national.year %}, {{ reference.national.year }}{% endif %}{% endif %}
+          · referential, not a quote
+        </span>
+      </div>
+      {%- endif %}
+      {%- if price_display %}
+      <div class="guide-price-callout guide-price-observed">
         <span class="guide-price-n">{{ price_display }}</span>
-        <span class="guide-price-note">from {{ n_clinics }} verified {{ neighborhood.name }} providers — see full list below</span>
+        <span class="guide-price-note">published by verified {{ neighborhood.name }} providers — see full list below</span>
       </div>
       {%- endif %}
       {%- if neighborhood_context %}
@@ -112,7 +132,15 @@
     {%- else %}
     <section class="guide-section">
       <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
-      <p>Most providers in {{ neighborhood.name }} do not publish pricing on their websites — this is common in the aesthetics industry, where cost depends on your individual treatment plan. The best way to understand what you will pay is to book a free consultation with one of the {{ n_clinics }} verified providers below.</p>
+      {%- if reference and reference.available %}
+      <p>No provider in {{ neighborhood.name }} publishes a rate for {{ treatment.name | lower }} online — common in aesthetics, where cost depends on your individual plan. For a market reference,
+        <a href="{{ reference.national.source_url }}" target="_blank" rel="noopener nofollow">{{ reference.national.source_name }}</a>
+        reports <strong>{{ reference.national.display }}</strong> {{ reference.national.basis }} nationally{% if reference.national.year %} ({{ reference.national.year }}){% endif %}{% if reference.metro %}, and an average of <strong>{{ reference.metro.display }}</strong> {{ reference.metro.basis }}{% endif %}.
+        {% if reference.excludes_anesthesia_facility %}That figure is the surgeon's fee only — anesthesia and accredited-facility costs are billed separately.{% endif %}
+        Treat it as a reference point, not a quote: each clinic sets its own rate.</p>
+      {%- else %}
+      <p>No provider in {{ neighborhood.name }} publishes a rate for {{ treatment.name | lower }} online, and no independent body publishes an average cost for it — so there is no range we can honestly show you here. Request current pricing below and we'll get real numbers from the {{ n_clinics }} verified providers listed.</p>
+      {%- endif %}
     </section>
     {%- endif %}
 
@@ -155,7 +183,7 @@
   <div class="wrap">
     Octoru is an independent med spa &amp; aesthetics directory. Prices are sourced from provider websites and may change; always confirm directly with your provider.
     <a href="{{ listing_url }}">Back to {{ neighborhood.name }} {{ treatment.name | lower }} listings</a> ·
-    <a href="/advertise.html">Advertise your clinic</a> ·
+    <a href="/learn/">Treatment guides</a> · <a href="/advertise.html">Advertise your clinic</a> ·
     <a href="/privacy">Privacy</a>
     <div class="label" style="margin-top:10px">Updated {{ last_updated }}</div>
   </div>

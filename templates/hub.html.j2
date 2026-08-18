@@ -1,10 +1,49 @@
+{#- Per-city hub FAQ (self-contained; no build.py change needed). Keyed by the last
+    path segment of rel_path (the city slug). County/state hubs won't match, so they
+    render unchanged. Content is provider-agnostic — no invented clinic facts, prices,
+    ratings or credentials. Rendered with FAQPage schema to target "med spa in <city>"
+    People-Also-Ask results. -#}
+{%- set _city_slug = (rel_path.split('/')[-1]) if rel_path else '' %}
+{%- set _HUB_FAQS = {
+  'coral-gables': [
+    {'q': 'How much does a med spa treatment cost in Coral Gables?', 'a': "It depends on the treatment. Injectables such as Botox are priced per unit and fillers per syringe, while laser, skin and body treatments are usually priced per session or as a package. Octoru shows each Coral Gables provider's real starting price where they publish one, and a request-a-quote option where they don't, so you can compare before booking a consultation."},
+    {'q': 'How do I choose a med spa in Coral Gables?', 'a': "Compare verified Google ratings and review counts, check which treatments each provider actually offers, and confirm the injector or clinician's credentials at your consultation. Coral Gables has several long-established aesthetic practices, so it is worth comparing a few on rating, price and location before you book."},
+    {'q': 'Do Coral Gables med spas offer consultations in Spanish?', 'a': 'Many do. Coral Gables and the wider Miami-Dade area have a large bilingual community, and a number of listed providers offer consultations in both English and Spanish. Each listing notes the languages a provider lists.'},
+    {'q': 'Are the ratings on Octoru real?', 'a': 'Yes. Ratings are sourced through permitted Google APIs — Octoru does not scrape or republish review text. Listings reflect publicly available information, and providers can claim and correct their own listing.'}
+  ],
+  'doral': [
+    {'q': 'How much does a med spa visit cost in Doral?', 'a': "Pricing depends on the treatment — Botox is priced per unit, fillers per syringe, and laser or body treatments per session or package. Doral providers tend to be competitively priced relative to coastal Miami. Octoru lists each provider's real starting price where they publish one, and a request-a-quote option where they don't."},
+    {'q': 'Are med spas in Doral bilingual?', 'a': 'Often, yes. Doral has a large Spanish-speaking professional community, and many listed providers offer consultations in both English and Spanish. Each listing shows the languages a provider lists.'},
+    {'q': 'How do I choose a med spa in Doral?', 'a': "Compare verified Google ratings and review counts, check the treatments each provider offers, confirm the clinician's credentials at consultation, and ask how pricing is calculated. Octoru shows ratings, treatments and starting prices side by side to make that comparison easier."},
+    {'q': 'Does Octoru verify Doral providers?', 'a': 'Listings reflect publicly available information, and ratings come from permitted Google APIs rather than scraped review text. Providers can claim and correct their own listing at any time.'}
+  ],
+  'fort-lauderdale': [
+    {'q': 'How much do aesthetic treatments cost in Fort Lauderdale?', 'a': "It varies by treatment — injectables are priced per unit or per syringe, while laser, skin and body treatments are usually priced per session or as a package. Fort Lauderdale has Broward's deepest provider market, so prices are competitive. Octoru shows each provider's real starting price where they publish one, and a request-a-quote option where they don't."},
+    {'q': 'How do I choose a med spa in Fort Lauderdale?', 'a': "Compare verified Google ratings and review counts, confirm which treatments each provider offers, and check the injector or clinician's credentials at your consultation. With many providers within a short drive, it is easy to compare a few on rating, price and location first."},
+    {'q': 'Which areas of Fort Lauderdale have med spas?', 'a': 'Providers are spread across downtown, Las Olas and the beach corridors, with more inland toward the western suburbs. Octoru lists Fort Lauderdale providers with their address and verified Google rating so you can find one near you.'},
+    {'q': "Are Octoru's ratings and prices accurate?", 'a': 'Ratings are sourced through permitted Google APIs, not scraped review text, and prices reflect what providers publish. Listings reflect publicly available information, and providers can claim and correct their own listing.'}
+  ],
+  'miami-lakes': [
+    {'q': 'How much does a med spa treatment cost in Miami Lakes?', 'a': "It depends on the treatment. Injectables such as Botox are priced per unit and lip filler per syringe, while laser hair removal, microneedling and body treatments are usually priced per session or as a package. Octoru shows each Miami Lakes provider's real starting price where they publish one, and a request-a-quote option where they don't, so you can compare before booking a consultation."},
+    {'q': 'How do I choose a med spa in Miami Lakes?', 'a': "Compare verified Google ratings and review counts, check which treatments each provider actually offers, and confirm the injector or clinician's credentials at your consultation. Miami Lakes has a mix of med spas and plastic-surgery practices, so it is worth comparing a few on rating, treatment and location before you book."},
+    {'q': 'Are med spas in Miami Lakes bilingual?', 'a': 'Often, yes. Miami Lakes sits in Miami-Dade County, which has a large bilingual community, and many listed providers offer consultations in both English and Spanish. Each listing notes the languages a provider lists.'},
+    {'q': 'Are the ratings on Octoru real?', 'a': 'Yes. Ratings are sourced through permitted Google APIs — Octoru does not scrape or republish review text. Listings reflect publicly available information, and providers can claim and correct their own listing.'}
+  ],
+  'coral-springs': [
+    {'q': 'How much does a med spa treatment cost in Coral Springs?', 'a': "It varies by treatment — injectables are priced per unit or per syringe, while laser, skin and body treatments are usually priced per session or as a package. Octoru shows each Coral Springs provider's real starting price where they publish one, and a request-a-quote option where they don't, so you can compare before booking a consultation."},
+    {'q': 'How do I choose a med spa in Coral Springs?', 'a': "Compare verified Google ratings and review counts, confirm which treatments each provider offers, and check the injector or clinician's credentials at your consultation. Comparing a few nearby providers on rating, price and location first makes the choice easier."},
+    {'q': 'Which areas near Coral Springs have med spas?', 'a': 'Coral Springs sits in northwest Broward near Coconut Creek, Parkland and Margate, so nearby cities add more options within a short drive. Octoru lists each provider with its address and verified Google rating so you can find one close to you.'},
+    {'q': "Are Octoru's ratings and prices accurate?", 'a': 'Ratings are sourced through permitted Google APIs, not scraped review text, and prices reflect what providers publish. Listings reflect publicly available information, and providers can claim and correct their own listing.'}
+  ]
+} %}
+{%- set _hub_faqs = _HUB_FAQS.get(_city_slug) %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }} — Octoru</title>
-<meta name="description" content="{{ title }}. {{ subtitle.rstrip('.') }}. Verified providers, real prices and Google ratings.">
+<meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ title }}. {{ subtitle.rstrip('.') }}. Verified providers, real prices and Google ratings.{% endif %}">
 <link rel="canonical" href="https://octoru.com/{{ rel_path }}/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" sizes="any" href="/assets/favicon.ico">
@@ -25,6 +64,23 @@
   "itemListElement": [
     {%- for b in breadcrumb %}
     { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ b.name | tojson }}, "item": "{{ site_url }}{{ b.url }}" }{{ "," if not loop.last }}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+{%- if _hub_faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in _hub_faqs %}
+    {
+      "@type": "Question",
+      "name": {{ f.q | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | tojson }} }
+    }{{ "," if not loop.last }}
     {%- endfor %}
   ]
 }
@@ -62,10 +118,57 @@
   {%- endif %}
 
   <section class="hero">
-    <h1>{{ title }}</h1>
+    <h1>{{ h1 | default(title, true) }}</h1>
     {%- if subtitle %}<p class="lead">{{ subtitle.rstrip('.') }}.</p>{% endif %}
     {%- if intro %}<p class="lead">{{ intro }}</p>{% endif %}
   </section>
+
+  {%- if providers %}
+  {#- Side-by-side provider comparison — the thing a generic review site doesn't give you:
+      every provider in the city once, ranked by the same Beta-posterior law used on the
+      listing pages, with verified Google ratings and only prices they actually publish. -#}
+  <section class="compare" id="compare">
+    <h2>Compare every verified provider in this city</h2>
+    <p class="compare-note">Ranked by rating strength (a proven 4.9 outranks a thin 5.0). Ratings via permitted Google APIs — we don't republish review text. Prices are shown only where the provider publishes them; “Request price” means they don't list one publicly.</p>
+    {#- On a phone the table scrolls sideways and the price column starts off-screen,
+        so say so — otherwise the most useful column is invisible. -#}
+    <p class="compare-swipe" aria-hidden="true">Swipe the table sideways to see pricing and contact details →</p>
+    <div class="compare-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th scope="col">Provider</th><th scope="col">Rating</th><th scope="col">Treatments</th><th scope="col">Published price</th><th scope="col">Contact</th></tr>
+        </thead>
+        <tbody>
+          {%- for p in providers %}
+          <tr{% if p.featured_tier and p.featured_tier > 0 %} class="is-featured"{% endif %}>
+            <th scope="row">
+              <span class="cmp-name">{{ p.name }}</span>
+              {%- if p.featured_tier and p.featured_tier > 0 %}<span class="featured-tag">Featured</span>{% endif %}
+              {%- if p.accreditations %}<span class="cmp-accred">✓ Accredited facility</span>{% endif %}
+              {%- if p.address %}<span class="cmp-addr">{{ p.address }}</span>{% endif %}
+            </th>
+            <td>{% if p.rating %}<strong>{{ p.rating }}</strong> <span class="cmp-rc">({{ p.review_count }})</span>{% else %}<span class="muted">Not rated</span>{% endif %}</td>
+            <td class="cmp-treatments">
+              {%- for t in p.treatments %}<a href="{{ t.url }}">{{ t.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+            </td>
+            <td>
+              {%- if p.from_price %}
+              <strong>${{ "{:,}".format(p.from_price.value) }}</strong>{% if p.from_price.basis %} <span class="price-basis">{{ p.from_price.basis }}</span>{% endif %}
+              <span class="cmp-pricefor">{{ p.from_price.treatment }}</span>
+              {%- if p.from_price.source_url %}<a class="price-src" href="{{ p.from_price.source_url }}" target="_blank" rel="noopener nofollow">source ↗</a>{% endif %}
+              {%- else %}<span class="muted">Request price</span>{% endif %}
+            </td>
+            <td>
+              {%- if p.phone_display %}<span class="cmp-phone">{{ p.phone_display }}</span>{% endif %}
+              {%- if p.booking_url %}<a href="{{ p.booking_url }}" target="_blank" rel="noopener nofollow{{ ' sponsored' if p.sponsored }}">Book ↗</a>{% endif %}
+            </td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {%- endif %}
 
   <div class="card-grid" style="margin-bottom:40px;">
     {%- set seen_urls = [] %}
@@ -83,12 +186,26 @@
     {%- endif %}
     {%- endfor %}
   </div>
+
+  {%- if _hub_faqs %}
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      {%- for f in _hub_faqs %}
+      <details class="faq-item">
+        <summary class="faq-q">{{ f.q }}</summary>
+        <div class="faq-a"><p>{{ f.a }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
 </main>
 
 <footer class="foot">
   <div class="wrap">
     Octoru is an independent med spa &amp; aesthetics directory. Listings reflect publicly available information; ratings are sourced via permitted APIs.
-    <a href="/advertise.html">Advertise your clinic</a> · <a href="/claim.html">Claim a listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
+    <a href="/learn/">Treatment guides</a> · <a href="/advertise.html">Advertise your clinic</a> · <a href="/claim.html">Claim a listing</a> · <a href="/privacy">Privacy</a> · <a href="/about">About</a>
     <div class="label" style="margin-top:10px;">Updated {{ last_updated }}</div>
   </div>
 </footer>

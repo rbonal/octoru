@@ -10,7 +10,7 @@ config seed_scope.geo tree (builder reads, never invents, cannot edit config).
 Back-compat: if config has only the flat seed_scope.neighborhoods, those are treated
 as active cities in Miami-Dade, Florida.
 """
-import json, sys, datetime, urllib.parse, math
+import json, sys, datetime, urllib.parse, math, re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from scipy.stats import beta as scipy_beta   # exact Beta quantile for provider ranking
@@ -35,6 +35,74 @@ RECOMMENDED_COMPLETENESS = {
 # Slot cap: max featured listings per page (prevents all-paid pages). Operator can set
 # completeness.max_featured_per_page in config; defaults to 3.
 MAX_FEATURED_PER_PAGE = int((COMPLETENESS or {}).get("max_featured_per_page", 3))
+
+
+# ----------------------------------------------------------------------------------
+# REFERENTIAL market pricing (data/reference_prices.json).
+#
+# Three-tier pricing honesty rule — a page must never claim a price it cannot show, and
+# must never render a blank where a real referential figure exists:
+#   (a) REFERENTIAL range  — a third-party published market figure, always labeled as
+#       referential and attributed to its source. NOT a quote, NOT any clinic's rate.
+#   (b) Per-clinic "From $X" — ONLY where that clinic publishes the price itself.
+#       Carries the pricing basis and a link to where it was published.
+#   (c) "Request current price" — the honest empty state for a clinic that publishes
+#       nothing. Never "no provider lists pricing".
+#
+# Every figure in reference_prices.json is quoted from a named, dated source. The builder
+# READS this file and never invents, blends, or extrapolates a figure — in particular it
+# never manufactures a city-level number out of a national or metro one.
+# ----------------------------------------------------------------------------------
+_REF_PATH = ROOT / "data" / "reference_prices.json"
+REFERENCE_PRICES = json.loads(_REF_PATH.read_text()) if _REF_PATH.exists() else {}
+
+
+def _usd(n):
+    return f"${n:,}"
+
+
+def _ref_band(band):
+    """Render one published figure ({low,high} or {value}) as a display string."""
+    if not band:
+        return None
+    if band.get("value") is not None:
+        return _usd(band["value"])
+    lo, hi = band.get("low"), band.get("high")
+    if lo is None:
+        return None
+    return _usd(lo) if hi in (None, lo) else f"{_usd(lo)}–{_usd(hi)}"
+
+
+def reference_for(treatment_slug):
+    """Referential market pricing for a treatment, shaped for the template.
+
+    available=False when NO credible published figure exists (e.g. IV therapy). That is
+    an honest empty state and renders as such — never as a guessed range.
+    """
+    ref = REFERENCE_PRICES.get(treatment_slug)
+    if not isinstance(ref, dict):
+        return {"available": False, "absent_reason": None}
+
+    nat, alt, metro = ref.get("national"), ref.get("national_alt"), ref.get("metro")
+    if not nat:
+        return {"available": False, "absent_reason": ref.get("reference_absent_reason")}
+
+    def _src(b):
+        return {"source_name": b.get("source_name"), "source_url": b.get("source_url"),
+                "year": b.get("year")}
+
+    return {
+        "available": True,
+        "headline": f"{_ref_band(nat)} {nat.get('basis', '')}".strip(),
+        "national": {"display": _ref_band(nat), "basis": nat.get("basis"), **_src(nat)},
+        "national_alt": ({"display": _ref_band(alt), "basis": alt.get("basis"), **_src(alt)}
+                         if alt else None),
+        "metro": ({"display": _ref_band(metro), "basis": metro.get("basis"), **_src(metro)}
+                  if metro else None),
+        "metro_absent_reason": ref.get("metro_absent_reason"),
+        "excludes_anesthesia_facility": bool(ref.get("excludes_anesthesia_facility")),
+        "absent_reason": None,
+    }
 
 
 # ----------------------------------------------------------------------------------
@@ -656,16 +724,53 @@ def _generate_faqs(treatment_slug, market, clinics, prices):
     for tpl in templates:
         q = tpl["q"].format(city=city_name, n=n, county=market["county_name"])
         if "a_prices" in tpl and "a_no_prices" in tpl:
-            a_tpl = tpl["a_prices"] if price_range else tpl["a_no_prices"]
+            # This is the "how much does X cost in {city}?" question — the one most likely
+            # to be surfaced as a rich result. Its answer is built from SOURCED figures
+            # (what providers here publish + the referential market range) rather than
+            # from a hand-written range, so every number in it is traceable.
+            a = _cost_answer(treatment_slug, city_name, n, price_range)
         else:
-            a_tpl = tpl["a"]
-        a = a_tpl.format(
-            city=city_name, n=n,
-            price_range=price_range or "varies by provider",
-            county=market["county_name"]
-        )
+            a = tpl["a"].format(
+                city=city_name, n=n,
+                price_range=price_range or "varies by provider",
+                county=market["county_name"],
+            )
         result.append({"q": q, "a": a})
     return result
+
+
+def _cost_answer(treatment_slug, city_name, n, price_range):
+    """Answer the cost question using only sourced figures. Never a guessed range."""
+    t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
+    ref = reference_for(treatment_slug)
+    parts = []
+
+    if price_range:
+        parts.append(f"Among the {n} provider{'' if n == 1 else 's'} listed in {city_name}, "
+                     f"published starting prices run {price_range}.")
+    else:
+        parts.append(f"None of the {n} provider{'' if n == 1 else 's'} listed in {city_name} "
+                     f"publishes a rate online, so there is no local figure to quote.")
+
+    if ref.get("available"):
+        nat = ref["national"]
+        yr = f", {nat['year']}" if nat.get("year") else ""
+        parts.append(f"As a market reference, {nat['source_name']}{yr} reports "
+                     f"{nat['display']} {nat['basis']} nationally.")
+        if ref.get("metro"):
+            m = ref["metro"]
+            parts.append(f"For the Miami metro specifically, {m['source_name']} reports an "
+                         f"average of {m['display']} ({m['basis']}).")
+        if ref.get("excludes_anesthesia_facility"):
+            parts.append("That figure is the surgeon's fee only — anesthesia and accredited-"
+                         "facility costs are billed separately and add to the total.")
+        parts.append("These are referential market figures, not quotes: each clinic sets its "
+                     "own rate, so ask for a current price before you book.")
+    else:
+        parts.append(f"No independent body publishes an average cost for {t_name.lower()}, so "
+                     f"we don't show a range we can't source — request current pricing instead.")
+
+    return " ".join(parts)
 TREATMENT_UNITS = {
     "botox": "per unit",
     "lip-filler": "per syringe",
@@ -900,6 +1005,57 @@ def load_clinics():
             print(f"[builder] WARN: could not parse {f.name}: {e}")
             continue
         clinics.extend(data if isinstance(data, list) else [data])
+    return _overlay_published_prices(clinics)
+
+
+# Per-clinic published prices live in their own file (data/prices_published.json) rather
+# than inside the prospector records, so each number keeps its provenance — the basis it
+# was published on, the URL, the quoted text, the date checked — and stays auditable
+# independently of whatever the prospector writes next.
+PUBLISHED_PRICES_PATH = ROOT / "data" / "prices_published.json"
+
+
+def _overlay_published_prices(clinics):
+    """Merge published per-clinic prices onto clinic records.
+
+    NEVER overwrites a price already present in the prospector data — operator/prospector
+    data wins. Only prices carrying BOTH a value and a basis are applied: a bare number
+    with no basis ("$15" — per unit? per area? per session?) would mislead, so it drops.
+    """
+    if not PUBLISHED_PRICES_PATH.exists():
+        return clinics
+    try:
+        book = (json.loads(PUBLISHED_PRICES_PATH.read_text()) or {}).get("prices") or {}
+    except Exception as e:
+        print(f"[builder] WARN: could not parse prices_published.json: {e}")
+        return clinics
+
+    applied = skipped = 0
+    for c in clinics:
+        entry = book.get(c.get("slug"))
+        if not entry:
+            continue
+        prices = dict(c.get("starting_prices_usd") or {})
+        meta = dict(c.get("price_meta") or {})
+        for t, d in entry.items():
+            if not isinstance(d, dict):
+                continue
+            v, basis = d.get("value"), d.get("basis")
+            if not isinstance(v, int) or v <= 0 or not basis:
+                skipped += 1
+                continue
+            if t in prices:            # prospector / operator price wins
+                continue
+            prices[t] = v
+            meta[t] = {"basis": basis, "source_url": d.get("source_url"),
+                       "quote": d.get("quote"), "checked": d.get("checked")}
+            applied += 1
+        if prices:
+            c["starting_prices_usd"] = prices
+        if meta:
+            c["price_meta"] = meta
+    print(f"[builder] published prices overlaid: {applied} price point(s)"
+          + (f"; {skipped} skipped (missing value or basis)" if skipped else ""))
     return clinics
 
 
@@ -908,6 +1064,14 @@ def _starting_price(clinic, treatment_slug):
     if isinstance(prices, dict):
         return prices.get(treatment_slug)
     return clinic.get("starting_price_usd")
+
+
+def _price_meta(clinic, treatment_slug):
+    """Provenance for a per-clinic published price: the basis it was published on, the
+    URL it was published at, and when it was checked. Tier (b) prices are only shown
+    with their basis — '$15' means nothing without 'per unit'."""
+    meta = (clinic.get("price_meta") or {}).get(treatment_slug)
+    return meta if isinstance(meta, dict) else {}
 
 
 def _format_phone(phone):
@@ -977,6 +1141,12 @@ def _clinic_for_page(clinic, treatment_slug):
         "rating_source": clinic.get("rating_source"),
         "starting_price_usd": _starting_price(clinic, treatment_slug),
         "price_unit": TREATMENT_UNITS.get(treatment_slug) if _starting_price(clinic, treatment_slug) is not None else None,
+        # Tier (b) provenance. basis is what the clinic actually published the number on
+        # ("per unit", "flat fee, 3 areas"); source_url is where we read it. A price with
+        # no basis is meaningless, so the template shows the two together or not at all.
+        "price_basis": _price_meta(clinic, treatment_slug).get("basis"),
+        "price_source_url": _price_meta(clinic, treatment_slug).get("source_url"),
+        "price_checked": _price_meta(clinic, treatment_slug).get("checked"),
         "languages": clinic.get("languages", []),
         # Flat-placement monetization fields (all operator-set, never builder-inferred).
         # featured_tier > 0 = paid flat placement; never tied to per-patient value.
@@ -1110,28 +1280,65 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
     intro = _build_intro(treatment_slug, market, clinics, prices, all_county_clinics,
                          category=category, fallback=fallback)
 
-    # Meta description optimised for SERP click-through
-    provider_word = "provider" if n == 1 else "providers"
-    price_hint = f" Botox from ${prices[0]}/{unit}" if treatment_slug == "botox" and prices else ""
-    if fallback:
-        meta = (f"No {t_name.lower()} providers in {city_name}, FL yet — compare the nearest "
-                f"board-certified options nearby by rating and distance, and book a consultation.")
-    else:
-        meta = (
-            f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL.{price_hint} "
-            f"Compare addresses, real prices and Google ratings — and book direct."
-        )
-
+    # ---- Pricing: referential market range + observed published prices --------------
+    # The title/meta must describe exactly what the page delivers. A page carries a
+    # referential range only when reference_prices.json actually has a sourced figure;
+    # where it doesn't (IV therapy), the page says so instead of implying a number.
+    ref = reference_for(treatment_slug)
     priced_clinics = [c for c in clinics if _starting_price(c, treatment_slug) is not None]
+
+    if ref.get("metro"):
+        ref_phrase = f"Miami-metro average {ref['metro']['display']}"
+    elif ref.get("available"):
+        ref_phrase = f"typically {ref['national']['display']} {ref['national']['basis']}".strip()
+    else:
+        ref_phrase = None
+
     cost = {
+        # tier (a)
+        "reference": ref,
+        # tier (b) — prices providers on THIS page actually publish
         "has_prices": bool(priced_clinics),
         "low": prices[0] if prices else None,
         "high": prices[-1] if prices else None,
         "unit": unit,
         "count_priced": len(priced_clinics),
         "count_total": len(clinics),
-        "coverage_label": f"{len(priced_clinics)} of {len(clinics)} {'provider lists' if len(priced_clinics)==1 else 'providers list'} pricing",
+        # Plural agrees with the TOTAL (the noun), the verb with the priced count:
+        # "1 of 7 providers publishes a price" / "3 of 9 providers publish a price".
+        "coverage_label": (
+            f"{len(priced_clinics)} of {len(clinics)} "
+            f"{'provider' if len(clinics) == 1 else 'providers'} "
+            f"{'publishes' if len(priced_clinics) == 1 else 'publish'} a price"
+            if priced_clinics else
+            f"None of the {len(clinics)} providers here publishes a rate online — "
+            f"request a current price and we'll get it for you"
+        ),
     }
+
+    # Meta description optimised for SERP click-through — and matched to the page.
+    provider_word = "provider" if n == 1 else "providers"
+    if fallback:
+        meta = (f"No {t_name.lower()} providers in {city_name}, FL yet — compare the nearest "
+                f"board-certified options nearby by rating and distance, and book a consultation.")
+    elif ref_phrase:
+        meta = (f"{t_name} cost in {city_name}, FL — {ref_phrase} (referential; each clinic "
+                f"sets its own rate). Compare {n} verified {provider_word}, published prices "
+                f"and Google ratings.")
+    else:
+        meta = (f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL. Compare "
+                f"published prices and Google ratings, and request a current quote.")
+
+    # Title mirrors the promise: a typical cost figure only when we actually carry one.
+    year = datetime.date.today().year
+    if fallback:
+        title = f"{t_name} near {city_name}, FL — Nearest Verified Providers ({year})"
+    elif ref.get("available"):
+        title = (f"{t_name} Prices in {city_name}, FL — Typical Cost + {n} Verified "
+                 f"{'Clinic' if n == 1 else 'Clinics'} ({year})")
+    else:
+        title = (f"{t_name} in {city_name}, FL — {n} Verified "
+                 f"{'Clinic' if n == 1 else 'Clinics'} & Prices ({year})")
     verified_dates = [c.get("last_verified") for c in clinics if c.get("last_verified")]
     updated = max(verified_dates) if verified_dates else datetime.date.today().isoformat()
 
@@ -1147,6 +1354,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
         "geo": market,
         "path": page_path(market, treatment_slug),
         "page_flags": {"has_consent_form": True, "has_schema_markup": True},
+        "title": title,
         "meta_description": meta,
         "canonical_url": SITE_URL + page_url(market, treatment_slug),
         "intro": intro,
@@ -1491,6 +1699,92 @@ def _fetch_category_pages(category, treatments, req_fields, page_reqs, enforce, 
     return pages
 
 
+# ----------------------------------------------------------------------------------
+# Near-duplicate guard.
+#
+# Templated city x treatment pages share a lot of language by construction: the same
+# treatment guidance, the same FAQ shells, the same referential price figure. That is
+# fine when a page also carries real local substance (several providers, their addresses,
+# their published prices). It is NOT fine when a thin page is mostly boilerplate with a
+# city name swapped in — that is the near-duplicate the quality gate forbids, and mass-
+# indexing those is what gets a directory classified as thin.
+#
+# So: measure each page's 8-gram overlap against its closest sibling for the same
+# treatment. Above the threshold, the page still SHIPS (it serves a user who lands on it
+# and it passes link equity), but it carries noindex,follow and is kept out of the
+# sitemap. Same policy already applied to nearest-provider fallback pages.
+# ----------------------------------------------------------------------------------
+NEAR_DUPLICATE_THRESHOLD = 0.70
+# High overlap only actually harms when the page ALSO lacks local substance. A page
+# carrying several real local providers still gives a visitor something no other page
+# does, even if its prose is templated. So both conditions must hold to noindex.
+NEAR_DUPLICATE_MIN_LISTINGS = 2
+
+
+def _page_text(page):
+    """Approximate a page's indexable body text from its assembled content."""
+    parts = [page.get("intro") or "", page.get("guidance") or ""]
+    for f in page.get("faqs", []):
+        parts.append(f.get("q", "")); parts.append(f.get("a", ""))
+    cost = page.get("cost") or {}
+    parts.append(cost.get("coverage_label") or "")
+    ref = cost.get("reference") or {}
+    if ref.get("available"):
+        parts.append(ref["national"].get("display") or "")
+        parts.append(ref["national"].get("basis") or "")
+        if ref.get("metro"):
+            parts.append(ref["metro"].get("display") or "")
+    for c in page.get("clinics", []):
+        parts += [c.get("name") or "", c.get("address") or "",
+                  str(c.get("rating") or ""), str(c.get("review_count") or ""),
+                  str(c.get("starting_price_usd") or ""),
+                  " ".join(c.get("treatments_offered") or [])]
+    return re.sub(r"\s+", " ", " ".join(parts)).strip()
+
+
+def _shingles(text, n=8):
+    w = text.split()
+    return {tuple(w[i:i + n]) for i in range(max(0, len(w) - n))}
+
+
+def duplication_scan(pages, threshold=NEAR_DUPLICATE_THRESHOLD):
+    """Flag pages whose content is dominated by what they share with a sibling.
+    Mutates each page: sets near_duplicate + near_duplicate_overlap. Returns flagged."""
+    groups = {}
+    for p in pages:
+        groups.setdefault(p["treatment"]["slug"], []).append(p)
+
+    flagged = []
+    for slug, group in groups.items():
+        shingles = {id(p): _shingles(_page_text(p)) for p in group}
+        for p in group:
+            a = shingles[id(p)]
+            best, best_other = 0.0, None
+            for q in group:
+                if q is p:
+                    continue
+                b = shingles[id(q)]
+                union = len(a | b)
+                if not union:
+                    continue
+                j = len(a & b) / union
+                if j > best:
+                    best, best_other = j, q
+            p["near_duplicate_overlap"] = round(best, 3)
+            # Fallback pages already carry noindex for their own reason; don't double-count.
+            thin = len(p.get("clinics", [])) < NEAR_DUPLICATE_MIN_LISTINGS
+            if best >= threshold and thin and not p.get("fallback"):
+                p["near_duplicate"] = True
+                flagged.append({
+                    "path": p["path"],
+                    "overlap": round(best, 3),
+                    "closest": best_other["path"] if best_other else None,
+                    "n_listings": len(p.get("clinics", [])),
+                })
+    flagged.sort(key=lambda x: -x["overlap"])
+    return flagged
+
+
 def compute_empty_fields(pages):
     seen, price_missing, price_total = {}, 0, 0
     for p in pages:
@@ -1524,6 +1818,7 @@ def page_summary(page):
         "category": page.get("category", DEFAULT_CATEGORY),
         "fallback": bool(page.get("fallback")),
         "n_clinics": len(page.get("clinics", [])),
+        "near_duplicate": bool(page.get("near_duplicate")),
         "from_price": min(prices) if prices else None,
         "price_unit": TREATMENT_UNITS.get(t) if prices else None,
     }
@@ -1644,14 +1939,86 @@ def _hub_state_intro(state_name, counties):
             f"board-certified surgeon credentials, and book a consultation directly.")
 
 
-def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None):
+def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None,
+               providers=None, meta_description=None, h1=None):
+    # title = the <title> tag (SERP-facing, may carry count/year).
+    # h1    = the on-page heading; defaults to title when they're the same thing.
     html = env.get_template("hub.html.j2").render(
-        title=title, subtitle=subtitle, breadcrumb=breadcrumb, cards=cards, intro=intro,
+        title=title, h1=h1 or title, subtitle=subtitle, breadcrumb=breadcrumb,
+        cards=cards, intro=intro,
+        providers=providers or [], meta_description=meta_description,
         rel_path=rel_path, site_url=SITE_URL, last_updated=datetime.date.today().isoformat())
     return _write(f"{rel_path}/index.html" if rel_path else "index_hub.html", html)
 
 
-def render_hubs(summaries):
+def _city_providers(city_slug, pages):
+    """Every distinct provider in a city, once, ranked — the side-by-side comparison row
+    set for the city directory page. Aggregates each provider's treatments and whichever
+    prices it publishes across all of them. Nothing here is invented: a provider with no
+    published price carries none and the page asks for a quote instead."""
+    byslug = {}
+    for p in pages:
+        if p.get("fallback") or p["neighborhood"]["slug"] != city_slug:
+            continue
+        t_slug = p["treatment"]["slug"]
+        t_name = p["treatment"]["name"]
+        for c in p.get("clinics", []):
+            key = c.get("slug") or c.get("name")
+            row = byslug.setdefault(key, {
+                "slug": c.get("slug"), "name": c.get("name"), "address": c.get("address"),
+                "phone_display": c.get("phone_display"), "booking_url": c.get("booking_url"),
+                "google_listing_url": c.get("google_listing_url"),
+                "rating": c.get("rating"), "review_count": c.get("review_count"),
+                "accreditations": c.get("accreditations"),
+                "featured_tier": c.get("featured_tier", 0),
+                "sponsored": c.get("sponsored", False),
+                "treatments": [], "prices": [],
+            })
+            if t_name not in [x["name"] for x in row["treatments"]]:
+                row["treatments"].append({"name": t_name, "url": p["path"] and page_url(p["geo"], t_slug)})
+            if c.get("starting_price_usd") is not None:
+                row["prices"].append({
+                    "treatment": t_name, "value": c["starting_price_usd"],
+                    "basis": c.get("price_basis") or TREATMENT_UNITS.get(t_slug) or "",
+                    "source_url": c.get("price_source_url"),
+                })
+    rows = list(byslug.values())
+    for r in rows:
+        r["prices"].sort(key=lambda x: x["value"])
+        r["treatments"].sort(key=lambda x: x["name"])
+        r["from_price"] = r["prices"][0] if r["prices"] else None
+    # Same ranking law as listing pages: paid placement pinned and labeled, organic ordered
+    # by the Beta-posterior lower bound. Placement never buys ranking.
+    featured = rank_providers([r for r in rows if r.get("featured_tier", 0) > 0])
+    organic = rank_providers([r for r in rows if not r.get("featured_tier", 0)])
+    return featured[:MAX_FEATURED_PER_PAGE] + organic + featured[MAX_FEATURED_PER_PAGE:]
+
+
+def _city_directory_title(city_name, state_name, providers, pages, city_slug):
+    """Name the page for what the city actually has. A city with only surgical practices
+    must not be titled 'Best Med Spas' — that would be a promise the page doesn't keep.
+
+    Returns (seo_title, h1, noun). The SEO title carries the count and year for the SERP;
+    the H1 stays short, because a heading that restates the whole title reads as spam and
+    wraps to five lines on a phone.
+    """
+    cats = {p.get("category", DEFAULT_CATEGORY) for p in pages
+            if p["neighborhood"]["slug"] == city_slug and not p.get("fallback")}
+    n = len(providers)
+    if cats == {"plastic-surgery"}:
+        noun = "Plastic Surgery Practices"
+    elif "plastic-surgery" in cats:
+        noun = "Med Spas & Plastic Surgeons"
+    else:
+        noun = "Med Spas"
+    year = datetime.date.today().year
+    h1 = f"Best {noun} in {city_name}, FL"
+    seo_title = (f"{h1} — {n} Verified {'Provider' if n == 1 else 'Providers'} "
+                 f"Compared ({year})")
+    return seo_title, h1, noun
+
+
+def render_hubs(summaries, pages=None):
     """State, county, and city hub pages from the built listing summaries."""
     states = {}
     for s in summaries:
@@ -1672,9 +2039,27 @@ def render_hubs(summaries):
                 bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"},
                       {"name": cdata["name"], "url": f"/{st}/{co}/"},
                       {"name": cidata["name"], "url": f"/{st}/{co}/{ci}/"}]
-                render_hub(f"Health & wellness in {cidata['name']}, {sdata['name']}",
-                           f"{len(cidata['pages'])} treatment guides for {cidata['name']}", bc, cards, f"{st}/{co}/{ci}",
-                           intro=_hub_city_intro(ci, cidata["name"], cidata["pages"]))
+                # City hub doubles as the "Best <category> in <City>" directory page:
+                # every provider once, ranked, with verified ratings and whichever prices
+                # they publish — the side-by-side comparison Yelp doesn't give.
+                provs = _city_providers(ci, pages or [])
+                if provs:
+                    ctitle, ch1, cnoun = _city_directory_title(
+                        cidata["name"], sdata["name"], provs, pages or [], ci)
+                    n_priced = sum(1 for p in provs if p.get("from_price"))
+                    csub = (f"{len(provs)} verified {cnoun.lower()} compared on Google rating, "
+                            f"treatments offered and published pricing")
+                    cmeta = (f"Compare {len(provs)} verified {cnoun.lower()} in {cidata['name']}, FL "
+                             f"side by side — Google ratings, review counts, treatments offered"
+                             + (f" and published prices from {n_priced} of them." if n_priced
+                                else " and direct pricing requests."))
+                else:
+                    ctitle = ch1 = f"Health & wellness in {cidata['name']}, {sdata['name']}"
+                    csub = f"{len(cidata['pages'])} treatment guides for {cidata['name']}"
+                    cmeta = None
+                render_hub(ctitle, csub, bc, cards, f"{st}/{co}/{ci}",
+                           intro=_hub_city_intro(ci, cidata["name"], cidata["pages"]),
+                           providers=provs, meta_description=cmeta, h1=ch1)
             # county hub
             ccards = [{"title": cidata["name"], "sub": f"{len(cidata['pages'])} treatment" + ("" if len(cidata['pages']) == 1 else "s"),
                        "url": f"/{st}/{co}/{ci}/", "chip": None}
@@ -1865,6 +2250,10 @@ def render_guides(pages):
             city=state_abbr,
             geo=m,
             cost=page.get("cost", {}),
+            reference=reference_for(t),
+            # A guide derived from a near-duplicate listing page inherits the problem:
+            # keep it reachable, keep it out of the index.
+            near_duplicate=bool(page.get("near_duplicate")),
             price_display=price_display,
             unit=unit,
             faqs=faqs,
@@ -1879,7 +2268,8 @@ def render_guides(pages):
         )
         _write(f"{guide_path}/index.html", html)
         written.add(guide_path)
-        guide_urls.append(guide_url)
+        if not page.get("near_duplicate"):
+            guide_urls.append(guide_url)
 
     # Prune stale guide pages from prior builds (e.g. fallback-city guides we no longer
     # generate). Guides are fully derived each run, so anything not written this run is dead.
@@ -1894,11 +2284,55 @@ def render_guides(pages):
     return guide_urls
 
 
-def render_learn():
-    urls = []
-    for t in json.loads((ROOT / "data" / "learn_topics.json").read_text()):
-        _write(f"learn/{t['slug']}/index.html", env.get_template("learn.html.j2").render(topic=t, site_url=SITE_URL, last_updated=datetime.date.today().isoformat(), year=datetime.date.today().year))
+def render_learn(built_paths=None):
+    """Informational/authority layer: cost guides and treatment comparisons.
+
+    These target non-local informational demand ("how much does botox cost",
+    "botox vs dysport") and funnel to the city listing pages and the quote form.
+
+    Internal links carried in learn_topics.json are FILTERED against the paths this run
+    actually built — the topic data predates the current geo tree and references some
+    URLs (e.g. /fl/miami/...) that no longer exist. Shipping a link to a 404 is worse
+    than shipping one fewer link, so unresolvable targets are dropped and counted.
+    """
+    topics = json.loads((ROOT / "data" / "learn_topics.json").read_text())
+    built = built_paths or set()
+    urls, dropped = [], 0
+    today = datetime.date.today().isoformat()
+
+    for t in topics:
+        links = []
+        for label, href in t.get("links", []):
+            tgt = href if href.endswith("/") else href + "/"
+            if tgt.startswith("/learn/"):
+                slug = tgt.strip("/").split("/")[-1]
+                if any(x["slug"] == slug for x in topics):
+                    links.append([label, tgt])
+                else:
+                    dropped += 1
+            elif tgt.startswith("/fl/"):
+                if tgt in built:
+                    links.append([label, tgt])
+                else:
+                    dropped += 1
+            else:
+                links.append([label, tgt])
+        topic = {**t, "links": links}
+        _write(f"learn/{t['slug']}/index.html", env.get_template("learn.html.j2").render(
+            topic=topic, site_url=SITE_URL, last_updated=today,
+            year=datetime.date.today().year))
         urls.append(f"/learn/{t['slug']}/")
+
+    # /learn/ index so the layer is crawlable from the site, not orphaned.
+    cards = [{"title": t["title"], "sub": (t.get("lede") or "")[:120].rsplit(" ", 1)[0] + "…",
+              "url": f"/learn/{t['slug']}/"} for t in topics]
+    render_hub("Treatment guides & costs",
+               "Independent, sourced guides to what aesthetic treatments cost and how they compare.",
+               [{"name": "Home", "url": "/"}, {"name": "Learn", "url": "/learn/"}],
+               cards, "learn")
+    urls.append("/learn/")
+    print(f"[builder] built {len(topics)} learn pages + /learn/ index"
+          + (f"; dropped {dropped} unresolvable internal link(s)" if dropped else ""))
     return urls
 
 
@@ -1967,7 +2401,9 @@ def render_sitemap(summaries, guide_urls=None):
         for hub in (f"/{s['state']}/", f"/{s['state']}/{s['county']}/", f"/{s['state']}/{s['county']}/{s['city']}/"):
             if hub not in seen_hubs:
                 seen_hubs.add(hub); urls.append(hub)
-        if not s.get("fallback"):
+        # Excluded: nearest-provider fallbacks and near-duplicate pages. Both carry
+        # noindex, so advertising them for indexing would contradict the page itself.
+        if not s.get("fallback") and not s.get("near_duplicate"):
             urls.append(s["url"])
     for gu in (guide_urls or []):
         urls.append(gu)
@@ -2103,6 +2539,19 @@ def main():
     if throttle:
         passed = passed[:10]
 
+    # Near-duplicate guard BEFORE render, so flagged pages render with noindex and are
+    # kept out of the sitemap. They still ship — a thin page that serves a real visitor
+    # is fine; a thin page competing in the index is not.
+    near_dupes = duplication_scan(passed)
+    if near_dupes:
+        print(f"[builder] near-duplicate guard: {len(near_dupes)} page(s) >= "
+              f"{NEAR_DUPLICATE_THRESHOLD:.0%} sibling overlap AND < "
+              f"{NEAR_DUPLICATE_MIN_LISTINGS} listing(s) -> noindex,follow + "
+              f"excluded from sitemap")
+        for d in near_dupes[:5]:
+            print(f"[builder]   {d['overlap']:.0%} {d['path']} "
+                  f"({d['n_listings']} listing(s), closest: {d['closest']})")
+
     summaries = []
     for page in passed:
         out = render(page, page_links(page, passed))
@@ -2110,14 +2559,19 @@ def main():
         print(f"[builder] built {out.relative_to(GENERATED)}")
     built = len(summaries)
 
-    render_hubs(summaries)
+    render_hubs(summaries, passed)
     render_index(summaries)
     render_claim()
     render_advertise(summaries)
     # Cost guides are only for pages with REAL local providers — a "cost guide" for a city
     # with no providers (a fallback page) would be a thin near-duplicate, so skip those.
     guide_urls = render_guides([p for p in passed if not p.get("fallback")])
-    render_sitemap(summaries, guide_urls)
+    # Informational/authority layer. Built AFTER listing pages so its internal links can
+    # be validated against what actually exists this run.
+    _built_now = {"/" + str(f.relative_to(GENERATED).parent).replace("\\", "/") + "/"
+                  for f in GENERATED.rglob("index.html")}
+    learn_urls = render_learn(_built_now)
+    render_sitemap(summaries, guide_urls + learn_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
@@ -2125,6 +2579,12 @@ def main():
            '<path d="M27,33 H33 V27 H39 V33 H45 V39 H39 V45 H33 V39 H27 Z" fill="#fff"/></svg>\n')
     print(f"[builder] built hubs + homepage + claim + advertise + {len(guide_urls)} guides + favicon + sitemap.xml")
 
+    report["near_duplicates"] = {
+        "threshold": NEAR_DUPLICATE_THRESHOLD,
+        "min_listings": NEAR_DUPLICATE_MIN_LISTINGS,
+        "count": len(near_dupes),
+        "pages": near_dupes,
+    }
     report["empty_fields"] = compute_empty_fields(passed)
     report["mode"] = "enforced" if enforce else "dry-run (config 'completeness' absent)"
     report["thresholds_used"] = spec
