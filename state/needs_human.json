@@ -2,67 +2,6 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
-      "id": "publish-status-and-branch-divergence-2026-08-18",
-      "opened_at": "2026-08-18",
-      "opened_by": "builder",
-      "blocking": true,
-      "severity": "operator-action-required-HARD-GATED",
-      "summary": "Operator asked the builder to merge and publish. Publishing is hard-gated — the builder stopped. Also, local and remote auto/build have DIVERGED 22/10 and must not be merged carelessly.",
-      "publish_status": {
-        "main_branch": "DOES NOT EXIST. `git ls-remote --heads origin` shows no main/master/production branch. There is nothing to merge into — the repo runs on auto/build plus feature branches.",
-        "local_commits_unpushed": 10,
-        "live_site": "octoru.com resolves and is served by Cloudflare (robots.txt live, sitemap directive present). It therefore reflects some earlier deploy, NOT today's local work.",
-        "conclusion": "Today's 504-page build exists only in this working copy. Nothing from today is published."
-      },
-      "divergence_hazard": {
-        "counts": "origin/auto/build has 22 commits we lack; we have 10 it lacks.",
-        "remote_work_includes": [
-          "46a6674 Merge PR #34 seo/striking-2026-08-18 (TODAY — parallel session)",
-          "09a7815 builder: overlay per-clinic published prices from data/prices_published.json",
-          "2efe2e3 branded 404 page (wrangler expects generated/404.html)",
-          "8c2d82d robots.txt with sitemap directive",
-          "12a9b5d /learn/ footer links",
-          "e054002 city hub H1 vs SEO title separation"
-        ],
-        "why_this_matters": "A careless merge here is precisely what created commit cb2a815, which silently deleted five treatment definitions and every canonical tag on the site — the damage this whole session was spent repairing. Both sides touch builder/build.py and templates/. This merge needs a human resolving conflicts file by file, not an -X ours/theirs.",
-        "notable": "The remote's data/prices_published.json overlay directly addresses the pricing gap identified today. Worth merging IN, carefully."
-      },
-      "why_builder_stopped": "CLAUDE.md hard gate: 'Merge to main, push to production, or trigger any deploy/publish of live pages' — never autonomously, even on explicit request. 'Publishing is the irreversible boundary.' wrangler.toml shows Cloudflare runs builder/build.py and serves generated/, so a push to a connected branch can itself trigger a deploy.",
-      "operator_next_steps": [
-        "1. git fetch origin auto/build",
-        "2. git merge origin/auto/build   # resolve conflicts in builder/build.py and templates/ BY HAND",
-        "3. Verify after merging: grep -c 'iv-therapy\\|morpheus8\\|hydrafacial\\|chemical-peel\\|dermal-fillers' builder/build.py should be 25, and grep -c 'rel=\"canonical\"' templates/treatment-page.html.j2 should be 1. If either is 0, the merge ate them again.",
-        "4. python3 builder/build.py && confirm 'built=504 skipped=0' and 'link check: all internal links valid'",
-        "5. git push origin auto/build   # this may trigger the Cloudflare deploy",
-        "6. After deploy: submit /sitemap.xml in Search Console and request indexing."
-      ],
-      "open_risk_before_publish": "The ratings integrity halt (perfect-at-volume share 23.7%, threshold 20%) is still open on your 2026-06-06 override. Nefertiti Spa at 5.0/545 is the most implausible row."
-    },
-    {
-      "id": "implausible-ratings-new-rows-2026-08-18",
-      "opened_at": "2026-08-18",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "verify",
-      "summary": "Row flags rose 36 -> 40 today. Nefertiti Spa (plantation) is 5.0 across 545 reviews — the most implausible row in the corpus.",
-      "detail": "Others added today: Aestheta 5.0/114 (davie), Skin Lounge 5.0/127 (miramar), Biomedex 5.0/102 (wellington). All are real API-sourced Google data, not synthetic. The corpus-level share still improved today (24.6% -> 23.7%) because high-volume non-perfect clinics were added in greater number.",
-      "note": "This sits under the existing integrity-corpus-perfect-share item, which you overrode on 2026-06-06."
-    },
-    {
-      "id": "scope-boundary-beauty-salons-vs-med-spas",
-      "opened_at": "2026-08-18",
-      "opened_by": "builder",
-      "blocking": false,
-      "severity": "operator-decision-recommended",
-      "summary": "Two borderline businesses were handled inconsistently and the rule should be yours, not the builder's.",
-      "detail": "XO Salon & Spa (sunny-isles-beach) was DROPPED because its primary Google category is a hair salon, even though its own menu names lip filler and it runs a physician-injector med-spa arm. Pink Beauty Lounge (sunny-isles-beach) was KEPT because it has a dedicated HydraFacial MD page with published prices — but it also sells hair, nails, lashes and brows. Nefertiti Spa (plantation) is a 'spa' selling chemical peels and plasma microneedling. All three are the same species of edge case.",
-      "decision_needed": "Define the inclusion rule: medical-supervision required? primary Google category must be medical? or any business that verifiably performs the treatment?",
-      "consequence": "A strict rule removes Pink Beauty Lounge and Nefertiti Spa and re-opens 3 pages. A loose rule re-admits XO Salon.",
-      "status": "RESOLVED",
-      "resolved_at": "2026-08-18",
-      "resolution": "Operator decision (Rolando, via Cowork, 2026-08-18): KEEP the clinics as listed. Pink Beauty Lounge, Nefertiti Spa and Skin Lounge stay. Rule going forward: a business qualifies if it verifiably performs the treatment on its own published menu, regardless of whether it also sells hair/nails/lashes. XO Salon & Spa was dropped earlier under the stricter reading and may be re-added on a future pass."
-    },
-    {
       "id": "integrity-corpus-perfect-share",
       "opened_at": "2026-08-18",
       "opened_by": "builder",
@@ -126,6 +65,74 @@
         "Nefertiti Spa — 5.0 (545) in plantation",
         "Miami Plastic Surgery — 5 (404) in kendall"
       ]
+    },
+    {
+      "id": "publish-status-and-branch-divergence-2026-08-18",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": true,
+      "severity": "operator-action-required-HARD-GATED",
+      "summary": "Merge DONE and verified. Only the push/deploy remains, and that is the operator's to run.",
+      "publish_status": {
+        "main_branch": "DOES NOT EXIST. `git ls-remote --heads origin` shows no main/master/production branch. There is nothing to merge into — the repo runs on auto/build plus feature branches.",
+        "local_commits_unpushed": 10,
+        "live_site": "octoru.com resolves and is served by Cloudflare (robots.txt live, sitemap directive present). It therefore reflects some earlier deploy, NOT today's local work.",
+        "conclusion": "Today's 504-page build exists only in this working copy. Nothing from today is published."
+      },
+      "divergence_hazard": {
+        "counts": "origin/auto/build has 22 commits we lack; we have 10 it lacks.",
+        "remote_work_includes": [
+          "46a6674 Merge PR #34 seo/striking-2026-08-18 (TODAY — parallel session)",
+          "09a7815 builder: overlay per-clinic published prices from data/prices_published.json",
+          "2efe2e3 branded 404 page (wrangler expects generated/404.html)",
+          "8c2d82d robots.txt with sitemap directive",
+          "12a9b5d /learn/ footer links",
+          "e054002 city hub H1 vs SEO title separation"
+        ],
+        "why_this_matters": "A careless merge here is precisely what created commit cb2a815, which silently deleted five treatment definitions and every canonical tag on the site — the damage this whole session was spent repairing. Both sides touch builder/build.py and templates/. This merge needs a human resolving conflicts file by file, not an -X ours/theirs.",
+        "notable": "The remote's data/prices_published.json overlay directly addresses the pricing gap identified today. Worth merging IN, carefully."
+      },
+      "why_builder_stopped": "CLAUDE.md hard gate: 'Merge to main, push to production, or trigger any deploy/publish of live pages' — never autonomously, even on explicit request. 'Publishing is the irreversible boundary.' wrangler.toml shows Cloudflare runs builder/build.py and serves generated/, so a push to a connected branch can itself trigger a deploy.",
+      "operator_next_steps": [
+        "1. git fetch origin auto/build",
+        "2. git merge origin/auto/build   # resolve conflicts in builder/build.py and templates/ BY HAND",
+        "3. Verify after merging: grep -c 'iv-therapy\\|morpheus8\\|hydrafacial\\|chemical-peel\\|dermal-fillers' builder/build.py should be 25, and grep -c 'rel=\"canonical\"' templates/treatment-page.html.j2 should be 1. If either is 0, the merge ate them again.",
+        "4. python3 builder/build.py && confirm 'built=504 skipped=0' and 'link check: all internal links valid'",
+        "5. git push origin auto/build   # this may trigger the Cloudflare deploy",
+        "6. After deploy: submit /sitemap.xml in Search Console and request indexing."
+      ],
+      "open_risk_before_publish": "The ratings integrity halt (perfect-at-volume share 23.7%, threshold 20%) is still open on your 2026-06-06 override. Nefertiti Spa at 5.0/545 is the most implausible row.",
+      "merge_completed": {
+        "at": "2026-08-18",
+        "by": "Rolando (operator)",
+        "commit": "f8c32f8",
+        "result": "clean auto-merge, no conflicts; all post-merge verification greps passed; rebuild produced 504 pages, 0 skipped, all internal links valid, 64 published prices overlaid.",
+        "still_outstanding": "git push origin auto/build — hard-gated, operator only. Then submit /sitemap.xml in Search Console and request indexing."
+      }
+    },
+    {
+      "id": "implausible-ratings-new-rows-2026-08-18",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "Row flags rose 36 -> 40 today. Nefertiti Spa (plantation) is 5.0 across 545 reviews — the most implausible row in the corpus.",
+      "detail": "Others added today: Aestheta 5.0/114 (davie), Skin Lounge 5.0/127 (miramar), Biomedex 5.0/102 (wellington). All are real API-sourced Google data, not synthetic. The corpus-level share still improved today (24.6% -> 23.7%) because high-volume non-perfect clinics were added in greater number.",
+      "note": "This sits under the existing integrity-corpus-perfect-share item, which you overrode on 2026-06-06."
+    },
+    {
+      "id": "scope-boundary-beauty-salons-vs-med-spas",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-decision-recommended",
+      "summary": "Two borderline businesses were handled inconsistently and the rule should be yours, not the builder's.",
+      "detail": "XO Salon & Spa (sunny-isles-beach) was DROPPED because its primary Google category is a hair salon, even though its own menu names lip filler and it runs a physician-injector med-spa arm. Pink Beauty Lounge (sunny-isles-beach) was KEPT because it has a dedicated HydraFacial MD page with published prices — but it also sells hair, nails, lashes and brows. Nefertiti Spa (plantation) is a 'spa' selling chemical peels and plasma microneedling. All three are the same species of edge case.",
+      "decision_needed": "Define the inclusion rule: medical-supervision required? primary Google category must be medical? or any business that verifiably performs the treatment?",
+      "consequence": "A strict rule removes Pink Beauty Lounge and Nefertiti Spa and re-opens 3 pages. A loose rule re-admits XO Salon.",
+      "status": "RESOLVED",
+      "resolved_at": "2026-08-18",
+      "resolution": "Operator decision (Rolando, via Cowork, 2026-08-18): KEEP the clinics as listed. Pink Beauty Lounge, Nefertiti Spa and Skin Lounge stay. Rule going forward: a business qualifies if it verifiably performs the treatment on its own published menu, regardless of whether it also sells hair/nails/lashes. XO Salon & Spa was dropped earlier under the stricter reading and may be re-added on a future pass."
     },
     {
       "id": "coolsculpting-market-fit",

@@ -7,39 +7,42 @@
   },
   "last_run": {
     "at": "2026-08-18",
-    "status": "partial success",
-    "reason": "Job A round 4 — hydrafacial/chemical-peel sweep. 2 of 3 agents completed.",
+    "status": "success — merged and rebuilt, awaiting operator push",
+    "reason": "Operator merged origin/auto/build (22 divergent commits from the parallel session) by hand. Auto-merge resolved cleanly with no conflicts; builder rebuilt on the merged tree.",
+    "merge_commit": "f8c32f8",
+    "merge_stat": "11 files changed, 1649 insertions(+), 55 deletions(-)",
+    "post_merge_verification": {
+      "treatment_definitions": "5 entries each for iv-therapy, morpheus8, hydrafacial, chemical-peel, dermal-fillers — all intact",
+      "canonical_tag": "present in templates/treatment-page.html.j2",
+      "config_scope": "7 med-spa treatments intact",
+      "clinics": 175,
+      "build_py": "compiles clean",
+      "verdict": "unlike cb2a815, this merge destroyed nothing."
+    },
+    "gained_from_remote": [
+      "data/prices_published.json — per-clinic published price overlay",
+      "data/reference_prices.json",
+      "generated/404.html (wrangler expects it)",
+      "generated/robots.txt with sitemap directive",
+      "seo/striking_distance_log.md",
+      "/learn/ footer links",
+      "city hub H1 vs SEO title separation"
+    ],
     "pages_built": 504,
     "skipped": 0,
     "pages_held": 26,
-    "delta": "+5 pages vs 499",
-    "clinics_added": 6,
-    "clinics_total": 175,
-    "prices_found": "6 more real published prices (Nefertiti chemical-peel $150 / microneedling $200; Pink Beauty hydrafacial $149 / laser-hair-removal $199)",
-    "integrity": "perfect-at-volume share 23.5% -> 23.7%; row flags 38 -> 40. Two new implausible rows: Nefertiti Spa 5.0/545 and Skin Lounge 5.0/127.",
-    "agent_failure": "The doral/hallandale-beach/wellington hydrafacial+chemical-peel task died to an API error mid-run for the SECOND consecutive attempt. Those three cities remain unprospected for those two treatments. Recommend running them one city at a time.",
-    "exhausted_markets": [
-      "dania-beach lip-filler",
-      "bal-harbour microneedling",
-      "surfside laser-hair-removal",
-      "key-biscayne chemical-peel",
-      "plantation hydrafacial (4 clinics read, none names HydraFacial)",
-      "davie hydrafacial (no verifiable candidate — 2 have no website, 1 domain expired)",
-      "miramar hydrafacial (Skin Lounge menu says 'facials' generically — does not qualify)"
-    ],
+    "guides": 253,
+    "link_check": "all internal links valid",
+    "published_prices_overlaid": 64,
+    "price_gap": "empty-state listings 1785 -> 1679 of 1799 (the merged overlay plus today's 16 hand-sourced prices)",
+    "integrity": "perfect-at-volume share 23.7% (>20% halt) — human override on file; row flags 40",
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
-    "not_done": "No merge to main, no deploy.",
-    "publish_check_2026-08-18": {
-      "asked": "operator asked the builder to merge and publish everything",
-      "result": "DECLINED — hard-gated. Nothing merged, nothing pushed, nothing deployed.",
-      "findings": "no main branch exists on origin; 10 local commits unpushed; origin/auto/build has diverged with 22 commits including today's parallel session; octoru.com is live but serves an earlier build.",
-      "clinics_decision": "operator elected to keep all currently listed clinics, including the borderline beauty-salon cases."
-    }
+    "remaining_operator_action": "git push origin auto/build — HARD-GATED, builder will not push. This may trigger the Cloudflare deploy."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 6,
+    "runs": 7,
     "pages_built": 504
   }
 }
