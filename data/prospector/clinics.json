@@ -3462,5 +3462,83 @@
     "uses_scraped_review_text": false,
     "has_before_after": false,
     "before_after_consent": false
+  },
+  {
+    "slug": "4ever-young-miami-midtown",
+    "name": "4Ever Young Med Spa & Wellness Center (Miami Midtown)",
+    "neighborhood": "midtown",
+    "neighborhood_name": "Midtown",
+    "address": "3252 Buena Vista Blvd Suite 112, Miami, FL 33137",
+    "phone": "+17863969680",
+    "email": "info@miamimidtown.4everyoung.com",
+    "booking_url": "https://4everyoung.zenoti.com/webstoreNew/services/aa5224a4-0aa9-47b6-a5a4-8b88fb7d6e63",
+    "languages": [],
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "laser-hair-removal",
+      "microneedling",
+      "coolsculpting",
+      "hydrafacial",
+      "chemical-peel",
+      "dermal-fillers",
+      "morpheus8",
+      "iv-therapy"
+    ],
+    "rating": 4.8,
+    "review_count": 789,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {},
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site 4everyoungantiaging.com/miami-midtown/ (service menu read directly)",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "none published on site — honest empty state"
+    }
+  },
+  {
+    "slug": "aviva-medical-spa-midtown",
+    "name": "Aviva Medical Spa",
+    "neighborhood": "midtown",
+    "neighborhood_name": "Midtown",
+    "address": "88 NE 39th St, Miami, FL 33137",
+    "phone": "+17868128622",
+    "email": "info@avivamedicalspa.com",
+    "booking_url": "https://www.joinblvd.com/b/aviva-medical-spa/widget",
+    "languages": [],
+    "treatments": [
+      "botox",
+      "laser-hair-removal",
+      "microneedling",
+      "hydrafacial",
+      "chemical-peel",
+      "dermal-fillers",
+      "morpheus8",
+      "iv-therapy"
+    ],
+    "rating": 4.7,
+    "review_count": 334,
+    "rating_source": "google_places",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "starting_prices_usd": {
+      "morpheus8": 825
+    },
+    "_sourcing": {
+      "added": "2026-08-18",
+      "by": "builder",
+      "contact_and_treatments": "clinic's own site avivamedicalspa.com (service menu read directly)",
+      "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
+      "prices": "morpheus8 $825/session published on their own promotions block; no other prices published",
+      "geo_note": "self-describes as Miami Design District; 33137, ~0.5 km from the Midtown centroid. Assigned to midtown because the directory has no design-district place. Flagged for operator review.",
+      "before_after_note": "Their own website hosts a before/after gallery, but this listing carries NO before/after imagery, so has_before_after=false per SCHEMA.md (the flag describes images in the listing record, not on the clinic's site). The directory renders none."
+    }
   }
 ]

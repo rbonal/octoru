@@ -8,21 +8,32 @@
   "last_run": {
     "at": "2026-08-18",
     "status": "success",
-    "reason": "Operator applied state/proposed/activate-staged.patch (hydrafacial + chemical-peel). Full rebuild — first since 2026-06-06. Also restored <link rel=canonical> to templates/treatment-page.html.j2, stripped by the same merge cb2a815.",
-    "pages_built": 473,
-    "pages_held": 39,
+    "reason": "Prospecting pass on midtown — the highest-leverage city in state/proposed/WORKLIST_unlock_and_pricing.md. Added 2 verified clinics; midtown went from 1 med-spa page to 6.",
+    "pages_built": 480,
     "skipped": 0,
-    "new_pages": "12 hydrafacial/chemical-peel + 11 unlocked by the July phone-fill data (f7ebb03)",
-    "canonical_coverage": "473/473 treatment pages (was 0)",
-    "link_check": "all internal links valid",
-    "integrity": "perfect-at-volume share 24.9% (>20% halt threshold) — human override on file, non-blocking",
+    "delta": "+7 pages vs the previous run (473)",
+    "clinics_added": [
+      "4Ever Young Med Spa & Wellness Center (Miami Midtown)",
+      "Aviva Medical Spa"
+    ],
+    "sourcing": "ratings + review counts from DataForSEO Business Listings (permitted API, Google Maps source); contact details, booking URLs and the full treatment list read from each clinic's OWN website; prices only where the clinic publishes them (1 found: Aviva morpheus8 $825/session). No fabricated fields.",
+    "midtown_unlocked": [
+      "botox",
+      "laser-hair-removal",
+      "microneedling"
+    ],
+    "midtown_new": [
+      "hydrafacial",
+      "chemical-peel"
+    ],
+    "quality_gate_note": "First build attempt skipped 5 midtown pages: Aviva was entered with has_before_after=true because their own site hosts a gallery. Per SCHEMA.md that flag describes imagery carried IN the listing, not on the clinic's site — corrected to false. The gate caught the error before anything shipped.",
     "build_state_read": "active",
     "budget": "2026-08 under monthly_token_cap (5,000,000)",
-    "not_done": "No merge to main, no deploy. dermal-fillers / iv-therapy / morpheus8 still inactive in config."
+    "not_done": "No merge to main, no deploy."
   },
   "2026-08": {
     "tokens": 0,
-    "runs": 2,
-    "pages_built": 473
+    "runs": 3,
+    "pages_built": 480
   }
 }

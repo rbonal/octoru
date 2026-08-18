@@ -441,19 +441,7 @@
       "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/midtown",
+      "page": "coolsculpting@fl/miami-dade/midtown",
       "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -569,26 +557,6 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "coolsculpting@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/miami-dade/miami-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     }
@@ -601,28 +569,10 @@
       "treatment": "coolsculpting"
     },
     {
-      "clinic": "Skin Local",
+      "clinic": "4Ever Young Med Spa & Wellness Center (Miami Midtown)",
       "from_place": "midtown",
       "to_place": "miami",
-      "treatment": "botox"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "lip-filler"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "laser-hair-removal"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "microneedling"
+      "treatment": "coolsculpting"
     },
     {
       "clinic": "LaserAway (Miami - South Beach)",
@@ -636,9 +586,9 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 144,
+      "pages": 151,
       "fallback_pages": 0,
-      "clinics": 145
+      "clinics": 147
     },
     {
       "category": "plastic-surgery",
@@ -649,13 +599,13 @@
   ],
   "nearest_fallback_pages": 204,
   "empty_fields": {
-    "unique_clinics": 166,
+    "unique_clinics": 169,
     "missing_phone": 0,
-    "missing_email": 164,
+    "missing_email": 165,
     "missing_address": 0,
     "missing_booking_url": 51,
-    "price_empty_state_listings": 1667,
-    "price_total_listings": 1674
+    "price_empty_state_listings": 1684,
+    "price_total_listings": 1691
   },
   "mode": "enforced",
   "thresholds_used": {

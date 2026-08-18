@@ -2,13 +2,23 @@
   "_comment": "The agent writes here instead of guessing on anything ambiguous or hard-gated. Empty items = nothing blocking the builder.",
   "items": [
     {
+      "id": "aviva-midtown-vs-design-district-geo",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "Aviva Medical Spa (88 NE 39th St, 33137) self-describes as 'Miami Design District' but is filed under midtown.",
+      "detail": "The directory's place taxonomy has no design-district entry. Aviva sits ~0.5 km from the midtown centroid, same ZIP as the existing midtown listing Skin Local (3431 NE 1st Ave). Filed as midtown so the pages could build. If you'd rather be strict, either add a design-district place to data/places.json (it would then be a 1-clinic city and hold) or leave as is.",
+      "affects": "5 of the 6 midtown med-spa pages include Aviva."
+    },
+    {
       "id": "integrity-corpus-perfect-share",
       "opened_at": "2026-08-18",
       "opened_by": "builder",
       "blocking": false,
       "severity": "halt",
       "summary": "ratings distribution implausible — HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
-      "detail": "24.9% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
+      "detail": "24.6% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
       "human_override": {
         "at": "2026-06-06",
         "by": "Rolando (operator)",
