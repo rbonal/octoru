@@ -3,12 +3,12 @@
   "items": [
     {
       "id": "integrity-corpus-perfect-share",
-      "opened_at": "2026-06-06",
+      "opened_at": "2026-08-18",
       "opened_by": "builder",
       "blocking": false,
       "severity": "halt",
-      "summary": "ratings distribution implausible \u2014 HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
-      "detail": "24.9% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
+      "summary": "ratings distribution implausible — HUMAN OVERRIDE on file: operator chose to ship anyway (see human_override).",
+      "detail": "23.7% of providers are rated >= 4.95 with >= 50 reviews (threshold 20%). Investigate the ratings source before any deploy.",
       "human_override": {
         "at": "2026-06-06",
         "by": "Rolando (operator)",
@@ -18,49 +18,214 @@
     },
     {
       "id": "integrity-implausible-perfect-providers",
-      "opened_at": "2026-06-06",
+      "opened_at": "2026-08-18",
       "opened_by": "builder",
       "blocking": false,
       "severity": "verify",
-      "summary": "36 provider(s) rated >= 4.95 with >= 100 reviews \u2014 implausibly perfect at volume. Verify the source data.",
+      "summary": "40 provider(s) rated >= 4.95 with >= 100 reviews — implausibly perfect at volume. Verify the source data.",
       "providers": [
-        "Skin Healthy Miami \u2014 5 (180) in brickell",
-        "Only Med Glam \u2014 5 (109) in coral-gables",
-        "ILU Collective \u2014 5 (200) in coral-gables",
-        "Miami Beach Laser & Aesthetics \u2014 5 (123) in south-beach",
-        "Lavish Laser Med Spa (Coconut Grove) \u2014 5 (141) in coconut-grove",
-        "ALEXIS LAUREN \u2014 5 (458) in coral-gables",
-        "The Plump Room \u2014 5 (188) in coral-gables",
-        "ProMD Health Fort Lauderdale \u2014 5 (181) in fort-lauderdale",
-        "DRIP Health & MedSpa \u2014 5 (496) in miami-lakes",
-        "FaceBeauty Med Spa \u2014 5 (300) in doral",
-        "C10 Wellness & Rejuvenation \u2014 5 (205) in kendall",
-        "Hollywood Laser Med Spa \u2014 5 (224) in hollywood",
-        "Laser Med Spa (Hollywood) \u2014 5 (224) in hollywood",
-        "Weston Med Spa \u2014 5 (603) in weston",
-        "Zen Luxe Medspa & IV Lounge \u2014 5 (122) in coral-springs",
-        "BeautyFi Medical Spa \u2014 5 (134) in hallandale-beach",
-        "BeWell MedSpa \u2014 5 (219) in oakland-park",
-        "NutriFlo Medspa & IV Lounge \u2014 5 (193) in parkland",
-        "Rejuvenation Medical Aesthetics & Spa \u2014 5 (133) in sunny-isles-beach",
-        "Angel Aesthetics \u2014 5 (145) in fort-lauderdale",
-        "Beauty First Med-Spa \u2014 5 (306) in homestead",
-        "AlluraMD Aesthetics + Wellness \u2014 5 (187) in dania-beach",
-        "Derma Science Med Spa \u2014 5 (187) in dania-beach",
-        "Skin Club South Florida \u2014 5 (351) in deerfield-beach",
-        "My 1 Med Spa \u2014 5 (579) in key-biscayne",
-        "Dluxe Medspa & Wellness \u2014 5 (202) in miramar",
-        "Verla Aesthetics \u2014 5 (137) in north-miami",
-        "Icon Aesthetics & Wellness \u2014 5 (226) in pompano-beach",
-        "Delray Laser and Medical Spa \u2014 5 (244) in delray-beach",
-        "The Aesthetics Lounge (PBG) \u2014 5 (530) in palm-beach-gardens",
-        "Tighter Lines Aesthetics \u2014 5 (139) in jupiter",
-        "AlluraMD Aesthetics (Jupiter) \u2014 5 (145) in jupiter",
-        "AlluraMD Aesthetics (Wellington) \u2014 5 (124) in wellington",
-        "Wellington Rejuvenation Center \u2014 5 (343) in wellington",
-        "Palm Beach Anti-Aging (RPB) \u2014 5 (129) in royal-palm-beach",
-        "Miami Plastic Surgery \u2014 5 (404) in kendall"
+        "Skin Healthy Miami — 5 (180) in brickell",
+        "Only Med Glam — 5 (109) in coral-gables",
+        "ILU Collective — 5 (200) in coral-gables",
+        "Miami Beach Laser & Aesthetics — 5 (123) in south-beach",
+        "Lavish Laser Med Spa (Coconut Grove) — 5 (141) in coconut-grove",
+        "ALEXIS LAUREN — 5 (458) in coral-gables",
+        "The Plump Room — 5 (188) in coral-gables",
+        "ProMD Health Fort Lauderdale — 5 (181) in fort-lauderdale",
+        "DRIP Health & MedSpa — 5 (496) in miami-lakes",
+        "FaceBeauty Med Spa — 5 (300) in doral",
+        "C10 Wellness & Rejuvenation — 5 (205) in kendall",
+        "Hollywood Laser Med Spa — 5 (224) in hollywood",
+        "Laser Med Spa (Hollywood) — 5 (224) in hollywood",
+        "Weston Med Spa — 5 (603) in weston",
+        "Zen Luxe Medspa & IV Lounge — 5 (122) in coral-springs",
+        "BeautyFi Medical Spa — 5 (134) in hallandale-beach",
+        "BeWell MedSpa — 5 (219) in oakland-park",
+        "NutriFlo Medspa & IV Lounge — 5 (193) in parkland",
+        "Rejuvenation Medical Aesthetics & Spa — 5 (133) in sunny-isles-beach",
+        "Angel Aesthetics — 5 (145) in fort-lauderdale",
+        "Beauty First Med-Spa — 5 (306) in homestead",
+        "AlluraMD Aesthetics + Wellness — 5 (187) in dania-beach",
+        "Derma Science Med Spa — 5 (187) in dania-beach",
+        "Skin Club South Florida — 5 (351) in deerfield-beach",
+        "My 1 Med Spa — 5 (579) in key-biscayne",
+        "Dluxe Medspa & Wellness — 5 (202) in miramar",
+        "Verla Aesthetics — 5 (137) in north-miami",
+        "Icon Aesthetics & Wellness — 5 (226) in pompano-beach",
+        "Delray Laser and Medical Spa — 5 (244) in delray-beach",
+        "The Aesthetics Lounge (PBG) — 5 (530) in palm-beach-gardens",
+        "Tighter Lines Aesthetics — 5 (139) in jupiter",
+        "AlluraMD Aesthetics (Jupiter) — 5 (145) in jupiter",
+        "AlluraMD Aesthetics (Wellington) — 5 (124) in wellington",
+        "Wellington Rejuvenation Center — 5 (343) in wellington",
+        "Palm Beach Anti-Aging (RPB) — 5 (129) in royal-palm-beach",
+        "Biomedex and Wellness — 5.0 (102) in wellington",
+        "Aestheta — 5.0 (114) in davie",
+        "Skin Lounge — 5.0 (127) in miramar",
+        "Nefertiti Spa — 5.0 (545) in plantation",
+        "Miami Plastic Surgery — 5 (404) in kendall"
       ]
+    },
+    {
+      "id": "publish-status-and-branch-divergence-2026-08-18",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": true,
+      "severity": "operator-action-required-HARD-GATED",
+      "summary": "Merge DONE and verified. Only the push/deploy remains, and that is the operator's to run.",
+      "publish_status": {
+        "main_branch": "DOES NOT EXIST. `git ls-remote --heads origin` shows no main/master/production branch. There is nothing to merge into — the repo runs on auto/build plus feature branches.",
+        "local_commits_unpushed": 10,
+        "live_site": "octoru.com resolves and is served by Cloudflare (robots.txt live, sitemap directive present). It therefore reflects some earlier deploy, NOT today's local work.",
+        "conclusion": "Today's 504-page build exists only in this working copy. Nothing from today is published."
+      },
+      "divergence_hazard": {
+        "counts": "origin/auto/build has 22 commits we lack; we have 10 it lacks.",
+        "remote_work_includes": [
+          "46a6674 Merge PR #34 seo/striking-2026-08-18 (TODAY — parallel session)",
+          "09a7815 builder: overlay per-clinic published prices from data/prices_published.json",
+          "2efe2e3 branded 404 page (wrangler expects generated/404.html)",
+          "8c2d82d robots.txt with sitemap directive",
+          "12a9b5d /learn/ footer links",
+          "e054002 city hub H1 vs SEO title separation"
+        ],
+        "why_this_matters": "A careless merge here is precisely what created commit cb2a815, which silently deleted five treatment definitions and every canonical tag on the site — the damage this whole session was spent repairing. Both sides touch builder/build.py and templates/. This merge needs a human resolving conflicts file by file, not an -X ours/theirs.",
+        "notable": "The remote's data/prices_published.json overlay directly addresses the pricing gap identified today. Worth merging IN, carefully."
+      },
+      "why_builder_stopped": "CLAUDE.md hard gate: 'Merge to main, push to production, or trigger any deploy/publish of live pages' — never autonomously, even on explicit request. 'Publishing is the irreversible boundary.' wrangler.toml shows Cloudflare runs builder/build.py and serves generated/, so a push to a connected branch can itself trigger a deploy.",
+      "operator_next_steps": [
+        "1. git fetch origin auto/build",
+        "2. git merge origin/auto/build   # resolve conflicts in builder/build.py and templates/ BY HAND",
+        "3. Verify after merging: grep -c 'iv-therapy\\|morpheus8\\|hydrafacial\\|chemical-peel\\|dermal-fillers' builder/build.py should be 25, and grep -c 'rel=\"canonical\"' templates/treatment-page.html.j2 should be 1. If either is 0, the merge ate them again.",
+        "4. python3 builder/build.py && confirm 'built=504 skipped=0' and 'link check: all internal links valid'",
+        "5. git push origin auto/build   # this may trigger the Cloudflare deploy",
+        "6. After deploy: submit /sitemap.xml in Search Console and request indexing."
+      ],
+      "open_risk_before_publish": "The ratings integrity halt (perfect-at-volume share 23.7%, threshold 20%) is still open on your 2026-06-06 override. Nefertiti Spa at 5.0/545 is the most implausible row.",
+      "merge_completed": {
+        "at": "2026-08-18",
+        "by": "Rolando (operator)",
+        "commit": "f8c32f8",
+        "result": "clean auto-merge, no conflicts; all post-merge verification greps passed; rebuild produced 504 pages, 0 skipped, all internal links valid, 64 published prices overlaid.",
+        "still_outstanding": "git push origin auto/build — hard-gated, operator only. Then submit /sitemap.xml in Search Console and request indexing."
+      }
+    },
+    {
+      "id": "implausible-ratings-new-rows-2026-08-18",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "Row flags rose 36 -> 40 today. Nefertiti Spa (plantation) is 5.0 across 545 reviews — the most implausible row in the corpus.",
+      "detail": "Others added today: Aestheta 5.0/114 (davie), Skin Lounge 5.0/127 (miramar), Biomedex 5.0/102 (wellington). All are real API-sourced Google data, not synthetic. The corpus-level share still improved today (24.6% -> 23.7%) because high-volume non-perfect clinics were added in greater number.",
+      "note": "This sits under the existing integrity-corpus-perfect-share item, which you overrode on 2026-06-06."
+    },
+    {
+      "id": "scope-boundary-beauty-salons-vs-med-spas",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-decision-recommended",
+      "summary": "Two borderline businesses were handled inconsistently and the rule should be yours, not the builder's.",
+      "detail": "XO Salon & Spa (sunny-isles-beach) was DROPPED because its primary Google category is a hair salon, even though its own menu names lip filler and it runs a physician-injector med-spa arm. Pink Beauty Lounge (sunny-isles-beach) was KEPT because it has a dedicated HydraFacial MD page with published prices — but it also sells hair, nails, lashes and brows. Nefertiti Spa (plantation) is a 'spa' selling chemical peels and plasma microneedling. All three are the same species of edge case.",
+      "decision_needed": "Define the inclusion rule: medical-supervision required? primary Google category must be medical? or any business that verifiably performs the treatment?",
+      "consequence": "A strict rule removes Pink Beauty Lounge and Nefertiti Spa and re-opens 3 pages. A loose rule re-admits XO Salon.",
+      "status": "RESOLVED",
+      "resolved_at": "2026-08-18",
+      "resolution": "Operator decision (Rolando, via Cowork, 2026-08-18): KEEP the clinics as listed. Pink Beauty Lounge, Nefertiti Spa and Skin Lounge stay. Rule going forward: a business qualifies if it verifiably performs the treatment on its own published menu, regardless of whether it also sells hair/nails/lashes. XO Salon & Spa was dropped earlier under the stricter reading and may be re-added on a future pass."
+    },
+    {
+      "id": "coolsculpting-market-fit",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-decision-recommended",
+      "summary": "CoolSculpting is one of five original active treatments but accounts for 13 of the 30 remaining one-short pages. Field study says the brand has been displaced in independent med spas.",
+      "evidence": "Across south-beach, coral-gables, kendall and pembroke-pines, only 1-3 of ~10 clinics per city name CoolSculpting on their own website. Independents have re-tooled to Emsculpt/Emsculpt Neo, Morpheus8, Evolve, VelaShape and GLP-1 injectables. CoolSculpting now sits mainly with dermatology practices and national chains (Ideal Image, LaserAway).",
+      "consequence": "Most coolsculpting city pages will stay one short no matter how much prospecting is done. This is a market fact, not a data gap.",
+      "recommendation": "Swap coolsculpting for morpheus8 in config/thresholds.json seed_scope.categories['med-spa'].treatments. morpheus8 definitions are already restored in build.py and it appeared at clinics in all four tested cities. HARD-GATED — operator only.",
+      "counter_argument": "CoolSculpting still has real search demand even where supply is thin; keeping it costs nothing except pages that never build. Dropping it removes an honest empty category. Your call."
+    },
+    {
+      "id": "prospecting-2026-08-18-spot-checks",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "11 clinics added 2026-08-18. Four carry caveats worth a human spot-check before deploy.",
+      "items": [
+        "Injection Lab (dania-beach) — 5.0 on only 9 reviews. Real and API-sourced but statistically thin; the Beta-posterior ranking places it below higher-volume providers. Consider a minimum-review floor in config.",
+        "Biomedex and Wellness (wellington) — 5.0 at 102 reviews; trips the >=4.95 & n>=100 row flag and adds to the open ratings-distribution item.",
+        "Well Labs+ (coconut-creek) — three different phone numbers exist (site local, site toll-free, Google). Used the site's local number; verify.",
+        "ProMD Health Wellington — the site publishes only a corporate number; the local number came from the permitted API."
+      ],
+      "omitted_on_purpose": [
+        "Refresh - Aesthetics & Wellness (hallandale-beach) — its own site does not list a Hallandale Beach location, so the GBP address could not be corroborated.",
+        "Advanced Dermatology (weston) — location page is JS-rendered; no service menu could be verified.",
+        "Several Doral/Weston contouring clinics — they run Emsculpt/Cryoslim/VenSculpt/Lipofreez, not CoolSculpting, and were not mapped to the coolsculpting slug."
+      ]
+    },
+    {
+      "id": "aviva-midtown-vs-design-district-geo",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "verify",
+      "summary": "Aviva Medical Spa (88 NE 39th St, 33137) self-describes as 'Miami Design District' but is filed under midtown.",
+      "detail": "The directory's place taxonomy has no design-district entry. Aviva sits ~0.5 km from the midtown centroid, same ZIP as the existing midtown listing Skin Local (3431 NE 1st Ave). Filed as midtown so the pages could build. If you'd rather be strict, either add a design-district place to data/places.json (it would then be a 1-clinic city and hold) or leave as is.",
+      "affects": "5 of the 6 midtown med-spa pages include Aviva."
+    },
+    {
+      "id": "merge-cb2a815-reverted-july-treatment-expansion",
+      "opened_at": "2026-08-18",
+      "opened_by": "builder",
+      "blocking": false,
+      "severity": "operator-decision-required",
+      "summary": "Merge cb2a815 (2026-08-04) silently reverted builder/build.py and config/thresholds.json to the June lineage, dropping FIVE med-spa treatments that were already committed and merged in July: iv-therapy, morpheus8, dermal-fillers, hydrafacial, chemical-peel. The builder stopped rather than guess whether this was intentional.",
+      "evidence": {
+        "merge_commit": "cb2a815 — parents 085fc2f (Jun 6, plastic-surgery vertical) and 3dce59c (Jul 26, PR #27)",
+        "treatments_present_on_jul_side_absent_at_head": [
+          "iv-therapy",
+          "morpheus8",
+          "dermal-fillers",
+          "hydrafacial",
+          "chemical-peel"
+        ],
+        "build_py": "each treatment had 5 dict entries (TREATMENT_NAMES / FAQS / UNITS / GUIDANCE / DESC); HEAD has 0 for all five",
+        "config_thresholds": "seed_scope.treatments on Jul side = 10 slugs; at HEAD = the original 5. Config is HARD-GATED — builder cannot restore it.",
+        "source_commits_lost": [
+          "2feb188 iv-therapy",
+          "62e398d morpheus8",
+          "03267c1 dermal-fillers",
+          "2d515e5 hydrafacial",
+          "d11de5d chemical-peel",
+          "0cdc5ac/d58c726/5cfe213/183364d/2fc9470 config activations"
+        ],
+        "note": "The plastic-surgery vertical (June side) survived the merge intact; only the July med-spa expansion was lost."
+      },
+      "why_builder_stopped": "Restoring is a revert-of-a-revert across two lineages, and the config half is hard-gated. Whether the July med-spa expansion was intentionally abandoned in favour of the plastic-surgery vertical is a strategy call the builder must not make.",
+      "operator_decision_needed": "REMAINING: re-add the five slugs to config/thresholds.json -> seed_scope.categories['med-spa'].treatments (and seed_scope.treatments for back-compat): hydrafacial, chemical-peel, dermal-fillers, iv-therapy, morpheus8. Hard-gated — operator only. Until then builder/build.py carries the definitions but no pages are generated for them.",
+      "data_coverage_if_restored": {
+        "iv-therapy": "8 clinics, exactly 2 each in miami-lakes, doral, plantation, parkland -> 4 pages at min_listings=2; ZERO clinics report an iv-therapy starting price, so every page renders the no-prices FAQ variant and a 'request a quote' cost block",
+        "caution": "Verify the other four treatments' listing counts before activating; thin treatment x city pages will be held by the quality gate."
+      },
+      "also_noted": {
+        "generated_stale": "generated/ was last built 2026-06-06 (085fc2f) and is stale against current templates — a clean rebuild changes 752 files (brand label, disclaimers, last-updated dates, phone-fill from f7ebb03). No rebuild was committed; resolve the merge question first so the rebuild is not baked on a half-reverted builder.",
+        "build_env": "builder/build.py crashes at the end copying assets (PermissionError unlinking generated/assets/favicon.ico) when run from the sandbox mount; page rendering completes first. Non-blocking, environment-specific."
+      },
+      "builder_action_taken": {
+        "at": "2026-08-18",
+        "decision_by": "Rolando (operator, via Cowork)",
+        "done": "Restored all five treatments' definitions into builder/build.py (TREATMENT_NAMES / FAQS / UNITS / GUIDANCE / DESC). Content verified byte-identical to the July lineage (3dce59c) by AST comparison. Cherry-pick conflicted against the June build.py, so the five 23-line blocks were re-inserted after 'microneedling' in the July key order. Plastic-surgery vertical untouched.",
+        "not_done": "config/thresholds.json seed_scope NOT touched (hard-gated). generated/ NOT rebuilt and NOT committed, per operator instruction to hold until config is settled.",
+        "stage_2": {
+          "at": "2026-08-18",
+          "done": "Operator applied activate-staged.patch -> hydrafacial + chemical-peel live (12 pages). Builder restored <link rel=canonical> to templates/treatment-page.html.j2 (also lost to cb2a815; 0/473 treatment pages carried a canonical, now 473/473) and rebuilt generated/ in 9e759bd — first rebuild since 2026-06-06.",
+          "remaining": "dermal-fillers, iv-therapy, morpheus8 still absent from config/thresholds.json seed_scope (hard-gated). Definitions are in build.py and will build the moment they are activated. Held pending prospecting — see state/proposed/WORKLIST_unlock_and_pricing.md.",
+          "audit_note": "templates/ AUDIT COMPLETE (2026-08-18). `git diff 3dce59c HEAD -- templates/` reviewed line by line. Removed-line count per file: advertise 0, claim 0, guide 0, hub 0, treatment-page 0 (after the canonical restore), home.html.j2 28. Those 28 lines are a DELIBERATE June rewrite making the homepage category-aware for the plastic-surgery vertical (treatment pills -> category pills; flat treat-grid -> per-category blocks; setActiveTreat -> setActiveCat). Treatment-level filtering is retained (activeTreat/okTreat/data-treats all still present) and the live homepage renders all 14 treatment cards including the newly-activated hydrafacial and chemical-peel. NOT a regression. The favicon/apple-touch-icon/og-image/twitter-card additions across 5 templates are June work HEAD gained, not lost. CONCLUSION: the canonical tag was the only template casualty of cb2a815 and it is fixed."
+        }
+      },
+      "status": "PARTIALLY RESOLVED"
     },
     {
       "id": "rebrand-claude-md-hard-gated",
@@ -69,11 +234,11 @@
       "blocking": false,
       "severity": "operator-action-required",
       "summary": "Octoru rebrand sweep is complete across all templates, assets, build.py, data, docs and the design reference. CLAUDE.md still contains 2 'GlowMap' references but it is HARD-GATED (the autonomy boundary forbids the builder editing CLAUDE.md). Surfacing for the operator to apply by hand.",
-      "operator_action": "In CLAUDE.md, change the title 'GlowMap Miami \u2014 Autonomous Build Goal' -> 'Octoru \u2014 Autonomous Build Goal', and 'GlowMap Miami, a med-spa treatment directory' -> 'Octoru, a health & wellness provider directory'. (Optional: the loop still references 'Miami med-spa directory' framing \u2014 update to national health & wellness if desired.)",
+      "operator_action": "In CLAUDE.md, change the title 'GlowMap Miami — Autonomous Build Goal' -> 'Octoru — Autonomous Build Goal', and 'GlowMap Miami, a med-spa treatment directory' -> 'Octoru, a health & wellness provider directory'. (Optional: the loop still references 'Miami med-spa directory' framing — update to national health & wellness if desired.)",
       "why_not_done": "CLAUDE.md is on the hard-gated list ('Edit CLAUDE.md, anything in config/'). The builder never edits it autonomously, even on explicit request.",
       "status": "RESOLVED",
       "resolved_at": "2026-06-06",
-      "resolution": "Operator (via Cowork) rebranded CLAUDE.md in c05af49 \u2014 3 text-only edits (title, descriptor, goal framing); all rules, gates and limits untouched."
+      "resolution": "Operator (via Cowork) rebranded CLAUDE.md in c05af49 — 3 text-only edits (title, descriptor, goal framing); all rules, gates and limits untouched."
     },
     {
       "id": "favicon-and-og-image-bitmaps",
@@ -108,7 +273,7 @@
       "blocking": false,
       "severity": "info",
       "summary": "Enforced build complete: 94 listing pages built across 38 cities / 3 counties, all passed the quality gate. Deploy is the separate, human-gated step (Vercel/Cloudflare). After deploy: connect Search Console, submit /sitemap.xml, request indexing.",
-      "note_on_thin_cities": "28 places have at least one treatment page held at min_listings=2. To grow held pages into built pages: prospect more rated clinics per city (see PLAYBOOK_listing_density_and_pricing.md). Lower min_listings in config (not recommended \u2014 2 is already the floor; single-clinic pages are too thin to rank)."
+      "note_on_thin_cities": "28 places have at least one treatment page held at min_listings=2. To grow held pages into built pages: prospect more rated clinics per city (see PLAYBOOK_listing_density_and_pricing.md). Lower min_listings in config (not recommended — 2 is already the floor; single-clinic pages are too thin to rank)."
     },
     {
       "id": "rollup-pages-still-thin",
@@ -116,16 +281,16 @@
       "opened_by": "builder",
       "blocking": false,
       "severity": "info",
-      "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions \u2014 still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
-      "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has \u22652 qualifying clinics for a treatment, it builds its own page instead of rolling up."
+      "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions — still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
+      "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has ≥2 qualifying clinics for a treatment, it builds its own page instead of rolling up."
     }
   ],
   "_resolved": [
-    "thin-pages-completeness-decision \u2014 RESOLVED: operator added completeness block to config/thresholds.json on 2026-06-02 (min_listings=2, max_featured_per_page=3, enforce=true). Mode flipped from DRY-RUN to ENFORCED.",
-    "operator-add-max_featured_per_page \u2014 RESOLVED: set to 3 in completeness block.",
-    "prospector-data-source / fetch_pages wiring \u2014 RESOLVED.",
-    "places-mcp-not-visible-to-builder \u2014 RESOLVED: ratings supplied via permitted Places API.",
-    "operator-add-geo-tree \u2014 partial: seed_scope.neighborhoods used; counties derived via CITY_COUNTY + places.json.",
-    "activate-palm-beach-expansion-in-config \u2014 RESOLVED: 7 PB cities activated, rated, built."
+    "thin-pages-completeness-decision — RESOLVED: operator added completeness block to config/thresholds.json on 2026-06-02 (min_listings=2, max_featured_per_page=3, enforce=true). Mode flipped from DRY-RUN to ENFORCED.",
+    "operator-add-max_featured_per_page — RESOLVED: set to 3 in completeness block.",
+    "prospector-data-source / fetch_pages wiring — RESOLVED.",
+    "places-mcp-not-visible-to-builder — RESOLVED: ratings supplied via permitted Places API.",
+    "operator-add-geo-tree — partial: seed_scope.neighborhoods used; counties derived via CITY_COUNTY + places.json.",
+    "activate-palm-beach-expansion-in-config — RESOLVED: 7 PB cities activated, rated, built."
   ]
 }

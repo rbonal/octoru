@@ -221,6 +221,11 @@ TREATMENT_NAMES = {
     "coolsculpting": "CoolSculpting",
     "laser-hair-removal": "Laser hair removal",
     "microneedling": "Microneedling",
+    "hydrafacial": "HydraFacial",
+    "chemical-peel": "Chemical peel",
+    "dermal-fillers": "Dermal fillers",
+    "iv-therapy": "IV therapy",
+    "morpheus8": "Morpheus8",
     # plastic-surgery vertical
     "bbl": "Brazilian Butt Lift (BBL)",
     "tummy-tuck": "Tummy Tuck",
@@ -396,6 +401,101 @@ TREATMENT_FAQS = {
         {
             "q": "What is the downtime after microneedling?",
             "a": "Standard microneedling causes redness and mild sensitivity for 24–48 hours — similar to a sunburn. Most patients return to work the next day with light-coverage makeup. RF microneedling may involve two to three days of more noticeable redness and some swelling. Either way, sun protection is essential for at least two weeks following treatment.",
+        },
+    ],
+    "hydrafacial": [
+        {
+            "q": "How much does a HydraFacial cost in {city}?",
+            "a_prices": "HydraFacial prices vary by tier (signature, deluxe, platinum) and any serum booster add-ons. Providers in our {city} directory list their starting prices above \u2014 a consultation will confirm which tier fits your skin goals.",
+            "a_no_prices": "Published Florida med spa prices for a HydraFacial most commonly run $150\u2013$350 per session. Signature (basic) sessions are typically $150\u2013$200, deluxe versions with boosters $200\u2013$300, and platinum tiers $275\u2013$350. Packages and memberships usually reduce the per-session cost.",
+        },
+        {
+            "q": "How often should you get a HydraFacial?",
+            "a": "Every four to six weeks is the standard recommendation, matching the skin's roughly 28-day cell-turnover cycle. Acne-prone or congested skin sometimes starts with sessions every two to three weeks before stretching to monthly maintenance. Going more often than every two weeks is generally discouraged, because the built-in exfoliation can over-stress the skin barrier.",
+        },
+        {
+            "q": "What does a HydraFacial treat?",
+            "a": "It is best for surface-level concerns: dullness, dehydration, congested pores and blackheads, uneven tone and mild texture. The treatment is gentle enough for all skin types, including sensitive skin. For deeper concerns such as pitted acne scars or skin laxity, collagen-building treatments like microneedling tend to deliver better results.",
+        },
+        {
+            "q": "Is there any downtime after a HydraFacial?",
+            "a": "No \u2014 that is one of its main draws. Most people leave with an immediate glow and return to their day right away; some notice mild redness for a few hours. Makeup can usually be applied the same day, and daily sun protection helps preserve the result.",
+        },
+    ],
+    "chemical-peel": [
+        {
+            "q": "How much does a chemical peel cost in {city}?",
+            "a_prices": "Chemical peel prices depend on the peel depth \u2014 light, medium or deep \u2014 and how many sessions your plan includes. Providers in our {city} directory list their starting prices above; a consultation confirms which peel fits your skin and budget.",
+            "a_no_prices": "Published prices for a professional chemical peel most commonly run about $150 to $800 per session, with light superficial peels at the lower end and medium-depth peels higher; deep peels cost more and are performed far less often. Clinics frequently sell light and medium peels as a series of three to six sessions, so ask about package pricing.",
+        },
+        {
+            "q": "What does a chemical peel treat?",
+            "a": "Chemical peels resurface the skin to improve dullness, uneven tone, sun spots, melasma, post-acne discoloration, rough texture and fine lines. Lighter peels handle surface concerns with little downtime; deeper peels reach further to address more stubborn pigmentation and lines. For pitted acne scars or skin laxity, collagen-building treatments like microneedling are often a better fit.",
+        },
+        {
+            "q": "How many chemical peel sessions will I need?",
+            "a": "Light and medium peels rarely reach their full result in one visit, so providers commonly recommend a series of three to six sessions spaced about four to six weeks apart, followed by occasional maintenance. Deeper peels can produce a bigger change in a single treatment but need more recovery and are done far less often. A provider tailors the number of sessions to your skin concern.",
+        },
+        {
+            "q": "Is there downtime after a chemical peel?",
+            "a": "It depends on the depth. Light peels usually involve little to no downtime \u2014 mild flaking and redness for a day or two. Medium peels can cause several days of visible peeling and redness, and deep peels may need a week or more of recovery. Diligent sun protection afterward is essential, because freshly resurfaced skin is more sensitive to the sun.",
+        },
+    ],
+    "dermal-fillers": [
+        {
+            "q": "How much do dermal fillers cost in {city}?",
+            "a_prices": "Dermal filler pricing is per syringe and depends on the filler type and how many syringes your treatment needs. Providers in our {city} directory list their starting prices above; a consultation confirms the right filler and syringe count for your goal.",
+            "a_no_prices": "Published prices for dermal fillers most commonly run about $600 to $1,200 per syringe. Hyaluronic-acid fillers such as Juvederm and Restylane tend to sit near the middle of that range, while thicker or longer-lasting fillers cost more. Most areas need one to two syringes, so the total depends on how many areas you treat \u2014 ask for a per-syringe quote and an estimate of syringes.",
+        },
+        {
+            "q": "What do dermal fillers treat?",
+            "a": "Dermal fillers restore volume and smooth lines rather than freezing muscles. They are commonly used for cheek and midface volume, jawline and chin definition, nasolabial folds and marionette lines, lips, and under-eye hollows. For wrinkles caused by muscle movement \u2014 like forehead lines and crow's feet \u2014 a neuromodulator such as Botox is usually the better tool, and many people combine the two.",
+        },
+        {
+            "q": "How long do dermal fillers last?",
+            "a": "It depends on the product and where it is placed. Most hyaluronic-acid fillers last roughly 6 to 18 months, with thinner lip fillers on the shorter end and firmer cheek or jawline fillers lasting longer. Calcium-hydroxylapatite and poly-L-lactic-acid fillers can last a year or more. Areas with a lot of movement break filler down faster, so periodic touch-ups keep results consistent.",
+        },
+        {
+            "q": "Is there downtime after dermal fillers?",
+            "a": "Downtime is usually minimal. Most people return to normal activities the same day, though mild swelling, redness or bruising at the injection sites is common for a few days \u2014 under-eye and lip areas tend to swell most. Providers generally advise avoiding strenuous exercise, alcohol and blood-thinning medications for about 24 hours to limit bruising.",
+        },
+    ],
+    "iv-therapy": [
+        {
+            "q": "How much does IV therapy cost in {city}?",
+            "a_prices": "IV therapy is priced per session and varies with the formula \u2014 basic hydration drips cost less than vitamin blends or specialty infusions like NAD+. Providers in our {city} directory list their starting prices above; a consultation confirms which drip fits your goal.",
+            "a_no_prices": "Published prices for a single IV therapy session most commonly run about $100 to $400. Basic hydration and simple vitamin drips sit at the lower end, classic blends like a Myers' cocktail in the middle, and specialty or high-dose infusions such as NAD+ cost more. Many clinics offer membership or package pricing that lowers the per-session cost.",
+        },
+        {
+            "q": "What is IV therapy used for?",
+            "a": "IV therapy delivers fluids, electrolytes, vitamins and minerals straight into the bloodstream, bypassing digestion. Med spas and IV lounges market it for hydration, an energy boost, immune support, recovery after exercise or travel, and hangover relief. It is worth knowing that rigorous clinical evidence for many of these specific benefits is limited, so it is best approached as a wellness service rather than a proven medical treatment. A licensed provider can advise whether it makes sense for you.",
+        },
+        {
+            "q": "How long does an IV therapy session take, and how often can you get it?",
+            "a": "A typical drip takes about 30 to 60 minutes while you sit comfortably. Frequency depends on the formula and your goal \u2014 some people get a drip occasionally for recovery or before an event, while others follow a regular schedule such as monthly. There is no universal rule; a provider will recommend a cadence based on your needs and health.",
+        },
+        {
+            "q": "Is IV therapy safe, and are there side effects?",
+            "a": "For healthy adults, IV therapy given by a licensed professional is generally considered low-risk, but it is not without side effects. The most common are discomfort, bruising or, rarely, infection at the insertion site, plus a warm or flushed sensation. People with heart, kidney or certain other conditions, and anyone on medications, should check with a doctor first, because high-dose vitamins and extra fluid are not appropriate for everyone.",
+        },
+    ],
+    "morpheus8": [
+        {
+            "q": "How much does Morpheus8 cost in {city}?",
+            "a_prices": "Morpheus8 is priced per session and by the area treated \u2014 a small facial area costs less than face-and-neck or a body area. Providers in our {city} directory list their starting prices above; a consultation confirms the plan and session count for your goal.",
+            "a_no_prices": "Published prices for a single Morpheus8 session most commonly run about $600 to $1,800 for the face, with the neck or body areas costing more. Because a full result usually takes a series of about three sessions, many clinics sell discounted packages \u2014 ask for both the per-session price and package pricing.",
+        },
+        {
+            "q": "What does Morpheus8 treat?",
+            "a": "Morpheus8 uses radiofrequency energy delivered through microneedles to remodel the deeper layers of skin. It is used to firm mild skin laxity, soften lines and wrinkles, improve rough texture and large pores, and reduce acne scarring on the face, neck, jawline and body. Because it works deeper than standard microneedling, it is often chosen when surface treatments have not gone far enough, short of surgery.",
+        },
+        {
+            "q": "How many Morpheus8 sessions will I need, and is there downtime?",
+            "a": "Most providers recommend a series of about three sessions spaced roughly four to six weeks apart, though a single session can give a visible refresh. Downtime is modest: redness and a sandpaper-like texture for a few days, sometimes mild swelling. Results build over the following weeks to months as new collagen forms, so the full effect is not immediate.",
+        },
+        {
+            "q": "Is Morpheus8 better than regular microneedling?",
+            "a": "They are related but not the same. Standard microneedling creates tiny channels in the skin's surface to boost collagen; Morpheus8 adds radiofrequency heat and longer needles to reach deeper and add a tightening effect. Morpheus8 tends to do more for laxity and deeper concerns, while classic microneedling is gentler, cheaper and well suited to surface texture and tone. A provider can advise which fits your skin and budget.",
         },
     ],
     # ---------- plastic-surgery vertical FAQs ----------
@@ -677,6 +777,11 @@ TREATMENT_UNITS = {
     "coolsculpting": "per session",
     "laser-hair-removal": "per session",
     "microneedling": "per session",
+    "hydrafacial": "per session",
+    "chemical-peel": "per session",
+    "dermal-fillers": "per syringe",
+    "iv-therapy": "per session",
+    "morpheus8": "per session",
     # plastic surgery is quoted as a single surgical fee, not per-unit — no unit suffix.
     "bbl": "",
     "tummy-tuck": "",
@@ -692,6 +797,11 @@ TREATMENT_GUIDANCE = {
     "coolsculpting": "CoolSculpting is a non-surgical fat-reduction treatment that cools targeted areas; it is typically priced per session or per area, and several sessions may be suggested. Ask how many cycles a provider recommends for your goal.",
     "laser-hair-removal": "Laser hair removal reduces unwanted hair over a course of sessions; pricing is usually per session or per package and depends on the body area. Ask how many sessions are typical and which laser suits your skin type.",
     "microneedling": "Microneedling stimulates collagen to refine skin texture; it is usually priced per session, sometimes with radiofrequency or PRP add-ons. Ask what device is used and how many sessions are suggested.",
+    "hydrafacial": "A HydraFacial is a non-invasive hydradermabrasion treatment that cleanses, exfoliates, extracts and hydrates the skin with serums in one visit; it is usually priced per session, with tiered versions (signature, deluxe, platinum) and booster add-ons raising the price. There is no downtime. Ask which tier and boosters a provider recommends for your skin.",
+    "chemical-peel": "A chemical peel applies an acid solution \u2014 light peels use alpha- or beta-hydroxy acids like glycolic or salicylic, medium peels use TCA \u2014 to exfoliate the skin and improve tone, texture and mild discoloration; it is usually priced per session, and deeper peels or a series of sessions cost more. Downtime rises with the depth of the peel, from little to none for light peels to a week or more for deep ones. Ask which peel depth and how many sessions a provider recommends for your skin.",
+    "dermal-fillers": "Dermal fillers are injectable gels \u2014 most commonly hyaluronic acid (Juvederm, Restylane), sometimes calcium hydroxylapatite (Radiesse) or poly-L-lactic acid (Sculptra) \u2014 used to restore volume and smooth folds in the cheeks, jawline, chin, lips and under-eye area; they are usually priced per syringe, and the number of syringes depends on the area and goal. Most results are immediate and last from several months to over a year depending on the product and placement. Ask which filler and how many syringes a provider recommends for your goal.",
+    "iv-therapy": "IV therapy delivers fluids, electrolytes, vitamins and minerals directly into the bloodstream through a drip, usually over 30 to 60 minutes; it is priced per session, with specialty formulas such as NAD+ or higher-dose blends costing more. Providers market it for hydration, energy, immune support and hangover recovery, though robust clinical evidence for many of these specific benefits is limited. It should be given by a licensed medical professional \u2014 ask which formula fits your goal and whether it is appropriate for you.",
+    "morpheus8": "Morpheus8 is a radiofrequency (RF) microneedling device that combines fine microneedles with heat to remodel the deeper layers of skin, tightening and smoothing the face, neck and body; it is usually priced per session, and most people need a series of about three sessions. Because it reaches deeper than standard microneedling, it targets mild laxity, texture and acne scarring, with a little more downtime. Ask which areas and how many sessions a provider recommends for your skin.",
     # plastic-surgery vertical — surgical procedures. Safety-forward, board-certification-aware.
     "bbl": "A Brazilian Butt Lift (BBL) transfers your own fat — harvested by liposuction — to reshape and add volume to the buttocks. It is a surgical procedure performed under anesthesia and is among the higher-risk cosmetic surgeries, so it should be done only by a board-certified plastic surgeon in an accredited surgical facility. Pricing is usually a single surgical fee plus anesthesia and facility costs. Ask about the surgeon's fat-transfer technique, safety protocols, and recovery during your consultation.",
     "tummy-tuck": "A tummy tuck (abdominoplasty) removes excess skin and fat from the lower abdomen and tightens the underlying muscles, often after pregnancy or major weight loss. It is performed surgically under anesthesia, with several weeks of recovery. Choose a board-certified plastic surgeon operating in an accredited facility, and ask whether a full or mini tummy tuck suits you. Pricing is typically a single surgical fee plus anesthesia and facility costs.",
@@ -709,6 +819,11 @@ TREATMENT_DESC = {
     "coolsculpting": "Non-invasive fat reduction, priced per area.",
     "laser-hair-removal": "Multi-session hair reduction, priced by area.",
     "microneedling": "Collagen-induction skin treatment, per session.",
+    "hydrafacial": "Hydradermabrasion facial with serum infusion, per session.",
+    "chemical-peel": "Acid-based skin resurfacing peel, priced per session.",
+    "dermal-fillers": "Hyaluronic-acid facial volume restoration, priced per syringe.",
+    "iv-therapy": "IV vitamin and hydration drip therapy, priced per session.",
+    "morpheus8": "RF microneedling for skin tightening and resurfacing, priced per session.",
     # plastic-surgery vertical
     "bbl": "Fat-transfer buttock reshaping — surgical.",
     "tummy-tuck": "Abdominal skin and muscle tightening — surgical.",

@@ -1,0 +1,18 @@
+--- a/config/thresholds.json
++++ b/config/thresholds.json
+@@ -6,12 +6,13 @@
+ 
+   "seed_scope": {
+     "_note": "Expansion: scope widened by human (Rolando) on 2026-06-02 from the original 4 Miami-core neighborhoods to all 40 neighborhoods present in data/prospector/clinics.json (Miami-Dade + Broward + Palm Beach). Many of the new neighborhoods have only 1-2 clinics — the quality gate may still cull thin treatment-x-neighborhood pages. Narrow back later if pages underperform.",
+-    "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"],
++    "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling", "hydrafacial", "chemical-peel"],
+     "neighborhoods": ["aventura", "bal-harbour", "boca-raton", "boynton-beach", "brickell", "coconut-creek", "coconut-grove", "cooper-city", "coral-gables", "coral-springs", "dania-beach", "davie", "deerfield-beach", "delray-beach", "doral", "fort-lauderdale", "hallandale-beach", "hialeah", "hollywood", "homestead", "jupiter", "kendall", "key-biscayne", "lighthouse-point", "margate", "miami-lakes", "miami-springs", "midtown", "miramar", "north-miami", "north-palm-beach", "oakland-park", "palm-beach-gardens", "palmetto-bay", "parkland", "pembroke-pines", "pinecrest", "plantation", "pompano-beach", "royal-palm-beach", "south-beach", "sunny-isles-beach", "sunrise", "surfside", "wellington", "west-palm-beach", "weston"],
+     "_categories_note": "Per-vertical treatment slugs. Builder builds each category's treatments across the shared neighborhood scope. 'treatments' above is retained as the med-spa default for back-compat.",
+     "categories": {
+       "med-spa": {
+-        "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling"]
++        "_restore_note": "Stage 1 of the post-cb2a815 restore: activate only the two treatments with real listing density (6 buildable pages each). morpheus8/dermal-fillers/iv-therapy held pending prospecting.",
++        "treatments": ["botox", "lip-filler", "coolsculpting", "laser-hair-removal", "microneedling", "hydrafacial", "chemical-peel"]
+       },
+       "plastic-surgery": {
+         "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "liposuction", "rhinoplasty", "mommy-makeover", "facelift"]

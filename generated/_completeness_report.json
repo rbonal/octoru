@@ -1,13 +1,6 @@
 {
   "excluded_listings": [
     {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "botox@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Sisu Clinic (Brickell)",
       "page": "botox@fl/miami-dade/brickell",
       "missing": [
@@ -15,29 +8,8 @@
       ]
     },
     {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "lip-filler@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Sisu Clinic (Brickell)",
       "page": "lip-filler@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "laser-hair-removal@fl/miami-dade/brickell",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Brickell Cosmetic Center",
-      "page": "microneedling@fl/miami-dade/brickell",
       "missing": [
         "phone"
       ]
@@ -78,34 +50,6 @@
       ]
     },
     {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "botox@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "lip-filler@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "laser-hair-removal@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Savou Med Spa (Bal Harbour)",
-      "page": "microneedling@fl/miami-dade/bal-harbour",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Beauty First Med-Spa",
       "page": "botox@fl/miami-dade/homestead",
       "missing": [
@@ -122,27 +66,6 @@
     {
       "clinic": "Beauty First Med-Spa",
       "page": "microneedling@fl/miami-dade/homestead",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "botox@fl/miami-dade/miami-springs",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "lip-filler@fl/miami-dade/miami-springs",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Beauty By Design Med Spa",
-      "page": "microneedling@fl/miami-dade/miami-springs",
       "missing": [
         "phone"
       ]
@@ -190,62 +113,6 @@
       ]
     },
     {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "botox@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "lip-filler@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "laser-hair-removal@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Medical Aesthetics & Spa",
-      "page": "microneedling@fl/miami-dade/sunny-isles-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "botox@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "lip-filler@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "laser-hair-removal@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Rejuvenation Med Spa Boynton Beach",
-      "page": "microneedling@fl/palm-beach/boynton-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Flawless Palm Beach",
       "page": "botox@fl/palm-beach/west-palm-beach",
       "missing": [
@@ -297,13 +164,6 @@
     {
       "clinic": "Elite Skin & Beauty",
       "page": "microneedling@fl/palm-beach/west-palm-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Aesthetics Care Med Spa",
-      "page": "botox@fl/broward/coconut-creek",
       "missing": [
         "phone"
       ]
@@ -318,13 +178,6 @@
     {
       "clinic": "Aspire Medical Aesthetics",
       "page": "lip-filler@fl/broward/coconut-creek",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Aesthetics Care Med Spa",
-      "page": "laser-hair-removal@fl/broward/coconut-creek",
       "missing": [
         "phone"
       ]
@@ -561,48 +414,6 @@
       ]
     },
     {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "botox@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "lip-filler@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "NutriFlo Medspa & IV Lounge",
-      "page": "microneedling@fl/broward/parkland",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "botox@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "laser-hair-removal@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
-      "clinic": "Palm Beach Laser & Aesthetic",
-      "page": "microneedling@fl/broward/pompano-beach",
-      "missing": [
-        "phone"
-      ]
-    },
-    {
       "clinic": "Archetype Aesthetics",
       "page": "botox@fl/broward/sunrise",
       "missing": [
@@ -630,19 +441,7 @@
       "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/midtown",
-      "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/midtown",
+      "page": "coolsculpting@fl/miami-dade/midtown",
       "reason": "rolled up to miami: only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -650,15 +449,7 @@
       "reason": "rolled up to miami-beach: only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/bal-harbour",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/bal-harbour",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/bal-harbour",
+      "page": "microneedling@fl/miami-dade/bal-harbour",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -666,35 +457,19 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "lip-filler@fl/miami-dade/doral",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/miami-dade/doral",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/miami-dade/key-biscayne",
+      "page": "hydrafacial@fl/miami-dade/doral",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "botox@fl/miami-dade/miami-springs",
+      "page": "chemical-peel@fl/miami-dade/doral",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "lip-filler@fl/miami-dade/miami-springs",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/miami-springs",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/north-miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "botox@fl/miami-dade/sunny-isles-beach",
+      "page": "chemical-peel@fl/miami-dade/key-biscayne",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -702,15 +477,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/palm-beach/boca-raton",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/palm-beach/boynton-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/palm-beach/boynton-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -718,31 +485,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/palm-beach/wellington",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/palm-beach/wellington",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "botox@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/broward/coconut-creek",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "botox@fl/broward/dania-beach",
+      "page": "hydrafacial@fl/palm-beach/wellington",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -750,19 +493,23 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/davie",
+      "page": "hydrafacial@fl/broward/davie",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/hallandale-beach",
+      "page": "hydrafacial@fl/broward/hallandale-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "microneedling@fl/broward/hallandale-beach",
+      "page": "chemical-peel@fl/broward/hallandale-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "lip-filler@fl/broward/miramar",
+      "page": "coolsculpting@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "hydrafacial@fl/broward/miramar",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -778,39 +525,15 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/plantation",
+      "page": "coolsculpting@fl/broward/plantation",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "laser-hair-removal@fl/broward/pompano-beach",
+      "page": "hydrafacial@fl/broward/plantation",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
       "page": "coolsculpting@fl/broward/weston",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/broward/weston",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "botox@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "lip-filler@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "coolsculpting@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "laser-hair-removal@fl/miami-dade/miami",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "microneedling@fl/miami-dade/miami",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -826,28 +549,10 @@
       "treatment": "coolsculpting"
     },
     {
-      "clinic": "Skin Local",
+      "clinic": "4Ever Young Med Spa & Wellness Center (Miami Midtown)",
       "from_place": "midtown",
       "to_place": "miami",
-      "treatment": "botox"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "lip-filler"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "laser-hair-removal"
-    },
-    {
-      "clinic": "Skin Local",
-      "from_place": "midtown",
-      "to_place": "miami",
-      "treatment": "microneedling"
+      "treatment": "coolsculpting"
     },
     {
       "clinic": "LaserAway (Miami - South Beach)",
@@ -861,9 +566,9 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 121,
+      "pages": 175,
       "fallback_pages": 0,
-      "clinics": 145
+      "clinics": 175
     },
     {
       "category": "plastic-surgery",
@@ -873,14 +578,303 @@
     }
   ],
   "nearest_fallback_pages": 204,
+  "near_duplicates": {
+    "threshold": 0.7,
+    "min_listings": 2,
+    "count": 47,
+    "pages": [
+      {
+        "path": "fl/miami-dade/aventura/bbl",
+        "overlap": 0.732,
+        "closest": "fl/broward/plantation/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/bbl",
+        "overlap": 0.732,
+        "closest": "fl/miami-dade/aventura/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/kendall/tummy-tuck",
+        "overlap": 0.727,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/wellington/tummy-tuck",
+        "overlap": 0.727,
+        "closest": "fl/miami-dade/kendall/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/miramar/tummy-tuck",
+        "overlap": 0.727,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/coconut-grove/rhinoplasty",
+        "overlap": 0.725,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/midtown/rhinoplasty",
+        "overlap": 0.725,
+        "closest": "fl/miami-dade/coconut-grove/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/wellington/rhinoplasty",
+        "overlap": 0.725,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/kendall/rhinoplasty",
+        "overlap": 0.724,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/coconut-grove/facelift",
+        "overlap": 0.723,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/midtown/facelift",
+        "overlap": 0.723,
+        "closest": "fl/miami-dade/coconut-grove/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/wellington/facelift",
+        "overlap": 0.723,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/kendall/breast-augmentation",
+        "overlap": 0.722,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/wellington/breast-augmentation",
+        "overlap": 0.722,
+        "closest": "fl/miami-dade/kendall/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/miramar/breast-augmentation",
+        "overlap": 0.722,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/boca-raton/bbl",
+        "overlap": 0.721,
+        "closest": "fl/miami-dade/aventura/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/miramar/facelift",
+        "overlap": 0.721,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/aventura/tummy-tuck",
+        "overlap": 0.72,
+        "closest": "fl/broward/miramar/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/tummy-tuck",
+        "overlap": 0.72,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/hollywood/bbl",
+        "overlap": 0.719,
+        "closest": "fl/miami-dade/aventura/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/jupiter/rhinoplasty",
+        "overlap": 0.719,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/kendall/mommy-makeover",
+        "overlap": 0.719,
+        "closest": "fl/palm-beach/wellington/mommy-makeover",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/wellington/mommy-makeover",
+        "overlap": 0.719,
+        "closest": "fl/miami-dade/kendall/mommy-makeover",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/brickell/rhinoplasty",
+        "overlap": 0.718,
+        "closest": "fl/miami-dade/miami-lakes/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/miami-lakes/rhinoplasty",
+        "overlap": 0.718,
+        "closest": "fl/miami-dade/brickell/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/fort-lauderdale/bbl",
+        "overlap": 0.717,
+        "closest": "fl/miami-dade/aventura/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/breast-augmentation",
+        "overlap": 0.716,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/kendall/liposuction",
+        "overlap": 0.716,
+        "closest": "fl/broward/miramar/liposuction",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/miramar/liposuction",
+        "overlap": 0.716,
+        "closest": "fl/miami-dade/kendall/liposuction",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/aventura/breast-augmentation",
+        "overlap": 0.715,
+        "closest": "fl/broward/miramar/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/weston/rhinoplasty",
+        "overlap": 0.715,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/facelift",
+        "overlap": 0.715,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/palm-beach/boynton-beach/bbl",
+        "overlap": 0.714,
+        "closest": "fl/miami-dade/aventura/bbl",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/mommy-makeover",
+        "overlap": 0.713,
+        "closest": "fl/palm-beach/wellington/mommy-makeover",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/coral-springs/tummy-tuck",
+        "overlap": 0.712,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/aventura/liposuction",
+        "overlap": 0.711,
+        "closest": "fl/broward/miramar/liposuction",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/plantation/liposuction",
+        "overlap": 0.71,
+        "closest": "fl/miami-dade/kendall/liposuction",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/miami-lakes/mommy-makeover",
+        "overlap": 0.71,
+        "closest": "fl/palm-beach/wellington/mommy-makeover",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/coral-springs/facelift",
+        "overlap": 0.71,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/south-beach/tummy-tuck",
+        "overlap": 0.709,
+        "closest": "fl/miami-dade/kendall/tummy-tuck",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/coral-springs/breast-augmentation",
+        "overlap": 0.707,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/south-beach/breast-augmentation",
+        "overlap": 0.705,
+        "closest": "fl/miami-dade/kendall/breast-augmentation",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/south-beach/rhinoplasty",
+        "overlap": 0.704,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/coral-springs/mommy-makeover",
+        "overlap": 0.704,
+        "closest": "fl/palm-beach/wellington/mommy-makeover",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/south-beach/facelift",
+        "overlap": 0.702,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/broward/coral-springs/liposuction",
+        "overlap": 0.701,
+        "closest": "fl/miami-dade/kendall/liposuction",
+        "n_listings": 1
+      },
+      {
+        "path": "fl/miami-dade/south-beach/liposuction",
+        "overlap": 0.7,
+        "closest": "fl/miami-dade/kendall/liposuction",
+        "n_listings": 1
+      }
+    ]
+  },
   "empty_fields": {
-    "unique_clinics": 155,
+    "unique_clinics": 198,
     "missing_phone": 0,
-    "missing_email": 153,
+    "missing_email": 182,
     "missing_address": 0,
-    "missing_booking_url": 51,
-    "price_empty_state_listings": 1608,
-    "price_total_listings": 1612
+    "missing_booking_url": 57,
+    "price_empty_state_listings": 1679,
+    "price_total_listings": 1799
   },
   "mode": "enforced",
   "thresholds_used": {

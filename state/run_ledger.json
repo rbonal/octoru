@@ -6,12 +6,43 @@
     "pages_built": 121
   },
   "last_run": {
-    "at": "2026-06-04",
-    "status": "success",
-    "reason": "Ranking -> Bayesian Beta-posterior lower bound (exact scipy.stats.beta.ppf). Editorial prior (PRIOR_MEAN=0.90/4.5\u2605, strength 50, conf 0.05) \u2014 fixed, never data-derived. rank_providers() orders organic only; Featured pinned separately. Top Rated badge = #1 organic with >=25 reviews, never paid. Integrity guards: per-row flag (>=4.95 & n>=100) + corpus HALT (>=4.95 & n>=50 share >20%).",
-    "ranking": "beta_posterior_lower_bound",
-    "integrity_corpus_perfect_share": "31.0% -> HALT flag",
-    "integrity_row_flags": 35,
-    "jupiter_fix": "Begin Anew 4.9(399) now #1 over AlluraMD 5.0(145)"
+    "at": "2026-08-18",
+    "status": "success — merged and rebuilt, awaiting operator push",
+    "reason": "Operator merged origin/auto/build (22 divergent commits from the parallel session) by hand. Auto-merge resolved cleanly with no conflicts; builder rebuilt on the merged tree.",
+    "merge_commit": "f8c32f8",
+    "merge_stat": "11 files changed, 1649 insertions(+), 55 deletions(-)",
+    "post_merge_verification": {
+      "treatment_definitions": "5 entries each for iv-therapy, morpheus8, hydrafacial, chemical-peel, dermal-fillers — all intact",
+      "canonical_tag": "present in templates/treatment-page.html.j2",
+      "config_scope": "7 med-spa treatments intact",
+      "clinics": 175,
+      "build_py": "compiles clean",
+      "verdict": "unlike cb2a815, this merge destroyed nothing."
+    },
+    "gained_from_remote": [
+      "data/prices_published.json — per-clinic published price overlay",
+      "data/reference_prices.json",
+      "generated/404.html (wrangler expects it)",
+      "generated/robots.txt with sitemap directive",
+      "seo/striking_distance_log.md",
+      "/learn/ footer links",
+      "city hub H1 vs SEO title separation"
+    ],
+    "pages_built": 504,
+    "skipped": 0,
+    "pages_held": 26,
+    "guides": 253,
+    "link_check": "all internal links valid",
+    "published_prices_overlaid": 64,
+    "price_gap": "empty-state listings 1785 -> 1679 of 1799 (the merged overlay plus today's 16 hand-sourced prices)",
+    "integrity": "perfect-at-volume share 23.7% (>20% halt) — human override on file; row flags 40",
+    "build_state_read": "active",
+    "budget": "2026-08 under monthly_token_cap (5,000,000)",
+    "remaining_operator_action": "git push origin auto/build — HARD-GATED, builder will not push. This may trigger the Cloudflare deploy."
+  },
+  "2026-08": {
+    "tokens": 0,
+    "runs": 7,
+    "pages_built": 504
   }
 }
