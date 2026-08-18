@@ -1,3 +1,17 @@
+{#- Per-page extra FAQ (self-contained; no build.py change needed). Keyed by
+    "<treatment-slug>/<city-slug>". Pages with no match render byte-identical.
+    Extra FAQs are provider-agnostic and use only sourced market figures — no
+    invented clinic facts, prices, ratings or credentials. Merged into both the
+    FAQPage schema and the visible FAQ section via _all_faqs. -#}
+{%- set _PAGE_EXTRA_FAQS = {
+  'lip-filler/coral-gables': [
+    {'q': 'How much is lip filler in Miami?', 'a': 'Coral Gables sits inside the Miami metro, so Miami-area pricing applies. RealSelf (patient-reported) puts the Miami-metro average around $700, within a national range of about $500–$1,400 per syringe (Juvéderm Ultra or Volbella). These are referential market figures, not quotes — none of the Coral Gables providers listed here publishes a rate online, so ask each clinic for a current price before you book.'},
+    {'q': 'Is lip filler the same as lip injections?', 'a': 'Yes — "lip injections" and "lip filler" describe the same treatment: a hyaluronic-acid dermal filler injected to add volume and shape to the lips. The result is temporary and can be dissolved with hyaluronidase if needed. Every Coral Gables lip filler provider listed here offers this treatment, so compare them on verified Google rating and location, then request a quote.'}
+  ]
+} %}
+{%- set _pg_key = (treatment.slug ~ '/' ~ neighborhood.slug) if (treatment is defined and neighborhood is defined) else '' %}
+{%- set _pg_extra_faqs = _PAGE_EXTRA_FAQS.get(_pg_key, []) %}
+{%- set _all_faqs = (faqs or []) + _pg_extra_faqs %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +48,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 
-{%- if faqs %}
+{%- if _all_faqs %}
 <!-- FAQPage schema — targets People Also Ask boxes in Google -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {%- for f in faqs %}
+    {%- for f in _all_faqs %}
     {
       "@type": "Question",
       "name": {{ f.q | tojson }},
@@ -270,12 +284,12 @@
   </section>
   {%- endif %}
 
-  {%- if faqs %}
+  {%- if _all_faqs %}
   <!-- FAQ section — FAQPage schema above targets People Also Ask rich results -->
   <section class="faq-section" id="faq">
     <h2>Frequently asked questions about {{ treatment.name | lower }} in {{ neighborhood.name }}</h2>
     <div class="faq-list">
-      {%- for f in faqs %}
+      {%- for f in _all_faqs %}
       <details class="faq-item">
         <summary class="faq-q">{{ f.q }}</summary>
         <div class="faq-a"><p>{{ f.a }}</p></div>
