@@ -27,16 +27,20 @@ A running log of the weekly striking-distance build. Newest entry on top.
 
 **Position deltas on previously-shipped pages (today's scan vs their ship-week baseline):**
 - 2026-08-04 batch: Fort Lauderdale hub *improved and holding* — "best spas in fort lauderdale" 720/mo at **54** (was ~64 pre-8/04). Doral hub **flat** ("dermatologist doral" 480 at 64). Coral Gables hub **flat** ("coral gables med spa" 390 at 87).
-- 2026-08-18 batch: **flat** across the board — Coral Gables lip-filler ("lip filler in miami" 1300 at 60), Miami Lakes ("florida lakes spa" 720 at 44), Coral Springs ("ideal image coral springs" 590 at 46). Expected: as of the 2026-08-18 handoff the operator's `git push`/deploy and indexing request were still outstanding, so that batch may not be live/indexed yet.
+- 2026-08-18 batch: **flat so far** — Coral Gables lip-filler ("lip filler in miami" 1300 at 60), Miami Lakes ("florida lakes spa" 720 at 44), Coral Springs ("ideal image coral springs" 590 at 46). **Correction (verified 2026-08-29):** these ARE live — a same-day on-page check confirmed the Fort Lauderdale (8/04) and Miami Lakes (8/18) hubs both serve the FAQ section on Cloudflare (onpage score 98). So the flatness is normal re-index/re-rank latency on a ~3-month-old domain, NOT a stuck deploy. The deploy pipeline is working.
 
 **Impressions trend:** not captured — GSC impressions require Claude-in-Chrome on the desktop, unreachable from an unattended scheduled cloud run (same limitation as 2026-08-18). The Tuesday desktop weekly-seo-monitor should record the impressions delta and request indexing for changed URLs once this PR is merged/deployed.
 
 **Blocked on operator (to realize any ranking movement):** (1) merge PR `seo/striking-2026-08-29` and `git push origin auto/build` (triggers Cloudflare deploy) — the 8/04 and 8/18 striking PRs need to actually be *live and indexed* before positions can move; (2) in Search Console, submit `/sitemap.xml` and request indexing for the changed hub URLs.
 
-**Next week's targets:**
-1. Re-scan Plantation / Hollywood / Pembroke Pines and record deltas once deployed + indexed.
-2. Confirm whether the 2026-08-18 batch (Coral Gables lip-filler, Miami Lakes, Coral Springs) actually deployed; if still flat after deploy+indexing, revisit angle.
-3. Hollywood laser cluster and `/fl/broward/pembroke-pines/` treatment sub-pages — evaluate treatment-page (`_PAGE_EXTRA_FAQS`) enrichment for the transactional laser queries.
+**Performance check (verified 2026-08-29, post-run):** DataForSEO historical rank overview shows real, compounding visibility growth — ranked keywords **1 (Jun) → 15 (Jul) → 133 (Aug); 222 live now**, ETV 0.06 → 8.7 → 67 → 77. Well clear of the 12-week "no growth → pause" gate; program continues. Caveat: the footprint is still almost entirely off page 1 — only **1 keyword at pos 11–20 and ~10 at 21–30**, with ~180 of 222 sitting at positions 31–90. Visibility is building; clicks/leads will lag until the best-positioned pages convert to page 1. Strategy shift recorded below: move from deep city hubs (breadth) to the page-1-reachable 21–40 cluster (conversion).
+
+**Next week's targets — DECISION: pivot to page-1 conversion (positions 21–40), not deeper hubs.** The hub sweep has built breadth; the lever for clicks now is the handful of keywords already within reach of page 1.
+1. **`/fl/miami-dade/coral-gables/botox/` — "botox coral gables" (170/mo, pos 24)** — the single closest keyword to page 1. Treatment-page enrichment via `_PAGE_EXTRA_FAQS` + title/meta tuned to the exact query. Marquee target.
+2. **`/fl/miami-dade/coral-gables/lip-filler/` — "top rated lip filler near me" (590/mo, pos 37)** — already has the 8/18 FAQ; tune title/meta toward the "top rated / near me" intent to push a 590-vol query onto page 1.
+3. **`/fl/fort-lauderdale/lip-filler/guide/` — "fort lauderdale lip injections" (170/mo, pos 38)** — guide enrichment for the transactional lip cluster.
+4. Re-scan Plantation / Hollywood / Pembroke Pines (this week's hubs) once PR #37 is merged + deployed; record deltas.
+5. Request indexing (desktop weekly-seo-monitor) for all changed URLs — the missing accelerant; without it re-crawl of a young domain is the bottleneck.
 
 ---
 
