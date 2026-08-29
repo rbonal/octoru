@@ -1,0 +1,19 @@
+name: auto-merge-on-green
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+    branches: [auto/build]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  enable-auto-merge:
+    if: >
+      vars.ENABLE_AUTO_MERGE == 'true' &&
+      ( startsWith(github.head_ref, 'seo/') ||
+        contains(github.event.pull_request.labels.*.name, 'auto-deploy') )
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge --auto --squash "${{ github.event.pull_request.number }}" -R "${{ github.repository }}"
