@@ -4,6 +4,42 @@ A running log of the weekly striking-distance build. Newest entry on top.
 
 ---
 
+## 2026-08-29
+
+**Method:** DataForSEO ranked-keywords for `octoru.com` (255 ranked keywords), filtered to positions 15–90, aggregated by page, ranked by *winnable* commercial/transactional volume × position, Broward priority this week. Picked three FAQ-less **city hubs** so the proven per-city `_HUB_FAQS` pattern applies cleanly. Ran end-to-end from an unattended scheduled **cloud** session (repo cloned, `build.py` verified locally, shipped as a PR — no push/deploy from here).
+
+**Targets & positions (before, from today's DataForSEO scan; winnable queries only):**
+
+| Page | Target queries (vol/mo · pos before) | Winnable vol |
+|---|---|---|
+| `/fl/broward/plantation/` | plantation med spa (1300·46), spa plantation (320·70); ideal image plantation (590·50, brand) | ~1,620 |
+| `/fl/broward/hollywood/` | spa hollywood (1300·64), hollywood laser med spa (480·83), hollywood body laser (210·64) | ~1,990 |
+| `/fl/broward/pembroke-pines/` | me/med spa pembroke pines (880·56) | ~880 |
+
+(Plantation's headline "contour spa plantation" 4400·45 is navigational/brand and not directory-winnable; Pembroke Pines' "dr thrower's" 1600·69 is navigational — both excluded from the winnable count.)
+
+**Shipped (branch `seo/striking-2026-08-29` → PR to `auto/build`; NOT merged — merge = deploy = human-gated per CLAUDE.md):**
+- Added Plantation, Hollywood and Pembroke Pines to `_HUB_FAQS` in `templates/hub.html.j2` — 4 FAQs each, rendered as both `FAQPage` JSON-LD (head) and a visible `#faq` section, same self-contained guarded pattern as the hubs shipped 2026-08-04 and 2026-08-18.
+- Hollywood's FAQ set includes a laser/body-treatment question to target the "hollywood laser med spa" / "hollywood body laser" queries. Content is provider-agnostic (general pricing, provider-selection, verification and local-geography guidance). **No fabricated clinic facts, prices, ratings or credentials.** Geography verified: Plantation = central Broward (Sunrise/Davie/Fort Lauderdale); Hollywood = south Broward (Hallandale Beach line); Pembroke Pines = SW Broward near Miramar / the Miami-Dade line.
+- Source-only PR: `wrangler.toml` runs `python3 builder/build.py` on Cloudflare at deploy, so `generated/` is rebuilt there. Committing the template + this log keeps the diff small and reviewable (important given the repo's merge-regression history).
+
+**Verification (local, this session):** `builder/build.py` clean — `built=504 skipped=0 state=active`, `link check: all internal links valid`. Isolation test (fresh build before vs after the edit): five control pages (Brickell, Miami-Dade county hub, homepage, Fort Lauderdale hub already-with-FAQ, Hollywood laser sub-page) **byte-identical (md5 match)**; only the 3 targets changed, **+49 / −0 lines each** (purely additive). All three `FAQPage` JSON-LD blocks parse, 4 questions each.
+
+**Position deltas on previously-shipped pages (today's scan vs their ship-week baseline):**
+- 2026-08-04 batch: Fort Lauderdale hub *improved and holding* — "best spas in fort lauderdale" 720/mo at **54** (was ~64 pre-8/04). Doral hub **flat** ("dermatologist doral" 480 at 64). Coral Gables hub **flat** ("coral gables med spa" 390 at 87).
+- 2026-08-18 batch: **flat** across the board — Coral Gables lip-filler ("lip filler in miami" 1300 at 60), Miami Lakes ("florida lakes spa" 720 at 44), Coral Springs ("ideal image coral springs" 590 at 46). Expected: as of the 2026-08-18 handoff the operator's `git push`/deploy and indexing request were still outstanding, so that batch may not be live/indexed yet.
+
+**Impressions trend:** not captured — GSC impressions require Claude-in-Chrome on the desktop, unreachable from an unattended scheduled cloud run (same limitation as 2026-08-18). The Tuesday desktop weekly-seo-monitor should record the impressions delta and request indexing for changed URLs once this PR is merged/deployed.
+
+**Blocked on operator (to realize any ranking movement):** (1) merge PR `seo/striking-2026-08-29` and `git push origin auto/build` (triggers Cloudflare deploy) — the 8/04 and 8/18 striking PRs need to actually be *live and indexed* before positions can move; (2) in Search Console, submit `/sitemap.xml` and request indexing for the changed hub URLs.
+
+**Next week's targets:**
+1. Re-scan Plantation / Hollywood / Pembroke Pines and record deltas once deployed + indexed.
+2. Confirm whether the 2026-08-18 batch (Coral Gables lip-filler, Miami Lakes, Coral Springs) actually deployed; if still flat after deploy+indexing, revisit angle.
+3. Hollywood laser cluster and `/fl/broward/pembroke-pines/` treatment sub-pages — evaluate treatment-page (`_PAGE_EXTRA_FAQS`) enrichment for the transactional laser queries.
+
+---
+
 ## 2026-08-18
 
 **Method:** DataForSEO ranked-keywords for `octoru.com`, filtered to positions 15–90, aggregated by page, ranked by *winnable* (commercial/transactional/informational) volume × position × Miami-Dade/Broward priority. Picked one marquee treatment page + two FAQ-less city hubs so the proven per-page FAQ pattern applies cleanly.
