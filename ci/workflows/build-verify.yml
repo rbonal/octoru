@@ -1,0 +1,34 @@
+name: build-verify
+
+# Safety gate for octoru deploys. Cloudflare runs `python3 builder/build.py` on
+# every push to auto/build and serves generated/ — so a merge to auto/build IS a
+# deploy. This runs the build + the operator's post-merge checks BEFORE a merge,
+# turning a risky manual review into a confident one-click. Verifies only; never
+# merges, never deploys. All logic lives in scripts/verify_build.sh.
+
+on:
+  pull_request:
+    branches: [ auto/build ]
+  push:
+    branches: [ 'seo/**', 'feat/**', 'fix/**', 'ci/**' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build & verify
+        run: bash scripts/verify_build.sh
