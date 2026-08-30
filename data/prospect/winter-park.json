@@ -1,0 +1,160 @@
+{
+  "_comment": "Winter Park, FL prospecting output — Stage 1 expansion pilot. Providers and ratings from DataForSEO Business Listings (permitted Google Maps API). Treatments taken from each business's Google 'services' list (permitted API) and mapped to Octoru treatment slugs; CONFIRM each against the clinic's own website menu at build time before publishing. No prices published by these providers → request-a-quote. No fabricated fields: email/booking_url left null where not sourced. Prospected 2026-08-30.",
+
+  "market": {
+    "city": "Winter Park",
+    "city_slug": "winter-park",
+    "county": "Orange",
+    "county_slug": "orange",
+    "state": "FL",
+    "url_path": "/fl/orange/winter-park/",
+    "difficulty_med_spa_city": 14,
+    "note": "Affluent Orlando enclave. Injectable supply is dermatology + plastic surgery, not 'med spa' — validates the provider-eligibility rule."
+  },
+
+  "activation_required_before_build": [
+    "config/thresholds.json seed_scope.neighborhoods: add 'winter-park' (HARD-GATED — operator)",
+    "geo tree: add Orange County + Winter Park to CITY_COUNTY (builder/build.py) and data/places.json (build-engine change — full-access session)",
+    "confirm each tagged treatment against the clinic's own website menu"
+  ],
+
+  "providers": [
+    {
+      "slug": "reflections-dermatology-winter-park",
+      "name": "Reflections Dermatology - Winter Park",
+      "category": "dermatology / medical spa",
+      "address": "440 W Morse Blvd, Winter Park, FL 32789",
+      "phone": "+14078958818",
+      "website": "https://reflectionsdermatology.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.9,
+      "review_count": 944,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["botox", "dermal-fillers", "chemical-peel", "coolsculpting"],
+      "api_service_evidence": "Botox / Dysport; Dermal Fillers; Sculptra; Bellafill; Chemical peels; CoolSculpting treatments; CoolTone; CO2 Laser Resurfacing; Dermaplaning; Diamond Glow Microdermabrasion; FaceTite",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    },
+    {
+      "slug": "oasis-dermatology",
+      "name": "Oasis Dermatology",
+      "category": "dermatology",
+      "address": "2304 Aloma Ave Ste 200, Winter Park, FL 32792",
+      "phone": "+14073775831",
+      "website": "https://www.oasisdermatology.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.7,
+      "review_count": 587,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["botox", "chemical-peel"],
+      "api_service_evidence": "Botox; Chemical Peels; Ablative Laser Treatment; CO2 Laser Resurfacing; Brown Spot Laser Treatment; anti-aging & acne facials",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    },
+    {
+      "slug": "dr-kapil-saigal",
+      "name": "Dr. Kapil Saigal, MD, FACS",
+      "category": "plastic surgery / medical spa",
+      "address": "1492 W Fairbanks Ave, Winter Park, FL 32789",
+      "phone": "+14077064670",
+      "website": "https://www.drsaigal.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.9,
+      "review_count": 331,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["botox"],
+      "treatments_likely_confirm_menu": ["dermal-fillers", "morpheus8"],
+      "api_service_evidence": "BOTOX treatments; Dysport treatment; FaceTite; Embrace RF; Facial Fat Transfer; CO2 (plus facelift/rhinoplasty etc. = surgical vertical, separate)",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    },
+    {
+      "slug": "spavia-winter-park",
+      "name": "Spavia Winter Park",
+      "category": "facial spa",
+      "address": "110 Orlando Ave Ste 9, Winter Park, FL 32789",
+      "phone": "+14076703200",
+      "website": "https://winterparkfl.spaviadayspa.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.9,
+      "review_count": 1109,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["chemical-peel"],
+      "api_service_evidence": "Chemical peels; Microdermabrasion; anti-aging & acne facials; dermaplaning; waxing",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    },
+    {
+      "slug": "spa-at-the-alfond-inn",
+      "name": "The Spa at The Alfond Inn",
+      "category": "luxury hotel spa",
+      "address": "300 E New England Ave, Winter Park, FL 32789",
+      "phone": "+14076456611",
+      "website": "https://thealfondinn.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.7,
+      "review_count": 335,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["chemical-peel"],
+      "api_service_evidence": "Chemical peels; facials; skin treatments; body waxing",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    },
+    {
+      "slug": "massage-envy-winter-park",
+      "name": "Massage Envy - Winter Park",
+      "category": "spa chain (esthetician-grade)",
+      "tier_note": "lower-tier / optional — chain, esthetician-grade peels. Include only if a treatment page needs the 2nd listing; the dermatology providers are the anchors.",
+      "address": "1919 Aloma Ave, Winter Park, FL 32792",
+      "phone": "+14078753689",
+      "website": "https://locations.massageenvy.com",
+      "email": null,
+      "booking_url": null,
+      "rating": 4.4,
+      "review_count": 382,
+      "rating_source": "google_places_api",
+      "treatments_confirmed_via_api_services": ["chemical-peel"],
+      "api_service_evidence": "Age-Defying Chemical Peel; Brightening Chemical Peel; facials",
+      "starting_price_usd": null,
+      "has_real_clinic_data": true,
+      "uses_scraped_review_text": false,
+      "menu_website_confirmed": false
+    }
+  ],
+
+  "adjacent_providers_for_rollup_or_nearby_cities": [
+    {"name": "Derrow Dermatology Associates", "city": "Maitland", "rating": 4.9, "review_count": 2677, "website": "https://www.derrowdermatology.com", "phone": "+14073892020", "treatments": ["coolsculpting", "morpheus8", "botox?"], "note": "Maitland (adjacent) — own city or roll-up; body contouring (CoolSculpting/Morpheus) + cosmetic derm."},
+    {"name": "Reflections Dermatology - Baldwin Park", "city": "Orlando (Baldwin Park)", "rating": 4.8, "review_count": 1486, "website": "https://reflectionsdermatology.com", "phone": "+14078958818", "treatments": ["botox", "dermal-fillers", "chemical-peel"], "note": "Baldwin Park (adjacent Orlando neighborhood) — same group as Winter Park location."}
+  ],
+
+  "buildable_pages_now": [
+    {"page": "/fl/orange/winter-park/", "type": "city_hub", "providers": 6, "status": "READY — aggregates all verified providers"},
+    {"page": "botox/winter-park", "verified_providers": ["reflections-dermatology-winter-park", "oasis-dermatology", "dr-kapil-saigal"], "count": 3, "status": "READY (>=2)"},
+    {"page": "chemical-peel/winter-park", "verified_providers": ["reflections-dermatology-winter-park", "oasis-dermatology", "spavia-winter-park", "spa-at-the-alfond-inn", "massage-envy-winter-park"], "count": 5, "status": "READY (>=2)"},
+    {"page": "dermal-fillers/winter-park", "verified_providers": ["reflections-dermatology-winter-park"], "likely": ["dr-kapil-saigal"], "count": 1, "status": "PENDING — confirm Saigal (and/or Oasis) fillers on website menu for the 2nd listing"},
+    {"page": "coolsculpting/winter-park", "verified_providers": ["reflections-dermatology-winter-park"], "count": 1, "status": "HELD — 1 in-city; Derrow (Maitland) adjacent. Needs a 2nd Winter Park provider or roll-up."}
+  ],
+
+  "integrity": {
+    "ratings_source": "DataForSEO Business Listings (Google Maps / Places) — permitted API",
+    "review_text_scraped": false,
+    "treatments_source": "Google business 'services' list via permitted API; confirm against clinic's own website menu before publishing",
+    "prices": "none published by these providers; render request-a-quote (no fabricated prices)",
+    "fabricated_fields": "none — email/booking_url left null where not sourced"
+  }
+}
