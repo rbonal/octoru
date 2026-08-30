@@ -1,0 +1,86 @@
+[
+  {
+    "_comment": "Coral Gables (Miami-Dade) DEPTH expansion under the widened-eligibility rule (#42). Existing Coral Gables coverage was med spas + plastic surgeons; this pass adds high-authority BOARD-CERTIFIED DERMATOLOGY practices (missing from the corpus) plus a top plastic-surgery practice, enriching existing pages with more verified options. Ratings from Google Places Business Listings API (permitted). Each tagged treatment CONFIRMED on the clinic's OWN website menu on 2026-08-30 (see _sourcing). No scraped review text; no published per-treatment prices -> request-a-quote; nothing fabricated. OMITTED after menu review: Dr. Anna Chacon (primarily a virtual teledermatologist — not an in-person local provider); The Gables Look (one-page site, menu too vague to confirm specific treatments); Tal Roudner MD + Body Details + Ideal Image (page unreachable/JS-only — could not confirm menu). CoolSculpting stays HELD in Coral Gables — no verified in-city CoolSculpting provider found (market displaced by Emsculpt/Morpheus8), not padded."
+  },
+  {
+    "slug": "florida-academic-dermatology-coral-gables",
+    "name": "Florida Academic Dermatology Center",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "475 Biltmore Way Ste 207, Coral Gables, FL 33134",
+    "phone": "+13053242110",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": ["lip-filler"],
+    "rating": 4.8,
+    "review_count": 1593,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://fadcenter.com",
+      "menu_confirmed": "2026-08-30 — Coral Gables academic dermatology + research clinic. Cosmetic Treatments page explicitly names Dermal Fillers (Sculptra, Restylane) -> lip-filler tagged. Botox not explicitly listed on the cosmetic menu -> NOT tagged (conservative). Medical/research-focused derm; included as a non-surgical SOURCE via the widened-eligibility rule."
+    }
+  },
+  {
+    "slug": "martha-viera-md-coral-gables",
+    "name": "Martha Viera MD Dermatology",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "4950 S Le Jeune Rd Ste H, Coral Gables, FL 33146",
+    "phone": "+13052395585",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": ["botox", "lip-filler", "hydrafacial", "microneedling"],
+    "rating": 4.8,
+    "review_count": 497,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.vieramarthamd.com",
+      "menu_confirmed": "2026-08-30 — board-certified dermatology. Menu explicitly names Botox, Dermal Fillers, Hydrafacial, plus Microinfusion Rejuvenation, PRP, Biostimulation, Morpheus8, IPL and Fotona lasers. botox + lip-filler (dermal fillers) + hydrafacial tagged. microneedling tagged via 'Microinfusion Rejuvenation' (a microneedling/microchanneling procedure). chemical-peel and laser-hair-removal not explicitly named -> not tagged. Non-surgical SOURCE via widened-eligibility rule."
+    }
+  },
+  {
+    "slug": "careaga-plastic-surgery-coral-gables",
+    "name": "Careaga Plastic Surgery",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "220 Alhambra Cir First Floor, Coral Gables, FL 33134",
+    "phone": "+13059607511",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "plastic-surgery",
+    "treatments": ["bbl", "tummy-tuck", "breast-augmentation", "rhinoplasty", "mommy-makeover", "facelift", "botox", "lip-filler"],
+    "rating": 4.7,
+    "review_count": 736,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://careagaplasticsurgery.com",
+      "menu_confirmed": "2026-08-30 — double board-certified plastic surgery practice (Dr. Daniel Careaga, Dr. Rafael Ramos), JCAHO-accredited. Surgical menu explicitly lists Brazilian Butt Lift, Tummy Tuck, Breast Augmentation, Rhinoplasty (Preservation/Revision), Mommy Makeover, and facelift (Dr. Careaga's stated specialty) -> bbl/tummy-tuck/breast-augmentation/rhinoplasty/mommy-makeover/facelift tagged. Standalone liposuction not listed as its own menu item -> not tagged. Non-surgical specialist (Reana Myers, PA-C) provides injectables incl. neuromodulators + dermal fillers -> botox + lip-filler tagged (surfaced on med-spa pages via widened-eligibility). No CoolSculpting (Emsculpt Neo instead)."
+    }
+  }
+]
