@@ -1,0 +1,21 @@
+diff --git a/data/places.json b/data/places.json
+index be62e1d..b134712 100644
+--- a/data/places.json
++++ b/data/places.json
+@@ -2,6 +2,16 @@
+   {
+     "_comment": "OPERATOR-OWNED. Each place has slug, name, type (municipality|neighborhood|cdp), parent_place (slug of parent for neighborhoods/CDPs), county, lat, lng. Builder reads this for place taxonomy, rollup, and de-duplication."
+   },
++  {
++    "slug": "sarasota",
++    "name": "Sarasota",
++    "type": "municipality",
++    "parent_place": null,
++    "county": "sarasota",
++    "lat": 27.3364,
++    "lng": -82.5307,
++    "_note": "Sarasota County (Gulf Coast) -- Stage 1 expansion. Own municipality page; no parent rollup."
++  },
+   {
+     "slug": "miami",
+     "name": "Miami",
