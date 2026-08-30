@@ -50,6 +50,34 @@ The old "2–3 pages/week" pace is retired now that deploy is automated and gate
 
 ---
 
+## Provider eligibility — widen the supply, keep the bar
+
+For the **non-surgical** treatments (Botox, fillers/lip filler, laser hair removal,
+microneedling, HydraFacial, chemical peel, morpheus8, IV therapy, CoolSculpting, etc.),
+a listing may come from **any verified business that performs that treatment on its own
+published menu** — **not only businesses categorized as "med spa."** Explicitly include:
+
+- **Plastic surgery practices** and **dermatology practices** that offer injectables,
+  laser, skin and body treatments. Board-certified injectors are high-authority,
+  credible listings, and pulling them in **materially increases verified supply** — so
+  more treatment×city pages clear the ≥2-clinic gate and more markets become buildable.
+
+**The bar does not move:** the provider must genuinely list the treatment (verified on
+its own website), ratings come from permitted Google APIs, nothing is fabricated, and
+prices show only where published. Do not double-count a provider or mislabel its primary
+category.
+
+**Keep the verticals distinct:** this rule pulls surgery/derm clinics into the pages for
+the **non-surgical** treatments they already offer. The **surgical** vertical itself
+(rhinoplasty, tummy tuck, BBL, mommy makeover, facelift, liposuction, breast
+augmentation) remains a separate, deferred track — see "Deferred verticals" below.
+
+*Build note: the eligible-provider filter lives in `builder/build.py`; widening it to
+admit surgery/derm sources for non-surgical treatments is a build-engine change, made in
+a full-access session (not the connector-only cloud run).*
+
+---
+
 ## Targeting map — municipality difficulty (DataForSEO, Aug 2026)
 
 Difficulty = chance of reaching the top 10 (0–100). Green ≤17 high-confidence ·
