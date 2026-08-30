@@ -537,11 +537,7 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "microneedling@fl/sarasota/sarasota",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "hydrafacial@fl/sarasota/sarasota",
+      "page": "coolsculpting@fl/sarasota/sarasota",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -574,9 +570,9 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 179,
+      "pages": 181,
       "fallback_pages": 0,
-      "clinics": 182
+      "clinics": 234
     },
     {
       "category": "plastic-surgery",
@@ -876,13 +872,13 @@
     ]
   },
   "empty_fields": {
-    "unique_clinics": 203,
+    "unique_clinics": 208,
     "missing_phone": 0,
-    "missing_email": 187,
+    "missing_email": 192,
     "missing_address": 0,
-    "missing_booking_url": 60,
-    "price_empty_state_listings": 1693,
-    "price_total_listings": 1813
+    "missing_booking_url": 64,
+    "price_empty_state_listings": 1713,
+    "price_total_listings": 1833
   },
   "mode": "enforced",
   "thresholds_used": {
