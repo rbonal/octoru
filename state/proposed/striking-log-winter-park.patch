@@ -1,0 +1,37 @@
+diff --git a/seo/striking_distance_log.md b/seo/striking_distance_log.md
+index bb44b70..be89119 100644
+--- a/seo/striking_distance_log.md
++++ b/seo/striking_distance_log.md
+@@ -4,6 +4,32 @@ A running log of the weekly striking-distance build. Newest entry on top.
+ 
+ ---
+ 
++## 2026-08-29 · Winter Park (Orange County) — Stage 1 expansion pilot
++
++**Market:** Winter Park, FL (Orange County / Greater Orlando). DataForSEO med-spa city difficulty **14** — inside Octoru's proven ≤24 winnable zone. First market outside the tri-county (Miami-Dade/Broward/Palm Beach) core, and the first built on the **widened provider-eligibility rule** (derm + plastic-surgery practices as sources for non-surgical treatments).
++
++**Structural (build-engine) changes this run:**
++- `builder/build.py`: added `_eligible_for_category()` — non-surgical (med-spa) category pages now admit dermatology / plastic-surgery / aesthetic practices as sources; the surgical vertical stays sourced strictly from its own category (verified inert on all existing data: 175 med-spa records unaffected, 44 plastic-surgery records carry zero non-surgical slugs). Added Orange County + Winter Park to `CITY_COUNTY`/`COUNTY_NAMES` and Winter Park local context. Shipped as `state/proposed/build-py-winter-park.patch` (85 lines, additive) — this session could not push the 167 KB `build.py` (connector inline-size limit; local git here can't commit or auth a push).
++- `data/places.json`: Winter Park municipality (Orange County) added.
++- `data/prospector/winter-park.json`: 3 verified providers in builder schema.
++
++**Providers (verified 2026-08-29 on each clinic's OWN website menu; ratings Google Places API; no published prices → request-a-quote; no scraped review text; nothing fabricated):**
++- Reflections Dermatology – Winter Park (4.9, 944) — botox, dermal-fillers, coolsculpting, laser-hair-removal
++- Oasis Dermatology (4.7, 587) — botox, chemical-peel, microneedling
++- Dr. Kapil Saigal, MD FACS (4.9, 331) — botox, dermal-fillers
++
++**Built (after operator applies build.py + config patches):** `/fl/orange/winter-park/` hub + `/fl/orange/winter-park/botox/` — **3 verified providers**, all derm/plastic (the widened-filter proof). Full quality gate passed: MedicalClinic + AggregateRating schema, single canonical, consent/privacy language, FAQ, real ratings. Local verify green: **built=505, skipped=0, links valid, defs=25, canonical=1, state active**.
++
++**Held at 1 verified (never padded):** coolsculpting, laser-hair-removal, microneedling (each 1), chemical-peel (Oasis only — Reflections' /treatment/chemical-peels/ page 404s, excluded). dermal-fillers has 2 verified (Reflections + Saigal) but `dermal-fillers` is not an active med-spa slug (config uses `lip-filler`); activating it is a separate, site-wide decision — deferred.
++
++**Omitted (integrity):** Spavia, The Spa at The Alfond Inn, Massage Envy — API-tagged chemical-peel but esthetician/hotel/chain spas whose menus didn't confirm a clinical peel. Saigal `morpheus8` dropped (not on menu).
++
++**Shipped:** branch `seo/winter-park-launch` → PR to `auto/build`. NOT auto-deployed — build.py + config patches are operator-local steps (see `state/proposed/WORKLIST_winter-park.md`); merge = deploy is human-gated per CLAUDE.md.
++
++**Next targets (plan Stage 1, depth-before-breadth):** Sarasota (difficulty 11), Fort Myers (15), Naples (17), then Jacksonville, Tampa (via South Tampa) — deferred to a session with working local git push so the build-engine changes they need can ship directly.
++
++---
++
+ ## 2026-08-29
+ 
+ **Method:** DataForSEO ranked-keywords for `octoru.com` (255 ranked keywords), filtered to positions 15–90, aggregated by page, ranked by *winnable* commercial/transactional volume × position, Broward priority this week. Picked three FAQ-less **city hubs** so the proven per-city `_HUB_FAQS` pattern applies cleanly. Ran end-to-end from an unattended scheduled **cloud** session (repo cloned, `build.py` verified locally, shipped as a PR — no push/deploy from here).

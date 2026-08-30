@@ -1,0 +1,19 @@
+--- a/data/places.json
++++ b/data/places.json
+@@ -3,6 +3,16 @@
+     "_comment": "OPERATOR-OWNED. Each place has slug, name, type (municipality|neighborhood|cdp), parent_place (slug of parent for neighborhoods/CDPs), county, lat, lng. Builder reads this for place taxonomy, rollup, and de-duplication."
+   },
+   {
++    "slug": "winter-park",
++    "name": "Winter Park",
++    "type": "municipality",
++    "parent_place": null,
++    "county": "orange",
++    "lat": 28.5999,
++    "lng": -81.3392,
++    "_note": "Orange County (Greater Orlando) — Stage 1 expansion pilot. Own municipality page; no parent rollup."
++  },
++  {
+     "slug": "miami",
+     "name": "Miami",
+     "type": "municipality",
