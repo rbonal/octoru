@@ -1,0 +1,97 @@
+[
+  {
+    "_comment": "Winter Park, FL (Orange County) — Stage 1 expansion, verified clinic records in builder schema. Ratings from Google Places API (permitted). Each treatment slug below was CONFIRMED against the clinic's OWN website menu on 2026-08-29 (see _sourcing.menu_confirmed). No scraped review text; no prices published by these providers -> request-a-quote; nothing fabricated. Three API-tagged businesses (Spavia, The Spa at The Alfond Inn, Massage Envy) were OMITTED: their chemical-peel tag could not be confirmed as a clinical peel on their own menu (esthetician/hotel/chain spas). Reflections' API chemical-peel tag was DROPPED: its /treatment/chemical-peels/ page 404s. Saigal's morpheus8 was DROPPED: not on his menu (he lists FaceTite/Embrace RF/CO2, not Morpheus8)."
+  },
+  {
+    "slug": "reflections-dermatology-winter-park",
+    "name": "Reflections Dermatology - Winter Park",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "440 W Morse Blvd, Winter Park, FL 32789",
+    "phone": "+14078958818",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "coolsculpting",
+      "laser-hair-removal"
+    ],
+    "rating": 4.9,
+    "review_count": 944,
+    "rating_source": "google_places_api",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://reflectionsdermatology.com",
+      "menu_confirmed": "2026-08-29 — cosmetic-treatments page names Dr. Palceski as national training faculty for Botox, Dysport, Juvederm, Voluma, Restylane, Sculptra, Kybella (=botox + dermal-fillers); /treatment/coolsculpting/ and /treatment/laser-hair-removal/ present. Board-certified dermatologist (Dr. Dimitry Palceski).",
+      "dropped": "chemical-peel — /treatment/chemical-peels/ menu link 404s (page does not resolve), so not counted."
+    }
+  },
+  {
+    "slug": "oasis-dermatology-winter-park",
+    "name": "Oasis Dermatology",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "2304 Aloma Ave Ste 200, Winter Park, FL 32792",
+    "phone": "+14073775831",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": [
+      "botox",
+      "chemical-peel",
+      "microneedling"
+    ],
+    "rating": 4.7,
+    "review_count": 587,
+    "rating_source": "google_places_api",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.oasisdermatology.com",
+      "menu_confirmed": "2026-08-29 — Cosmetic Dermatology menu: dedicated Chemical Peel page, Micro-needling page, and Cosmetic Injections (Botox; Botox tag in taxonomy). Cosmetic dermatology practice."
+    }
+  },
+  {
+    "slug": "dr-kapil-saigal-winter-park",
+    "name": "Dr. Kapil Saigal, MD, FACS",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "1492 W Fairbanks Ave, Winter Park, FL 32789",
+    "phone": "+14077064670",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "plastic-surgery",
+    "treatments": [
+      "botox",
+      "dermal-fillers"
+    ],
+    "rating": 4.9,
+    "review_count": 331,
+    "rating_source": "google_places_api",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.drsaigal.com",
+      "menu_confirmed": "2026-08-29 — Non-Surgical menu: dedicated BOTOX page (Wrinkle Relaxers) and Dermal Fillers page (Juvederm/Restylane/Sculptra). Double board-certified facial plastic surgeon; surgical procedures intentionally NOT tagged (surgical vertical deferred). morpheus8 dropped — not on menu.",
+      "non_surgical_source_note": "Included on non-surgical (med-spa) pages via the widened provider-eligibility filter; surgical vertical untouched."
+    }
+  }
+]
