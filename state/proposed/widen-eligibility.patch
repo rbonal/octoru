@@ -1,0 +1,51 @@
+diff --git a/builder/build.py b/builder/build.py
+index 5a8b118..eeb3875 100644
+--- a/builder/build.py
++++ b/builder/build.py
+@@ -128,6 +128,28 @@ def _category_treatments(category):
+ def _clinic_category(clinic):
+     return clinic.get("category") or DEFAULT_CATEGORY
+ 
++# Provider-eligibility widening (rule #42 "widen the supply, keep the bar").
++# Non-surgical treatments may be listed by ANY verified medical/aesthetic practice that
++# performs them on its own published menu -- not only "med-spa" businesses. Dermatology and
++# plastic-surgery practices are admitted as SOURCES for the non-surgical (med-spa) category.
++# The bar does not move: a provider still only appears for a treatment it actually lists
++# (menu-verified), ratings still come from the permitted API, nothing is fabricated. The
++# SURGICAL vertical stays distinct (plastic-surgery category sourced only from its own).
++NONSURGICAL_CATEGORIES = {"med-spa"}
++NONSURGICAL_SOURCE_CATEGORIES = {
++    "med-spa", "medical-spa", "medspa", "dermatology", "plastic-surgery",
++    "aesthetic", "aesthetics", "cosmetic-dermatology", "day-spa", "spa", "wellness",
++}
++
++def _eligible_for_category(clinic, category):
++    """Is this clinic an eligible SOURCE of listings for `category`'s pages?"""
++    cc = _clinic_category(clinic)
++    if cc == category:
++        return True
++    if category in NONSURGICAL_CATEGORIES and cc in NONSURGICAL_SOURCE_CATEGORIES:
++        return True
++    return False
++
+ def _category_page_reqs(spec, category):
+     """Per-category page requirements: the global completeness.min_page_requirements
+     with completeness.by_category.<cat>.min_page_requirements layered on top."""
+@@ -1538,7 +1560,7 @@ def fetch_pages(spec=None, enforce=False):
+     for category in _categories_config():
+         treatments = _category_treatments(category)
+         page_reqs = _category_page_reqs(spec, category)
+-        cat_clinics = [c for c in all_clinics if _clinic_category(c) == category]
++        cat_clinics = [c for c in all_clinics if _eligible_for_category(c, category)]
+         has_match = any(t in (c.get("treatments") or []) for c in cat_clinics for t in treatments)
+         if not treatments or not cat_clinics or not has_match:
+             report["empty_categories"].append(category)
+@@ -2191,7 +2213,7 @@ def render_index(summaries):
+         treats = [t for t in _category_treatments(cat) if t in built]
+         if not treats:
+             continue
+-        cat_clinics = [c for c in all_clinics if _clinic_category(c) == cat]
++        cat_clinics = [c for c in all_clinics if _eligible_for_category(c, cat)]
+         cat_real = [s for s in real if s.get("category", DEFAULT_CATEGORY) == cat]
+         categories.append({
+             "slug": cat,
