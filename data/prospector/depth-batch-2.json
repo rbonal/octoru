@@ -1,0 +1,89 @@
+[
+  {
+    "_comment": "Phase-1 depth batch 2 (Aventura, Fort Lauderdale, Boca Raton) under the widened net. Menu-verified med spas that enrich existing pages with more options. Ratings from Google Places Business Listings API (permitted); menus confirmed 2026-08-30. Brickell was assessed and SKIPPED — already deep (12 listings, no held pages) and its one new candidate (LUX MedSpa Brickell) is a hotel massage/facial spa with no injectables (disqualified). Dermatology authority-adds identified but NOT included this pass because their specific treatment menus could not be text-confirmed (Aventura Dermatology, Rendon Center, Siperstein, Schweiger, Natura Dermatology) — left to the weekly task for proper menu verification rather than tagged on assumption. INTEGRITY NOTE: all three clinics here are 5.0-at-volume Google ratings — real API data on the operator's standing ratings-distribution override, flagged per record; they add to the perfect-at-volume share and reinforce the case for a ratings-plausibility fix."
+  },
+  {
+    "slug": "the-beauty-clinic-aventura",
+    "name": "The Beauty Clinic (Aventura)",
+    "neighborhood": "aventura",
+    "neighborhood_name": "Aventura",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "18157 Biscayne Blvd, Aventura, FL 33160",
+    "phone": "+13058829439",
+    "email": null,
+    "booking_url": "https://thebeautyclinic.com/book-an-appointment/",
+    "languages": [],
+    "category": "med-spa",
+    "treatments": ["botox", "lip-filler"],
+    "rating": 5.0,
+    "review_count": 770,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://thebeautyclinic.com",
+      "menu_confirmed": "2026-08-30 — a 100%-injectables med spa (top Botox/Dysport injector in South Florida). Menu explicitly names Botox/Dysport/Jeuveau/Daxxify and Juvederm/Restylane/RHA/Versa fillers -> botox + lip-filler tagged. Clear+Brilliant laser is skin resurfacing (not hair removal); no hydrafacial/peel/microneedling -> not tagged. Aventura location.",
+      "rating_flag": "5.0 across 770 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override."
+    }
+  },
+  {
+    "slug": "the-beauty-clinic-fort-lauderdale",
+    "name": "The Beauty Clinic (Fort Lauderdale)",
+    "neighborhood": "fort-lauderdale",
+    "neighborhood_name": "Fort Lauderdale",
+    "county": "broward",
+    "state": "fl",
+    "address": "464 N Federal Hwy, Fort Lauderdale, FL 33301",
+    "phone": "+19547197123",
+    "email": null,
+    "booking_url": "https://thebeautyclinic.com/book-an-appointment/",
+    "languages": [],
+    "category": "med-spa",
+    "treatments": ["botox", "lip-filler"],
+    "rating": 5.0,
+    "review_count": 578,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://thebeautyclinic.com",
+      "menu_confirmed": "2026-08-30 — same 100%-injectables practice, Fort Lauderdale location (464 N Federal Hwy). Menu names Botox/Dysport/Jeuveau/Daxxify + Juvederm/Restylane/RHA/Versa fillers -> botox + lip-filler tagged.",
+      "rating_flag": "5.0 across 578 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override."
+    }
+  },
+  {
+    "slug": "peace-love-med-spa-boca-raton",
+    "name": "Peace Love Med Spa",
+    "neighborhood": "boca-raton",
+    "neighborhood_name": "Boca Raton",
+    "county": "palm-beach",
+    "state": "fl",
+    "address": "151 SE Mizner Blvd #16a, Boca Raton, FL 33432",
+    "phone": "+15614624234",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": ["botox", "lip-filler", "hydrafacial"],
+    "rating": 5.0,
+    "review_count": 1533,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-08-30",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://peacelovemed.com",
+      "menu_confirmed": "2026-08-30 — East Boca Raton med spa. Homepage + reviews confirm Botox Injections, dermal fillers (lip filler), and HydraFacial -> botox + lip-filler + hydrafacial tagged. Also offers liquid rhinoplasty (not a slug). East Boca 33432.",
+      "rating_flag": "5.0 across 1533 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override."
+    }
+  }
+]
