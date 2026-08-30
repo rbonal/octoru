@@ -1,0 +1,22 @@
+diff --git a/data/places.json b/data/places.json
+index be62e1d..155a26e 100644
+--- a/data/places.json
++++ b/data/places.json
+@@ -2,6 +2,17 @@
+   {
+     "_comment": "OPERATOR-OWNED. Each place has slug, name, type (municipality|neighborhood|cdp), parent_place (slug of parent for neighborhoods/CDPs), county, lat, lng. Builder reads this for place taxonomy, rollup, and de-duplication."
+   },
++  {
++    "slug": "sarasota",
++    "name": "Sarasota",
++    "type": "municipality",
++    "parent_place": null,
++    "county": "sarasota",
++    "lat": 27.3364,
++    "lng": -82.5307,
++    "context": "Sarasota anchors the Gulf Coast Suncoast of Florida -- an affluent cultural hub known for its arts scene, Gulf beaches, and a large, image-conscious retiree and professional population. Its aesthetic supply is unusually deep in established, board-certified dermatology and plastic-surgery practices alongside independent med spas.",
++    "_note": "Sarasota County (Gulf Coast) -- Stage 1 expansion. Data-driven geo: this entry alone supplies county + centroid + context."
++  },
+   {
+     "slug": "miami",
+     "name": "Miami",
