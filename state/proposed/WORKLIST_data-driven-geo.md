@@ -7,10 +7,9 @@ weekly agent CAN push through the GitHub connector. No `build.py` edit, no hard-
 Cloudflare deploy` pipeline with zero clicks.
 
 ## Why one local step is unavoidable
-`builder/build.py` is 164 KB -- too large to push through the GitHub connector, and the
-automated session's token lacks the `workflows`/large-blob path. So this single structural
-change to `build.py` must be installed once from a machine with normal push rights. After
-that, expansions never touch `build.py` again.
+`builder/build.py` is 164 KB -- too large to push through the GitHub connector. So this
+single structural change to `build.py` must be installed once from a machine with normal
+push rights. After that, expansions never touch `build.py` again.
 
 ## What the change does (34 lines, additive)
 1. Extends `CITY_COUNTY` / `COUNTY_NAMES` / `NEIGHBORHOOD_NAMES` from `data/places.json`.
@@ -27,9 +26,8 @@ rule-#42 widening (PR #43) -- no shared lines, applies in any order.
 git fetch origin
 git checkout auto/build && git merge --ff-only origin/auto/build
 
-# bring the staged patches + places.json entry
+# bring the staged patches + places.json entry + Sarasota data
 git merge --no-ff origin/refactor/data-driven-geo
-# bring the Sarasota data file
 git merge --no-ff origin/seo/sarasota-launch
 
 # apply the two patches (build.py can't be pushed from the cloud agent)
@@ -66,4 +64,3 @@ can review or close. The hard-gated `config/` still governs token budget, comple
 thresholds, and categories. If you'd rather keep an explicit human gate on brand-new
 geographies, don't install part 3 (the scope widening) -- keep adding the city to
 `config/seed_scope.neighborhoods` yourself and the rest still works.
-</content>
