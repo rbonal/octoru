@@ -1,0 +1,37 @@
+diff --git a/seo/striking_distance_log.md b/seo/striking_distance_log.md
+index bb44b70..2c1edd3 100644
+--- a/seo/striking_distance_log.md
++++ b/seo/striking_distance_log.md
+@@ -4,6 +4,32 @@ A running log of the weekly striking-distance build. Newest entry on top.
+ 
+ ---
+ 
++## 2026-08-30 — New Ground: Sarasota, FL (Sarasota County) conquered end-to-end
++
++**Market:** Sarasota, FL — Stage-1 New-Ground priority #1 (est. difficulty ~11). First Gulf-Coast / Suncoast market; adds a 4th Florida county (Sarasota) to the directory. Winter Park (Orange) was already in flight (open PR #43), so Sarasota was the next unbuilt Stage-1 target.
++
++**Method:** DataForSEO Business Listings (permitted Google Maps API) for provider set + ratings, filtered to in-city Sarasota (ZIPs 34231–34243). Every tagged treatment CONFIRMED against each clinic's OWN website menu via server-side content parsing (`on_page_content_parsing`) — no full-browser page opening, no images, no scraped review text. Widened-eligibility rule (#42) applied: dermatology + plastic-surgery practices admitted as SOURCES for non-surgical (med-spa) treatments only; surgical vertical untouched.
++
++**Providers verified (10, all menu-confirmed, ratings via google_places_api):**
++- Med spas: Lush Injectables (5.0/483), Elite Medical Spa of Sarasota (4.9/745), Eye Candy Laser & Wellness (4.9/578), Bowtique Med Spa (4.8/394), Ideal Look Med Spa (4.6/448)
++- Dermatology (non-surgical source): SkinSmart Dermatology (4.9/2309), Dermatology Associates Sarasota (4.8/1707), University Park Dermatology & Medical Spa (4.9/1225)
++- Plastic surgery (non-surgical source): Sarasota Plastic Surgery Center & Med Spa (4.9/382), Florida Plastic Surgery & MedSpa – Dr. Hamwi (5.0/577)
++
++**Pages built (6 treatment pages + city hub + county hub):** botox (10 providers), lip-filler (10), chemical-peel (5), microneedling (3), hydrafacial (3), laser-hair-removal (3). Build: `built=510 skipped=0 state=active`, all internal links valid, verify_build.sh green. Each new page carries MedicalClinic + AggregateRating + FAQPage schema, canonical (https://octoru.com/fl/sarasota/…), and consent/privacy language.
++
++**Held (honest, not padded):**
++- `coolsculpting × sarasota` — only 1 verified in-city provider (Sarasota Plastic Surgery Center & Med Spa); < min_listings=2. Consistent with the documented CoolSculpting market-fit reality (displaced by Emsculpt/Morpheus8 in independent med spas).
++
++**Dropped after menu review (integrity):** The Covery (recovery/IV/cryo wellness — none of the tagged treatments); Sarasota Surgical Arts (homepage lists surgical procedures only; non-surgical menu not confirmable without deeper crawl — held, not guessed); Lakewood Ranch/Bradenton providers (separate municipalities, deferred to future markets); day spas / Massage Envy / barbershops (not medical aesthetic).
++
++**Integrity notes:** 2 providers trip the ≥4.95 & n≥100 "perfect-at-volume" flag — Lush Injectables (5.0/483) and Florida Plastic Surgery (5.0/577). Real Google Places data, not synthetic; flagged in each record's `_sourcing.rating_flag` under the operator's existing 2026-06-06 ratings-distribution override. Corpus perfect-at-volume share moved 23.3% (halt threshold 20%, override on file).
++
++**Shipped:** data file on branch `seo/sarasota-launch` (via GitHub connector) → PR into `auto/build` (NOT merged; no `auto-deploy` label — publishing is operator-gated). Existing-file changes staged as `git apply`-able patches under `state/proposed/` (build.py, places.json, config, this log) with `WORKLIST_sarasota.md`. build.py patch includes the rule-#42 widening (build.py itself was too large to push inline). NOTE: if Winter Park PR #43 is merged first it already adds the widening — apply the Sarasota build.py patch with `git apply --3way` and keep a single widening definition; the Sarasota geo hunks still apply cleanly.
++
++**Next target:** Fort Myers, FL (Lee County, difficulty ~15) — next unbuilt Stage-1 market after Sarasota and the in-flight Winter Park.
++
++---
++
+ ## 2026-08-29
+ 
+ **Method:** DataForSEO ranked-keywords for `octoru.com` (255 ranked keywords), filtered to positions 15–90, aggregated by page, ranked by *winnable* commercial/transactional volume × position, Broward priority this week. Picked three FAQ-less **city hubs** so the proven per-city `_HUB_FAQS` pattern applies cleanly. Ran end-to-end from an unattended scheduled **cloud** session (repo cloned, `build.py` verified locally, shipped as a PR — no push/deploy from here).
