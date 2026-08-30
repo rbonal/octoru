@@ -1,0 +1,58 @@
+diff --git a/builder/build.py b/builder/build.py
+index 296825e..5a8b118 100644
+--- a/builder/build.py
++++ b/builder/build.py
+@@ -296,6 +296,10 @@ NEIGHBORHOOD_CONTEXT = {
+     "wellington": "Wellington is a globally recognised equestrian destination with a wealthy, health-focused population. Aesthetic practices here skew toward a performance-wellness clientele.",
+     "west-palm-beach": "West Palm Beach is the county seat and the most urban city in Palm Beach County, with a growing arts and wellness culture serving everyone from budget-conscious locals to Intracoastal residents.",
+ }
++# Optional per-place 'context' blurb may live in data/places.json (data-driven, pushable).
++for _pl in _PLACES_RAW:
++    if _pl.get("slug") and _pl.get("context"):
++        NEIGHBORHOOD_CONTEXT[_pl["slug"]] = _pl["context"]
+ 
+ # Per-treatment FAQ templates. {city}, {n}, {price_range}, {county} are filled at build time.
+ # Answers are written to sound human — no robotic patterns, varied sentence structures.
+@@ -892,12 +896,41 @@ CITY_COUNTY = {
+ }
+ COUNTY_NAMES = {"miami-dade": "Miami-Dade", "broward": "Broward", "palm-beach": "Palm Beach"}
+ 
++# --- DATA-DRIVEN GEO (a new market ships as data only -- no build.py edit) ---
++# data/places.json is operator-owned and connector-pushable. Extend/override the hardcoded
++# maps from it so adding a place there (slug/name/county/lat/lng[/context]) is all the geo a
++# new city needs. Hardcoded entries above remain a floor for back-compat.
++for _pl in _PLACES_RAW:
++    _s = _pl.get("slug")
++    if _s and _pl.get("county"):
++        CITY_COUNTY[_s] = _pl["county"]
++        COUNTY_NAMES.setdefault(_pl["county"], _pl["county"].replace("-", " ").title())
++    if _s and _pl.get("name"):
++        NEIGHBORHOOD_NAMES.setdefault(_s, _pl["name"])
++
+ 
+ def _legacy_geo():
+     """No seed_scope.geo -> derive a CORRECT state/county/city tree from the flat
+     'neighborhoods' list using CITY_COUNTY (unknown cities default to Miami-Dade)."""
+     geo = {"fl": {"name": "Florida", "abbr": "FL", "status": "active", "counties": {}}}
+-    for c in CONFIG["seed_scope"].get("neighborhoods", []):
++    scope = list(CONFIG["seed_scope"].get("neighborhoods", []))
++    # Data-driven scope: also admit any neighborhood that already has prospector clinics, so a
++    # brand-new market is live once its data/prospector/<city>.json (+ places.json entry) lands
++    # -- no config edit. Existing behaviour is unchanged because every current clinic
++    # neighborhood is already in config scope; this only ever ADDS genuinely new markets.
++    try:
++        import glob as _glob
++        for _f in _glob.glob(str(PROSPECTOR_DIR / "*.json")):
++            try:
++                for _c in json.loads(open(_f).read()):
++                    _nb = isinstance(_c, dict) and _c.get("neighborhood")
++                    if _nb and _nb not in scope:
++                        scope.append(_nb)
++            except Exception:
++                pass
++    except Exception:
++        pass
++    for c in scope:
+         county = CITY_COUNTY.get(c, "miami-dade")
+         cc = geo["fl"]["counties"].setdefault(
+             county, {"name": COUNTY_NAMES.get(county, county.replace("-", " ").title()),
