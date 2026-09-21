@@ -4,6 +4,46 @@ A running log of the weekly striking-distance build. Newest entry on top.
 
 ---
 
+## 2026-09-21
+
+**Market conquered: Winter Park, FL (Orange County)** — the Orlando "find its Coral Gables" enclave from EXPANSION_PLAN v2, Stage 1. Data-only launch via the data-driven geo model (new `data/places.json` entry + `data/prospector/winter-park.json`); no `build.py`/`config` edits. Shipped from an unattended scheduled cloud session as PR #52 → `auto/build` (gated pipeline auto-merges on green build-verify + Workers Builds; no push/deploy from here).
+
+**Demand that drove selection (DataForSEO, this run):** all treatment-level difficulty inside Octoru's proven zone (≤24):
+
+| Query | Vol/mo | Difficulty | Intent |
+|---|---|---|---|
+| botox winter park | 390 | 16 | transactional |
+| med spa winter park | 210 | 16 | navigational (city hub) |
+| laser hair removal winter park | 90 | 11 | transactional (+143% qtr) |
+| microneedling winter park | 70 | ~0 | commercial |
+| lip filler winter park | 40 | 14 | transactional |
+| hydrafacial winter park | 40 | 4 | informational |
+
+Fort Myers (med spa 15) and Naples (med spa 21) were compared and deferred — both are fresh markets with zero prospecting; Winter Park had 3 providers already verified (from the un-activated #44 file) and higher combined winnable demand, so it was the higher-leverage conquer.
+
+**Providers verified (7, deepened from 3):** every tagged treatment confirmed against the clinic's OWN website menu (text-only `on_page_content_parsing`); ratings from Google Places API only; no scraped review text.
+- Reflections Dermatology – Winter Park 4.9/947 (botox, dermal-fillers, coolsculpting, laser-hair-removal)
+- Oasis Dermatology 4.7/622 (botox, chemical-peel, microneedling)
+- Dr. Kapil Saigal FACS 4.9/342 (botox, dermal-fillers — non-surgical only, surgical deferred; rule #42)
+- Couture Med Spa 4.6/439 (botox, lip-filler, dermal-fillers, laser-hair-removal)
+- Cosmetic Skin & Laser Center 4.8/348 (botox, dermal-fillers, microneedling, laser-hair-removal, hydrafacial, chemical-peel, morpheus8)
+- Winter Park Laser & Anti-Aging Center 4.7/424 (botox, dermal-fillers, lip-filler, laser-hair-removal, microneedling, chemical-peel, morpheus8)
+- Artistik Beauty 4.9/369 (botox, dermal-fillers, lip-filler, laser-hair-removal)
+
+**Pages built vs held:**
+- **Built (≥2 verified in-city):** Winter Park hub + Orange county hub + 5 treatment pages — **botox (7), lip-filler (3), laser-hair-removal (5), microneedling (3), chemical-peel (3)**.
+- **Held (<2, honest, not padded):** **hydrafacial** (1 — CSLC; Look Lab/Restore likely offer it but were not cleanly menu-confirmed this run) and **coolsculpting** (1 — Reflections; market-displaced, Winter Park supply runs SculpSure/Morpheus8/DiamondGlow, consistent with the standing coolsculpting-market-fit note).
+
+**Integrity notes:** local `builder/build.py` clean — `built=515 skipped=0 state=active`, all internal links valid; `scripts/verify_build.sh` passed. Isolation test (pristine vs edited build): only the new Winter Park/Orange pages added; all other pages unchanged apart from the site index + `sitemap.xml` (must update for a new market). **Zero new perfect-at-volume flags** — all 7 clinics ≤4.9, corpus row-flag count unchanged at 45. Look Lab Med Spa (5.0/1277) deliberately excluded to avoid adding a flag. Every built page carries MedicalClinic + AggregateRating + FAQ schema, canonical, and consent/privacy language.
+
+**Impressions/GSC trend:** not captured — GSC requires Claude-in-Chrome on the desktop, unreachable from an unattended cloud run. Recommend the Tuesday desktop SEO task submit `/sitemap.xml` and request indexing for the new `/fl/orange/winter-park/*` URLs once PR #52 deploys.
+
+**Operator items surfaced this run (see `state/needs_human.json`):** (1) plastic-surgery vertical — the scheduled task prompt asks to expand it, but the committed EXPANSION_PLAN v2 defers the surgical vertical ("do NOT build yet, activate only after med-spa is winning"); this run stayed non-surgical only and left the conflict for the operator. (2) hydrafacial Winter Park is one verified provider short of buildable at difficulty 4 — the easiest unclaimed win on the board; a single additional menu-confirmed HydraFacial provider flips it live.
+
+**Next demand target:** deepen Winter Park's hydrafacial to ≥2 (fast, diff 4), then the next Stage-1 SW-FL door — **Fort Myers (med spa 15)** as a fresh market, or continue the Orlando metro via **Lake Mary/Maitland** enclaves (both showed provider supply adjacent to today's Winter Park set).
+
+---
+
 ## 2026-08-29
 
 **Method:** DataForSEO ranked-keywords for `octoru.com` (255 ranked keywords), filtered to positions 15–90, aggregated by page, ranked by *winnable* commercial/transactional volume × position, Broward priority this week. Picked three FAQ-less **city hubs** so the proven per-city `_HUB_FAQS` pattern applies cleanly. Ran end-to-end from an unattended scheduled **cloud** session (repo cloned, `build.py` verified locally, shipped as a PR — no push/deploy from here).
