@@ -1,6 +1,6 @@
 [
   {
-    "_comment": "Winter Park, FL (Orange County) — Stage 1 expansion, verified clinic records in builder schema. Ratings from Google Places API (permitted). Each treatment slug below was CONFIRMED against the clinic's OWN website menu on 2026-08-29 (see _sourcing.menu_confirmed). No scraped review text; no prices published by these providers -> request-a-quote; nothing fabricated. Three API-tagged businesses (Spavia, The Spa at The Alfond Inn, Massage Envy) were OMITTED: their chemical-peel tag could not be confirmed as a clinical peel on their own menu (esthetician/hotel/chain spas). Reflections' API chemical-peel tag was DROPPED: its /treatment/chemical-peels/ page 404s. Saigal's morpheus8 was DROPPED: not on his menu (he lists FaceTite/Embrace RF/CO2, not Morpheus8)."
+    "_comment": "Winter Park, FL (Orange County) -- Stage 1 expansion, DEEPENED to 7 verified providers (2026-09-21). Ratings from Google Places API (permitted). Every tagged treatment CONFIRMED against the clinic's OWN website menu (see each _sourcing.menu_confirmed). No scraped review text; prices not published by these providers -> request-a-quote; nothing fabricated; no before/after images. Widened-supply rule #42 applied: dermatology + plastic-surgery practices count as sources for non-surgical treatments they list on their own menu. Look Lab Med Spa (132 N Park Ave, 5.0/1277) and Vitalounge (515 N Park Ave, 4.9/1177) were NOT included: Look Lab trips the perfect-at-volume integrity flag and its HydraFacial/microneedling appear only in reviews (not a clean itemized menu); Vitalounge's site is JS-gated and could not be menu-confirmed this run. Restore Hyper Wellness omitted: HydraFacial confirmed only at brand level ('not all services available at all locations'), not for the Winter Park studio."
   },
   {
     "slug": "reflections-dermatology-winter-park",
@@ -22,16 +22,17 @@
       "laser-hair-removal"
     ],
     "rating": 4.9,
-    "review_count": 944,
+    "review_count": 947,
     "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
     "before_after_consent": false,
     "_sourcing": {
       "website": "https://reflectionsdermatology.com",
-      "menu_confirmed": "2026-08-29 — cosmetic-treatments page names Dr. Palceski as national training faculty for Botox, Dysport, Juvederm, Voluma, Restylane, Sculptra, Kybella (=botox + dermal-fillers); /treatment/coolsculpting/ and /treatment/laser-hair-removal/ present. Board-certified dermatologist (Dr. Dimitry Palceski).",
-      "dropped": "chemical-peel — /treatment/chemical-peels/ menu link 404s (page does not resolve), so not counted."
+      "menu_confirmed": "2026-08-29 -- cosmetic-treatments page names Dr. Palceski as national training faculty for Botox, Dysport, Juvederm, Voluma, Restylane, Sculptra, Kybella (=botox + dermal-fillers); /treatment/coolsculpting/ and /treatment/laser-hair-removal/ present. Board-certified dermatologist (Dr. Dimitry Palceski). Rating re-pulled via Places API 2026-09-21 (4.9/947).",
+      "dropped": "chemical-peel -- /treatment/chemical-peels/ menu link 404s, so not counted."
     }
   },
   {
@@ -53,15 +54,16 @@
       "microneedling"
     ],
     "rating": 4.7,
-    "review_count": 587,
+    "review_count": 622,
     "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
     "before_after_consent": false,
     "_sourcing": {
       "website": "https://www.oasisdermatology.com",
-      "menu_confirmed": "2026-08-29 — Cosmetic Dermatology menu: dedicated Chemical Peel page, Micro-needling page, and Cosmetic Injections (Botox; Botox tag in taxonomy). Cosmetic dermatology practice."
+      "menu_confirmed": "2026-08-29 -- Cosmetic Dermatology menu: dedicated Chemical Peel page, Micro-needling page, and Cosmetic Injections (Botox). Cosmetic dermatology practice. Rating re-pulled via Places API 2026-09-21 (4.7/622)."
     }
   },
   {
@@ -82,16 +84,150 @@
       "dermal-fillers"
     ],
     "rating": 4.9,
-    "review_count": 331,
+    "review_count": 342,
     "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
     "before_after_consent": false,
     "_sourcing": {
       "website": "https://www.drsaigal.com",
-      "menu_confirmed": "2026-08-29 — Non-Surgical menu: dedicated BOTOX page (Wrinkle Relaxers) and Dermal Fillers page (Juvederm/Restylane/Sculptra). Double board-certified facial plastic surgeon; surgical procedures intentionally NOT tagged (surgical vertical deferred). morpheus8 dropped — not on menu.",
-      "non_surgical_source_note": "Included on non-surgical (med-spa) pages via the widened provider-eligibility filter; surgical vertical untouched."
+      "menu_confirmed": "2026-08-29 -- Non-Surgical menu: dedicated BOTOX page (Wrinkle Relaxers) and Dermal Fillers page (Juvederm/Restylane/Sculptra). Double board-certified facial plastic surgeon; surgical procedures intentionally NOT tagged (surgical vertical deferred). Included on non-surgical pages via widened provider-eligibility rule #42. Rating re-pulled via Places API 2026-09-21 (4.9/342)."
+    }
+  },
+  {
+    "slug": "couture-med-spa-winter-park",
+    "name": "Couture Med Spa",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "1155 N Orange Ave, Winter Park, FL 32789",
+    "phone": "+14079076300",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "dermal-fillers",
+      "laser-hair-removal"
+    ],
+    "rating": 4.6,
+    "review_count": 439,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.couturemedspa.com",
+      "menu_confirmed": "2026-09-21 -- Winter Park is a listed location. /solution/injectables names dedicated Botox & Dysport, Dermal Fillers, and Lip Filler pages (=botox + dermal-fillers + lip-filler). /solution/laser-and-light names a dedicated 'Laser Hair Removal Services' page (=laser-hair-removal). No facials/skin category on the site -> hydrafacial/microneedling/chemical-peel NOT tagged. Body contouring is IPL/fractional laser, not CoolSculpting -> coolsculpting NOT tagged."
+    }
+  },
+  {
+    "slug": "cosmetic-skin-laser-center-winter-park",
+    "name": "Cosmetic Skin & Laser Center",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "2105 N Park Ave, Winter Park, FL 32789",
+    "phone": "+14076367539",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "microneedling",
+      "laser-hair-removal",
+      "hydrafacial",
+      "chemical-peel",
+      "morpheus8"
+    ],
+    "rating": 4.8,
+    "review_count": 348,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://cslcbeauty.com",
+      "menu_confirmed": "2026-09-21 -- Multi-location practice (MI+FL) with a genuine Winter Park med spa (2105 N Park Ave; dedicated Winter Park booking + /winterpark/ location page). Service menu names dedicated pages: Botox & Dysport, Dermal Fillers, Microneedling + PRF, Laser Hair Removal, HydraFacial ('Top 100 HydraFacial Provider'), VI Peel (=chemical-peel), and Morpheus8. lip-filler NOT separately listed -> not tagged (dermal-fillers only)."
+    }
+  },
+  {
+    "slug": "winter-park-laser-anti-aging-center",
+    "name": "Winter Park Laser & Anti-Aging Center",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "1155 N Kentucky Ave, Winter Park, FL 32789",
+    "phone": "+14076011185",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "lip-filler",
+      "laser-hair-removal",
+      "microneedling",
+      "chemical-peel",
+      "morpheus8"
+    ],
+    "rating": 4.7,
+    "review_count": 424,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.winterparklaser.com",
+      "menu_confirmed": "2026-09-21 -- Itemized service menu: Injectables (BOTOX/Dysport; Juvederm + Restylane dermal fillers; Restylane Kysse/Juvederm Volbella = lip-filler), Body (Laser Hair Removal), Face (Vivace RF Microneedling = microneedling; Peels & Facials = chemical-peel; Morpheus8). DiamondGlow (not the HydraFacial brand) -> hydrafacial NOT tagged. SculpSure laser lipolysis (not CoolSculpting cryolipolysis) -> coolsculpting NOT tagged."
+    }
+  },
+  {
+    "slug": "artistik-beauty-winter-park",
+    "name": "Artistik Beauty",
+    "neighborhood": "winter-park",
+    "neighborhood_name": "Winter Park",
+    "county": "orange",
+    "state": "fl",
+    "address": "917 N Pennsylvania Ave, Winter Park, FL 32789",
+    "phone": "+14077598807",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "lip-filler",
+      "laser-hair-removal"
+    ],
+    "rating": 4.9,
+    "review_count": 369,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-21",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://artistikbeautyfl.com",
+      "menu_confirmed": "2026-09-21 -- Winter Park med spa founded 2016 by Ashley Pontenberg APRN-C, master-level injector. Site confirms core services: Botox, dermal filler and lip filler (master injector; 'Botox & Lip Filler'), and Laser Hair Removal (provider certified in Laser Hair Removal, 2010; laser hair removal named as a service). CONSERVATIVE: microneedling/hydrafacial/chemical-peel appear in client reviews but the site carries no clean itemized menu for them, so they are NOT tagged (menu-confirmation bar, not reviews)."
     }
   }
 ]

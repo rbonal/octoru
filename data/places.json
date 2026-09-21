@@ -483,5 +483,16 @@
     "county": "palm-beach",
     "lat": 26.6615,
     "lng": -80.0364
+  },
+  {
+    "slug": "winter-park",
+    "name": "Winter Park",
+    "type": "municipality",
+    "parent_place": null,
+    "county": "orange",
+    "lat": 28.5999,
+    "lng": -81.3392,
+    "context": "Winter Park is Greater Orlando's most affluent enclave -- a historic, high-income city (the Park Avenue shopping district, Rollins College) with a dense cluster of established dermatology, plastic-surgery and independent med-spa practices. Its wealth-and-supply profile mirrors the winnable enclaves (Coral Gables, Aventura) where Octoru already ranks, and its treatment-level keyword difficulty sits in the proven zone (botox 16, laser hair removal 11, microneedling/hydrafacial <=5).",
+    "_note": "Orange County (Greater Orlando) -- Stage 1 expansion; the Orlando 'find its Coral Gables' enclave named in EXPANSION_PLAN v2. Data-driven geo: this entry alone supplies county + centroid + context. Supersedes the un-activated 3-clinic winter-park.json (never added to places.json); deepened to 7 verified providers on 2026-09-21."
   }
 ]
