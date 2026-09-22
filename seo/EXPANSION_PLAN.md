@@ -6,6 +6,35 @@ growing Octoru's ranked footprint. It sits above the weekly striking-distance lo
 
 Version 2 · 2026-08-30. Supersedes ad-hoc weekly page-picking.
 
+> **Version 2.1 · 2026-09-22 — STANDING OVERRIDE (operator-directed, read this first).**
+> A 4-month performance review (DataForSEO) found the engine has built real
+> *visibility* (1 → 320 ranked keywords Jun→Sep) but **zero page-1 rankings and no
+> confirmed leads**, the flagship term *botox coral gables* slipped 24 → 30, much of
+> the footprint is low-value *navigational* competitor-brand terms, and the backlink
+> profile is thin and spammy (27 refs, spam score 60). Diagnosis: the engine keeps
+> choosing **breadth (new markets) over converting what is already close**, against
+> its own logs. Until the checkpoint below, the plan is overridden as follows:
+>
+> 1. **CONVERSION SPRINT, not expansion (now → 2026-12-31).** Do **not** launch new
+>    municipalities. Each run, work the **~30 commercial keywords already at
+>    positions 11–30** (e.g. *laser hair removal <city>*, *botox coral gables*) —
+>    title/meta/FAQ/schema/internal-link enrichment — to push them onto page one.
+>    Deepening an existing market's *commercial* pages is allowed; opening a new geo
+>    is not. **Ignore navigational competitor-brand keywords** — they don't convert.
+> 2. **Fix authority.** Each run, advance backlink hygiene: identify/disavow spammy
+>    referring domains and pursue a few real citations. Backlinks are the true
+>    rate-limiter; surface a disavow list for the operator (hard-gated to apply).
+> 3. **Success = page-1 commercial rankings + real leads — not ranked-keyword count.**
+>    Retire "we rank for N keywords" as a success metric in reports.
+> 4. **KILL CRITERION (operator gate, 2026-12-31 / ~month 6):** if the site does not
+>    have **≥1 commercial keyword on page 1 (pos 1–10) AND ≥1 confirmed inbound lead**
+>    by then, **pause** the engine and reassess before any further build. Record the
+>    result in the striking-distance log and `state/needs_human.json`.
+>
+> This override supersedes the "conquer a whole municipality each run" cadence below
+> until 2026-12-31. Everything else in this plan (integrity gates, winnability zone,
+> the enclave method) still holds and is what the sprint applies at page level.
+
 ---
 
 ## Prime directive
