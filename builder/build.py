@@ -1060,7 +1060,19 @@ def load_clinics():
             print(f"[builder] WARN: could not parse {f.name}: {e}")
             continue
         clinics.extend(data if isinstance(data, list) else [data])
+    # A business Google lists as PERMANENTLY closed must not be shown to patients or receive leads.
+    # The record is KEPT in data/ (audit trail, reversible) and simply not loaded.
+    # "closed_temporarily" is recorded but still loaded — whether to pull those is an operator call
+    # (removing them can unbuild whole city pages); see state/needs_human.json.
+    closed = [c for c in clinics if (c.get("business_status") or "open") in CLOSED_BUSINESS_STATUSES]
+    if closed:
+        print(f"[builder] excluded {len(closed)} closed listing(s): "
+              + ", ".join(f"{c.get('slug')} ({c.get('business_status')})" for c in closed))
+        clinics = [c for c in clinics if c not in closed]
     return _overlay_published_prices(clinics)
+
+
+CLOSED_BUSINESS_STATUSES = {"closed_permanently"}
 
 
 # Per-clinic published prices live in their own file (data/prices_published.json) rather
@@ -2626,7 +2638,12 @@ def main():
     _built_now = {"/" + str(f.relative_to(GENERATED).parent).replace("\\", "/") + "/"
                   for f in GENERATED.rglob("index.html")}
     learn_urls = render_learn(_built_now)
-    render_sitemap(summaries, guide_urls + learn_urls)
+    # Restored 2026-09-29: merge cb2a815 (2026-08-04) silently dropped these two calls,
+    # so /fl/{miami,fort-lauderdale,boca-raton}/{treatment}/guide/ pages stopped being built
+    # and 404 in Search Console. Guard: grep -c 'render_metros(summaries)' builder/build.py == 1
+    metro_urls = render_metros(summaries)
+    metro_hub_urls = render_metro_hubs(summaries)
+    render_sitemap(summaries, guide_urls + learn_urls + metro_urls + metro_hub_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
