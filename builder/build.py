@@ -1060,7 +1060,19 @@ def load_clinics():
             print(f"[builder] WARN: could not parse {f.name}: {e}")
             continue
         clinics.extend(data if isinstance(data, list) else [data])
+    # A business Google lists as PERMANENTLY closed must not be shown to patients or receive leads.
+    # The record is KEPT in data/ (audit trail, reversible) and simply not loaded.
+    # "closed_temporarily" is recorded but still loaded — whether to pull those is an operator call
+    # (removing them can unbuild whole city pages); see state/needs_human.json.
+    closed = [c for c in clinics if (c.get("business_status") or "open") in CLOSED_BUSINESS_STATUSES]
+    if closed:
+        print(f"[builder] excluded {len(closed)} closed listing(s): "
+              + ", ".join(f"{c.get('slug')} ({c.get('business_status')})" for c in closed))
+        clinics = [c for c in clinics if c not in closed]
     return _overlay_published_prices(clinics)
+
+
+CLOSED_BUSINESS_STATUSES = {"closed_permanently"}
 
 
 # Per-clinic published prices live in their own file (data/prices_published.json) rather
