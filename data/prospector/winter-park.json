@@ -113,12 +113,13 @@
       "botox",
       "lip-filler",
       "dermal-fillers",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "hydrafacial"
     ],
     "rating": 4.6,
     "review_count": 439,
     "rating_source": "google_places_api",
-    "last_verified": "2026-09-21",
+    "last_verified": "2026-09-29",
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
@@ -126,6 +127,14 @@
     "_sourcing": {
       "website": "https://www.couturemedspa.com",
       "menu_confirmed": "2026-09-21 -- Winter Park is a listed location. /solution/injectables names dedicated Botox & Dysport, Dermal Fillers, and Lip Filler pages (=botox + dermal-fillers + lip-filler). /solution/laser-and-light names a dedicated 'Laser Hair Removal Services' page (=laser-hair-removal). No facials/skin category on the site -> hydrafacial/microneedling/chemical-peel NOT tagged. Body contouring is IPL/fractional laser, not CoolSculpting -> coolsculpting NOT tagged."
+    },
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://www.couturemedspa.com/locations/winter-park",
+        "evidence": "Winter Park facial services: Hydrafacial, SkinPen",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
     }
   },
   {
@@ -215,12 +224,13 @@
       "botox",
       "dermal-fillers",
       "lip-filler",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 369,
     "rating_source": "google_places_api",
-    "last_verified": "2026-09-21",
+    "last_verified": "2026-09-29",
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
@@ -228,6 +238,14 @@
     "_sourcing": {
       "website": "https://artistikbeautyfl.com",
       "menu_confirmed": "2026-09-21 -- Winter Park med spa founded 2016 by Ashley Pontenberg APRN-C, master-level injector. Site confirms core services: Botox, dermal filler and lip filler (master injector; 'Botox & Lip Filler'), and Laser Hair Removal (provider certified in Laser Hair Removal, 2010; laser hair removal named as a service). CONSERVATIVE: microneedling/hydrafacial/chemical-peel appear in client reviews but the site carries no clean itemized menu for them, so they are NOT tagged (menu-confirmation bar, not reviews)."
+    },
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://artistikbeauty.net/hydrafacial/",
+        "evidence": "Hydrafacial | Winter Park",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
     }
   }
 ]

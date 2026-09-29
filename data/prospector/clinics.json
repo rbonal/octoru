@@ -1076,7 +1076,8 @@
       "coolsculpting",
       "laser-hair-removal",
       "microneedling",
-      "iv-therapy"
+      "iv-therapy",
+      "chemical-peel"
     ],
     "rating": 4.4,
     "review_count": 53,
@@ -1084,7 +1085,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "chemical-peel": {
+        "url": "https://facialmaniamedspamiami.com/locations/doral/",
+        "evidence": "Doral page, Skin Rejuvenation: Chemical Peels",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "luminex-wellness-aesthetics",
@@ -1382,7 +1392,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 540,
@@ -1390,7 +1401,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://plantationmedspa.com/",
+        "evidence": "deep cleansing and hydration with a HydraFacial",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "4ever-young-plantation",
@@ -1407,7 +1427,8 @@
       "lip-filler",
       "microneedling",
       "iv-therapy",
-      "morpheus8"
+      "morpheus8",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 541,
@@ -1415,7 +1436,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://4everyoungantiaging.com/plantation/injectables-facial-care/hydrafacial/",
+        "evidence": "Hydrafacial in Plantation, FL",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "sage-wellness-and-medspa",
@@ -1431,7 +1461,8 @@
       "botox",
       "laser-hair-removal",
       "microneedling",
-      "iv-therapy"
+      "iv-therapy",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 202,
@@ -1439,7 +1470,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://www.sagewellnessfl.com/",
+        "evidence": "Medical Grade Facials menu: HydraFacial",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "palm-beach-laser-aesthetic",
@@ -1501,7 +1541,8 @@
       "botox",
       "lip-filler",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.9,
     "review_count": 454,
@@ -1509,7 +1550,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://www.iconmd.com/med-spa-in-davie-fl/",
+        "evidence": "Davie location services: Skin Rejuvenation > HydraFacial",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "dives-med-spa",
@@ -1524,7 +1574,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 4.8,
     "review_count": 136,
@@ -1532,7 +1583,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://divesmedspa.com/",
+        "evidence": "Facial Treatments menu: HydraFacial (single Davie location)",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "bloomhaus-medspa",
@@ -1920,7 +1980,10 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "microneedling",
+      "chemical-peel",
+      "hydrafacial"
     ],
     "rating": 4.8,
     "review_count": 96,
@@ -1928,7 +1991,28 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "microneedling": {
+        "url": "https://skinneymedspa.com/miami/",
+        "evidence": "Bal Harbour page: facial treatments including microneedling, chemical peels, HydraFacial",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      },
+      "chemical-peel": {
+        "url": "https://skinneymedspa.com/miami/",
+        "evidence": "same sentence: chemical peels",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      },
+      "hydrafacial": {
+        "url": "https://skinneymedspa.com/miami/",
+        "evidence": "same sentence: HydraFacial",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "archetype-aesthetics",
@@ -2491,7 +2575,8 @@
     "languages": [],
     "treatments": [
       "botox",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "chemical-peel"
     ],
     "rating": 5,
     "review_count": 59,
@@ -2499,7 +2584,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "chemical-peel": {
+        "url": "https://heavenlymedspamiami.com/services/facial-peeling/",
+        "evidence": "Facial peeling, also known as chemical peeling",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "vip-aesthetic-center",
@@ -2514,7 +2608,9 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "laser-hair-removal"
+      "laser-hair-removal",
+      "hydrafacial",
+      "chemical-peel"
     ],
     "rating": 4.9,
     "review_count": 648,
@@ -2522,7 +2618,22 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://www.vipaestheticcenter.com/facials-med-spa-services",
+        "evidence": "What Is a HydraFacial and How Does It Work?",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      },
+      "chemical-peel": {
+        "url": "https://www.vipaestheticcenter.com/facials-med-spa-services",
+        "evidence": "section: CHEMICAL PEELS",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "estetika-med-spa",
@@ -2537,7 +2648,9 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "microneedling"
+      "microneedling",
+      "hydrafacial",
+      "chemical-peel"
     ],
     "rating": 5,
     "review_count": 94,
@@ -2545,7 +2658,22 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://estetikamedspa.com/treatments/",
+        "evidence": "HydraFacial — cleanse, exfoliate, extract and hydrate",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      },
+      "chemical-peel": {
+        "url": "https://estetikamedspa.com/treatments/",
+        "evidence": "Chemical Peels — resurface dull, uneven skin",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "gloria-cosmetic-surgery-med-spa",
@@ -3184,7 +3312,8 @@
     "treatments": [
       "botox",
       "lip-filler",
-      "coolsculpting"
+      "coolsculpting",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 124,
@@ -3192,7 +3321,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://alluraaesthetics.com/wellington/aesthetics/skin-treatments/hydrafacial/",
+        "evidence": "HydraFacial in Wellington, FL — Signature/Deluxe/Platinum",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "wellington-rejuvenation-center",
@@ -3209,7 +3347,8 @@
       "lip-filler",
       "coolsculpting",
       "laser-hair-removal",
-      "microneedling"
+      "microneedling",
+      "hydrafacial"
     ],
     "rating": 5,
     "review_count": 343,
@@ -3217,7 +3356,16 @@
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
     "has_before_after": false,
-    "before_after_consent": false
+    "before_after_consent": false,
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://wellingtonrejuvenationcenter.com/services/spa-facials/hydrafacial/",
+        "evidence": "What is a HydraFacial?",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "alluramd-aesthetics-boynton-beach",
@@ -3586,7 +3734,8 @@
     "treatments": [
       "botox",
       "dermal-fillers",
-      "iv-therapy"
+      "iv-therapy",
+      "lip-filler"
     ],
     "rating": 5.0,
     "review_count": 9,
@@ -3603,7 +3752,16 @@
       "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
       "prices": "none published on site — honest empty state",
       "low_n_note": "5.0 on only 9 reviews. Real but statistically thin; the Beta-posterior ranking will place it below higher-volume providers."
-    }
+    },
+    "treatment_verification": {
+      "lip-filler": {
+        "url": "https://injectionlabmed.com/services-pricing/",
+        "evidence": "Dermal Fillers > Consult-Based Filler Treatments: Lips (menu updated since 2026-08-18 check)",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "perfect-b-aesthetic-medicine",
@@ -3623,7 +3781,9 @@
       "lip-filler",
       "dermal-fillers",
       "laser-hair-removal",
-      "iv-therapy"
+      "iv-therapy",
+      "hydrafacial",
+      "chemical-peel"
     ],
     "rating": 4.9,
     "review_count": 573,
@@ -3639,7 +3799,22 @@
       "contact_and_treatments": "clinic's own site perfectb.com/treatment-plans (service menu read directly)",
       "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
       "prices": "no per-treatment price published (only a consultation fee) — honest empty state"
-    }
+    },
+    "treatment_verification": {
+      "hydrafacial": {
+        "url": "https://www.perfectb.com/treatments/hydrafacial/",
+        "evidence": "HydraFacial machine from The HydraFacial Company",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      },
+      "chemical-peel": {
+        "url": "https://www.perfectb.com/how-a-glycolic-acid-chemical-peel-can-rejuvenate-your-skin/",
+        "evidence": "At our Doral, FL clinic ... glycolic acid chemical peel",
+        "checked": "2026-09-29",
+        "source": "clinic_own_website"
+      }
+    },
+    "last_verified": "2026-09-29"
   },
   {
     "slug": "aromas-medspa-doral",
