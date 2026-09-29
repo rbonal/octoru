@@ -26,6 +26,9 @@ defs=$(grep -o 'iv-therapy\|morpheus8\|hydrafacial\|chemical-peel\|dermal-filler
 canon=$(grep -c 'rel="canonical"' templates/treatment-page.html.j2 || true)
 [ "$canon" = "1" ] || note "canonical tag count in treatment-page.html.j2 = $canon (expected 1)"
 
+metros=$(grep -c 'render_metros(summaries)$\|metro_urls = render_metros(summaries)' builder/build.py || true)
+[ "$metros" -ge "1" ] || note "render_metros() is no longer called from main() — metro /guide/ pages would 404 (cb2a815-class regression)"
+
 # --- state file sanity (compliance) ---
 state=$(python3 -c "import json;print(json.load(open('state/build_state.json')).get('state','paused'))")
 echo "build_state = $state"

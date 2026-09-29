@@ -2626,7 +2626,12 @@ def main():
     _built_now = {"/" + str(f.relative_to(GENERATED).parent).replace("\\", "/") + "/"
                   for f in GENERATED.rglob("index.html")}
     learn_urls = render_learn(_built_now)
-    render_sitemap(summaries, guide_urls + learn_urls)
+    # Restored 2026-09-29: merge cb2a815 (2026-08-04) silently dropped these two calls,
+    # so /fl/{miami,fort-lauderdale,boca-raton}/{treatment}/guide/ pages stopped being built
+    # and 404 in Search Console. Guard: grep -c 'render_metros(summaries)' builder/build.py == 1
+    metro_urls = render_metros(summaries)
+    metro_hub_urls = render_metro_hubs(summaries)
+    render_sitemap(summaries, guide_urls + learn_urls + metro_urls + metro_hub_urls)
     # Octoru favicon — inline vector octagon mark (NOT a bitmap). Served at site root /favicon.svg.
     _write("favicon.svg",
            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">'
