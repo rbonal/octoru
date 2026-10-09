@@ -1,0 +1,167 @@
+[
+  {
+    "_comment": "Pembroke Pines (Broward) DEPTH pass, 2026-09-25 — conversion-sprint Tier-1 #1 (EXPANSION_PLAN v2.1 override: no new geo; thicken supply on pages already at positions 11-30). Target page /fl/broward/pembroke-pines/laser-hair-removal/ ranks 14/16/21 for 'pembroke pines laser hair removal' / '...fl' / 'laser hair removal pembroke pines' (140/mo each, DataForSEO ranked_keywords 2026-09-25) but listed only 3 providers. Widened-eligibility rule #42 applied: dermatology practices admitted as SOURCES for non-surgical treatments. Ratings from DataForSEO Business Listings (permitted Google Maps API). Every tagged treatment confirmed against the clinic's OWN site via server-side text parsing (on_page_content_parsing) on 2026-09-25. No scraped review text (clinic-site testimonials were ignored as evidence); no published per-treatment prices -> request-a-quote; nothing fabricated. OMITTED: Body Details (Pembroke Pines) — dedicated laser-hair-removal chain, 4.7/660, but its location page could not be text-parsed (JS/blocked) so the menu is unconfirmed; held for a browser straggler pass rather than tagged on assumption. Robert A. Snyder MD — duplicate individual-provider listing of Riverchase Pembroke Pines (not double-counted). Lash/wax/nail salons and Massage Envy — not medical aesthetic. Miramar-addressed providers (Evolution MD, Hollywood Derm West Miramar) — separate municipality, excluded."
+  },
+  {
+    "slug": "olam-med-spa-pembroke-pines",
+    "name": "Olam Med Spa — Advanced Medical Aesthetics and Wellness",
+    "neighborhood": "pembroke-pines",
+    "neighborhood_name": "Pembroke Pines",
+    "county": "broward",
+    "state": "fl",
+    "email": null,
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-25",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "address": "17901 NW 5th St Ste 201, Pembroke Pines, FL 33029",
+    "phone": "+19542370930",
+    "booking_url": "https://olammedspa.com/",
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "hydrafacial",
+      "chemical-peel",
+      "microneedling",
+      "laser-hair-removal"
+    ],
+    "rating": 4.8,
+    "review_count": 425,
+    "_sourcing": {
+      "website": "https://olammedspa.com/",
+      "menu_confirmed": "2026-09-25 — bilingual EN/ES site (Spanish-language support shown on-site). Service menu explicitly names 'Botox, fillers & skin boosters' -> botox + dermal-fillers; 'HydraFacial, chemical peels, microneedling & LED' -> hydrafacial + chemical-peel + microneedling; 'Laser Hair Removal ... all skin tones, all areas' -> laser-hair-removal. Fillers are not described as lip-specific -> lip-filler NOT tagged (conservative). Body contouring is generic 'non-surgical fat reduction' (no CoolSculpting brand) -> coolsculpting NOT tagged."
+    }
+  },
+  {
+    "slug": "advanced-dermatology-pembroke-pines",
+    "name": "Advanced Dermatology and Cosmetic Surgery (Pembroke Pines)",
+    "neighborhood": "pembroke-pines",
+    "neighborhood_name": "Pembroke Pines",
+    "county": "broward",
+    "state": "fl",
+    "email": null,
+    "languages": [],
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-25",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "address": "3 SW 129th Ave Ste 100, Pembroke Pines, FL 33027",
+    "phone": "+19544473200",
+    "booking_url": "https://www.advancedderm.com/book-online-today?location=262",
+    "category": "dermatology",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "hydrafacial",
+      "chemical-peel",
+      "laser-hair-removal"
+    ],
+    "rating": 4.6,
+    "review_count": 1246,
+    "_sourcing": {
+      "website": "https://www.advancedderm.com/locations/florida/pembroke-pines/3-sw-129th-ave-ste-100",
+      "menu_confirmed": "2026-09-25 — location page 'Services Provided' list for THIS office names BOTOX Cosmetic + Dysport -> botox; Juvederm + Restylane -> dermal-fillers; HydraFacial -> hydrafacial; Chemical Peels + VI Peel -> chemical-peel; Laser Hair Removal -> laser-hair-removal. Lips not specified -> lip-filler NOT tagged. Board-certified dermatology practice admitted via rule #42."
+    }
+  },
+  {
+    "slug": "hollywood-dermatology-pembroke-pines",
+    "name": "Hollywood Dermatology & Cosmetic Specialists (Pembroke Pines)",
+    "neighborhood": "pembroke-pines",
+    "neighborhood_name": "Pembroke Pines",
+    "county": "broward",
+    "state": "fl",
+    "email": null,
+    "languages": [],
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-25",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "address": "9050 Pines Blvd Ste 200, Pembroke Pines, FL 33024",
+    "phone": "+19544330455",
+    "booking_url": "https://hollywooddermatology.com/contact-us/",
+    "category": "dermatology",
+    "treatments": [
+      "lip-filler",
+      "dermal-fillers",
+      "chemical-peel",
+      "laser-hair-removal",
+      "morpheus8"
+    ],
+    "rating": 4.7,
+    "review_count": 1057,
+    "_sourcing": {
+      "website": "https://www.hollywooddermatology.com/locations/pembroke-pines/",
+      "menu_confirmed": "2026-09-25 — Pembroke Pines location page cosmetic menu names 'Dermal Fillers for Lips & Eyes' -> lip-filler + dermal-fillers; 'Chemical Peel For Acne Scars & The Face' (+ Miami Peel, TCA Peel) -> chemical-peel; 'Laser Hair Removal' -> laser-hair-removal; 'Morpheus 8' -> morpheus8. Neurotoxin is only implied by 'Wrinkle Prevention Treatments' (no brand named) -> botox NOT tagged (conservative). Distinct from the existing West Miramar location record (different address/phone) — not a duplicate."
+    }
+  },
+  {
+    "slug": "riverchase-dermatology-pembroke-pines",
+    "name": "Riverchase Dermatology (Pembroke Pines)",
+    "neighborhood": "pembroke-pines",
+    "neighborhood_name": "Pembroke Pines",
+    "county": "broward",
+    "state": "fl",
+    "email": null,
+    "languages": [],
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-25",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "address": "603 N Flamingo Rd #350, Pembroke Pines, FL 33028",
+    "phone": "+19544355100",
+    "booking_url": "https://www.riverchasedermatology.com/location/pembroke-pines/",
+    "category": "dermatology",
+    "treatments": [
+      "botox"
+    ],
+    "rating": 4.8,
+    "review_count": 1644,
+    "_sourcing": {
+      "website": "https://www.riverchasedermatology.com/location/pembroke-pines/",
+      "menu_confirmed": "2026-09-25 — location page: 'Cosmetic dermatology services and aesthetic treatments include Botox(R) and skin rejuvenation procedures' at the Pembroke Pines office -> botox. Nothing else specifically named for this office -> only botox tagged."
+    }
+  },
+  {
+    "slug": "liquivida-pembroke-pines",
+    "name": "Liquivida Wellness Center (Pembroke Pines)",
+    "neighborhood": "pembroke-pines",
+    "neighborhood_name": "Pembroke Pines",
+    "county": "broward",
+    "state": "fl",
+    "email": null,
+    "languages": [],
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-25",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "address": "2206 N Flamingo Rd Unit 12, Pembroke Pines, FL 33028",
+    "phone": "+19543722688",
+    "booking_url": "https://www.liquivida.com/pembroke-pines",
+    "category": "med-spa",
+    "treatments": [
+      "lip-filler",
+      "iv-therapy"
+    ],
+    "rating": 4.9,
+    "review_count": 1011,
+    "_sourcing": {
+      "website": "https://www.liquivida.com/pembroke-pines",
+      "menu_confirmed": "2026-09-25 — location page menu: 'IV Therapy' (nutrient infusion) -> iv-therapy; 'Aesthetics ... plump your lips ... minimally invasive injectables' -> lip-filler. A neurotoxin brand appears only inside a customer testimonial on the page, which is NOT used as evidence -> botox NOT tagged. Wellness center with a facial-aesthetics injectables line; categorized med-spa (Google lists Medical Spa among its service categories)."
+    }
+  }
+]
