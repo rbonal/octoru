@@ -73,7 +73,7 @@
     "booking_url": null,
     "languages": [],
     "category": "med-spa",
-    "treatments": ["botox", "lip-filler", "hydrafacial"],
+    "treatments": ["botox", "lip-filler", "hydrafacial", "morpheus8"],
     "rating": 5.0,
     "review_count": 1574,
     "rating_checked": "2026-09-29 (DataForSEO Business Listings, Google Maps source)",
@@ -85,7 +85,7 @@
     "before_after_consent": false,
     "_sourcing": {
       "website": "https://peacelovemed.com",
-      "menu_confirmed": "2026-08-30 — East Boca Raton med spa. Homepage + reviews confirm Botox Injections, dermal fillers (lip filler), and HydraFacial -> botox + lip-filler + hydrafacial tagged. Also offers liquid rhinoplasty (not a slug). East Boca 33432.",
+      "menu_confirmed": "2026-08-30 — East Boca Raton med spa. Homepage + reviews confirm Botox Injections, dermal fillers (lip filler), and HydraFacial -> botox + lip-filler + hydrafacial tagged. Also offers liquid rhinoplasty (not a slug). East Boca 33432. | 2026-10-07 expansion-engine: morpheus8 ADDED — own service page https://peacelovemed.com/services-3/morpheus-8-skin-tightening-2 ('Contour your face and body with Morpheus 8'). CoolSculpting NOT tagged: only undated/2017-18 blog mentions, no current service page.",
       "rating_flag": "5.0 across 1533 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override."
     }
   }
