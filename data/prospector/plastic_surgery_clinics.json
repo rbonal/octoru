@@ -978,7 +978,8 @@
       "liposuction",
       "rhinoplasty",
       "mommy-makeover",
-      "facelift"
+      "facelift",
+      "morpheus8"
     ],
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
@@ -998,7 +999,10 @@
       "State of Florida",
       "Florida Board of Medicine"
     ],
-    "accreditation_source": "https://www.spsboca.com/about/find-your-sanctuary/"
+    "accreditation_source": "https://www.spsboca.com/about/find-your-sanctuary/",
+    "_sourcing": {
+      "morpheus8_verified": "2026-10-07 expansion-engine (rule #42, plastic-surgery practice as source for non-surgical page): https://www.spsboca.com/minimally-invasive/genius-rf-microneedling/ — 'we use two devices… the Lutronic Genius and the Inmode Morpheus8'"
+    }
   },
   {
     "slug": "handal-plastic-surgery",
@@ -1017,7 +1021,8 @@
       "liposuction",
       "rhinoplasty",
       "mommy-makeover",
-      "facelift"
+      "facelift",
+      "morpheus8"
     ],
     "has_real_clinic_data": true,
     "uses_scraped_review_text": false,
@@ -1035,7 +1040,10 @@
     "accreditations": [
       "State of Florida Agency for Healthcare Administration (AHCA) licensed ambulatory surgical center"
     ],
-    "accreditation_source": "https://www.handalplasticsurgery.com/my-practice/our-facility.html"
+    "accreditation_source": "https://www.handalplasticsurgery.com/my-practice/our-facility.html",
+    "_sourcing": {
+      "morpheus8_verified": "2026-10-07 expansion-engine (rule #42, plastic-surgery practice as source for non-surgical page): https://www.handalplasticsurgery.com/morpheus-8.html — dedicated 'Morpheus8' service page in site menu"
+    }
   },
   {
     "slug": "mosca-plastic-surgery",

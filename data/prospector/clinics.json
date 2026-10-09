@@ -4671,6 +4671,7 @@
       "botox",
       "laser-hair-removal",
       "microneedling",
+      "coolsculpting",
       "morpheus8",
       "hydrafacial",
       "chemical-peel",
@@ -4689,7 +4690,8 @@
       "by": "builder",
       "contact_and_treatments": "clinic's own site 4everyoungantiaging.com — dedicated per-service pages read directly",
       "rating": "DataForSEO Business Listings (permitted API, Google Maps source)",
-      "prices": "none published on site — honest empty state"
+      "prices": "none published on site — honest empty state",
+      "coolsculpting_verified": "2026-10-07 expansion-engine: Boca location page https://4everyoungantiaging.com/boca-raton/coolsculpting/ — '4Ever Young in Boca Raton, FL offers CoolSculpting' (text-parsed via DataForSEO on_page_content_parsing)."
     }
   },
   {
