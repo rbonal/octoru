@@ -31,6 +31,9 @@ Version 2 · 2026-08-30. Supersedes ad-hoc weekly page-picking.
 >    by then, **pause** the engine and reassess before any further build. Record the
 >    result in the striking-distance log and `state/needs_human.json`.
 >
+> **Active target queue:** `seo/conversion_sprint_targets.md` (the concrete per-page
+> worklist for this sprint; re-pull positions each run and re-rank).
+>
 > This override supersedes the "conquer a whole municipality each run" cadence below
 > until 2026-12-31. Everything else in this plan (integrity gates, winnability zone,
 > the enclave method) still holds and is what the sprint applies at page level.
