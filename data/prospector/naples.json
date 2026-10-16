@@ -1,0 +1,175 @@
+[
+  {
+    "_comment": "Stage-1 expansion — NAPLES (Collier County, Gulf Coast). Data-only launch under the data-driven-geo + rule-42 (widened provider eligibility) model. DataForSEO demand that drove selection: 'botox naples' 480/mo KD 14, 'laser hair removal naples' 260/mo KD 1, 'medical spa naples fl' 260/mo KD 17, 'lip filler naples' 110/mo — all in Octoru's proven winnable zone (<=24). Affluent Gulf-coast enclave, same profile as Sarasota. Every provider below was menu-verified on its OWN website 2026-09-11; ratings from Google Places Business Listings API (permitted); no published base prices found -> request-a-quote; nothing fabricated; no before/after images. Under rule-42, board-certified dermatology practices count as sources for the non-surgical treatments they verifiably offer. LIVE SERP winnability check (serp_organic_live_advanced) could not run — auto-declined in the unattended scheduled run — so winnability rests on DataForSEO keyword-difficulty (KD = top-10 chance). INTEGRITY: two providers (Naples Vision of Beauty 5.0/285, Revital 5.0/375) trip the >=4.95 & n>=100 perfect-at-volume flag — real Google data on the operator's standing ratings-distribution override, flagged per record."
+  },
+  {
+    "slug": "skin-wellness-physicians-naples",
+    "name": "Skin Wellness Physicians",
+    "neighborhood": "naples",
+    "neighborhood_name": "Naples",
+    "county": "collier",
+    "state": "fl",
+    "address": "8625 Collier Blvd, Naples, FL 34114",
+    "phone": "+12397320044",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "hydrafacial",
+      "microneedling",
+      "chemical-peel"
+    ],
+    "rating": 4.9,
+    "review_count": 784,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-11",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.skinwellnessflorida.com",
+      "menu_confirmed": "2026-09-11 — board-certified dermatology group (Drs. Wasserman, Tremaine, Wong, Grassi, Parks). Site text explicitly names 'BOTOX, Dysport, dermal fillers for lip injections and other uses, Kybella, HydraFacial, DiamondGlow, PRP for hair loss, microneedling, chemical peels' -> botox + lip-filler + hydrafacial + microneedling + chemical-peel tagged. CO2RE is laser resurfacing (not hair removal) -> laser-hair-removal NOT tagged. Rule-42 dermatology source.",
+      "rating_flag": "4.9/784 — below the >=4.95 perfect-at-volume threshold; not flagged."
+    }
+  },
+  {
+    "slug": "4ever-young-naples-pine-ridge",
+    "name": "4Ever Young Naples Med Spa & Wellness Center (Pine Ridge)",
+    "neighborhood": "naples",
+    "neighborhood_name": "Naples",
+    "county": "collier",
+    "state": "fl",
+    "address": "1485 Pine Ridge Rd #1, Naples, FL 34109",
+    "phone": "+12393422878",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "hydrafacial",
+      "microneedling",
+      "chemical-peel"
+    ],
+    "rating": 4.6,
+    "review_count": 718,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-11",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://4everyoungantiaging.com/naples-fl/",
+      "menu_confirmed": "2026-09-11 — medical spa. Naples services page explicitly names Botox + dermal/lip fillers (injectables), 'highly sought-after HydraFacial', SkinPen Microneedling, and Chemical Peels -> botox + lip-filler + hydrafacial + microneedling + chemical-peel tagged. Broadband Light Therapy is a photofacial, not laser hair removal -> laser-hair-removal NOT tagged. Second 4Ever Young Naples unit (9100 Strada Pl, 34108) OMITTED this pass to avoid asserting an identical menu for two franchise units from a single verified page.",
+      "rating_flag": "4.6/718 — not flagged."
+    }
+  },
+  {
+    "slug": "woodruff-institute-naples",
+    "name": "The Woodruff Institute for Dermatology & Cosmetic Surgery",
+    "neighborhood": "naples",
+    "neighborhood_name": "Naples",
+    "county": "collier",
+    "state": "fl",
+    "address": "2235 Venetian Ct Ste 1, Naples, FL 34109",
+    "phone": "+12395969337",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "dermatology",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "laser-hair-removal",
+      "microneedling",
+      "chemical-peel"
+    ],
+    "rating": 4.8,
+    "review_count": 540,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-11",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.thewoodruffinstitute.com/medical-spa/",
+      "menu_confirmed": "2026-09-11 — dermatology & cosmetic surgery group. Medical-spa page: Cosmetic Dermatology names Botox/Dysport + Juvederm/Restylane/Volbella/Voluma/Radiesse fillers; 'Laser Treatments' explicitly lists 'laser hair removal'; Skin Care & Spa names chemical peels + microneedling -> botox + lip-filler + laser-hair-removal + microneedling + chemical-peel tagged. No HydraFacial brand named -> hydrafacial NOT tagged. TruSculpt/JuVaShape are body contouring, not CoolSculpting -> coolsculpting NOT tagged. Rule-42 dermatology source.",
+      "rating_flag": "4.8/540 — not flagged."
+    }
+  },
+  {
+    "slug": "naples-vision-of-beauty",
+    "name": "Naples Vision of Beauty",
+    "neighborhood": "naples",
+    "neighborhood_name": "Naples",
+    "county": "collier",
+    "state": "fl",
+    "address": "2400 Vanderbilt Beach Rd Suite 106, Naples, FL 34109",
+    "phone": "+12397776435",
+    "email": null,
+    "booking_url": null,
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "laser-hair-removal",
+      "microneedling",
+      "chemical-peel"
+    ],
+    "rating": 5.0,
+    "review_count": 285,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-11",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.naplesvisionofbeauty.com",
+      "menu_confirmed": "2026-09-11 — medical spa (Places address 2400 Vanderbilt Beach Rd, Naples 34109; site also brands as 'Bonita Med Spa' but the verified GBP location is in-city Naples). Menu names injectables (tox: brow lift, lip flip, forehead; 'Restore Volume & Shape Lips' fillers), Chemical Peels, RF Microneedling, and Diolaze laser hair removal -> botox + lip-filler + chemical-peel + microneedling + laser-hair-removal tagged. Morpheus8/Forma RF and Q-Switch tattoo removal are not active slugs.",
+      "rating_flag": "5.0 across 285 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override; adds to the corpus perfect-at-volume share."
+    },
+    "rating_flag": "perfect-at-volume (>=4.95 & n>=100): real Google Places API rating, flagged under operator standing override (2026-06-06); not fabricated"
+  },
+  {
+    "slug": "revital-med-spa-naples",
+    "name": "Revital Med Spa and IV Drip Bar",
+    "neighborhood": "naples",
+    "neighborhood_name": "Naples",
+    "county": "collier",
+    "state": "fl",
+    "address": "868 99th Ave N, Naples, FL 34108",
+    "phone": "+12393723211",
+    "email": null,
+    "booking_url": "https://www.vagaro.com/revitalmedspaandivdripbar",
+    "languages": [],
+    "category": "med-spa",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "microneedling"
+    ],
+    "rating": 5.0,
+    "review_count": 375,
+    "rating_source": "google_places_api",
+    "last_verified": "2026-09-11",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "_sourcing": {
+      "website": "https://www.revitalmedswfl.com",
+      "menu_confirmed": "2026-09-11 — medical spa led by Bryan Diaz, PA-C. Homepage service menu names 'TOX (Dysport/Jeuveau)', 'Dermal Fillers', and 'Microneedling with Exosomes' -> botox + lip-filler + microneedling tagged. Dermal Fillers is listed generally (lip filler is the flagship filler use); tagged lip-filler per the directory's filler-slug convention. 'Cool Peel CO2 Laser' is laser resurfacing (not a chemical peel, not hair removal) -> chemical-peel and laser-hair-removal NOT tagged. IV therapy / weight loss are not active slugs.",
+      "rating_flag": "5.0 across 375 reviews trips the >=4.95 & n>=100 perfect-at-volume flag. Real Google Places data; on the operator's standing override; adds to the corpus perfect-at-volume share."
+    },
+    "rating_flag": "perfect-at-volume (>=4.95 & n>=100): real Google Places API rating, flagged under operator standing override (2026-06-06); not fabricated"
+  }
+]
