@@ -505,5 +505,16 @@
     "lng": -81.7948,
     "context": "Naples anchors the Paradise Coast of Southwest Florida in Collier County -- one of the wealthiest cities in the U.S. by per-capita income, with an affluent, image-conscious retiree and seasonal-resident population. Its aesthetic supply is unusually deep in established, board-certified dermatology and cosmetic-surgery practices alongside independent medical spas.",
     "_note": "Collier County (Gulf Coast / Paradise Coast) -- Stage 1 expansion 2026-09-11. Data-driven geo: this entry supplies county + centroid + context; pages build from data/prospector/naples.json."
+  },
+  {
+    "slug": "tampa",
+    "name": "Tampa",
+    "type": "municipality",
+    "parent_place": null,
+    "county": "hillsborough",
+    "lat": 27.9506,
+    "lng": -82.4572,
+    "context": "Tampa is the anchor of Florida's Gulf Coast Tampa Bay region and Hillsborough County, with a large, fast-growing population and a deep supply of independent medical spas, board-certified dermatology groups and cosmetic-surgery practices concentrated in South Tampa, Hyde Park, Westshore and Carrollwood.",
+    "_note": "Hillsborough County (Tampa Bay) -- expansion 2026-10-30. Data-driven geo: pages build from data/prospector/tampa.json."
   }
 ]
