@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "305-plastic-surgery-coral-gables",
+    "name": "305 Plastic Surgery Coral Gables",
+    "category": "plastic-surgery",
+    "neighborhood": "coral-gables",
+    "neighborhood_name": "Coral Gables",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "564 SW 42nd Ave 3rd floor, Coral Gables, FL 33134",
+    "phone": "+13052091030",
+    "website": "https://305plasticsurgery.com/",
+    "treatments": ["bbl", "liposuction", "tummy-tuck", "breast-augmentation", "mommy-makeover"],
+    "rating": 4.1,
+    "review_count": 2590,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-06 (DataForSEO Business Listings, Google Maps source)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-06",
+    "sources": ["https://305plasticsurgery.com/"],
+    "_sourcing": "Treatments confirmed 2026-11-06 against the clinic's own homepage procedure menu (Brazilian Butt Lift, Liposuction, Breast Lift, Tummy Tuck, Breast Augmentation, Mommy Makeover). Facelift and rhinoplasty NOT listed, so not tagged. Breast lift has no builder slug. No prices published (request-a-quote). Rating/address/phone from permitted DataForSEO Business Listings API; no review text used."
+  }
+]
