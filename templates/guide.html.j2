@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, FL? ({{ year }} price guide)</title>
-<meta name="description" content="{% if cost.structured %}Compare {{ treatment.name | lower }} offer terms in {{ neighborhood.name }}, Florida. Check what is included and what to ask for in a quote.{% else %}Real {{ treatment.name | lower }} prices from {{ n_clinics }} verified providers in {{ neighborhood.name }}, Florida. Compare costs, what affects pricing, and how to choose a provider.{% endif %}">
+<title>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, {{ city }}? ({{ year }} price guide)</title>
+<meta name="description" content="Understand {{ treatment.name | lower }} quotes in {{ neighborhood.name }}, {{ city }}. See local offer coverage, what to ask, and how to compare providers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -90,7 +90,7 @@
   <article class="guide-article">
     <header class="guide-hero">
       <div class="label blue" style="margin-bottom:10px">{{ year }} price guide</div>
-      <h1>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, FL?</h1>
+      <h1>How much does {{ treatment.name }} cost in {{ neighborhood.name }}, {{ city }}?</h1>
       {#- Lead with the referential market figure — it's the answer the query asks for and
           it exists for every treatment we can source. The observed local figure, when we
           have one, sits underneath it and is labeled as what providers here publish. -#}
@@ -106,57 +106,21 @@
         </span>
       </div>
       {%- endif %}
-      {%- if price_display %}
-      <div class="guide-price-callout guide-price-observed">
-        <span class="guide-price-n">{{ price_display }}</span>
-        <span class="guide-price-note">published by verified {{ neighborhood.name }} providers — see full list below</span>
-      </div>
-      {%- endif %}
       {%- if neighborhood_context %}
       <p class="guide-lead">{{ neighborhood_context }}</p>
       {%- endif %}
     </header>
 
-    {%- if cost.structured %}
     <section class="guide-section">
-      <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
+      <h2>Published offers in {{ neighborhood.name }}</h2>
       <p>{{ cost.coverage_label }}.</p>
-      {% for group in cost.groups %}
+      {%- for group in cost.groups %}
       <p>{{ group.label }} from {{ group.clinic_count }} listed providers: <strong>{{ group.display }}</strong>.</p>
-      {% endfor %}
-      {% if treatment.slug == "botox" %}
-      <p>For a flat or per-area quote, ask which areas each clinic counts, which product is included, whether the quote caps the number of units, and whether a deposit or follow-up is included.</p>
-      {% else %}
-      <p>Ask which parts of each body area the quote covers and whether it includes the surgeon, anesthesia, facility, garments and follow-up. A starting price for one package may cover different areas or fees than another.</p>
-      {% endif %}
-      <p><a href="{{ listing_url }}">Compare {{ neighborhood.name }} providers and their published offers</a>.</p>
+      {%- endfor %}
+      <h3>What to ask for in a {{ treatment.name | lower }} quote</h3>
+      <p>{{ quote_checklist }}</p>
+      <p><a href="{{ listing_url }}">Compare {{ neighborhood.name }} providers</a>.</p>
     </section>
-    {%- elif cost and cost.has_prices %}
-    <section class="guide-section">
-      <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
-      <p>
-        Based on the {{ n_clinics }} verified providers in the Octoru directory,
-        {{ treatment.name | lower }} in {{ neighborhood.name }} starts at
-        <strong>${{ cost.low }} {{ unit }}</strong>
-        {%- if cost.high and cost.high != cost.low %} and goes up to <strong>${{ cost.high }} {{ unit }}</strong>{% endif %}.
-        {{ cost.coverage_label | capitalize }}.
-      </p>
-      <p style="margin-top:12px">These are published starting prices — your final cost will depend on the treatment area, the number of units or sessions required, and the provider you choose. A consultation is the only way to get an accurate quote for your specific goals.</p>
-    </section>
-    {%- else %}
-    <section class="guide-section">
-      <h2>{{ treatment.name }} prices in {{ neighborhood.name }}</h2>
-      {%- if reference and reference.available %}
-      <p>No provider in {{ neighborhood.name }} publishes a rate for {{ treatment.name | lower }} online — common in aesthetics, where cost depends on your individual plan. For a market reference,
-        <a href="{{ reference.national.source_url }}" target="_blank" rel="noopener nofollow">{{ reference.national.source_name }}</a>
-        reports <strong>{{ reference.national.display }}</strong> {{ reference.national.basis }} nationally{% if reference.national.year %} ({{ reference.national.year }}){% endif %}{% if reference.metro %}, and an average of <strong>{{ reference.metro.display }}</strong> {{ reference.metro.basis }}{% endif %}.
-        {% if reference.excludes_anesthesia_facility %}That figure is the surgeon's fee only — anesthesia and accredited-facility costs are billed separately.{% endif %}
-        Treat it as a reference point, not a quote: each clinic sets its own rate.</p>
-      {%- else %}
-      <p>No provider in {{ neighborhood.name }} publishes a rate for {{ treatment.name | lower }} online, and no independent body publishes an average cost for it — so there is no range we can honestly show you here. Request current pricing below and we'll get real numbers from the {{ n_clinics }} verified providers listed.</p>
-      {%- endif %}
-    </section>
-    {%- endif %}
 
     {%- if guidance %}
     <section class="guide-section">

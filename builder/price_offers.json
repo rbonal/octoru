@@ -9,8 +9,16 @@
         "eligibility": "standard",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true,
-        "terms": "A $50 consultation deposit is credited toward treatment."
+        "terms": "A $50 consultation deposit is credited toward treatment.",
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
       }
     ]
   },
@@ -24,7 +32,15 @@
         "eligibility": "standard",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
       },
       {
         "amount_cents": 1200,
@@ -34,7 +50,6 @@
         "eligibility": "member",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true,
         "terms": "Elite membership required."
       },
       {
@@ -82,7 +97,15 @@
         "eligibility": "standard",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
       }
     ]
   },
@@ -96,7 +119,6 @@
         "eligibility": "new_patient",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true,
         "terms": "Introductory rate."
       }
     ]
@@ -156,7 +178,15 @@
         "eligibility": "standard",
         "product": "botox-cosmetic",
         "basis": "per_unit",
-        "standard_unit_rate": true
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
       },
       {
         "amount_cents": 700,

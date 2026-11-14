@@ -1,0 +1,146 @@
+{
+  "_comment": "Existing thin-page indexing holds carried forward through the shared service template migration. Re-evaluate when the qualifying clinic IDs change.",
+  "providers": {
+    "fl/broward/coral-springs/breast-augmentation": [
+      "david-j-levens-md-plastic-surgery-med-spa"
+    ],
+    "fl/broward/coral-springs/facelift": [
+      "david-j-levens-md-plastic-surgery-med-spa"
+    ],
+    "fl/broward/coral-springs/liposuction": [
+      "david-j-levens-md-plastic-surgery-med-spa"
+    ],
+    "fl/broward/coral-springs/mommy-makeover": [
+      "david-j-levens-md-plastic-surgery-med-spa"
+    ],
+    "fl/broward/coral-springs/tummy-tuck": [
+      "david-j-levens-md-plastic-surgery-med-spa"
+    ],
+    "fl/broward/fort-lauderdale/bbl": [
+      "vanguard-aesthetic-plastic-surgery"
+    ],
+    "fl/broward/hollywood/bbl": [
+      "plastic-surgery-specialists-of-south-florida"
+    ],
+    "fl/broward/miramar/breast-augmentation": [
+      "the-plastic-surgery-practice-of-dr-ramiro-morales"
+    ],
+    "fl/broward/miramar/facelift": [
+      "the-plastic-surgery-practice-of-dr-ramiro-morales"
+    ],
+    "fl/broward/miramar/liposuction": [
+      "the-plastic-surgery-practice-of-dr-ramiro-morales"
+    ],
+    "fl/broward/miramar/tummy-tuck": [
+      "the-plastic-surgery-practice-of-dr-ramiro-morales"
+    ],
+    "fl/broward/plantation/bbl": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/plantation/breast-augmentation": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/plantation/facelift": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/plantation/liposuction": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/plantation/mommy-makeover": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/plantation/tummy-tuck": [
+      "takeshape-plastic-surgery"
+    ],
+    "fl/broward/weston/rhinoplasty": [
+      "suria-cosmetic-surgery-med-spa"
+    ],
+    "fl/miami-dade/aventura/bbl": [
+      "the-artis-institute-for-plastic-surgery"
+    ],
+    "fl/miami-dade/aventura/breast-augmentation": [
+      "the-artis-institute-for-plastic-surgery"
+    ],
+    "fl/miami-dade/aventura/liposuction": [
+      "the-artis-institute-for-plastic-surgery"
+    ],
+    "fl/miami-dade/aventura/tummy-tuck": [
+      "the-artis-institute-for-plastic-surgery"
+    ],
+    "fl/miami-dade/brickell/rhinoplasty": [
+      "exceptional-plastic-surgery"
+    ],
+    "fl/miami-dade/coconut-grove/facelift": [
+      "institute-of-aesthetic-medicine"
+    ],
+    "fl/miami-dade/coconut-grove/rhinoplasty": [
+      "institute-of-aesthetic-medicine"
+    ],
+    "fl/miami-dade/kendall/breast-augmentation": [
+      "miami-plastic-surgery"
+    ],
+    "fl/miami-dade/kendall/liposuction": [
+      "miami-plastic-surgery"
+    ],
+    "fl/miami-dade/kendall/mommy-makeover": [
+      "miami-plastic-surgery"
+    ],
+    "fl/miami-dade/kendall/rhinoplasty": [
+      "miami-plastic-surgery"
+    ],
+    "fl/miami-dade/kendall/tummy-tuck": [
+      "miami-plastic-surgery"
+    ],
+    "fl/miami-dade/miami-lakes/mommy-makeover": [
+      "enrique-hanabergh-md"
+    ],
+    "fl/miami-dade/miami-lakes/rhinoplasty": [
+      "enrique-hanabergh-md"
+    ],
+    "fl/miami-dade/midtown/facelift": [
+      "gallo-md"
+    ],
+    "fl/miami-dade/midtown/rhinoplasty": [
+      "gallo-md"
+    ],
+    "fl/miami-dade/south-beach/breast-augmentation": [
+      "miami-beach-cosmetic-plastic-surgery-center"
+    ],
+    "fl/miami-dade/south-beach/facelift": [
+      "miami-beach-cosmetic-plastic-surgery-center"
+    ],
+    "fl/miami-dade/south-beach/liposuction": [
+      "miami-beach-cosmetic-plastic-surgery-center"
+    ],
+    "fl/miami-dade/south-beach/rhinoplasty": [
+      "miami-beach-cosmetic-plastic-surgery-center"
+    ],
+    "fl/miami-dade/south-beach/tummy-tuck": [
+      "miami-beach-cosmetic-plastic-surgery-center"
+    ],
+    "fl/palm-beach/boca-raton/bbl": [
+      "sanctuary-plastic-surgery"
+    ],
+    "fl/palm-beach/boynton-beach/bbl": [
+      "rosenthal-cosmetic-plastic-surgery"
+    ],
+    "fl/palm-beach/jupiter/rhinoplasty": [
+      "jason-cooper-md-plastic-surgery"
+    ],
+    "fl/palm-beach/wellington/breast-augmentation": [
+      "palms-wellington-plastic-surgery"
+    ],
+    "fl/palm-beach/wellington/facelift": [
+      "palms-wellington-plastic-surgery"
+    ],
+    "fl/palm-beach/wellington/mommy-makeover": [
+      "palms-wellington-plastic-surgery"
+    ],
+    "fl/palm-beach/wellington/rhinoplasty": [
+      "palms-wellington-plastic-surgery"
+    ],
+    "fl/palm-beach/wellington/tummy-tuck": [
+      "palms-wellington-plastic-surgery"
+    ]
+  }
+}

@@ -1,12 +1,9 @@
 """Source-backed clinic offers and comparable local price ranges."""
 
 from datetime import date
+import json
 from urllib.parse import urlsplit
 
-
-# Services migrated to structured offers. An unreviewed legacy amount for these
-# services cannot establish what a clinic actually offers or what a range includes.
-STRUCTURED_PRICE_SERVICES = frozenset({"botox", "liposuction"})
 
 _ELIGIBILITY = {
     "standard": "",
@@ -57,25 +54,41 @@ def current_offers(records, today):
     return offers
 
 
-def price_groups(clinics, treatment):
-    """Summarize only unrestricted, source-backed rates for a matched scope."""
-    rates = {}
+def price_groups(clinics):
+    """Group unrestricted rates only when their verified scopes match exactly.
+
+    A comparison record describes the matching product or technique, billing
+    basis, and relevant inclusions. The source may publish an offer without
+    establishing these details. Such offers stay visible on the clinic card.
+    """
+    groups = {}
     for clinic in clinics:
         for offer in clinic["price_offers"]:
             if offer["eligibility"] != "standard" or offer.get("starting"):
                 continue
-            # Only product-specific per-unit Botox charges are comparable in the
-            # pilot. Area prices and surgical quotes stay as named offers until
-            # their exact coverage and fee inclusions can be compared.
-            if (treatment == "botox" and offer.get("product") == "botox-cosmetic"
-                    and offer.get("basis") == "per_unit" and offer.get("standard_unit_rate") is True):
-                rates.setdefault(clinic["slug"], set()).add(offer["amount_cents"])
-    amounts = [next(iter(rate)) for rate in rates.values() if len(rate) == 1]
-    if len(amounts) < 2:
-        return []
-    low, high = _usd(min(amounts)), _usd(max(amounts))
-    return [{
-        "label": "Standard Botox Cosmetic per-unit rates",
-        "display": f"{low}–{high} per unit" if low != high else f"{low} per unit",
-        "clinic_count": len(amounts),
-    }]
+            comparison = offer.get("comparison")
+            if not isinstance(comparison, dict):
+                continue
+            label, unit, scope = (comparison.get(k) for k in ("label", "unit", "scope"))
+            if (
+                not isinstance(label, str) or not label.strip()
+                or not isinstance(unit, str) or not unit.strip()
+                or not isinstance(scope, dict) or not scope.get("product") or not scope.get("billing_basis")
+            ):
+                continue
+            key = (label, unit, json.dumps(scope, sort_keys=True))
+            rates = groups.setdefault(key, {})
+            rates.setdefault(clinic["slug"], set()).add(offer["amount_cents"])
+
+    result = []
+    for (label, unit, _), rates in groups.items():
+        amounts = [next(iter(rate)) for rate in rates.values() if len(rate) == 1]
+        if len(amounts) < 2:
+            continue
+        low, high = _usd(min(amounts)), _usd(max(amounts))
+        result.append({
+            "label": label,
+            "display": f"{low}–{high} {unit}" if low != high else f"{low} {unit}",
+            "clinic_count": len(amounts),
+        })
+    return result
