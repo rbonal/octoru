@@ -198,6 +198,8 @@
               <strong>${{ "{:,}".format(p.from_price.value) }}</strong>{% if p.from_price.basis %} <span class="price-basis">{{ p.from_price.basis }}</span>{% endif %}
               <span class="cmp-pricefor">{{ p.from_price.treatment }}</span>
               {%- if p.from_price.source_url %}<a class="price-src" href="{{ p.from_price.source_url }}" target="_blank" rel="noopener nofollow">source ↗</a>{% endif %}
+              {%- elif p.offer_links %}
+                {%- for offer_link in p.offer_links %}<a href="{{ offer_link.url }}">{{ offer_link.name }} offers</a>{% if not loop.last %} · {% endif %}{% endfor %}
               {%- else %}<span class="muted">Request price</span>{% endif %}
             </td>
             <td>

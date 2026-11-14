@@ -14,6 +14,7 @@ import json, sys, datetime, urllib.parse, math, re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from scipy.stats import beta as scipy_beta   # exact Beta quantile for provider ranking
+from pricing import STRUCTURED_PRICE_SERVICES, current_offers, price_groups
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "config" / "thresholds.json").read_text())
@@ -21,6 +22,7 @@ STATE_PATH = ROOT / "state" / "build_state.json"
 LEDGER_PATH = ROOT / "state" / "run_ledger.json"
 GENERATED = ROOT / "generated"
 SITE_URL = "https://octoru.com"  # production domain (Namecheap registrar, Cloudflare Pages host)
+PRICE_OFFERS = json.loads((ROOT / "builder" / "price_offers.json").read_text())
 
 # Completeness thresholds are OPERATOR-OWNED (config/thresholds.json -> "completeness").
 # Builder READS them; never invents them; cannot edit config (hard-gated). Absent -> DRY-RUN.
@@ -342,7 +344,7 @@ TREATMENT_FAQS = {
         },
         {
             "q": "What is the difference between Botox and Dysport?",
-            "a": "Both are botulinum toxin type A neurotoxins approved to soften dynamic wrinkles — Botox has been FDA-cleared since 2002, Dysport since 2009. Dysport tends to spread slightly more, which some injectors prefer for broader areas like the forehead. The units are not equivalent; roughly 2.5 Dysport units equal one Botox unit, so comparing prices requires knowing which product is being quoted. Results and safety profiles are comparable.",
+            "a": "Botox Cosmetic and Dysport are different botulinum toxin products. Their dosing units are specific to each product and cannot be converted. Ask which product is quoted and which areas and fees the price covers.",
         },
         {
             "q": "Is Botox safe?",
@@ -1127,6 +1129,12 @@ def _overlay_published_prices(clinics):
 
 
 def _starting_price(clinic, treatment_slug):
+    if treatment_slug in STRUCTURED_PRICE_SERVICES:
+        return None
+    return _legacy_price(clinic, treatment_slug)
+
+
+def _legacy_price(clinic, treatment_slug):
     prices = clinic.get("starting_prices_usd")
     if isinstance(prices, dict):
         return prices.get(treatment_slug)
@@ -1139,6 +1147,29 @@ def _price_meta(clinic, treatment_slug):
     with their basis — '$15' means nothing without 'per unit'."""
     meta = (clinic.get("price_meta") or {}).get(treatment_slug)
     return meta if isinstance(meta, dict) else {}
+
+
+def _clinic_offers(clinic, treatment_slug):
+    if treatment_slug not in STRUCTURED_PRICE_SERVICES:
+        return []
+    records = PRICE_OFFERS.get(clinic.get("slug"), {})
+    if treatment_slug in records:
+        return current_offers(records[treatment_slug], datetime.date.today())
+
+    # Keep documented legacy offers visible at the clinic level. Their free-text
+    # scope cannot contribute to a numeric summary or a comparable group.
+    meta = _price_meta(clinic, treatment_slug)
+    value = _legacy_price(clinic, treatment_slug)
+    if type(value) is not int or not meta.get("basis"):
+        return []
+    return current_offers([{
+        "amount_cents": value * 100,
+        "label": meta["basis"],
+        "eligibility": "standard",
+        "starting": True,
+        "source_url": meta.get("source_url"),
+        "checked": meta.get("checked"),
+    }], datetime.date.today())
 
 
 def _format_phone(phone):
@@ -1207,6 +1238,7 @@ def _clinic_for_page(clinic, treatment_slug):
         "review_count": clinic.get("review_count"),
         "rating_source": clinic.get("rating_source"),
         "starting_price_usd": _starting_price(clinic, treatment_slug),
+        "price_offers": _clinic_offers(clinic, treatment_slug),
         "price_unit": TREATMENT_UNITS.get(treatment_slug) if _starting_price(clinic, treatment_slug) is not None else None,
         # Tier (b) provenance. basis is what the clinic actually published the number on
         # ("per unit", "flat fee, 3 areas"); source_url is where we read it. A price with
@@ -1382,12 +1414,40 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
             f"request a current price and we'll get it for you"
         ),
     }
+    clinic_cards = [
+        {**_clinic_for_page(c, treatment_slug),
+         "top_ranked": (c.get("slug") or c.get("name")) == top_ranked_id}
+        for c in clinics
+    ]
+    # Leave the established quote-only rendering in markets where there is no
+    # offer data to migrate. Changing boilerplate alone can affect duplicate
+    # detection and open thin pages to indexing.
+    structured_prices = treatment_slug in STRUCTURED_PRICE_SERVICES and (
+        any(c["price_offers"] for c in clinic_cards)
+        or any(_legacy_price(c, treatment_slug) is not None for c in clinics)
+    )
+    if structured_prices:
+        priced = sum(bool(c["price_offers"]) for c in clinic_cards) if not fallback else 0
+        groups = price_groups(clinic_cards, treatment_slug) if not fallback else []
+        cost.update({
+            "structured": True,
+            "groups": groups,
+            "count_priced": priced,
+            "has_prices": bool(priced),
+            "coverage_label": (
+                f"Published offers available from {priced} of {n} listed providers"
+                if priced else "Request a quote for current pricing"
+            ),
+        })
 
     # Meta description optimised for SERP click-through — and matched to the page.
     provider_word = "provider" if n == 1 else "providers"
     if fallback:
         meta = (f"No {t_name.lower()} providers in {city_name}, FL yet — compare the nearest "
                 f"board-certified options nearby by rating and distance, and book a consultation.")
+    elif structured_prices:
+        meta = (f"Compare {n} verified {t_name.lower()} {provider_word} in {city_name}, FL. "
+                "See published offer terms where available, plus ratings and booking options.")
     elif ref_phrase:
         meta = (f"{t_name} cost in {city_name}, FL — {ref_phrase} (referential; each clinic "
                 f"sets its own rate). Compare {n} verified {provider_word}, published prices "
@@ -1400,6 +1460,9 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
     year = datetime.date.today().year
     if fallback:
         title = f"{t_name} near {city_name}, FL — Nearest Verified Providers ({year})"
+    elif structured_prices:
+        listing_label = "Verified Provider" if n == 1 else f"Compare {n} Verified Providers"
+        title = f"{t_name} in {city_name}, FL — {listing_label}"
     elif ref.get("available"):
         title = (f"{t_name} Prices in {city_name}, FL — Typical Cost + {n} Verified "
                  f"{'Clinic' if n == 1 else 'Clinics'} ({year})")
@@ -1411,6 +1474,17 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
 
     # FAQs — generated from real data, safe for FAQPage schema
     faqs = _generate_faqs(treatment_slug, market, clinics, prices)
+    if structured_prices and faqs:
+        price_facts = " ".join(
+            f"{g['label']}: {g['display']} across {g['clinic_count']} listed providers."
+            for g in cost["groups"]
+        )
+        faqs[0]["a"] = " ".join(filter(None, (
+            f"{cost['coverage_label']}.",
+            price_facts,
+            "Check the clinic's offer for exact coverage, fees and eligibility."
+            if cost["has_prices"] else "",
+        )))
 
     return {
         "category": category,
@@ -1429,11 +1503,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
         "faqs": faqs,
         "updated": updated,
-        "clinics": [
-            {**_clinic_for_page(c, treatment_slug),
-             "top_ranked": (c.get("slug") or c.get("name")) == top_ranked_id}
-            for c in clinics
-        ],
+        "clinics": clinic_cards,
     }
 
 
@@ -1858,7 +1928,7 @@ def compute_empty_fields(pages):
         for c in p["clinics"]:
             seen[c.get("name")] = c
             price_total += 1
-            if not c.get("starting_price_usd"):
+            if not (c.get("starting_price_usd") or c.get("price_offers")):
                 price_missing += 1
     cl = list(seen.values())
     return {
@@ -2039,10 +2109,12 @@ def _city_providers(city_slug, pages):
                 "accreditations": c.get("accreditations"),
                 "featured_tier": c.get("featured_tier", 0),
                 "sponsored": c.get("sponsored", False),
-                "treatments": [], "prices": [],
+                "treatments": [], "prices": [], "offer_links": [],
             })
             if t_name not in [x["name"] for x in row["treatments"]]:
                 row["treatments"].append({"name": t_name, "url": p["path"] and page_url(p["geo"], t_slug)})
+            if c.get("price_offers"):
+                row["offer_links"].append({"name": t_name, "url": page_url(p["geo"], t_slug)})
             if c.get("starting_price_usd") is not None:
                 row["prices"].append({
                     "treatment": t_name, "value": c["starting_price_usd"],
@@ -2113,7 +2185,7 @@ def render_hubs(summaries, pages=None):
                 if provs:
                     ctitle, ch1, cnoun = _city_directory_title(
                         cidata["name"], sdata["name"], provs, pages or [], ci)
-                    n_priced = sum(1 for p in provs if p.get("from_price"))
+                    n_priced = sum(1 for p in provs if p.get("from_price") or p.get("offer_links"))
                     csub = (f"{len(provs)} verified {cnoun.lower()} compared on Google rating, "
                             f"treatments offered and published pricing")
                     cmeta = (f"Compare {len(provs)} verified {cnoun.lower()} in {cidata['name']}, FL "

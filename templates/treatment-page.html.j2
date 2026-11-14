@@ -200,7 +200,16 @@
       <a href="#quote">request current pricing</a> and we'll get it for you.</div>
     {%- endif %}
 
-    {%- if cost.has_prices %}
+    {%- if cost.structured %}
+    <div class="cost-observed">
+      <span class="label">Compare published offers</span>
+      {% for group in cost.groups %}
+      <span class="cost-observed-figure">{{ group.display }}</span>
+      <span class="cost-observed-note">{{ group.label }} from {{ group.clinic_count }} listed providers. A per-unit rate does not estimate the cost of a visit.</span>
+      {% endfor %}
+      <span class="cost-observed-note">{{ cost.coverage_label }}.{% if cost.has_prices %} Check each offer below for the areas, fees and eligibility it covers.{% endif %}</span>
+    </div>
+    {%- elif cost.has_prices %}
     <div class="cost-observed">
       <span class="label">Published by providers on this page</span>
       <span class="cost-observed-figure">{% if cost.low == cost.high %}${{ "{:,}".format(cost.low) }}{% else %}${{ "{:,}".format(cost.low) }}–${{ "{:,}".format(cost.high) }}{% endif %}</span>
@@ -234,15 +243,28 @@
         {% if c.address %}<div class="meta">{{ c.address }}</div>{% else %}<div class="meta muted">Address not listed</div>{% endif %}
         <div class="stats">
           {% if c.rating %}<span class="stat"><span class="label">Rating</span><span class="v">{{ c.rating }} ({{ c.review_count }})</span></span>{% endif %}
-          {%- if c.starting_price_usd %}
+          {%- if c.price_offers %}
+          <span class="stat"><span class="label">Pricing</span><span class="v">Published offers below</span></span>
+          {%- elif c.starting_price_usd %}
           {#- Tier (b): shown ONLY with the basis the provider published it on, and linked
               to where we read it. A bare number without its basis would mislead. -#}
           <span class="stat"><span class="label">From</span><span class="v">${{ "{:,}".format(c.starting_price_usd) }}{% if c.price_basis %} <span class="price-basis">{{ c.price_basis }}</span>{% elif c.price_unit %} {{ c.price_unit }}{% endif %}</span>{% if c.price_source_url %} <a class="price-src" href="{{ c.price_source_url }}" target="_blank" rel="noopener nofollow" title="Published by this provider{% if c.price_checked %}, checked {{ c.price_checked }}{% endif %}">source ↗</a>{% endif %}</span>
           {%- else %}
-          <span class="stat empty"><a href="#quote">Request current price</a></span>
+          <span class="stat empty"><a href="#quote">{{ "Ask Octoru for a quote" if cost.structured else "Request current price" }}</a></span>
           {%- endif %}
           {% if c.phone_display %}<span class="stat"><span class="label">Phone</span><span class="v">{{ c.phone_display }}</span></span>{% endif %}
         </div>
+        {%- if c.price_offers %}
+        <ul aria-label="Published offers from {{ c.name }}" style="padding-inline-start:1.25rem">
+          {% for offer in c.price_offers %}
+          <li style="margin-block:.45rem"><strong>{% if offer.starting %}From {% endif %}{{ offer.amount }}</strong> · {{ offer.label }}{% if offer.eligibility_label %} · {{ offer.eligibility_label }}{% endif %}
+            {% if offer.terms %}<div class="meta">{{ offer.terms }}</div>{% endif %}
+            <a class="price-src" href="{{ offer.source_url }}" rel="noopener nofollow{% if c.sponsored %} sponsored{% endif %}" target="_blank">Source</a>
+            <span class="meta">· Checked {{ offer.checked }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {%- endif %}
         {% if c.treatments_offered %}<div class="tags">{% for tt in c.treatments_offered %}<span class="tag">{{ tt }}</span>{% endfor %}</div>{% endif %}
         {%- if c.accreditations %}
         <div class="accred" title="As listed on the provider's website: {{ c.accreditation_stated }}">
@@ -349,7 +371,7 @@
        Octoru does not charge, meter, or sell per-patient/per-inquiry value.
        This form is a free convenience; the consent line is REQUIRED by the quality gate. -->
   <section class="lead-form" id="quote">
-    <h2>Get in touch with a provider</h2>
+    <h2>{{ "Request a quote through Octoru" if cost.structured else "Get in touch with a provider" }}</h2>
     <p class="sub">This is a free inquiry — we'll forward your message to a matching {{ neighborhood.name }} provider at no charge to you or them.</p>
     <div class="field">
       <label for="lf-name">Name</label>
