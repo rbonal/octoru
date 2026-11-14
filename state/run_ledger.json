@@ -8,13 +8,17 @@
   "last_run": {
     "at": "2026-11-14",
     "status": "verified local build; CRM staging verification pending",
-    "build_commit": "713c62f94a2ca52517ed733ff4c08945c046df47",
-    "pages_touched": 114,
-    "pages_verified": 553,
-    "pages_skipped_by_quality_gate": 0,
-    "tokens": 50000,
+    "build_commit": "5ed8c5489014ad16852cd935d32bd61fb804c4f7",
+    "pages_touched": 864,
+    "rendered_html_outputs": 1044,
+    "treatment_pages_verified": 553,
+    "local_guides_verified": 349,
+    "services": 15,
+    "markets_with_rendered_treatment_pages": 52,
+    "completeness_holds": 34,
+    "retained_index_holds": 47,
+    "tokens": 55000,
     "token_accounting": "Conservative estimate charged to monthly budget; exact session token count unavailable.",
-    "scope": "Brickell Botox, Coral Gables liposuction, and dependent pricing displays.",
     "needs_human": "octoru-pricing-pilot-crm-staging-verification"
   },
   "2026-08": {
@@ -23,8 +27,8 @@
     "pages_built": 504
   },
   "2026-11": {
-    "tokens": 50000,
-    "runs": 1,
-    "pages_built": 114
+    "tokens": 105000,
+    "runs": 2,
+    "pages_built": 978
   }
 }
