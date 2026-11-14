@@ -1,0 +1,241 @@
+{
+  "no-filter-medical-spa": {
+    "botox": [
+      {
+        "amount_cents": 1400,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://www.nofiltermedicalspa.com/botox-brickell",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "terms": "A $50 consultation deposit is credited toward treatment.",
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  "skin-healthy-miami": {
+    "botox": [
+      {
+        "amount_cents": 1400,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://skinhealthymiami.com/injectables/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "amount_cents": 1200,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://skinhealthymiami.com/injectables/",
+        "checked": "2026-11-14",
+        "eligibility": "member",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "terms": "Elite membership required."
+      },
+      {
+        "amount_cents": 21000,
+        "label": "Upper-face Botox Cosmetic, 1 area",
+        "source_url": "https://skinhealthymiami.com/injectables/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "area_bundle",
+        "quantity": 1,
+        "terms": "The clinic lists an area count. Ask which areas are included and how the unit count affects the quote."
+      },
+      {
+        "amount_cents": 49000,
+        "label": "Upper-face Botox Cosmetic, 2 areas",
+        "source_url": "https://skinhealthymiami.com/injectables/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "area_bundle",
+        "quantity": 2,
+        "terms": "The clinic lists an area count. Ask which areas are included and how the unit count affects the quote."
+      },
+      {
+        "amount_cents": 91000,
+        "label": "Upper-face Botox Cosmetic, 3 areas",
+        "source_url": "https://skinhealthymiami.com/injectables/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "area_bundle",
+        "quantity": 3,
+        "terms": "The clinic lists an area count. Ask which areas are included and how the unit count affects the quote."
+      }
+    ]
+  },
+  "plump-cosmetics-injectables": {
+    "botox": [
+      {
+        "amount_cents": 1600,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://getplump.com/miami",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  "brickell-cosmetic-center": {
+    "botox": [
+      {
+        "amount_cents": 1000,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://brickellcosmetic.com/new-clients",
+        "checked": "2026-11-14",
+        "eligibility": "new_patient",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "terms": "Introductory rate."
+      }
+    ]
+  },
+  "miami-skin-spa": {
+    "botox": [
+      {
+        "amount_cents": 19900,
+        "label": "First 20 Botox Cosmetic units",
+        "source_url": "https://www.miamiskinspa.com/specials/",
+        "checked": "2026-11-14",
+        "eligibility": "new_patient",
+        "product": "botox-cosmetic",
+        "basis": "unit_bundle",
+        "quantity": 20,
+        "terms": "Additional units are listed at $14 each."
+      },
+      {
+        "amount_cents": 28000,
+        "label": "Regular price for 20 Botox Cosmetic units",
+        "source_url": "https://www.miamiskinspa.com/specials/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "unit_bundle",
+        "quantity": 20
+      }
+    ]
+  },
+  "sisu-clinic-brickell": {
+    "botox": [
+      {
+        "amount_cents": 52500,
+        "label": "Botox Cosmetic or Dysport flat fee",
+        "source_url": "https://www.sisuclinic.com/botox-brickell",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-or-dysport",
+        "basis": "area_bundle",
+        "areas": [
+          "forehead",
+          "frown lines",
+          "crow’s feet"
+        ],
+        "quantity": 3,
+        "terms": "Covers the forehead, frown lines and crow’s feet. The clinic advertises a choice of a complimentary fourth area with the PLUS1 booking code."
+      }
+    ]
+  },
+  "youthful-glow": {
+    "botox": [
+      {
+        "amount_cents": 1400,
+        "label": "Botox Cosmetic per unit",
+        "source_url": "https://youthful-glow.com/menu/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "per_unit",
+        "comparison": {
+          "label": "Standard Botox Cosmetic per-unit rates",
+          "unit": "per unit",
+          "scope": {
+            "product": "botox-cosmetic",
+            "billing_basis": "unit",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "amount_cents": 700,
+        "label": "Dysport per unit",
+        "source_url": "https://youthful-glow.com/menu/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "dysport",
+        "basis": "per_unit",
+        "terms": "Dysport uses product-specific units."
+      }
+    ]
+  },
+  "miami-lakes-med-spa": {
+    "botox": [
+      {
+        "amount_cents": 59500,
+        "label": "Botox Cosmetic upper-face flat fee",
+        "source_url": "https://miamilakesmedspa.com/pricing/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "botox-cosmetic",
+        "basis": "area_bundle",
+        "areas": [
+          "forehead",
+          "frown lines",
+          "crow’s feet"
+        ],
+        "quantity": 3,
+        "terms": "Forehead, frown lines and crow’s feet. The clinic includes a two-week touch-up."
+      }
+    ]
+  },
+  "aeris-plastic-surgery-aesthetic-medicine": {
+    "liposuction": []
+  },
+  "cg-cosmetic-surgery": {
+    "liposuction": [
+      {
+        "amount_cents": 200000,
+        "label": "Liposuction package",
+        "source_url": "https://www.cgcosmetic.com/lipo-360-miami/",
+        "checked": "2026-11-14",
+        "eligibility": "standard",
+        "product": "liposuction",
+        "basis": "package",
+        "starting": true,
+        "terms": "Anesthesia included. The clinic lists a starting price for liposuction packages and confirms the Lipo 360 price and areas in a written quote."
+      }
+    ]
+  }
+}

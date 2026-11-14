@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ metro.name }} Aesthetic Treatment Prices ({{ year }}) | Octoru</title>
-<meta name="description" content="Compare starting prices for aesthetic treatments across {{ metro.name }}, FL by neighborhood - botox, fillers and more.">
+<meta name="description" content="Compare aesthetic treatment providers and published offers across {{ metro.name }}, FL by neighborhood.">
 <link rel="canonical" href="{{ site_url }}/fl/{{ metro.slug }}/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/styles.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -17,9 +17,9 @@
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/fl/">Florida</a><span class="sep">/</span><span aria-current="page">{{ metro.name }}</span></nav>
 <article class="guide-article">
 <header class="guide-hero"><div class="label blue" style="margin-bottom:10px">{{ year }} price index</div><h1>{{ metro.name }} aesthetic treatment prices</h1>
-<p class="guide-lead">Compare starting prices for aesthetic treatments across {{ metro.name }} neighborhoods and cities. Select a treatment to see the full price comparison by area.</p></header>
+<p class="guide-lead">Select a treatment to compare clinics and check published offers across {{ metro.name }} neighborhoods and cities.</p></header>
 <section class="guide-section"><ul class="metro-guides">
-{% for it in items %}<li><a href="/fl/{{ metro.slug }}/{{ it.treatment_slug }}/guide/"><span class="mg-t">{{ it.treatment_name }} prices</span><span class="mg-m">{% if it.low %}from ${{ it.low }}{% if it.unit %} {{ it.unit }}{% endif %} &middot; {% endif %}{{ it.n_areas }} areas &middot; {{ it.providers }} providers</span></a></li>{% endfor %}
+{% for it in items %}<li><a href="/fl/{{ metro.slug }}/{{ it.treatment_slug }}/guide/"><span class="mg-t">{{ it.treatment_name }} prices</span><span class="mg-m">{{ it.n_areas }} areas</span></a></li>{% endfor %}
 </ul></section>
 </article>
 </main>
