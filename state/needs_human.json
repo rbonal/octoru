@@ -283,6 +283,16 @@
       "severity": "info",
       "summary": "Rollup logic is correct and working: thin neighborhood/CDP pages route clinics to parent places (miami, miami-beach). However the rolled-up parent pages are ALSO held (each has only 1 qualifying clinic per treatment after phone exclusions — still below min_listings=2). This is the gate working correctly: rolling up from a 1-clinic page to a parent that also has only 1 clinic doesn't make it less thin.",
       "to_ship_rollup_pages": "Add more rated clinics to midtown, kendall, coconut-grove, south-beach (via prospecting + ratings pass). When a neighborhood has ≥2 qualifying clinics for a treatment, it builds its own page instead of rolling up."
+    },
+    {
+      "id": "octoru-pricing-pilot-crm-staging-verification",
+      "opened_at": "2026-11-14",
+      "opened_by": "builder",
+      "blocking": true,
+      "severity": "release-verification",
+      "summary": "The pricing pilot passed the local build. The checkout renders an inquiry button and consent text but has no submission handler or documented staging receiver.",
+      "question": "What is the approved non-production Bonalta inquiry test path for verifying delivery, attribution, and consent for the existing Octoru workflow?",
+      "scope": "Pilot release only. Keep the existing lead destination and evaluator build state."
     }
   ],
   "_resolved": [

@@ -14,6 +14,7 @@ import json, sys, datetime, urllib.parse, math, re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from scipy.stats import beta as scipy_beta   # exact Beta quantile for provider ranking
+from pricing import current_offers, price_groups
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "config" / "thresholds.json").read_text())
@@ -21,6 +22,7 @@ STATE_PATH = ROOT / "state" / "build_state.json"
 LEDGER_PATH = ROOT / "state" / "run_ledger.json"
 GENERATED = ROOT / "generated"
 SITE_URL = "https://octoru.com"  # production domain (Namecheap registrar, Cloudflare Pages host)
+PRICE_OFFERS = json.loads((ROOT / "builder" / "price_offers.json").read_text())
 
 # Completeness thresholds are OPERATOR-OWNED (config/thresholds.json -> "completeness").
 # Builder READS them; never invents them; cannot edit config (hard-gated). Absent -> DRY-RUN.
@@ -329,8 +331,7 @@ TREATMENT_FAQS = {
     "botox": [
         {
             "q": "How much does Botox cost in {city}?",
-            "a_prices": "Based on the {n} providers listed in our {city} directory, Botox starts around {price_range}. Most practices price by the unit, so the total depends on the treatment area — forehead lines typically need 10–20 units, crow's feet 10–15 units per side, and a full upper-face treatment 20–40 units. First-time patients are often advised to start conservatively and add units at a follow-up.",
-            "a_no_prices": "Botox in {city} is priced per unit at most practices. A typical forehead treatment runs $200–$400 depending on unit count and injector experience. Request a consultation to get a quote tailored to your specific goals — a reputable provider will assess what you need rather than upselling maximum units.",
+            "cost": True,
         },
         {
             "q": "How long does Botox last?",
@@ -342,7 +343,7 @@ TREATMENT_FAQS = {
         },
         {
             "q": "What is the difference between Botox and Dysport?",
-            "a": "Both are botulinum toxin type A neurotoxins approved to soften dynamic wrinkles — Botox has been FDA-cleared since 2002, Dysport since 2009. Dysport tends to spread slightly more, which some injectors prefer for broader areas like the forehead. The units are not equivalent; roughly 2.5 Dysport units equal one Botox unit, so comparing prices requires knowing which product is being quoted. Results and safety profiles are comparable.",
+            "a": "Botox Cosmetic and Dysport are different botulinum toxin products. Their dosing units are specific to each product and cannot be converted. Ask which product is quoted and which areas and fees the price covers.",
         },
         {
             "q": "Is Botox safe?",
@@ -352,8 +353,7 @@ TREATMENT_FAQS = {
     "lip-filler": [
         {
             "q": "How much does lip filler cost in {city}?",
-            "a_prices": "{n} providers in our {city} directory offer lip filler. Most practices charge per syringe of hyaluronic acid filler — a single syringe is usually sufficient for a first treatment, with touch-ups possible at a follow-up. Ask whether the quoted price includes a complimentary two-week review, which many quality practices offer.",
-            "a_no_prices": "Lip filler in South Florida typically costs $500–$900 per syringe for hyaluronic acid products like Juvederm Volbella, Restylane Kysse, or RHA. Price reflects the specific product used, the injector's experience, and the clinic's location. Get a consultation before committing — a good injector will advise on how much filler actually serves your goals.",
+            "cost": True,
         },
         {
             "q": "How long does lip filler last?",
@@ -375,8 +375,7 @@ TREATMENT_FAQS = {
     "coolsculpting": [
         {
             "q": "How much does CoolSculpting cost in {city}?",
-            "a_prices": "CoolSculpting is priced per treatment cycle, and total cost depends on how many areas you want to treat and which applicator sizes are used. Providers in {city} offer free consultations where they will map out a treatment plan and give you a personalised quote.",
-            "a_no_prices": "CoolSculpting is quoted per treatment cycle, and most patients treat more than one area. A single-area session typically runs $700–$1,500; treating both flanks or the abdomen plus flanks in one session commonly costs $2,000–$4,000. Providers regularly offer package pricing that reduces the per-session cost. A free consultation will get you an accurate number for your specific goals.",
+            "cost": True,
         },
         {
             "q": "How many CoolSculpting sessions will I need?",
@@ -394,8 +393,7 @@ TREATMENT_FAQS = {
     "laser-hair-removal": [
         {
             "q": "How much does laser hair removal cost in {city}?",
-            "a_prices": "Laser hair removal pricing varies by treatment area and session count. Providers in {city} often offer package pricing across multiple sessions, which is the most cost-effective approach since permanent reduction requires a course of treatments.",
-            "a_no_prices": "Pricing depends on the area being treated and whether you purchase individual sessions or a package. Small areas like the upper lip or underarms run roughly $75–$150 per session; larger areas like legs or the back cost $200–$400. Clinics typically offer six to eight-session packages that reduce the per-visit price considerably.",
+            "cost": True,
         },
         {
             "q": "How many sessions do I need for laser hair removal?",
@@ -413,8 +411,7 @@ TREATMENT_FAQS = {
     "microneedling": [
         {
             "q": "How much does microneedling cost in {city}?",
-            "a_prices": "Microneedling prices vary by device, any add-ons (PRP, radiofrequency), and the provider's experience level. Standard sessions and more advanced RF microneedling treatments are both available from providers in our {city} directory — a consultation will clarify which approach suits your skin goals.",
-            "a_no_prices": "A standard microneedling session typically costs $200–$400. Advanced treatments — RF microneedling (Morpheus8, Scarlet SRF, Vivace) or sessions with PRP — run $400–$800 per visit due to equipment and add-on costs. Package pricing for multiple sessions is common and reduces the per-session cost meaningfully.",
+            "cost": True,
         },
         {
             "q": "How many microneedling sessions do I need?",
@@ -432,8 +429,7 @@ TREATMENT_FAQS = {
     "hydrafacial": [
         {
             "q": "How much does a HydraFacial cost in {city}?",
-            "a_prices": "HydraFacial prices vary by tier (signature, deluxe, platinum) and any serum booster add-ons. Providers in our {city} directory list their starting prices above \u2014 a consultation will confirm which tier fits your skin goals.",
-            "a_no_prices": "Published Florida med spa prices for a HydraFacial most commonly run $150\u2013$350 per session. Signature (basic) sessions are typically $150\u2013$200, deluxe versions with boosters $200\u2013$300, and platinum tiers $275\u2013$350. Packages and memberships usually reduce the per-session cost.",
+            "cost": True,
         },
         {
             "q": "How often should you get a HydraFacial?",
@@ -451,8 +447,7 @@ TREATMENT_FAQS = {
     "chemical-peel": [
         {
             "q": "How much does a chemical peel cost in {city}?",
-            "a_prices": "Chemical peel prices depend on the peel depth \u2014 light, medium or deep \u2014 and how many sessions your plan includes. Providers in our {city} directory list their starting prices above; a consultation confirms which peel fits your skin and budget.",
-            "a_no_prices": "Published prices for a professional chemical peel most commonly run about $150 to $800 per session, with light superficial peels at the lower end and medium-depth peels higher; deep peels cost more and are performed far less often. Clinics frequently sell light and medium peels as a series of three to six sessions, so ask about package pricing.",
+            "cost": True,
         },
         {
             "q": "What does a chemical peel treat?",
@@ -470,8 +465,7 @@ TREATMENT_FAQS = {
     "dermal-fillers": [
         {
             "q": "How much do dermal fillers cost in {city}?",
-            "a_prices": "Dermal filler pricing is per syringe and depends on the filler type and how many syringes your treatment needs. Providers in our {city} directory list their starting prices above; a consultation confirms the right filler and syringe count for your goal.",
-            "a_no_prices": "Published prices for dermal fillers most commonly run about $600 to $1,200 per syringe. Hyaluronic-acid fillers such as Juvederm and Restylane tend to sit near the middle of that range, while thicker or longer-lasting fillers cost more. Most areas need one to two syringes, so the total depends on how many areas you treat \u2014 ask for a per-syringe quote and an estimate of syringes.",
+            "cost": True,
         },
         {
             "q": "What do dermal fillers treat?",
@@ -489,8 +483,7 @@ TREATMENT_FAQS = {
     "iv-therapy": [
         {
             "q": "How much does IV therapy cost in {city}?",
-            "a_prices": "IV therapy is priced per session and varies with the formula \u2014 basic hydration drips cost less than vitamin blends or specialty infusions like NAD+. Providers in our {city} directory list their starting prices above; a consultation confirms which drip fits your goal.",
-            "a_no_prices": "Published prices for a single IV therapy session most commonly run about $100 to $400. Basic hydration and simple vitamin drips sit at the lower end, classic blends like a Myers' cocktail in the middle, and specialty or high-dose infusions such as NAD+ cost more. Many clinics offer membership or package pricing that lowers the per-session cost.",
+            "cost": True,
         },
         {
             "q": "What is IV therapy used for?",
@@ -508,8 +501,7 @@ TREATMENT_FAQS = {
     "morpheus8": [
         {
             "q": "How much does Morpheus8 cost in {city}?",
-            "a_prices": "Morpheus8 is priced per session and by the area treated \u2014 a small facial area costs less than face-and-neck or a body area. Providers in our {city} directory list their starting prices above; a consultation confirms the plan and session count for your goal.",
-            "a_no_prices": "Published prices for a single Morpheus8 session most commonly run about $600 to $1,800 for the face, with the neck or body areas costing more. Because a full result usually takes a series of about three sessions, many clinics sell discounted packages \u2014 ask for both the per-session price and package pricing.",
+            "cost": True,
         },
         {
             "q": "What does Morpheus8 treat?",
@@ -528,8 +520,7 @@ TREATMENT_FAQS = {
     "bbl": [
         {
             "q": "How much does a BBL cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, Brazilian Butt Lift pricing starts around {price_range}. A BBL fee usually bundles the liposuction needed to harvest the fat plus the fat transfer itself; anesthesia and accredited-facility costs are typically quoted separately. Book a consultation for a quote based on your anatomy and goals.",
-            "a_no_prices": "A Brazilian Butt Lift in South Florida commonly runs $4,000–$12,000+ depending on the surgeon, how much liposuction is involved, and anesthesia and facility fees. Because BBL safety depends heavily on technique, prioritize a board-certified plastic surgeon over the lowest price — request a personalized quote at a consultation.",
+            "cost": True,
         },
         {
             "q": "Is a BBL safe?",
@@ -543,8 +534,7 @@ TREATMENT_FAQS = {
     "tummy-tuck": [
         {
             "q": "How much does a tummy tuck cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, tummy tuck pricing starts around {price_range}. The fee usually reflects the surgeon's fee, with anesthesia and accredited-facility costs quoted separately, and varies between a full and a mini procedure. A consultation will give you an accurate number for your goals.",
-            "a_no_prices": "A tummy tuck in South Florida typically runs $6,000–$12,000+ depending on whether it is a full or mini abdominoplasty and on anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+            "cost": True,
         },
         {
             "q": "Full or mini tummy tuck — which do I need?",
@@ -558,8 +548,7 @@ TREATMENT_FAQS = {
     "breast-augmentation": [
         {
             "q": "How much does breast augmentation cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, breast augmentation starts around {price_range}. The price usually reflects the surgeon's fee plus implants, anesthesia, and facility costs. A consultation will clarify your implant options and a personalized quote.",
-            "a_no_prices": "Breast augmentation in South Florida commonly runs $5,000–$10,000+ depending on implant type, the surgeon, and anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+            "cost": True,
         },
         {
             "q": "Saline or silicone implants — what's the difference?",
@@ -573,8 +562,7 @@ TREATMENT_FAQS = {
     "liposuction": [
         {
             "q": "How much does liposuction cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, liposuction starts around {price_range}. Cost depends on the number and size of areas treated, plus anesthesia and facility fees. A consultation will give you a quote for your specific areas.",
-            "a_no_prices": "Liposuction in South Florida typically runs $3,000–$8,000+ depending on the number of areas treated and on anesthesia and facility fees. Request a quote at a consultation with a board-certified plastic surgeon.",
+            "cost": True,
         },
         {
             "q": "Is liposuction a weight-loss procedure?",
@@ -588,8 +576,7 @@ TREATMENT_FAQS = {
     "rhinoplasty": [
         {
             "q": "How much does rhinoplasty cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, rhinoplasty starts around {price_range}. The fee reflects the surgeon's experience plus anesthesia and facility costs, and revision cases can differ. A consultation will give you a tailored quote.",
-            "a_no_prices": "Rhinoplasty in South Florida commonly runs $7,000–$15,000+ depending heavily on the surgeon's experience and on anesthesia and facility fees. Because results depend on surgical skill, prioritize an experienced board-certified surgeon — request a quote at a consultation.",
+            "cost": True,
         },
         {
             "q": "How do I choose a rhinoplasty surgeon?",
@@ -603,8 +590,7 @@ TREATMENT_FAQS = {
     "mommy-makeover": [
         {
             "q": "How much does a mommy makeover cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, mommy makeover pricing starts around {price_range}. Because it combines procedures — often a tummy tuck, breast surgery, and liposuction — the total is customized to your plan, with anesthesia and facility costs included. A consultation will produce a personalized quote.",
-            "a_no_prices": "A mommy makeover in South Florida commonly runs $10,000–$20,000+ because it bundles several procedures in one surgery. The exact figure depends on which procedures you combine plus anesthesia and facility fees — request a personalized quote at a consultation.",
+            "cost": True,
         },
         {
             "q": "What procedures are included in a mommy makeover?",
@@ -618,8 +604,7 @@ TREATMENT_FAQS = {
     "facelift": [
         {
             "q": "How much does a facelift cost in {city}?",
-            "a_prices": "Among the {n} providers in our {city} directory, facelift pricing starts around {price_range}. The fee reflects the technique and the surgeon's experience plus anesthesia and facility costs. A consultation will clarify which approach suits you and a personalized quote.",
-            "a_no_prices": "A facelift in South Florida commonly runs $8,000–$18,000+ depending on the technique (mini vs. deep-plane), the surgeon, and anesthesia and facility fees. Request a quote at a consultation with a board-certified surgeon.",
+            "cost": True,
         },
         {
             "q": "How long does a facelift last?",
@@ -633,17 +618,13 @@ TREATMENT_FAQS = {
 }
 
 
-def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county=None,
-                 category=DEFAULT_CATEGORY, fallback=False):
+def _build_intro(treatment_slug, market, clinics, category, fallback):
     """Build a rich, human-sounding page intro from real data. Each city reads as if
     written by someone who knows the area — not a template with a city name swapped in."""
     t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
     city = market["city"]
     city_name = market["city_name"]
-    county_name = market["county_name"]
-    state_abbr = market["state_abbr"]
     n = len(clinics)
-    unit = TREATMENT_UNITS.get(treatment_slug, "")
     langs = sorted({l for c in clinics for l in (c.get("languages") or [])})
 
     # Nearest-provider fallback page: be honest that there are NO local providers, then
@@ -660,7 +641,7 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
             where = near_cities[0] if near_cities else "nearby cities"
         return (
             f"There are no {t_name.lower()} providers listed in {city_name} yet. "
-            f"Below are the nearest board-certified options — in {where} — ordered by distance, "
+            f"Below are nearby options in {where}, ordered by distance, "
             f"so you can still compare and book a consultation. Each listing shows the practice's "
             f"location, contact details, and verified Google rating; the rating shown is for the "
             f"practice, not an individual surgeon."
@@ -668,32 +649,6 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
 
     # Neighbourhood character sentence (if we have one)
     ctx = NEIGHBORHOOD_CONTEXT.get(city, "")
-
-    # Price sentence — reference real data only
-    if prices:
-        rng = f"${prices[0]}" if prices[0] == prices[-1] else f"${prices[0]}–${prices[-1]}"
-        price_str = f"{t_name} starts at {rng} {unit} among listed providers".rstrip()
-    else:
-        price_str = None
-
-    # County comparison — compute county average price for this treatment from all clinics
-    county_prices = []
-    if all_clinics_for_county:
-        for c in all_clinics_for_county:
-            p = _starting_price(c, treatment_slug)
-            if p:
-                county_prices.append(p)
-    if county_prices and prices:
-        county_avg = sum(county_prices) / len(county_prices)
-        city_avg = sum(prices) / len(prices)
-        if city_avg < county_avg * 0.95:
-            comparison = f", which is below the {county_name} County average"
-        elif city_avg > county_avg * 1.05:
-            comparison = f", which is above the {county_name} County average"
-        else:
-            comparison = ", in line with the broader {county_name} market".format(county_name=county_name)
-    else:
-        comparison = ""
 
     # Language sentence
     if langs and len(langs) >= 2:
@@ -706,117 +661,75 @@ def _build_intro(treatment_slug, market, clinics, prices, all_clinics_for_county
     # Assemble — aim for natural, flowing prose
     provider_word = "provider" if n == 1 else "providers"
     parts = []
-    if ctx:
-        parts.append(ctx)
-
     if n == 1:
-        provider_sent = f"Octoru has one verified {t_name.lower()} provider in {city_name}."
+        parts.append(f"Find a verified {t_name} provider in {city_name}.")
     else:
-        provider_sent = f"Octoru has {n} verified {t_name.lower()} {provider_word} in {city_name}."
-    parts.append(provider_sent)
-
-    if price_str:
-        price_full = f"{price_str}{comparison}." if comparison else f"{price_str}."
-        parts.append(price_full[0].upper() + price_full[1:])
+        parts.append(f"Compare {n} verified {t_name} {provider_word} in {city_name}.")
 
     if lang_str:
         parts.append(lang_str)
 
     if category == "plastic-surgery":
         parts.append("Each listing below shows the practice's location, contact details, the "
-                     "procedures it offers, and its verified Google rating, plus the surgeons who "
-                     "perform this procedure with their credentials as stated on the provider's "
-                     "website. The rating shown is for the practice, not an individual surgeon — "
-                     "always confirm a surgeon's credentials and facility accreditation at your consultation.")
+                     "procedures it offers, and its Google rating. Where available, listings show "
+                     "the surgeons' published credentials and facility accreditation.")
     else:
         parts.append("Each listing below shows the clinic's address, phone, treatments, and verified Google rating so you can compare before booking a consultation.")
 
+    if ctx:
+        parts.append(ctx)
     return " ".join(parts)
 
 
-def _generate_faqs(treatment_slug, market, clinics, prices):
-    """Return a list of {{q, a}} dicts with real data filled in. Safe for FAQPage schema."""
-    templates = TREATMENT_FAQS.get(treatment_slug, [])
+def _generate_faqs(treatment_slug, market, clinics, cost):
+    """Use the same offer facts on the page, in its guide, and in FAQ schema."""
     city_name = market["city_name"]
     n = len(clinics)
-    unit = TREATMENT_UNITS.get(treatment_slug, "")
-    price_range = (
-        f"${prices[0]}–${prices[-1]} {unit}".strip()
-        if len(prices) >= 2
-        else (f"${prices[0]} {unit}".strip() if prices else None)
-    )
-
     result = []
-    for tpl in templates:
-        q = tpl["q"].format(city=city_name, n=n, county=market["county_name"])
-        if "a_prices" in tpl and "a_no_prices" in tpl:
-            # This is the "how much does X cost in {city}?" question — the one most likely
-            # to be surfaced as a rich result. Its answer is built from SOURCED figures
-            # (what providers here publish + the referential market range) rather than
-            # from a hand-written range, so every number in it is traceable.
-            a = _cost_answer(treatment_slug, city_name, n, price_range)
-        else:
-            a = tpl["a"].format(
-                city=city_name, n=n,
-                price_range=price_range or "varies by provider",
-                county=market["county_name"],
+    for tpl in TREATMENT_FAQS.get(treatment_slug, []):
+        fields = {"city": city_name, "n": n, "county": market["county_name"]}
+        question = tpl["q"].format(**fields)
+        if tpl.get("cost"):
+            facts = [cost["coverage_label"] + "."]
+            facts.extend(
+                f"{group['label']}: {group['display']} across {group['clinic_count']} providers."
+                for group in cost["groups"]
             )
-        result.append({"q": q, "a": a})
+            if not cost["fallback"]:
+                facts.append(_quote_checklist(treatment_slug))
+            answer = " ".join(facts)
+        else:
+            answer = tpl["a"].format(price_range="varies by provider", **fields)
+        result.append({"q": question, "a": answer})
     return result
 
 
-def _cost_answer(treatment_slug, city_name, n, price_range):
-    """Answer the cost question using only sourced figures. Never a guessed range."""
-    t_name = TREATMENT_NAMES.get(treatment_slug, treatment_slug.replace("-", " ").title())
-    ref = reference_for(treatment_slug)
-    parts = []
-
-    if price_range:
-        parts.append(f"Among the {n} provider{'' if n == 1 else 's'} listed in {city_name}, "
-                     f"published starting prices run {price_range}.")
-    else:
-        parts.append(f"None of the {n} provider{'' if n == 1 else 's'} listed in {city_name} "
-                     f"publishes a rate online, so there is no local figure to quote.")
-
-    if ref.get("available"):
-        nat = ref["national"]
-        yr = f", {nat['year']}" if nat.get("year") else ""
-        parts.append(f"As a market reference, {nat['source_name']}{yr} reports "
-                     f"{nat['display']} {nat['basis']} nationally.")
-        if ref.get("metro"):
-            m = ref["metro"]
-            parts.append(f"For the Miami metro specifically, {m['source_name']} reports an "
-                         f"average of {m['display']} ({m['basis']}).")
-        if ref.get("excludes_anesthesia_facility"):
-            parts.append("That figure is the surgeon's fee only — anesthesia and accredited-"
-                         "facility costs are billed separately and add to the total.")
-        parts.append("These are referential market figures, not quotes: each clinic sets its "
-                     "own rate, so ask for a current price before you book.")
-    else:
-        parts.append(f"No independent body publishes an average cost for {t_name.lower()}, so "
-                     f"we don't show a range we can't source — request current pricing instead.")
-
-    return " ".join(parts)
-TREATMENT_UNITS = {
-    "botox": "per unit",
-    "lip-filler": "per syringe",
-    "coolsculpting": "per session",
-    "laser-hair-removal": "per session",
-    "microneedling": "per session",
-    "hydrafacial": "per session",
-    "chemical-peel": "per session",
-    "dermal-fillers": "per syringe",
-    "iv-therapy": "per session",
-    "morpheus8": "per session",
-    # plastic surgery is quoted as a single surgical fee, not per-unit — no unit suffix.
-    "bbl": "",
-    "tummy-tuck": "",
-    "breast-augmentation": "",
-    "liposuction": "",
-    "rhinoplasty": "",
-    "mommy-makeover": "",
-    "facelift": "",
+QUOTE_CHECKLIST = {
+    "botox": "Ask which product and areas are included, how any unit cap works, and whether the price includes follow-up.",
+    "lip-filler": "Compare the filler product and volume in mL. Ask what a half syringe or a full syringe includes.",
+    "dermal-fillers": "Confirm the product, treatment area, syringe count, and volume in mL.",
+    "laser-hair-removal": "Ask which zones and sides are included, which device is used, and how many sessions the quote covers.",
+    "coolsculpting": "Confirm the body zones, number of applicator cycles, and whether you are paying for one visit or a package.",
+    "microneedling": "Confirm the technique, treatment area, session count and any add-ons.",
+    "morpheus8": "Confirm the device, treatment areas and number of sessions included.",
+    "hydrafacial": "Compare the same HydraFacial tier, treatment area, and included boosters or add-ons.",
+    "chemical-peel": "Confirm the peel type, depth, treatment area and number of sessions.",
+    "iv-therapy": "Ask which formulation, volume, visit count and add-ons the offer includes.",
+    "bbl": "Ask which liposuction areas, fat transfer, surgeon, anesthesia and facility fees the quote includes.",
+    "tummy-tuck": "Confirm the procedure type and whether the quote includes the surgeon, anesthesia, facility and follow-up.",
+    "breast-augmentation": "Confirm the implant or fat-transfer option and the surgeon, implant, anesthesia and facility fees.",
+    "liposuction": "Ask which parts of each area the quote covers and whether it includes the surgeon, anesthesia, facility and follow-up.",
+    "rhinoplasty": "Confirm whether it is a primary or revision procedure and whether the quote includes anesthesia and facility fees.",
+    "mommy-makeover": "Compare the exact procedures and areas in the package. Confirm the surgeon, anesthesia and facility fees.",
+    "facelift": "Confirm the extent of surgery, whether the neck is included, and which fees are covered.",
 }
+
+
+
+def _quote_checklist(service):
+    return QUOTE_CHECKLIST.get(service, "Ask which services, fees and follow-up are included.")
+
+
 TREATMENT_GUIDANCE = {
     "botox": "Botox is a neuromodulator injected to soften dynamic wrinkles; it is usually priced per unit, and the number of units depends on the treatment area. Effects typically last a few months. Ask each provider who performs the injections and how units are counted.",
     "lip-filler": "Lip filler uses hyaluronic-acid dermal fillers to add volume and shape; it is usually priced per syringe. Results are not permanent and vary by product. Ask which filler is used and about reversibility.",
@@ -869,23 +782,12 @@ CITY_LATLNG = {
 }
 
 
-def treatment_cards(clinics, treatments):
-    """Homepage treatment cards for a given treatment list. 'Typical from' price is
-    computed from REAL listing prices in `clinics`; treatments without enough real data
-    get the honest empty state (no placeholder $)."""
-    cards = []
-    for t in treatments:
-        vals = sorted({p for c in clinics if (p := _starting_price(c, t)) is not None})
-        unit = TREATMENT_UNITS.get(t, "")
-        if len(vals) >= 2:
-            disp = f"${vals[0]}–${vals[-1]} {unit}".strip()
-        elif len(vals) == 1:
-            disp = f"from ${vals[0]} {unit}".strip()
-        else:
-            disp = None   # honest empty state -> template renders "Varies"
-        cards.append({"slug": t, "name": TREATMENT_NAMES.get(t, t),
-                      "desc": TREATMENT_DESC.get(t, ""), "from_display": disp})
-    return cards
+def treatment_cards(summaries, treatments):
+    """Link visitors to markets where this service has qualifying listings."""
+    with_offers = {s["treatment_slug"] for s in summaries if s["n_priced"]}
+    return [{"slug": t, "name": TREATMENT_NAMES.get(t, t),
+             "desc": TREATMENT_DESC.get(t, ""), "has_offers": t in with_offers}
+            for t in treatments]
 
 
 # ----------------------------------------------------------------------------------
@@ -1085,8 +987,8 @@ PUBLISHED_PRICES_PATH = ROOT / "data" / "prices_published.json"
 def _overlay_published_prices(clinics):
     """Merge published per-clinic prices onto clinic records.
 
-    NEVER overwrites a price already present in the prospector data — operator/prospector
-    data wins. Only prices carrying BOTH a value and a basis are applied: a bare number
+    Keep prospector prices with their own source. When a raw price has no source,
+    use the ledger's independently sourced amount and basis. A bare number
     with no basis ("$15" — per unit? per area? per session?) would mislead, so it drops.
     """
     if not PUBLISHED_PRICES_PATH.exists():
@@ -1111,7 +1013,8 @@ def _overlay_published_prices(clinics):
             if not isinstance(v, int) or v <= 0 or not basis:
                 skipped += 1
                 continue
-            if t in prices:            # prospector / operator price wins
+            if t in prices and isinstance(meta.get(t), dict) and meta[t].get("source_url"):
+                # Keep the prospector price when its own source is available.
                 continue
             prices[t] = v
             meta[t] = {"basis": basis, "source_url": d.get("source_url"),
@@ -1126,7 +1029,7 @@ def _overlay_published_prices(clinics):
     return clinics
 
 
-def _starting_price(clinic, treatment_slug):
+def _legacy_price(clinic, treatment_slug):
     prices = clinic.get("starting_prices_usd")
     if isinstance(prices, dict):
         return prices.get(treatment_slug)
@@ -1139,6 +1042,26 @@ def _price_meta(clinic, treatment_slug):
     with their basis — '$15' means nothing without 'per unit'."""
     meta = (clinic.get("price_meta") or {}).get(treatment_slug)
     return meta if isinstance(meta, dict) else {}
+
+
+def _clinic_offers(clinic, treatment_slug):
+    records = PRICE_OFFERS.get(clinic.get("slug"), {})
+    if treatment_slug in records:
+        return current_offers(records[treatment_slug], datetime.date.today())
+
+    # Keep documented legacy offers visible at the clinic level. Their free-text
+    # scope cannot contribute to a numeric summary or a comparable group.
+    meta = _price_meta(clinic, treatment_slug)
+    value = _legacy_price(clinic, treatment_slug)
+    if type(value) is not int or not meta.get("basis"):
+        return []
+    return current_offers([{
+        "amount_cents": value * 100,
+        "label": meta["basis"],
+        "eligibility": "standard",
+        "source_url": meta.get("source_url"),
+        "checked": meta.get("checked"),
+    }], datetime.date.today())
 
 
 def _format_phone(phone):
@@ -1206,14 +1129,7 @@ def _clinic_for_page(clinic, treatment_slug):
         "rating": clinic.get("rating"),
         "review_count": clinic.get("review_count"),
         "rating_source": clinic.get("rating_source"),
-        "starting_price_usd": _starting_price(clinic, treatment_slug),
-        "price_unit": TREATMENT_UNITS.get(treatment_slug) if _starting_price(clinic, treatment_slug) is not None else None,
-        # Tier (b) provenance. basis is what the clinic actually published the number on
-        # ("per unit", "flat fee, 3 areas"); source_url is where we read it. A price with
-        # no basis is meaningless, so the template shows the two together or not at all.
-        "price_basis": _price_meta(clinic, treatment_slug).get("basis"),
-        "price_source_url": _price_meta(clinic, treatment_slug).get("source_url"),
-        "price_checked": _price_meta(clinic, treatment_slug).get("checked"),
+        "price_offers": _clinic_offers(clinic, treatment_slug),
         "languages": clinic.get("languages", []),
         # Flat-placement monetization fields (all operator-set, never builder-inferred).
         # featured_tier > 0 = paid flat placement; never tied to per-patient value.
@@ -1305,8 +1221,7 @@ def rank_providers(providers):
     )
 
 
-def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
-                   category=DEFAULT_CATEGORY, fallback=False):
+def _assemble_page(treatment_slug, market, clinics, category=DEFAULT_CATEGORY, fallback=False):
     """Group real clinics into one treatment x city page. Differentiation comes from
     the real clinics + market-specific context, not boilerplate.
 
@@ -1340,77 +1255,48 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
                 top_ranked_id = top.get("slug") or top.get("name")
 
     n = len(clinics)
-    unit = TREATMENT_UNITS.get(treatment_slug, "")
-    prices = sorted({p for c in clinics if (p := _starting_price(c, treatment_slug)) is not None})
-
-    # Rich human-sounding intro with neighbourhood context and real data
-    intro = _build_intro(treatment_slug, market, clinics, prices, all_county_clinics,
-                         category=category, fallback=fallback)
-
-    # ---- Pricing: referential market range + observed published prices --------------
-    # The title/meta must describe exactly what the page delivers. A page carries a
-    # referential range only when reference_prices.json actually has a sourced figure;
-    # where it doesn't (IV therapy), the page says so instead of implying a number.
+    clinic_cards = [
+        {**_clinic_for_page(c, treatment_slug),
+         "top_ranked": (c.get("slug") or c.get("name")) == top_ranked_id}
+        for c in clinics
+    ]
+    local_cards = [] if fallback else clinic_cards
+    priced = sum(bool(c["price_offers"]) for c in local_cards)
     ref = reference_for(treatment_slug)
-    priced_clinics = [c for c in clinics if _starting_price(c, treatment_slug) is not None]
+    # The supplied metro benchmarks are for Miami. Other markets can cite the
+    # national source without presenting Miami figures as a nearby comparison.
+    if market["county"] != "miami-dade" and ref["available"]:
+        ref.update(metro=None, metro_absent_reason=None)
 
-    if ref.get("metro"):
-        ref_phrase = f"Miami-metro average {ref['metro']['display']}"
-    elif ref.get("available"):
-        ref_phrase = f"typically {ref['national']['display']} {ref['national']['basis']}".strip()
+    if fallback:
+        coverage = f"See nearby providers for {t_name} pricing"
+    elif priced:
+        coverage = f"Published offers available from {priced} of {n} listed providers"
     else:
-        ref_phrase = None
-
+        coverage = "Request a quote for current pricing"
     cost = {
-        # tier (a)
         "reference": ref,
-        # tier (b) — prices providers on THIS page actually publish
-        "has_prices": bool(priced_clinics),
-        "low": prices[0] if prices else None,
-        "high": prices[-1] if prices else None,
-        "unit": unit,
-        "count_priced": len(priced_clinics),
-        "count_total": len(clinics),
-        # Plural agrees with the TOTAL (the noun), the verb with the priced count:
-        # "1 of 7 providers publishes a price" / "3 of 9 providers publish a price".
-        "coverage_label": (
-            f"{len(priced_clinics)} of {len(clinics)} "
-            f"{'provider' if len(clinics) == 1 else 'providers'} "
-            f"{'publishes' if len(priced_clinics) == 1 else 'publish'} a price"
-            if priced_clinics else
-            f"None of the {len(clinics)} providers here publishes a rate online — "
-            f"request a current price and we'll get it for you"
-        ),
+        "groups": price_groups(local_cards),
+        "count_priced": priced,
+        "has_prices": bool(priced),
+        "coverage_label": coverage,
+        "fallback": fallback,
     }
-
-    # Meta description optimised for SERP click-through — and matched to the page.
-    provider_word = "provider" if n == 1 else "providers"
+    location = f"{city_name}, {market['state_abbr']}"
     if fallback:
-        meta = (f"No {t_name.lower()} providers in {city_name}, FL yet — compare the nearest "
-                f"board-certified options nearby by rating and distance, and book a consultation.")
-    elif ref_phrase:
-        meta = (f"{t_name} cost in {city_name}, FL — {ref_phrase} (referential; each clinic "
-                f"sets its own rate). Compare {n} verified {provider_word}, published prices "
-                f"and Google ratings.")
+        title = f"{t_name} near {location} — Nearby Providers"
+        meta = f"Find nearby {t_name} providers serving {location}. See clinic locations and contact options."
     else:
-        meta = (f"{n} verified {t_name.lower()} {provider_word} in {city_name}, FL. Compare "
-                f"published prices and Google ratings, and request a current quote.")
-
-    # Title mirrors the promise: a typical cost figure only when we actually carry one.
-    year = datetime.date.today().year
-    if fallback:
-        title = f"{t_name} near {city_name}, FL — Nearest Verified Providers ({year})"
-    elif ref.get("available"):
-        title = (f"{t_name} Prices in {city_name}, FL — Typical Cost + {n} Verified "
-                 f"{'Clinic' if n == 1 else 'Clinics'} ({year})")
-    else:
-        title = (f"{t_name} in {city_name}, FL — {n} Verified "
-                 f"{'Clinic' if n == 1 else 'Clinics'} & Prices ({year})")
+        label = "Verified Provider" if n == 1 else f"Compare {n} Verified Providers"
+        title = f"{t_name} in {location} — {label}"
+        noun = "provider" if n == 1 else "providers"
+        meta = f"Find {n} verified {t_name} {noun} in {location}. Compare clinic ratings and contact options."
+        if priced:
+            meta += " See published offer terms."
+    intro = _build_intro(treatment_slug, market, clinics, category, fallback)
+    faqs = _generate_faqs(treatment_slug, market, clinics, cost)
     verified_dates = [c.get("last_verified") for c in clinics if c.get("last_verified")]
     updated = max(verified_dates) if verified_dates else datetime.date.today().isoformat()
-
-    # FAQs — generated from real data, safe for FAQPage schema
-    faqs = _generate_faqs(treatment_slug, market, clinics, prices)
 
     return {
         "category": category,
@@ -1429,11 +1315,7 @@ def _assemble_page(treatment_slug, market, clinics, all_county_clinics=None,
         "guidance": TREATMENT_GUIDANCE.get(treatment_slug),
         "faqs": faqs,
         "updated": updated,
-        "clinics": [
-            {**_clinic_for_page(c, treatment_slug),
-             "top_ranked": (c.get("slug") or c.get("name")) == top_ranked_id}
-            for c in clinics
-        ],
+        "clinics": clinic_cards,
     }
 
 
@@ -1538,7 +1420,7 @@ def _nearest_fallback_pages(category, treatments, clinics, req_fields, page_reqs
                 cc["_nearby_city_name"] = c.get("neighborhood_name") \
                     or NEIGHBORHOOD_NAMES.get(c.get("neighborhood"), (c.get("neighborhood") or "").replace("-", " ").title())
                 chosen.append(cc)
-            page = _assemble_page(t, market, chosen, all_county_clinics=None,
+            page = _assemble_page(t, market, chosen,
                                   category=category, fallback=True)
             if page_hold_reason(page, page_reqs):
                 continue
@@ -1661,8 +1543,7 @@ def _fetch_category_pages(category, treatments, req_fields, page_reqs, enforce, 
             use = _qualify(matched, label)
             if not use:
                 continue
-            county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
-            page = _assemble_page(t, market, use, all_county_clinics=county_clinics, category=category)
+            page = _assemble_page(t, market, use, category=category)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             # For dry-run without enforce, only roll up if the page would be GENUINELY thin.
             would_be_thin = len(use) < min_listings if min_listings else False
@@ -1749,8 +1630,7 @@ def _fetch_category_pages(category, treatments, req_fields, page_reqs, enforce, 
             use = _qualify(all_clinics, label)
             if not use:
                 continue
-            county_clinics = [c for c in clinics if (c.get("county") or "miami-dade") == market["county"]]
-            page = _assemble_page(t, market, use, all_county_clinics=county_clinics, category=category)
+            page = _assemble_page(t, market, use, category=category)
             reason = page_hold_reason(page, page_reqs) if enforce else None
             if reason:
                 report["held_pages"].append({"page": label, "reason": reason})
@@ -1804,7 +1684,7 @@ def _page_text(page):
     for c in page.get("clinics", []):
         parts += [c.get("name") or "", c.get("address") or "",
                   str(c.get("rating") or ""), str(c.get("review_count") or ""),
-                  str(c.get("starting_price_usd") or ""),
+                  " ".join(offer["label"] for offer in c.get("price_offers", [])),
                   " ".join(c.get("treatments_offered") or [])]
     return re.sub(r"\s+", " ", " ".join(parts)).strip()
 
@@ -1817,6 +1697,7 @@ def _shingles(text, n=8):
 def duplication_scan(pages, threshold=NEAR_DUPLICATE_THRESHOLD):
     """Flag pages whose content is dominated by what they share with a sibling.
     Mutates each page: sets near_duplicate + near_duplicate_overlap. Returns flagged."""
+    held_providers = json.loads((ROOT / "builder" / "index_review_holds.json").read_text())["providers"]
     groups = {}
     for p in pages:
         groups.setdefault(p["treatment"]["slug"], []).append(p)
@@ -1840,13 +1721,20 @@ def duplication_scan(pages, threshold=NEAR_DUPLICATE_THRESHOLD):
             p["near_duplicate_overlap"] = round(best, 3)
             # Fallback pages already carry noindex for their own reason; don't double-count.
             thin = len(p.get("clinics", [])) < NEAR_DUPLICATE_MIN_LISTINGS
-            if best >= threshold and thin and not p.get("fallback"):
+            # Template copy alone cannot clear an existing hold on the same
+            # thin clinic set. Re-evaluate once the qualifying providers change.
+            previous_providers = held_providers.get(p["path"])
+            retained_hold = bool(previous_providers) and previous_providers == sorted(
+                c["slug"] or "" for c in p["clinics"]
+            )
+            if thin and not p.get("fallback") and (best >= threshold or retained_hold):
                 p["near_duplicate"] = True
                 flagged.append({
                     "path": p["path"],
                     "overlap": round(best, 3),
                     "closest": best_other["path"] if best_other else None,
                     "n_listings": len(p.get("clinics", [])),
+                    "retained_hold": retained_hold,
                 })
     flagged.sort(key=lambda x: -x["overlap"])
     return flagged
@@ -1858,7 +1746,7 @@ def compute_empty_fields(pages):
         for c in p["clinics"]:
             seen[c.get("name")] = c
             price_total += 1
-            if not c.get("starting_price_usd"):
+            if not c.get("price_offers"):
                 price_missing += 1
     cl = list(seen.values())
     return {
@@ -1875,7 +1763,6 @@ def compute_empty_fields(pages):
 def page_summary(page):
     m = page["geo"]
     t = page["treatment"]["slug"]
-    prices = [c["starting_price_usd"] for c in page.get("clinics", []) if c.get("starting_price_usd")]
     return {
         "treatment_slug": t, "treatment_name": page["treatment"]["name"],
         "state": m["state"], "state_name": m["state_name"], "state_abbr": m["state_abbr"],
@@ -1886,8 +1773,7 @@ def page_summary(page):
         "fallback": bool(page.get("fallback")),
         "n_clinics": len(page.get("clinics", [])),
         "near_duplicate": bool(page.get("near_duplicate")),
-        "from_price": min(prices) if prices else None,
-        "price_unit": TREATMENT_UNITS.get(t) if prices else None,
+        "n_priced": page["cost"]["count_priced"],
     }
 
 
@@ -2018,15 +1904,13 @@ def render_hub(title, subtitle, breadcrumb, cards, rel_path, intro=None,
     return _write(f"{rel_path}/index.html" if rel_path else "index_hub.html", html)
 
 
-def _city_providers(city_slug, pages):
+def _city_providers(pages):
     """Every distinct provider in a city, once, ranked — the side-by-side comparison row
     set for the city directory page. Aggregates each provider's treatments and whichever
     prices it publishes across all of them. Nothing here is invented: a provider with no
     published price carries none and the page asks for a quote instead."""
     byslug = {}
     for p in pages:
-        if p.get("fallback") or p["neighborhood"]["slug"] != city_slug:
-            continue
         t_slug = p["treatment"]["slug"]
         t_name = p["treatment"]["name"]
         for c in p.get("clinics", []):
@@ -2039,21 +1923,16 @@ def _city_providers(city_slug, pages):
                 "accreditations": c.get("accreditations"),
                 "featured_tier": c.get("featured_tier", 0),
                 "sponsored": c.get("sponsored", False),
-                "treatments": [], "prices": [],
+                "treatments": [], "offer_links": [],
             })
             if t_name not in [x["name"] for x in row["treatments"]]:
                 row["treatments"].append({"name": t_name, "url": p["path"] and page_url(p["geo"], t_slug)})
-            if c.get("starting_price_usd") is not None:
-                row["prices"].append({
-                    "treatment": t_name, "value": c["starting_price_usd"],
-                    "basis": c.get("price_basis") or TREATMENT_UNITS.get(t_slug) or "",
-                    "source_url": c.get("price_source_url"),
-                })
+            if c.get("price_offers"):
+                row["offer_links"].append({"name": t_name, "url": page_url(p["geo"], t_slug)})
     rows = list(byslug.values())
-    for r in rows:
-        r["prices"].sort(key=lambda x: x["value"])
-        r["treatments"].sort(key=lambda x: x["name"])
-        r["from_price"] = r["prices"][0] if r["prices"] else None
+    for row in rows:
+        row["treatments"].sort(key=lambda x: x["name"])
+        row["offer_links"].sort(key=lambda x: x["name"])
     # Same ranking law as listing pages: paid placement pinned and labeled, organic ordered
     # by the Beta-posterior lower bound. Placement never buys ranking.
     featured = rank_providers([r for r in rows if r.get("featured_tier", 0) > 0])
@@ -2061,7 +1940,7 @@ def _city_providers(city_slug, pages):
     return featured[:MAX_FEATURED_PER_PAGE] + organic + featured[MAX_FEATURED_PER_PAGE:]
 
 
-def _city_directory_title(city_name, state_name, providers, pages, city_slug):
+def _city_directory_title(city_name, state_abbr, providers, pages):
     """Name the page for what the city actually has. A city with only surgical practices
     must not be titled 'Best Med Spas' — that would be a promise the page doesn't keep.
 
@@ -2069,8 +1948,7 @@ def _city_directory_title(city_name, state_name, providers, pages, city_slug):
     the H1 stays short, because a heading that restates the whole title reads as spam and
     wraps to five lines on a phone.
     """
-    cats = {p.get("category", DEFAULT_CATEGORY) for p in pages
-            if p["neighborhood"]["slug"] == city_slug and not p.get("fallback")}
+    cats = {p.get("category", DEFAULT_CATEGORY) for p in pages}
     n = len(providers)
     if cats == {"plastic-surgery"}:
         noun = "Plastic Surgery Practices"
@@ -2079,7 +1957,7 @@ def _city_directory_title(city_name, state_name, providers, pages, city_slug):
     else:
         noun = "Med Spas"
     year = datetime.date.today().year
-    h1 = f"Best {noun} in {city_name}, FL"
+    h1 = f"Best {noun} in {city_name}, {state_abbr}"
     seo_title = (f"{h1} — {n} Verified {'Provider' if n == 1 else 'Providers'} "
                  f"Compared ({year})")
     return seo_title, h1, noun
@@ -2087,9 +1965,15 @@ def _city_directory_title(city_name, state_name, providers, pages, city_slug):
 
 def render_hubs(summaries, pages=None):
     """State, county, and city hub pages from the built listing summaries."""
+    local_pages = {}
+    for page in pages or []:
+        if not page["fallback"]:
+            place = page["geo"]
+            key = (place["state"], place["county"], place["city"])
+            local_pages.setdefault(key, []).append(page)
     states = {}
     for s in summaries:
-        states.setdefault(s["state"], {"name": s["state_name"], "counties": {}})
+        states.setdefault(s["state"], {"name": s["state_name"], "abbr": s["state_abbr"], "counties": {}})
         co = states[s["state"]]["counties"].setdefault(s["county"], {"name": s["county_name"], "cities": {}})
         ci = co["cities"].setdefault(s["city"], {"name": s["city_name"], "pages": []})
         if not any(p["url"] == s["url"] for p in ci["pages"]):
@@ -2099,9 +1983,11 @@ def render_hubs(summaries, pages=None):
         # city hubs
         for co, cdata in sdata["counties"].items():
             for ci, cidata in cdata["cities"].items():
-                cards = [{"title": p["treatment_name"], "sub": f"{p['n_clinics']} provider" + ("" if p["n_clinics"] == 1 else "s"),
+                cards = [{"title": p["treatment_name"],
+                          "sub": "Nearby providers" if p["fallback"] else
+                          f"{p['n_clinics']} provider" + ("" if p["n_clinics"] == 1 else "s"),
                           "url": p["url"],
-                          "chip": (f"from ${p['from_price']} {p['price_unit']}" if p["from_price"] else None)}
+                          "chip": ("Published offers" if p["n_priced"] else None)}
                          for p in sorted(cidata["pages"], key=lambda x: x["treatment_name"])]
                 bc = [{"name": "Home", "url": "/"}, {"name": sdata["name"], "url": f"/{st}/"},
                       {"name": cdata["name"], "url": f"/{st}/{co}/"},
@@ -2109,11 +1995,12 @@ def render_hubs(summaries, pages=None):
                 # City hub doubles as the "Best <category> in <City>" directory page:
                 # every provider once, ranked, with verified ratings and whichever prices
                 # they publish — the side-by-side comparison Yelp doesn't give.
-                provs = _city_providers(ci, pages or [])
+                city_pages = local_pages.get((st, co, ci), [])
+                provs = _city_providers(city_pages)
                 if provs:
                     ctitle, ch1, cnoun = _city_directory_title(
-                        cidata["name"], sdata["name"], provs, pages or [], ci)
-                    n_priced = sum(1 for p in provs if p.get("from_price"))
+                        cidata["name"], sdata["abbr"], provs, city_pages)
+                    n_priced = sum(1 for p in provs if p.get("offer_links"))
                     csub = (f"{len(provs)} verified {cnoun.lower()} compared on Google rating, "
                             f"treatments offered and published pricing")
                     cmeta = (f"Compare {len(provs)} verified {cnoun.lower()} in {cidata['name']}, FL "
@@ -2225,14 +2112,13 @@ def render_index(summaries):
         treats = [t for t in _category_treatments(cat) if t in built]
         if not treats:
             continue
-        cat_clinics = [c for c in all_clinics if _eligible_for_category(c, cat)]
         cat_real = [s for s in real if s.get("category", DEFAULT_CATEGORY) == cat]
         categories.append({
             "slug": cat,
             "name": _category_name(cat),
             "tagline": _category_tagline(cat),
             "noun": _category_noun(cat),
-            "cards": treatment_cards(cat_clinics, treats),
+            "cards": treatment_cards(cat_real, treats),
             "n_cities": len({(s["state"], s["county"], s["city"]) for s in cat_real}),
             "n_listings": sum(s["n_clinics"] for s in cat_real),
         })
@@ -2292,23 +2178,11 @@ def render_guides(pages):
     for page in pages:
         m = page["geo"]
         t = page["treatment"]["slug"]
-        t_name = page["treatment"]["name"]
-        city_name = page["neighborhood"]["name"]
         state_abbr = page["city"]
-        prices = []
-        if page.get("cost", {}).get("low") is not None:
-            prices = list({page["cost"]["low"], page["cost"]["high"]} - {None})
-            prices = sorted(set(prices))
-        unit = TREATMENT_UNITS.get(t, "")
-        price_display = (
-            f"${prices[0]}–${prices[-1]} {unit}".strip() if len(prices) >= 2
-            else (f"${prices[0]} {unit}".strip() if prices else None)
-        )
         guide_path = f"{page['path']}/guide"
         listing_url = page_url(m, t)
         guide_url = f"/{guide_path}/"
 
-        faqs = page.get("faqs", _generate_faqs(t, m, [], prices))
         ctx = NEIGHBORHOOD_CONTEXT.get(m["city"], "")
 
         html = env.get_template("guide.html.j2").render(
@@ -2317,13 +2191,11 @@ def render_guides(pages):
             city=state_abbr,
             geo=m,
             cost=page.get("cost", {}),
-            reference=reference_for(t),
+            reference=page["cost"]["reference"],
             # A guide derived from a near-duplicate listing page inherits the problem:
             # keep it reachable, keep it out of the index.
             near_duplicate=bool(page.get("near_duplicate")),
-            price_display=price_display,
-            unit=unit,
-            faqs=faqs,
+            quote_checklist=_quote_checklist(t),
             guidance=TREATMENT_GUIDANCE.get(t, ""),
             neighborhood_context=ctx,
             listing_url=listing_url,
@@ -2403,56 +2275,73 @@ def render_learn(built_paths=None):
     return urls
 
 
+METROS = [
+    {"slug": "miami", "name": "Miami", "county": "miami-dade"},
+    {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"},
+    {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"},
+]
+METRO_SPANISH_NAMES = {
+    "botox": "Botox",
+    "lip-filler": "Relleno de labios",
+    "laser-hair-removal": "Depilación láser",
+    "microneedling": "Microneedling",
+    "coolsculpting": "CoolSculpting",
+}
+
+
+def _metro_comparisons(metro, summaries):
+    by_service = {}
+    for summary in summaries:
+        if summary["county"] == metro["county"]:
+            by_service.setdefault(summary["treatment_slug"], {}).setdefault(summary["url"], summary)
+    for slug, entries in sorted(by_service.items()):
+        rows = sorted(entries.values(), key=lambda r: (r["fallback"], r["city_name"]))
+        if len(rows) < 2 or sum(r["n_clinics"] for r in rows) < 3:
+            continue
+        yield {
+            "treatment_slug": slug,
+            "treatment_name": rows[0]["treatment_name"],
+            "n_areas": len(rows),
+            "rows": rows,
+        }
+
+
 def render_metros(summaries):
-    metros = [{"slug": "miami", "name": "Miami", "county": "miami-dade"}, {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"}, {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"}]
-    names = {}
-    for s in summaries:
-        names.setdefault(s["treatment_slug"], s["treatment_name"])
     urls = []
-    for metro in metros:
-        for t_slug in sorted(names):
-            rows = sorted([s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug], key=lambda r: (r["from_price"] is None, r["from_price"] or 0, r["city_name"]))
-            _seen = set()
-            rows = [r for r in rows if not (r["url"] in _seen or _seen.add(r["url"]))]
-            providers = sum(r["n_clinics"] for r in rows)
-            if len(rows) < 2 or providers < 3:
-                continue
-            priced = [r["from_price"] for r in rows if r["from_price"]]
-            html = env.get_template("metro.html.j2").render(ref_price=(sorted(priced)[len(priced)//2] if priced else None), has_es=t_slug in ("botox", "lip-filler", "laser-hair-removal", "microneedling", "coolsculpting"), metro=metro, treatment_slug=t_slug, treatment_name=names[t_slug], rows=rows, unit=rows[0]["price_unit"], low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
-            _write(f"fl/{metro['slug']}/{t_slug}/guide/index.html", html)
-            urls.append(f"/fl/{metro['slug']}/{t_slug}/guide/")
-            if t_slug in ("botox", "lip-filler", "laser-hair-removal", "microneedling", "coolsculpting"):
-                es_names = {"botox": "Botox", "lip-filler": "Relleno de labios", "laser-hair-removal": "Depilación láser", "microneedling": "Microneedling", "coolsculpting": "CoolSculpting"}
-                es_units = {"per unit": "por unidad", "per syringe": "por jeringa", "per session": "por sesión"}
-                es_html = env.get_template("metro-es.html.j2").render(ref_price=(sorted(priced)[len(priced)//2] if priced else None), metro=metro, treatment_slug=t_slug, treatment_name=es_names[t_slug], art=("la" if t_slug == "laser-hair-removal" else "el"), contr=("de la" if t_slug == "laser-hair-removal" else "del"), rows=rows, unit=es_units.get(rows[0]["price_unit"], ""), low=(min(priced) if priced else None), high=(max(priced) if priced else None), n_areas=len(rows), providers=providers, priced_count=len(priced), site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
-                _write(f"es/fl/{metro['slug']}/{t_slug}/guide/index.html", es_html)
-                urls.append(f"/es/fl/{metro['slug']}/{t_slug}/guide/")
+    today = datetime.date.today()
+    for metro in METROS:
+        for comparison in _metro_comparisons(metro, summaries):
+            slug = comparison["treatment_slug"]
+            spanish_name = METRO_SPANISH_NAMES.get(slug)
+            context = {**comparison, "metro": metro, "site_url": SITE_URL,
+                       "year": today.year, "last_updated": today.isoformat()}
+            path = f"fl/{metro['slug']}/{slug}/guide/"
+            page = env.get_template("metro.html.j2").render(**context, has_es=bool(spanish_name))
+            _write(path + "index.html", page)
+            urls.append("/" + path)
+            if spanish_name:
+                spanish = {**context, "treatment_name": spanish_name}
+                page = env.get_template("metro-es.html.j2").render(**spanish)
+                _write("es/" + path + "index.html", page)
+                urls.append("/es/" + path)
     print(f"[builder] built {len(urls)} metro pages")
     return urls
 
 
 def render_metro_hubs(summaries):
-    metros = [{"slug": "miami", "name": "Miami", "county": "miami-dade"}, {"slug": "fort-lauderdale", "name": "Fort Lauderdale", "county": "broward"}, {"slug": "boca-raton", "name": "Boca Raton", "county": "palm-beach"}]
-    names = {}
-    for s in summaries:
-        names.setdefault(s["treatment_slug"], s["treatment_name"])
     urls = []
-    for metro in metros:
-        items = []
-        for t_slug in sorted(names):
-            rows = [s for s in summaries if s["county"] == metro["county"] and s["treatment_slug"] == t_slug]
-            seen = set()
-            rows = [r for r in rows if not (r["url"] in seen or seen.add(r["url"]))]
-            providers = sum(r["n_clinics"] for r in rows)
-            if len(rows) < 2 or providers < 3:
-                continue
-            priced = [r["from_price"] for r in rows if r["from_price"]]
-            items.append({"treatment_slug": t_slug, "treatment_name": names[t_slug], "n_areas": len(rows), "providers": providers, "low": (min(priced) if priced else None), "unit": next((r["price_unit"] for r in rows if r.get("price_unit")), "")})
+    today = datetime.date.today()
+    for metro in METROS:
+        items = list(_metro_comparisons(metro, summaries))
         if not items:
             continue
-        html = env.get_template("metro-hub.html.j2").render(metro=metro, items=items, site_url=SITE_URL, year=datetime.date.today().year, last_updated=datetime.date.today().isoformat())
-        _write(f"fl/{metro['slug']}/index.html", html)
-        urls.append(f"/fl/{metro['slug']}/")
+        html = env.get_template("metro-hub.html.j2").render(
+            metro=metro, items=items, site_url=SITE_URL, year=today.year,
+            last_updated=today.isoformat(),
+        )
+        path = f"fl/{metro['slug']}/"
+        _write(path + "index.html", html)
+        urls.append("/" + path)
     print(f"[builder] built {len(urls)} metro hubs")
     return urls
 
@@ -2621,10 +2510,9 @@ def main():
     # is fine; a thin page competing in the index is not.
     near_dupes = duplication_scan(passed)
     if near_dupes:
-        print(f"[builder] near-duplicate guard: {len(near_dupes)} page(s) >= "
-              f"{NEAR_DUPLICATE_THRESHOLD:.0%} sibling overlap AND < "
-              f"{NEAR_DUPLICATE_MIN_LISTINGS} listing(s) -> noindex,follow + "
-              f"excluded from sitemap")
+        retained = sum(d["retained_hold"] for d in near_dupes)
+        print(f"[builder] near-duplicate guard: {len(near_dupes)} thin page(s) excluded from "
+              f"the sitemap, including {retained} retained index hold(s)")
         for d in near_dupes[:5]:
             print(f"[builder]   {d['overlap']:.0%} {d['path']} "
                   f"({d['n_listings']} listing(s), closest: {d['closest']})")

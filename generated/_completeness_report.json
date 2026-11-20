@@ -449,7 +449,11 @@
       "reason": "rolled up to miami-beach: only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "microneedling@fl/miami-dade/bal-harbour",
+      "page": "hydrafacial@fl/miami-dade/bal-harbour",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "chemical-peel@fl/miami-dade/bal-harbour",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -457,19 +461,23 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
+      "page": "morpheus8@fl/miami-dade/coral-gables",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
       "page": "coolsculpting@fl/miami-dade/doral",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "hydrafacial@fl/miami-dade/doral",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "chemical-peel@fl/miami-dade/doral",
+      "page": "morpheus8@fl/miami-dade/doral",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
       "page": "chemical-peel@fl/miami-dade/key-biscayne",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "morpheus8@fl/miami-dade/north-miami",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -485,23 +493,19 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "hydrafacial@fl/palm-beach/wellington",
+      "page": "morpheus8@fl/palm-beach/palm-beach-gardens",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "lip-filler@fl/broward/dania-beach",
+      "page": "morpheus8@fl/broward/coconut-creek",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "hydrafacial@fl/broward/davie",
+      "page": "morpheus8@fl/broward/fort-lauderdale",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "hydrafacial@fl/broward/hallandale-beach",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
-      "page": "chemical-peel@fl/broward/hallandale-beach",
+      "page": "morpheus8@fl/broward/hallandale-beach",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -513,7 +517,15 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
+      "page": "morpheus8@fl/broward/miramar",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
       "page": "coolsculpting@fl/broward/oakland-park",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "morpheus8@fl/broward/oakland-park",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -521,7 +533,15 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
+      "page": "morpheus8@fl/broward/parkland",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
       "page": "coolsculpting@fl/broward/pembroke-pines",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "morpheus8@fl/broward/pembroke-pines",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -529,15 +549,23 @@
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
-      "page": "hydrafacial@fl/broward/plantation",
-      "reason": "only 1 qualifying listing(s) (< 2)"
-    },
-    {
       "page": "coolsculpting@fl/broward/weston",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
+      "page": "morpheus8@fl/broward/weston",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
       "page": "coolsculpting@fl/sarasota/sarasota",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "coolsculpting@fl/orange/winter-park",
+      "reason": "only 1 qualifying listing(s) (< 2)"
+    },
+    {
+      "page": "hydrafacial@fl/hillsborough/tampa",
       "reason": "only 1 qualifying listing(s) (< 2)"
     },
     {
@@ -570,15 +598,15 @@
   "categories_built": [
     {
       "category": "med-spa",
-      "pages": 181,
+      "pages": 217,
       "fallback_pages": 0,
-      "clinics": 234
+      "clinics": 260
     },
     {
       "category": "plastic-surgery",
-      "pages": 125,
+      "pages": 132,
       "fallback_pages": 204,
-      "clinics": 47
+      "clinics": 51
     }
   ],
   "nearest_fallback_pages": 204,
@@ -589,296 +617,343 @@
     "pages": [
       {
         "path": "fl/miami-dade/aventura/bbl",
-        "overlap": 0.732,
+        "overlap": 0.646,
         "closest": "fl/broward/plantation/bbl",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/broward/plantation/bbl",
-        "overlap": 0.732,
+        "overlap": 0.646,
         "closest": "fl/miami-dade/aventura/bbl",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/kendall/tummy-tuck",
-        "overlap": 0.727,
-        "closest": "fl/palm-beach/wellington/tummy-tuck",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/wellington/tummy-tuck",
-        "overlap": 0.727,
-        "closest": "fl/miami-dade/kendall/tummy-tuck",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/miramar/tummy-tuck",
-        "overlap": 0.727,
-        "closest": "fl/palm-beach/wellington/tummy-tuck",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/coconut-grove/rhinoplasty",
-        "overlap": 0.725,
-        "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/midtown/rhinoplasty",
-        "overlap": 0.725,
-        "closest": "fl/miami-dade/coconut-grove/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/wellington/rhinoplasty",
-        "overlap": 0.725,
-        "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/kendall/rhinoplasty",
-        "overlap": 0.724,
-        "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/coconut-grove/facelift",
-        "overlap": 0.723,
-        "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/midtown/facelift",
-        "overlap": 0.723,
-        "closest": "fl/miami-dade/coconut-grove/facelift",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/wellington/facelift",
-        "overlap": 0.723,
-        "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/kendall/breast-augmentation",
-        "overlap": 0.722,
-        "closest": "fl/palm-beach/wellington/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/wellington/breast-augmentation",
-        "overlap": 0.722,
-        "closest": "fl/miami-dade/kendall/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/miramar/breast-augmentation",
-        "overlap": 0.722,
-        "closest": "fl/palm-beach/wellington/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/boca-raton/bbl",
-        "overlap": 0.721,
-        "closest": "fl/miami-dade/aventura/bbl",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/miramar/facelift",
-        "overlap": 0.721,
-        "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/aventura/tummy-tuck",
-        "overlap": 0.72,
-        "closest": "fl/broward/miramar/tummy-tuck",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/plantation/tummy-tuck",
-        "overlap": 0.72,
-        "closest": "fl/palm-beach/wellington/tummy-tuck",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/hollywood/bbl",
-        "overlap": 0.719,
-        "closest": "fl/miami-dade/aventura/bbl",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/jupiter/rhinoplasty",
-        "overlap": 0.719,
-        "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/miami-dade/kendall/mommy-makeover",
-        "overlap": 0.719,
+        "overlap": 0.646,
         "closest": "fl/palm-beach/wellington/mommy-makeover",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/palm-beach/wellington/mommy-makeover",
-        "overlap": 0.719,
+        "overlap": 0.646,
         "closest": "fl/miami-dade/kendall/mommy-makeover",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/miami-dade/brickell/rhinoplasty",
-        "overlap": 0.718,
-        "closest": "fl/miami-dade/miami-lakes/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/miami-lakes/rhinoplasty",
-        "overlap": 0.718,
-        "closest": "fl/miami-dade/brickell/rhinoplasty",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/fort-lauderdale/bbl",
-        "overlap": 0.717,
-        "closest": "fl/miami-dade/aventura/bbl",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/plantation/breast-augmentation",
-        "overlap": 0.716,
-        "closest": "fl/palm-beach/wellington/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/kendall/liposuction",
-        "overlap": 0.716,
-        "closest": "fl/broward/miramar/liposuction",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/miramar/liposuction",
-        "overlap": 0.716,
-        "closest": "fl/miami-dade/kendall/liposuction",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/aventura/breast-augmentation",
-        "overlap": 0.715,
-        "closest": "fl/broward/miramar/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/weston/rhinoplasty",
-        "overlap": 0.715,
+        "path": "fl/miami-dade/coconut-grove/rhinoplasty",
+        "overlap": 0.642,
         "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/broward/plantation/facelift",
-        "overlap": 0.715,
-        "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/palm-beach/boynton-beach/bbl",
-        "overlap": 0.714,
-        "closest": "fl/miami-dade/aventura/bbl",
-        "n_listings": 1
+        "path": "fl/miami-dade/midtown/rhinoplasty",
+        "overlap": 0.642,
+        "closest": "fl/miami-dade/coconut-grove/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/broward/plantation/mommy-makeover",
-        "overlap": 0.713,
+        "overlap": 0.641,
         "closest": "fl/palm-beach/wellington/mommy-makeover",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/broward/coral-springs/tummy-tuck",
-        "overlap": 0.712,
-        "closest": "fl/palm-beach/wellington/tummy-tuck",
-        "n_listings": 1
+        "path": "fl/miami-dade/kendall/rhinoplasty",
+        "overlap": 0.639,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/miami-dade/aventura/liposuction",
-        "overlap": 0.711,
-        "closest": "fl/broward/miramar/liposuction",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/broward/plantation/liposuction",
-        "overlap": 0.71,
-        "closest": "fl/miami-dade/kendall/liposuction",
-        "n_listings": 1
+        "path": "fl/palm-beach/wellington/rhinoplasty",
+        "overlap": 0.638,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/miami-dade/miami-lakes/mommy-makeover",
-        "overlap": 0.71,
-        "closest": "fl/palm-beach/wellington/mommy-makeover",
-        "n_listings": 1
+        "overlap": 0.638,
+        "closest": "fl/miami-dade/kendall/mommy-makeover",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/broward/coral-springs/facelift",
-        "overlap": 0.71,
+        "path": "fl/palm-beach/wellington/tummy-tuck",
+        "overlap": 0.636,
+        "closest": "fl/broward/miramar/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/miramar/tummy-tuck",
+        "overlap": 0.636,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/brickell/rhinoplasty",
+        "overlap": 0.636,
+        "closest": "fl/miami-dade/miami-lakes/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/miami-lakes/rhinoplasty",
+        "overlap": 0.636,
+        "closest": "fl/miami-dade/brickell/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/palm-beach/boca-raton/bbl",
+        "overlap": 0.635,
+        "closest": "fl/broward/plantation/bbl",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/coconut-grove/facelift",
+        "overlap": 0.635,
         "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/miami-dade/south-beach/tummy-tuck",
-        "overlap": 0.709,
-        "closest": "fl/miami-dade/kendall/tummy-tuck",
-        "n_listings": 1
+        "path": "fl/miami-dade/midtown/facelift",
+        "overlap": 0.635,
+        "closest": "fl/miami-dade/coconut-grove/facelift",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/broward/coral-springs/breast-augmentation",
-        "overlap": 0.707,
-        "closest": "fl/palm-beach/wellington/breast-augmentation",
-        "n_listings": 1
+        "path": "fl/miami-dade/kendall/tummy-tuck",
+        "overlap": 0.634,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/miami-dade/south-beach/breast-augmentation",
-        "overlap": 0.705,
-        "closest": "fl/miami-dade/kendall/breast-augmentation",
-        "n_listings": 1
-      },
-      {
-        "path": "fl/miami-dade/south-beach/rhinoplasty",
-        "overlap": 0.704,
-        "closest": "fl/miami-dade/midtown/rhinoplasty",
-        "n_listings": 1
+        "path": "fl/broward/hollywood/bbl",
+        "overlap": 0.633,
+        "closest": "fl/broward/plantation/bbl",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/broward/coral-springs/mommy-makeover",
-        "overlap": 0.704,
+        "overlap": 0.632,
         "closest": "fl/palm-beach/wellington/mommy-makeover",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/miami-dade/south-beach/facelift",
-        "overlap": 0.702,
+        "path": "fl/broward/fort-lauderdale/bbl",
+        "overlap": 0.631,
+        "closest": "fl/broward/plantation/bbl",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/palm-beach/jupiter/rhinoplasty",
+        "overlap": 0.63,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/palm-beach/wellington/facelift",
+        "overlap": 0.63,
         "closest": "fl/miami-dade/midtown/facelift",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
-        "path": "fl/broward/coral-springs/liposuction",
-        "overlap": 0.701,
+        "path": "fl/palm-beach/boynton-beach/bbl",
+        "overlap": 0.628,
+        "closest": "fl/broward/plantation/bbl",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/plantation/tummy-tuck",
+        "overlap": 0.628,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/miramar/facelift",
+        "overlap": 0.628,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/palm-beach/wellington/breast-augmentation",
+        "overlap": 0.627,
+        "closest": "fl/broward/miramar/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/miramar/breast-augmentation",
+        "overlap": 0.627,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/kendall/liposuction",
+        "overlap": 0.626,
+        "closest": "fl/broward/miramar/liposuction",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/miramar/liposuction",
+        "overlap": 0.626,
         "closest": "fl/miami-dade/kendall/liposuction",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/kendall/breast-augmentation",
+        "overlap": 0.625,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/weston/rhinoplasty",
+        "overlap": 0.625,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/aventura/tummy-tuck",
+        "overlap": 0.624,
+        "closest": "fl/miami-dade/kendall/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/plantation/liposuction",
+        "overlap": 0.621,
+        "closest": "fl/broward/miramar/liposuction",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/plantation/facelift",
+        "overlap": 0.621,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/coral-springs/tummy-tuck",
+        "overlap": 0.62,
+        "closest": "fl/palm-beach/wellington/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/plantation/breast-augmentation",
+        "overlap": 0.62,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/south-beach/tummy-tuck",
+        "overlap": 0.619,
+        "closest": "fl/miami-dade/kendall/tummy-tuck",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/aventura/liposuction",
+        "overlap": 0.618,
+        "closest": "fl/miami-dade/kendall/liposuction",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/south-beach/rhinoplasty",
+        "overlap": 0.617,
+        "closest": "fl/miami-dade/midtown/rhinoplasty",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/coral-springs/facelift",
+        "overlap": 0.617,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/aventura/breast-augmentation",
+        "overlap": 0.616,
+        "closest": "fl/miami-dade/kendall/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
       },
       {
         "path": "fl/miami-dade/south-beach/liposuction",
-        "overlap": 0.7,
+        "overlap": 0.612,
         "closest": "fl/miami-dade/kendall/liposuction",
-        "n_listings": 1
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/coral-springs/liposuction",
+        "overlap": 0.612,
+        "closest": "fl/broward/miramar/liposuction",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/broward/coral-springs/breast-augmentation",
+        "overlap": 0.611,
+        "closest": "fl/palm-beach/wellington/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/south-beach/breast-augmentation",
+        "overlap": 0.61,
+        "closest": "fl/miami-dade/kendall/breast-augmentation",
+        "n_listings": 1,
+        "retained_hold": true
+      },
+      {
+        "path": "fl/miami-dade/south-beach/facelift",
+        "overlap": 0.61,
+        "closest": "fl/miami-dade/midtown/facelift",
+        "n_listings": 1,
+        "retained_hold": true
       }
     ]
   },
   "empty_fields": {
-    "unique_clinics": 208,
+    "unique_clinics": 233,
     "missing_phone": 0,
-    "missing_email": 192,
+    "missing_email": 217,
     "missing_address": 0,
-    "missing_booking_url": 64,
-    "price_empty_state_listings": 1713,
-    "price_total_listings": 1833
+    "missing_booking_url": 86,
+    "price_empty_state_listings": 1867,
+    "price_total_listings": 1975
   },
   "mode": "enforced",
   "thresholds_used": {

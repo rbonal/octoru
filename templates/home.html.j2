@@ -153,7 +153,7 @@
           <div class="tname">{{ t.name }}</div>
           <div class="tdesc">{{ t.desc }}</div>
           <div class="tmeta">
-            <span class="from">{% if t.from_display %}<span class="k">Typical from</span>{{ t.from_display }}{% else %}<span class="k">Pricing</span>Request a quote{% endif %}</span>
+            <span class="from">{% if t.has_offers %}Explore published offers{% else %}Find providers{% endif %}</span>
             <span class="arrow">&#x2192;</span>
           </div>
         </a>
