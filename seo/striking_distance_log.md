@@ -103,3 +103,9 @@ Note: the best-positioned individual pages this week were `botox coral gables` (
 1. `botox coral gables` (pos 24) — treatment-page intro/FAQ enrichment.
 2. `lip filler fort lauderdale` (pos 36–39) — guide enrichment.
 3. Re-scan positions for the 3 hubs shipped today; record impressions delta.
+
+---
+
+## 2026-11-13 — Expansion engine: Tampa depth
+
+Depth-only run (v2.1 override: no new geo). Demand: botox tampa 720, lip filler tampa 590, breast augmentation tampa 590, rhinoplasty tampa 320, liposuction tampa 260. Added 8 menu-verified Tampa providers (6 plastic-surgery practices, 1 oculoplastic/facial, 1 laser med spa) via data/prospector/tampa-depth-2026-11.json. New page: /fl/hillsborough/tampa/morpheus8/ (3 providers); 13 Tampa pages deepened. Held: hydrafacial@tampa (1 provider). Two perfect-at-volume flags recorded (VIVIFY 5.0/326, Mack 5.0/834). build=554 skipped=0, verify_build PASS. Full detail: seo/log_2026-11-13_tampa-depth.md.
