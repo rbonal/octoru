@@ -1,0 +1,28 @@
+{
+  "_comment": "Guide index policy (click strategy v3, approved by operator 2026-11-27). A /guide/ page is indexed only if (a) its path is in 'allow', or (b) its listing page's category has a rule here and the page has at least min_providers verified providers, and it is not in 'deny'. Every other guide ships noindex,follow and is left out of the sitemap. Edit this file (data PR) to promote or demote guides; review quarterly.",
+  "index_categories": {
+    "plastic-surgery": {"min_providers": 2}
+  },
+  "allow": [
+    "/fl/miami-dade/miami/botox/guide/",
+    "/fl/miami-dade/miami/lip-filler/guide/",
+    "/fl/miami-dade/miami/laser-hair-removal/guide/",
+    "/fl/miami-dade/miami/microneedling/guide/",
+    "/fl/miami-dade/miami/hydrafacial/guide/",
+    "/fl/miami-dade/brickell/laser-hair-removal/guide/",
+    "/fl/miami-dade/doral/laser-hair-removal/guide/",
+    "/fl/miami-dade/coral-gables/botox/guide/",
+    "/fl/miami-dade/coral-gables/lip-filler/guide/",
+    "/fl/miami-dade/south-beach/botox/guide/",
+    "/fl/broward/pembroke-pines/laser-hair-removal/guide/",
+    "/fl/broward/weston/laser-hair-removal/guide/",
+    "/fl/broward/plantation/laser-hair-removal/guide/",
+    "/fl/broward/davie/laser-hair-removal/guide/",
+    "/fl/fort-lauderdale/lip-filler/guide/",
+    "/fl/fort-lauderdale/botox/guide/",
+    "/fl/hillsborough/tampa/botox/guide/",
+    "/fl/hillsborough/tampa/lip-filler/guide/",
+    "/fl/hillsborough/tampa/laser-hair-removal/guide/"
+  ],
+  "deny": []
+}
