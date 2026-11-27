@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "south-florida-botox-price-index-2026",
+    "title": "South Florida Botox Price Index 2026: What 11 Verified Clinics Publish per Unit",
+    "h1": "South Florida Botox Price Index (2026)",
+    "lede": "Of the South Florida clinics Octoru has verified, 11 publish a standard per-unit price for Botox Cosmetic. The median is $13 per unit and the published range runs from $10 to $18. At about 20 units for frown lines, that is roughly $200 to $360 for a common treatment.",
+    "sections": [
+      [
+        "The numbers",
+        "Median published price: $13 per unit. Lowest: $10. Highest: $18. Eleven clinics in Miami-Dade and Broward (Brickell, South Beach, Miami, North Miami, Pinecrest, Coral Gables and Plantation) publish a standard per-unit Botox price on their own websites. Each clinic's lowest standard per-unit price, as published when Octoru checked it: Brickell Cosmetic Center (Brickell) $10; Diamond Med Spa (South Beach) $12; Plantation Med Spa (Plantation) $12; Skin Healthy Miami (Brickell) $12; South Florida Face and Body (South Beach) $13; Zeugma MedSpa (Miami) $13; No Filter Medical Spa (Brickell) $14; Youthful Glow (North Miami) $14; R&R Skin and Aesthetics (Pinecrest) $15; Plump Cosmetics & Injectables (Brickell) $16; Miami Skin & Vein (Coral Gables) $18."
+      ],
+      [
+        "How the index is built",
+        "Octoru lists only clinics whose treatments are confirmed on their own published menu. For this index we kept each clinic's lowest standard per-unit price for Botox Cosmetic. We excluded Dysport and Xeomin prices, promotional or event pricing, new-patient-only prices, and flat area prices, because they are not comparable per unit. Octoru records the source page and the check date for every figure (checks ran August to November 2026). Prices change; confirm with the clinic before booking."
+      ],
+      [
+        "What the range means for you",
+        "Per-unit price is only half of the bill. The number of units for your areas matters as much: a frown-line treatment commonly uses about 20 units, while forehead lines and crow's feet add more. A $10 per-unit price with more units can cost more than a $14 price with fewer. Ask each clinic for the unit count it recommends and who performs the injection."
+      ],
+      [
+        "Using this data",
+        "Journalists, researchers and clinics may cite or reproduce this index with a link to this page as the source. Octoru updates it every quarter from newly verified published prices."
+      ]
+    ],
+    "faqs": [
+      [
+        "How much is Botox per unit in South Florida?",
+        "Among the 11 verified clinics that publish a standard per-unit price, the median is $13 per unit, with a range of $10 to $18 (Octoru Botox Price Index, 2026)."
+      ],
+      [
+        "How much do 20 units of Botox cost in Miami?",
+        "At the published median of $13 per unit, 20 units come to about $260; across the published range of $10 to $18, about $200 to $360."
+      ],
+      [
+        "Why do some clinics charge per area instead of per unit?",
+        "Some clinics bundle a set number of units into a flat area price. Those prices are not comparable per unit, so they are not part of this index; ask how many units the area price includes."
+      ]
+    ],
+    "links": [
+      [
+        "Compare Botox providers in Miami",
+        "/fl/miami-dade/miami/botox/"
+      ],
+      [
+        "Botox in Brickell",
+        "/fl/miami-dade/brickell/botox/"
+      ],
+      [
+        "Botox in South Beach",
+        "/fl/miami-dade/south-beach/botox/"
+      ],
+      [
+        "Botox in Coral Gables",
+        "/fl/miami-dade/coral-gables/botox/"
+      ],
+      [
+        "Botox in Plantation",
+        "/fl/broward/plantation/botox/"
+      ],
+      [
+        "How much does Botox cost in Florida?",
+        "/learn/how-much-does-botox-cost-in-florida/"
+      ]
+    ],
+    "_data_source": "data/prospector + data/prices_published.json (published offers, menu-verified clinics), computed 2026-11-27; one row per clinic: lowest standard per-unit Botox Cosmetic price; excluded Dysport/Xeomin, promo/event, new-patient and flat-area prices.",
+    "_rows": [
+      {
+        "clinic": "Brickell Cosmetic Center",
+        "area": "Brickell",
+        "usd_per_unit": 10.0,
+        "checked": "2026-11-14",
+        "source_url": "https://brickellcosmetic.com/new-clients"
+      },
+      {
+        "clinic": "Diamond Med Spa",
+        "area": "South Beach",
+        "usd_per_unit": 12.0,
+        "checked": "2026-08-10",
+        "source_url": "https://www.diamondmedspa.net/"
+      },
+      {
+        "clinic": "Plantation Med Spa",
+        "area": "Plantation",
+        "usd_per_unit": 12.0,
+        "checked": "2026-08-10",
+        "source_url": "https://plantationmedspa.com/price-list/"
+      },
+      {
+        "clinic": "Skin Healthy Miami",
+        "area": "Brickell",
+        "usd_per_unit": 12.0,
+        "checked": "2026-11-14",
+        "source_url": "https://skinhealthymiami.com/injectables/"
+      },
+      {
+        "clinic": "South Florida Face and Body",
+        "area": "South Beach",
+        "usd_per_unit": 13.0,
+        "checked": "2026-08-10",
+        "source_url": "https://www.southfloridafaceandbody.com/miami-beach/botox/"
+      },
+      {
+        "clinic": "Zeugma MedSpa",
+        "area": "Miami",
+        "usd_per_unit": 13.0,
+        "checked": "2026-11-27",
+        "source_url": "https://zeugmaspa.com/"
+      },
+      {
+        "clinic": "No Filter Medical Spa",
+        "area": "Brickell",
+        "usd_per_unit": 14.0,
+        "checked": "2026-11-14",
+        "source_url": "https://www.nofiltermedicalspa.com/botox-brickell"
+      },
+      {
+        "clinic": "Youthful Glow",
+        "area": "North Miami",
+        "usd_per_unit": 14.0,
+        "checked": "2026-11-14",
+        "source_url": "https://youthful-glow.com/menu/"
+      },
+      {
+        "clinic": "R&R Skin and Aesthetics",
+        "area": "Pinecrest",
+        "usd_per_unit": 15.0,
+        "checked": "2026-08-10",
+        "source_url": "https://rrskin.com/botox-treatments-in-pinecrest-fl/"
+      },
+      {
+        "clinic": "Plump Cosmetics & Injectables",
+        "area": "Brickell",
+        "usd_per_unit": 16.0,
+        "checked": "2026-11-14",
+        "source_url": "https://getplump.com/miami"
+      },
+      {
+        "clinic": "Miami Skin & Vein",
+        "area": "Coral Gables",
+        "usd_per_unit": 18.0,
+        "checked": "2026-08-10",
+        "source_url": "https://www.miamiskinandvein.com/pricing/"
+      }
+    ]
+  }
+]
