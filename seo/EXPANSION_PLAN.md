@@ -1,232 +1,95 @@
-# Octoru — Expansion Master Plan (Standing Order)
+# Octoru — Growth Plan (Standing Order)
 
-**Read this at the start of every weekly build run.** It is the operating plan for
-growing Octoru's ranked footprint. It sits above the weekly striking-distance log
-(`seo/striking_distance_log.md`), which records what each run actually did.
-
-Version 2 · 2026-08-30. Supersedes ad-hoc weekly page-picking.
-
-> **Version 2.1 · 2026-09-22 — STANDING OVERRIDE (operator-directed, read this first).**
-> A 4-month performance review (DataForSEO) found the engine has built real
-> *visibility* (1 → 320 ranked keywords Jun→Sep) but **zero page-1 rankings and no
-> confirmed leads**, the flagship term *botox coral gables* slipped 24 → 30, much of
-> the footprint is low-value *navigational* competitor-brand terms, and the backlink
-> profile is thin and spammy (27 refs, spam score 60). Diagnosis: the engine keeps
-> choosing **breadth (new markets) over converting what is already close**, against
-> its own logs. Until the checkpoint below, the plan is overridden as follows:
->
-> 1. **CONVERSION SPRINT, not expansion (now → 2026-12-31).** Do **not** launch new
->    municipalities. Each run, work the **~30 commercial keywords already at
->    positions 11–30** (e.g. *laser hair removal <city>*, *botox coral gables*) —
->    title/meta/FAQ/schema/internal-link enrichment — to push them onto page one.
->    Deepening an existing market's *commercial* pages is allowed; opening a new geo
->    is not. **Ignore navigational competitor-brand keywords** — they don't convert.
-> 2. **Fix authority.** Each run, advance backlink hygiene: identify/disavow spammy
->    referring domains and pursue a few real citations. Backlinks are the true
->    rate-limiter; surface a disavow list for the operator (hard-gated to apply).
-> 3. **Success = page-1 commercial rankings + real leads — not ranked-keyword count.**
->    Retire "we rank for N keywords" as a success metric in reports.
-> 4. **KILL CRITERION (operator gate, 2026-12-31 / ~month 6):** if the site does not
->    have **≥1 commercial keyword on page 1 (pos 1–10) AND ≥1 confirmed inbound lead**
->    by then, **pause** the engine and reassess before any further build. Record the
->    result in the striking-distance log and `state/needs_human.json`.
->
-> This override supersedes the "conquer a whole municipality each run" cadence below
-> until 2026-12-31. Everything else in this plan (integrity gates, winnability zone,
-> the enclave method) still holds and is what the sprint applies at page level.
-
----
+**Version 3 · 2026-11-27 · approved by the operator (Rolando) in chat on 2026-11-27.**
+Supersedes v2 (2026-08-30) and the v2.1 conversion-sprint override (2026-09-22).
+Human-facing version: the "Octoru Click Strategy — Page One in Every Category" doc
+(https://claude.ai/artifact/Kuadaq6ZfwnGYMhigzGBWk). Read this file at the start of every run.
+Reviewed and improved every quarter (see "Quarterly review").
 
 ## Prime directive
 
-Point every hour of build at **traffic Octoru can realistically put on page one** —
-because only page-one traffic becomes relevance, and eventually revenue. Win the
-winnable first; size follows.
+**Clicks and leads, not pages.** A page earns work only if it can reach page one, and it
+gets all the work it needs to get there. Success = commercial keywords in positions 1–10,
+non-brand clicks, phone taps / outbound clinic clicks, and verified qualified inquiries.
+Ranked-keyword counts, pages built and providers added are NOT success metrics.
 
-## Cadence — go as far as possible each run
+## The four pillars
 
-The old "2–3 pages/week" pace is retired now that deploy is automated and gated.
+1. **Concentrate on money pages.** The active queue lives in `seo/money_page_queue.md`.
+   A money page passes three tests: demand (≥50 searches/mo for a city head term, or ≥200
+   for a cost query; navigational clinic-name queries never count), reach (already at
+   11–30, or page one holds ≥2 weak directories), supply (≥4 verified providers, or a plan
+   to reach 4 within two runs). ≥70% of every weekly run goes to the queue. A page graduates
+   after 4 straight weeks at positions 1–5; it is dropped if 8 weeks of full work move it
+   <5 positions.
+2. **Beat the live top three.** Before working a money page, open its live page one and
+   list what the top 3 offer; the Octoru page must offer all of it plus the comparison.
+   Money-page standard: ≥4 verified providers; comparison table at the top; each clinic's
+   published offer with exact scope (unit, area, inclusions, date checked) and a local
+   range computed from those offers; verified credentials (ABPS board certification for
+   surgeons, licence type for injectors) with check date; a direct answer in the first
+   paragraph; FAQs from the live "People also ask"; true freshness (recheck every 30 days);
+   Spanish versions for Miami-Dade/Broward money pages; links to verified clinic profiles.
+   Surgery: the cost guide leads. Med-spa: the comparison page leads.
+3. **Earn authority on purpose.** See `seo/link_building.md`. Internal links first
+   (hubs → money pages with exact-match anchors; learn ↔ money pages), then the verified
+   clinic badge, data-led PR, local citations. Never buy links or join link networks.
+4. **Win the click and the lead.** Titles/descriptions from the v3 templates (price only
+   when published and unit-consistent; rating range; year; count). Quote form must reach
+   the approved Bonalta CRM endpoint before any inquiry is called delivered.
 
-- **Each run, go as far as you safely can.** The goal is to **conquer a whole
-  municipality end-to-end in a single run** where possible — build/complete *all*
-  its viable treatment pages, each with the FAQ + schema + internal links (+ Spanish
-  where the vertical exists), not a few scattered pages.
-- **Depth before breadth:** finish one municipality completely before starting the
-  next. If run capacity remains, conquer the next municipality in priority order.
-- **Parallelize** clinic research across municipalities to maximize verified pages
-  per run.
-- **The only limits are integrity and budget — never quality.** A page with fewer
-  than 2 verified clinics is **held or rolled up to its parent, never padded**.
-  Nothing is fabricated to raise a count. If a run would trip the quality gate or
-  the token cap, stop and log — a smaller honest run beats a big thin one that gets
-  the domain demoted.
+## Category roles
 
-## Operating principles
+- **Plastic surgery: ACTIVE** (replaces "deferred"). Metro cities with demand only (Miami,
+  Tampa, Fort Lauderdale, Sarasota, Naples, Coral Gables). Priority: breast augmentation >
+  liposuction > BBL > rhinoplasty > tummy tuck / mommy makeover > facelift. Package scope
+  recorded and shown. ≥2 verified practices to publish, ≥4 for a money page.
+- **Med-spa:** laser hair removal = lead cluster; Botox and lip filler = grow (unit/syringe
+  price is the click driver); microneedling, HydraFacial, chemical peel = hold; Morpheus8 =
+  Miami only; CoolSculpting = stop prospecting (keep live pages).
 
-1. **Winnability over size.** A market qualifies only if its ranking difficulty is
-   in Octoru's proven zone (**≈ ≤ 24**; the site already ranks at Miami 15,
-   Coral Gables 11). A smaller market we can reach #1 in beats a huge one we'd sit
-   at position 60 in.
-2. **The municipality is the unit — not the metro.** Octoru wins at
-   `/city/` and `/neighborhood/` level, never a single `/metro/` page. In every new
-   metro, **find its "Coral Gables"** — the affluent, low-difficulty, clinic-dense
-   enclave — and take that before the generic metro head term.
-3. **Integrity is the gate.** ≥2 real verified clinics per page; ratings from
-   permitted Google APIs only; real treatment menus; prices only where published.
-   No scraped review text, no invented ratings/prices/credentials/before-afters.
-4. **Earn the next stage.** No geography is pre-committed. Each stage opens only when
-   the previous posts real page-one wins. Effort follows proof.
+## Expansion (second priority)
 
----
+Allowed only after the week's queue work is done, and only where new pages would start
+with ≥4 verified providers and the demand test passes. New municipalities ship as data
+(`data/prospector/<market>.json` + `data/places.json`), winnability zone ≈ difficulty ≤24,
+enclave-first in new metros. No market is pre-committed.
 
-## Provider eligibility — widen the supply, keep the bar
+## Index hygiene
 
-For the **non-surgical** treatments (Botox, fillers/lip filler, laser hair removal,
-microneedling, HydraFacial, chemical peel, morpheus8, IV therapy, CoolSculpting, etc.),
-a listing may come from **any verified business that performs that treatment on its own
-published menu** — **not only businesses categorized as "med spa."** Explicitly include:
+Cost guides are indexed per `data/seo/guide_policy.json` (surgical guides with ≥2 verified
+practices + an allow-list of med-spa guides with demand); all others are noindex,follow and
+out of the sitemap. /learn/ is being consolidated into 6 deep treatment hubs. Sitemap
+`lastmod` = the date the page's data was last verified. (Requires the v3 builder patch:
+`state/proposed/2026-11-27-click-strategy-v3.patch`, operator-installed.)
 
-- **Plastic surgery practices** and **dermatology practices** that offer injectables,
-  laser, skin and body treatments. Board-certified injectors are high-authority,
-  credible listings, and pulling them in **materially increases verified supply** — so
-  more treatment×city pages clear the ≥2-clinic gate and more markets become buildable.
+## Integrity guardrails (unchanged, non-negotiable)
 
-**The bar does not move:** the provider must genuinely list the treatment (verified on
-its own website), ratings come from permitted Google APIs, nothing is fabricated, and
-prices show only where published. Do not double-count a provider or mislabel its primary
-category.
+≥2 real verified providers per page or held/rolled up, never padded · ratings only from
+permitted Google APIs · no scraped review text · every treatment tag confirmed on the
+clinic's own menu · prices only where published, with scope; date-limited promos not
+recorded as "from" prices · no before/after images without recorded consent · nothing
+fabricated · every change passes build-verify before it can go live.
 
-**Keep the verticals distinct:** this rule pulls surgery/derm clinics into the pages for
-the **non-surgical** treatments they already offer. The **surgical** vertical itself
-(rhinoplasty, tummy tuck, BBL, mommy makeover, facelift, liposuction, breast
-augmentation) remains a separate, deferred track — see "Deferred verticals" below.
+## Measurement
 
-*Build note: the eligible-provider filter lives in `builder/build.py`; widening it to
-admit surgery/derm sources for non-surgical treatments is a build-engine change, made in
-a full-access session (not the connector-only cloud run).*
+Search Console is the source of truth for impressions, clicks, CTR and position (weekly,
+Tuesday desktop task). Analytics events for phone taps, outbound clinic clicks and quote
+submissions. CRM for verified qualified inquiries. DataForSEO only for discovery and for
+SERP/competitor checks; never report its estimates as clicks.
 
----
+## Checkpoints
 
-## Targeting map — municipality difficulty (DataForSEO, Aug 2026)
+- **2026-12-31 (operator gate):** ≥1 commercial keyword on page one AND ≥1 confirmed inbound
+  lead. If missed only because the lead path is not connected, fix the lead path before
+  deciding to pause.
+- **2027-03-31:** 10 queue pages in positions 1–10 · 300 non-brand clicks/month · 25 real
+  referring domains · 10 verified qualified inquiries/month.
 
-Difficulty = chance of reaching the top 10 (0–100). Green ≤17 high-confidence ·
-Yellow 18–24 winnable · Orange 25–29 needs authority · Red ≥30 defer.
+## Quarterly review (first business days of Jan, Apr, Jul, Oct)
 
-**Proven / template:** Coral Gables 11, Miami 15 (already ranking/climbing).
-
-**Winnable enclaves to prioritize (rich + low difficulty + clinic-dense):**
-
-| Municipality | Metro | Difficulty |
-|---|---|---|
-| Aventura | Miami | 0 |
-| Boca Raton | Palm Beach | 8 |
-| Katy | Houston | 8 |
-| Paradise Valley | Phoenix/Scottsdale | 8 |
-| Coral Gables | Miami | 11 |
-| Buckhead | Atlanta | 12 |
-| Winter Park | Orlando | 14 |
-| Sugar Land | Houston | 19 |
-| Southlake | Dallas–Fort Worth | 21 |
-
-**The key unlock — enclaves flip "defer" metros into "go":** Atlanta metro is hard
-(33) but **Buckhead is 12**. Scottsdale is the hardest on the board (34) but
-**Paradise Valley, richer and adjacent, is 8**. Enter hard metros through their
-winnable wealthy enclave.
-
-**Rich but contested — wealth ≠ winnable, gate on difficulty:** Highland Park 28,
-Frisco 26, The Woodlands 46, Plano 54. Defer these despite affluence.
-
-**Metro head terms (reference anchors, not the primary targets):** Dallas 19,
-Jacksonville 21, Orlando 22, Houston 23, Tampa 24 · San Antonio 29, Austin 28,
-Phoenix 28 · Atlanta 33, Scottsdale 34, El Paso 37. Treatment+city terms
-(botox/lip-filler + city) scored ~0 — page-level pages are the easiest of all.
-
----
-
-## Staged roadmap (results-triggered)
-
-### Stage 0 — Convert South Florida to page one · *now*
-Push the already-ranking striking-distance pages (positions 11–40) onto page one —
-lead with **botox Coral Gables (pos 24)**, the Coral Gables lip-filler and Fort
-Lauderdale lip clusters. Treatment-page + title/meta enrichment; internal links;
-request indexing each cycle.
-**Trigger →** ≥8 commercial keywords on page 1 AND a clear upward clicks/impressions trend.
-
-### Stage 1 — Finish winnable Florida · *next*
-Conquer the untapped FL municipalities in opportunity order. Big metros via their
-winnable cores: **Jacksonville, Orlando (→ Winter Park), Tampa (→ South Tampa)**;
-then the easy SW-FL wins **Sarasota (11), Fort Myers (15), Naples (17)**, plus PB
-enclaves like **Boca Raton (8)**. Full treatment set per municipality, ≥2 verified
-clinics each.
-**Trigger →** ≥3 of these markets with a hub or treatment page on page 1 + the
-clinic-sourcing pass proven repeatable.
-
-### Stage 2 — Texas, opportunity-first · *on Stage 1 trigger*
-Enter Texas by winnable enclave, not by size. Lead with **Dallas (19) + Southlake (21)**,
-**Houston via Katy (8) + Sugar Land (19)**, and **McAllen (11)** as the Spanish-vertical
-flagship (CPC $12, heavily Hispanic — the Spanish pages are a moat there).
-Hold **San Antonio (29)** and **Austin (28)** for Stage 2b; defer **El Paso (37)**,
-**The Woodlands (46)**, **Plano (54)**.
-**Trigger →** ≥2 TX metros reach page 1 → unlock San Antonio + Austin, then evaluate a 2nd state.
-
-### Stage 3 — Opportunistic secondary markets · *data-triggered, quarterly*
-Pick each new market from **then-current** difficulty data (re-run the scan), taking
-the highest opportunity with clinic supply. Easiest doors today: **Tucson (11),
-Buckhead/Atlanta (12), Charlotte (18), Las Vegas (21), Nashville (22)**.
-Avoid early: Scottsdale (34), Atlanta metro (33), El Paso (37).
-**Trigger →** each quarter, one new market enters only if a winnable slot
-(difficulty ≤ 22) with clinic supply exists.
-
-### Stage 4 — Full-state saturation · *the endgame, per state*
-Once a state's winnable core is ranking, **complete it.** Full geographic coverage
-is a ranking asset in itself: it makes Octoru the topical authority for that state,
-which lifts the competitive head terms deferred earlier (metro terms, contested
-enclaves). Saturation = every viable municipality built + Spanish across all +
-county/state hub graph complete.
-- **Bounded by clinic supply, completed by roll-up:** build every locality with ≥2
-  verified clinics; roll thinner localities' clinics up to their parent city/county
-  page (roll-up logic already exists). Complete coverage of the *viable* map — never
-  empty/thin pages for empty towns.
-- **Paced, not dumped:** the weekly engine widens the net progressively as authority
-  compounds — never a one-shot page-dump (spam risk on a young domain).
-**Payoff loop:** completing the state is *how* the hard markets (Tampa/Miami head
-terms, Plano, Scottsdale) eventually become winnable.
-
-**Sequence per state:** winnable enclaves → mid-tier municipalities → full saturation
-→ lifts the whole state → repeat the arc in the next state.
-
----
-
-## Integrity guardrails (non-negotiable, every page, every market)
-
-- ≥2 verified clinics per page, or it is held / rolled up — never padded.
-- Ratings from permitted Google APIs only; no scraped review text.
-- No fabricated clinics, prices, ratings, credentials, or before/after claims.
-- Every change passes the build-verify gate before it can reach the live site.
-- Quality over volume, always. Faster = more *good* pages + authority, never a burst
-  of thin ones.
-
-## Accelerants (run continuously)
-
-- Front-load striking-distance pages (positions 11–30) — fastest wins.
-- Build domain authority / backlinks — the real rate-limiter on a young domain
-  (~10 referring domains today). Citations, industry lists, owned-property links,
-  light digital PR.
-- Indexing velocity: request indexing for changed URLs each cycle; IndexNow ping.
-- Topical completeness + internal links (hub → treatment → guide) to spread authority.
-
----
-
-## Deferred — future verticals (do NOT build yet)
-
-- **Surgical / plastic-surgery vertical:** rhinoplasty, tummy tuck, BBL, mommy
-  makeover, facelift, liposuction, breast augmentation. Groundwork exists in the
-  repo (plastic-surgery templates, `state/plastic_surgery_staged_clinics.json`,
-  `builder/PLAN_plastic_surgery_vertical.md`). **Activate only after the med-spa
-  vertical is winning** in its markets. Surgical leads are the highest-value of all —
-  worth doing right, later, not diluting focus now.
-
----
-
-*Human-facing proposal mirror: the "Octoru Expansion Plan" artifact. This file is the
-machine-followed standing order; keep the two in sync when the plan changes.*
+A scheduled run re-measures every metric above (Search Console when reachable, otherwise
+labeled estimates), re-checks the live page one for every queue page, re-ranks the queue,
+checks each pillar against results, and updates this file, `seo/money_page_queue.md`,
+`seo/link_building.md` and the strategy doc with a dated "What changed this quarter" entry.
+Changes to config/, CLAUDE.md, secrets or builder logic are proposed, never applied.
