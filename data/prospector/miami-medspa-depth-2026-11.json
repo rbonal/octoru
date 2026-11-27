@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "zeugma-medspa-edgewater-miami",
+    "name": "Zeugma MedSpa",
+    "category": "med-spa",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "501 NE 31st St CU-8, Miami, FL 33137",
+    "phone": "+13054815659",
+    "website": "https://zeugmaspa.com/",
+    "treatments": [
+      "botox",
+      "hydrafacial",
+      "microneedling",
+      "chemical-peel"
+    ],
+    "rating": 4.9,
+    "review_count": 291,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJbWaVHQCz2YgRhJwSqz_v_fA)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://zeugmaspa.com/",
+      "https://zeugmaspa.com/microneedling/",
+      "https://zeugmaspa.com/chemical-peel/"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the clinic's own site (text-only fetch): homepage menu and pricing (Botox $13/unit, Dysport $7/unit; HydraFacial Signature $250 regular single visit; links to Microneedling and Chemical Peel pages); /microneedling/ page (standard + PRP microneedling; also Vivace RF microneedling, not tagged morpheus8). Edgewater, inside Paraiso Bayviews (City of Miami). November-only microneedling promos (ends Nov 30) intentionally NOT recorded as prices. Rating/address/phone from permitted DataForSEO Business Listings API; no review text used.",
+    "starting_prices_usd": {
+      "botox": 13,
+      "hydrafacial": 250
+    },
+    "price_meta": {
+      "botox": {
+        "basis": "per unit (Botox; injected by APRN; new-client 20% first-visit discount not applied)",
+        "source_url": "https://zeugmaspa.com/",
+        "quote": "Botox is $13 per unit and Dysport is $7 per unit",
+        "checked": "2026-11-27"
+      },
+      "hydrafacial": {
+        "basis": "per session, HydraFacial Signature, regular single-visit price (membership and intro offers excluded)",
+        "source_url": "https://zeugmaspa.com/",
+        "quote": "HydraFacial Signature ($250 regular)",
+        "checked": "2026-11-27"
+      }
+    }
+  },
+  {
+    "slug": "nuyou-medical-aesthetics-miami",
+    "name": "NuYou Medical Aesthetics",
+    "category": "med-spa",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "888 Biscayne Blvd Ste 505, Room 532, Miami, FL 33132",
+    "phone": "+13052040659",
+    "website": "https://lovethenuyou.com/",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "dermal-fillers",
+      "microneedling",
+      "chemical-peel",
+      "hydrafacial"
+    ],
+    "rating": 5.0,
+    "review_count": 504,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJU-ijche32YgRDpOGzMX_vsk)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://lovethenuyou.com/",
+      "https://lovethenuyou.com/lip-enhancement",
+      "https://lovethenuyou.com/potenza-radiofrequency-microneedling",
+      "https://lovethenuyou.com/trichloroacetic-acid-tca-pretty-skin-peel"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the clinic's own site menu (text-only fetch): neurotoxins (Botox, Dysport, Xeomin, Jeuveau, Daxxify, Letybo) and Dynamic Wrinkle Reduction with Tox; Lip Enhancement / Lip Flip; HA fillers (Restylane, Juvederm, Versa, RHA); SkinPen Microneedling and Potenza RF microneedling; TCA Pretty Skin Peel and VI Peel; 'Syndeo by Hydrafacial' listed in the practice's product/device portfolio. Downtown Miami (888 Biscayne Blvd). No per-offer prices recorded (request-a-quote). Rating/address/phone from permitted DataForSEO Business Listings API; no review text used.",
+    "rating_flag": "perfect-at-volume (5.0 at n=504 >= 4.95 & n>=100) - flagged per integrity rule, rating left exactly as returned by the API."
+  },
+  {
+    "slug": "elda-silva-studio-medspa-miami",
+    "name": "Elda Silva Studio & MedSpa",
+    "category": "med-spa",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "275 NE 18th St CU-01, Miami, FL 33132",
+    "phone": "+17868782897",
+    "website": "https://eldasilva.com/",
+    "treatments": [
+      "botox",
+      "dermal-fillers",
+      "morpheus8"
+    ],
+    "rating": 5.0,
+    "review_count": 675,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJT0dlBO-z2YgRzye9OOf1Vto)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://www.eldasilvastudio.com/",
+      "https://eldasilva.com/pages/botox-miami",
+      "https://eldasilva.com/pages/dermal-fillers-miami",
+      "https://eldasilva.com/pages/morpheus-1"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the clinic's own site menu (text-only fetch): Botox page (botox-miami), Injectables (neuromodulators, filler, biostimulators), Morpheus8 page. Lip filler not tagged (no dedicated lip offer on the menu). Edgewater (275 NE 18th St, City of Miami). No per-offer prices recorded (request-a-quote). Rating/address/phone from permitted DataForSEO Business Listings API; no review text used.",
+    "rating_flag": "perfect-at-volume (5.0 at n=675 >= 4.95 & n>=100) - flagged per integrity rule, rating left exactly as returned by the API."
+  },
+  {
+    "slug": "barba-dermatology-miami",
+    "name": "Barba Dermatology",
+    "category": "dermatology",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "4770 Biscayne Blvd Ste 1140, Miami, FL 33137",
+    "phone": "+13055737200",
+    "website": "https://www.barbadermatology.com/",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "dermal-fillers"
+    ],
+    "rating": 4.8,
+    "review_count": 379,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJ3yaUkVix2YgRFwFKddgvOuc)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://www.barbadermatology.com/",
+      "https://www.barbadermatology.com/injectables"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the practice's own /injectables menu (text-only fetch): Botox, Dysport, Jeuveau; Restylane, Voluma, Radiesse, Belotero; 'Lip Augmentation' with Restylane / Restylane Silk. Laser hair removal and peels are offered by the affiliated Barba Skin Clinic (separate site/phone, location not confirmed as this address) and are therefore NOT tagged here. Dermatology practice admitted for non-surgical pages under rule #42. No prices recorded. Rating/address/phone from permitted DataForSEO Business Listings API; no review text used."
+  },
+  {
+    "slug": "designer-aesthetics-dr-jarrett-schanzer-miami",
+    "name": "Designer Aesthetics by Dr. Jarrett Schanzer",
+    "category": "med-spa",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "4770 Biscayne Blvd Ste 1100, Miami, FL 33137",
+    "phone": "+19549354488",
+    "website": "https://doctorjarrett.com/",
+    "treatments": [
+      "botox",
+      "lip-filler",
+      "dermal-fillers",
+      "microneedling",
+      "chemical-peel",
+      "laser-hair-removal",
+      "iv-therapy"
+    ],
+    "rating": 5.0,
+    "review_count": 325,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJi3f_hYx6qqkRVX7-UfGaJ1U)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://doctorjarrett.com/",
+      "https://doctorjarrett.com/contact/",
+      "https://doctorjarrett.com/laser-hair-removal/"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the clinic's own site menu (text-only fetch): Botox/Dysport/Xeomin (neuromodulators, botox-miami), Lip Fillers (lip-fillers-miami), Dermal Fillers, RF Microneedling (SylfirmX), Chemical Peel (VI Peel), Laser Hair Removal (Xlase Plus AlexPro diode page), IV Vitamin Infusions. Phone not returned by the listings API; phone (954) 935-4488 taken from the clinic's own /contact/ page (first-party). Address from listings API and matches the site (4770 Biscayne Blvd Ste 1100). No prices recorded. Rating from permitted DataForSEO Business Listings API; no review text used.",
+    "rating_flag": "perfect-at-volume (5.0 at n=325 >= 4.95 & n>=100) - flagged per integrity rule, rating left exactly as returned by the API."
+  },
+  {
+    "slug": "skn-elements-miami",
+    "name": "Skn Elements",
+    "category": "med-spa",
+    "neighborhood": "miami",
+    "neighborhood_name": "Miami",
+    "county": "miami-dade",
+    "state": "fl",
+    "address": "7295 NW 2nd Ave, Miami, FL 33150",
+    "phone": "+13057737138",
+    "website": "https://sknelements.com/",
+    "treatments": [
+      "laser-hair-removal",
+      "microneedling"
+    ],
+    "rating": 4.9,
+    "review_count": 237,
+    "rating_source": "google_places_api",
+    "rating_checked": "2026-11-27 (DataForSEO Business Listings, Google Maps source; place_id ChIJYWgRQYG22YgRqlYO7Co5M2A)",
+    "has_real_clinic_data": true,
+    "uses_scraped_review_text": false,
+    "has_before_after": false,
+    "before_after_consent": false,
+    "last_verified": "2026-11-27",
+    "sources": [
+      "https://sknelements.com/",
+      "https://sknelements.com/services/"
+    ],
+    "_sourcing": "Treatments confirmed 2026-11-27 against the clinic's own site (text-only fetch): /services/ lists Laser Hair Removal and Medical Esthetics (doctors and NPs); homepage 'most popular services' lists Laser Hair Removal and Radio Frequency Microneedling. Botox not tagged (mentioned only in a client testimonial, not on the menu). Little River (7295 NW 2nd Ave, City of Miami). No prices recorded. Rating/address/phone from permitted DataForSEO Business Listings API; no review text used."
+  }
+]
